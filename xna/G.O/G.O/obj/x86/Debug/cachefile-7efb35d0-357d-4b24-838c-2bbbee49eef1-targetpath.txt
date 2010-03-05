@@ -1,0 +1,3 @@
+Content\TitleFont.xnb
+Content\TitleSong.xnb
+Content\TitleSong.wma
