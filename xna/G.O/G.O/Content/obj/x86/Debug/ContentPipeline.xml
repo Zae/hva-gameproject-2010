@@ -7,7 +7,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Owner\My Documents\Visual Studio 2008\Projects\G.O\G.O\bin\x86\Debug\Content\TitleFont.xnb</Output>
+      <Output>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\TitleFont.xnb</Output>
       <Time>2010-03-05T11:44:17.578125+01:00</Time>
     </Item>
     <Item>
@@ -16,8 +16,8 @@
       <Importer>WmaImporter</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Owner\My Documents\Visual Studio 2008\Projects\G.O\G.O\bin\x86\Debug\Content\TitleSong.xnb</Output>
-      <Extra>C:\Documents and Settings\Owner\My Documents\Visual Studio 2008\Projects\G.O\G.O\bin\x86\Debug\Content\TitleSong.wma</Extra>
+      <Output>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\TitleSong.xnb</Output>
+      <Extra>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\TitleSong.wma</Extra>
       <Time>2010-03-05T13:07:07.59375+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -25,10 +25,10 @@
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Documents and Settings\Owner\My Documents\Visual Studio 2008\Projects\G.O\G.O\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\Owner\My Documents\Visual Studio 2008\Projects\G.O\G.O\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\Owner\My Documents\Visual Studio 2008\Projects\G.O\G.O\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\Owner\My Documents\Visual Studio 2008\Projects\G.O\G.O\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\</RootDirectory>
+      <LoggerRootDirectory>E:\Development\hva-gameproject-2010\xna\G.O\G.O\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
