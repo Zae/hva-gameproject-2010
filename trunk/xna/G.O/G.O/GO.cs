@@ -109,10 +109,10 @@ namespace G.O
             // TODO: Add your update logic here
             KeyboardState keyState = Keyboard.GetState();
 
-            if (keyState.IsKeyDown(Keys.Escape))
-            {
-               this.Exit();
-            }
+            //if (keyState.IsKeyDown(Keys.Escape))
+            //{
+            //    this.Exit();
+            //}
 
             state.update();
 

@@ -6,18 +6,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace G.O
 {
-    public abstract class State
+    class StatePaused : State
     {
 
-        public State()
+        public override void draw(SpriteBatch spritebatch)
         {
-
+            
         }
 
-        public abstract void draw(SpriteBatch spritebatch);
-       
-        public abstract void update();
-        
-
+        public override void update()
+        {
+          
+        }
     }
 }

@@ -71,6 +71,8 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -92,6 +94,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="GO.cs" />
     <Compile Include="State.cs" />
+    <Compile Include="StatePaused.cs" />
     <Compile Include="StateTest.cs" />
     <Compile Include="StateTitle.cs" />
     <Compile Include="Tile.cs" />
