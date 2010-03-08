@@ -95,8 +95,7 @@ namespace G.O
             Music.gameSong1 = Content.Load<Song>("GameSong1");
             Music.gameSong2 = Content.Load<Song>("GameSong2");
             Music.actionSong1 = Content.Load<Song>("ActionSong1");
-
-           
+            Music.actionSound1 = Content.Load<SoundEffect>("ActionSound1");
 
             state = new StateTitle();
             state.focusGained();

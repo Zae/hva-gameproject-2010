@@ -60,6 +60,7 @@ namespace G.O
                 else if (playqueue == 2)
                 {
                     MediaPlayer.Play(Music.actionSong1);
+                   // MediaPlayer.Play(Music.gameSong2);
                     playqueue = 3;
                 }
                 else if (playqueue == 3)
@@ -74,6 +75,16 @@ namespace G.O
             if(keyState.IsKeyDown(Keys.Escape)) 
             {
                 GO.get().setState(new StatePaused()); 
+            }
+
+            if (keyState.IsKeyDown(Keys.Space))
+            {
+               // Music.actionSong1.Play(1.0f, 0.0f, 0.0f, true);
+
+                Music.actionSound1.Play(1.0f, 0.0f, 0.0f, true);
+                
+                
+                
             }
 
 
