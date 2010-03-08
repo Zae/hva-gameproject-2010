@@ -35,9 +35,10 @@ namespace G.O
             return instance;
         }
 
-        public override void draw(SpriteBatch spritebatch)
+        public override void draw(SpriteBatch spriteBatch)
         {
             GO.get().GraphicsDevice.Clear(Color.White);
+            map.draw(spriteBatch);
         }
 
         public override void update()
