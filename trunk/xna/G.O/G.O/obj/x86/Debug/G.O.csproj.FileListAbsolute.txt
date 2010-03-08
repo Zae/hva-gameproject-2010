@@ -23,3 +23,4 @@ E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\Effect1.xn
 E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\ActionSong1.wma
 E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\GameSong1.wma
 E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\GameSong2.wma
+E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\Level1.xnb
