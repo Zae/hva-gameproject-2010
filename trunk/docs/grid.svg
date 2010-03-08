@@ -1238,16 +1238,16 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.5"
-     inkscape:cx="443.78458"
-     inkscape:cy="737.64277"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="384.09818"
+     inkscape:cy="596.60387"
      inkscape:document-units="px"
-     inkscape:current-layer="layer8"
+     inkscape:current-layer="g4344"
      showgrid="false"
      inkscape:window-width="1280"
      inkscape:window-height="753"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
      showguides="true"
      inkscape:guide-bbox="true">
     <inkscape:grid
@@ -3158,8 +3158,7 @@
      inkscape:label="veld1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <g
        style="display:inline"
        id="g5448"
@@ -5656,7 +5655,7 @@
     </g>
     <g
        id="g7168"
-       transform="translate(95.372097,-30.10647)">
+       transform="translate(49.410156,-52.02678)">
       <path
          sodipodi:type="arc"
          style="opacity:1;fill:url(#radialGradient7172);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.40000001;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -5833,7 +5832,7 @@
     </g>
     <g
        id="g7395"
-       transform="translate(40.318813,-65.72677)">
+       transform="translate(-20.681187,-84.72677)">
       <path
          id="path7383"
          d="M 494.68119,570.58895 L 504.68119,573.08895 L 507.18119,565.58895 L 512.18119,568.08895 L 517.18119,563.08895 L 522.18119,560.58895"
@@ -6454,7 +6453,7 @@
        style="display:inline"
        id="g4344">
       <path
-         style="fill:#c43427;fill-opacity:1;fill-rule:evenodd;stroke:#0f0f0f;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+         style="fill:#c43427;fill-opacity:1;fill-rule:evenodd;stroke:#0f0f0f;stroke-width:0.30000000999999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
          d="M 440,587.36218 L 425,592.36218 L 440,597.36218 L 455,592.36218 L 440,587.36218 z"
          id="path4346" />
       <text
