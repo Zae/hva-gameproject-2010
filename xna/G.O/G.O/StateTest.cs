@@ -11,6 +11,8 @@ namespace G.O
     public class StateTest : State
     {
 
+        private Grid map;
+
         private static StateTest instance;
 
         private bool musicPaused = false;
@@ -24,6 +26,8 @@ namespace G.O
         public StateTest()
         {
             instance = this;
+
+            map = new Grid(level);
         }
 
         public static StateTest get()
