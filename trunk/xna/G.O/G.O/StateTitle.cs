@@ -11,18 +11,18 @@ namespace G.O
 {
     public class StateTitle : State
     {
-        private const int SELECTION_NEWGAME = 1;
-        private const int SELECTION_QUIT = 2;
-
-        //The number of selectable options
-        private const int SELECTION_COUNT = 2;
+        public enum SELECTION
+        {
+            NEWGAME = 1,
+            QUIT
+        }
 
         private const String title = "Land Conquerer"; //"G.O."
         private const String newGame = "New game";
         private const String quit = "Quit";
 
         //Initialy the first option is selected
-        public int selection = 1;
+        public SELECTION selection = SELECTION.NEWGAME;
 
         public bool upPressed = false;
         public bool downPressed = false;
@@ -41,7 +41,7 @@ namespace G.O
             spriteBatch.DrawString(Fonts.font, title, new Vector2((GO.width/2)-15,(GO.height/2)-150), Color.White);
             //spriteBatch.DrawString(Fonts.font, "press any key to start the test", new Vector2((GO.width/2)-100, (GO.height / 2)), Color.White);
 
-            if (selection == SELECTION_NEWGAME)
+            if (selection == SELECTION.NEWGAME)
             {
                 //Draw highlighted
                 spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
@@ -52,7 +52,7 @@ namespace G.O
                 spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.White);
             }
 
-            if (selection == SELECTION_QUIT)
+            if (selection == SELECTION.QUIT)
             {
                 //Draw highlighted
                 spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2)-50), Color.Red);
@@ -114,28 +114,28 @@ namespace G.O
         private void selectionUp()
         {
             selection++;
-            if (selection > SELECTION_COUNT)
+            if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
             {
-                selection = 1;
+                selection = SELECTION.NEWGAME;
             }
         }
 
         private void selectionDown()
         {
             selection--;
-            if (selection < 1)
+            if (selection < SELECTION.NEWGAME)
             {
-                selection = SELECTION_COUNT;
+                selection = (SELECTION) Enum.GetNames(typeof(SELECTION)).Length;
             }
         }
 
         private void makeSelection()
         {
-            if (selection == SELECTION_NEWGAME)
+            if (selection == SELECTION.NEWGAME)
             {
                 GO.get().setState(new StateTest());
             }
-            else if (selection == SELECTION_QUIT)
+            else if (selection == SELECTION.QUIT)
             {
                 GO.get().Exit();
             }
