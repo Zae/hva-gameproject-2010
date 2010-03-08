@@ -40,6 +40,8 @@ namespace G.O
 
         public override void draw(SpriteBatch spriteBatch)
         {
+            GO.get().GraphicsDevice.Clear(Color.Black);
+            
             spriteBatch.Begin();
             spriteBatch.DrawString(Fonts.font, title, new Vector2((GO.width/2)-15,(GO.height/2)-150), Color.White);
             //spriteBatch.DrawString(Fonts.font, "press any key to start the test", new Vector2((GO.width/2)-100, (GO.height / 2)), Color.White);
@@ -141,6 +143,10 @@ namespace G.O
             if (selection == SELECTION_NEWGAME)
             {
                 GO.get().state = new StateTest();
+                if (isplaying)
+                {
+                    MediaPlayer.Stop();
+                }
             }
             else if (selection == SELECTION_QUIT)
             {

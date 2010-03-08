@@ -8,9 +8,11 @@ namespace G.O
     class Grid
     {
 
+        private Tile[][] map;
+
         public Grid(String levelname)
         {
-
+            
         }
     }
 }
