@@ -26,12 +26,7 @@ namespace G.O
 
         public bool upPressed = false;
         public bool downPressed = false;
-
-        //Whether the music is currently playing
-        public bool isplaying = false;
-
-
-     
+    
         public StateTitle()
         {
           
@@ -73,11 +68,7 @@ namespace G.O
 
         public override void update()
         {
-            if (Music.titleSong != null && !isplaying)
-            {
-                MediaPlayer.Play(Music.titleSong);
-                isplaying = true;
-            }
+       
             KeyboardState keyState = Keyboard.GetState();
 
         
@@ -142,16 +133,23 @@ namespace G.O
         {
             if (selection == SELECTION_NEWGAME)
             {
-                GO.get().state = new StateTest();
-                if (isplaying)
-                {
-                    MediaPlayer.Stop();
-                }
+                GO.get().setState(new StateTest());
             }
             else if (selection == SELECTION_QUIT)
             {
                 GO.get().Exit();
             }
+        }
+
+        public override void focusGained()
+        {
+            MediaPlayer.Play(Music.titleSong);
+            MediaPlayer.IsRepeating = true;
+        }
+
+        public override void focusLost()
+        {
+            MediaPlayer.Stop();
         }
     }
 }
