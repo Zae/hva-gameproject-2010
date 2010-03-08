@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace G.O
 {
@@ -15,5 +16,7 @@ namespace G.O
         public static Song gameSong2;
 
         public static Song actionSong1;
+
+        public static SoundEffect actionSound1;
     }
 }
