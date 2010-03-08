@@ -62,6 +62,8 @@ namespace G.O
                 //Draw normally
                 spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2)-50), Color.White);
             }
+
+            
            
             spriteBatch.End();
         }
