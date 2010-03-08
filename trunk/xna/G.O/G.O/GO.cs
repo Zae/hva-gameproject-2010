@@ -18,8 +18,8 @@ namespace G.O
     /// </summary>
     public class GO : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public static GraphicsDeviceManager graphics;
+        public static SpriteBatch spriteBatch;
        public static int width;
        public static int height;
 
@@ -83,7 +83,10 @@ namespace G.O
             // TODO: use this.Content to load your game content here
             Fonts.font = Content.Load<SpriteFont>("TitleFont");
 
-            Music.titleSong = Content.Load<Song>("TitleSong");       
+            Music.titleSong = Content.Load<Song>("TitleSong");
+            Music.gameSong1 = Content.Load<Song>("GameSong1");
+            Music.gameSong2 = Content.Load<Song>("GameSong2");
+            Music.actionSong1 = Content.Load<Song>("ActionSong1"); 
         }
 
         /// <summary>
@@ -125,7 +128,7 @@ namespace G.O
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            
            
             // TODO: Add your drawing code here
             state.draw(spriteBatch);

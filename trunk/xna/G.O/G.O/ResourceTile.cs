@@ -5,7 +5,10 @@ using System.Text;
 
 namespace G.O
 {
-    public abstract class Tile
+    public class ResourceTile : Tile
     {
+
+        public int owner = Players.NEUTRAL;
+
     }
 }

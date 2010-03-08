@@ -14,7 +14,7 @@ namespace G.O
 
         }
 
-        public abstract void draw(SpriteBatch spritebatch);
+        public abstract void draw(SpriteBatch spriteBatch);
        
         public abstract void update();
         
