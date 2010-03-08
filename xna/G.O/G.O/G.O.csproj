@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Fonts.cs" />
     <Compile Include="Grid.cs" />
+    <Compile Include="MountainTile.cs" />
     <Compile Include="Music.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="PrimitiveBatch.cs" />

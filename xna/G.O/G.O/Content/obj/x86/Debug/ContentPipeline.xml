@@ -59,6 +59,15 @@
       <Output>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\Effect1.xnb</Output>
       <Time>2010-03-08T08:23:19.09375+01:00</Time>
     </Item>
+    <Item>
+      <Source>Level1.xml</Source>
+      <Name>Level1</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\Level1.xnb</Output>
+      <Time>2010-03-08T11:25:15.21875+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

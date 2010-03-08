@@ -17,6 +17,10 @@ namespace G.O
 
         private int playqueue = 1;
 
+        private string level = "Level1.xml";
+
+
+
         public StateTest()
         {
             instance = this;
