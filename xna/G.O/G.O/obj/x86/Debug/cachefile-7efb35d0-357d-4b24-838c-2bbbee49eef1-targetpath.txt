@@ -1,3 +1,10 @@
 Content\TitleFont.xnb
 Content\TitleSong.xnb
 Content\TitleSong.wma
+Content\ActionSong1.xnb
+Content\ActionSong1.wma
+Content\GameSong1.xnb
+Content\GameSong1.wma
+Content\GameSong2.xnb
+Content\GameSong2.wma
+Content\Effect1.xnb

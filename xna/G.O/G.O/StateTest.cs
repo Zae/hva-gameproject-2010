@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace G.O
 {
@@ -11,6 +12,10 @@ namespace G.O
     {
 
         private static StateTest instance;
+
+        private bool musicPaused = false;
+
+        private int playqueue = 1;
 
         public StateTest()
         {
@@ -29,12 +34,37 @@ namespace G.O
 
         public override void update()
         {
+            //if (!isplaying)
+            //{
+            //    MediaPlayer.Play(Music.gameSong1);
+            //    MediaPlayer.IsRepeating = false;
+            //    isplaying = true;
+            //}
+
+            if (MediaPlayer.State.Equals(MediaState.Stopped))
+            {
+                if (playqueue == 1)
+                {
+                    MediaPlayer.Play(Music.gameSong1);
+                    playqueue = 2;
+                }
+                else if (playqueue == 2)
+                {
+                    MediaPlayer.Play(Music.actionSong1);
+                    playqueue = 3;
+                }
+                else if (playqueue == 3)
+                {
+                    MediaPlayer.Play(Music.gameSong2);
+                    playqueue = 1;
+                }
+            }
 
             KeyboardState keyState = Keyboard.GetState();
             
             if(keyState.IsKeyDown(Keys.Escape)) 
             {
-                GO.get().state = new StatePaused(); 
+                GO.get().setState(new StatePaused()); 
             }
 
 
@@ -64,6 +94,27 @@ namespace G.O
             //    makeSelection();
             //}
             
+        }
+
+        public override void focusGained()
+        {
+            GO.get().IsMouseVisible = true;
+            
+            //MediaPlayer.Play(Music.gameSong1);
+            //MediaPlayer.IsRepeating = false;
+            if (musicPaused)
+            {
+                MediaPlayer.Resume();
+                musicPaused = false;
+            }
+        }
+
+        public override void focusLost()
+        {
+            GO.get().IsMouseVisible = false;
+            
+            MediaPlayer.Pause();
+            musicPaused = true;
         }
     }
 }

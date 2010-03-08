@@ -20,15 +20,16 @@ namespace G.O
     {
         public static GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
-       public static int width;
-       public static int height;
+        public static int width;
+        public static int height;
 
-       public State state;
+        private State state;
 
-       public static GO instance;
+        public static GO instance;
 
         public GO()
         {
+            //Set the singleton instance for static reference
             instance = this;
 
             graphics = new GraphicsDeviceManager(this);
@@ -46,6 +47,13 @@ namespace G.O
         public static GO get()
         {
             return instance;   
+        }
+
+        public void setState(State newState)
+        {
+            state.focusLost();
+            state = newState;
+            state.focusGained();
         }
 
         private void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
@@ -66,7 +74,7 @@ namespace G.O
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            state = new StateTitle();
+
 
             base.Initialize();
         }
@@ -86,7 +94,12 @@ namespace G.O
             Music.titleSong = Content.Load<Song>("TitleSong");
             Music.gameSong1 = Content.Load<Song>("GameSong1");
             Music.gameSong2 = Content.Load<Song>("GameSong2");
-            Music.actionSong1 = Content.Load<Song>("ActionSong1"); 
+            Music.actionSong1 = Content.Load<Song>("ActionSong1");
+
+           
+
+            state = new StateTitle();
+            state.focusGained();
         }
 
         /// <summary>

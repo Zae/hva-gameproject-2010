@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <!-- N = Normal Tile | M = Mountain Tile -->
+  <Map Type="System.String" Height="10" Width ="10">
+    NNNNNNNNNN
+    NNNNNNNNNN
+    NNNNNNNNNN
+    NNNNNNNNNN
+    NNNNMMNNNN
+    NNNNMMNNNN
+    NNNNNNNNNN
+    NNNNNNNNNN
+    NNNNNNNNNN
+    NNNNNNNNNN
+  </Map>
+</XnaContent>

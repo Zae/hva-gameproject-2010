@@ -32,13 +32,23 @@ namespace G.O
 
             if (keyState.IsKeyDown(Keys.N))
             {
-                GO.get().state = StateTest.get();
+                GO.get().setState(StateTest.get());
             }
             else if (keyState.IsKeyDown(Keys.Y))
             {
-                GO.get().state = new StateTitle();
+                GO.get().setState(new StateTitle());
             }
 
+        }
+
+        public override void focusGained()
+        {
+        
+        }
+
+        public override void focusLost()
+        {
+           
         }
     }
 }

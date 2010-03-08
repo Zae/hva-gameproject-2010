@@ -20,6 +20,45 @@
       <Extra>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\TitleSong.wma</Extra>
       <Time>2010-03-05T13:07:07.59375+01:00</Time>
     </Item>
+    <Item>
+      <Source>ActionSong1.wma</Source>
+      <Name>ActionSong1</Name>
+      <Importer>WmaImporter</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\ActionSong1.xnb</Output>
+      <Extra>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\ActionSong1.wma</Extra>
+      <Time>2010-03-08T08:24:45.828125+01:00</Time>
+    </Item>
+    <Item>
+      <Source>GameSong1.wma</Source>
+      <Name>GameSong1</Name>
+      <Importer>WmaImporter</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\GameSong1.xnb</Output>
+      <Extra>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\GameSong1.wma</Extra>
+      <Time>2010-03-08T08:25:27.609375+01:00</Time>
+    </Item>
+    <Item>
+      <Source>GameSong2.wma</Source>
+      <Name>GameSong2</Name>
+      <Importer>WmaImporter</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\GameSong2.xnb</Output>
+      <Extra>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\GameSong2.wma</Extra>
+      <Time>2010-03-08T08:25:43.078125+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Effect1.fx</Source>
+      <Name>Effect1</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Development\hva-gameproject-2010\xna\G.O\G.O\bin\x86\Debug\Content\Effect1.xnb</Output>
+      <Time>2010-03-08T08:23:19.09375+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
