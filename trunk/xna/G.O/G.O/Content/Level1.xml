@@ -1,16 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<XnaContent>
-  <!-- N = Normal Tile | M = Mountain Tile -->
-  <Asset Type="System.String" Height="10" Width ="10">
-    NNNNNNNNNN
-    NNNNNNNNNN
-    NNNNNNNNNN
-    NNNNNNNNNN
-    NNNNMMNNNN
-    NNNNMMNNNN
-    NNNNNNNNNN
-    NNNNNNNNNN
-    NNNNNNNNNN
-    NNNNNNNNNN
-  </Asset>
-</XnaContent>
+﻿<Level Width="6" Height="6">
+    NNNNNN
+    NNNNNN
+    NNMMNN
+    NNMMNN
+    NNNNNN
+    NNNNNN
+</Level>
+
