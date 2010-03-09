@@ -21,7 +21,9 @@ namespace G.O
         public static GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
         public static int width;
+        public static int halfWidth;
         public static int height;
+        public static int halfHeight;
 
         private State state;
 
@@ -38,8 +40,10 @@ namespace G.O
             graphics.ToggleFullScreen();
 
             width = graphics.GraphicsDevice.DisplayMode.Width;
+            halfWidth = width / 2;
 
             height = graphics.GraphicsDevice.DisplayMode.Height;
+            halfHeight = height / 2;
            
             Content.RootDirectory = "Content";
         }

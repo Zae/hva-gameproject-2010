@@ -17,7 +17,7 @@ namespace G.O
         private int width;
         private int height;
         private int tileCount;
-        private int tileSize = 180;
+      
 
         private Tile[] perspectiveMap;
 
@@ -136,7 +136,7 @@ namespace G.O
                         map[x, y].setIndexZ(i);
                         map[x, y].setIndexX(relativeX);
                         map[x, y].setIndexY(relativeY);
-                       // perspectiveMap[i] = map[x, y];
+                        perspectiveMap[i] = map[x, y];
                         x++;
                         y++;
                         i++;
@@ -177,17 +177,22 @@ namespace G.O
             this.viewDirection = newViewDirection;
         }
 
-        public void draw(SpriteBatch spriteBatch)
+        public void draw(int translation, SpriteBatch spriteBatch)
         {
-            //TODO
-            //In which order do we paint the tiles?
-            for (int x=0; x < width; x++)
+            for (int i = 0; i < tileCount; i++)
             {
-                for(int y=0; y < height; y++) 
-                {
-                    map[x, y].draw((x * tileSize) + 50, (y * tileSize) + 50, spriteBatch);
-                }
+                perspectiveMap[i].draw(translation,spriteBatch);
             }
+
+
+            //Old way
+            //for (int x=0; x < width; x++)
+            //{
+            //    for(int y=0; y < height; y++) 
+            //    {
+            //        map[x, y].draw((x * tileSize) + 50, (y * tileSize) + 50, spriteBatch);
+            //    }
+            //}
 
         }
 

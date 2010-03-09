@@ -24,6 +24,14 @@ namespace G.O
             spriteBatch.End();
         }
 
+        public override void draw(int translation, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Begin();
+            Vector2 location = new Vector2(GO.halfWidth + (indexX * tileWidth), (indexY * tileHeight));
+            spriteBatch.DrawString(Fonts.font, "(N :z=" + indexZ + ":x=" + indexX + ":y=" + indexY + ")", location, Color.Black);
+            spriteBatch.End();
+        }
+
         public override void update()
         {
             

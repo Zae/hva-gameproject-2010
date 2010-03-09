@@ -12,7 +12,14 @@ namespace G.O
         protected int indexX;
         protected int indexY;
 
+        //protected const int tileSize = 140;
+        protected const int tileWidth = 140;
+        protected const int tileHeight = 70;
+
         public abstract void draw(int x, int y, SpriteBatch spriteBatch);
+
+        public abstract void draw(int translation, SpriteBatch spriteBatch);
+
 
         public abstract void update();
 
