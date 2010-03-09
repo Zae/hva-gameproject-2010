@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework;
 
 namespace G.O
 {
@@ -21,7 +23,11 @@ namespace G.O
 
         private string level = "Level1.xml";
 
+        private bool actionOnScreen = false;
 
+        private SoundEffectInstance actionOnScreenSound = null;
+        private float musicVolume = 1.0f;
+        private float actionSoundVolume = 0.0f;
 
         public StateTest()
         {
@@ -38,6 +44,11 @@ namespace G.O
         public override void draw(SpriteBatch spriteBatch)
         {
             GO.get().GraphicsDevice.Clear(Color.White);
+
+            spriteBatch.Begin();
+            spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly, Space to trigger action sounds (now: "+actionOnScreen+")", new Vector2(10,10), Color.Red);
+            spriteBatch.End();
+
             map.draw(spriteBatch);
         }
 
@@ -79,13 +90,13 @@ namespace G.O
 
             if (keyState.IsKeyDown(Keys.Space))
             {
-               // Music.actionSong1.Play(1.0f, 0.0f, 0.0f, true);
-
-                Music.actionSound1.Play(1.0f, 0.0f, 0.0f, true);
-                
-                
-                
+                actionOnScreen = true;
             }
+            else
+            {
+                actionOnScreen = false;
+            }
+            handleActionSound();
 
 
             //if (keyState.IsKeyDown(Keys.Up) && !upPressed)
@@ -114,6 +125,10 @@ namespace G.O
             //    makeSelection();
             //}
             
+        }
+
+        private void handleActionSound()
+        {
         }
 
         public override void focusGained()
