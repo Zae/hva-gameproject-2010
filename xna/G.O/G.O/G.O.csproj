@@ -1,4 +1,4 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectGuid>{8C7EBD66-50BB-4F39-89B6-097C7D678EEC}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -81,20 +81,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fonts.cs" />
-    <Compile Include="Grid.cs" />
-    <Compile Include="MountainTile.cs" />
+    <Compile Include="Grid\Grid.cs" />
+    <Compile Include="Grid\MountainTile.cs" />
     <Compile Include="Music.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="PrimitiveBatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="GO.cs" />
-    <Compile Include="ResourceTile.cs" />
-    <Compile Include="State.cs" />
-    <Compile Include="StatePaused.cs" />
-    <Compile Include="StateTest.cs" />
-    <Compile Include="StateTitle.cs" />
-    <Compile Include="Tile.cs" />
+    <Compile Include="Grid\ResourceTile.cs" />
+    <Compile Include="State\State.cs" />
+    <Compile Include="State\StatePaused.cs" />
+    <Compile Include="State\StateTest.cs" />
+    <Compile Include="State\StateTitle.cs" />
+    <Compile Include="Grid\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
