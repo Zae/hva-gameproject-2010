@@ -34,6 +34,9 @@ namespace G.O
             instance = this;
 
             map = new Grid(level);
+
+            actionOnScreenSound = Music.actionSound1.CreateInstance();
+            actionOnScreenSound.IsLooped = true;
         }
 
         public static StateTest get()
@@ -46,13 +49,13 @@ namespace G.O
             GO.get().GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
-            spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly, Space to trigger action sounds (now: "+actionOnScreen+")", new Vector2(10,10), Color.Red);
+            spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly, Space to trigger action sounds (now: "+actionOnScreen+")(musicvolume:"+MediaPlayer.Volume+")", new Vector2(10,10), Color.Red);
             spriteBatch.End();
 
             map.draw(spriteBatch);
         }
 
-        public override void update()
+        public override void update(int ellapsed)
         {
             //if (!isplaying)
             //{
@@ -96,7 +99,7 @@ namespace G.O
             {
                 actionOnScreen = false;
             }
-            handleActionSound();
+            handleActionSound(ellapsed);
 
 
             //if (keyState.IsKeyDown(Keys.Up) && !upPressed)
@@ -127,8 +130,66 @@ namespace G.O
             
         }
 
-        private void handleActionSound()
+        private void handleActionSound(int ellapsed)
         {
+
+            if (actionOnScreen)
+            {
+                
+                if(actionOnScreenSound.State == SoundState.Stopped) {
+                    actionOnScreenSound.Volume = 0.0f;
+                    actionOnScreenSound.Play();
+                }
+
+                if(MediaPlayer.Volume > 0.0f)
+                {
+                    MediaPlayer.Volume = MediaPlayer.Volume - (0.0003f * ellapsed);
+                }
+                if (actionOnScreenSound.Volume < 1.0f)
+                {
+                    float newVolume = actionOnScreenSound.Volume + (0.0003f * ellapsed);
+
+                    if (newVolume > 1.0f)
+                    {
+                        actionOnScreenSound.Volume = 1.0f;
+                    }
+                    else
+                    {
+                        actionOnScreenSound.Volume = newVolume;
+                    }
+
+                }
+                
+               
+            }
+            else
+            {
+                
+                if (MediaPlayer.Volume < 1.0f)
+                {
+                    MediaPlayer.Volume = MediaPlayer.Volume + (0.0003f * ellapsed);
+                }
+
+                if (actionOnScreenSound.Volume > 0.0f)
+                {
+                    float newVolume = actionOnScreenSound.Volume - (0.0003f * ellapsed);
+                    
+                    if (newVolume < 0.0f)
+                    {
+                        actionOnScreenSound.Volume = 0.0f;
+                    }
+                    else
+                    {
+                        actionOnScreenSound.Volume = newVolume;
+                    }
+                }
+                else if(actionOnScreenSound.State == SoundState.Playing) 
+                {
+                     actionOnScreenSound.Stop();
+                }
+
+            }
+            
         }
 
         public override void focusGained()

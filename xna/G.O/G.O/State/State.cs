@@ -16,7 +16,7 @@ namespace G.O
 
         public abstract void draw(SpriteBatch spriteBatch);
        
-        public abstract void update();
+        public abstract void update(int ellapsed);
 
         public abstract void focusLost();
 
