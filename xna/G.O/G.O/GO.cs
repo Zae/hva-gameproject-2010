@@ -124,12 +124,14 @@ namespace G.O
             // TODO: Add your update logic here
             KeyboardState keyState = Keyboard.GetState();
 
+            
+
             if (keyState.IsKeyDown(Keys.F1))
             {
                 this.Exit();
             }
 
-            state.update();
+            state.update(gameTime.ElapsedGameTime.Milliseconds);
 
             base.Update(gameTime);
         }
