@@ -29,6 +29,8 @@ namespace G.O
         private float musicVolume = 1.0f;
         private float actionSoundVolume = 0.0f;
 
+        private int translation = 0;
+
         public StateTest()
         {
             instance = this;
@@ -52,7 +54,7 @@ namespace G.O
             spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly, Space to trigger action sounds (now: "+actionOnScreen+")(musicvolume:"+MediaPlayer.Volume+")", new Vector2(10,10), Color.Red);
             spriteBatch.End();
 
-            map.draw(spriteBatch);
+            map.draw(translation, spriteBatch);
         }
 
         public override void update(int ellapsed)
