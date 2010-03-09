@@ -12,7 +12,7 @@ namespace G.O
         public override void draw(int x, int y, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            spriteBatch.DrawString(Fonts.font, "Mountain Tile", new Vector2(x, y), Color.Black);
+            spriteBatch.DrawString(Fonts.font, "(N :z=" + indexZ + ":x=" + indexX + ":y=" + indexY + ")", new Vector2(x, y), Color.Black);
             spriteBatch.End();
         }
 

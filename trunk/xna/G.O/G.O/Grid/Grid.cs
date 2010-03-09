@@ -16,7 +16,18 @@ namespace G.O
         private Tile[,] map;
         private int width;
         private int height;
-        private int tileSize = 140;
+        private int tileCount;
+        private int tileSize = 180;
+
+        private Tile[] perspectiveMap;
+
+
+        private int viewDirection = 1;
+        private const int SOUTH_WEST = 1;
+        private const int NORTH_WEST = 2;
+        private const int NORTH_EAST = 3;
+        private const int SOUTH_EAST = 4;
+
 
         public Grid(String levelname)
         {
@@ -39,7 +50,9 @@ namespace G.O
                 {
                     width = int.Parse(XmlRdr.GetAttribute(0));
                     height = int.Parse(XmlRdr.GetAttribute(1));
+                    tileCount = width * height;
                     map = new Tile[width,height];
+                    perspectiveMap = new Tile[tileCount];
 
                     String rawLevel = XmlRdr.ReadElementContentAsString();
 
@@ -84,9 +97,84 @@ namespace G.O
                     GO.get().Exit();
                 }
 
+                settleIndexZ(SOUTH_WEST);
+
             }
             catch(Exception e) {
             }
+        }
+
+        private void settleIndexZ(int newViewDirection)
+        {
+            //TODO
+            if (newViewDirection == SOUTH_WEST)
+            {
+                int i = 0;
+
+                int xMax = width - 1;
+                int yMax = height - 1;
+
+                int xStart = xMax;
+                int yStart = 0;
+
+                int x = xStart;
+                int y = yStart;
+
+                int initialRelativeX = 0;
+                int relativeX = 0;
+                int relativeY = 0;
+
+                while (i < tileCount)
+                {
+                    Debug.WriteLine("i = " + i);
+                    Debug.WriteLine("tileCount = " + tileCount);
+                    Debug.WriteLine("x = " + x);
+                    Debug.WriteLine("y = " + y);
+                    
+                    if (x <= xMax && y <= yMax && x >= 0 && y >= 0)
+                    {
+                        map[x, y].setIndexZ(i);
+                        map[x, y].setIndexX(relativeX);
+                        map[x, y].setIndexY(relativeY);
+                       // perspectiveMap[i] = map[x, y];
+                        x++;
+                        y++;
+                        i++;
+
+                        relativeX += 2;
+                    }
+                    else
+                    {
+                        if (xStart > 0)
+                        {
+                            xStart--;
+                            x = xStart;
+                            y = yStart;
+
+                            initialRelativeX -= 1;
+                            relativeX = initialRelativeX;
+
+                            relativeY += 1;
+                        }
+                        else
+                        {
+                            yStart++;
+                            x = xStart;
+                            y = yStart;
+
+                            initialRelativeX += 1;
+                            relativeX = initialRelativeX;
+
+                            relativeY += 1;
+                        }
+
+                        
+                    }
+                }
+
+            }
+
+            this.viewDirection = newViewDirection;
         }
 
         public void draw(SpriteBatch spriteBatch)

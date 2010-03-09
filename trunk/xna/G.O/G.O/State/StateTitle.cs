@@ -68,7 +68,7 @@ namespace G.O
             spriteBatch.End();
         }
 
-        public override void update()
+        public override void update(int ellapsed)
         {
        
             KeyboardState keyState = Keyboard.GetState();

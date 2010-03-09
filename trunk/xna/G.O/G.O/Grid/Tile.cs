@@ -8,10 +8,42 @@ namespace G.O
 {
     public abstract class Tile
     {
+        protected int indexZ;
+        protected int indexX;
+        protected int indexY;
 
         public abstract void draw(int x, int y, SpriteBatch spriteBatch);
 
         public abstract void update();
 
+        public void setIndexZ(int newIndex)
+        {
+            indexZ = newIndex;
+        }
+
+        public int getIndexZ()
+        {
+            return indexZ;
+        }
+
+        public void setIndexX(int newIndex)
+        {
+            indexX = newIndex;
+        }
+
+        public int getIndexX()
+        {
+            return indexX;
+        }
+
+        public void setIndexY(int newIndex)
+        {
+            indexY = newIndex;
+        }
+
+        public int getIndexY()
+        {
+            return indexY;
+        }
     }
 }
