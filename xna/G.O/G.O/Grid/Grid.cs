@@ -8,7 +8,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace G.O
+namespace GO
 {
     class Grid
     {
@@ -177,11 +177,11 @@ namespace G.O
             this.viewDirection = newViewDirection;
         }
 
-        public void draw(int translation, SpriteBatch spriteBatch)
+        public void draw(int translationX, int translationY)
         {
             for (int i = 0; i < tileCount; i++)
             {
-                perspectiveMap[i].draw(translation,spriteBatch);
+                perspectiveMap[i].draw(translationX, translationY);
             }
 
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace G.O
+namespace GO
 {
     static class Program
     {

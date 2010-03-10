@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 
-namespace G.O
+namespace GO
 {
     /// <summary>
     /// This is the main type for your game
@@ -20,6 +20,7 @@ namespace G.O
     {
         public static GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
+        public static PrimitiveBatch primitiveBatch;
         public static int width;
         public static int halfWidth;
         public static int height;
@@ -92,6 +93,8 @@ namespace G.O
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            primitiveBatch = new PrimitiveBatch(GraphicsDevice);
+
             // TODO: use this.Content to load your game content here
             Fonts.font = Content.Load<SpriteFont>("TitleFont");
 
@@ -149,7 +152,7 @@ namespace G.O
             
            
             // TODO: Add your drawing code here
-            state.draw(spriteBatch);
+            state.draw();
 
             base.Draw(gameTime);
         }

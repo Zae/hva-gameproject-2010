@@ -1,7 +1,11 @@
-﻿<Level Width="4" Height="4">
-NNNN
-NMMN
-NMMN
-NNNN
+﻿<Level Width="8" Height="8">
+  NNNNNMNN
+  NMMNNMNN
+  NMMNNNNN
+  NNNNNNNN
+  NNNNNMNN
+  NMMNNMNN
+  NMMNNNNN
+  NNNNNNNN
 </Level>
 

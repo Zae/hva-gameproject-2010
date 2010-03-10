@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 #endregion
 
-namespace PrimitivesSample
+namespace GO
 {
 
     // PrimitiveBatch is a class that handles efficient rendering automatically for its
