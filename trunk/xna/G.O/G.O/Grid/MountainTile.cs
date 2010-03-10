@@ -21,6 +21,8 @@ namespace G.O
             Vector2 location = new Vector2(GO.halfWidth + (indexX * tileWidth), (indexY * tileHeight));
             spriteBatch.DrawString(Fonts.font, "(M :z=" + indexZ + ":x=" + indexX + ":y=" + indexY + ")", location, Color.Black);
             spriteBatch.End();
+
+            
         }
 
 

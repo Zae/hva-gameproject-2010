@@ -95,6 +95,7 @@
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTitle.cs" />
     <Compile Include="Grid\Tile.cs" />
+    <Compile Include="Units\Unit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
