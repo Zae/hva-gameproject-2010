@@ -1475,16 +1475,16 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3394887"
-     inkscape:cx="267.82733"
-     inkscape:cy="683.88832"
+     inkscape:zoom="2.6789774"
+     inkscape:cx="359.43803"
+     inkscape:cy="603.35161"
      inkscape:document-units="px"
-     inkscape:current-layer="g4143"
-     showgrid="true"
+     inkscape:current-layer="layer2"
+     showgrid="false"
      inkscape:window-width="1280"
      inkscape:window-height="753"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
      showguides="true"
      inkscape:guide-bbox="true">
     <inkscape:grid
@@ -1510,7 +1510,7 @@
      inkscape:groupmode="layer"
      id="layer8"
      inkscape:label="blackground"
-     style="display:none"
+     style="display:inline"
      sodipodi:insensitive="true">
     <rect
        style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -2896,7 +2896,8 @@
       </g>
     </g>
     <g
-       id="g4143">
+       id="g4143"
+       sodipodi:insensitive="true">
       <text
          transform="matrix(0.9932083,-0.3040464,-0.2806445,1.0927506,0,0)"
          id="text4102"
@@ -3441,7 +3442,7 @@
      inkscape:label="veld1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="display:none"
+     style="display:inline"
      sodipodi:insensitive="true">
     <g
        style="display:inline"
