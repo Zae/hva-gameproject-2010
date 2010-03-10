@@ -1,0 +1,12 @@
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\bin\Debug\OutOfBandClient.exe
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\bin\Debug\OutOfBandClient.pdb
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\bin\Debug\Lidgren.Network.dll
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\bin\Debug\SamplesCommon.dll
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\bin\Debug\SamplesCommon.pdb
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\bin\Debug\Lidgren.Network.pdb
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\obj\Debug\OutOfBandClient.Form1.resources
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\obj\Debug\OutOfBandClient.Properties.Resources.resources
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\obj\Debug\OutOfBandClient.csproj.GenerateResource.Cache
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\obj\Debug\OutOfBandClient.exe
+C:\Users\Qadri\Desktop\lidgren-network\Samples\OutOfBandClient\obj\Debug\OutOfBandClient.pdb
