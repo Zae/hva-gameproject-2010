@@ -7,8 +7,9 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
-namespace G.O
+namespace GO
 {
     public class StateTest : State
     {
@@ -29,7 +30,11 @@ namespace G.O
         private float musicVolume = 1.0f;
         private float actionSoundVolume = 0.0f;
 
-        private int translation = 0;
+        private int translationX = 0;
+        private int translationY = 0;
+
+        private int previousMouseX = 0;
+        private int previousMouseY = 0;
 
         public StateTest()
         {
@@ -46,15 +51,15 @@ namespace G.O
             return instance;
         }
 
-        public override void draw(SpriteBatch spriteBatch)
+        public override void draw()
         {
             GO.get().GraphicsDevice.Clear(Color.White);
 
-            spriteBatch.Begin();
-            spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly, Space to trigger action sounds (now: "+actionOnScreen+")(musicvolume:"+MediaPlayer.Volume+")", new Vector2(10,10), Color.Red);
-            spriteBatch.End();
+            GO.spriteBatch.Begin();
+            GO.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly, Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, 10), Color.Red);
+            GO.spriteBatch.End();
 
-            map.draw(translation, spriteBatch);
+            map.draw(translationX, translationY);
         }
 
         public override void update(int ellapsed)
@@ -93,6 +98,12 @@ namespace G.O
                 GO.get().setState(new StatePaused()); 
             }
 
+            if (keyState.IsKeyDown(Keys.LeftAlt))
+            {
+                translationX = 0;
+                translationY = 0;
+            }
+
             if (keyState.IsKeyDown(Keys.Space))
             {
                 actionOnScreen = true;
@@ -103,7 +114,19 @@ namespace G.O
             }
             handleActionSound(ellapsed);
 
+            MouseState mouseState = Mouse.GetState();
 
+            if (mouseState.MiddleButton == ButtonState.Pressed)
+            {
+                Debug.WriteLine("MOUSE MIDDLE PRESSED!"+mouseState.X+":"+mouseState.Y);
+
+                translationX += mouseState.X - previousMouseX;
+                translationY += mouseState.Y - previousMouseY;
+            }
+
+
+            previousMouseX = mouseState.X;
+            previousMouseY = mouseState.Y;
             //if (keyState.IsKeyDown(Keys.Up) && !upPressed)
             //{
             //    selectionDown();

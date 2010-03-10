@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 
-namespace G.O
+namespace GO
 {
     class Music
     {

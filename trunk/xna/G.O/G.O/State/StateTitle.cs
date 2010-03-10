@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
 
-namespace G.O
+namespace GO
 {
     public class StateTitle : State
     {
@@ -33,39 +33,39 @@ namespace G.O
            
         }
 
-        public override void draw(SpriteBatch spriteBatch)
+        public override void draw()
         {
             GO.get().GraphicsDevice.Clear(Color.Black);
-            
-            spriteBatch.Begin();
-            spriteBatch.DrawString(Fonts.font, title, new Vector2((GO.width/2)-15,(GO.height/2)-150), Color.White);
+
+            GO.spriteBatch.Begin();
+            GO.spriteBatch.DrawString(Fonts.font, title, new Vector2((GO.width / 2) - 15, (GO.height / 2) - 150), Color.White);
             //spriteBatch.DrawString(Fonts.font, "press any key to start the test", new Vector2((GO.width/2)-100, (GO.height / 2)), Color.White);
 
             if (selection == SELECTION.NEWGAME)
             {
                 //Draw highlighted
-                spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
+                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
             }
             else
             {
                 //Draw normally
-                spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.White);
+                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.White);
             }
 
             if (selection == SELECTION.QUIT)
             {
                 //Draw highlighted
-                spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2)-50), Color.Red);
+                GO.spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.Red);
             }
             else
             {
                 //Draw normally
-                spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2)-50), Color.White);
+                GO.spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.White);
             }
 
-            
-           
-            spriteBatch.End();
+
+
+            GO.spriteBatch.End();
         }
 
         public override void update(int ellapsed)

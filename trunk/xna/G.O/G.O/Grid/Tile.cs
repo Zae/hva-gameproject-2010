@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace G.O
+namespace GO
 {
     public abstract class Tile
     {
@@ -14,11 +14,11 @@ namespace G.O
 
         //protected const int tileSize = 140;
         protected const int tileWidth = 140;
-        protected const int tileHeight = 70;
+        protected const int tileHeight = 55;
 
-        public abstract void draw(int x, int y, SpriteBatch spriteBatch);
+        //public abstract void draw(int x, int y, SpriteBatch spriteBatch);
 
-        public abstract void draw(int translation, SpriteBatch spriteBatch);
+        public abstract void draw(int translationX, int translationY);
 
 
         public abstract void update();

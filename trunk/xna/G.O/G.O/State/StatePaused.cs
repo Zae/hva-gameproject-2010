@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace G.O
+namespace GO
 {
     class StatePaused : State
     {
@@ -16,14 +16,14 @@ namespace G.O
             
         }
 
-        public override void draw(SpriteBatch spriteBatch)
+        public override void draw()
         {
-            spriteBatch.Begin();
+            GO.spriteBatch.Begin();
            //Draw a box with yes/no option 
-            spriteBatch.DrawString(Fonts.font, "Return to menu? (Y/N)", new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
+            GO.spriteBatch.DrawString(Fonts.font, "Return to menu? (Y/N)", new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
 
 
-            spriteBatch.End();
+            GO.spriteBatch.End();
         }
 
         public override void update(int ellapsed)
