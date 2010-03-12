@@ -27,8 +27,8 @@ namespace GO
         private bool actionOnScreen = false;
 
         private SoundEffectInstance actionOnScreenSound = null;
-        private float musicVolume = 1.0f;
-        private float actionSoundVolume = 0.0f;
+        //private float musicVolume = 1.0f;
+        //private float actionSoundVolume = 0.0f;
 
         private int translationX = 0;
         private int translationY = 0;
@@ -53,24 +53,21 @@ namespace GO
 
         public override void draw()
         {
-            GO.get().GraphicsDevice.Clear(Color.White);
-
-            GO.spriteBatch.Begin();
-            GO.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly, Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, 10), Color.Red);
-            GO.spriteBatch.End();
+            GO.get().GraphicsDevice.Clear(Color.Wheat);
 
             map.draw(translationX, translationY);
+
+            int y = 0;
+            GO.spriteBatch.Begin();
+            GO.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly", new Vector2(10, y += 15), Color.Red);
+            GO.spriteBatch.DrawString(Fonts.font, "Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, y += 15), Color.Red);
+            GO.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the map around, press Left-Alt to recenter the map", new Vector2(10, y += 15), Color.Red);
+            GO.spriteBatch.End();
         }
 
         public override void update(int ellapsed)
         {
-            //if (!isplaying)
-            //{
-            //    MediaPlayer.Play(Music.gameSong1);
-            //    MediaPlayer.IsRepeating = false;
-            //    isplaying = true;
-            //}
-
+            //Handles which background music to play
             if (MediaPlayer.State.Equals(MediaState.Stopped))
             {
                 if (playqueue == 1)
@@ -80,17 +77,12 @@ namespace GO
                 }
                 else if (playqueue == 2)
                 {
-                    MediaPlayer.Play(Music.actionSong1);
-                   // MediaPlayer.Play(Music.gameSong2);
-                    playqueue = 3;
-                }
-                else if (playqueue == 3)
-                {
                     MediaPlayer.Play(Music.gameSong2);
                     playqueue = 1;
                 }
             }
 
+            //Handle keyboard input
             KeyboardState keyState = Keyboard.GetState();
             
             if(keyState.IsKeyDown(Keys.Escape)) 
@@ -114,47 +106,25 @@ namespace GO
             }
             handleActionSound(ellapsed);
 
+            //Handle mouse input
             MouseState mouseState = Mouse.GetState();
 
             if (mouseState.MiddleButton == ButtonState.Pressed)
             {
-                Debug.WriteLine("MOUSE MIDDLE PRESSED!"+mouseState.X+":"+mouseState.Y);
-
                 translationX += mouseState.X - previousMouseX;
                 translationY += mouseState.Y - previousMouseY;
             }
 
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                map.mousePressed(mouseState.X, mouseState.Y, translationX, translationY);
+            }
 
             previousMouseX = mouseState.X;
-            previousMouseY = mouseState.Y;
-            //if (keyState.IsKeyDown(Keys.Up) && !upPressed)
-            //{
-            //    selectionDown();
-            //    upPressed = true;
-            //}
-            //else if (keyState.IsKeyUp(Keys.Up) && upPressed)
-            //{
-            //    upPressed = false;
-            //}
-
-
-            //if (keyState.IsKeyDown(Keys.Down) && !downPressed)
-            //{
-            //    selectionDown();
-            //    downPressed = true;
-            //}
-            //else if (keyState.IsKeyUp(Keys.Down) && downPressed)
-            //{
-            //    downPressed = false;
-            //}
-
-            //if (keyState.IsKeyDown(Keys.Enter))
-            //{
-            //    makeSelection();
-            //}
-            
+            previousMouseY = mouseState.Y; 
         }
 
+        //Used to fade in and fade out the action sound
         private void handleActionSound(int ellapsed)
         {
 
@@ -183,9 +153,7 @@ namespace GO
                         actionOnScreenSound.Volume = newVolume;
                     }
 
-                }
-                
-               
+                } 
             }
             else
             {
