@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Lidgren.Network;
+using System.Threading;
 
 
 namespace GO.Network
 {
-    class ServerComponent
+    public class ServerComponent 
     {
         NetConfiguration config;
         NetServer server;
@@ -19,7 +20,7 @@ namespace GO.Network
             config.Port = 12345;
             server = new NetServer(config);
             server.Start();
-            listen();
+           
             
 
 
@@ -30,8 +31,8 @@ namespace GO.Network
             NetBuffer buffer = server.CreateBuffer();
 
             bool keepGoing = true;
-            while (keepGoing)
-            {
+           // while (keepGoing)
+           // {
                 NetMessageType type;
                 NetConnection sender;
                 while (server.ReadMessage(buffer, out type, out sender))
@@ -49,12 +50,12 @@ namespace GO.Network
 
                         case NetMessageType.Data:
                             String message = buffer.ReadString();
-                            Console.WriteLine("client zegt" + message);
+                            Console.WriteLine("client zegt: " + message);
 
                             break;
                     }
                 }
-            }
+            //}
         }
 
         public void send(String message, NetConnection sender)

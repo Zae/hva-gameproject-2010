@@ -6,7 +6,7 @@ using Lidgren.Network;
 
 namespace GO.Network
 {
-    class ClientComponent
+    public class ClientComponent
     {
         NetConfiguration config;
         NetClient client;
@@ -16,12 +16,8 @@ namespace GO.Network
             config = new NetConfiguration("GO"); // needs to be same on client and server!
             client = new NetClient(config);
             client.Connect("127.0.0.1", 12345);
-            NetBuffer buffer = client.CreateBuffer();
-
-            buffer.Write("Hello server!");
-
-            client.SendMessage(buffer, NetChannel.ReliableUnordered);
-            listen();
+         
+            
 
         }
 
