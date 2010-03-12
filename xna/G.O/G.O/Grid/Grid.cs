@@ -123,9 +123,9 @@ namespace GO
             mouseWorldX = x - translationX - GO.halfWidth;
             mouseWorldY = y - translationY;
 
-            int tilesVertical = mouseWorldY / (Tile.baseHalfHeight);
-            int tilesHorizontal = mouseWorldX / (Tile.baseHalfWidth);
-            //Debug.WriteLine("tileVertical:" + tilesVertical + " tilesHorizontal:"+tilesHorizontal);
+            float tilesVertical = (float)((float)mouseWorldY / (float)Tile.baseHalfHeight);
+            float tilesHorizontal = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
+            Debug.WriteLine("tileVertical:" + (float)tilesVertical + " tilesHorizontal:"+(float)tilesHorizontal);
 
             Tile tile = getTile(tilesVertical,tilesHorizontal);
            
@@ -198,30 +198,69 @@ namespace GO
             return null;
         }
 
-        private Tile getTile(int tilesVertical, int tilesHorizontal)
+        private Tile getTile(float tilesVertical, float tilesHorizontal)
         {
-            //if (viewDirection == SOUTH_WEST)
-            //{
-            //    int x = width - 1;
-            //    int y = 0;
+           // int toIntY = (int)tilesVertical;
+           // int toIntX = (int)tilesHorizontal;
 
-            //    //for (int i = 0; i < tilesVertical;i++ )
-            //    //{
-            //    //    x--;
-            //    //    y++;
-            //    //}
-            //    y += tilesVertical;
-            //    x += tilesHorizontal + (-tilesVertical);
+            int toIntY = Tool.toClosestInt(tilesVertical);
+            int toIntX = Tool.toClosestInt(tilesHorizontal);
 
-            //    if (x >= 0 && x <= width - 1 && y >= 0 && y <= height - 1)
-            //    {
-            //        return map[x, y];
-            //    }
+
+
+            if (viewDirection == SOUTH_WEST)
+            {
+               //KUT
+                //int x = width - 1;
+                //int y = 0;
+
+                ////for (int i = 0; i < tilesVertical;i++ )
+                ////{
+                ////    x--;
+                ////    y++;
+                ////}
+                //y += tilesVertical;
+                //x += tilesHorizontal + (-tilesVertical);
+
+                //if (x >= 0 && x <= width - 1 && y >= 0 && y <= height - 1)
+                //{
+                //    return map[x, y];
+                //}
+
+                if (toIntX % 2 <= 0 && toIntY % 2 <= 0)
+                {
+                //nothing todo
+                }
+                else if (toIntX % 2 > 0 && toIntX % 2 > 0)
+                {
+                    //nothing  todo
+                }
+                else if (toIntX % 2 > 0 && toIntX % 2 <= 0)
+                {
+                    
+                    //do something
+                }
+                else if (toIntX % 2 <= 0 && toIntX % 2 > 0)
+                {
+
+                    if (tilesHorizontal > toIntX)
+                    {
+                        
+                    }
+                    //do something
+                }
                
-            //}
+            }
+       
+            Debug.WriteLine("tileVertical:" + toIntY + " tilesHorizontal:"+toIntX);
+
+
+            
+            
+
             for (int i = 0; i < perspectiveMap.Length; i++)
             {
-                if (perspectiveMap[i].getVisualX() == tilesHorizontal && perspectiveMap[i].getVisualY() == tilesVertical)
+                if (perspectiveMap[i].getVisualX() == toIntX && perspectiveMap[i].getVisualY() == toIntY)
                 {
                     return perspectiveMap[i];
                 }
@@ -253,10 +292,10 @@ namespace GO
 
                 while (i < tileCount)
                 {
-                    Debug.WriteLine("i = " + i);
-                    Debug.WriteLine("tileCount = " + tileCount);
-                    Debug.WriteLine("x = " + x);
-                    Debug.WriteLine("y = " + y);
+                    //Debug.WriteLine("i = " + i);
+                    //Debug.WriteLine("tileCount = " + tileCount);
+                    //Debug.WriteLine("x = " + x);
+                    //Debug.WriteLine("y = " + y);
                     
                     if (x <= xMax && y <= yMax && x >= 0 && y >= 0)
                     {
