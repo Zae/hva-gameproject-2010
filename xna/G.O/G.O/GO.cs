@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
+using GO.Network;
 
 namespace GO
 {
@@ -25,6 +26,8 @@ namespace GO
         public static int halfWidth;
         public static int height;
         public static int halfHeight;
+        public ClientComponent client;
+        public ServerComponent server;
 
         private State state;
 
@@ -33,6 +36,9 @@ namespace GO
         public GO()
         {
             //Set the singleton instance for static reference
+
+            server = new ServerComponent();
+            client = new ClientComponent();
             instance = this;
 
             graphics = new GraphicsDeviceManager(this);
@@ -47,6 +53,7 @@ namespace GO
             halfHeight = height / 2;
            
             Content.RootDirectory = "Content";
+
         }
 
         public static GO get()
@@ -134,6 +141,8 @@ namespace GO
             //    this.exit();
 
             // TODO: Add your update logic here
+            
+            
             KeyboardState keyState = Keyboard.GetState();
 
             

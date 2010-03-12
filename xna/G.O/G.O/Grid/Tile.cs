@@ -19,8 +19,10 @@ namespace GO
         //protected const int baseHalfWidth = 140;
         //protected const int baseHalfHeight = 46;
 
-        public static int baseHalfWidth = (int)(140*0.8);
-        public static int baseHalfHeight = (int)(46*0.8);
+        private static float scale = 0.8f;  
+
+        public static int baseHalfWidth = (int)(140*scale);
+        public static int baseHalfHeight = (int)(46*scale);
 
         //public abstract void draw(int x, int y, SpriteBatch spriteBatch);
 
@@ -68,5 +70,20 @@ namespace GO
         {
             selected = newSelected;
         }
+        public static void zoomIn()
+        {
+            if (scale <= 1.55f)
+            scale += 0.05f;
+            baseHalfWidth = (int)(140 * scale);
+            baseHalfHeight = (int)(46 * scale);
+        }
+        public static void zoomOut()
+        {
+            if (scale >= 0.45f)
+                scale -= 0.05f;
+                baseHalfWidth = (int)(140 * scale);
+                baseHalfHeight = (int)(46 * scale);
+        }
+
     }
 }

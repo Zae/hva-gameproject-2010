@@ -16,6 +16,8 @@ namespace GO
 
         private Grid map;
 
+        private int scrollValue;
+
         private static StateTest instance;
 
         private bool musicPaused = false;
@@ -39,6 +41,9 @@ namespace GO
         public StateTest()
         {
             instance = this;
+
+            scrollValue = Mouse.GetState().ScrollWheelValue;
+
 
             map = new Grid(level);
 
@@ -84,6 +89,7 @@ namespace GO
 
             //Handle keyboard input
             KeyboardState keyState = Keyboard.GetState();
+           
             
             if(keyState.IsKeyDown(Keys.Escape)) 
             {
@@ -107,7 +113,28 @@ namespace GO
             handleActionSound(ellapsed);
 
             //Handle mouse input
+
+            //handles zoom
             MouseState mouseState = Mouse.GetState();
+
+            if (mouseState.ScrollWheelValue > scrollValue)
+            {
+                Tile.zoomIn();
+                Debug.WriteLine("zoomIn");
+
+            }
+
+            if (mouseState.ScrollWheelValue < scrollValue)
+            {
+                Tile.zoomOut();
+                Debug.WriteLine("zoomOut");
+            }
+
+            scrollValue = mouseState.ScrollWheelValue;
+
+            
+
+            Debug.WriteLine("scrollvalue = " +mouseState.ScrollWheelValue);
 
             if (mouseState.MiddleButton == ButtonState.Pressed)
             {
@@ -119,6 +146,8 @@ namespace GO
             {
                 map.mousePressed(mouseState.X, mouseState.Y, translationX, translationY);
             }
+
+            
 
             previousMouseX = mouseState.X;
             previousMouseY = mouseState.Y; 
