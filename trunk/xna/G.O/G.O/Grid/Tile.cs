@@ -8,49 +8,65 @@ namespace GO
 {
     public abstract class Tile
     {
-        protected int indexZ;
+        protected int visualZ;
+        protected int visualX;
+        protected int visualY;
+        protected bool selected = false;
+
         protected int indexX;
         protected int indexY;
 
-        //protected const int tileSize = 140;
-        protected const int tileWidth = 140;
-        protected const int tileHeight = 55;
+        //protected const int baseWidth = 140;
+        //protected const int baseHalfHeight = 46;
+
+        public const int baseWidth = (int)(140*0.8);
+        public const int baseHalfHeight = (int)(46*0.8);
 
         //public abstract void draw(int x, int y, SpriteBatch spriteBatch);
 
         public abstract void draw(int translationX, int translationY);
-
+        public abstract void drawDebug(int translationX, int translationY);
 
         public abstract void update();
 
         public void setIndexZ(int newIndex)
         {
-            indexZ = newIndex;
+            visualZ = newIndex;
         }
 
         public int getIndexZ()
         {
-            return indexZ;
+            return visualZ;
         }
 
-        public void setIndexX(int newIndex)
+        public void setVisualX(int newVisualIndex)
         {
-            indexX = newIndex;
+            visualX = newVisualIndex;
         }
 
-        public int getIndexX()
+        public int getVisualX()
         {
-            return indexX;
+            return visualX;
         }
 
-        public void setIndexY(int newIndex)
+        public void setVisualY(int newIndex)
         {
-            indexY = newIndex;
+            visualY = newIndex;
         }
 
-        public int getIndexY()
+        public int getVisualY()
         {
-            return indexY;
+            return visualY;
+        }
+
+        public bool isSelected()
+        {
+            return selected;
+        }
+
+        public void setSelected(bool newSelected)
+        {
+            selected = newSelected;
         }
     }
 }

@@ -98,10 +98,14 @@ namespace GO
             // TODO: use this.Content to load your game content here
             Fonts.font = Content.Load<SpriteFont>("TitleFont");
 
+            Images.mountainImage = Content.Load<Texture2D>("mountain_tile");
+            Images.borderImage = Content.Load<Texture2D>("border_tile");
+            Images.resourceImage = Content.Load<Texture2D>("resource_tile");
+            Images.white1px = Content.Load<Texture2D>("white");
+
             Music.titleSong = Content.Load<Song>("TitleSong");
             Music.gameSong1 = Content.Load<Song>("GameSong1");
             Music.gameSong2 = Content.Load<Song>("GameSong2");
-            Music.actionSong1 = Content.Load<Song>("ActionSong1");
             Music.actionSound1 = Content.Load<SoundEffect>("ActionSound1");
 
             state = new StateTitle();

@@ -12,57 +12,150 @@ namespace GO
 
         public int owner = Players.NEUTRAL;
 
-        public int charge = 0;
+        private float charge = 0;
 
         public const int MAX_CHARGE = 100;
 
+        private Color tileColor = new Color();
 
-        //public override void draw(int x, int y, SpriteBatch spriteBatch)
-        //{
-        //    spriteBatch.Begin();
-        //    spriteBatch.DrawString(Fonts.font, "(N :z="+indexZ+":x="+indexX+":y="+indexY+")", new Vector2(x, y), Color.Black);
-        //    spriteBatch.End();
-        //}
+        public ResourceTile(int indexX, int indexY)
+        {
+            this.indexX = indexX;
+            this.indexY = indexY;
+        }
+        public override void drawDebug(int translationX, int translationY)
+        {
+            GO.spriteBatch.Begin();
+            Vector2 location = new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
+            GO.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.Black);
+            GO.spriteBatch.End();
+        }
+
+
 
         public override void draw(int translationX, int translationY)
         {
+
+
+            //GO.primitiveBatch.Begin(PrimitiveType.LineList);
+            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX - (baseWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
+            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Yellow);
+            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX + (baseWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)),Color.Yellow);
+            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Yellow);
+            //GO.primitiveBatch.End();
+
+            //GO.primitiveBatch.Begin(PrimitiveType.LineList);
+            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX - (baseWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
+            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Yellow);
+            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX + (baseWidth) - 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
+            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Yellow);
+            //GO.primitiveBatch.End();
+
+            //GO.primitiveBatch.Begin(PrimitiveType.LineList);
+            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX - (baseWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
+            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY + baseHalfHeight), Color.Yellow);
+            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX + (baseWidth) - 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
+            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY + 1), Color.Yellow);
+            //GO.primitiveBatch.End();
+
+            //GO.primitiveBatch.Begin(PrimitiveType.LineList);
+            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX - (baseWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
+            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY + baseHalfHeight), Color.Yellow);
+            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX + (baseWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)),Color.Yellow);
+            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY + 1), Color.Yellow);
+            //GO.primitiveBatch.End();
+
+            tileColor = getAppropriateColor(owner, charge);
+
             GO.spriteBatch.Begin();
-            Vector2 location = new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX - 40, (indexY * tileHeight) + translationY + tileHeight);
-            GO.spriteBatch.DrawString(Fonts.font, "(N :z=" + indexZ + ":x=" + indexX + ":y=" + indexY + ")", location, Color.Black);
+            GO.spriteBatch.Draw(Images.resourceImage, new Rectangle(GO.halfWidth + (visualX * baseWidth) + translationX - (baseWidth), (visualY * baseHalfHeight) + translationY, baseWidth*2, baseHalfHeight * 2), tileColor);
+            GO.spriteBatch.Draw(Images.borderImage, new Rectangle(GO.halfWidth + (visualX * baseWidth) + translationX - (baseWidth), (visualY * baseHalfHeight) + translationY, baseWidth*2, baseHalfHeight * 2), Color.White);
             GO.spriteBatch.End();
 
-            GO.primitiveBatch.Begin(PrimitiveType.LineList);
-            GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX - (tileWidth) + 1, (indexY * tileHeight) + translationY + (tileHeight)), Color.Yellow);
-            GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX, (indexY * tileHeight) + translationY + (tileHeight * 2) - 1), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX + (tileWidth), (indexY * tileHeight) + translationY + (tileHeight)),Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX, (indexY * tileHeight) + translationY), Color.Yellow);
-            GO.primitiveBatch.End();
+            if (selected)
+            {
+                GO.primitiveBatch.Begin(PrimitiveType.LineList);
+                GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX - (baseWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Red);
+                //GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Yellow);
+                GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX + (baseWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Red);
+                //GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Yellow);
+                GO.primitiveBatch.End();
 
-            GO.primitiveBatch.Begin(PrimitiveType.LineList);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX - (tileWidth), (indexY * tileHeight) + translationY + (tileHeight)), Color.Yellow);
-            GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX, (indexY * tileHeight) + translationY + (tileHeight * 2) - 1), Color.Yellow);
-            GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX + (tileWidth) - 1, (indexY * tileHeight) + translationY + (tileHeight)), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX, (indexY * tileHeight) + translationY), Color.Yellow);
-            GO.primitiveBatch.End();
+                GO.primitiveBatch.Begin(PrimitiveType.LineList);
+                //GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX - (baseWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
+                GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Red);
+                //GO.primitiveBatch.AddVertex(new Vector2(GO.baseWidth + (visualX * baseWidth) + translationX + (baseWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)),Color.Yellow);
+                GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Red);
+                GO.primitiveBatch.End();
+            }
 
-            GO.primitiveBatch.Begin(PrimitiveType.LineList);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX - (tileWidth), (indexY * tileHeight) + translationY + (tileHeight)), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX, (indexY * tileHeight) + translationY + tileHeight), Color.Yellow);
-            GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX + (tileWidth) - 1, (indexY * tileHeight) + translationY + (tileHeight)), Color.Yellow);
-            GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX, (indexY * tileHeight) + translationY + 1), Color.Yellow);
-            GO.primitiveBatch.End();
-
-            GO.primitiveBatch.Begin(PrimitiveType.LineList);
-            GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX - (tileWidth) + 1, (indexY * tileHeight) + translationY + (tileHeight)), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX, (indexY * tileHeight) + translationY + tileHeight), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX + (tileWidth), (indexY * tileHeight) + translationY + (tileHeight)),Color.Yellow);
-            GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (indexX * tileWidth) + translationX, (indexY * tileHeight) + translationY + 1), Color.Yellow);
-            GO.primitiveBatch.End();
+   
         }
 
         public override void update()
         {
             
+        }
+
+        public float getCharge()
+        {
+            return charge;
+        }
+
+        public void setCharge(float newCharge)
+        {
+            if (newCharge <= 1.0f && newCharge >= 0.0f)
+            {
+                charge = newCharge;
+            }
+        }
+
+        public void addCharge(float addition)
+        {
+            if (charge + addition > 1.0f)
+            {
+                charge = 1.0f;
+            }
+            else
+            {
+                charge = charge + addition;
+            }
+        }
+
+        public void removeCharge(float addition)
+        {
+            if (charge + addition > 1.0f)
+            {
+                charge = 1.0f;
+            }
+            else
+            {
+                charge = charge + addition;
+            }
+
+        }
+
+        private Color getAppropriateColor(int owner, float charge)
+        {
+            if (owner == Players.NEUTRAL)
+            {
+                tileColor.R = 255;
+                tileColor.G = 255;
+                tileColor.B = 255;
+
+                tileColor.A = 255;
+            }
+            
+            else if (owner == Players.PLAYER1)
+            {
+                tileColor.R = 0;
+                tileColor.G = 0;
+                tileColor.B = 255;
+
+                tileColor.A = (byte)(charge * 255);
+            }
+
+            return tileColor;
         }
 
 

@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace GO
 {
@@ -17,6 +18,11 @@ namespace GO
         private int width;
         private int height;
         private int tileCount;
+
+        public int mouseWorldX = 0;
+        public int mouseWorldY = 0;
+
+        private Tile selectedTile = null;
       
 
         private Tile[] perspectiveMap;
@@ -79,7 +85,7 @@ namespace GO
                                 row++;
                             }
 
-                            map[colom,row] = createTile(rawLevel[i]);
+                            map[colom,row] = createTile(rawLevel[i],colom,row);
                             colom++;
                         }
                         else
@@ -102,6 +108,80 @@ namespace GO
             }
             catch(Exception e) {
             }
+        }
+
+        public void mousePressed(int x, int y, int translationX, int translationY)
+        {
+
+            //translate the screen input to world coordinates
+
+            //...
+
+            
+            mouseWorldX = x - translationX - GO.halfWidth;
+            mouseWorldY = y - translationY;
+
+            int tilesVertical = mouseWorldY / (Tile.baseHalfHeight);
+            int tilesHorizontal = mouseWorldX / (Tile.baseWidth);
+            Debug.WriteLine("tileVertical:" + tilesVertical + " tilesHorizontal:"+tilesHorizontal);
+
+            Tile tile = getTile(tilesVertical,tilesHorizontal);
+           
+            if (tile != null)
+            {
+                if (selectedTile != null)
+                {
+                    selectedTile.setSelected(false);
+                }
+                tile.setSelected(true);
+                selectedTile = tile;
+
+                Debug.WriteLine("gotTile:" + tile.ToString());
+
+            }
+            else
+            {
+                if (selectedTile != null)
+                {
+                    selectedTile.setSelected(false);
+                    selectedTile = null;
+                }
+            }
+            //update selected tile (or null when none is selected)
+
+        }
+
+        private Tile getTile(int tilesVertical, int tilesHorizontal)
+        {
+            //if (viewDirection == SOUTH_WEST)
+            //{
+            //    int x = width - 1;
+            //    int y = 0;
+
+            //    //for (int i = 0; i < tilesVertical;i++ )
+            //    //{
+            //    //    x--;
+            //    //    y++;
+            //    //}
+            //    y += tilesVertical;
+            //    x += tilesHorizontal + (-tilesVertical);
+
+            //    if (x >= 0 && x <= width - 1 && y >= 0 && y <= height - 1)
+            //    {
+            //        return map[x, y];
+            //    }
+               
+            //}
+            for (int i = 0; i < perspectiveMap.Length; i++)
+            {
+                if (perspectiveMap[i].getVisualX() == tilesHorizontal && perspectiveMap[i].getVisualY() == tilesVertical)
+                {
+                    return perspectiveMap[i];
+                }
+            }
+
+            return null;
+           
         }
 
         private void settleIndexZ(int newViewDirection)
@@ -134,8 +214,8 @@ namespace GO
                     if (x <= xMax && y <= yMax && x >= 0 && y >= 0)
                     {
                         map[x, y].setIndexZ(i);
-                        map[x, y].setIndexX(relativeX);
-                        map[x, y].setIndexY(relativeY);
+                        map[x, y].setVisualX(relativeX);
+                        map[x, y].setVisualY(relativeY);
                         perspectiveMap[i] = map[x, y];
                         x++;
                         y++;
@@ -182,9 +262,19 @@ namespace GO
             for (int i = 0; i < tileCount; i++)
             {
                 perspectiveMap[i].draw(translationX, translationY);
+                //perspectiveMap[i].drawDebug(translationX, translationY);
+            }
+            for (int i = 0; i < tileCount; i++)
+            {
+                //perspectiveMap[i].draw(translationX, translationY);
+                perspectiveMap[i].drawDebug(translationX, translationY);
             }
 
 
+            GO.spriteBatch.Begin();
+            Vector2 location = new Vector2(mouseWorldX + translationX + GO.halfWidth, mouseWorldY + translationY);
+            GO.spriteBatch.DrawString(Fonts.font, "MOSUE POS", location, Color.Blue);
+            GO.spriteBatch.End();
             //Old way
             //for (int x=0; x < width; x++)
             //{
@@ -202,15 +292,15 @@ namespace GO
             //Which kind of operation do we have to do on each tile and in which order?
         }
 
-        private Tile createTile(char c)
+        private Tile createTile(char c, int x, int y)
         {
             if (c == 'N')
             {
-                return new ResourceTile();
+                return new ResourceTile(x,y);
             }
             else if (c == 'M')
             {
-                return new MountainTile();
+                return new MountainTile(x,y);
             }
 
             return null;
