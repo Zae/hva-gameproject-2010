@@ -35,10 +35,11 @@ namespace GO
 
         public GO()
         {
-            //Set the singleton instance for static reference
 
             server = new ServerComponent();
             client = new ClientComponent();
+            
+            //Set the singleton instance for static reference
             instance = this;
 
             graphics = new GraphicsDeviceManager(this);
@@ -99,7 +100,6 @@ namespace GO
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             primitiveBatch = new PrimitiveBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
@@ -118,6 +118,8 @@ namespace GO
 
             state = new StateTitle();
             state.focusGained();
+
+            MichielTest.doTest();
         }
 
         /// <summary>

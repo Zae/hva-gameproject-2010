@@ -64,7 +64,7 @@ namespace GO
 
                     String rawLevel = XmlRdr.ReadElementContentAsString();
 
-                    Debug.WriteLine("The raw level data reads: " + rawLevel);
+                   // Debug.WriteLine("The raw level data reads: " + rawLevel);
 
                     int length = rawLevel.Length;
 

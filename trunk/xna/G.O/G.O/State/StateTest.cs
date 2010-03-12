@@ -120,21 +120,21 @@ namespace GO
             if (mouseState.ScrollWheelValue > scrollValue)
             {
                 Tile.zoomIn();
-                Debug.WriteLine("zoomIn");
+                //Debug.WriteLine("zoomIn");
 
             }
 
             if (mouseState.ScrollWheelValue < scrollValue)
             {
                 Tile.zoomOut();
-                Debug.WriteLine("zoomOut");
+               // Debug.WriteLine("zoomOut");
             }
 
             scrollValue = mouseState.ScrollWheelValue;
 
             
 
-            Debug.WriteLine("scrollvalue = " +mouseState.ScrollWheelValue);
+            //Debug.WriteLine("scrollvalue = " +mouseState.ScrollWheelValue);
 
             if (mouseState.MiddleButton == ButtonState.Pressed)
             {
