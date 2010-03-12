@@ -111,8 +111,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tile_htimap.png">
-      <Name>tile_htimap</Name>
+    <Compile Include="tile_hitmap.png">
+      <Name>tile_hitmap</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

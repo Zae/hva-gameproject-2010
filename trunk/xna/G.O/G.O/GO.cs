@@ -102,6 +102,7 @@ namespace GO
             Images.borderImage = Content.Load<Texture2D>("border_tile");
             Images.resourceImage = Content.Load<Texture2D>("resource_tile");
             Images.white1px = Content.Load<Texture2D>("white");
+            Images.tileHitmapImage = Content.Load<Texture2D>("tile_hitmap");
 
             Music.titleSong = Content.Load<Song>("TitleSong");
             Music.gameSong1 = Content.Load<Song>("GameSong1");

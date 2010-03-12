@@ -19,8 +19,8 @@ namespace GO
         //protected const int baseWidth = 140;
         //protected const int baseHalfHeight = 46;
 
-        public const int baseWidth = (int)(140*0.8);
-        public const int baseHalfHeight = (int)(46*0.8);
+        public static int baseWidth = (int)(140*0.8);
+        public static int baseHalfHeight = (int)(46*0.8);
 
         //public abstract void draw(int x, int y, SpriteBatch spriteBatch);
 

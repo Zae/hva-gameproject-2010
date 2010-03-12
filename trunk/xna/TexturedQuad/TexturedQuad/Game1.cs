@@ -39,7 +39,12 @@ namespace TexturedQuad
         Matrix View, Projection;
         protected override void Initialize()
         {
-            quad = new Quad(Vector3.Zero, Vector3.Backward, Vector3.Up, 1, 1);
+            //quad = new Quad(Vector3.Zero, Vector3.Backward, Vector3.Up, 1, 1);
+
+            float halfPI = (float)Math.PI / 2;
+
+            quad = new Quad(new Vector3(0.0f,0.0f,0.0f), new Vector3(0.0f,0.0f,1.0f), new Vector3(halfPI,halfPI,0.0f), 0.5f,0.5f);
+
             View = Matrix.CreateLookAt(new Vector3(0, 0, 2), Vector3.Zero, 
                 Vector3.Up);
             Projection = Matrix.CreatePerspectiveFieldOfView(
