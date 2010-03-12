@@ -85,6 +85,7 @@
     <Compile Include="Grid\Grid.cs" />
     <Compile Include="Grid\MountainTile.cs" />
     <Compile Include="Images.cs" />
+    <Compile Include="MichielTest.cs" />
     <Compile Include="Music.cs" />
     <Compile Include="Nework\ClientComponent.cs" />
     <Compile Include="Nework\ServerComponent.cs" />
