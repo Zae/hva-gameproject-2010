@@ -25,7 +25,7 @@ namespace GO
         private Tile selectedTile = null;
 
         private Tile guessTile = null;
-      
+        private int frame = 0;
 
         private Tile[] perspectiveMap;
 
@@ -124,7 +124,7 @@ namespace GO
             mouseWorldY = y - translationY;
 
             int tilesVertical = mouseWorldY / (Tile.baseHalfHeight);
-            int tilesHorizontal = mouseWorldX / (Tile.baseWidth);
+            int tilesHorizontal = mouseWorldX / (Tile.baseHalfWidth);
             //Debug.WriteLine("tileVertical:" + tilesVertical + " tilesHorizontal:"+tilesHorizontal);
 
             Tile tile = getTile(tilesVertical,tilesHorizontal);
@@ -169,11 +169,14 @@ namespace GO
             string sColorval = "";
             uint[] myUint = new uint[1];
 
-            int tileX = GO.halfWidth + (guess.getVisualX() * Tile.baseWidth) + translationX - (Tile.baseWidth);
+            int tileX = GO.halfWidth + (guess.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth);
             int tileY = (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY;
 
             int virtualX = x - tileX;
             int virtualY = y - tileY;
+
+             virtualX = virtualX * (Images.tileHitmapImage.Width/(Tile.baseHalfWidth * 2));
+             virtualY = virtualY * (Images.tileHitmapImage.Height/(Tile.baseHalfHeight * 2));
 
             if (virtualX >= 0 && virtualX < Images.tileHitmapImage.Width && virtualY >= 0 && virtualY < Images.tileHitmapImage.Height)
             {
@@ -181,12 +184,12 @@ namespace GO
                 sColorval = myUint[0].ToString();
             }
 
-            Debug.WriteLine("Color under mouse is: "+sColorval);
+            Debug.WriteLine(frame+++" Color under mouse is: "+Colors.getColor(myUint[0])+" uint:"+sColorval);
 
             //if (guessTile != null)
             //{
             //    GO.spriteBatch.Begin();
-            //    GO.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(GO.halfWidth + (guessTile.getVisualX() * Tile.baseWidth) + translationX - (Tile.baseWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseWidth * 2, Tile.baseHalfHeight * 2), Color.White);
+            //    GO.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(GO.halfWidth + (guessTile.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseHalfWidth * 2, Tile.baseHalfHeight * 2), Color.White);
             //    GO.spriteBatch.End();
             //}
 
@@ -318,7 +321,7 @@ namespace GO
             if (guessTile != null)
             {
                 GO.spriteBatch.Begin();
-                GO.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(GO.halfWidth + (guessTile.getVisualX() * Tile.baseWidth) + translationX - (Tile.baseWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseWidth * 2, Tile.baseHalfHeight * 2), Color.White);
+                GO.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(GO.halfWidth + (guessTile.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseHalfWidth * 2, Tile.baseHalfHeight * 2), Color.White);
                 GO.spriteBatch.End();
             }
 
