@@ -14,18 +14,22 @@ namespace GO
         public enum SELECTION
         {
             NEWGAME = 1,
+            MULTIPLAYER,
             QUIT
+
         }
 
-        private const String title = "Land Conquerer"; //"G.O."
+        private const String title = "LAND CONQUERER"; //"G.O."
         private const String newGame = "New game";
         private const String quit = "Quit";
+        private const String multiplayer = "Multiplayer Game";
 
         //Initialy the first option is selected
         public SELECTION selection = SELECTION.NEWGAME;
 
         public bool upPressed = false;
         public bool downPressed = false;
+        public bool enterPressed = false;
     
         public StateTitle()
         {
@@ -44,23 +48,34 @@ namespace GO
             if (selection == SELECTION.NEWGAME)
             {
                 //Draw highlighted
-                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
+                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2) -100), Color.Red);
             }
             else
             {
                 //Draw normally
-                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.White);
+                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2) -100), Color.White);
             }
+            if (selection == SELECTION.MULTIPLAYER)
+            {
+                //Draw highlighted
+                GO.spriteBatch.DrawString(Fonts.font, multiplayer, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.Red);
+            }
+            else
+            {
+                //Draw normally
+                GO.spriteBatch.DrawString(Fonts.font, multiplayer, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.White);
+            }
+
 
             if (selection == SELECTION.QUIT)
             {
                 //Draw highlighted
-                GO.spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.Red);
+                GO.spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
             }
             else
             {
                 //Draw normally
-                GO.spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.White);
+                GO.spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.White);
             }
 
 
@@ -87,7 +102,7 @@ namespace GO
 
             if (keyState.IsKeyDown(Keys.Up) && !upPressed)
             {
-                selectionDown();
+                selectionUp();
                 upPressed = true;
             }
             else if(keyState.IsKeyUp(Keys.Up) && upPressed) 
@@ -106,29 +121,43 @@ namespace GO
                 downPressed = false;
             }
 
-            if (keyState.IsKeyDown(Keys.Enter))
+            if (keyState.IsKeyDown(Keys.Enter) && !enterPressed)
             {
                 makeSelection();
+                enterPressed = true;
+            }
+
+            if (keyState.IsKeyDown(Keys.Enter) && enterPressed)
+            {
+                
+                enterPressed = false;
             }
 
         }
 
         private void selectionUp()
         {
-            selection++;
-            if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
+            
+            selection--;
+            if (selection < SELECTION.NEWGAME)
             {
-                selection = SELECTION.NEWGAME;
+                Console.WriteLine("if sel: " + (int)selection);
+                selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
             }
+            Console.WriteLine("sel: " + (int)selection);
         }
 
         private void selectionDown()
         {
-            selection--;
-            if (selection < SELECTION.NEWGAME)
+            selection++;
+            if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
             {
-                selection = (SELECTION) Enum.GetNames(typeof(SELECTION)).Length;
+                Console.WriteLine("if sel: " + (int)selection);
+                selection = SELECTION.NEWGAME;
             }
+            Console.WriteLine("sel: " + (int)selection);
+           
+           
         }
 
         private void makeSelection()
@@ -140,6 +169,10 @@ namespace GO
             else if (selection == SELECTION.QUIT)
             {
                 GO.get().Exit();
+            }
+            else if (selection == SELECTION.MULTIPLAYER)
+            {
+                GO.get().setState(new StateMP());
             }
         }
 
