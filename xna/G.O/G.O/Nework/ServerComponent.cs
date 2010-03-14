@@ -30,32 +30,33 @@ namespace GO.Network
         {
             NetBuffer buffer = server.CreateBuffer();
 
-            bool keepGoing = true;
-           // while (keepGoing)
-           // {
-                NetMessageType type;
-                NetConnection sender;
-                while (server.ReadMessage(buffer, out type, out sender))
+            
+          
+            NetMessageType type;
+            NetConnection sender;
+
+           
+            while (server.ReadMessage(buffer, out type, out sender))
                     
+            {
+                switch (type)
                 {
-                    switch (type)
-                    {
-                        case NetMessageType.DebugMessage:
-                            Console.WriteLine(buffer.ReadString());
-                            break;
+                    case NetMessageType.DebugMessage:
+                    Console.WriteLine(buffer.ReadString());
+                    break;
 
-                        case NetMessageType.StatusChanged:
-                            //Console.WriteLine("New status: " + server.s + " (Reason: " + buffer.ReadString() + ")");
-                            break;
+                    case NetMessageType.StatusChanged:
+                    //Console.WriteLine("New status: " + server.s + " (Reason: " + buffer.ReadString() + ")");
+                    break;
 
-                        case NetMessageType.Data:
-                            String message = buffer.ReadString();
-                            Console.WriteLine("client zegt: " + message);
+                    case NetMessageType.Data:
+                    String message = buffer.ReadString();
+                    Console.WriteLine("client zegt: " + message);
 
-                            break;
-                    }
+                    break;
                 }
-            //}
+            }
+            
         }
 
         public void send(String message, NetConnection sender)
@@ -70,3 +71,4 @@ namespace GO.Network
 
     }
 }
+        

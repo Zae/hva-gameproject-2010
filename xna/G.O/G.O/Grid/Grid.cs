@@ -114,6 +114,7 @@ namespace GO
 
             }
             catch(Exception e) {
+                Console.WriteLine("exception in grid: "+ e.ToString());
             }
         }
 

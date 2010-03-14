@@ -50,7 +50,7 @@ namespace GO.Network
 
         }
 
-
+  
         public void send(String message)
         {
             NetBuffer buffer = client.CreateBuffer();

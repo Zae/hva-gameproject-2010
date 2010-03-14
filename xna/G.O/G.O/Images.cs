@@ -27,7 +27,7 @@ namespace GO
             {
                 return chargeCountImages[chargeCountImages.Length-1];
             }
-            return null;
+            
         }
     }
 }

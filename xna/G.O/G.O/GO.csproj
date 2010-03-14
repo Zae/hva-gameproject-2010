@@ -95,6 +95,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="GO.cs" />
     <Compile Include="Grid\ResourceTile.cs" />
+    <Compile Include="State\StateMP.cs" />
     <Compile Include="State\State.cs" />
     <Compile Include="State\StatePaused.cs" />
     <Compile Include="State\StateTest.cs" />
