@@ -14,7 +14,7 @@ namespace GO
 
         private float charge = 0;
 
-        public const int MAX_CHARGE = 100;
+        public const float MAX_CHARGE = 1.0f;
 
         private Color tileColor = new Color();
 
@@ -89,12 +89,24 @@ namespace GO
                 GO.primitiveBatch.End();
             }
 
+            if (selected)
+            {
+                addCharge(0.005f,Players.PLAYER1);
+            }
+
+            if (owner != Players.NEUTRAL)
+            {
+                GO.spriteBatch.Begin();
+                GO.spriteBatch.Draw(Images.getChargeCountImage(charge), new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth, baseHalfHeight), Color.White);
+                GO.spriteBatch.End();
+            }
+
    
         }
 
         public override void update()
         {
-            
+      
         }
 
         public float getCharge()
@@ -102,23 +114,35 @@ namespace GO
             return charge;
         }
 
-        public void setCharge(float newCharge)
-        {
-            if (newCharge <= 1.0f && newCharge >= 0.0f)
-            {
-                charge = newCharge;
-            }
-        }
+        //public void setCharge(float newCharge)
+        //{
+        //    if (newCharge <= 1.0f && newCharge >= 0.0f)
+        //    {
+        //        charge = newCharge;
+        //    }
+        //}
 
-        public void addCharge(float addition)
+        public void addCharge(float addition, int player)
         {
-            if (charge + addition > 1.0f)
+            if (player != owner)
             {
-                charge = 1.0f;
+                if (charge - addition < 0.0f)
+                {
+                    owner = player;
+                    charge = 0.0f;
+                }
             }
             else
             {
-                charge = charge + addition;
+
+                if (charge + addition > 1.0f)
+                {
+                    charge = 1.0f;
+                }
+                else
+                {
+                    charge = charge + addition;
+                }
             }
         }
 

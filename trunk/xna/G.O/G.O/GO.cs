@@ -111,6 +111,11 @@ namespace GO
             Images.white1px = Content.Load<Texture2D>("white");
             Images.tileHitmapImage = Content.Load<Texture2D>("tile_hitmap");
 
+            for (int i = 0; i < Images.chargeCountImages.Length; i++)
+            {
+                Images.chargeCountImages[i] = Content.Load<Texture2D>((i + 1).ToString());
+            }
+
             Music.titleSong = Content.Load<Song>("TitleSong");
             Music.gameSong1 = Content.Load<Song>("GameSong1");
             Music.gameSong2 = Content.Load<Song>("GameSong2");

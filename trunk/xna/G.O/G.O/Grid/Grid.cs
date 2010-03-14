@@ -29,12 +29,17 @@ namespace GO
 
         private Tile[] perspectiveMap;
 
+        int step = 0;
 
         private int viewDirection = 1;
         private const int SOUTH_WEST = 1;
         private const int NORTH_WEST = 2;
         private const int NORTH_EAST = 3;
         private const int SOUTH_EAST = 4;
+
+        private bool drawHitTest = false;
+        private float virtualX = 0;
+        private float virtualY = 0;
 
 
         public Grid(String levelname)
@@ -112,23 +117,48 @@ namespace GO
             }
         }
 
+
+        public void mouseReleased(int x, int y, int translationX, int translationY)
+        {
+            drawHitTest = false;
+             
+        }
+
+
+
         public void mousePressed(int x, int y, int translationX, int translationY)
         {
-
-            //translate the screen input to world coordinates
-
-            //...
-
+            drawHitTest = true;
             
+            
+            //translate the screen input to world coordinates
             mouseWorldX = x - translationX - GO.halfWidth;
             mouseWorldY = y - translationY;
 
-            float tilesVertical = (float)((float)mouseWorldY / (float)Tile.baseHalfHeight);
-            float tilesHorizontal = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
-            Debug.WriteLine("tileVertical:" + (float)tilesVertical + " tilesHorizontal:"+(float)tilesHorizontal);
+            //get the true value from the origin in tile units
+            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight))-1;
+            float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
 
-            Tile tile = getTile(tilesVertical,tilesHorizontal);
-           
+            //get the closest even value to that position
+            int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
+            int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
+            //int tilesVertical = (int)tilesVerticalQ;
+            //int tilesHorizontal = (int)tilesHorizontalQ;
+            Debug.WriteLine("********");
+            Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
+            Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:"+tilesVertical);
+            //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
+
+            //get the color at that position on the hitmap
+            uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
+
+            //pass the position and the color and see if you get back anything
+
+
+
+
+            Tile tile = getTile(tilesVertical,tilesHorizontal, color);
+
             if (tile != null)
             {
                 if (selectedTile != null)
@@ -136,16 +166,10 @@ namespace GO
                     selectedTile.setSelected(false);
                 }
 
-                guessTile = tile;
-
-                Tile realTile = getRealTile(x, y, translationX, translationY, tile);
-
-                if (realTile != null)
-                {
-                    realTile.setSelected(true);
+                    tile.setSelected(true);
                     selectedTile = tile;
-                }
-               
+                
+
 
                 //Debug.WriteLine("gotTile:" + tile.ToString());
 
@@ -164,103 +188,65 @@ namespace GO
 
         }
 
-        private Tile getRealTile(int x, int y, int translationX, int translationY, Tile guess) 
+        private uint doHitmapTest(int x, int y, int translationX, int translationY, int visualX, int visualY) 
         {
-            string sColorval = "";
+
+            string sColorval = "NONE";
             uint[] myUint = new uint[1];
 
-            int tileX = GO.halfWidth + (guess.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth);
-            int tileY = (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY;
+            int tileX = GO.halfWidth + (visualX * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth);
+            int tileY = (visualY * Tile.baseHalfHeight) + translationY;
 
-            int virtualX = x - tileX;
-            int virtualY = y - tileY;
+            virtualX = x - tileX;
+            virtualY = y - tileY;
 
-             virtualX = virtualX * (Images.tileHitmapImage.Width/(Tile.baseHalfWidth * 2));
-             virtualY = virtualY * (Images.tileHitmapImage.Height/(Tile.baseHalfHeight * 2));
+            virtualX = Images.tileHitmapImage.Width * (virtualX / (Tile.baseHalfWidth * 2));
+            virtualY = Images.tileHitmapImage.Height * (virtualY / (Tile.baseHalfHeight * 2));
 
             if (virtualX >= 0 && virtualX < Images.tileHitmapImage.Width && virtualY >= 0 && virtualY < Images.tileHitmapImage.Height)
             {
-                Images.tileHitmapImage.GetData<uint>(0, new Rectangle(virtualX, virtualY, 1, 1), myUint, 0, 1);
+                Images.tileHitmapImage.GetData<uint>(0, new Rectangle((int)virtualX, (int)virtualY, 1, 1), myUint, 0, 1);
                 sColorval = myUint[0].ToString();
             }
 
-            Debug.WriteLine(frame+++" Color under mouse is: "+Colors.getColor(myUint[0])+" uint:"+sColorval);
+            //Debug.WriteLine(frame++ + " Color under mouse is: " + Colors.getColor(myUint[0]) + " uint:" + sColorval);
 
-            //if (guessTile != null)
-            //{
-            //    GO.spriteBatch.Begin();
-            //    GO.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(GO.halfWidth + (guessTile.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseHalfWidth * 2, Tile.baseHalfHeight * 2), Color.White);
-            //    GO.spriteBatch.End();
-            //}
-
-        
-
-            return null;
+            return myUint[0];
         }
 
-        private Tile getTile(float tilesVertical, float tilesHorizontal)
+        private Tile getTile(int tilesVertical, int tilesHorizontal, uint color)
         {
-           // int toIntY = (int)tilesVertical;
-           // int toIntX = (int)tilesHorizontal;
 
-            int toIntY = Tool.toClosestInt(tilesVertical);
-            int toIntX = Tool.toClosestInt(tilesHorizontal);
-
-
+            int lookForX = tilesHorizontal;
+            int lookForY = tilesVertical;
 
             if (viewDirection == SOUTH_WEST)
             {
-               //KUT
-                //int x = width - 1;
-                //int y = 0;
-
-                ////for (int i = 0; i < tilesVertical;i++ )
-                ////{
-                ////    x--;
-                ////    y++;
-                ////}
-                //y += tilesVertical;
-                //x += tilesHorizontal + (-tilesVertical);
-
-                //if (x >= 0 && x <= width - 1 && y >= 0 && y <= height - 1)
-                //{
-                //    return map[x, y];
-                //}
-
-                if (toIntX % 2 <= 0 && toIntY % 2 <= 0)
+                if(color == Colors.color_red)
                 {
-                //nothing todo
+                    lookForX--;
+                    lookForY--;
                 }
-                else if (toIntX % 2 > 0 && toIntX % 2 > 0)
+                else if (color == Colors.color_green)
                 {
-                    //nothing  todo
+                    lookForX--;
+                    lookForY++;
                 }
-                else if (toIntX % 2 > 0 && toIntX % 2 <= 0)
+                else if (color == Colors.color_cyan)
                 {
-                    
-                    //do something
+                    lookForX++;
+                    lookForY++;
                 }
-                else if (toIntX % 2 <= 0 && toIntX % 2 > 0)
+                else if (color == Colors.color_blue)
                 {
-
-                    if (tilesHorizontal > toIntX)
-                    {
-                        
-                    }
-                    //do something
+                    lookForX++;
+                    lookForY--;
                 }
-               
             }
-       
-            Debug.WriteLine("tileVertical:" + toIntY + " tilesHorizontal:"+toIntX);
-
-
-            
-            
 
             for (int i = 0; i < perspectiveMap.Length; i++)
             {
-                if (perspectiveMap[i].getVisualX() == toIntX && perspectiveMap[i].getVisualY() == toIntY)
+                if (perspectiveMap[i].getVisualX() == lookForX && perspectiveMap[i].getVisualY() == lookForY)
                 {
                     return perspectiveMap[i];
                 }
@@ -350,11 +336,11 @@ namespace GO
                 perspectiveMap[i].draw(translationX, translationY);
                 //perspectiveMap[i].drawDebug(translationX, translationY);
             }
-            for (int i = 0; i < tileCount; i++)
-            {
-                //perspectiveMap[i].draw(translationX, translationY);
-                perspectiveMap[i].drawDebug(translationX, translationY);
-            }
+            //for (int i = 0; i < tileCount; i++)
+            //{
+            //    //perspectiveMap[i].draw(translationX, translationY);
+            //    perspectiveMap[i].drawDebug(translationX, translationY);
+            //}
 
 
             if (guessTile != null)
@@ -365,10 +351,10 @@ namespace GO
             }
 
 
-            GO.spriteBatch.Begin();
-            Vector2 location = new Vector2(mouseWorldX + translationX + GO.halfWidth, mouseWorldY + translationY);
-            GO.spriteBatch.DrawString(Fonts.font, "MOSUE POS", location, Color.Blue);
-            GO.spriteBatch.End();
+            //GO.spriteBatch.Begin();
+            //Vector2 location = new Vector2(mouseWorldX + translationX + GO.halfWidth, mouseWorldY + translationY);
+            //GO.spriteBatch.DrawString(Fonts.font, "MOSUE POS", location, Color.Blue);
+            //GO.spriteBatch.End();
             //Old way
             //for (int x=0; x < width; x++)
             //{
@@ -378,12 +364,18 @@ namespace GO
             //    }
             //}
 
+            if (drawHitTest)
+            {
+                GO.spriteBatch.Begin();
+                GO.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(0, 0, Images.tileHitmapImage.Width, Images.tileHitmapImage.Height), Color.White);
+                GO.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX,(int)virtualY,5,5),Color.Black);
+                GO.spriteBatch.End();
+            }
         }
 
         public void update()
         {
-            //TODO
-            //Which kind of operation do we have to do on each tile and in which order?
+            
         }
 
         private Tile createTile(char c, int x, int y)

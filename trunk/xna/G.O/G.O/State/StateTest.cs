@@ -58,7 +58,7 @@ namespace GO
 
         public override void draw()
         {
-            GO.get().GraphicsDevice.Clear(Color.Wheat);
+            GO.get().GraphicsDevice.Clear(Color.White);
 
             map.draw(translationX, translationY);
 
@@ -145,6 +145,10 @@ namespace GO
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 map.mousePressed(mouseState.X, mouseState.Y, translationX, translationY);
+            }
+            else if (mouseState.LeftButton == ButtonState.Released)
+            {
+                map.mouseReleased(mouseState.X, mouseState.Y, translationX, translationY);
             }
 
             
