@@ -19,10 +19,17 @@ namespace GO
         //protected const int baseHalfWidth = 140;
         //protected const int baseHalfHeight = 46;
 
-        private static float scale = 0.8f;  
+        private static int scale = 40;
 
-        public static int baseHalfWidth = (int)(140*scale);
-        public static int baseHalfHeight = (int)(46*scale);
+        public static int baseHalfWidth = baseHalfWidthConstant * scale;
+        public static int baseHalfHeight = baseHalfHeightConstant * scale;
+
+        //private const int baseHalfWidthConstant = 140;
+        //private const int baseHalfHeightConstant = 46;
+
+        private const int baseHalfWidthConstant = 3; 
+        private const int baseHalfHeightConstant = 1;
+
 
         //public abstract void draw(int x, int y, SpriteBatch spriteBatch);
 
@@ -70,19 +77,29 @@ namespace GO
         {
             selected = newSelected;
         }
+
         public static void zoomIn()
         {
-            if (scale <= 1.55f)
-            scale += 0.05f;
-            baseHalfWidth = (int)(140 * scale);
-            baseHalfHeight = (int)(46 * scale);
+            if (scale <= 80)
+            {
+                scale += 1;
+
+                baseHalfWidth = baseHalfWidthConstant * scale;
+                baseHalfHeight = baseHalfHeightConstant * scale;
+            }
+          
+           
         }
+
         public static void zoomOut()
         {
-            if (scale >= 0.45f)
-                scale -= 0.05f;
-                baseHalfWidth = (int)(140 * scale);
-                baseHalfHeight = (int)(46 * scale);
+            if (scale >= 5)
+            {
+                scale -= 1;
+                baseHalfWidth = baseHalfWidthConstant * scale;
+                baseHalfHeight = baseHalfHeightConstant* scale;
+            }
+               
         }
 
     }
