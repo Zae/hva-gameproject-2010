@@ -25,7 +25,6 @@ namespace GO
         private Tile selectedTile = null;
 
         private Tile guessTile = null;
-        private int frame = 0;
 
         private Tile[] perspectiveMap;
 
@@ -371,23 +370,30 @@ namespace GO
             }
         }
 
-        public void update()
+        public void update(int ellapsed)
         {
             //do unit stuff
-            
+
             if (step == 0)
             {
                 tileVersusTile();
-                
-                
+
+
                 step++;
             }
             else
             {
                 tileAidTile();
-                
-                
+
+
                 step = 0;
+            }
+
+            //now tell all Tiles to update, we use the perspective map for that
+            //because it might be faster?
+            for (int i = 0; i < tileCount; i++)
+            {
+                perspectiveMap[i].update();
             }
         }
 
@@ -395,17 +401,92 @@ namespace GO
         {
             Tile todo;
 
+            //This method looks at the grid from a overhead perspective where x increased in the
+            //right direction and y increases in the downward direction.
+
             for (int i = 0; i < width; i++)
             {
                 for (int ii = 0; ii < height; ii++)
                 {
+                    todo = map[i, ii];
+
+                    //The tile to the right of this tile
+                    if(isValid(i+1,ii)) 
+                    {
+                        todo.tileVersusTile(map[i + 1, ii]);
+                    }
+
+                    //The tile to the bottom-right of this tile
+                    if(isValid(i+1,ii+1))
+                    {
+                        todo.tileVersusTile(map[i + 1, ii+1]);
+                    }
+
+                    //The tile to the bottom of this tile
+                    if (isValid(i, ii+1))
+                    {
+                        todo.tileVersusTile(map[i, ii+1]);
+                    }
+
+                    //The tile to the bottom left of this tile
+                    if (isValid(i - 1, ii+1))
+                    {
+                        todo.tileVersusTile(map[i - 1, ii+1]);
+                    }
 
                 }
             }
         }
 
+        private bool isValid(int x, int y)
+        {
+            if (x >= 0 && x < width && y >= 0 && y < height)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void tileAidTile()
         {
+            Tile todo;
+
+            //This method looks at the grid from a overhead perspective where x increased in the
+            //right direction and y increases in the downward direction.
+
+            for (int i = 0; i < width; i++)
+            {
+                for (int ii = 0; ii < height; ii++)
+                {
+                    todo = map[i, ii];
+
+                    //The tile to the right of this tile
+                    if (isValid(i + 1, ii))
+                    {
+                        todo.tileAidTile(map[i + 1, ii]);
+                    }
+
+                    //The tile to the bottom-right of this tile
+                    if (isValid(i + 1, ii + 1))
+                    {
+                        todo.tileAidTile(map[i + 1, ii + 1]);
+                    }
+
+                    //The tile to the bottom of this tile
+                    if (isValid(i, ii + 1))
+                    {
+                        todo.tileAidTile(map[i, ii + 1]);
+                    }
+
+                    //The tile to the bottom left of this tile
+                    if (isValid(i - 1, ii + 1))
+                    {
+                        todo.tileAidTile(map[i - 1, ii + 1]);
+                    }
+
+                }
+            }
+
         }
 
         private Tile createTile(char c, int x, int y)

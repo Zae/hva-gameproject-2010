@@ -141,10 +141,10 @@ namespace GO
             selection--;
             if (selection < SELECTION.NEWGAME)
             {
-                Console.WriteLine("if sel: " + (int)selection);
+                //Console.WriteLine("if sel: " + (int)selection);
                 selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
             }
-            Console.WriteLine("sel: " + (int)selection);
+            //Console.WriteLine("sel: " + (int)selection);
         }
 
         private void selectionDown()
@@ -152,10 +152,10 @@ namespace GO
             selection++;
             if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
             {
-                Console.WriteLine("if sel: " + (int)selection);
+                //Console.WriteLine("if sel: " + (int)selection);
                 selection = SELECTION.NEWGAME;
             }
-            Console.WriteLine("sel: " + (int)selection);
+            //Console.WriteLine("sel: " + (int)selection);
            
            
         }
@@ -172,7 +172,7 @@ namespace GO
             }
             else if (selection == SELECTION.MULTIPLAYER)
             {
-                GO.get().setState(new StateMP());
+                //GO.get().setState(new StateMP());
             }
         }
 

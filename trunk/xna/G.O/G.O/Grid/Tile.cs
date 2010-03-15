@@ -36,6 +36,10 @@ namespace GO
         public abstract void draw(int translationX, int translationY);
         public abstract void drawDebug(int translationX, int translationY);
 
+        public abstract void tileVersusTile(Tile other);
+
+        public abstract void tileAidTile(Tile other);
+
         public abstract void update();
 
         public void setIndexZ(int newIndex)
@@ -51,6 +55,7 @@ namespace GO
         public void setVisualX(int newVisualIndex)
         {
             visualX = newVisualIndex;
+            
         }
 
         public int getVisualX()

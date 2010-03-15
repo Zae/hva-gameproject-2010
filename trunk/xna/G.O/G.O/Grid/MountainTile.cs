@@ -24,6 +24,15 @@ namespace GO
             GO.spriteBatch.End();
         }
 
+        public override void tileVersusTile(Tile other)
+        {
+
+        }
+
+        public override void tileAidTile(Tile other)
+        {
+        }
+
         public override void draw(int translationX, int translationY)
         {
             //GO.primitiveBatch.Begin(PrimitiveType.LineList);
