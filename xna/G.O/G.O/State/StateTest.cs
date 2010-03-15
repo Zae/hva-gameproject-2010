@@ -72,6 +72,8 @@ namespace GO
 
         public override void update(int ellapsed)
         {
+            map.update(ellapsed);
+            
             //Handles which background music to play
             if (MediaPlayer.State.Equals(MediaState.Stopped))
             {
@@ -123,8 +125,7 @@ namespace GO
                 //Debug.WriteLine("zoomIn");
 
             }
-
-            if (mouseState.ScrollWheelValue < scrollValue)
+            else if (mouseState.ScrollWheelValue < scrollValue)
             {
                 Tile.zoomOut();
                // Debug.WriteLine("zoomOut");
@@ -150,8 +151,6 @@ namespace GO
             {
                 map.mouseReleased(mouseState.X, mouseState.Y, translationX, translationY);
             }
-
-            
 
             previousMouseX = mouseState.X;
             previousMouseY = mouseState.Y; 
