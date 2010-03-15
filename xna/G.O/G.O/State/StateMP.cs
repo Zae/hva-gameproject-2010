@@ -82,15 +82,7 @@ namespace GO
             KeyboardState keyState = Keyboard.GetState();
 
 
-            //if (keyState.GetPressedKeys().Length > 0)
-            //{
-            //    GO.get().state = new StateTest();
-            //}
-            //if (keyState.IsKeyDown(Keys.Left))
-            //    playerX -= 1;
 
-            //if (keyState.IsKeyDown(Keys.Right))
-            //    playerX += 1;
 
 
             if (keyState.IsKeyDown(Keys.Up) && !upPressed)

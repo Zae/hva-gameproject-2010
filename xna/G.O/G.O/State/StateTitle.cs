@@ -30,11 +30,11 @@ namespace GO
         public bool upPressed = false;
         public bool downPressed = false;
         public bool enterPressed = false;
-    
+
         public StateTitle()
         {
-          
-           
+
+
         }
 
         public override void draw()
@@ -48,12 +48,12 @@ namespace GO
             if (selection == SELECTION.NEWGAME)
             {
                 //Draw highlighted
-                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2) -100), Color.Red);
+                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 100), Color.Red);
             }
             else
             {
                 //Draw normally
-                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2) -100), Color.White);
+                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 100), Color.White);
             }
             if (selection == SELECTION.MULTIPLAYER)
             {
@@ -85,10 +85,10 @@ namespace GO
 
         public override void update(int ellapsed)
         {
-       
+
             KeyboardState keyState = Keyboard.GetState();
 
-        
+
             //if (keyState.GetPressedKeys().Length > 0)
             //{
             //    GO.get().state = new StateTest();
@@ -105,7 +105,7 @@ namespace GO
                 selectionUp();
                 upPressed = true;
             }
-            else if(keyState.IsKeyUp(Keys.Up) && upPressed) 
+            else if (keyState.IsKeyUp(Keys.Up) && upPressed)
             {
                 upPressed = false;
             }
@@ -116,7 +116,7 @@ namespace GO
                 selectionDown();
                 downPressed = true;
             }
-            else if(keyState.IsKeyUp(Keys.Down) && downPressed) 
+            else if (keyState.IsKeyUp(Keys.Down) && downPressed)
             {
                 downPressed = false;
             }
@@ -129,7 +129,7 @@ namespace GO
 
             if (keyState.IsKeyDown(Keys.Enter) && enterPressed)
             {
-                
+
                 enterPressed = false;
             }
 
@@ -137,14 +137,14 @@ namespace GO
 
         private void selectionUp()
         {
-            
+
             selection--;
             if (selection < SELECTION.NEWGAME)
             {
-                //Console.WriteLine("if sel: " + (int)selection);
+                Console.WriteLine("if sel: " + (int)selection);
                 selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
             }
-            //Console.WriteLine("sel: " + (int)selection);
+            Console.WriteLine("sel: " + (int)selection);
         }
 
         private void selectionDown()
@@ -152,12 +152,12 @@ namespace GO
             selection++;
             if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
             {
-                //Console.WriteLine("if sel: " + (int)selection);
+                Console.WriteLine("if sel: " + (int)selection);
                 selection = SELECTION.NEWGAME;
             }
-            //Console.WriteLine("sel: " + (int)selection);
-           
-           
+            Console.WriteLine("sel: " + (int)selection);
+
+
         }
 
         private void makeSelection()
@@ -172,7 +172,8 @@ namespace GO
             }
             else if (selection == SELECTION.MULTIPLAYER)
             {
-                //GO.get().setState(new StateMP());
+                Console.WriteLine("sel: " + (int)selection);
+                GO.get().setState(new StateMP());
             }
         }
 
