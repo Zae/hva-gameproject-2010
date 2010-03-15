@@ -43,6 +43,7 @@ namespace GO
             instance = this;
 
             graphics = new GraphicsDeviceManager(this);
+
             graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
 
             graphics.ToggleFullScreen();
@@ -52,7 +53,7 @@ namespace GO
 
             height = graphics.GraphicsDevice.DisplayMode.Height;
             halfHeight = height / 2;
-           
+
             Content.RootDirectory = "Content";
 
         }
@@ -147,12 +148,7 @@ namespace GO
             //if (gamepad.getstate(playerindex.one).buttons.back == buttonstate.pressed)
             //    this.exit();
 
-            // TODO: Add your update logic here
-            
-            
             KeyboardState keyState = Keyboard.GetState();
-
-            
 
             if (keyState.IsKeyDown(Keys.F1))
             {
