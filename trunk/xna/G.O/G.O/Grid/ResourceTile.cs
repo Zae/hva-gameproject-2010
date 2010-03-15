@@ -68,8 +68,9 @@ namespace GO
             tileColor = getAppropriateColor(owner, charge);
 
             GO.spriteBatch.Begin();
+            GO.spriteBatch.Draw(Images.borderImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
             GO.spriteBatch.Draw(Images.resourceImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), tileColor);
-            GO.spriteBatch.Draw(Images.borderImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), Color.White);
+
             GO.spriteBatch.End();
 
             if (selected)
@@ -96,8 +97,10 @@ namespace GO
 
             if (owner != Players.NEUTRAL)
             {
+                Texture2D chargeImage = Images.getChargeCountImage(charge);
+
                 GO.spriteBatch.Begin();
-                GO.spriteBatch.Draw(Images.getChargeCountImage(charge), new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth, baseHalfHeight), Color.White);
+                GO.spriteBatch.Draw(chargeImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight*2), Color.White);
                 GO.spriteBatch.End();
             }
 

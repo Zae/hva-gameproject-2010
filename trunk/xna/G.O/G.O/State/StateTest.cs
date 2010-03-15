@@ -58,7 +58,7 @@ namespace GO
 
         public override void draw()
         {
-            GO.get().GraphicsDevice.Clear(Color.White);
+            GO.get().GraphicsDevice.Clear(Color.Gray);
 
             map.draw(translationX, translationY);
 

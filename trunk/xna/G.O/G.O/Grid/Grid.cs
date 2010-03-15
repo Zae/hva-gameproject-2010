@@ -29,7 +29,7 @@ namespace GO
 
         private Tile[] perspectiveMap;
 
-        int step = 0;
+        private int step = 0;
 
         private int viewDirection = 1;
         private const int SOUTH_WEST = 1;
@@ -118,14 +118,11 @@ namespace GO
             }
         }
 
-
         public void mouseReleased(int x, int y, int translationX, int translationY)
         {
             drawHitTest = false;
              
         }
-
-
 
         public void mousePressed(int x, int y, int translationX, int translationY)
         {
@@ -376,7 +373,39 @@ namespace GO
 
         public void update()
         {
+            //do unit stuff
             
+            if (step == 0)
+            {
+                tileVersusTile();
+                
+                
+                step++;
+            }
+            else
+            {
+                tileAidTile();
+                
+                
+                step = 0;
+            }
+        }
+
+        private void tileVersusTile()
+        {
+            Tile todo;
+
+            for (int i = 0; i < width; i++)
+            {
+                for (int ii = 0; ii < height; ii++)
+                {
+
+                }
+            }
+        }
+
+        private void tileAidTile()
+        {
         }
 
         private Tile createTile(char c, int x, int y)
