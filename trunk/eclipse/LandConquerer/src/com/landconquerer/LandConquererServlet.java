@@ -9,8 +9,6 @@ import javax.servlet.http.*;
 import com.landconquerer.Host;
 import com.landconquerer.PMF;
 
-import com.google.gson.*;
-
 /**
  * @version 0.1
  * @author Ezra
@@ -41,7 +39,10 @@ public class LandConquererServlet extends HttpServlet {
 				case SHOWUSERS:
 				    String query = "select from " + Host.class.getName();
 				    List<Host> hosts = (List<Host>) pm.newQuery(query).execute();
-				    
+				    for(Host h : hosts){
+				    	resp.getWriter().println(h.getTitle());
+				    	resp.getWriter().println(h.getIP());
+				    }
 					break;
 			}
 		}catch(IOException e)
