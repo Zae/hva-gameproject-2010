@@ -117,13 +117,83 @@ namespace GO
             }
         }
 
-        public void mouseReleased(int x, int y, int translationX, int translationY)
+        public void mouseRightPressed(int x, int y, int translationX, int translationY)
+        {
+            drawHitTest = true;
+
+
+            //translate the screen input to world coordinates
+            mouseWorldX = x - translationX - GO.halfWidth;
+            mouseWorldY = y - translationY;
+
+            //get the true value from the origin in tile units
+            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
+            float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
+
+            //get the closest even value to that position
+            int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
+            int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
+            //int tilesVertical = (int)tilesVerticalQ;
+            //int tilesHorizontal = (int)tilesHorizontalQ;
+            Debug.WriteLine("********");
+            Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
+            Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:" + tilesVertical);
+            //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
+
+            //get the color at that position on the hitmap
+            uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
+
+            //pass the position and the color and see if you get back anything
+
+
+
+
+            Tile tile = getTile(tilesVertical, tilesHorizontal, color);
+
+            if (tile != null && tile is ResourceTile)
+            {
+                ((ResourceTile)tile).addCharge(0.1f, Players.PLAYER2);
+                
+                //if (selectedTile != null)
+                //{
+                //    selectedTile.setSelected(false);
+                //}
+
+                //tile.setSelected(true);
+                //selectedTile = tile;
+
+
+
+                ////Debug.WriteLine("gotTile:" + tile.ToString());
+
+
+
+            }
+            else
+            {
+                //if (selectedTile != null)
+                //{
+                //    selectedTile.setSelected(false);
+                //    selectedTile = null;
+                //}
+            }
+            //update selected tile (or null when none is selected)
+
+        }
+
+        public void mouseRightReleased(int x, int y, int translationX, int translationY)
+        {
+            drawHitTest = false;
+
+        }
+
+        public void mouseLeftReleased(int x, int y, int translationX, int translationY)
         {
             drawHitTest = false;
              
         }
 
-        public void mousePressed(int x, int y, int translationX, int translationY)
+        public void mouseLeftPressed(int x, int y, int translationX, int translationY)
         {
             drawHitTest = true;
             
@@ -141,9 +211,9 @@ namespace GO
             int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
             //int tilesVertical = (int)tilesVerticalQ;
             //int tilesHorizontal = (int)tilesHorizontalQ;
-            Debug.WriteLine("********");
-            Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
-            Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:"+tilesVertical);
+            //Debug.WriteLine("********");
+            //Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
+            //Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:"+tilesVertical);
             //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
 
             //get the color at that position on the hitmap
@@ -381,12 +451,16 @@ namespace GO
 
                 step++;
             }
-            else
+            else if (step == 15)
             {
                 tileAidTile();
 
 
                 step = 0;
+            }
+            else
+            {
+                step++;
             }
 
             //now tell all Tiles to update, we use the perspective map for that

@@ -111,6 +111,10 @@ namespace GO
             Images.resourceImage = Content.Load<Texture2D>("resource_tile");
             Images.white1px = Content.Load<Texture2D>("white");
             Images.tileHitmapImage = Content.Load<Texture2D>("tile_hitmap");
+            Images.unitImage = Content.Load<Texture2D>("unit");
+            Images.unitChargeImage = Content.Load<Texture2D>("unit_charge");
+            Images.unitHitmapImage = Content.Load<Texture2D>("unit_hitmap");
+
 
             for (int i = 0; i < Images.chargeCountImages.Length; i++)
             {

@@ -24,7 +24,7 @@ namespace GO
 
         private int playqueue = 1;
 
-        private string level = "Level1.xml";
+        private string level = "MediumLevelTest.xml";
 
         private bool actionOnScreen = false;
 
@@ -145,11 +145,20 @@ namespace GO
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                map.mousePressed(mouseState.X, mouseState.Y, translationX, translationY);
+                map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
             }
             else if (mouseState.LeftButton == ButtonState.Released)
             {
-                map.mouseReleased(mouseState.X, mouseState.Y, translationX, translationY);
+                map.mouseLeftReleased(mouseState.X, mouseState.Y, translationX, translationY);
+            }
+
+            if (mouseState.RightButton == ButtonState.Pressed)
+            {
+                map.mouseRightPressed(mouseState.X, mouseState.Y, translationX, translationY);
+            }
+            else if (mouseState.RightButton == ButtonState.Released)
+            {
+                map.mouseRightReleased(mouseState.X, mouseState.Y, translationX, translationY);
             }
 
             previousMouseX = mouseState.X;

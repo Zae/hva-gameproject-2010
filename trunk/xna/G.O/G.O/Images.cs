@@ -14,6 +14,9 @@ namespace GO
         public static Texture2D resourceImage;
         public static Texture2D white1px;
         public static Texture2D tileHitmapImage;
+        public static Texture2D unitImage;
+        public static Texture2D unitChargeImage;
+        public static Texture2D unitHitmapImage;
 
         public static Texture2D[] chargeCountImages = new Texture2D[10];
 
