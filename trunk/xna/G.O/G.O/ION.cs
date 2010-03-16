@@ -10,14 +10,14 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
-using GO.Network;
+using ION.Network;
 
-namespace GO
+namespace ION
 {
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class GO : Microsoft.Xna.Framework.Game
+    public class ION : Microsoft.Xna.Framework.Game
     {
         public static GraphicsDeviceManager graphics;
         public static SpriteBatch spriteBatch;
@@ -31,9 +31,9 @@ namespace GO
 
         private State state;
 
-        public static GO instance;
+        public static ION instance;
 
-        public GO()
+        public ION()
         {
 
             server = new ServerComponent();
@@ -58,7 +58,7 @@ namespace GO
 
         }
 
-        public static GO get()
+        public static ION get()
         {
             return instance;   
         }

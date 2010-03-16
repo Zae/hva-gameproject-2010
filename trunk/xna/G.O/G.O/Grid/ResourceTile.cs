@@ -5,9 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
-using GO.Units;
 
-namespace GO
+namespace ION
 {
     public class ResourceTile : Tile
     {
@@ -36,10 +35,10 @@ namespace GO
         }
         public override void drawDebug(int translationX, int translationY)
         {
-            GO.spriteBatch.Begin();
-            Vector2 location = new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
-            GO.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.Black);
-            GO.spriteBatch.End();
+            ION.spriteBatch.Begin();
+            Vector2 location = new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
+            ION.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.Black);
+            ION.spriteBatch.End();
         }
 
         public bool hasUnit()
@@ -154,27 +153,27 @@ namespace GO
 
             tileColor = getAppropriateColor(owner, charge);
 
-            GO.spriteBatch.Begin();
+            ION.spriteBatch.Begin();
             //GO.spriteBatch.Draw(Images.borderImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
-            GO.spriteBatch.Draw(Images.resourceImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), tileColor);
+            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), tileColor);
 
-            GO.spriteBatch.End();
+            ION.spriteBatch.End();
 
             if (selected)
             {
-                GO.primitiveBatch.Begin(PrimitiveType.LineList);
-                GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Red);
+                ION.primitiveBatch.Begin(PrimitiveType.LineList);
+                ION.primitiveBatch.AddVertex(new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Red);
                 //GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Yellow);
-                GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Red);
+                ION.primitiveBatch.AddVertex(new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Red);
                 //GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Yellow);
-                GO.primitiveBatch.End();
+                ION.primitiveBatch.End();
 
-                GO.primitiveBatch.Begin(PrimitiveType.LineList);
+                ION.primitiveBatch.Begin(PrimitiveType.LineList);
                 //GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
-                GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Red);
+                ION.primitiveBatch.AddVertex(new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Red);
                 //GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)),Color.Yellow);
-                GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Red);
-                GO.primitiveBatch.End();
+                ION.primitiveBatch.AddVertex(new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Red);
+                ION.primitiveBatch.End();
             }
 
             if (selected)
@@ -186,13 +185,13 @@ namespace GO
             {
                 Texture2D chargeImage = Images.getChargeCountImage(charge);
 
-                GO.spriteBatch.Begin();
-                GO.spriteBatch.Draw(chargeImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight*2), Color.White);
-                GO.spriteBatch.End();
+                ION.spriteBatch.Begin();
+                ION.spriteBatch.Draw(chargeImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight*2), Color.White);
+                ION.spriteBatch.End();
             }
 
             if(unit != null) {
-                unit.draw(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
+                unit.draw(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
             }
 
    

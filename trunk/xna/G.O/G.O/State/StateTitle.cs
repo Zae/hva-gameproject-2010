@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
 
-namespace GO
+namespace ION
 {
     public class StateTitle : State
     {
@@ -39,48 +39,48 @@ namespace GO
 
         public override void draw()
         {
-            GO.get().GraphicsDevice.Clear(Color.Black);
+            ION.get().GraphicsDevice.Clear(Color.Black);
 
-            GO.spriteBatch.Begin();
-            GO.spriteBatch.DrawString(Fonts.font, title, new Vector2((GO.width / 2) - 15, (GO.height / 2) - 150), Color.White);
+            ION.spriteBatch.Begin();
+            ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
             //spriteBatch.DrawString(Fonts.font, "press any key to start the test", new Vector2((GO.width/2)-100, (GO.height / 2)), Color.White);
 
             if (selection == SELECTION.NEWGAME)
             {
                 //Draw highlighted
-                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 100), Color.Red);
+                ION.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 100), Color.Red);
             }
             else
             {
                 //Draw normally
-                GO.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 100), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 100), Color.White);
             }
             if (selection == SELECTION.MULTIPLAYER)
             {
                 //Draw highlighted
-                GO.spriteBatch.DrawString(Fonts.font, multiplayer, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.Red);
+                ION.spriteBatch.DrawString(Fonts.font, multiplayer, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 50), Color.Red);
             }
             else
             {
                 //Draw normally
-                GO.spriteBatch.DrawString(Fonts.font, multiplayer, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, multiplayer, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 50), Color.White);
             }
 
 
             if (selection == SELECTION.QUIT)
             {
                 //Draw highlighted
-                GO.spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
+                ION.spriteBatch.DrawString(Fonts.font, quit, new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.Red);
             }
             else
             {
                 //Draw normally
-                GO.spriteBatch.DrawString(Fonts.font, quit, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, quit, new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.White);
             }
 
 
 
-            GO.spriteBatch.End();
+            ION.spriteBatch.End();
         }
 
         public override void update(int ellapsed)
@@ -164,16 +164,16 @@ namespace GO
         {
             if (selection == SELECTION.NEWGAME)
             {
-                GO.get().setState(new StateTest());
+                ION.get().setState(new StateTest());
             }
             else if (selection == SELECTION.QUIT)
             {
-                GO.get().Exit();
+                ION.get().Exit();
             }
             else if (selection == SELECTION.MULTIPLAYER)
             {
                 Console.WriteLine("sel: " + (int)selection);
-                GO.get().setState(new StateMP());
+                ION.get().setState(new StateMP());
             }
         }
 

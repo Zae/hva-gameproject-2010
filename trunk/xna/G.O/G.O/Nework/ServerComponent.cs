@@ -6,7 +6,7 @@ using Lidgren.Network;
 using System.Threading;
 
 
-namespace GO.Network
+namespace ION.Network
 {
     public class ServerComponent 
     {

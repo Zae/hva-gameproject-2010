@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace GO
+namespace ION
 {
     class StatePaused : State
     {
@@ -22,18 +22,18 @@ namespace GO
 
         public override void draw()
         {
-            GO.spriteBatch.Begin();
+            ION.spriteBatch.Begin();
            //Draw a box with yes/no option 
             if (draws<40)
             {
-                GO.spriteBatch.Draw(Images.white1px, new Rectangle(0, 0, GO.width, GO.height), fadeColor);
+                ION.spriteBatch.Draw(Images.white1px, new Rectangle(0, 0, ION.width, ION.height), fadeColor);
                 draws++;
             }
             
-            GO.spriteBatch.DrawString(Fonts.font, "Return to menu? (Y/N)", new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
+            ION.spriteBatch.DrawString(Fonts.font, "Return to menu? (Y/N)", new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.Red);
 
 
-            GO.spriteBatch.End();
+            ION.spriteBatch.End();
         }
 
         public override void update(int ellapsed)
@@ -42,11 +42,11 @@ namespace GO
 
             if (keyState.IsKeyDown(Keys.N))
             {
-                GO.get().setState(StateTest.get());
+                ION.get().setState(StateTest.get());
             }
             else if (keyState.IsKeyDown(Keys.Y))
             {
-                GO.get().setState(new StateTitle());
+                ION.get().setState(new StateTitle());
             }
 
         }
