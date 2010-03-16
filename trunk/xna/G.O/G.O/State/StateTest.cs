@@ -91,12 +91,26 @@ namespace GO
 
             //Handle keyboard input
             KeyboardState keyState = Keyboard.GetState();
-           
+
+            //Handles mouse input
+            MouseState mouseState = Mouse.GetState();
+
+            
             
             if(keyState.IsKeyDown(Keys.Escape)) 
             {
                 GO.get().setState(new StatePaused()); 
             }
+
+            if (keyState.IsKeyDown(Keys.U))
+            {
+                map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER1);
+            }
+            else if (keyState.IsKeyDown(Keys.I))
+            {
+                map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER2);
+            }
+     
 
             if (keyState.IsKeyDown(Keys.LeftAlt))
             {
@@ -115,9 +129,6 @@ namespace GO
             handleActionSound(ellapsed);
 
             //Handle mouse input
-
-            //handles zoom
-            MouseState mouseState = Mouse.GetState();
 
             if (mouseState.ScrollWheelValue > scrollValue)
             {

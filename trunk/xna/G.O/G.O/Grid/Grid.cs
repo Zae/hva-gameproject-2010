@@ -8,6 +8,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using GO.Units;
 
 namespace GO
 {
@@ -135,9 +136,9 @@ namespace GO
             int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
             //int tilesVertical = (int)tilesVerticalQ;
             //int tilesHorizontal = (int)tilesHorizontalQ;
-            Debug.WriteLine("********");
-            Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
-            Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:" + tilesVertical);
+            //Debug.WriteLine("********");
+            //Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
+            //Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:" + tilesVertical);
             //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
 
             //get the color at that position on the hitmap
@@ -254,6 +255,56 @@ namespace GO
             //update selected tile (or null when none is selected)
 
         }
+
+        public void createUnit(int x, int y, int translationX, int translationY, int owner)
+        {
+            //translate the screen input to world coordinates
+            mouseWorldX = x - translationX - GO.halfWidth;
+            mouseWorldY = y - translationY;
+
+            //get the true value from the origin in tile units
+            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
+            float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
+
+            //get the closest even value to that position
+            int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
+            int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
+            //int tilesVertical = (int)tilesVerticalQ;
+            //int tilesHorizontal = (int)tilesHorizontalQ;
+            //Debug.WriteLine("********");
+            //Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
+            //Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:"+tilesVertical);
+            //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
+
+            //get the color at that position on the hitmap
+            uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
+
+            //pass the position and the color and see if you get back anything
+
+
+
+
+            Tile tile = getTile(tilesVertical, tilesHorizontal, color);
+
+            if (tile != null)
+            {
+                if (tile is ResourceTile)
+                {
+                    ResourceTile resourceTile = (ResourceTile)tile;
+                    if (!resourceTile.hasUnit())
+                    {
+                        BallUnit b = new BallUnit(owner);
+                        resourceTile.setUnit(b);
+                    }
+                }
+            }
+            else
+            {
+                
+            }
+           
+        }
+
 
         private uint doHitmapTest(int x, int y, int translationX, int translationY, int visualX, int visualY) 
         {
