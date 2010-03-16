@@ -42,7 +42,32 @@ namespace GO
 
         public override void tileVersusTile(Tile other)
         {
+            if (other is ResourceTile)
+            {
+                ResourceTile otherResourceTile = (ResourceTile)other;
+                if (otherResourceTile.owner != owner)
+                {
+                    if (otherResourceTile.charge > charge)
+                    {
+                        if (otherResourceTile.charge - charge > minimumFlux)
+                        {
+                            addCharge(minimumFlux, owner);
+                            otherResourceTile.removeCharge(minimumFlux);
+                        }
 
+                    }
+                    else if (charge > otherResourceTile.charge)
+                    {
+                        if (charge - otherResourceTile.charge > minimumFlux)
+                        {
+                            otherResourceTile.addCharge(minimumFlux, owner);
+                            removeCharge(minimumFlux);
+                        }
+
+                    }
+
+                }
+            }
         }
 
         public override void tileAidTile(Tile other)
@@ -114,7 +139,7 @@ namespace GO
 
             GO.spriteBatch.Begin();
             //GO.spriteBatch.Draw(Images.borderImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
-            GO.spriteBatch.Draw(Images.borderImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), tileColor);
+            GO.spriteBatch.Draw(Images.resourceImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), tileColor);
 
             GO.spriteBatch.End();
 
@@ -226,6 +251,15 @@ namespace GO
                 tileColor.R = (byte)(255 - (charge * 255));
                 tileColor.G = (byte)(255 - (charge * 255));
                 tileColor.B = 255;
+
+                //tileColor.A = (byte)(charge * 255);
+                tileColor.A = 255;
+            }
+            else if (owner == Players.PLAYER2)
+            {
+                tileColor.R = 255;
+                tileColor.G = (byte)(255 - (charge * 255));
+                tileColor.B = (byte)(255 - (charge * 255));
 
                 //tileColor.A = (byte)(charge * 255);
                 tileColor.A = 255;

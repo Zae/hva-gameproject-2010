@@ -104,6 +104,7 @@
     <Compile Include="State\StateTitle.cs" />
     <Compile Include="Grid\Tile.cs" />
     <Compile Include="Tool.cs" />
+    <Compile Include="Units\BallUnit.cs" />
     <Compile Include="Units\Unit.cs" />
   </ItemGroup>
   <ItemGroup>
