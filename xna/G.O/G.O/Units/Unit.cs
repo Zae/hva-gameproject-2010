@@ -5,16 +5,20 @@ using System.Text;
 
 namespace GO.Units
 {
-    public class Unit
+    public abstract class Unit
     {
         private Colors hitmapColor = new Colors();
 
-        private int health = 100;
-        private int tileX;
-        private int tileY;
+        protected int owner;
 
-        private int inTileX;
-        private int inTileY;
+        protected int health = 100;
+        protected int tileX;
+        protected int tileY;
+
+        protected int inTileX;
+        protected int inTileY;
+
+        public abstract void draw(int x, int y, int width, int height);
 
 
     }

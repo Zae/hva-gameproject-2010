@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using GO.Units;
 
 namespace GO
 {
@@ -18,6 +19,8 @@ namespace GO
         public float charge = 0;
 
         private float nextCharge = 0;
+
+        private Unit unit = null;
 
         //This is buggy but for testing
         private const float minimumFlux = 0.05f;
@@ -37,6 +40,20 @@ namespace GO
             Vector2 location = new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
             GO.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.Black);
             GO.spriteBatch.End();
+        }
+
+        public bool hasUnit()
+        {
+            if (unit != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void setUnit(Unit unit)
+        {
+            this.unit = unit;
         }
 
 
@@ -162,7 +179,7 @@ namespace GO
 
             if (selected)
             {
-                addCharge(0.005f,Players.PLAYER1);
+                addCharge(0.04f,Players.PLAYER1);
             }
 
             if (owner != Players.NEUTRAL)
@@ -172,6 +189,10 @@ namespace GO
                 GO.spriteBatch.Begin();
                 GO.spriteBatch.Draw(chargeImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight*2), Color.White);
                 GO.spriteBatch.End();
+            }
+
+            if(unit != null) {
+                unit.draw(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
             }
 
    
