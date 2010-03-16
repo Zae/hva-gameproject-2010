@@ -1,7 +1,0 @@
-C:\Users\Qadri\Desktop\lidgren-network\UnitTests\bin\Debug\UnitTests.exe
-C:\Users\Qadri\Desktop\lidgren-network\UnitTests\bin\Debug\UnitTests.pdb
-C:\Users\Qadri\Desktop\lidgren-network\UnitTests\bin\Debug\Lidgren.Network.dll
-C:\Users\Qadri\Desktop\lidgren-network\UnitTests\bin\Debug\Lidgren.Network.pdb
-C:\Users\Qadri\Desktop\lidgren-network\UnitTests\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Qadri\Desktop\lidgren-network\UnitTests\obj\Debug\UnitTests.exe
-C:\Users\Qadri\Desktop\lidgren-network\UnitTests\obj\Debug\UnitTests.pdb

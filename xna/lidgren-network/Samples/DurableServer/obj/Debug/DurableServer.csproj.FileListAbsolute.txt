@@ -1,7 +1,0 @@
-C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableServer\bin\Debug\DurableServer.exe
-C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableServer\bin\Debug\DurableServer.pdb
-C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableServer\bin\Debug\Lidgren.Network.dll
-C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableServer\bin\Debug\Lidgren.Network.pdb
-C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableServer\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableServer\obj\Debug\DurableServer.exe
-C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableServer\obj\Debug\DurableServer.pdb
