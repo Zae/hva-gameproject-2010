@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace GO
+namespace ION
 {
     class MountainTile : Tile
     {
@@ -18,10 +18,10 @@ namespace GO
 
         public override void drawDebug(int translationX, int translationY)
         {
-            GO.spriteBatch.Begin();
-            Vector2 location = new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
-            GO.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.White);
-            GO.spriteBatch.End();
+            ION.spriteBatch.Begin();
+            Vector2 location = new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
+            ION.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.White);
+            ION.spriteBatch.End();
         }
 
         public override void tileVersusTile(Tile other)
@@ -63,9 +63,9 @@ namespace GO
             //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + 1), Color.Brown);
             //GO.primitiveBatch.End();
 
-            GO.spriteBatch.Begin();
-            GO.spriteBatch.Draw(Images.mountainImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY - (baseHalfWidth+baseHalfHeight), baseHalfWidth * 2, baseHalfWidth * 2), Color.White);
-            GO.spriteBatch.End();          
+            ION.spriteBatch.Begin();
+            ION.spriteBatch.Draw(Images.mountainImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY - (baseHalfWidth+baseHalfHeight), baseHalfWidth * 2, baseHalfWidth * 2), Color.White);
+            ION.spriteBatch.End();          
         }
 
 

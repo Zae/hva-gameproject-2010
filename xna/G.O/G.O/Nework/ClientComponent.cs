@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Lidgren.Network;
 
-namespace GO.Network
+namespace ION.Network
 {
     public class ClientComponent
     {

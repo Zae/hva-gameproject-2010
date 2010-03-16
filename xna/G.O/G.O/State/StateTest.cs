@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 
-namespace GO
+namespace ION
 {
     public class StateTest : State
     {
@@ -58,16 +58,16 @@ namespace GO
 
         public override void draw()
         {
-            GO.get().GraphicsDevice.Clear(Color.Gray);
+            ION.get().GraphicsDevice.Clear(Color.Gray);
 
             map.draw(translationX, translationY);
 
             int y = 0;
-            GO.spriteBatch.Begin();
-            GO.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly", new Vector2(10, y += 15), Color.Red);
-            GO.spriteBatch.DrawString(Fonts.font, "Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, y += 15), Color.Red);
-            GO.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the map around, press Left-Alt to recenter the map", new Vector2(10, y += 15), Color.Red);
-            GO.spriteBatch.End();
+            ION.spriteBatch.Begin();
+            ION.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly", new Vector2(10, y += 15), Color.Red);
+            ION.spriteBatch.DrawString(Fonts.font, "Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, y += 15), Color.Red);
+            ION.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the map around, press Left-Alt to recenter the map", new Vector2(10, y += 15), Color.Red);
+            ION.spriteBatch.End();
         }
 
         public override void update(int ellapsed)
@@ -99,7 +99,7 @@ namespace GO
             
             if(keyState.IsKeyDown(Keys.Escape)) 
             {
-                GO.get().setState(new StatePaused()); 
+                ION.get().setState(new StatePaused()); 
             }
 
             if (keyState.IsKeyDown(Keys.U))
@@ -239,7 +239,7 @@ namespace GO
 
         public override void focusGained()
         {
-            GO.get().IsMouseVisible = true;
+            ION.get().IsMouseVisible = true;
             
             //MediaPlayer.Play(Music.gameSong1);
             //MediaPlayer.IsRepeating = false;
@@ -252,7 +252,7 @@ namespace GO
 
         public override void focusLost()
         {
-            GO.get().IsMouseVisible = false;
+            ION.get().IsMouseVisible = false;
             
             MediaPlayer.Pause();
             musicPaused = true;

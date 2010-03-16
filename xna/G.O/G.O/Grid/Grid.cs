@@ -8,9 +8,8 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using GO.Units;
 
-namespace GO
+namespace ION
 {
     class Grid
     {
@@ -107,7 +106,7 @@ namespace GO
                 else
                 {
                     Debug.WriteLine("FATAL ERROR: Level file did not contain a valid Level Node");
-                    GO.get().Exit();
+                    ION.get().Exit();
                 }
 
                 settleIndexZ(SOUTH_WEST);
@@ -124,7 +123,7 @@ namespace GO
 
 
             //translate the screen input to world coordinates
-            mouseWorldX = x - translationX - GO.halfWidth;
+            mouseWorldX = x - translationX - ION.halfWidth;
             mouseWorldY = y - translationY;
 
             //get the true value from the origin in tile units
@@ -200,7 +199,7 @@ namespace GO
             
             
             //translate the screen input to world coordinates
-            mouseWorldX = x - translationX - GO.halfWidth;
+            mouseWorldX = x - translationX - ION.halfWidth;
             mouseWorldY = y - translationY;
 
             //get the true value from the origin in tile units
@@ -259,7 +258,7 @@ namespace GO
         public void createUnit(int x, int y, int translationX, int translationY, int owner)
         {
             //translate the screen input to world coordinates
-            mouseWorldX = x - translationX - GO.halfWidth;
+            mouseWorldX = x - translationX - ION.halfWidth;
             mouseWorldY = y - translationY;
 
             //get the true value from the origin in tile units
@@ -312,7 +311,7 @@ namespace GO
             string sColorval = "NONE";
             uint[] myUint = new uint[1];
 
-            int tileX = GO.halfWidth + (visualX * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth);
+            int tileX = ION.halfWidth + (visualX * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth);
             int tileY = (visualY * Tile.baseHalfHeight) + translationY;
 
             virtualX = x - tileX;
@@ -463,9 +462,9 @@ namespace GO
 
             if (guessTile != null)
             {
-                GO.spriteBatch.Begin();
-                GO.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(GO.halfWidth + (guessTile.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseHalfWidth * 2, Tile.baseHalfHeight * 2), Color.White);
-                GO.spriteBatch.End();
+                ION.spriteBatch.Begin();
+                ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(ION.halfWidth + (guessTile.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseHalfWidth * 2, Tile.baseHalfHeight * 2), Color.White);
+                ION.spriteBatch.End();
             }
 
 
@@ -484,10 +483,10 @@ namespace GO
 
             if (drawHitTest)
             {
-                GO.spriteBatch.Begin();
-                GO.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(0, 0, Images.tileHitmapImage.Width, Images.tileHitmapImage.Height), Color.White);
-                GO.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX,(int)virtualY,5,5),Color.Black);
-                GO.spriteBatch.End();
+                ION.spriteBatch.Begin();
+                ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(0, 0, Images.tileHitmapImage.Width, Images.tileHitmapImage.Height), Color.White);
+                ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX, (int)virtualY, 5, 5), Color.Black);
+                ION.spriteBatch.End();
             }
         }
 

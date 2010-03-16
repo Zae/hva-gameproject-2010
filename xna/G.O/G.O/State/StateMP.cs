@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Media;
 using System.Net;
 using System.IO;
 
-namespace GO
+namespace ION
 {
     class StateMP : State
     {
@@ -33,46 +33,46 @@ namespace GO
         
         public override void draw()
         {
-            GO.get().GraphicsDevice.Clear(Color.Black);
-            GO.spriteBatch.Begin();
-            GO.spriteBatch.DrawString(Fonts.font, title, new Vector2((GO.width / 2) - 15, (GO.height / 2) - 150), Color.White);
+            ION.get().GraphicsDevice.Clear(Color.Black);
+            ION.spriteBatch.Begin();
+            ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
 
            
 
             if (selection == SELECTION.HOST)
             {
                 //Draw highlighted
-                GO.spriteBatch.DrawString(Fonts.font, host, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 100), Color.Red);
+                ION.spriteBatch.DrawString(Fonts.font, host, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 100), Color.Red);
             }
             else
             {
                 //Draw normally
-                GO.spriteBatch.DrawString(Fonts.font, host, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 100), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, host, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 100), Color.White);
             }
             if (selection == SELECTION.JOIN)
             {
                 //Draw highlighted
-                GO.spriteBatch.DrawString(Fonts.font, join, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.Red);
+                ION.spriteBatch.DrawString(Fonts.font, join, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 50), Color.Red);
             }
             else
             {
                 //Draw normally
-                GO.spriteBatch.DrawString(Fonts.font, join, new Vector2((GO.width / 2) - 100, (GO.height / 2) - 50), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, join, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 50), Color.White);
             }
 
 
             if (selection == SELECTION.BACK)
             {
                 //Draw highlighted
-                GO.spriteBatch.DrawString(Fonts.font, back, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.Red);
+                ION.spriteBatch.DrawString(Fonts.font, back, new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.Red);
             }
             else
             {
                 //Draw normally
-                GO.spriteBatch.DrawString(Fonts.font, back, new Vector2((GO.width / 2) - 100, (GO.height / 2)), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, back, new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.White);
             }
 
-            GO.spriteBatch.End();
+            ION.spriteBatch.End();
         }
 
 
@@ -153,7 +153,7 @@ namespace GO
             {
                 StateTitle st = new StateTitle();
                 //st.enterPressed = true;
-                GO.get().setState(st);
+                ION.get().setState(st);
             }
            
             else if (selection == SELECTION.JOIN)

@@ -1,6 +1,6 @@
 using System;
 
-namespace GO
+namespace ION
 {
     static class Program
     {
@@ -9,7 +9,7 @@ namespace GO
         /// </summary>
         static void Main(string[] args)
         {
-            using (GO game = new GO())
+            using (ION game = new ION())
             {
                 game.Run();
             }
