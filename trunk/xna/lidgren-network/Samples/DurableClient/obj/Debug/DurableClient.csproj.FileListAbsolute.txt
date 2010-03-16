@@ -1,0 +1,7 @@
+C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableClient\bin\Debug\DurableClient.exe
+C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableClient\bin\Debug\DurableClient.pdb
+C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableClient\bin\Debug\Lidgren.Network.dll
+C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableClient\bin\Debug\Lidgren.Network.pdb
+C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableClient\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableClient\obj\Debug\DurableClient.exe
+C:\Users\Qadri\Desktop\lidgren-network\Samples\DurableClient\obj\Debug\DurableClient.pdb

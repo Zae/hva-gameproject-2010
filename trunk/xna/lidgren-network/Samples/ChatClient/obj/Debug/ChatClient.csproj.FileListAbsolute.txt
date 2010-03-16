@@ -1,0 +1,7 @@
+C:\Users\Qadri\Desktop\lidgren-network\Samples\ChatClient\bin\Debug\ChatClient.exe
+C:\Users\Qadri\Desktop\lidgren-network\Samples\ChatClient\bin\Debug\ChatClient.pdb
+C:\Users\Qadri\Desktop\lidgren-network\Samples\ChatClient\bin\Debug\Lidgren.Network.dll
+C:\Users\Qadri\Desktop\lidgren-network\Samples\ChatClient\bin\Debug\Lidgren.Network.pdb
+C:\Users\Qadri\Desktop\lidgren-network\Samples\ChatClient\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Qadri\Desktop\lidgren-network\Samples\ChatClient\obj\Debug\ChatClient.exe
+C:\Users\Qadri\Desktop\lidgren-network\Samples\ChatClient\obj\Debug\ChatClient.pdb
