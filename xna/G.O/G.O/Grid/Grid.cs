@@ -119,7 +119,7 @@ namespace ION
 
         public void mouseRightPressed(int x, int y, int translationX, int translationY)
         {
-            drawHitTest = true;
+            //drawHitTest = true;
 
 
             //translate the screen input to world coordinates
@@ -127,7 +127,7 @@ namespace ION
             mouseWorldY = y - translationY;
 
             //get the true value from the origin in tile units
-            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
+            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight))-1;
             float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
 
             //get the closest even value to that position
@@ -184,18 +184,16 @@ namespace ION
         public void mouseRightReleased(int x, int y, int translationX, int translationY)
         {
             drawHitTest = false;
-
         }
 
         public void mouseLeftReleased(int x, int y, int translationX, int translationY)
         {
             drawHitTest = false;
-             
         }
 
         public void mouseLeftPressed(int x, int y, int translationX, int translationY)
         {
-            drawHitTest = true;
+            //drawHitTest = true;
             
             
             //translate the screen input to world coordinates
@@ -226,30 +224,32 @@ namespace ION
 
             Tile tile = getTile(tilesVertical,tilesHorizontal, color);
 
-            if (tile != null)
+            if (tile != null && tile is ResourceTile)
             {
-                if (selectedTile != null)
-                {
-                    selectedTile.setSelected(false);
-                }
+                ((ResourceTile)tile).addCharge(0.1f, Players.PLAYER1);
 
-                    tile.setSelected(true);
-                    selectedTile = tile;
-                
+                //if (selectedTile != null)
+                //{
+                //    selectedTile.setSelected(false);
+                //}
+
+                //tile.setSelected(true);
+                //selectedTile = tile;
 
 
-                //Debug.WriteLine("gotTile:" + tile.ToString());
+
+                ////Debug.WriteLine("gotTile:" + tile.ToString());
 
 
 
             }
             else
             {
-                if (selectedTile != null)
-                {
-                    selectedTile.setSelected(false);
-                    selectedTile = null;
-                }
+                //if (selectedTile != null)
+                //{
+                //    selectedTile.setSelected(false);
+                //    selectedTile = null;
+                //}
             }
             //update selected tile (or null when none is selected)
 
@@ -292,8 +292,8 @@ namespace ION
                     ResourceTile resourceTile = (ResourceTile)tile;
                     if (!resourceTile.hasUnit())
                     {
-                        BallUnit b = new BallUnit(owner);
-                        resourceTile.setUnit(b);
+                        //BallUnit b = new BallUnit(owner);
+                       // resourceTile.setUnit(b);
                     }
                 }
             }
@@ -453,32 +453,12 @@ namespace ION
                 perspectiveMap[i].draw(translationX, translationY);
                 //perspectiveMap[i].drawDebug(translationX, translationY);
             }
-            //for (int i = 0; i < tileCount; i++)
+
+            //if (guessTile != null)
             //{
-            //    //perspectiveMap[i].draw(translationX, translationY);
-            //    perspectiveMap[i].drawDebug(translationX, translationY);
-            //}
-
-
-            if (guessTile != null)
-            {
-                ION.spriteBatch.Begin();
-                ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(ION.halfWidth + (guessTile.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseHalfWidth * 2, Tile.baseHalfHeight * 2), Color.White);
-                ION.spriteBatch.End();
-            }
-
-
-            //GO.spriteBatch.Begin();
-            //Vector2 location = new Vector2(mouseWorldX + translationX + GO.halfWidth, mouseWorldY + translationY);
-            //GO.spriteBatch.DrawString(Fonts.font, "MOSUE POS", location, Color.Blue);
-            //GO.spriteBatch.End();
-            //Old way
-            //for (int x=0; x < width; x++)
-            //{
-            //    for(int y=0; y < height; y++) 
-            //    {
-            //        map[x, y].draw((x * tileSize) + 50, (y * tileSize) + 50, spriteBatch);
-            //    }
+            //    ION.spriteBatch.Begin();
+            //    ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(ION.halfWidth + (guessTile.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseHalfWidth * 2, Tile.baseHalfHeight * 2), Color.White);
+            //    ION.spriteBatch.End();
             //}
 
             if (drawHitTest)
@@ -496,21 +476,19 @@ namespace ION
 
             if (step == 0)
             {
-                tileVersusTile();
-
+                //tileVersusTile();
 
                 step++;
             }
-            else if (step == 15)
+            else if (step == 300)
             {
-                tileAidTile();
+                //tileAidTile();
 
-
-                step = 0;
-            }
-            else
-            {
                 step++;
+            }
+            else if (step == 600)
+            {
+                step=0;
             }
 
             //now tell all Tiles to update, we use the perspective map for that

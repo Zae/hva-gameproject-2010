@@ -24,7 +24,7 @@ namespace ION
 
         private int playqueue = 1;
 
-        private string level = "MediumLevelTest.xml";
+        private string level = "Level1.xml";
 
         private bool actionOnScreen = false;
 
