@@ -22,7 +22,7 @@ namespace ION
         private Unit unit = null;
 
         //This is buggy but for testing
-        private const float minimumFlux = 0.05f;
+        private const float minimumFlux = 0.005f;
 
         public const float MAX_CHARGE = 1.0f;
 
@@ -156,7 +156,6 @@ namespace ION
             ION.spriteBatch.Begin();
             //GO.spriteBatch.Draw(Images.borderImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
             ION.spriteBatch.Draw(Images.resourceImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), tileColor);
-
             ION.spriteBatch.End();
 
             if (selected)
@@ -225,6 +224,10 @@ namespace ION
                 {
                     nextOwner = player;
                     nextCharge = 0.0f;
+                }
+                else
+                {
+                    nextCharge = charge - addition;
                 }
             }
             else

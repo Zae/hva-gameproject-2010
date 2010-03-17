@@ -28,7 +28,10 @@ namespace ION
         public static int halfHeight;
         public ClientComponent client;
         public ServerComponent server;
-
+        
+        /**
+         * 
+         **/
         private State state;
 
         public static ION instance;
@@ -44,7 +47,7 @@ namespace ION
 
             graphics = new GraphicsDeviceManager(this);
 
-            graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
+            graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(preparingDeviceSettings);
 
             graphics.ToggleFullScreen();
 
@@ -70,7 +73,7 @@ namespace ION
             state.focusGained();
         }
 
-        private void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
+        private void preparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
         {
             DisplayMode displayMode = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
             e.GraphicsDeviceInformation.PresentationParameters.BackBufferFormat = displayMode.Format;
