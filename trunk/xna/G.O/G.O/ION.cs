@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
-//using ION.Network;
+
 
 namespace ION
 {
@@ -26,8 +26,8 @@ namespace ION
         public static int halfWidth;
         public static int height;
         public static int halfHeight;
-       // public ClientComponent client;
-       // public ServerComponent server;
+        private static ClientComponent client;
+        private static ServerComponent server;
         
         
         /**

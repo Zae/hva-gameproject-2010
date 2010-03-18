@@ -86,6 +86,8 @@
     <Compile Include="Grid\MountainTile.cs" />
     <Compile Include="Images.cs" />
     <Compile Include="MichielTest.cs" />
+    <Compile Include="MultiPlayer\ClientComponent.cs" />
+    <Compile Include="MultiPlayer\ServerComponent.cs" />
     <Compile Include="Music.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="PrimitiveBatch.cs" />
