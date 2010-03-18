@@ -22,15 +22,21 @@ namespace ION
         }
         public SELECTION selection = SELECTION.HOST;
 
-        private const String title = "MULTIPLAYER MODE"; //"G.O."
-        private const String host = "Host a game";
-        private const String join = "Join a game";
-        private const String back = "Back to title menu";
+ 
 
-        public bool upPressed = false;
-        public bool downPressed = false;
-        public bool enterPressed = false;
-        
+        private Rectangle hostButton;
+        private Rectangle joinButton;
+        private Rectangle backButton;
+        private bool mousePressed = false; 
+
+
+        public StateMP()
+        {
+            hostButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2), Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 70, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            backButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2)+140, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+        }
+
         public override void draw()
         {
             ION.get().GraphicsDevice.Clear(Color.Black);
@@ -43,34 +49,34 @@ namespace ION
             if (selection == SELECTION.HOST)
             {
                 //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonHostF, new Rectangle((ION.width / 2) - 125, (ION.height / 2), Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonHostF, hostButton, Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.Draw(Images.buttonHost, new Rectangle((ION.width / 2) - 125, (ION.height / 2), Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonHost, hostButton, Color.White);
             }
             if (selection == SELECTION.JOIN)
             {
                 //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonJoinF, new Rectangle((ION.width / 2) - 125, (ION.height / 2)+70 , Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonJoinF, joinButton, Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.Draw(Images.buttonJoin, new Rectangle((ION.width / 2) - 125, (ION.height / 2)+70, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonJoin, joinButton, Color.White);
             }
 
 
             if (selection == SELECTION.BACK)
             {
                 //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonBackF, new Rectangle((ION.width / 2) - 125, (ION.height / 2)+140, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonBackF, backButton, Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.Draw(Images.buttonBack, new Rectangle((ION.width / 2) - 125, (ION.height / 2)+140, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonBack, backButton, Color.White);
             }
 
             ION.spriteBatch.End();
@@ -80,67 +86,56 @@ namespace ION
         public override void update(int ellapsed)
         {
 
-            KeyboardState keyState = Keyboard.GetState();
-
-
-
-
-
-            if (keyState.IsKeyDown(Keys.Up) && !upPressed)
+            MouseState mouseState = Mouse.GetState();
+            if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                selectionUp();
-                upPressed = true;
-            }
-            else if (keyState.IsKeyUp(Keys.Up) && upPressed)
-            {
-                upPressed = false;
+                mousePressed = true;
             }
 
+            if (mouseIn(mouseState.X, mouseState.Y, hostButton))
+            {
+                selection= SELECTION.HOST;
+                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+                {
+                    makeSelection();
+                    mousePressed = false;
+                }
 
-            if (keyState.IsKeyDown(Keys.Down) && !downPressed)
-            {
-                selectionDown();
-                downPressed = true;
             }
-            else if (keyState.IsKeyUp(Keys.Down) && downPressed)
+            if (mouseIn(mouseState.X, mouseState.Y,joinButton))
             {
-                downPressed = false;
-            }
+                selection = SELECTION.JOIN;
+                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+                {
+                    makeSelection();
+                    mousePressed = false;
+                }
 
-            if (keyState.IsKeyDown(Keys.Enter))
-            {
-                enterPressed = true;
             }
+            if (mouseIn(mouseState.X, mouseState.Y, backButton))
+            {
+                selection = SELECTION.BACK;
+                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+                {
+                    makeSelection();
+                    mousePressed = false;
+                }
 
-            if (keyState.IsKeyUp(Keys.Enter) && enterPressed==true)
-            {
-                enterPressed = false;
-                makeSelection();
-            }
+            }  
+            
+           
+            
         }
 
-        private void selectionUp()
+
+        public Boolean mouseIn(int mx, int my, Rectangle rect)
         {
-
-            selection--;
-            if (selection < SELECTION.HOST)
+            if ((mx > rect.X && mx < (rect.X + rect.Width)) && (my > rect.Y && my < (rect.Y + rect.Height)))
             {
-                Console.WriteLine("if sel: " + (int)selection);
-                selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
+                return true;
             }
-            Console.WriteLine("sel: " + (int)selection);
-        }
 
-        private void selectionDown()
-        {
-            selection++;
-            if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
-            {
-                Console.WriteLine("if sel: " + (int)selection);
-                selection = SELECTION.HOST;
-            }
-            Console.WriteLine("sel: " + (int)selection);
-
+            return false;
 
         }
 
@@ -153,7 +148,7 @@ namespace ION
             else if (selection == SELECTION.BACK)
             {
                 StateTitle st = new StateTitle();
-                //st.enterPressed = true;
+         
                 ION.get().setState(st);
             }
            
@@ -171,7 +166,7 @@ namespace ION
 
         public override void focusGained()
         {
-
+            ION.get().IsMouseVisible = true;
             MediaPlayer.Play(Music.titleSong);
             MediaPlayer.IsRepeating = true;
         }
@@ -179,7 +174,7 @@ namespace ION
 
         public override void focusLost()
         {
-
+            ION.get().IsMouseVisible = false;
             MediaPlayer.Stop();
         }
 
