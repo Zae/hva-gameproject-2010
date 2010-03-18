@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
-using ION.Network;
+//using ION.Network;
 
 namespace ION
 {
@@ -26,8 +26,8 @@ namespace ION
         public static int halfWidth;
         public static int height;
         public static int halfHeight;
-        public ClientComponent client;
-        public ServerComponent server;
+       // public ClientComponent client;
+       // public ServerComponent server;
         
         
         /**
@@ -40,8 +40,8 @@ namespace ION
         public ION()
         {
             
-            server = new ServerComponent();
-            client = new ClientComponent();
+           // server = new ServerComponent();
+           // client = new ClientComponent();
             
             //Set the singleton instance for static reference
             instance = this;
@@ -111,6 +111,7 @@ namespace ION
             Fonts.font = Content.Load<SpriteFont>("TitleFont");
             
             //Load menu images
+            //Title Menu
             Images.ION_LOGO = Content.Load<Texture2D>("menuItems/ION_LOGO");
             Images.buttonNewGame = Content.Load<Texture2D>("menuItems/newGameButton");
             Images.buttonNewGameF = Content.Load<Texture2D>("menuItems/newGameButtonF");
@@ -118,7 +119,15 @@ namespace ION
             Images.buttonMPF = Content.Load<Texture2D>("menuItems/mpButtonF");
             Images.buttonQuit = Content.Load<Texture2D>("menuItems/quitButton");
             Images.buttonQuitF = Content.Load<Texture2D>("menuItems/quitButtonF");
+
+            //MultiPlayer menu
             
+            Images.buttonJoin = Content.Load<Texture2D>("menuItems/JoinButton");
+            Images.buttonJoinF = Content.Load<Texture2D>("menuItems/JoinButtonF");
+            Images.buttonHost = Content.Load<Texture2D>("menuItems/HostButton");
+            Images.buttonHostF = Content.Load<Texture2D>("menuItems/HostButtonF");
+            Images.buttonBack = Content.Load<Texture2D>("menuItems/BackButton");
+            Images.buttonBackF = Content.Load<Texture2D>("menuItems/BackButtonF");
 
 
 

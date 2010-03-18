@@ -87,8 +87,6 @@
     <Compile Include="Images.cs" />
     <Compile Include="MichielTest.cs" />
     <Compile Include="Music.cs" />
-    <Compile Include="Nework\ClientComponent.cs" />
-    <Compile Include="Nework\ServerComponent.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="PrimitiveBatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

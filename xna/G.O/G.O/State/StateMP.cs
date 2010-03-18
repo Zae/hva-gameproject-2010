@@ -35,41 +35,42 @@ namespace ION
         {
             ION.get().GraphicsDevice.Clear(Color.Black);
             ION.spriteBatch.Begin();
-            ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
+            ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
+            //ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
 
            
 
             if (selection == SELECTION.HOST)
             {
                 //Draw highlighted
-                ION.spriteBatch.DrawString(Fonts.font, host, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 100), Color.Red);
+                ION.spriteBatch.Draw(Images.buttonHostF, new Rectangle((ION.width / 2) - 125, (ION.height / 2), Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.DrawString(Fonts.font, host, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 100), Color.White);
+                ION.spriteBatch.Draw(Images.buttonHost, new Rectangle((ION.width / 2) - 125, (ION.height / 2), Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
             if (selection == SELECTION.JOIN)
             {
                 //Draw highlighted
-                ION.spriteBatch.DrawString(Fonts.font, join, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 50), Color.Red);
+                ION.spriteBatch.Draw(Images.buttonJoinF, new Rectangle((ION.width / 2) - 125, (ION.height / 2)+70 , Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.DrawString(Fonts.font, join, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 50), Color.White);
+                ION.spriteBatch.Draw(Images.buttonJoin, new Rectangle((ION.width / 2) - 125, (ION.height / 2)+70, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
 
 
             if (selection == SELECTION.BACK)
             {
                 //Draw highlighted
-                ION.spriteBatch.DrawString(Fonts.font, back, new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.Red);
+                ION.spriteBatch.Draw(Images.buttonBackF, new Rectangle((ION.width / 2) - 125, (ION.height / 2)+140, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.DrawString(Fonts.font, back, new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.White);
+                ION.spriteBatch.Draw(Images.buttonBack, new Rectangle((ION.width / 2) - 125, (ION.height / 2)+140, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
 
             ION.spriteBatch.End();

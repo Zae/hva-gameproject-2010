@@ -27,6 +27,16 @@ namespace ION
         public static Texture2D buttonMP;
         public static Texture2D buttonMPF;
 
+        public static Texture2D buttonJoin;
+        public static Texture2D buttonJoinF;
+        public static Texture2D buttonHost;
+        public static Texture2D buttonHostF;
+        public static Texture2D buttonBack;
+        public static Texture2D buttonBackF;
+
+
+
+
         public static Texture2D[] chargeCountImages = new Texture2D[10];
 
         public static Texture2D getChargeCountImage(float charge) 
