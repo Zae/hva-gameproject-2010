@@ -33,8 +33,7 @@ namespace ION
 
         public StateTitle()
         {
-
-
+            
         }
 
         public override void draw()
@@ -42,40 +41,45 @@ namespace ION
             ION.get().GraphicsDevice.Clear(Color.Black);
 
             ION.spriteBatch.Begin();
-            ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
+
+
+
+
+            ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
+            
             //spriteBatch.DrawString(Fonts.font, "press any key to start the test", new Vector2((GO.width/2)-100, (GO.height / 2)), Color.White);
 
             if (selection == SELECTION.NEWGAME)
             {
                 //Draw highlighted
-                ION.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 100), Color.Red);
+                ION.spriteBatch.Draw(Images.buttonNewGameF, new Rectangle((ION.width / 2) - 125, (ION.height / 2) , Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.DrawString(Fonts.font, newGame, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 100), Color.White);
+                ION.spriteBatch.Draw(Images.buttonNewGame, new Rectangle((ION.width / 2) - 125, (ION.height / 2) , Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
             if (selection == SELECTION.MULTIPLAYER)
             {
                 //Draw highlighted
-                ION.spriteBatch.DrawString(Fonts.font, multiplayer, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 50), Color.Red);
+                ION.spriteBatch.Draw(Images.buttonMPF, new Rectangle((ION.width / 2) - 125, (ION.height / 2) +70, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.DrawString(Fonts.font, multiplayer, new Vector2((ION.width / 2) - 100, (ION.height / 2) - 50), Color.White);
+                ION.spriteBatch.Draw(Images.buttonMP, new Rectangle((ION.width / 2) - 125, (ION.height / 2) +70, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
 
 
             if (selection == SELECTION.QUIT)
             {
                 //Draw highlighted
-                ION.spriteBatch.DrawString(Fonts.font, quit, new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.Red);
+                ION.spriteBatch.Draw(Images.buttonQuitF, new Rectangle((ION.width / 2) - 125, (ION.height / 2) +140, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.DrawString(Fonts.font, quit, new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.White);
+                ION.spriteBatch.Draw(Images.buttonQuit, new Rectangle((ION.width / 2) - 125, (ION.height / 2) +140, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
             }
 
 
