@@ -18,22 +18,22 @@ namespace ION
             QUIT
 
         }
-
-        private const String title = "LAND CONQUERER"; //"G.O."
-        private const String newGame = "New game";
-        private const String quit = "Quit";
-        private const String multiplayer = "Multiplayer Game";
-
         //Initialy the first option is selected
         public SELECTION selection = SELECTION.NEWGAME;
 
-        public bool upPressed = false;
-        public bool downPressed = false;
-        public bool enterPressed = false;
+     
+        public Rectangle newGameButton;
+        public Rectangle mpButton;
+        public Rectangle quitButton;
+
+        public bool mousePressed = false; 
 
         public StateTitle()
         {
-            
+            newGameButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) , Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            mpButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 70, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            quitButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 140, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+
         }
 
         public override void draw()
@@ -42,44 +42,42 @@ namespace ION
 
             ION.spriteBatch.Begin();
 
-
-
-
+            //logo
             ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
             
-            //spriteBatch.DrawString(Fonts.font, "press any key to start the test", new Vector2((GO.width/2)-100, (GO.height / 2)), Color.White);
+
 
             if (selection == SELECTION.NEWGAME)
             {
                 //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonNewGameF, new Rectangle((ION.width / 2) - 125, (ION.height / 2) , Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonNewGameF, newGameButton, Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.Draw(Images.buttonNewGame, new Rectangle((ION.width / 2) - 125, (ION.height / 2) , Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonNewGame, newGameButton, Color.White);
             }
             if (selection == SELECTION.MULTIPLAYER)
             {
                 //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonMPF, new Rectangle((ION.width / 2) - 125, (ION.height / 2) +70, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonMPF, mpButton, Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.Draw(Images.buttonMP, new Rectangle((ION.width / 2) - 125, (ION.height / 2) +70, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonMP, mpButton, Color.White);
             }
 
 
             if (selection == SELECTION.QUIT)
             {
                 //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonQuitF, new Rectangle((ION.width / 2) - 125, (ION.height / 2) +140, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonQuitF, quitButton, Color.White);
             }
             else
             {
                 //Draw normally
-                ION.spriteBatch.Draw(Images.buttonQuit, new Rectangle((ION.width / 2) - 125, (ION.height / 2) +140, Images.buttonNewGame.Width, Images.buttonNewGame.Height), Color.White);
+                ION.spriteBatch.Draw(Images.buttonQuit, quitButton, Color.White);
             }
 
 
@@ -90,79 +88,47 @@ namespace ION
         public override void update(int ellapsed)
         {
 
-            KeyboardState keyState = Keyboard.GetState();
-
-
-            //if (keyState.GetPressedKeys().Length > 0)
-            //{
-            //    GO.get().state = new StateTest();
-            //}
-            //if (keyState.IsKeyDown(Keys.Left))
-            //    playerX -= 1;
-
-            //if (keyState.IsKeyDown(Keys.Right))
-            //    playerX += 1;
-
-
-            if (keyState.IsKeyDown(Keys.Up) && !upPressed)
+           
+            MouseState mouseState = Mouse.GetState();
+            if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                selectionUp();
-                upPressed = true;
-            }
-            else if (keyState.IsKeyUp(Keys.Up) && upPressed)
-            {
-                upPressed = false;
+                mousePressed = true;
             }
 
-
-            if (keyState.IsKeyDown(Keys.Down) && !downPressed)
+            if (mouseIn(mouseState.X, mouseState.Y, newGameButton))
             {
-                selectionDown();
-                downPressed = true;
+                selection= SELECTION.NEWGAME;
+                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+                {
+                    makeSelection();
+                    mousePressed = false;
+                }
+
             }
-            else if (keyState.IsKeyUp(Keys.Down) && downPressed)
+            if (mouseIn(mouseState.X, mouseState.Y, mpButton))
             {
-                downPressed = false;
+                selection = SELECTION.MULTIPLAYER;
+                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+                {
+                    makeSelection();
+                    mousePressed = false;
+                }
+
             }
-
-            if (keyState.IsKeyDown(Keys.Enter) && !enterPressed)
+            if (mouseIn(mouseState.X, mouseState.Y, quitButton))
             {
-                makeSelection();
-                enterPressed = true;
-            }
+                selection = SELECTION.QUIT;
+                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+                {
+                    makeSelection();
+                    mousePressed = false;
+                }
 
-            if (keyState.IsKeyDown(Keys.Enter) && enterPressed)
-            {
-
-                enterPressed = false;
             }
 
         }
 
-        private void selectionUp()
-        {
-
-            selection--;
-            if (selection < SELECTION.NEWGAME)
-            {
-                Console.WriteLine("if sel: " + (int)selection);
-                selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
-            }
-            Console.WriteLine("sel: " + (int)selection);
-        }
-
-        private void selectionDown()
-        {
-            selection++;
-            if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
-            {
-                Console.WriteLine("if sel: " + (int)selection);
-                selection = SELECTION.NEWGAME;
-            }
-            Console.WriteLine("sel: " + (int)selection);
-
-
-        }
+        
 
         private void makeSelection()
         {
@@ -181,14 +147,29 @@ namespace ION
             }
         }
 
+
+        //checks if the mouse coordinates are in the rectangle
+        public Boolean mouseIn(int mx, int my, Rectangle rect)
+        {
+            if ((mx > rect.X && mx < (rect.X + rect.Width)) && (my > rect.Y && my < (rect.Y + rect.Height)))
+            {
+                return true;
+            }
+
+            return false;
+        
+        }
+
         public override void focusGained()
         {
+            ION.get().IsMouseVisible = true;
             MediaPlayer.Play(Music.titleSong);
             MediaPlayer.IsRepeating = true;
         }
 
         public override void focusLost()
         {
+            ION.get().IsMouseVisible = false;
             MediaPlayer.Stop();
         }
     }
