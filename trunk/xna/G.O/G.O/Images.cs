@@ -18,6 +18,15 @@ namespace ION
         public static Texture2D unitChargeImage;
         public static Texture2D unitHitmapImage;
 
+        //menuItems
+        public static Texture2D ION_LOGO;
+        public static Texture2D buttonNewGame;
+        public static Texture2D buttonNewGameF;
+        public static Texture2D buttonQuit;
+        public static Texture2D buttonQuitF;
+        public static Texture2D buttonMP;
+        public static Texture2D buttonMPF;
+
         public static Texture2D[] chargeCountImages = new Texture2D[10];
 
         public static Texture2D getChargeCountImage(float charge) 

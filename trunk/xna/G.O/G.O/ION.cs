@@ -29,6 +29,7 @@ namespace ION
         public ClientComponent client;
         public ServerComponent server;
         
+        
         /**
          * 
          **/
@@ -38,7 +39,7 @@ namespace ION
 
         public ION()
         {
-
+            
             server = new ServerComponent();
             client = new ClientComponent();
             
@@ -108,7 +109,21 @@ namespace ION
 
             // TODO: use this.Content to load your game content here
             Fonts.font = Content.Load<SpriteFont>("TitleFont");
+            
+            //Load menu images
+            Images.ION_LOGO = Content.Load<Texture2D>("menuItems/ION_LOGO");
+            Images.buttonNewGame = Content.Load<Texture2D>("menuItems/newGameButton");
+            Images.buttonNewGameF = Content.Load<Texture2D>("menuItems/newGameButtonF");
+            Images.buttonMP = Content.Load<Texture2D>("menuItems/mpButton");
+            Images.buttonMPF = Content.Load<Texture2D>("menuItems/mpButtonF");
+            Images.buttonQuit = Content.Load<Texture2D>("menuItems/quitButton");
+            Images.buttonQuitF = Content.Load<Texture2D>("menuItems/quitButtonF");
+            
 
+
+
+
+            //Load game images
             Images.mountainImage = Content.Load<Texture2D>("mountain_tile");
             Images.borderImage = Content.Load<Texture2D>("border_tile");
             Images.resourceImage = Content.Load<Texture2D>("resource_tile");
