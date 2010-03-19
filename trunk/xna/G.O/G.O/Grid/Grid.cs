@@ -8,27 +8,28 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using ION.GridStrategies;
 
 namespace ION
 {
     class Grid
     {
 
-        private Tile[,] map;
-        private int width;
-        private int height;
-        private int tileCount;
+        public static Tile[,] map;
+        public static int width;
+        public static int height;
+        public static int tileCount;
 
         public int mouseWorldX = 0;
         public int mouseWorldY = 0;
 
         private Tile selectedTile = null;
 
-        private Tile guessTile = null;
+        public static Tile[] perspectiveMap;
 
-        private Tile[] perspectiveMap;
 
-        private int step = 0;
+
+        private GridStrategy updateStrategy;
 
         private int viewDirection = 1;
         private const int SOUTH_WEST = 1;
@@ -43,7 +44,7 @@ namespace ION
 
         public Grid(String levelname)
         {
-            
+            updateStrategy = new FlowStrategy();
             
             //load the xml file into the XmlTextReader object. 
             try
@@ -52,7 +53,7 @@ namespace ION
                 //Debug.WriteLine("Execution path is: "+execPath);
 
                 //Read the level file using the execution path we got earlier
-                XmlTextReader XmlRdr = new System.Xml.XmlTextReader(execPath+"\\Content\\"+levelname);
+                XmlTextReader XmlRdr = new System.Xml.XmlTextReader(execPath+"\\Content\\levelItems\\"+levelname);
                
                 //Read the first Node
                 XmlRdr.Read();
@@ -121,7 +122,6 @@ namespace ION
         {
             //drawHitTest = true;
 
-
             //translate the screen input to world coordinates
             mouseWorldX = x - translationX - ION.halfWidth;
             mouseWorldY = y - translationY;
@@ -133,21 +133,11 @@ namespace ION
             //get the closest even value to that position
             int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
             int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
-            //int tilesVertical = (int)tilesVerticalQ;
-            //int tilesHorizontal = (int)tilesHorizontalQ;
-            //Debug.WriteLine("********");
-            //Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
-            //Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:" + tilesVertical);
-            //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
 
             //get the color at that position on the hitmap
             uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
 
             //pass the position and the color and see if you get back anything
-
-
-
-
             Tile tile = getTile(tilesVertical, tilesHorizontal, color);
 
             if (tile != null && tile is ResourceTile)
@@ -161,13 +151,6 @@ namespace ION
 
                 tile.setSelected(true);
                 selectedTile = tile;
-
-
-
-                //Debug.WriteLine("gotTile:" + tile.ToString());
-
-
-
             }
             else
             {
@@ -177,7 +160,6 @@ namespace ION
                     selectedTile = null;
                 }
             }
-            //update selected tile (or null when none is selected)
 
         }
 
@@ -194,8 +176,7 @@ namespace ION
         public void mouseLeftPressed(int x, int y, int translationX, int translationY)
         {
             //drawHitTest = true;
-            
-            
+ 
             //translate the screen input to world coordinates
             mouseWorldX = x - translationX - ION.halfWidth;
             mouseWorldY = y - translationY;
@@ -207,21 +188,11 @@ namespace ION
             //get the closest even value to that position
             int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
             int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
-            //int tilesVertical = (int)tilesVerticalQ;
-            //int tilesHorizontal = (int)tilesHorizontalQ;
-            //Debug.WriteLine("********");
-            //Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
-            //Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:"+tilesVertical);
-            //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
 
             //get the color at that position on the hitmap
             uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
 
             //pass the position and the color and see if you get back anything
-
-
-
-
             Tile tile = getTile(tilesVertical,tilesHorizontal, color);
 
             if (tile != null && tile is ResourceTile)
@@ -244,7 +215,6 @@ namespace ION
                     selectedTile = null;
                 }
             }
-            //update selected tile (or null when none is selected)
         }
 
         public void createUnit(int x, int y, int translationX, int translationY, int owner)
@@ -299,7 +269,6 @@ namespace ION
 
         private uint doHitmapTest(int x, int y, int translationX, int translationY, int visualX, int visualY) 
         {
-
             string sColorval = "NONE";
             uint[] myUint = new uint[1];
 
@@ -325,7 +294,6 @@ namespace ION
 
         private Tile getTile(int tilesVertical, int tilesHorizontal, uint color)
         {
-
             int lookForX = tilesHorizontal;
             int lookForY = tilesVertical;
 
@@ -446,13 +414,6 @@ namespace ION
                 //perspectiveMap[i].drawDebug(translationX, translationY);
             }
 
-            //if (guessTile != null)
-            //{
-            //    ION.spriteBatch.Begin();
-            //    ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(ION.halfWidth + (guessTile.getVisualX() * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth), (guessTile.getVisualY() * Tile.baseHalfHeight) + translationY, Tile.baseHalfWidth * 2, Tile.baseHalfHeight * 2), Color.White);
-            //    ION.spriteBatch.End();
-            //}
-
             if (drawHitTest)
             {
                 ION.spriteBatch.Begin();
@@ -464,124 +425,12 @@ namespace ION
 
         public void update(int ellapsed)
         {
-            //do unit stuff
-            step++;
 
-            if (step == 5)
-            {
-                tileVersusTile();   
-            }
-            else if (step == 10)
-            {
-                tileAidTile();
-
-                step = 0;
-            }
-
-           
-
-            //now tell all Tiles to update, we use the perspective map for that
-            //because it might be faster?
-            for (int i = 0; i < tileCount; i++)
-            {
-                perspectiveMap[i].update();
-            }
+            updateStrategy.update(ellapsed);
+            
         }
 
-        private void tileVersusTile()
-        {
-            Tile todo;
-
-            //This method looks at the grid from a overhead perspective where x increased in the
-            //right direction and y increases in the downward direction.
-
-            for (int i = 0; i < width; i++)
-            {
-                for (int ii = 0; ii < height; ii++)
-                {
-                    todo = map[i,ii];
-
-                    //The tile to the right of this tile
-                    if(isValid(i+1,ii)) 
-                    {
-                        todo.tileVersusTile(map[i+1,ii]);
-                    }
-
-                    ////The tile to the bottom-right of this tile
-                    //if(isValid(i+1,ii+1))
-                    //{
-                    //    todo.tileVersusTile(map[i+1,ii+1]);
-                    //}
-
-                    //The tile to the bottom of this tile
-                    if (isValid(i,ii+1))
-                    {
-                        todo.tileVersusTile(map[i,ii+1]);
-                    }
-
-                    ////The tile to the bottom left of this tile
-                    //if (isValid(i-1,ii+1))
-                    //{
-                    //    todo.tileVersusTile(map[i-1,ii+1]);
-                    //}
-
-                }
-            }
-        }
-
-        private bool isValid(int x, int y)
-        {
-            if (x >= 0 && x < width && y >= 0 && y < height)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private void tileAidTile()
-        {
-            Tile todo;
-            Tile other;
-
-            //This method looks at the grid from a overhead perspective where x increased in the
-            //right direction and y increases in the downward direction.
-
-            for (int i = 0; i < width; i++)
-            {
-                for (int ii = 0; ii < height; ii++)
-                {
-                    todo = map[i, ii];
-
-                    //The tile to the right of this tile
-                    if (isValid(i + 1, ii))
-                    {
-                        other = map[i + 1, ii];
-                        todo.tileAidTile(other);
-                    }
-
-                    ////The tile to the bottom-right of this tile
-                    //if (isValid(i + 1, ii + 1))
-                    //{
-                    //    todo.tileAidTile(map[i + 1, ii + 1]);
-                    //}
-
-                    //The tile to the bottom of this tile
-                    if (isValid(i, ii + 1))
-                    {
-                        other = map[i, ii+1];
-                        todo.tileAidTile(other);
-                    }
-
-                    ////The tile to the bottom left of this tile
-                    //if (isValid(i - 1, ii + 1))
-                    //{
-                    //    todo.tileAidTile(map[i - 1, ii + 1]);
-                    //}
-
-                }
-            }
-
-        }
+        
 
         private Tile createTile(char c, int x, int y)
         {

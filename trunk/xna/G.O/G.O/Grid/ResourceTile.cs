@@ -16,10 +16,10 @@ namespace ION
         public int nextOwner = Players.NEUTRAL;
 
         public float charge = 0;
-
+        
         public float nextCharge = 0;
 
-        private Unit unit = null;
+        protected Unit unit = null;
 
         //This is buggy but for testing
         //private const float minimumFlux = 0.03f;
@@ -27,6 +27,10 @@ namespace ION
         public const float MAX_CHARGE = 1.0f;
 
         private Color tileColor = new Color();
+
+        public ResourceTile()
+        {
+        }
 
         public ResourceTile(int indexX, int indexY)
         {
@@ -57,172 +61,7 @@ namespace ION
         }
 
 
-        public override void tileVersusTile(Tile other)
-        {
-            //if (owner == Players.NEUTRAL)
-            //{
-            //    return;
-            //}
-            
-            //if (other is ResourceTile)
-            //{
-            //    ResourceTile otherResourceTile = (ResourceTile)other;
-            //    if (otherResourceTile.owner != owner && otherResourceTile.owner != Players.NEUTRAL)
-            //    {
-            //        if (otherResourceTile.charge > charge)
-            //        {
-            //            if (otherResourceTile.charge - charge > minimumFlux)
-            //            {
-            //                removeCharge(minimumFlux);
-            //                otherResourceTile.removeCharge(minimumFlux);
-            //            }
-
-            //        }
-            //        else if (charge > otherResourceTile.charge)
-            //        {
-            //            if (charge - otherResourceTile.charge > minimumFlux)
-            //            {
-            //                otherResourceTile.removeCharge(minimumFlux);
-            //                removeCharge(minimumFlux);
-            //            }
-
-            //        }
-
-            //    }
-            //}
-        }
-
-        //public override void tileAidTile(Tile other)
-        //{
-        //    if (owner == Players.NEUTRAL)
-        //    {
-        //        return;
-        //    }
-            
-        //    if (other is ResourceTile )
-        //    {
-        //        ResourceTile otherResourceTile = (ResourceTile)other;
-        //        if (otherResourceTile.owner == owner)
-        //        {
-        //            if (otherResourceTile.charge > charge)
-        //            {
-        //                if (otherResourceTile.charge - charge > minimumFlux)
-        //                {
-        //                    addCharge(minimumFlux, owner);
-        //                    otherResourceTile.removeCharge(minimumFlux);
-        //                }
-
-        //            }
-        //            else if (charge > otherResourceTile.charge)
-        //            {
-        //                if (charge - otherResourceTile.charge > minimumFlux)
-        //                {
-        //                    otherResourceTile.addCharge(minimumFlux, owner);
-        //                    removeCharge(minimumFlux);
-        //                }
-
-        //            }
-
-        //        }
-        //    }
-
-        //}
-
-        //public override void tileAidTile2(Tile other)
-        public override void tileAidTile(Tile other)
-        {
-            //Check if the other tile is a resource tile else return from this method
-            ResourceTile otherResourceTile;
-            if (other is ResourceTile)
-            {
-                otherResourceTile = (ResourceTile)other;
-            }
-            else
-            {
-                return;
-            }
-
-            //Check if these tiles have the same owner
-            if (owner == otherResourceTile.owner)
-            {
-                if (charge > otherResourceTile.charge)
-                {
-                    float diff = charge - otherResourceTile.charge;
-                    //if (diff < 0.01f)
-                    //{
-                    //    return;
-                    //}
-
-                    
-                    float draw = 0.0f;
-                    float maxRelease = charge / 4;
-                    float maxDraw = (MAX_CHARGE - otherResourceTile.charge) / 4;
-
-                    if (maxDraw > maxRelease)
-                    {
-                        draw = maxRelease;
-                    }
-                    else if (maxRelease > maxDraw)
-                    {
-                        draw = maxDraw;
-                    }
-
-                    if (draw > diff)
-                    {
-                        draw = diff;
-                    }
-
-                    removeCharge(draw);
-                    otherResourceTile.addCharge(draw, owner);
-                }
-                else if (otherResourceTile.charge > charge)
-                {
-                    float diff = otherResourceTile.charge - charge;
-                    //if (diff < 0.01f)
-                    //{
-                    //    return;
-                    //}
-                    
-                    
-                    float draw = 0.0f;
-                    float maxRelease = otherResourceTile.charge / 4;
-                    float maxDraw = (MAX_CHARGE - charge) / 4;
-
-                    if (maxDraw > maxRelease)
-                    {
-                        draw = maxRelease;
-                    }
-                    else if (maxRelease > maxDraw)
-                    {
-                        draw = maxDraw;
-                    }
-
-                    if (draw > diff)
-                    {
-                        draw = diff;
-                    }
-
-                    otherResourceTile.removeCharge(draw);
-                    addCharge(draw,otherResourceTile.owner);
-                }
-            }
-
-            else if (owner == Players.NEUTRAL && otherResourceTile.owner != Players.NEUTRAL)
-            {
-                if (otherResourceTile.charge > 0.95f)
-                {
-                    nextOwner = otherResourceTile.owner;
-                }
-            }
-            else if (owner != Players.NEUTRAL && otherResourceTile.owner == Players.NEUTRAL)
-            {
-                if (charge > 0.95f)
-                {
-                    otherResourceTile.nextOwner = owner;
-                }
-            }
-
-        }
+        
 
 
 
@@ -339,7 +178,7 @@ namespace ION
                 if (charge - addition < 0.0f)
                 {
                     nextOwner = player;
-                    nextCharge = 0.0f;
+                    nextCharge = 0.0000000001f;
                 }
                 else
                 {

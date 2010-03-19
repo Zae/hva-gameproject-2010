@@ -24,14 +24,14 @@ namespace ION
             ION.spriteBatch.End();
         }
 
-        public override void tileVersusTile(Tile other)
-        {
+        //public override void tileVersusTile(Tile b)
+        //{
 
-        }
+        //}
 
-        public override void tileAidTile(Tile other)
-        {
-        }
+        //public override void tileAidTile(Tile b)
+        //{
+        //}
 
         public override void draw(int translationX, int translationY)
         {
