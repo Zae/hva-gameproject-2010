@@ -8,4 +8,5 @@
   NNNNNNNN
   NNNNNNNN
 </Level>
-
+<Playerbase PlayerNumber="1" X="2" Y="5"></Playerbase>
+<Playerbase PlayerNumber="2" X="5" Y="2"></Playerbase>

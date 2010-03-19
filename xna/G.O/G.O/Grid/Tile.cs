@@ -36,9 +36,9 @@ namespace ION
         public abstract void draw(int translationX, int translationY);
         public abstract void drawDebug(int translationX, int translationY);
 
-        public abstract void tileVersusTile(Tile other);
+        //public abstract void tileVersusTile(Tile b);
 
-        public abstract void tileAidTile(Tile other);
+        //public abstract void tileAidTile(Tile b);
 
         public abstract void update();
 

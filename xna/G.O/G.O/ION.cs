@@ -108,7 +108,7 @@ namespace ION
             primitiveBatch = new PrimitiveBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            Fonts.font = Content.Load<SpriteFont>("TitleFont");
+            Fonts.font = Content.Load<SpriteFont>("fontItems/TitleFont");
             
             //Load menu images
             //Title Menu
@@ -133,25 +133,25 @@ namespace ION
 
 
             //Load game images
-            Images.mountainImage = Content.Load<Texture2D>("mountain_tile");
-            Images.borderImage = Content.Load<Texture2D>("border_tile");
-            Images.resourceImage = Content.Load<Texture2D>("resource_tile");
-            Images.white1px = Content.Load<Texture2D>("white");
-            Images.tileHitmapImage = Content.Load<Texture2D>("tile_hitmap");
-            Images.unitImage = Content.Load<Texture2D>("unit");
-            Images.unitChargeImage = Content.Load<Texture2D>("unit_charge");
-            Images.unitHitmapImage = Content.Load<Texture2D>("unit_hitmap");
+            Images.mountainImage = Content.Load<Texture2D>("tileItems/mountain_tile");
+            Images.borderImage = Content.Load<Texture2D>("tileItems/border_tile");
+            Images.resourceImage = Content.Load<Texture2D>("tileItems/resource_tile");
+            Images.white1px = Content.Load<Texture2D>("toolItems/white");
+            Images.tileHitmapImage = Content.Load<Texture2D>("toolItems/tile_hitmap");
+            Images.unitImage = Content.Load<Texture2D>("unitItems/unit");
+            Images.unitChargeImage = Content.Load<Texture2D>("unitItems/unit_charge");
+            Images.unitHitmapImage = Content.Load<Texture2D>("toolItems/unit_hitmap");
 
 
             for (int i = 0; i < Images.chargeCountImages.Length; i++)
             {
-                Images.chargeCountImages[i] = Content.Load<Texture2D>((i + 1).ToString());
+                Images.chargeCountImages[i] = Content.Load<Texture2D>("chargeCountItems/"+(i + 1).ToString());
             }
 
-            Music.titleSong = Content.Load<Song>("TitleSong");
-            Music.gameSong1 = Content.Load<Song>("GameSong1");
-            Music.gameSong2 = Content.Load<Song>("GameSong2");
-            Music.actionSound1 = Content.Load<SoundEffect>("ActionSound1");
+            Music.titleSong = Content.Load<Song>("musicItems/TitleSong");
+            Music.gameSong1 = Content.Load<Song>("musicItems/GameSong1");
+            Music.gameSong2 = Content.Load<Song>("musicItems/GameSong2");
+            Music.actionSound1 = Content.Load<SoundEffect>("sfxItems/ActionSound1");
 
             state = new StateTitle();
             state.focusGained();
