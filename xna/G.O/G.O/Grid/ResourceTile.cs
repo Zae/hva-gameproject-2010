@@ -13,16 +13,16 @@ namespace ION
 
         public int owner = Players.NEUTRAL;
 
-        private int nextOwner = Players.NEUTRAL;
+        public int nextOwner = Players.NEUTRAL;
 
         public float charge = 0;
 
-        private float nextCharge = 0;
+        public float nextCharge = 0;
 
         private Unit unit = null;
 
         //This is buggy but for testing
-        private const float minimumFlux = 0.005f;
+        //private const float minimumFlux = 0.03f;
 
         public const float MAX_CHARGE = 1.0f;
 
@@ -37,7 +37,8 @@ namespace ION
         {
             ION.spriteBatch.Begin();
             Vector2 location = new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
-            ION.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.Black);
+            //ION.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.Black);
+            ION.spriteBatch.DrawString(Fonts.font, "charge: "+charge, location, Color.Black);
             ION.spriteBatch.End();
         }
 
@@ -58,60 +59,166 @@ namespace ION
 
         public override void tileVersusTile(Tile other)
         {
-            if (other is ResourceTile)
-            {
-                ResourceTile otherResourceTile = (ResourceTile)other;
-                if (otherResourceTile.owner != owner)
-                {
-                    if (otherResourceTile.charge > charge)
-                    {
-                        if (otherResourceTile.charge - charge > minimumFlux)
-                        {
-                            addCharge(minimumFlux, owner);
-                            otherResourceTile.removeCharge(minimumFlux);
-                        }
+            //if (owner == Players.NEUTRAL)
+            //{
+            //    return;
+            //}
+            
+            //if (other is ResourceTile)
+            //{
+            //    ResourceTile otherResourceTile = (ResourceTile)other;
+            //    if (otherResourceTile.owner != owner && otherResourceTile.owner != Players.NEUTRAL)
+            //    {
+            //        if (otherResourceTile.charge > charge)
+            //        {
+            //            if (otherResourceTile.charge - charge > minimumFlux)
+            //            {
+            //                removeCharge(minimumFlux);
+            //                otherResourceTile.removeCharge(minimumFlux);
+            //            }
 
-                    }
-                    else if (charge > otherResourceTile.charge)
-                    {
-                        if (charge - otherResourceTile.charge > minimumFlux)
-                        {
-                            otherResourceTile.addCharge(minimumFlux, owner);
-                            removeCharge(minimumFlux);
-                        }
+            //        }
+            //        else if (charge > otherResourceTile.charge)
+            //        {
+            //            if (charge - otherResourceTile.charge > minimumFlux)
+            //            {
+            //                otherResourceTile.removeCharge(minimumFlux);
+            //                removeCharge(minimumFlux);
+            //            }
 
-                    }
+            //        }
 
-                }
-            }
+            //    }
+            //}
         }
 
+        //public override void tileAidTile(Tile other)
+        //{
+        //    if (owner == Players.NEUTRAL)
+        //    {
+        //        return;
+        //    }
+            
+        //    if (other is ResourceTile )
+        //    {
+        //        ResourceTile otherResourceTile = (ResourceTile)other;
+        //        if (otherResourceTile.owner == owner)
+        //        {
+        //            if (otherResourceTile.charge > charge)
+        //            {
+        //                if (otherResourceTile.charge - charge > minimumFlux)
+        //                {
+        //                    addCharge(minimumFlux, owner);
+        //                    otherResourceTile.removeCharge(minimumFlux);
+        //                }
+
+        //            }
+        //            else if (charge > otherResourceTile.charge)
+        //            {
+        //                if (charge - otherResourceTile.charge > minimumFlux)
+        //                {
+        //                    otherResourceTile.addCharge(minimumFlux, owner);
+        //                    removeCharge(minimumFlux);
+        //                }
+
+        //            }
+
+        //        }
+        //    }
+
+        //}
+
+        //public override void tileAidTile2(Tile other)
         public override void tileAidTile(Tile other)
         {
+            //Check if the other tile is a resource tile else return from this method
+            ResourceTile otherResourceTile;
             if (other is ResourceTile)
             {
-                ResourceTile otherResourceTile = (ResourceTile)other;
-                if (otherResourceTile.owner == owner)
+                otherResourceTile = (ResourceTile)other;
+            }
+            else
+            {
+                return;
+            }
+
+            //Check if these tiles have the same owner
+            if (owner == otherResourceTile.owner)
+            {
+                if (charge > otherResourceTile.charge)
                 {
-                    if (otherResourceTile.charge > charge)
+                    float diff = charge - otherResourceTile.charge;
+                    //if (diff < 0.01f)
+                    //{
+                    //    return;
+                    //}
+
+                    
+                    float draw = 0.0f;
+                    float maxRelease = charge / 4;
+                    float maxDraw = (MAX_CHARGE - otherResourceTile.charge) / 4;
+
+                    if (maxDraw > maxRelease)
                     {
-                        if (otherResourceTile.charge - charge > minimumFlux)
-                        {
-                            addCharge(minimumFlux, owner);
-                            otherResourceTile.removeCharge(minimumFlux);
-                        }
-
+                        draw = maxRelease;
                     }
-                    else if (charge > otherResourceTile.charge)
+                    else if (maxRelease > maxDraw)
                     {
-                        if (charge - otherResourceTile.charge > minimumFlux)
-                        {
-                            otherResourceTile.addCharge(minimumFlux, owner);
-                            removeCharge(minimumFlux);
-                        }
-
+                        draw = maxDraw;
                     }
 
+                    if (draw > diff)
+                    {
+                        draw = diff;
+                    }
+
+                    removeCharge(draw);
+                    otherResourceTile.addCharge(draw, owner);
+                }
+                else if (otherResourceTile.charge > charge)
+                {
+                    float diff = otherResourceTile.charge - charge;
+                    //if (diff < 0.01f)
+                    //{
+                    //    return;
+                    //}
+                    
+                    
+                    float draw = 0.0f;
+                    float maxRelease = otherResourceTile.charge / 4;
+                    float maxDraw = (MAX_CHARGE - charge) / 4;
+
+                    if (maxDraw > maxRelease)
+                    {
+                        draw = maxRelease;
+                    }
+                    else if (maxRelease > maxDraw)
+                    {
+                        draw = maxDraw;
+                    }
+
+                    if (draw > diff)
+                    {
+                        draw = diff;
+                    }
+
+                    otherResourceTile.removeCharge(draw);
+                    addCharge(draw,otherResourceTile.owner);
+                }
+            }
+
+            else if (owner == Players.NEUTRAL && otherResourceTile.owner != Players.NEUTRAL)
+            {
+                if (otherResourceTile.charge > 0.95f)
+                {
+                    nextOwner = otherResourceTile.owner;
+                }
+            }
+            else if (owner != Players.NEUTRAL && otherResourceTile.owner == Players.NEUTRAL)
+            {
+                if (charge > 0.95f)
+                {
+                    otherResourceTile.nextOwner = owner;
                 }
             }
 
@@ -154,8 +261,17 @@ namespace ION
             tileColor = getAppropriateColor(owner, charge);
 
             ION.spriteBatch.Begin();
-            //GO.spriteBatch.Draw(Images.borderImage, new Rectangle(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
+
+            if (owner != Players.NEUTRAL)
+            {
+                ION.spriteBatch.Draw(Images.borderImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), tileColor);
+            }
+
+
             ION.spriteBatch.Draw(Images.resourceImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), tileColor);
+            
+            
+            
             ION.spriteBatch.End();
 
             if (selected)
@@ -175,19 +291,19 @@ namespace ION
                 ION.primitiveBatch.End();
             }
 
-            if (selected)
-            {
-                addCharge(0.04f,Players.PLAYER1);
-            }
+            //if (selected)
+            //{
+            //    addCharge(0.04f,Players.PLAYER1);
+            //}
 
-            if (owner != Players.NEUTRAL)
-            {
-                Texture2D chargeImage = Images.getChargeCountImage(charge);
+            //if (owner != Players.NEUTRAL)
+            //{
+            //    Texture2D chargeImage = Images.getChargeCountImage(charge);
 
-                ION.spriteBatch.Begin();
-                ION.spriteBatch.Draw(chargeImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight*2), Color.White);
-                ION.spriteBatch.End();
-            }
+            //    ION.spriteBatch.Begin();
+            //    ION.spriteBatch.Draw(chargeImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight*2), Color.White);
+            //    ION.spriteBatch.End();
+            //}
 
             if(unit != null) {
                 unit.draw(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
@@ -246,15 +362,15 @@ namespace ION
 
         public void removeCharge(float addition)
         {
-            if (charge - addition < 0.0f)
-            {
-                nextCharge = 0.0f;
-                owner = Players.NEUTRAL;
-            }
-            else
-            {
-                nextCharge = charge - addition;
-            }
+            //if (charge - addition < 0.0f)
+            //{
+            //    nextCharge = 0.0f;
+            //    nextOwner = Players.NEUTRAL;
+            //}
+            //else
+            //{
+            //    nextCharge = charge - addition;
+            //}
 
         }
 

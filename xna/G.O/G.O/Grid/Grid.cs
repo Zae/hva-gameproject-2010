@@ -152,30 +152,30 @@ namespace ION
 
             if (tile != null && tile is ResourceTile)
             {
-                ((ResourceTile)tile).addCharge(0.1f, Players.PLAYER2);
-                
-                //if (selectedTile != null)
-                //{
-                //    selectedTile.setSelected(false);
-                //}
+                ((ResourceTile)tile).addCharge(0.06f, Players.PLAYER2);
 
-                //tile.setSelected(true);
-                //selectedTile = tile;
+                if (selectedTile != null)
+                {
+                    selectedTile.setSelected(false);
+                }
+
+                tile.setSelected(true);
+                selectedTile = tile;
 
 
 
-                ////Debug.WriteLine("gotTile:" + tile.ToString());
+                //Debug.WriteLine("gotTile:" + tile.ToString());
 
 
 
             }
             else
             {
-                //if (selectedTile != null)
-                //{
-                //    selectedTile.setSelected(false);
-                //    selectedTile = null;
-                //}
+                if (selectedTile != null)
+                {
+                    selectedTile.setSelected(false);
+                    selectedTile = null;
+                }
             }
             //update selected tile (or null when none is selected)
 
@@ -226,33 +226,25 @@ namespace ION
 
             if (tile != null && tile is ResourceTile)
             {
-                ((ResourceTile)tile).addCharge(0.1f, Players.PLAYER1);
+                ((ResourceTile)tile).addCharge(0.06f, Players.PLAYER1);
 
-                //if (selectedTile != null)
-                //{
-                //    selectedTile.setSelected(false);
-                //}
+                if (selectedTile != null)
+                {
+                    selectedTile.setSelected(false);
+                }
 
-                //tile.setSelected(true);
-                //selectedTile = tile;
-
-
-
-                ////Debug.WriteLine("gotTile:" + tile.ToString());
-
-
-
+                tile.setSelected(true);
+                selectedTile = tile;
             }
             else
             {
-                //if (selectedTile != null)
-                //{
-                //    selectedTile.setSelected(false);
-                //    selectedTile = null;
-                //}
+                if (selectedTile != null)
+                {
+                    selectedTile.setSelected(false);
+                    selectedTile = null;
+                }
             }
             //update selected tile (or null when none is selected)
-
         }
 
         public void createUnit(int x, int y, int translationX, int translationY, int owner)
@@ -473,23 +465,20 @@ namespace ION
         public void update(int ellapsed)
         {
             //do unit stuff
+            step++;
 
-            if (step == 0)
+            if (step == 5)
             {
-                //tileVersusTile();
+                tileVersusTile();   
+            }
+            else if (step == 10)
+            {
+                tileAidTile();
 
-                step++;
+                step = 0;
             }
-            else if (step == 300)
-            {
-                //tileAidTile();
 
-                step++;
-            }
-            else if (step == 600)
-            {
-                step=0;
-            }
+           
 
             //now tell all Tiles to update, we use the perspective map for that
             //because it might be faster?
@@ -510,31 +499,31 @@ namespace ION
             {
                 for (int ii = 0; ii < height; ii++)
                 {
-                    todo = map[i, ii];
+                    todo = map[i,ii];
 
                     //The tile to the right of this tile
                     if(isValid(i+1,ii)) 
                     {
-                        todo.tileVersusTile(map[i + 1, ii]);
+                        todo.tileVersusTile(map[i+1,ii]);
                     }
 
-                    //The tile to the bottom-right of this tile
-                    if(isValid(i+1,ii+1))
-                    {
-                        todo.tileVersusTile(map[i + 1, ii+1]);
-                    }
+                    ////The tile to the bottom-right of this tile
+                    //if(isValid(i+1,ii+1))
+                    //{
+                    //    todo.tileVersusTile(map[i+1,ii+1]);
+                    //}
 
                     //The tile to the bottom of this tile
-                    if (isValid(i, ii+1))
+                    if (isValid(i,ii+1))
                     {
-                        todo.tileVersusTile(map[i, ii+1]);
+                        todo.tileVersusTile(map[i,ii+1]);
                     }
 
-                    //The tile to the bottom left of this tile
-                    if (isValid(i - 1, ii+1))
-                    {
-                        todo.tileVersusTile(map[i - 1, ii+1]);
-                    }
+                    ////The tile to the bottom left of this tile
+                    //if (isValid(i-1,ii+1))
+                    //{
+                    //    todo.tileVersusTile(map[i-1,ii+1]);
+                    //}
 
                 }
             }
@@ -552,6 +541,7 @@ namespace ION
         private void tileAidTile()
         {
             Tile todo;
+            Tile other;
 
             //This method looks at the grid from a overhead perspective where x increased in the
             //right direction and y increases in the downward direction.
@@ -565,26 +555,28 @@ namespace ION
                     //The tile to the right of this tile
                     if (isValid(i + 1, ii))
                     {
-                        todo.tileAidTile(map[i + 1, ii]);
+                        other = map[i + 1, ii];
+                        todo.tileAidTile(other);
                     }
 
-                    //The tile to the bottom-right of this tile
-                    if (isValid(i + 1, ii + 1))
-                    {
-                        todo.tileAidTile(map[i + 1, ii + 1]);
-                    }
+                    ////The tile to the bottom-right of this tile
+                    //if (isValid(i + 1, ii + 1))
+                    //{
+                    //    todo.tileAidTile(map[i + 1, ii + 1]);
+                    //}
 
                     //The tile to the bottom of this tile
                     if (isValid(i, ii + 1))
                     {
-                        todo.tileAidTile(map[i, ii + 1]);
+                        other = map[i, ii+1];
+                        todo.tileAidTile(other);
                     }
 
-                    //The tile to the bottom left of this tile
-                    if (isValid(i - 1, ii + 1))
-                    {
-                        todo.tileAidTile(map[i - 1, ii + 1]);
-                    }
+                    ////The tile to the bottom left of this tile
+                    //if (isValid(i - 1, ii + 1))
+                    //{
+                    //    todo.tileAidTile(map[i - 1, ii + 1]);
+                    //}
 
                 }
             }
