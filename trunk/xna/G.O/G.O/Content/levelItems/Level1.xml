@@ -1,4 +1,4 @@
-﻿<Level Width="8" Height="8">
+﻿<Level Width="8" Height="8" PlayerCount="2" Base1X="2" Base1Y="5" Base2X="5" Base2Y="2">
   NNNNNNNN
   NNNNNNNN
   NNNNNNNN
@@ -8,5 +8,4 @@
   NNNNNNNN
   NNNNNNNN
 </Level>
-<Playerbase PlayerNumber="1" X="2" Y="5"></Playerbase>
-<Playerbase PlayerNumber="2" X="5" Y="2"></Playerbase>
+
