@@ -42,81 +42,7 @@ namespace ION
         private float virtualY = 0;
 
 
-        public Grid(String levelname)
-        {
-            updateStrategy = new FlowStrategy();
-            
-            //load the xml file into the XmlTextReader object. 
-            try
-            {
-                string execPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
-                //Debug.WriteLine("Execution path is: "+execPath);
-
-                //Read the level file using the execution path we got earlier
-                XmlTextReader XmlRdr = new System.Xml.XmlTextReader(execPath+"\\Content\\levelItems\\"+levelname);
-               
-                //Read the first Node
-                XmlRdr.Read();
-
-                //If it is a Level Node we can continue
-                if (XmlRdr.NodeType == XmlNodeType.Element && XmlRdr.Name == "Level")
-                {
-                    width = int.Parse(XmlRdr.GetAttribute(0));
-                    height = int.Parse(XmlRdr.GetAttribute(1));
-                    tileCount = width * height;
-                    map = new Tile[width,height];
-                    perspectiveMap = new Tile[tileCount];
-
-                    String rawLevel = XmlRdr.ReadElementContentAsString();
-
-                   // Debug.WriteLine("The raw level data reads: " + rawLevel);
-
-                    int length = rawLevel.Length;
-
-                    //for (int i = 0; i < length; i++)
-                    //{
-                    //    Debug.WriteLine("char " + i + " reads: " + rawLevel[i]);
-                    //}
-
-                    int row = -1;
-                    int colom = 0;
-                    bool newRowStarted = false;
-                    for (int i = 0; i < length; i++)
-                    {
-                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M')
-                        {
-                            if (!newRowStarted)
-                            {
-                                newRowStarted = true;
-                                colom = 0;
-                                row++;
-                            }
-
-                            map[colom,row] = createTile(rawLevel[i],colom,row);
-                            colom++;
-                        }
-                        else
-                        {
-                            if (newRowStarted)
-                            {
-                                newRowStarted = false;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    Debug.WriteLine("FATAL ERROR: Level file did not contain a valid Level Node");
-                    ION.get().Exit();
-                }
-
-                settleIndexZ(SOUTH_WEST);
-
-            }
-            catch(Exception e) {
-                Console.WriteLine("exception in grid: "+ e.ToString());
-            }
-        }
+        
 
         public void mouseRightPressed(int x, int y, int translationX, int translationY)
         {
@@ -446,5 +372,100 @@ namespace ION
             return null;
         }
 
+
+        public Grid(String levelname)
+        {
+            updateStrategy = new FlowStrategy();
+
+            //load the xml file into the XmlTextReader object. 
+            try
+            {
+                string execPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+                //Debug.WriteLine("Execution path is: "+execPath);
+
+                //Read the level file using the execution path we got earlier
+                XmlTextReader XmlRdr = new System.Xml.XmlTextReader(execPath + "\\Content\\levelItems\\" + levelname);
+
+                //Read the first Node
+                XmlRdr.Read();
+
+                //If it is a Level Node we can continue
+                if (XmlRdr.NodeType == XmlNodeType.Element && XmlRdr.Name == "Level")
+                {
+                    width = int.Parse(XmlRdr.GetAttribute(0));
+                    height = int.Parse(XmlRdr.GetAttribute(1));
+                    tileCount = width * height;
+                    ////Now read the player count and positions of these players
+                    int playerCount = int.Parse(XmlRdr.GetAttribute(2));
+
+                    int[] positionsX = new int[playerCount];
+                    int[] positionsY = new int[playerCount];
+                    for (int i = 0; i < playerCount; i++)
+                    {
+                        positionsX[i] = int.Parse(XmlRdr.GetAttribute(3 + (i * 2)));
+                        positionsY[i] = int.Parse(XmlRdr.GetAttribute(3 + (i * 2) + 1));
+
+                        //map[xPos, yPos] = new BaseTile(xPos, yPos, i + 1);
+                    }
+
+
+                    map = new Tile[width, height];
+                    perspectiveMap = new Tile[tileCount];
+
+                    String rawLevel = XmlRdr.ReadElementContentAsString();
+
+                    // Debug.WriteLine("The raw level data reads: " + rawLevel);
+
+                    int length = rawLevel.Length;
+
+                    //for (int i = 0; i < length; i++)
+                    //{
+                    //    Debug.WriteLine("char " + i + " reads: " + rawLevel[i]);
+                    //}
+
+                    int row = -1;
+                    int colom = 0;
+                    bool newRowStarted = false;
+                    for (int i = 0; i < length; i++)
+                    {
+                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M')
+                        {
+                            if (!newRowStarted)
+                            {
+                                newRowStarted = true;
+                                colom = 0;
+                                row++;
+                            }
+
+                            map[colom, row] = createTile(rawLevel[i], colom, row);
+                            colom++;
+                        }
+                        else
+                        {
+                            if (newRowStarted)
+                            {
+                                newRowStarted = false;
+                            }
+                        }
+                    }
+
+                 
+               
+
+                }
+                else
+                {
+                    Debug.WriteLine("FATAL ERROR: Level file did not contain a valid Level Node");
+                    ION.get().Exit();
+                }
+
+                settleIndexZ(SOUTH_WEST);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("exception in grid: " + e.ToString());
+            }
+        }
     }
 }
