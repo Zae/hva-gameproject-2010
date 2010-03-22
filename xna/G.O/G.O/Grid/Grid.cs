@@ -448,6 +448,12 @@ namespace ION
                             }
                         }
                     }
+                    
+                    //finally take the player position and put them into the map
+                    for (int i = 0; i < playerCount; i++)
+                    {
+                        map[positionsX[i], positionsY[i]] = new BaseTile(positionsX[i], positionsY[i], i + 1);
+                    }
 
                  
                

@@ -135,14 +135,14 @@ namespace ION
             //    addCharge(0.04f,Players.PLAYER1);
             //}
 
-            //if (owner != Players.NEUTRAL)
-            //{
-            //    Texture2D chargeImage = Images.getChargeCountImage(charge);
+            if (owner != Players.NEUTRAL)
+            {
+                Texture2D chargeImage = Images.getChargeCountImage(charge);
 
-            //    ION.spriteBatch.Begin();
-            //    ION.spriteBatch.Draw(chargeImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight*2), Color.White);
-            //    ION.spriteBatch.End();
-            //}
+                ION.spriteBatch.Begin();
+                ION.spriteBatch.Draw(chargeImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
+                ION.spriteBatch.End();
+            }
 
             if(unit != null) {
                 unit.draw(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);

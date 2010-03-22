@@ -21,6 +21,17 @@
   <defs
      id="defs4">
     <linearGradient
+       id="linearGradient5331">
+      <stop
+         id="stop5333"
+         offset="0"
+         style="stop-color:#f0f0f0;stop-opacity:1;" />
+      <stop
+         id="stop5335"
+         offset="1"
+         style="stop-color:#c8c8c8;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
        id="linearGradient6168">
       <stop
          id="stop6170"
@@ -1495,6 +1506,26 @@
        y1="617.36218"
        x2="300"
        y2="599.86218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5331"
+       id="linearGradient4557"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-44.324437,10.553432)"
+       x1="400.6203"
+       y1="617.52484"
+       x2="409.06305"
+       y2="619.6355" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5331"
+       id="linearGradient4559"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.2658316,0,0,1.2658316,-104.68167,-177.65233)"
+       x1="357.5"
+       y1="644.86218"
+       x2="367.5"
+       y2="644.86218" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -1506,16 +1537,16 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.5772926"
-     inkscape:cx="217.10525"
-     inkscape:cy="540.17196"
+     inkscape:zoom="5.357955"
+     inkscape:cx="303.51091"
+     inkscape:cy="559.60125"
      inkscape:document-units="px"
-     inkscape:current-layer="g4606"
+     inkscape:current-layer="g4549"
      showgrid="true"
      inkscape:window-width="1280"
      inkscape:window-height="753"
-     inkscape:window-x="0"
-     inkscape:window-y="20"
+     inkscape:window-x="1280"
+     inkscape:window-y="300"
      showguides="true"
      inkscape:guide-bbox="true">
     <inkscape:grid
@@ -1584,8 +1615,7 @@
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="cubus"
-     style="display:none"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <g
        style="display:inline"
        id="g3466"
@@ -2612,7 +2642,7 @@
     <g
        style="display:inline"
        id="g6197"
-       transform="matrix(1.4758621,0,0,1.4758621,-314.58751,-590.29909)">
+       transform="matrix(1.4758621,0,0,1.4758621,-396.51379,-564.884)">
       <g
          id="g6199"
          style="display:inline"
@@ -2637,14 +2667,76 @@
         </g>
       </g>
     </g>
+    <g
+       style="display:inline"
+       id="g4545"
+       transform="matrix(1.4758621,0,0,1.4758621,-319.0138,-539.88399)">
+      <g
+         id="g4547"
+         style="display:inline"
+         transform="matrix(0.8025467,0,0,0.8025467,163.9718,180.11166)">
+        <g
+           id="g4549">
+          <path
+             sodipodi:nodetypes="ccccc"
+             style="fill:url(#linearGradient4557);fill-opacity:1;fill-rule:evenodd;stroke:#fafafa;stroke-width:0.34530844999999999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+             d="M 360.51725,625.96758 L 347.85313,630.18895 L 360.51725,634.41033 L 373.18138,630.18895 L 360.51725,625.96758 z"
+             id="path4551"
+             inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\base_tile.png"
+             inkscape:export-xdpi="1515.3783"
+             inkscape:export-ydpi="1515.3783" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             style="fill:url(#linearGradient4559);fill-opacity:1;fill-rule:evenodd;stroke:#fafafa;stroke-width:0.25316632000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             d="M 347.85313,630.18895 L 347.85313,644.96376 L 360.51725,649.18514 L 360.51725,634.41033 L 347.85313,630.18895 z"
+             id="path4553"
+             inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\base_tile.png"
+             inkscape:export-xdpi="1515.3783"
+             inkscape:export-ydpi="1515.3783" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             style="fill:#c8c8c8;fill-opacity:1;fill-rule:evenodd;stroke:#fafafa;stroke-width:0.25316632000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             d="M 360.51725,634.41033 L 360.51725,649.18514 L 373.18138,644.96376 L 373.18138,630.18895 L 360.51725,634.41033 z"
+             id="path4555"
+             inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\base_tile.png"
+             inkscape:export-xdpi="1515.3783"
+             inkscape:export-ydpi="1515.3783" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.34530844999999999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+             d="M 313.04266,653.36624 L 300.37854,657.58761 L 313.04266,661.80899 L 325.70679,657.58761 L 313.04266,653.36624 z"
+             id="path5337"
+             inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\base_hitmap.png"
+             inkscape:export-xdpi="1515.3783"
+             inkscape:export-ydpi="1515.3783" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.25316632000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+             d="M 300.37854,657.58761 L 300.37854,672.36242 L 313.04266,676.5838 L 313.04266,661.80899 L 300.37854,657.58761 z"
+             id="path5339"
+             inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\base_hitmap.png"
+             inkscape:export-xdpi="1515.3783"
+             inkscape:export-ydpi="1515.3783" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.25316632000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+             d="M 313.04266,661.80899 L 313.04266,676.5838 L 325.70679,672.36242 L 325.70679,657.58761 L 313.04266,661.80899 z"
+             id="path5341"
+             inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\base_hitmap.png"
+             inkscape:export-xdpi="1515.3783"
+             inkscape:export-ydpi="1515.3783" />
+        </g>
+      </g>
+    </g>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="bal"
-     style="display:inline">
+     style="display:none"
+     sodipodi:insensitive="true">
     <rect
-       style="opacity:1;fill:#ffffff;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:0.30000000999999998;stroke-linecap:round;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="opacity:1;fill:#ffffff;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect4541"
        width="20"
        height="20"
@@ -2882,7 +2974,7 @@
        inkscape:export-ydpi="1152">
       <path
          sodipodi:type="arc"
-         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.40000001000000002;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.40000001;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          id="path3246"
          sodipodi:cx="310"
          sodipodi:cy="609.86218"
