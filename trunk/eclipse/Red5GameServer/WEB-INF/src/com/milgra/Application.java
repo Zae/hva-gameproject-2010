@@ -19,6 +19,8 @@ public class Application extends ApplicationAdapter
 
         //if ( !accept ) rejectClient( "you passed false..." );
 
+    	createSharedObject(scope, "Player1", true);
+    	
         return true;
     }
 
