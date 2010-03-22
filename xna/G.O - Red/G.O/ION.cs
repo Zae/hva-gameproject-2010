@@ -47,7 +47,7 @@ namespace ION
             netConnection.ObjectEncoding = ObjectEncoding.AMF0;
             netConnection.NetStatus += new NetStatusHandler(netConnection_NetStatus);
             netConnection.OnConnect += new ConnectHandler(netConnection_OnConnect);
-            netConnection.Connect("rtmp://localhost:1935/gameserver", true);
+            netConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
         }
 
         void netConnection_OnConnect(object sender, EventArgs e)
@@ -90,6 +90,7 @@ namespace ION
 
             graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(preparingDeviceSettings);
 
+            graphics.ToggleFullScreen();
             graphics.ToggleFullScreen();
 
             width = graphics.GraphicsDevice.DisplayMode.Width;
