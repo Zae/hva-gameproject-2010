@@ -39,21 +39,41 @@ namespace ION
 
         public static ION instance;
 
-        private FluorineFx.Net.RemoteSharedObject so;
+        public FluorineFx.Net.RemoteSharedObject so;
+        private NetConnection netConnection;
         private void FluorineTest()
         {
-            NetConnection netConnection = new NetConnection();
+            netConnection = new NetConnection();
             netConnection.ObjectEncoding = ObjectEncoding.AMF0;
             netConnection.NetStatus += new NetStatusHandler(netConnection_NetStatus);
+            netConnection.OnConnect += new ConnectHandler(netConnection_OnConnect);
             netConnection.Connect("rtmp://localhost:1935/gameserver", true);
+        }
 
-            //so = RemoteSharedObject.GetRemote("simpleChatDemo", netConnection.Uri.ToString(), false);
+        void netConnection_OnConnect(object sender, EventArgs e)
+        {
+            so = RemoteSharedObject.GetRemote("Player1", netConnection.Uri.ToString(), false);
+            so.OnConnect += new ConnectHandler(so_OnConnect);
+            so.Sync += new SyncHandler(so_Sync);
+            so.Connect(netConnection);
+        }
+
+        void so_OnConnect(object sender, EventArgs e)
+        {
+            Console.WriteLine(sender);
+            Console.WriteLine(e);
+        }
+
+        void so_Sync(object sender, SyncEventArgs e)
+        {
+            Console.WriteLine(sender);
+            Console.WriteLine(e);
         }
 
         void netConnection_NetStatus(object sender, NetStatusEventArgs e)
         {
             Console.WriteLine(sender);
-            Console.WriteLine(e);
+            Console.WriteLine(e);            
         }
         
         public ION()

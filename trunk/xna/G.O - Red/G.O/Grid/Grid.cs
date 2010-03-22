@@ -160,9 +160,12 @@ namespace ION
                 }
 
                 tile.setSelected(true);
+
+                ION ion = ION.instance;
+                ion.so.SetAttribute("selectedTile", new { x = x, y = y });
+
                 selectedTile = tile;
-
-
+                
 
                 //Debug.WriteLine("gotTile:" + tile.ToString());
 
