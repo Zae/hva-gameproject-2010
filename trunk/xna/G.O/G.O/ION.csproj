@@ -80,6 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="State\StateIntro.cs" />
     <Compile Include="Tools\Colors.cs" />
     <Compile Include="Tools\Fonts.cs" />
     <Compile Include="Grid\BaseTile.cs" />

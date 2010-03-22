@@ -141,6 +141,10 @@ namespace ION
             Images.unitImage = Content.Load<Texture2D>("unitItems/unit");
             Images.unitChargeImage = Content.Load<Texture2D>("unitItems/unit_charge");
             Images.unitHitmapImage = Content.Load<Texture2D>("toolItems/unit_hitmap");
+            Images.baseHitmapImage = Content.Load<Texture2D>("toolItems/base_hitmap");
+
+            Images.baseImage = Content.Load<Texture2D>("tileItems/base_tile");
+
 
 
             for (int i = 0; i < Images.chargeCountImages.Length; i++)
