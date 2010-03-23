@@ -162,7 +162,8 @@ namespace ION
                 tile.setSelected(true);
 
                 ION ion = ION.instance;
-                ion.so.SetAttribute("selectedTile", new { x = x, y = y });
+                //DO NOT SEND AN ANONYMOUS OBJECT, FLASH WILL CRASH!
+                ion.so.SetAttribute("X", x);
 
                 selectedTile = tile;
                 
