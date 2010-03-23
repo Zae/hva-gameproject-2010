@@ -13,7 +13,6 @@ using Microsoft.Xna.Framework.Storage;
 using FluorineFx.Net;
 using FluorineFx;
 
-
 namespace ION
 {
     /// <summary>
@@ -207,6 +206,11 @@ namespace ION
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+
+
+            //Didn't know a better place to put this.
+            so.Close();
+            netConnection.Close();
         }
 
         /// <summary>
