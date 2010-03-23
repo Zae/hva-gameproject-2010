@@ -2,6 +2,7 @@ package com.milgra;
 
 import org.red5.server.adapter.ApplicationAdapter;
 import org.red5.server.api.IConnection;
+import org.red5.server.api.IScope;
 
 public class Application extends ApplicationAdapter
 {
@@ -13,13 +14,13 @@ public class Application extends ApplicationAdapter
     {
 
     }
-    public boolean appConnect( IConnection conn , Object[] params )
+    public boolean appConnect( IConnection conn, Object[] params )
     {
     	//boolean accept = (Boolean)params[0];
 
         //if ( !accept ) rejectClient( "you passed false..." );
 
-    	createSharedObject(scope, "Player1", true);
+    	//createSharedObject(scope, "Player1", false);
     	
         return true;
     }
