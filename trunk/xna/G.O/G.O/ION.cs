@@ -142,6 +142,11 @@ namespace ION
             Images.baseHitmapImage = Content.Load<Texture2D>("toolItems/base_hitmap");
             Images.baseImage = Content.Load<Texture2D>("tileItems/base_tile");
 
+            //Join menu
+            Images.buttonRefresh = Content.Load<Texture2D>("menuItems/RefreshButton");
+            Images.buttonRefreshF = Content.Load<Texture2D>("menuItems/RefreshButtonF");
+            Images.tableHosts = Content.Load<Texture2D>("menuItems/HostsTable")
+
 
 
             for (int i = 0; i < Images.chargeCountImages.Length; i++)
