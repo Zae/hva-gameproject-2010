@@ -27,7 +27,11 @@ namespace ION
         private Rectangle hostButton;
         private Rectangle joinButton;
         private Rectangle backButton;
-        private bool mousePressed = false; 
+
+        private bool mousePressed = false;
+        public bool upPressed = false;
+        public bool downPressed = false;
+        public bool enterPressed = false;
 
 
         public StateMP()
@@ -86,6 +90,7 @@ namespace ION
         public override void update(int ellapsed)
         {
 
+            //mouse handling
             MouseState mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
@@ -122,7 +127,42 @@ namespace ION
                 }
 
             }  
-            
+
+            //Keyboard handling
+            KeyboardState keyState = Keyboard.GetState();
+
+
+            if (keyState.IsKeyDown(Keys.Up) && !upPressed)
+            {
+                selectionUp();
+                upPressed = true;
+            }
+            else if (keyState.IsKeyUp(Keys.Up) && upPressed)
+            {
+                upPressed = false;
+            }
+
+
+            if (keyState.IsKeyDown(Keys.Down) && !downPressed)
+            {
+                selectionDown();
+                downPressed = true;
+            }
+            else if (keyState.IsKeyUp(Keys.Down) && downPressed)
+            {
+                downPressed = false;
+            }
+
+            if (keyState.IsKeyDown(Keys.Enter))
+            {
+                enterPressed = true;
+            }
+
+            if (keyState.IsKeyUp(Keys.Enter) && enterPressed == true)
+            {
+                enterPressed = false;
+                makeSelection();
+            }
            
             
         }
@@ -154,14 +194,41 @@ namespace ION
            
             else if (selection == SELECTION.JOIN)
             {
-                Console.WriteLine("join");
+                //Console.WriteLine("join");
                 //"http://landconquerer.appspot.com/landconquerer
-                WebRequest req = WebRequest.Create("http://google.com");
-                WebResponse response = req.GetResponse();
-                StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.ASCII);
-                
-                Console.WriteLine(sr.ReadToEnd());
+               // WebRequest req = WebRequest.Create("http://google.com");
+                //WebResponse response = req.GetResponse();
+                //StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.ASCII);
+                StateJoin st = new StateJoin();
+
+                ION.get().setState(st);
+                //Console.WriteLine(sr.ReadToEnd());
             }
+        }
+
+        private void selectionUp()
+        {
+
+            selection--;
+            if (selection < SELECTION.HOST)
+            {
+                Console.WriteLine("if sel: " + (int)selection);
+                selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
+            }
+            Console.WriteLine("sel: " + (int)selection);
+        }
+
+        private void selectionDown()
+        {
+            selection++;
+            if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
+            {
+                Console.WriteLine("if sel: " + (int)selection);
+                selection = SELECTION.HOST;
+            }
+            Console.WriteLine("sel: " + (int)selection);
+
+
         }
 
         public override void focusGained()

@@ -26,7 +26,10 @@ namespace ION
         public Rectangle mpButton;
         public Rectangle quitButton;
 
-        public bool mousePressed = false; 
+        private bool mousePressed = false;
+        public bool upPressed = false;
+        public bool downPressed = false;
+        public bool enterPressed = false;
 
         public StateTitle()
         {
@@ -125,6 +128,41 @@ namespace ION
                 }
 
             }
+            //Keyboard handling
+            KeyboardState keyState = Keyboard.GetState();
+
+
+            if (keyState.IsKeyDown(Keys.Up) && !upPressed)
+            {
+                selectionUp();
+                upPressed = true;
+            }
+            else if (keyState.IsKeyUp(Keys.Up) && upPressed)
+            {
+                upPressed = false;
+            }
+
+
+            if (keyState.IsKeyDown(Keys.Down) && !downPressed)
+            {
+                selectionDown();
+                downPressed = true;
+            }
+            else if (keyState.IsKeyUp(Keys.Down) && downPressed)
+            {
+                downPressed = false;
+            }
+
+            if (keyState.IsKeyDown(Keys.Enter))
+            {
+                enterPressed = true;
+            }
+
+            if (keyState.IsKeyUp(Keys.Enter) && enterPressed == true)
+            {
+                enterPressed = false;
+                makeSelection();
+            }
 
         }
 
@@ -159,7 +197,32 @@ namespace ION
             return false;
         
         }
+        private void selectionUp()
+        {
 
+            selection--;
+            if (selection < SELECTION.NEWGAME)
+            {
+                Console.WriteLine("if sel: " + (int)selection);
+                selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
+            }
+            Console.WriteLine("sel: " + (int)selection);
+        }
+
+        private void selectionDown()
+        {
+            selection++;
+            if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
+            {
+                Console.WriteLine("if sel: " + (int)selection);
+                selection = SELECTION.NEWGAME;
+            }
+            Console.WriteLine("sel: " + (int)selection);
+
+
+        }
+
+       
         public override void focusGained()
         {
             ION.get().IsMouseVisible = true;
