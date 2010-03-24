@@ -15,15 +15,15 @@ namespace ION.GridStrategies
             //do unit stuff
             step++;
 
-            if (step == 5)
+            if (step == 2)
             {
                 tileVersusTile();
             }
-            else if (step == 10)
+            else if (step == 4)
             {
                 tileAidTile();
 
-                step = 0;
+                step = -1;
             }
 
             //now tell all Tiles to update, we use the perspective map for that
@@ -88,6 +88,8 @@ namespace ION.GridStrategies
         {
             Tile todo;
             Tile other;
+            int otherX = 0;
+            int otherY = 0;
 
             //This method looks at the grid from a overhead perspective where x increased in the
             //right direction and y increases in the downward direction.
@@ -98,30 +100,41 @@ namespace ION.GridStrategies
                 {
                     todo = Grid.map[i, j];
 
+
+                    otherX = i + 1;
+                    otherY = j;
                     //The tile to the right of this tile
-                    if (isValid(i + 1, j))
+                    if (isValid(otherX, otherY))
                     {
-                        other = Grid.map[i + 1, j];
+                        other = Grid.map[otherX,otherY];
                         tileAidTile(todo,other);
                     }
 
+                    //otherX = i + 1;
+                    //otherY = j + 1;
                     ////The tile to the bottom-right of this tile
                     //if (isValid(i + 1, j + 1))
                     //{
-                    //    todo.tileAidTile(map[i + 1, j + 1]);
+                    //    other = Grid.map[otherX, otherY];
+                    //    tileAidTile(todo, other);
                     //}
 
+                    otherX = i;
+                    otherY = j + 1;
                     //The tile to the bottom of this tile
                     if (isValid(i, j + 1))
                     {
-                        other = Grid.map[i, j + 1];
+                        other = Grid.map[otherX, otherY];
                         tileAidTile(todo,other);
                     }
 
+                    //otherX = i - 1;
+                    //otherY = j + 1;
                     ////The tile to the bottom left of this tile
                     //if (isValid(i - 1, j + 1))
                     //{
-                    //    todo.tileAidTile(map[i - 1, j + 1]);
+                    //    other = Grid.map[otherX, otherY];
+                    //    tileAidTile(todo, other);
                     //}
 
                 }
@@ -152,36 +165,34 @@ namespace ION.GridStrategies
                 return;
             }
 
-            //if (b is ResourceTile)
-            //{
-            //    ResourceTile resourceTileB = (ResourceTile)b;
-            //    if (resourceTileB.owner != owner && resourceTileB.owner != Players.NEUTRAL)
-            //    {
-            //        if (resourceTileB.charge > charge)
-            //        {
-            //            if (resourceTileB.charge - charge > minimumFlux)
-            //            {
-            //                removeCharge(minimumFlux);
-            //                resourceTileB.removeCharge(minimumFlux);
-            //            }
+                if (resourceTileA.owner != resourceTileB.owner && resourceTileA.owner != Players.NEUTRAL && resourceTileB.owner != Players.NEUTRAL)
+                {
+                    if (resourceTileB.charge > resourceTileA.charge)
+                    {
+                 
+                            resourceTileA.sustain(0.003f,resourceTileB.owner);
+                            resourceTileB.donate(0.005f);
+                        
 
-            //        }
-            //        else if (charge > resourceTileB.charge)
-            //        {
-            //            if (charge - resourceTileB.charge > minimumFlux)
-            //            {
-            //                resourceTileB.removeCharge(minimumFlux);
-            //                removeCharge(minimumFlux);
-            //            }
+                    }
+                    else if (resourceTileA.charge > resourceTileB.charge)
+                    {
+                       
+                            resourceTileB.sustain(0.003f,resourceTileA.owner);
+                            resourceTileA.donate(0.005f);
+                        
 
-            //        }
+                    }
 
-            //    }
+                }
             //}
         }
 
         public void tileAidTile(Tile a, Tile b)
         {
+
+            
+
             ResourceTile resourceTileA;
             if (a is ResourceTile)
             {
@@ -202,6 +213,20 @@ namespace ION.GridStrategies
             {
                 return;
             }
+
+            if (a.id == b.id)
+            {
+                Console.WriteLine("**********");
+                Console.WriteLine("a.id = " + a.id);
+                Console.WriteLine("b.id = " + b.id);
+
+                //Console.WriteLine("EEEEEROOOOOOOOOOOOOOOOOOOOOOOR!");
+
+                //Console.WriteLine("EEEEEROOOOOOOOOOOOOOOOOOOOOOOR!");
+
+                //Console.WriteLine("EEEEEROOOOOOOOOOOOOOOOOOOOOOOR!");
+
+            }
  
 
 
@@ -211,79 +236,81 @@ namespace ION.GridStrategies
                 if (resourceTileA.charge > resourceTileB.charge)
                 {
                     float diff = resourceTileA.charge - resourceTileB.charge;
-                    //if (diff < 0.01f)
-                    //{
-                    //    return;
-                    //}
+                    if (diff < 0.06f)
+                    {
+                        return;
+                    }
 
 
                     float draw = 0.0f;
-                    float maxRelease = resourceTileA.charge / 4.0f;
-                    float maxDraw = (ResourceTile.MAX_CHARGE - resourceTileB.charge) / 4.0f;
+                    float maxRelease = resourceTileA.charge / 16.0f;
+                    float maxDraw = (ResourceTile.MAX_CHARGE - resourceTileB.charge) / 16.0f;
 
-                    if (maxDraw > maxRelease)
+                    if (maxDraw >= maxRelease)
                     {
                         draw = maxRelease;
                     }
-                    else if (maxRelease > maxDraw)
+                    else if (maxRelease >= maxDraw)
                     {
                         draw = maxDraw;
                     }
 
-                    if (draw > diff)
+                    if (draw >= diff)
                     {
+                        //return;
                         draw = diff;
                     }
 
-                    resourceTileA.removeCharge(draw);
-                    resourceTileB.addCharge(draw, resourceTileA.owner);
+                    resourceTileA.donate(draw);
+                    resourceTileB.receive(draw);
                 }
-                else if (resourceTileB.charge > resourceTileA.charge)
+                else if (resourceTileA.charge < resourceTileB.charge)
                 {
                     float diff = resourceTileB.charge - resourceTileA.charge;
-                    //if (diff < 0.01f)
-                    //{
-                    //    return;
-                    //}
+                    if (diff < 0.06f)
+                    {
+                        return;
+                    }
 
 
                     float draw = 0.0f;
-                    float maxRelease = resourceTileB.charge / 4.0f;
-                    float maxDraw = (ResourceTile.MAX_CHARGE - resourceTileA.charge) / 4.0f;
+                    float maxRelease = resourceTileB.charge / 16.0f;
+                    float maxDraw = (ResourceTile.MAX_CHARGE - resourceTileA.charge) / 16.0f;
 
-                    if (maxDraw > maxRelease)
+                    if (maxDraw >= maxRelease)
                     {
                         draw = maxRelease;
                     }
-                    else if (maxRelease > maxDraw)
+                    else if (maxRelease >= maxDraw)
                     {
                         draw = maxDraw;
                     }
 
-                    if (draw > diff)
+                    if (draw >= diff)
                     {
+                        //return;
                         draw = diff;
                     }
 
-                    resourceTileB.removeCharge(draw);
-                    resourceTileA.addCharge(draw, resourceTileB.owner);
+                    resourceTileB.donate(draw);
+                    resourceTileA.receive(draw);
                 }
             }
 
             else if (resourceTileA.owner == Players.NEUTRAL && resourceTileB.owner != Players.NEUTRAL)
             {
-                if (resourceTileB.charge > 0.95f)
+                if (resourceTileB.charge > 0.93f)
                 {
                     //resourceTileA.nextOwner = resourceTileB.owner;
-                    resourceTileA.addCharge(1000000000.0f, resourceTileB.owner);
+                    resourceTileA.sustain(1000000000.0f, resourceTileB.owner);
                 }
             }
             else if (resourceTileA.owner != Players.NEUTRAL && resourceTileB.owner == Players.NEUTRAL)
             {
-                if (resourceTileA.charge > 0.95f)
+                if (resourceTileA.charge > 0.93f)
                 {
                     //resourceTileB.nextOwner = resourceTileA.owner;
-                    resourceTileB.addCharge(1000000000.0f, resourceTileA.owner);
+                    resourceTileB.sustain(1000000000.0f, resourceTileA.owner);
                 }
             }
 

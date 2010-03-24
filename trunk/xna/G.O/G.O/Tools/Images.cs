@@ -9,6 +9,8 @@ namespace ION
     class Images
     {
 
+        public static Texture2D teamLogoImage;
+
         public static Texture2D mountainImage;
         public static Texture2D baseImage;
         public static Texture2D baseHitmapImage;

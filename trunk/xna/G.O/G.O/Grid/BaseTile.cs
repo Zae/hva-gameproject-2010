@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
 
 namespace ION
 {
@@ -14,10 +15,15 @@ namespace ION
 
         public BaseTile(int indexX, int indexY, int owner)
         {
+            sID++;
+            id = sID;
+            
             this.indexX = indexX;
             this.indexY = indexY;
             this.owner = owner;
             this.nextOwner = owner;
+            this.charge = 999.0f;
+            this.nextCharge = 999.0f;
         }
 
         public override void draw(int translationX, int translationY)
@@ -87,6 +93,87 @@ namespace ION
 
             return baseColor;
         }
+
+        public override void donate(float charge)
+        {
+            //if (nextCharge - charge < 0.0f)
+            //{
+            //    nextCharge = 0.0f;
+            //    Debug.WriteLine("DONATION RESULTS IN  < 0");
+            //}
+            //else
+            //{
+            //    nextCharge -= charge;
+            //}
+        }
+
+        public override void receive(float charge)
+        {
+            if (nextCharge + charge > 1.0f)
+            {
+                nextCharge = 1.0f;
+                Debug.WriteLine("RECEPTION RESULTS IN > 1");
+            }
+            else
+            {
+                nextCharge += charge;
+            }
+        }
+
+        public override void sustain(float charge, int player)
+        {
+            if (nextCharge - charge < 0.0f)
+            {
+                nextCharge = 0.0f;
+                nextOwner = player;
+            }
+            else
+            {
+                nextCharge -= charge;
+            }
+        }
+
+        //public override void addCharge(float addition, int player)
+        //{
+        //    //if (player != owner)
+        //    //{
+        //    //    if (charge - addition < 0.0f)
+        //    //    {
+        //    //        nextOwner = player;
+        //    //        nextCharge = 0.0000000001f;
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        nextCharge = charge - addition;
+        //    //    }
+        //    //}
+        //    //else
+        //    //{
+
+        //    //    if (charge + addition > 1.0f)
+        //    //    {
+        //    //        nextCharge = 1.0f;
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        nextCharge = charge + addition;
+        //    //    }
+        //    //}
+        //}
+
+        //public override void removeCharge(float addition, int owner)
+        //{
+        //    //if (charge - addition < 0.0f)
+        //    //{
+        //    //    nextCharge = 0.0f;
+        //    //    nextOwner = Players.NEUTRAL;
+        //    //}
+        //    //else
+        //    //{
+        //    //    nextCharge = charge - addition;
+        //    //}
+
+        //}
 
 
     }
