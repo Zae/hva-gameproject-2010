@@ -16,6 +16,10 @@ namespace ION
         protected int indexX;
         protected int indexY;
 
+        public int id = -1;
+
+        public static int sID = -1;
+
         //protected const int baseHalfWidth = 140;
         //protected const int baseHalfHeight = 46;
 

@@ -34,6 +34,9 @@ namespace ION
 
         public ResourceTile(int indexX, int indexY)
         {
+            sID = sID+1;
+            id = sID;
+            
             this.indexX = indexX;
             this.indexY = indexY;
         }
@@ -101,10 +104,10 @@ namespace ION
 
             ION.spriteBatch.Begin();
 
-            if (owner != Players.NEUTRAL)
-            {
-                ION.spriteBatch.Draw(Images.borderImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), tileColor);
-            }
+            //if (owner != Players.NEUTRAL)
+            //{
+            //    ION.spriteBatch.Draw(Images.borderImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), tileColor);
+            //}
 
 
             ION.spriteBatch.Draw(Images.resourceImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), tileColor);
@@ -135,14 +138,14 @@ namespace ION
             //    addCharge(0.04f,Players.PLAYER1);
             //}
 
-            if (owner != Players.NEUTRAL)
-            {
-                Texture2D chargeImage = Images.getChargeCountImage(charge);
+            //if (owner != Players.NEUTRAL)
+            //{
+            //    Texture2D chargeImage = Images.getChargeCountImage(charge);
 
-                ION.spriteBatch.Begin();
-                ION.spriteBatch.Draw(chargeImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
-                ION.spriteBatch.End();
-            }
+            //    ION.spriteBatch.Begin();
+            //    ION.spriteBatch.Draw(chargeImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
+            //    ION.spriteBatch.End();
+            //}
 
             if(unit != null) {
                 unit.draw(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
@@ -158,10 +161,10 @@ namespace ION
             charge = nextCharge;
         }
 
-        public float getCharge()
-        {
-            return charge;
-        }
+        //public float getCharge()
+        //{
+        //    return charge;
+        //}
 
         //public void setCharge(float newCharge)
         //{
@@ -171,46 +174,85 @@ namespace ION
         //    }
         //}
 
-        public void addCharge(float addition, int player)
+        //public virtual void addCharge(float addition, int player)
+        //{
+        //    if (player != owner)
+        //    {
+        //        if (nextCharge - addition < 0.0f)
+        //        {
+        //            owner = player;
+        //            nextCharge = 0.0f;
+        //        }
+        //        else
+        //        {
+        //            nextCharge -= addition;
+        //        }
+        //    }
+        //    else
+        //    {
+
+        //        if (nextCharge + addition > 1.0f)
+        //        {
+        //            nextCharge = 1.0f;
+        //        }
+        //        else
+        //        {
+        //            nextCharge += addition;
+        //        }
+        //    }
+        //}
+
+        //public virtual void removeCharge(float addition, int owner)
+        //{
+        //    if (nextCharge - addition < 0.0f)
+        //    {
+        //        nextCharge = 0.0f;
+        //        nextOwner = Players.NEUTRAL;
+        //    }
+        //    else
+        //    {
+        //        nextCharge -= addition;
+        //    }
+
+        //}
+
+        public virtual void donate(float charge)
         {
-            if (player != owner)
+            if (nextCharge - charge < 0.0f)
             {
-                if (charge - addition < 0.0f)
-                {
-                    nextOwner = player;
-                    nextCharge = 0.0000000001f;
-                }
-                else
-                {
-                    nextCharge = charge - addition;
-                }
+                nextCharge = 0.0f;
+                Debug.WriteLine("DONATION RESULTS IN  < 0");
             }
             else
             {
-
-                if (charge + addition > 1.0f)
-                {
-                    nextCharge = 1.0f;
-                }
-                else
-                {
-                    nextCharge = charge + addition;
-                }
+                nextCharge -= charge;
             }
         }
 
-        public void removeCharge(float addition)
+        public virtual void receive(float charge)
         {
-            //if (charge - addition < 0.0f)
-            //{
-            //    nextCharge = 0.0f;
-            //    nextOwner = Players.NEUTRAL;
-            //}
-            //else
-            //{
-            //    nextCharge = charge - addition;
-            //}
+            if (nextCharge + charge > 1.0f)
+            {
+                nextCharge = 1.0f;
+                Debug.WriteLine("RECEPTION RESULTS IN > 1");
+            }
+            else
+            {
+                nextCharge += charge;
+            }
+        }
 
+        public virtual void sustain(float charge, int player)
+        {
+            if (nextCharge - charge < 0.0f)
+            {
+                nextCharge = 0.0f;
+                nextOwner = player;
+            }
+            else
+            {
+                nextCharge -= charge;
+            }
         }
 
         private Color getAppropriateColor(int owner, float charge)

@@ -68,8 +68,17 @@ namespace ION
 
             if (tile != null && tile is ResourceTile)
             {
-                ((ResourceTile)tile).addCharge(0.06f, Players.PLAYER2);
+                ResourceTile rt = (ResourceTile)tile;
 
+                if (rt.owner != Players.PLAYER2)
+                {
+                    rt.sustain(0.06f, Players.PLAYER2);
+                }
+                else
+                {
+                    rt.receive(0.06f);
+                }
+            
                 if (selectedTile != null)
                 {
                     selectedTile.setSelected(false);
@@ -123,7 +132,16 @@ namespace ION
 
             if (tile != null && tile is ResourceTile)
             {
-                ((ResourceTile)tile).addCharge(0.06f, Players.PLAYER1);
+                ResourceTile rt = (ResourceTile)tile;
+
+                if (rt.owner != Players.PLAYER1)
+                {
+                    rt.sustain(0.06f, Players.PLAYER1);
+                }
+                else
+                {
+                    rt.receive(0.06f);
+                }
 
                 if (selectedTile != null)
                 {

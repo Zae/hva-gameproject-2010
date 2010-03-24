@@ -28,7 +28,8 @@ namespace ION
         public static int halfHeight;
         private static ClientComponent client;
         private static ServerComponent server;
-        
+
+        private bool restartPressed = false;
         
         /**
          * 
@@ -109,8 +110,9 @@ namespace ION
 
             // TODO: use this.Content to load your game content here
             Fonts.font = Content.Load<SpriteFont>("fontItems/TitleFont");
+
+            Images.teamLogoImage = Content.Load<Texture2D>("miscItems/logo-game-ninjas");
             
-            //Load menu images
             //Title Menu
             Images.ION_LOGO = Content.Load<Texture2D>("menuItems/ION_LOGO");
             Images.buttonNewGame = Content.Load<Texture2D>("menuItems/newGameButton");
@@ -121,16 +123,12 @@ namespace ION
             Images.buttonQuitF = Content.Load<Texture2D>("menuItems/quitButtonF");
 
             //MultiPlayer menu
-            
             Images.buttonJoin = Content.Load<Texture2D>("menuItems/JoinButton");
             Images.buttonJoinF = Content.Load<Texture2D>("menuItems/JoinButtonF");
             Images.buttonHost = Content.Load<Texture2D>("menuItems/HostButton");
             Images.buttonHostF = Content.Load<Texture2D>("menuItems/HostButtonF");
             Images.buttonBack = Content.Load<Texture2D>("menuItems/BackButton");
             Images.buttonBackF = Content.Load<Texture2D>("menuItems/BackButtonF");
-
-
-
 
             //Load game images
             Images.mountainImage = Content.Load<Texture2D>("tileItems/mountain_tile");
@@ -142,7 +140,6 @@ namespace ION
             Images.unitChargeImage = Content.Load<Texture2D>("unitItems/unit_charge");
             Images.unitHitmapImage = Content.Load<Texture2D>("toolItems/unit_hitmap");
             Images.baseHitmapImage = Content.Load<Texture2D>("toolItems/base_hitmap");
-
             Images.baseImage = Content.Load<Texture2D>("tileItems/base_tile");
 
 
@@ -152,12 +149,15 @@ namespace ION
                 Images.chargeCountImages[i] = Content.Load<Texture2D>("chargeCountItems/"+(i + 1).ToString());
             }
 
+            
             Music.titleSong = Content.Load<Song>("musicItems/TitleSong");
             Music.gameSong1 = Content.Load<Song>("musicItems/GameSong1");
             Music.gameSong2 = Content.Load<Song>("musicItems/GameSong2");
+
+            Music.logoSound = Content.Load<SoundEffect>("sfxItems/LogoSound");
             Music.actionSound1 = Content.Load<SoundEffect>("sfxItems/ActionSound1");
 
-            state = new StateTitle();
+            state = new StateIntro();
             state.focusGained();
 
             MichielTest.doTest();
@@ -188,6 +188,19 @@ namespace ION
             if (keyState.IsKeyDown(Keys.F1))
             {
                 this.Exit();
+            }
+            if (keyState.IsKeyDown(Keys.R))
+            {
+                if (!restartPressed)
+                {
+                    setState(new StateIntro());
+                }
+                
+                restartPressed = true;
+            }
+            if (keyState.IsKeyUp(Keys.R))
+            {
+                restartPressed = false;
             }
 
             state.update(gameTime.ElapsedGameTime.Milliseconds);
