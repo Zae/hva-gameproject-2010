@@ -56,14 +56,6 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluorineFx, Version=1.0.0.15, Culture=neutral, PublicKeyToken=1875756ba09931ab, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\FluorineFx.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d" />
     <Reference Include="mscorlib">
@@ -94,8 +86,6 @@
     <Compile Include="Grid\MountainTile.cs" />
     <Compile Include="Images.cs" />
     <Compile Include="MichielTest.cs" />
-    <Compile Include="MultiPlayer\ClientComponent.cs" />
-    <Compile Include="MultiPlayer\ServerComponent.cs" />
     <Compile Include="Music.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="PrimitiveBatch.cs" />
@@ -152,10 +142,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\lidgren-network\Lidgren.Network\Lidgren.Network.csproj">
-      <Project>{BA202214-F6F8-4853-BCC9-CA4F13C5F479}</Project>
-      <Name>Lidgren.Network</Name>
+    <ProjectReference Include="..\FluorineFx\FluorineFx-3.5.csproj">
+      <Project>{A9B8375B-579D-4F8A-B00C-F2828DB58F3A}</Project>
+      <Name>FluorineFx-3.5</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MultiPlayer\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

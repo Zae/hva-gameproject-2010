@@ -17,6 +17,24 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <XnaPlatform>Windows</XnaPlatform>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Xbox 360' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Xbox 360\Debug\</OutputPath>
+    <PlatformTarget>Xbox 360</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Xbox 360' ">
+    <OutputPath>bin\Xbox 360\Release\</OutputPath>
+    <PlatformTarget>Xbox 360</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Zune' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Zune\Debug\</OutputPath>
+    <PlatformTarget>Zune</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Zune' ">
+    <OutputPath>bin\Zune\Release\</OutputPath>
+    <PlatformTarget>Zune</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="TitleFont.spritefont">
       <Name>TitleFont</Name>
