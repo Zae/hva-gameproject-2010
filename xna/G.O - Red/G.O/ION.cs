@@ -27,8 +27,8 @@ namespace ION
         public static int halfWidth;
         public static int height;
         public static int halfHeight;
-        private static ClientComponent client;
-        private static ServerComponent server;
+
+        public static ION instance;
         
         
         /**
@@ -36,17 +36,16 @@ namespace ION
          **/
         private State state;
 
-        public static ION instance;
+        public RemoteSharedObject so;
+        public NetConnection netConnection;
 
-        public FluorineFx.Net.RemoteSharedObject so;
-        private NetConnection netConnection;
         private void FluorineTest()
         {
             netConnection = new NetConnection();
             netConnection.ObjectEncoding = ObjectEncoding.AMF0;
             netConnection.NetStatus += new NetStatusHandler(netConnection_NetStatus);
             netConnection.OnConnect += new ConnectHandler(netConnection_OnConnect);
-            netConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
+            netConnection.Connect("rtmp://127.0.0.1:1935/gameserver/", true);
         }
 
         void netConnection_OnConnect(object sender, EventArgs e)
