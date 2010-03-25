@@ -5,25 +5,26 @@ using System.Text;
 
 namespace ION.GridStrategies
 {
-    public class BleedStrategy : GridStrategy
+    public class FlowStrategy : GridStrategy
     {
+
         private int step = 0;
 
-        public BleedStrategy()
+        public FlowStrategy()
         {
-            name = "BleedStrategy";
+            name = "FlowStrategy";
         }
-        
+
         public override void update(int ellapsed)
         {
             //do unit stuff
             step++;
 
-            if (step == 20)
+            if (step == 2)
             {
                 tileVersusTile();
             }
-            else if (step == 40)
+            else if (step == 4)
             {
                 tileAidTile();
 
