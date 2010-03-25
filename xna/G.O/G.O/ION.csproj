@@ -91,8 +91,6 @@
     <Compile Include="Grid\Strategies\GridStrategy.cs" />
     <Compile Include="Tools\Images.cs" />
     <Compile Include="Tests\MichielTest.cs" />
-    <Compile Include="MultiPlayer\ClientComponent.cs" />
-    <Compile Include="MultiPlayer\ServerComponent.cs" />
     <Compile Include="Tools\Music.cs" />
     <Compile Include="Tools\Players.cs" />
     <Compile Include="Tools\PrimitiveBatch.cs" />
@@ -150,10 +148,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\lidgren-network\Lidgren.Network\Lidgren.Network.csproj">
-      <Project>{BA202214-F6F8-4853-BCC9-CA4F13C5F479}</Project>
-      <Name>Lidgren.Network</Name>
+    <ProjectReference Include="..\FluorineFx\FluorineFx-3.5.csproj">
+      <Project>{A9B8375B-579D-4F8A-B00C-F2828DB58F3A}</Project>
+      <Name>FluorineFx-3.5</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MultiPlayer\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

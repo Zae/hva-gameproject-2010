@@ -26,8 +26,6 @@ namespace ION
         public static int halfWidth;
         public static int height;
         public static int halfHeight;
-        private static ClientComponent client;
-        private static ServerComponent server;
 
         private bool restartPressed = false;
         
