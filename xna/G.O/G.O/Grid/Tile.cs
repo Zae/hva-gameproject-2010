@@ -13,8 +13,8 @@ namespace ION
         protected int visualY;
         protected bool selected = false;
 
-        protected int indexX;
-        protected int indexY;
+        public int indexX;
+        public int indexY;
 
         public int id = -1;
 

@@ -109,6 +109,7 @@
     <Compile Include="State\StateTitle.cs" />
     <Compile Include="Grid\Tile.cs" />
     <Compile Include="Tools\Tool.cs" />
+    <Compile Include="UI\PushButton.cs" />
     <Compile Include="Units\Unit.cs" />
   </ItemGroup>
   <ItemGroup>

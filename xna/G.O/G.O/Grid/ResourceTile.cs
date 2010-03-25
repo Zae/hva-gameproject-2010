@@ -11,6 +11,16 @@ namespace ION
     public class ResourceTile : Tile
     {
 
+        //remembering past interations
+        public bool canDonateNW = true;
+        public bool canDonateN = true;
+        public bool canDonateNE = true;
+        public bool canDonateE = true;
+        public bool canDonateSE = true;
+        public bool canDonateS = true;
+        public bool canDonateSW = true;
+        public bool canDonateW = true;
+
         public int owner = Players.NEUTRAL;
 
         public int nextOwner = Players.NEUTRAL;
@@ -287,6 +297,8 @@ namespace ION
 
             return tileColor;
         }
+
+   
 
 
 

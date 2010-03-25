@@ -10,6 +10,7 @@ namespace ION
     {
 
         public static Texture2D teamLogoImage;
+        public static Texture2D starfieldImage;
 
         public static Texture2D mountainImage;
         public static Texture2D baseImage;
@@ -38,6 +39,9 @@ namespace ION
         public static Texture2D buttonBack;
         public static Texture2D buttonBackF;
 
+        public static Texture2D buttonRefresh;
+        public static Texture2D tableHosts;
+        public static Texture2D buttonRefreshF;
 
 
 
