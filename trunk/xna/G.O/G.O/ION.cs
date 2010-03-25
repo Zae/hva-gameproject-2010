@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
+using FluorineFx.Net;
 
 
 namespace ION
@@ -38,10 +39,7 @@ namespace ION
 
         public ION()
         {
-            
-           // server = new ServerComponent();
-           // client = new ClientComponent();
-            
+
             //Set the singleton instance for static reference
             instance = this;
 
