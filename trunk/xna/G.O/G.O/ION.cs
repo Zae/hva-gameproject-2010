@@ -112,6 +112,8 @@ namespace ION
             Fonts.font = Content.Load<SpriteFont>("fontItems/TitleFont");
 
             Images.teamLogoImage = Content.Load<Texture2D>("miscItems/logo-game-ninjas");
+            Images.starfieldImage = Content.Load<Texture2D>("miscItems/starfield");
+
             
             //Title Menu
             Images.ION_LOGO = Content.Load<Texture2D>("menuItems/ION_LOGO");
@@ -145,7 +147,7 @@ namespace ION
             //Join menu
             Images.buttonRefresh = Content.Load<Texture2D>("menuItems/RefreshButton");
             Images.buttonRefreshF = Content.Load<Texture2D>("menuItems/RefreshButtonF");
-            Images.tableHosts = Content.Load<Texture2D>("menuItems/HostsTable")
+            Images.tableHosts = Content.Load<Texture2D>("menuItems/HostsTable");
 
 
 

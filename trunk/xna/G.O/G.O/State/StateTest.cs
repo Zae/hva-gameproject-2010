@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using ION.GridStrategies;
 
 namespace ION
 {
@@ -24,19 +25,27 @@ namespace ION
 
         private int playqueue = 1;
 
-        private string level = "Level1.xml";
+        private int level = 0;
+        private string[] levels = {"Level1.xml","MediumLevelTest.xml","LargeLevelTest.xml"};
+
+        private GridStrategy[] strategies = { new FlowStrategy(), new BleedStrategy() };
+        private int strategy = 0;
 
         private bool actionOnScreen = false;
 
         private SoundEffectInstance actionOnScreenSound = null;
-        //private float musicVolume = 1.0f;
-        //private float actionSoundVolume = 0.0f;
 
         private int translationX = 0;
         private int translationY = 0;
 
         private int previousMouseX = 0;
         private int previousMouseY = 0;
+
+        private bool nextMapDown = false;
+        private bool previousMapDown = false;
+
+        private bool nextStrategyDown = false;
+        private bool previousStrategyDown = false;
 
         public StateTest()
         {
@@ -45,7 +54,7 @@ namespace ION
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
 
-            map = new Grid(level);
+            map = new Grid(levels[level], strategies[strategy]);
 
             actionOnScreenSound = Music.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
@@ -60,13 +69,18 @@ namespace ION
         {
             ION.get().GraphicsDevice.Clear(Color.Gray);
 
+            ION.spriteBatch.Begin();
+            ION.spriteBatch.Draw(Images.starfieldImage, new Rectangle(0, 0, ION.width, ION.height), Color.White);
+            ION.spriteBatch.End();
+
             map.draw(translationX, translationY);
 
             int y = 0;
             ION.spriteBatch.Begin();
-            ION.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly", new Vector2(10, y += 15), Color.Red);
-            ION.spriteBatch.DrawString(Fonts.font, "Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, y += 15), Color.Red);
-            ION.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the map around, press Left-Alt to recenter the map", new Vector2(10, y += 15), Color.Red);
+            ION.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly", new Vector2(10, y += 15), Color.White);
+            ION.spriteBatch.DrawString(Fonts.font, "Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, y += 15), Color.White);
+            ION.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the map around, press Left-Alt to recenter the map", new Vector2(10, y += 15), Color.White);
+            ION.spriteBatch.DrawString(Fonts.font, "N - M change Level (now: " + levels[level] + ") J - K change GridStrategy (now: " + strategies[strategy].name + ")", new Vector2(10, y += 15), Color.White);
             ION.spriteBatch.End();
         }
 
@@ -109,6 +123,80 @@ namespace ION
             else if (keyState.IsKeyDown(Keys.I))
             {
                 map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER2);
+            }
+
+            //MAP CHANGING CONTROLS
+            if (keyState.IsKeyDown(Keys.M) && !nextMapDown)
+            {
+                nextMapDown = true;
+                if (level < levels.Length - 1)
+                {
+                    level++;
+                }
+                else
+                {
+                    level = 0;
+                }
+                map = new Grid(levels[level],strategies[strategy]);   
+            }
+            else if (keyState.IsKeyUp(Keys.M))
+            {
+                nextMapDown = false;
+            }
+
+            if (keyState.IsKeyDown(Keys.N) && !previousMapDown)
+            {
+                previousMapDown = true;
+                if (level > 0)
+                {
+                    level--;
+                }
+                else
+                {
+                    level = levels.Length - 1;
+                }
+                map = new Grid(levels[level],strategies[strategy]);  
+            }
+            else if (keyState.IsKeyUp(Keys.N))
+            {
+                previousMapDown = false;
+            }
+
+            //STRATEGY CHANGING CONTROLS
+            if (keyState.IsKeyDown(Keys.K) && !nextStrategyDown)
+            {
+                nextStrategyDown = true;
+                if (strategy < strategies.Length - 1)
+                {
+                    strategy++;
+                }
+                else
+                {
+                    strategy = 0;
+                }
+                map = new Grid(levels[level],strategies[strategy]);
+            }
+            else if (keyState.IsKeyUp(Keys.K))
+            {
+                nextStrategyDown = false;
+            }
+
+            if (keyState.IsKeyDown(Keys.J) && !previousStrategyDown)
+            {
+                previousStrategyDown = true;
+                if (strategy > 0)
+                {
+                    strategy--;
+                }
+                else
+                {
+                    strategy = strategies.Length - 1;
+                }
+                map = new Grid(levels[level],strategies[strategy]);
+            }
+            else if (keyState.IsKeyUp(Keys.J))
+            {
+                previousStrategyDown = false;
             }
      
 
@@ -240,9 +328,7 @@ namespace ION
         public override void focusGained()
         {
             ION.get().IsMouseVisible = true;
-            
-            //MediaPlayer.Play(Music.gameSong1);
-            //MediaPlayer.IsRepeating = false;
+
             if (musicPaused)
             {
                 MediaPlayer.Resume();

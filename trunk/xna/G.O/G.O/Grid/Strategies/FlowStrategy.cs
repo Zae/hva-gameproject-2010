@@ -10,6 +10,11 @@ namespace ION.GridStrategies
 
         private int step = 0;
 
+        public FlowStrategy()
+        {
+            name = "FlowStrategy";
+        }
+
         public override void update(int ellapsed)
         {
             //do unit stuff
@@ -314,6 +319,13 @@ namespace ION.GridStrategies
                 }
             }
 
+        }
+
+        public bool getDirectionalBool(ResourceTile target, ResourceTile subject)
+        {
+            //int xDirection = target.
+
+            return false;
         }
     }
 }

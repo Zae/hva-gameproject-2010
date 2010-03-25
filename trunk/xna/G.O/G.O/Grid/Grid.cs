@@ -391,9 +391,10 @@ namespace ION
         }
 
 
-        public Grid(String levelname)
+        public Grid(String levelname, GridStrategy strategy)
         {
-            updateStrategy = new FlowStrategy();
+            updateStrategy = strategy;
+            //updateStrategy = new FlowStrategy();
 
             //load the xml file into the XmlTextReader object. 
             try
