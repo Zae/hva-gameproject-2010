@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Net;
 using System.IO;
+using FluorineFx.Net;
 
 namespace ION
 {
@@ -34,6 +35,8 @@ namespace ION
         public bool downPressed = false;
         public bool enterPressed = false;
 
+        public NetConnection LobbyConnection;
+        public RemoteSharedObject LobbyRSObject;
 
         public StateJoin()
         {
@@ -41,6 +44,51 @@ namespace ION
             joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
             refreshButton = new Rectangle((ION.width / 2) + 225, (ION.height / 2) + 300, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
             hostsTable = new Rectangle((ION.width / 2) - 300, (ION.height / 2) - 70, Images.tableHosts.Width, Images.tableHosts.Height);
+
+            LobbyConnection = new NetConnection();
+            LobbyConnection.ObjectEncoding = FluorineFx.ObjectEncoding.AMF0;
+            LobbyConnection.NetStatus += new NetStatusHandler(LobbyConnection_NetStatus);
+            LobbyConnection.OnConnect += new ConnectHandler(LobbyConnection_OnConnect);
+            LobbyConnection.OnDisconnect += new DisconnectHandler(LobbyConnection_OnDisconnect);
+        }
+
+        void LobbyConnection_OnDisconnect(object sender, EventArgs e)
+        {
+            Console.WriteLine("LobbyConnection lost, reconnecting...");
+            LobbyConnection.Connect("127.0.0.1:1935/gameserver", true);
+        }
+
+        void LobbyConnection_OnConnect(object sender, EventArgs e)
+        {
+            Console.WriteLine("Connected to Lobby Server");
+            Console.WriteLine("Querying Serverlist...");
+
+            LobbyRSObject = RemoteSharedObject.GetRemote("Lobby", LobbyConnection.Uri.ToString(), false);
+            LobbyRSObject.NetStatus += new NetStatusHandler(LobbyRSObject_NetStatus);
+            LobbyRSObject.OnConnect += new ConnectHandler(LobbyRSObject_OnConnect);
+            LobbyRSObject.OnDisconnect += new DisconnectHandler(LobbyRSObject_OnDisconnect);
+            LobbyRSObject.Connect(LobbyConnection);
+        }
+
+        void LobbyRSObject_OnDisconnect(object sender, EventArgs e)
+        {
+            Console.WriteLine("LobbyObject lost, reconnecting...");
+            LobbyRSObject.Connect(LobbyConnection);
+        }
+
+        void LobbyRSObject_OnConnect(object sender, EventArgs e)
+        {
+            Console.WriteLine("LobbyObject connected.");
+        }
+
+        void LobbyRSObject_NetStatus(object sender, NetStatusEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void LobbyConnection_NetStatus(object sender, NetStatusEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public override void draw()
@@ -197,13 +245,8 @@ namespace ION
 
             else if (selection == SELECTION.JOIN)
             {
-                Console.WriteLine("join");
-                //"http://landconquerer.appspot.com/landconquerer
-                WebRequest req = WebRequest.Create("http://google.com");
-                WebResponse response = req.GetResponse();
-                StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.ASCII);
+                
 
-                Console.WriteLine(sr.ReadToEnd());
             }
         }
 
