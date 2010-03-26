@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Media;
 using System.Net;
 using System.IO;
 using FluorineFx.Net;
+using FluorineFx.Messaging.Api.Service;
 
 namespace ION
 {
@@ -50,12 +51,13 @@ namespace ION
             LobbyConnection.NetStatus += new NetStatusHandler(LobbyConnection_NetStatus);
             LobbyConnection.OnConnect += new ConnectHandler(LobbyConnection_OnConnect);
             LobbyConnection.OnDisconnect += new DisconnectHandler(LobbyConnection_OnDisconnect);
+            LobbyConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
         }
 
         void LobbyConnection_OnDisconnect(object sender, EventArgs e)
         {
             Console.WriteLine("LobbyConnection lost, reconnecting...");
-            LobbyConnection.Connect("127.0.0.1:1935/gameserver", true);
+            //LobbyConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
         }
 
         void LobbyConnection_OnConnect(object sender, EventArgs e)
@@ -68,12 +70,22 @@ namespace ION
             LobbyRSObject.OnConnect += new ConnectHandler(LobbyRSObject_OnConnect);
             LobbyRSObject.OnDisconnect += new DisconnectHandler(LobbyRSObject_OnDisconnect);
             LobbyRSObject.Connect(LobbyConnection);
-        }
 
-        void LobbyRSObject_OnDisconnect(object sender, EventArgs e)
+            LobbyConnection.Call("getHosts", new getHostsMsgHandler());
+        }
+        public class getHostsMsgHandler : IPendingServiceCallback
+        {
+            public void ResultReceived(IPendingServiceCall call)
+            {
+                object result = call.Result;
+                System.Console.WriteLine("Server response: " + result);
+                System.Console.WriteLine("Press 'Enter' to exit");
+            }
+        }
+        void LobbyRSObject_OnDisconnect(object sender, EventArgs e) 
         {
             Console.WriteLine("LobbyObject lost, reconnecting...");
-            LobbyRSObject.Connect(LobbyConnection);
+            //LobbyRSObject.Connect(LobbyConnection);
         }
 
         void LobbyRSObject_OnConnect(object sender, EventArgs e)
@@ -83,12 +95,12 @@ namespace ION
 
         void LobbyRSObject_NetStatus(object sender, NetStatusEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         void LobbyConnection_NetStatus(object sender, NetStatusEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public override void draw()

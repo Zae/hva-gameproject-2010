@@ -1,5 +1,0 @@
-C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\bin\Debug\Lidgren.Network.dll
-C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\bin\Debug\Lidgren.Network.pdb
-C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\obj\Debug\Lidgren.Network.dll
-C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\obj\Debug\Lidgren.Network.pdb
