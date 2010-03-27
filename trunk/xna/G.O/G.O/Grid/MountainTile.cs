@@ -33,6 +33,11 @@ namespace ION
         //{
         //}
 
+        public override void releaseMomentum()
+        {
+            
+        }
+
         public override void draw(int translationX, int translationY)
         {
             //GO.primitiveBatch.Begin(PrimitiveType.LineList);
