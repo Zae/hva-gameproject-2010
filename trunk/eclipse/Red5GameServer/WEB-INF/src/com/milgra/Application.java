@@ -8,16 +8,15 @@ import org.red5.server.api.IScope;
 
 public class Application extends ApplicationAdapter
 {
-	private ArrayList<String> Hosts;
+	private ArrayList<String> Hosts = new ArrayList<String>();
 
-    public Boolean appStart ( )
+    public boolean appStart (IScope app )
     {
-    	Hosts = new ArrayList<String>();
     	return true;
     }
-    public void appStop ( )
+    public void appStop (IScope app )
     {
-
+    	
     }
     public boolean appConnect( IConnection conn, IScope scope, Object[] params )
     {
@@ -40,7 +39,7 @@ public class Application extends ApplicationAdapter
     }
     public Boolean HostGame(String name)
     {
-    	Hosts.add("name");
+    	Hosts.add(name);
     	return true;
     }
 }

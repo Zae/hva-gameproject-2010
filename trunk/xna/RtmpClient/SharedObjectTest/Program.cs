@@ -40,7 +40,7 @@ namespace SharedObjectTest
                 }
                 if (program.SharedObject.Connected)
                 {
-                    program.NetConnection.Call("msgFromClient", null, input);
+                    program.NetConnection.Call("HostGame", null, input);
                 }
                 else
                     break;
