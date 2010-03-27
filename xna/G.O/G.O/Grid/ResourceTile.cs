@@ -12,14 +12,23 @@ namespace ION
     {
 
         //remembering past interations
-        public bool canDonateNW = true;
-        public bool canDonateN = true;
-        public bool canDonateNE = true;
-        public bool canDonateE = true;
-        public bool canDonateSE = true;
-        public bool canDonateS = true;
-        public bool canDonateSW = true;
-        public bool canDonateW = true;
+        public int canDonateNW = 0;
+        public int canDonateN = 0;
+        public int canDonateNE = 0;
+        public int canDonateE = 0;
+        public int canDonateSE = 0;
+        public int canDonateS = 0;
+        public int canDonateSW = 0;
+        public int canDonateW = 0;
+
+        public int nextCanDonateNW = 0;
+        public int nextCanDonateN = 0;
+        public int nextCanDonateNE = 0;
+        public int nextCanDonateE = 0;
+        public int nextCanDonateSE = 0;
+        public int nextCanDonateS = 0;
+        public int nextCanDonateSW = 0;
+        public int nextCanDonateW = 0;
 
         public int owner = Players.NEUTRAL;
 
@@ -169,6 +178,73 @@ namespace ION
             //Debug.WriteLine("UPDATING TILE!");
             owner = nextOwner;
             charge = nextCharge;
+
+            
+        }
+
+        public override void releaseMomentum()
+        {
+            canDonateE += nextCanDonateE;
+            nextCanDonateE = 0;
+
+            canDonateSE += nextCanDonateSE;
+            nextCanDonateSE = 0;
+
+            canDonateS += nextCanDonateS;
+            nextCanDonateS = 0;
+
+            canDonateSW += nextCanDonateSW;
+            nextCanDonateSW = 0;
+
+            canDonateW += nextCanDonateW;
+            nextCanDonateW = 0;
+
+            canDonateNW += nextCanDonateNW;
+            nextCanDonateNW = 0;
+
+            canDonateN += nextCanDonateN;
+            nextCanDonateN = 0;
+
+            canDonateNE += nextCanDonateNE;
+            nextCanDonateNE = 0;
+            
+            
+            
+            
+            
+            //Update the momentum counters
+            if (canDonateN > 0)
+            {
+                canDonateN--;
+            }
+            if (canDonateNE > 0)
+            {
+                canDonateNE--;
+            }
+            if (canDonateE > 0)
+            {
+                canDonateE--;
+            }
+            if (canDonateSE > 0)
+            {
+                canDonateSE--;
+            }
+            if (canDonateS > 0)
+            {
+                canDonateS--;
+            }
+            if (canDonateSW > 0)
+            {
+                canDonateSW--;
+            }
+            if (canDonateW > 0)
+            {
+                canDonateW--;
+            }
+            if (canDonateNW > 0)
+            {
+                canDonateNW--;
+            }
         }
 
         //public float getCharge()

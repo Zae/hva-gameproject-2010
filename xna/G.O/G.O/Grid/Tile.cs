@@ -45,6 +45,7 @@ namespace ION
         //public abstract void tileAidTile(Tile b);
 
         public abstract void update();
+        public abstract void releaseMomentum();
 
         public void setIndexZ(int newIndex)
         {

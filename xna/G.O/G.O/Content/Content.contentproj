@@ -348,6 +348,7 @@
       <Name>LargeLevelTest</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
