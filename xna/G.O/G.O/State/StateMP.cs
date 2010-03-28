@@ -183,7 +183,9 @@ namespace ION
         {
             if (selection == SELECTION.HOST)
             {
-                //TODO
+                StateHost st = new StateHost();
+
+                ION.get().setState(st);
             }
             else if (selection == SELECTION.BACK)
             {
