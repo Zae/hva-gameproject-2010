@@ -31,6 +31,8 @@ namespace ION
         private Rectangle joinButton;
         private Rectangle refreshButton;
 
+
+
         private bool mousePressed = false;
         public bool upPressed = false;
         public bool downPressed = false;
@@ -39,12 +41,37 @@ namespace ION
         public NetConnection LobbyConnection;
         public RemoteSharedObject LobbyRSObject;
 
+        private Color fadeColor = new Color(0, 255, 255, 128);
+
+        private Rectangle selected;
+
+        private Rectangle row1;
+        private Rectangle row2;
+        private Rectangle row3;
+        private Rectangle row4;
+        private Rectangle row5;
+        private Rectangle row6;
+
+        
+
+
+
         public StateJoin()
         {
             backButton = new Rectangle((ION.width / 2) - 500, (ION.height / 2) +300, Images.buttonBack.Width, Images.buttonBack.Height);
             joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
             refreshButton = new Rectangle((ION.width / 2) + 225, (ION.height / 2) + 300, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
             hostsTable = new Rectangle((ION.width / 2) - 300, (ION.height / 2) - 70, Images.tableHosts.Width, Images.tableHosts.Height);
+
+            row1 = new Rectangle(hostsTable.X, hostsTable.Y + 35, 600, 50);
+            row2 = new Rectangle(hostsTable.X, row1.Y + 50, 600, 50);
+            row3 = new Rectangle(hostsTable.X, row1.Y + 100, 600, 50);
+            row4 = new Rectangle(hostsTable.X, row1.Y + 150, 600, 50);
+            row5 = new Rectangle(hostsTable.X, row1.Y + 200, 600, 50);
+            row6 = new Rectangle(hostsTable.X, row1.Y + 250, 600, 50);
+
+            selected = row1;
+
 
             LobbyConnection = new NetConnection();
             LobbyConnection.ObjectEncoding = FluorineFx.ObjectEncoding.AMF0;
@@ -110,6 +137,7 @@ namespace ION
             ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
             ION.spriteBatch.Draw(Images.tableHosts, hostsTable, Color.White);
             //ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
+            ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
 
 
 
@@ -190,6 +218,49 @@ namespace ION
                 }
 
             }
+
+            //row selection
+            ION.spriteBatch.Begin();
+            if (mouseIn(mouseState.X, mouseState.Y, row1))
+            {
+                selected = row1;
+                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
+                Console.WriteLine("row1");
+            }
+            if (mouseIn(mouseState.X, mouseState.Y, row2))
+            {
+                selected = row2;
+                //ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
+                Console.WriteLine("row2");
+            }
+            if (mouseIn(mouseState.X, mouseState.Y, row3))
+            {
+                selected = row3;
+                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
+                Console.WriteLine("row3");
+            }
+            if (mouseIn(mouseState.X, mouseState.Y, row4))
+            {
+                selected = row4;
+                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
+                Console.WriteLine("row4");
+            }
+            if (mouseIn(mouseState.X, mouseState.Y, row5))
+            {
+                selected = row5;
+                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
+                Console.WriteLine("row5");
+            }
+            if (mouseIn(mouseState.X, mouseState.Y, row6))
+            {
+                selected = row6;
+                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
+                Console.WriteLine("row6");
+            }
+
+            ION.spriteBatch.End();
+
+
 
             //Keyboard handling
             KeyboardState keyState = Keyboard.GetState();
