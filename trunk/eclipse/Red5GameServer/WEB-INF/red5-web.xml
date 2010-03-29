@@ -19,6 +19,6 @@
 		<property name="virtualHosts" value="${webapp.virtualHosts}" />
 	</bean>
 
-	<bean id="web.handler" class="com.milgra.Application" singleton="true" />
+	<bean id="web.handler" class="com.ion.Application" singleton="true" />
 
 </beans>
