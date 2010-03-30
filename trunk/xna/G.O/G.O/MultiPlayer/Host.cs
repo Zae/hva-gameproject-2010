@@ -8,13 +8,13 @@ namespace ION
 {
     class Host : IExternalizable
     {
-        String hostname;
+        public String hostname;
 
-        public override void readExternal(IDataInput arg0)
+        public void ReadExternal(IDataInput arg0)
         {
             this.hostname = (String)arg0.ReadUTF();
         }
-        public override void writeExternal(IDataOutput arg0)
+        public void WriteExternal(IDataOutput arg0)
         {
             arg0.WriteUTF(this.hostname);
         }
