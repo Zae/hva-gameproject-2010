@@ -80,6 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiPlayer\Host.cs" />
     <Compile Include="MultiPlayer\ServerConnection.cs" />
     <Compile Include="State\StateIntro.cs" />
     <Compile Include="Tools\Colors.cs" />

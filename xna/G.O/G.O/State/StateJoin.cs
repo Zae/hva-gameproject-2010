@@ -24,7 +24,7 @@ namespace ION
 
         }
         public SELECTION selection = SELECTION.BACK;
-        private String[] hosts;
+        private Host[] hosts;
 
         private static StateJoin instance;
 
@@ -57,6 +57,9 @@ namespace ION
         private ServerConnection serverCon;
 
 
+        //temp
+        String[] tempHosts;
+
 
 
 
@@ -65,6 +68,8 @@ namespace ION
             instance = this;
 
             
+
+            tempHosts = new String[]{"server1","server2","server3"};
             backButton = new Rectangle((ION.width / 2) - 500, (ION.height / 2) +300, Images.buttonBack.Width, Images.buttonBack.Height);
             joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
             refreshButton = new Rectangle((ION.width / 2) + 225, (ION.height / 2) + 300, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
@@ -99,6 +104,10 @@ namespace ION
             //ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
             ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
 
+            //update hosts in table
+            //foreach(String s: tempHosts){
+
+            //}
 
 
             if (selection == SELECTION.BACK)
@@ -318,11 +327,11 @@ namespace ION
 
         }
 
-        public void showHosts(Object[] hostList)
+        public void showHosts(Host[] hostList)
         {
 
-            Console.WriteLine("lijstje uit serverConnection, eerste server: " + hostList[0]);
-            this.hosts = (String[])hostList;
+            Console.WriteLine("lijstje uit serverConnection, eerste server: " + hostList[0].hostname);
+            this.hosts = hostList;
 
         }
 
