@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -23,8 +24,9 @@ namespace ION
 
         }
         public SELECTION selection = SELECTION.BACK;
+        private String[] hosts;
 
-
+        private static StateJoin instance;
 
         private Rectangle backButton;
         private Rectangle hostsTable;
@@ -33,13 +35,13 @@ namespace ION
 
 
 
+
         private bool mousePressed = false;
         public bool upPressed = false;
         public bool downPressed = false;
         public bool enterPressed = false;
 
-        public NetConnection LobbyConnection;
-        public RemoteSharedObject LobbyRSObject;
+
 
         private Color fadeColor = new Color(0, 255, 255, 128);
 
@@ -52,12 +54,17 @@ namespace ION
         private Rectangle row5;
         private Rectangle row6;
 
-        
+        private ServerConnection serverCon;
+
+
 
 
 
         public StateJoin()
         {
+            instance = this;
+
+            
             backButton = new Rectangle((ION.width / 2) - 500, (ION.height / 2) +300, Images.buttonBack.Width, Images.buttonBack.Height);
             joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
             refreshButton = new Rectangle((ION.width / 2) + 225, (ION.height / 2) + 300, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
@@ -71,64 +78,17 @@ namespace ION
             row6 = new Rectangle(hostsTable.X, row1.Y + 250, 600, 50);
 
             selected = row1;
+            serverCon = new ServerConnection();
 
 
-            LobbyConnection = new NetConnection();
-            LobbyConnection.ObjectEncoding = FluorineFx.ObjectEncoding.AMF0;
-            LobbyConnection.NetStatus += new NetStatusHandler(LobbyConnection_NetStatus);
-            LobbyConnection.OnConnect += new ConnectHandler(LobbyConnection_OnConnect);
-            LobbyConnection.OnDisconnect += new DisconnectHandler(LobbyConnection_OnDisconnect);
-            LobbyConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
         }
 
-        void LobbyConnection_OnDisconnect(object sender, EventArgs e)
+        public static StateJoin get()
         {
-            Console.WriteLine("LobbyConnection lost, reconnecting...");
-            //LobbyConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
+            return instance;
         }
+        
 
-        void LobbyConnection_OnConnect(object sender, EventArgs e)
-        {
-            Console.WriteLine("Connected to Lobby Server");
-            Console.WriteLine("Querying Serverlist...");
-
-            LobbyRSObject = RemoteSharedObject.GetRemote("Lobby", LobbyConnection.Uri.ToString(), false);
-            LobbyRSObject.NetStatus += new NetStatusHandler(LobbyRSObject_NetStatus);
-            LobbyRSObject.OnConnect += new ConnectHandler(LobbyRSObject_OnConnect);
-            LobbyRSObject.OnDisconnect += new DisconnectHandler(LobbyRSObject_OnDisconnect);
-            LobbyRSObject.Connect(LobbyConnection);
-
-            LobbyConnection.Call("getHosts", new getHostsMsgHandler());
-        }
-        public class getHostsMsgHandler : IPendingServiceCallback
-        {
-            public void ResultReceived(IPendingServiceCall call)
-            {
-                object result = call.Result;
-                System.Console.WriteLine("Server response: " + result);
-                System.Console.WriteLine("Press 'Enter' to exit");
-            }
-        }
-        void LobbyRSObject_OnDisconnect(object sender, EventArgs e) 
-        {
-            Console.WriteLine("LobbyObject lost, reconnecting...");
-            //LobbyRSObject.Connect(LobbyConnection);
-        }
-
-        void LobbyRSObject_OnConnect(object sender, EventArgs e)
-        {
-            Console.WriteLine("LobbyObject connected.");
-        }
-
-        void LobbyRSObject_NetStatus(object sender, NetStatusEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
-
-        void LobbyConnection_NetStatus(object sender, NetStatusEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
 
         public override void draw()
         {
@@ -166,7 +126,7 @@ namespace ION
             if (selection == SELECTION.REFRESH)
             {
                 //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonRefresh, refreshButton, Color.White);
+                ION.spriteBatch.Draw(Images.buttonRefreshF, refreshButton, Color.White);
             }
             else
             {
@@ -317,7 +277,7 @@ namespace ION
         {
             if (selection == SELECTION.REFRESH)
             {
-                //TODO
+                serverCon.getHosts();
             }
             else if (selection == SELECTION.BACK)
             {
@@ -355,6 +315,14 @@ namespace ION
             }
             Console.WriteLine("sel: " + (int)selection);
 
+
+        }
+
+        public void showHosts(Object[] hostList)
+        {
+
+            Console.WriteLine("lijstje uit serverConnection, eerste server: " + hostList[0]);
+            this.hosts = (String[])hostList;
 
         }
 

@@ -34,6 +34,7 @@ namespace ION
          * 
          **/
         private State state;
+        
 
         public static ION instance;
 

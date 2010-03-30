@@ -80,6 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiPlayer\ServerConnection.cs" />
     <Compile Include="State\StateIntro.cs" />
     <Compile Include="Tools\Colors.cs" />
     <Compile Include="Tools\Fonts.cs" />
@@ -152,9 +153,6 @@
       <Project>{A9B8375B-579D-4F8A-B00C-F2828DB58F3A}</Project>
       <Name>FluorineFx-3.5</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MultiPlayer\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
