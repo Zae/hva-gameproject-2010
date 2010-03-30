@@ -26,9 +26,11 @@ namespace ION
         private int playqueue = 1;
 
         private int level = 0;
+
         private string[] levels = {"Level1.xml","MediumLevelTest.xml","LargeLevelTest.xml"};
 
         private GridStrategy[] strategies = { new FlowStrategy(), new BleedStrategy() };
+
         private int strategy = 0;
 
         private bool actionOnScreen = false;
