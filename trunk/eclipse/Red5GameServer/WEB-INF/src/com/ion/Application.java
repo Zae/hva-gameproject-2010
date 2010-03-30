@@ -1,10 +1,13 @@
 package com.ion;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+
 import org.red5.server.adapter.ApplicationAdapter;
 import org.red5.server.api.IClient;
 import org.red5.server.api.IConnection;
 import org.red5.server.api.IScope;
+import org.red5.server.api.so.ISharedObject;
 
 /**
  * 
@@ -14,6 +17,7 @@ import org.red5.server.api.IScope;
 public class Application extends ApplicationAdapter
 {
 	private ArrayList<Host> Hosts = new ArrayList<Host>();
+	private Hashtable<IScope, ISharedObject> ChatRSOs = new Hashtable<IScope, ISharedObject>();
 	//private IConnection iConn;
 
     public boolean appStart (IScope app )
@@ -25,7 +29,7 @@ public class Application extends ApplicationAdapter
     	
     }
     public boolean appConnect( IConnection conn, IScope scope, Object[] params )
-    {    	
+    {
     	//iConn = conn;
         return true;
     }
@@ -47,6 +51,8 @@ public class Application extends ApplicationAdapter
     	 * There is also a possibility to check if there are
     	 * enough slots available for this new client.
     	 */
+    	ISharedObject rso = getSharedObject(room, "Chat");
+    	rso.setAttribute("SystemMessage", "User Joined the Room");
 		return false;
     }
     public void roomLeave(IClient client, IScope scope){
@@ -56,12 +62,15 @@ public class Application extends ApplicationAdapter
     	 * Maybe check if there are still more than two
     	 * players in the room.
     	 */
+    	ISharedObject rso = getSharedObject(scope, "Chat");
+    	rso.setAttribute("SystemMessage", "User left the Room");
     	if(scope.getClients().size() < 1){
     		roomStop(scope);
     	}
     }
     public boolean roomStart(IScope room){
 		Hosts.add(new Host(room.getName(), room));
+		createSharedObject(room, "Chat", false);
     	return false;
     }
     public void roomStop(IScope room){
