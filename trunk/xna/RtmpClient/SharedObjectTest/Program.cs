@@ -57,7 +57,7 @@ namespace SharedObjectTest
             _netConnection.NetStatus += new NetStatusHandler(_netConnection_NetStatus);
             _netConnection.Client = this;
             //FMS test
-            _netConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
+            _netConnection.Connect("rtmp://127.0.0.1:1935/gameserver/room1", true);
         }
 
         void _netConnection_OnConnect(object sender, EventArgs e)
@@ -81,7 +81,6 @@ namespace SharedObjectTest
 
         void _netConnection_NetStatus(object sender, NetStatusEventArgs e)
         {
-            
             string level = null;
             if(e.Info.ContainsKey("level"))
                 level = e.Info["level"] as string;
