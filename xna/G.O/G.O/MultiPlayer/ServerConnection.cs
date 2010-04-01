@@ -21,11 +21,11 @@ namespace ION{
         {
             instance = this;
             LobbyConnection = new NetConnection();
-            LobbyConnection.ObjectEncoding = FluorineFx.ObjectEncoding.AMF3;
+            LobbyConnection.ObjectEncoding = FluorineFx.ObjectEncoding.AMF0;
             LobbyConnection.NetStatus += new NetStatusHandler(LobbyConnection_NetStatus);
             LobbyConnection.OnConnect += new ConnectHandler(LobbyConnection_OnConnect);
             LobbyConnection.OnDisconnect += new DisconnectHandler(LobbyConnection_OnDisconnect);
-            LobbyConnection.Connect("rtmp://145.92.124.79:1935/gameserver", true);
+            LobbyConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
         }
 
         void LobbyConnection_OnDisconnect(object sender, EventArgs e)

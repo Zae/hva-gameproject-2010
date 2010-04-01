@@ -16,8 +16,8 @@ import org.red5.server.api.so.ISharedObject;
  */
 public class Application extends ApplicationAdapter
 {
-	private ArrayList<Host> Hosts = new ArrayList<Host>();
-	private Hashtable<IScope, ISharedObject> ChatRSOs = new Hashtable<IScope, ISharedObject>();
+	private ArrayList<String> Hosts = new ArrayList<String>();
+	//private Hashtable<IScope, ISharedObject> ChatRSOs = new Hashtable<IScope, ISharedObject>();
 	//private IConnection iConn;
 
     public boolean appStart (IScope app )
@@ -69,14 +69,15 @@ public class Application extends ApplicationAdapter
     	}
     }
     public boolean roomStart(IScope room){
-		Hosts.add(new Host(room.getName(), room));
+		//Hosts.add(new Host(room.getName(), room));
+		Hosts.add(room.getName());
 		createSharedObject(room, "Chat", false);
     	return false;
     }
     public void roomStop(IScope room){
     	/* TODO Delete the room from the Hostlist
     	 * instead of using stopHostingGame.
-    	 */
+    	 
     	for(int i=0;i<Hosts.size();i++){
     		Host h = Hosts.get(i);
     		if(h.hostname == room.getName()){
@@ -84,14 +85,19 @@ public class Application extends ApplicationAdapter
     			break;
     		}
     	}
+    	*/
     }
     /**
      * getHosts method to get a list of the hosts on the server.
      * 
      * @return ArrayList<Host> Hosts A List of Hosts on the server.
      */
-    public ArrayList<Host> getHosts()
+    public ArrayList<String> getHosts()
     {
     	return Hosts;
+    }
+    public int getHostSize()
+    {
+    	return Hosts.size();
     }
 }
