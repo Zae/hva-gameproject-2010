@@ -109,7 +109,8 @@ namespace ION
             Fonts.font = Content.Load<SpriteFont>("fontItems/TitleFont");
 
             Images.teamLogoImage = Content.Load<Texture2D>("miscItems/logo-game-ninjas");
-            Images.starfieldImage = Content.Load<Texture2D>("miscItems/starfield");
+            //Images.starfieldImage = Content.Load<Texture2D>("miscItems/starfield");
+            Images.starfieldImage = Content.Load<Texture2D>("miscItems/blue_red");
 
             
             //Title Menu

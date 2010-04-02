@@ -8,6 +8,7 @@ namespace ION.GridStrategies
     public abstract class GridStrategy
     {
         public string name;
+        public int speed = 0;
 
         public GridStrategy()
         {
@@ -16,5 +17,8 @@ namespace ION.GridStrategies
                 
 
         public abstract void update(int ellapsed);
+
+        public abstract void increaseSpeed();
+        public abstract void decreaseSpeed();
     }
 }
