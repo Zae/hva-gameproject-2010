@@ -26,11 +26,9 @@ namespace ION
         private int playqueue = 1;
 
         private int level = 0;
+        private string[] levels = {"Level1.xml","MediumLevelTest.xml","LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml"
 
-        private string[] levels = {"Level1.xml","MediumLevelTest.xml","LargeLevelTest.xml"};
-
-        private GridStrategy[] strategies = { new FlowStrategy(), new BleedStrategy() };
-
+        private GridStrategy[] strategies = { new FlowStrategy(), new CreepStrategy(), new BleedStrategy() };
         private int strategy = 0;
 
         private bool actionOnScreen = false;
@@ -48,6 +46,10 @@ namespace ION
 
         private bool nextStrategyDown = false;
         private bool previousStrategyDown = false;
+
+        private bool increaseSpeedDown = false;
+        private bool decreaseSpeedDown = false;
+
 
         public StateTest()
         {
@@ -83,6 +85,7 @@ namespace ION
             ION.spriteBatch.DrawString(Fonts.font, "Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, y += 15), Color.White);
             ION.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the map around, press Left-Alt to recenter the map", new Vector2(10, y += 15), Color.White);
             ION.spriteBatch.DrawString(Fonts.font, "N - M change Level (now: " + levels[level] + ") J - K change GridStrategy (now: " + strategies[strategy].name + ")", new Vector2(10, y += 15), Color.White);
+            ION.spriteBatch.DrawString(Fonts.font, "I - O change game speed (now: "+map.getUpdateStrategy().speed, new Vector2(10, y += 15), Color.White);
             ION.spriteBatch.End();
         }
 
@@ -118,14 +121,14 @@ namespace ION
                 ION.get().setState(new StatePaused()); 
             }
 
-            if (keyState.IsKeyDown(Keys.U))
-            {
-                map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER1);
-            }
-            else if (keyState.IsKeyDown(Keys.I))
-            {
-                map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER2);
-            }
+            //if (keyState.IsKeyDown(Keys.U))
+            //{
+            //    map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER1);
+            //}
+            //else if (keyState.IsKeyDown(Keys.I))
+            //{
+            //    map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER2);
+            //}
 
             //MAP CHANGING CONTROLS
             if (keyState.IsKeyDown(Keys.M) && !nextMapDown)
@@ -200,12 +203,48 @@ namespace ION
             {
                 previousStrategyDown = false;
             }
+
+            //SPEED CHANGING
+            if (keyState.IsKeyDown(Keys.O) && !increaseSpeedDown)
+            {
+                //increaseSpeedDown = true;
+                map.getUpdateStrategy().increaseSpeed();
+            }
+            else if (keyState.IsKeyUp(Keys.O))
+            {
+                //increaseSpeedDown = false;
+            }
+
+            if (keyState.IsKeyDown(Keys.I) && !decreaseSpeedDown)
+            {
+               // decreaseSpeedDown = true;
+                map.getUpdateStrategy().decreaseSpeed();
+            }
+            else if (keyState.IsKeyUp(Keys.I))
+            {
+                //decreaseSpeedDown = false;
+            }
      
 
             if (keyState.IsKeyDown(Keys.LeftAlt))
             {
                 translationX = 0;
                 translationY = 0;
+            }
+
+            if (keyState.IsKeyDown(Keys.RightAlt))
+            {
+                for (int i = 0; i < map.getPerspectiveMap().Length; i++)
+                {
+                    if (map.getPerspectiveMap()[i] is ResourceTile)
+                    {
+                        ((ResourceTile)map.getPerspectiveMap()[i]).nextCharge = 0.01f;
+                    }
+                    if (map.getPerspectiveMap()[i] is BaseTile)
+                    {
+                        ((ResourceTile)map.getPerspectiveMap()[i]).nextCharge = 999.0f;
+                    }
+                }
             }
 
             if (keyState.IsKeyDown(Keys.Space))

@@ -13,6 +13,16 @@ namespace ION.GridStrategies
         {
             name = "BleedStrategy";
         }
+
+        public override void increaseSpeed()
+        {
+            
+        }
+        public override void decreaseSpeed()
+        {
+
+        }
+
         
         public override void update(int ellapsed)
         {
@@ -60,7 +70,7 @@ namespace ION.GridStrategies
                     ////The tile to the bottom-right of this tile
                     //if(isValid(i+1,j+1))
                     //{
-                    //    todo.tileVersusTile(map[i+1,j+1]);
+                    //    other.tileVersusTile(map[i+1,j+1]);
                     //}
 
                     //The tile to the bottom of this tile
@@ -72,7 +82,7 @@ namespace ION.GridStrategies
                     ////The tile to the bottom left of this tile
                     //if (isValid(i-1,j+1))
                     //{
-                    //    todo.tileVersusTile(map[i-1,j+1]);
+                    //    other.tileVersusTile(map[i-1,j+1]);
                     //}
 
                 }
@@ -120,7 +130,7 @@ namespace ION.GridStrategies
                     //if (isValid(i + 1, j + 1))
                     //{
                     //    other = Grid.map[otherX, otherY];
-                    //    tileAidTile(todo, other);
+                    //    tileAidTile(other, other);
                     //}
 
                     otherX = i;
@@ -138,7 +148,7 @@ namespace ION.GridStrategies
                     //if (isValid(i - 1, j + 1))
                     //{
                     //    other = Grid.map[otherX, otherY];
-                    //    tileAidTile(todo, other);
+                    //    tileAidTile(other, other);
                     //}
 
                 }

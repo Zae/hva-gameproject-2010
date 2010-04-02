@@ -307,7 +307,7 @@ namespace ION
             if (nextCharge - charge < 0.0f)
             {
                 nextCharge = 0.0f;
-                Debug.WriteLine("DONATION RESULTS IN  < 0");
+                //Debug.WriteLine("DONATION RESULTS IN  < 0");
             }
             else
             {
@@ -320,7 +320,7 @@ namespace ION
             if (nextCharge + charge > 1.0f)
             {
                 nextCharge = 1.0f;
-                Debug.WriteLine("RECEPTION RESULTS IN > 1");
+                //Debug.WriteLine("RECEPTION RESULTS IN > 1");
             }
             else
             {

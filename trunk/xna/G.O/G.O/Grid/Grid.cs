@@ -98,6 +98,11 @@ namespace ION
 
         }
 
+        public GridStrategy getUpdateStrategy()
+        {
+            return updateStrategy;
+        }
+
         public void mouseRightReleased(int x, int y, int translationX, int translationY)
         {
             drawHitTest = false;
@@ -355,7 +360,7 @@ namespace ION
             for (int i = 0; i < tileCount; i++)
             {
                 perspectiveMap[i].draw(translationX, translationY);
-                //perspectiveMap[i].drawDebug(translationX, translationY);
+               // perspectiveMap[i].drawDebug(translationX, translationY);
             }
 
             if (drawHitTest)
@@ -491,6 +496,16 @@ namespace ION
             {
                 Console.WriteLine("exception in grid: " + e.ToString());
             }
+        }
+
+        public Tile[,] getMap()
+        {
+            return map;
+        }
+
+        public Tile[] getPerspectiveMap()
+        {
+            return perspectiveMap;
         }
     }
 }
