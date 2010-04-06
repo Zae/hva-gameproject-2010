@@ -1,9 +1,8 @@
 package com.ion;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
-import org.red5.server.adapter.ApplicationAdapter;
+import org.red5.server.adapter.MultiThreadedApplicationAdapter;
 import org.red5.server.api.IClient;
 import org.red5.server.api.IConnection;
 import org.red5.server.api.IScope;
@@ -14,11 +13,9 @@ import org.red5.server.api.so.ISharedObject;
  * @author Ezra
  *
  */
-public class Application extends ApplicationAdapter
+public class Application extends MultiThreadedApplicationAdapter
 {
 	private ArrayList<String> Hosts = new ArrayList<String>();
-	//private Hashtable<IScope, ISharedObject> ChatRSOs = new Hashtable<IScope, ISharedObject>();
-	//private IConnection iConn;
 
     public boolean appStart (IScope app )
     {
@@ -30,18 +27,10 @@ public class Application extends ApplicationAdapter
     }
     public boolean appConnect( IConnection conn, IScope scope, Object[] params )
     {
-    	//iConn = conn;
         return true;
     }
     public void appDisconnect( IConnection conn)
     {
-    	/*for(int i=0;i<Hosts.size();i++){
-    		Host h = Hosts.get(i);
-    		if(h.client == conn.getClient()){
-    			Hosts.remove(i);
-    			break;
-    		}    		
-    	}*/
        super.appDisconnect(conn);
     }
     public boolean roomJoin(IClient client, IScope room){
@@ -53,7 +42,7 @@ public class Application extends ApplicationAdapter
     	 */
     	ISharedObject rso = getSharedObject(room, "Chat");
     	rso.setAttribute("SystemMessage", "User Joined the Room");
-		return false;
+		return true;
     }
     public void roomLeave(IClient client, IScope scope){
     	/* TODO Send a message to all the clients that
@@ -64,28 +53,24 @@ public class Application extends ApplicationAdapter
     	 */
     	ISharedObject rso = getSharedObject(scope, "Chat");
     	rso.setAttribute("SystemMessage", "User left the Room");
-    	if(scope.getClients().size() < 1){
-    		roomStop(scope);
-    	}
     }
     public boolean roomStart(IScope room){
-		//Hosts.add(new Host(room.getName(), room));
-		Hosts.add(room.getName());
+    	synchronized(Hosts){
+        	Hosts.add(room.getName());
+    	}
 		createSharedObject(room, "Chat", false);
-    	return false;
+    	return true;
     }
     public void roomStop(IScope room){
-    	/* TODO Delete the room from the Hostlist
-    	 * instead of using stopHostingGame.
-    	 
-    	for(int i=0;i<Hosts.size();i++){
-    		Host h = Hosts.get(i);
-    		if(h.hostname == room.getName()){
-    			Hosts.remove(i);
-    			break;
-    		}
+    	synchronized(Hosts){
+	    	for(int i=0;i<Hosts.size();i++){
+	    		String h = Hosts.get(i);
+	    		if(h == room.getName()){
+	        		Hosts.remove(i);
+	    			break;
+	    		}
+	    	}
     	}
-    	*/
     }
     /**
      * getHosts method to get a list of the hosts on the server.
@@ -95,9 +80,5 @@ public class Application extends ApplicationAdapter
     public ArrayList<String> getHosts()
     {
     	return Hosts;
-    }
-    public int getHostSize()
-    {
-    	return Hosts.size();
     }
 }
