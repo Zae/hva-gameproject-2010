@@ -125,7 +125,7 @@ namespace ION
             {
                 map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER1);
             }
-            else if (keyState.IsKeyDown(Keys.I))
+            else if (keyState.IsKeyDown(Keys.Y))
             {
                 map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER2);
             }

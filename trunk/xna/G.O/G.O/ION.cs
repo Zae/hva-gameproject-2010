@@ -136,8 +136,10 @@ namespace ION
             Images.resourceImage = Content.Load<Texture2D>("tileItems/resource_tile");
             Images.white1px = Content.Load<Texture2D>("toolItems/white");
             Images.tileHitmapImage = Content.Load<Texture2D>("toolItems/tile_hitmap");
-            Images.unitImage = Content.Load<Texture2D>("unitItems/blueball");
-            Images.unitChargeImage = Content.Load<Texture2D>("unitItems/blueballcharge");
+            Images.blueUnitImage = Content.Load<Texture2D>("unitItems/blueball");
+            Images.blueUnitChargeImage = Content.Load<Texture2D>("unitItems/blueballcharge");
+            Images.redUnitImage = Content.Load<Texture2D>("unitItems/redball");
+            Images.redUnitChargeImage = Content.Load<Texture2D>("unitItems/redballcharge");
             Images.unitHitmapImage = Content.Load<Texture2D>("toolItems/ballhitmap");
             Images.baseHitmapImage = Content.Load<Texture2D>("toolItems/base_hitmap");
             Images.baseImage = Content.Load<Texture2D>("tileItems/base_tile");

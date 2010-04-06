@@ -19,8 +19,10 @@ namespace ION
         public static Texture2D resourceImage;
         public static Texture2D white1px;
         public static Texture2D tileHitmapImage;
-        public static Texture2D unitImage;
-        public static Texture2D unitChargeImage;
+        public static Texture2D blueUnitImage;
+        public static Texture2D blueUnitChargeImage;
+        public static Texture2D redUnitImage;
+        public static Texture2D redUnitChargeImage;
         public static Texture2D unitHitmapImage;
 
         //menuItems

@@ -340,22 +340,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="unitItems\redball.png">
-      <Name>redball</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="unitItems\blueballcharge.png">
-      <Name>blueballcharge</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="unitItems\redballcharge.png">
-      <Name>redballcharge</Name>
+    <Compile Include="toolItems\ballhitmap.png">
+      <Name>ballhitmap</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -366,10 +352,18 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="toolItems\ballhitmap.png">
-      <Name>ballhitmap</Name>
+    <Compile Include="unitItems\blueballcharge.png">
+      <Name>blueballcharge</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\redball.png">
+      <Name>redball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\redballcharge.png">
+      <Name>redballcharge</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
