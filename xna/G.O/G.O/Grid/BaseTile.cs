@@ -26,7 +26,7 @@ namespace ION
             this.nextCharge = 999.0f;
         }
 
-        public override void draw(int translationX, int translationY)
+        public override void draw(float translationX, float translationY)
         {
             //GO.primitiveBatch.Begin(PrimitiveType.LineList);
             //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Brown);
@@ -55,9 +55,9 @@ namespace ION
             ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)),Color.Brown);
             //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + 1), Color.Brown);
             //GO.primitiveBatch.End();
-
+            
             ION.spriteBatch.Begin();
-            ION.spriteBatch.Draw(Images.baseImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY - (baseHalfWidth), baseHalfWidth * 2, baseHalfWidth * 2), getBaseColor(owner));
+            ION.spriteBatch.Draw(Images.baseImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), getBaseColor(owner));
             ION.spriteBatch.End();
         }
 

@@ -59,7 +59,7 @@ namespace ION
             this.indexX = indexX;
             this.indexY = indexY;
         }
-        public override void drawDebug(int translationX, int translationY)
+        public override void drawDebug(float translationX, float translationY)
         {
             ION.spriteBatch.Begin();
             Vector2 location = new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
@@ -83,11 +83,11 @@ namespace ION
         }
 
 
-        
 
 
 
-        public override void draw(int translationX, int translationY)
+
+        public override void draw(float translationX, float translationY)
         {
 
 
@@ -121,12 +121,15 @@ namespace ION
 
             tileColor = getAppropriateColor(owner, charge);
 
-            ION.spriteBatch.Begin();
+            ION.spriteBatch.Begin(); 
+
             //if (owner != Players.NEUTRAL)
             //{
             //    ION.spriteBatch.Draw(Images.borderImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), tileColor);
             //}
-            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth*2, baseHalfHeight * 2), tileColor);
+
+
+            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth*2), (int)(baseHalfHeight * 2)), tileColor);
             
             
             
@@ -164,8 +167,9 @@ namespace ION
             //}
 
             if(unit != null) {
-                unit.draw(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY - (baseHalfHeight*2), baseHalfWidth * 2, baseHalfHeight * 4);
+                unit.draw(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
             }
+
    
         }
 
@@ -173,7 +177,9 @@ namespace ION
         {
             //Debug.WriteLine("UPDATING TILE!");
             owner = nextOwner;
-            charge = nextCharge;    
+            charge = nextCharge;
+
+            
         }
 
         public override void releaseMomentum()
@@ -201,6 +207,10 @@ namespace ION
 
             canDonateNE += nextCanDonateNE;
             nextCanDonateNE = 0;
+            
+            
+            
+            
             
             //Update the momentum counters
             if (canDonateN > 0)

@@ -17,7 +17,7 @@ namespace ION
 
         private Grid map;
 
-        private int scrollValue;
+        private float scrollValue;
 
         private static StateTest instance;
 
@@ -35,11 +35,11 @@ namespace ION
 
         private SoundEffectInstance actionOnScreenSound = null;
 
-        private int translationX = 0;
-        private int translationY = 0;
+        private float translationX = 0f;
+        private float translationY = 0f;
 
-        private int previousMouseX = 0;
-        private int previousMouseY = 0;
+        private float previousMouseX = 0f;
+        private float previousMouseY = 0f;
 
         private bool nextMapDown = false;
         private bool previousMapDown = false;
@@ -50,6 +50,8 @@ namespace ION
         private bool increaseSpeedDown = false;
         private bool decreaseSpeedDown = false;
 
+        private BallUnit soldier;
+
 
         public StateTest()
         {
@@ -59,6 +61,8 @@ namespace ION
 
 
             map = new Grid(levels[level], strategies[strategy]);
+
+            soldier = new BallUnit();
 
             actionOnScreenSound = Music.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
@@ -78,6 +82,7 @@ namespace ION
             ION.spriteBatch.End();
 
             map.draw(translationX, translationY);
+            soldier.draw(translationX, translationY, 0, 0);
 
             int y = 0;
             ION.spriteBatch.Begin();
@@ -125,7 +130,7 @@ namespace ION
             {
                 map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER1);
             }
-            else if (keyState.IsKeyDown(Keys.Y))
+            else if (keyState.IsKeyDown(Keys.I))
             {
                 map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER2);
             }
@@ -262,12 +267,14 @@ namespace ION
             if (mouseState.ScrollWheelValue > scrollValue)
             {
                 Tile.zoomIn();
+                Unit.zoomIn();
                 //Debug.WriteLine("zoomIn");
 
             }
             else if (mouseState.ScrollWheelValue < scrollValue)
             {
                 Tile.zoomOut();
+                Unit.zoomOut();
                // Debug.WriteLine("zoomOut");
             }
 
@@ -302,7 +309,9 @@ namespace ION
             }
 
             previousMouseX = mouseState.X;
-            previousMouseY = mouseState.Y; 
+            previousMouseY = mouseState.Y;
+
+            soldier.Update();
         }
 
         //Used to fade in and fade out the action sound

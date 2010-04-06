@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
-
+ 
 namespace ION
 {
     public abstract class Tile
@@ -37,8 +37,8 @@ namespace ION
 
         //public abstract void draw(int x, int y, SpriteBatch spriteBatch);
 
-        public abstract void draw(int translationX, int translationY);
-        public abstract void drawDebug(int translationX, int translationY);
+        public abstract void draw(float translationX, float translationY);
+        public abstract void drawDebug(float translationX, float translationY);
 
         //public abstract void tileVersusTile(Tile b);
 
