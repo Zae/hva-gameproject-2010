@@ -9,6 +9,7 @@ using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using ION.GridStrategies;
+using ION.Units;
 
 namespace ION
 {
@@ -203,8 +204,8 @@ namespace ION
                     ResourceTile resourceTile = (ResourceTile)tile;
                     if (!resourceTile.hasUnit())
                     {
-                        //BallUnit b = new BallUnit(owner);
-                       // resourceTile.setUnit(b);
+                       BallUnit b = new BallUnit(owner);
+                       resourceTile.setUnit(b);
                     }
                 }
             }
