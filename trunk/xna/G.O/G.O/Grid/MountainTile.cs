@@ -14,9 +14,9 @@ namespace ION
         {
             this.indexX = indexX;
             this.indexY = indexY;
-        }
+        } 
 
-        public override void drawDebug(int translationX, int translationY)
+        public override void drawDebug(float translationX, float translationY)
         {
             ION.spriteBatch.Begin();
             Vector2 location = new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
@@ -38,7 +38,7 @@ namespace ION
             
         }
 
-        public override void draw(int translationX, int translationY)
+        public override void draw(float translationX, float translationY)
         {
             //GO.primitiveBatch.Begin(PrimitiveType.LineList);
             //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Brown);
@@ -69,7 +69,7 @@ namespace ION
             //GO.primitiveBatch.End();
 
             ION.spriteBatch.Begin();
-            ION.spriteBatch.Draw(Images.mountainImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY - (baseHalfWidth+baseHalfHeight), baseHalfWidth * 2, baseHalfWidth * 2), Color.White);
+            ION.spriteBatch.Draw(Images.mountainImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth+baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
             ION.spriteBatch.End();          
         }
 

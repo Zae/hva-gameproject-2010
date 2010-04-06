@@ -9,7 +9,6 @@ using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using ION.GridStrategies;
-using ION.Units;
 
 namespace ION
 {
@@ -21,8 +20,8 @@ namespace ION
         public static int height;
         public static int tileCount;
 
-        public int mouseWorldX = 0;
-        public int mouseWorldY = 0;
+        public float mouseWorldX = 0;
+        public float mouseWorldY = 0;
 
         private Tile selectedTile = null;
 
@@ -43,9 +42,9 @@ namespace ION
         private float virtualY = 0;
 
 
-        
 
-        public void mouseRightPressed(int x, int y, int translationX, int translationY)
+
+        public void mouseRightPressed(float x, float y, float translationX, float translationY)
         {
             //drawHitTest = true;
 
@@ -104,17 +103,17 @@ namespace ION
             return updateStrategy;
         }
 
-        public void mouseRightReleased(int x, int y, int translationX, int translationY)
+        public void mouseRightReleased(float x, float y, float translationX, float translationY)
         {
             drawHitTest = false;
         }
 
-        public void mouseLeftReleased(int x, int y, int translationX, int translationY)
+        public void mouseLeftReleased(float x, float y, float translationX, float translationY)
         {
             drawHitTest = false;
         }
 
-        public void mouseLeftPressed(int x, int y, int translationX, int translationY)
+        public void mouseLeftPressed(float x, float y, float translationX, float translationY)
         {
             //drawHitTest = true;
  
@@ -167,7 +166,7 @@ namespace ION
             }
         }
 
-        public void createUnit(int x, int y, int translationX, int translationY, int owner)
+        public void createUnit(float x, float y, float translationX, float translationY, int owner)
         {
             //translate the screen input to world coordinates
             mouseWorldX = x - translationX - ION.halfWidth;
@@ -204,8 +203,8 @@ namespace ION
                     ResourceTile resourceTile = (ResourceTile)tile;
                     if (!resourceTile.hasUnit())
                     {
-                       BallUnit b = new BallUnit(owner);
-                       resourceTile.setUnit(b);
+                        //BallUnit b = new BallUnit(owner);
+                       // resourceTile.setUnit(b);
                     }
                 }
             }
@@ -217,13 +216,13 @@ namespace ION
         }
 
 
-        private uint doHitmapTest(int x, int y, int translationX, int translationY, int visualX, int visualY) 
+        private uint doHitmapTest(float x, float y, float translationX, float translationY, int visualX, int visualY) 
         {
             string sColorval = "NONE";
             uint[] myUint = new uint[1];
 
-            int tileX = ION.halfWidth + (visualX * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth);
-            int tileY = (visualY * Tile.baseHalfHeight) + translationY;
+            int tileX = (int)(ION.halfWidth + (visualX * Tile.baseHalfWidth) + translationX - (Tile.baseHalfWidth));
+            int tileY = (int)((visualY * Tile.baseHalfHeight) + translationY);
 
             virtualX = x - tileX;
             virtualY = y - tileY;
@@ -356,7 +355,7 @@ namespace ION
             this.viewDirection = newViewDirection;
         }
 
-        public void draw(int translationX, int translationY)
+        public void draw(float translationX, float translationY)
         {
             for (int i = 0; i < tileCount; i++)
             {

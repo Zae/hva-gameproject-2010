@@ -5,40 +5,24 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace ION.Units
+namespace ION
 {
     class BallUnit : Unit
     {
 
-        public BallUnit(int owner)
+        public BallUnit()
         {
-            this.owner = owner;
+            pos = new Vector2(ION.halfWidth - (scale / 2), -(scale / 4));
+            targetPos = new Vector2(500, 500);
+
+            movementSpeed = 2;
         }
 
-
-        public override void draw(int x, int y, int width, int height)
+        public override void draw(float x, float y, float width, float height)
         {
             ION.spriteBatch.Begin();
-
-            ION.spriteBatch.Draw(getAppropriateImage(), new Rectangle(x,y,width,height), Color.White);
-
-
-
-            ION.spriteBatch.End();
+            ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (int)x, (int)((pos.Y) * (scale / 15.0f)) + (int)y, (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
+            ION.spriteBatch.End(); 
         }
-
-        private Texture2D getAppropriateImage()
-        {
-            if (owner == Players.PLAYER1)
-            {
-                return Images.blueUnitImage;
-            }
-            else if (owner == Players.PLAYER2)
-            {
-                return Images.redUnitImage;
-            }
-            return null;
-        }
-
     }
 }
