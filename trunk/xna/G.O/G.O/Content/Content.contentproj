@@ -200,25 +200,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="unitItems\unit_charge.png">
-      <Name>unit_charge</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\unit.png">
-      <Name>unit</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="toolItems\unit_hitmap.png">
-      <Name>unit_hitmap</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="menuItems\mpButton.png">
       <Name>mpButton</Name>
       <Importer>TextureImporter</Importer>
@@ -354,6 +335,41 @@
   <ItemGroup>
     <Compile Include="miscItems\blue_red.jpg">
       <Name>blue_red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="unitItems\redball.png">
+      <Name>redball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="unitItems\blueballcharge.png">
+      <Name>blueballcharge</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="unitItems\redballcharge.png">
+      <Name>redballcharge</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="unitItems\blueball.png">
+      <Name>blueball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="toolItems\ballhitmap.png">
+      <Name>ballhitmap</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

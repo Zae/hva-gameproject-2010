@@ -26,9 +26,9 @@ namespace ION
         private int playqueue = 1;
 
         private int level = 0;
-        private string[] levels = {"Level1.xml","MediumLevelTest.xml","LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml"
+        private string[] levels = { "MediumLevelTest.xml", "Level1.xml", "LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml"
 
-        private GridStrategy[] strategies = { new FlowStrategy(), new CreepStrategy(), new BleedStrategy() };
+        private GridStrategy[] strategies = { new CreepStrategy(), new FlowStrategy(), new BleedStrategy() };
         private int strategy = 0;
 
         private bool actionOnScreen = false;
@@ -121,14 +121,14 @@ namespace ION
                 ION.get().setState(new StatePaused()); 
             }
 
-            //if (keyState.IsKeyDown(Keys.U))
-            //{
-            //    map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER1);
-            //}
-            //else if (keyState.IsKeyDown(Keys.I))
-            //{
-            //    map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER2);
-            //}
+            if (keyState.IsKeyDown(Keys.U))
+            {
+                map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER1);
+            }
+            else if (keyState.IsKeyDown(Keys.I))
+            {
+                map.createUnit(mouseState.X, mouseState.Y, translationX, translationY, Players.PLAYER2);
+            }
 
             //MAP CHANGING CONTROLS
             if (keyState.IsKeyDown(Keys.M) && !nextMapDown)

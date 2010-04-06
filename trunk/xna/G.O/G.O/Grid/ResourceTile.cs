@@ -304,6 +304,11 @@ namespace ION
 
         public virtual void donate(float charge)
         {
+            if (charge < 0.0f)
+            {
+                Debug.WriteLine("NEGATIVE CHARGE ON DONATE!");
+            }
+            
             if (nextCharge - charge < 0.0f)
             {
                 nextCharge = 0.0f;

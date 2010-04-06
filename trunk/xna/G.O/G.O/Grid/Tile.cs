@@ -23,7 +23,7 @@ namespace ION
         //protected const int baseHalfWidth = 140;
         //protected const int baseHalfHeight = 46;
 
-        private static int scale = 40;
+        private static int scale = 15;
 
         public static int baseHalfWidth = baseHalfWidthConstant * scale;
         public static int baseHalfHeight = baseHalfHeightConstant * scale;
