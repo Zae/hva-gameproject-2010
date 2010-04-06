@@ -91,7 +91,6 @@
     <Compile Include="Grid\Strategies\FlowStrategy.cs" />
     <Compile Include="Grid\Strategies\GridStrategy.cs" />
     <Compile Include="Tools\Images.cs" />
-    <Compile Include="Tests\MichielTest.cs" />
     <Compile Include="Tools\Music.cs" />
     <Compile Include="Tools\Players.cs" />
     <Compile Include="Tools\PrimitiveBatch.cs" />
@@ -109,6 +108,7 @@
     <Compile Include="Grid\Tile.cs" />
     <Compile Include="Tools\Tool.cs" />
     <Compile Include="UI\PushButton.cs" />
+    <Compile Include="Units\BallUnit.cs" />
     <Compile Include="Units\Unit.cs" />
   </ItemGroup>
   <ItemGroup>

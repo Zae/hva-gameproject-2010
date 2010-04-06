@@ -24,6 +24,16 @@ namespace ION.GridStrategies
         {
             name = "FlowStrategy";
         }
+        public override void reset()
+        {
+
+
+        }
+
+        public override void draw()
+        {
+
+        }
 
         public override void increaseSpeed()
         {

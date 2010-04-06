@@ -14,7 +14,10 @@ namespace ION.GridStrategies
         {
             name = "GridStrategy";
         }
-                
+
+        public abstract void reset();
+
+        public abstract void draw();
 
         public abstract void update(int ellapsed);
 

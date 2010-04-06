@@ -360,7 +360,7 @@ namespace ION
             for (int i = 0; i < tileCount; i++)
             {
                 perspectiveMap[i].draw(translationX, translationY);
-               // perspectiveMap[i].drawDebug(translationX, translationY);
+                //perspectiveMap[i].drawDebug(translationX, translationY);
             }
 
             if (drawHitTest)
@@ -370,6 +370,8 @@ namespace ION
                 ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX, (int)virtualY, 5, 5), Color.Black);
                 ION.spriteBatch.End();
             }
+
+            updateStrategy.draw();
         }
 
         public void update(int ellapsed)
@@ -399,6 +401,7 @@ namespace ION
         public Grid(String levelname, GridStrategy strategy)
         {
             updateStrategy = strategy;
+            updateStrategy.reset();
             //updateStrategy = new FlowStrategy();
 
             //load the xml file into the XmlTextReader object. 

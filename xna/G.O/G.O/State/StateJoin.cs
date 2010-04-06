@@ -24,7 +24,7 @@ namespace ION
 
         }
         public SELECTION selection = SELECTION.BACK;
-        private Host[] hosts;
+       // private Host[] hosts;
 
         private static StateJoin instance;
 
@@ -54,7 +54,7 @@ namespace ION
         private Rectangle row5;
         private Rectangle row6;
 
-        private ServerConnection serverCon;
+        //private ServerConnection serverCon;
 
 
         //temp
@@ -83,7 +83,7 @@ namespace ION
             row6 = new Rectangle(hostsTable.X, row1.Y + 250, 600, 50);
 
             selected = row1;
-            serverCon = new ServerConnection();
+            //serverCon = new ServerConnection();
 
 
         }
@@ -286,7 +286,7 @@ namespace ION
         {
             if (selection == SELECTION.REFRESH)
             {
-                serverCon.getHosts();
+               // serverCon.getHosts();
             }
             else if (selection == SELECTION.BACK)
             {
@@ -327,13 +327,13 @@ namespace ION
 
         }
 
-        public void showHosts(Host[] hostList)
-        {
+        //public void showHosts(Host[] hostList)
+        //{
 
-            Console.WriteLine("lijstje uit serverConnection, eerste server: " + hostList[0].hostname);
-            this.hosts = hostList;
+        //    Console.WriteLine("lijstje uit serverConnection, eerste server: " + hostList[0].hostname);
+        //    this.hosts = hostList;
 
-        }
+        //}
 
         public override void focusGained()
         {

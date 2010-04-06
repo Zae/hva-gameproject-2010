@@ -14,6 +14,16 @@ namespace ION.GridStrategies
             name = "BleedStrategy";
         }
 
+        public override void reset()
+        {
+           
+        }
+
+        public override void draw()
+        {
+          
+        }
+
         public override void increaseSpeed()
         {
             
