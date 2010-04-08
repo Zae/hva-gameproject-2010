@@ -10,11 +10,13 @@ using FluorineFx.Messaging.Api.Service;
 
 namespace ION{
 
-    class ServerConnection
+    public class ServerConnection
     {
         public static ServerConnection instance;
         public NetConnection LobbyConnection;
         public RemoteSharedObject LobbyRSObject;
+
+        public NetConnection GameConnection;
 
         public ServerConnection()
             
@@ -25,7 +27,7 @@ namespace ION{
             LobbyConnection.NetStatus += new NetStatusHandler(LobbyConnection_NetStatus);
             LobbyConnection.OnConnect += new ConnectHandler(LobbyConnection_OnConnect);
             LobbyConnection.OnDisconnect += new DisconnectHandler(LobbyConnection_OnDisconnect);
-            LobbyConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
+            LobbyConnection.Connect("rtmp://red5.dooping.nl:1935/ion", true);
         }
 
         void LobbyConnection_OnDisconnect(object sender, EventArgs e)
@@ -39,13 +41,21 @@ namespace ION{
             Console.WriteLine("Connected to Lobby Server");
             Console.WriteLine("Querying Serverlist...");
 
-            LobbyRSObject = RemoteSharedObject.GetRemote("Lobby", LobbyConnection.Uri.ToString(), false);
+            LobbyRSObject = RemoteSharedObject.GetRemote("Chat", LobbyConnection.Uri.ToString(), false);
             LobbyRSObject.NetStatus += new NetStatusHandler(LobbyRSObject_NetStatus);
             LobbyRSObject.OnConnect += new ConnectHandler(LobbyRSObject_OnConnect);
             LobbyRSObject.OnDisconnect += new DisconnectHandler(LobbyRSObject_OnDisconnect);
+            LobbyRSObject.Sync += new SyncHandler(LobbyRSObject_Sync);
             LobbyRSObject.Connect(LobbyConnection);
 
             
+        }
+
+        void LobbyRSObject_Sync(object sender, SyncEventArgs e)
+        {
+            int a = 2;
+            String message = (String)this.LobbyRSObject.GetAttribute("SystemMessage");
+            //throw new NotImplementedException();
         }
 
 
@@ -54,13 +64,13 @@ namespace ION{
             public void ResultReceived(IPendingServiceCall call)
             {
                // object result = ;
-                Host[] result = (Host[])call.Result;
+                String[] result = (String[])call.Result;
                 for (int i = 0; i < result.Length; i++)
                 {
                     System.Console.WriteLine("result " + i + ": " + result[i].ToString());
                 }
 
-                StateJoin.get().showHosts(result);
+                //StateJoin.get().showHosts(result);
 
 
                 System.Console.WriteLine("Press 'Enter' to exit");
@@ -88,20 +98,39 @@ namespace ION{
 
         void LobbyConnection_NetStatus(object sender, NetStatusEventArgs e)
         {
+            int a = 2;
             //throw new NotImplementedException();
-        }
-
-
-
-        public void addHost(String roomName)
-        {
-
         }
 
         public void getHosts()
         {
            // LobbyConnection.Call("getHosts", new getHostsMsgHandler());
             LobbyConnection.Call("getHosts", new getHostsMsgHandler());
+        }
+
+        public void JoinRoom(String roomname)
+        {
+            GameConnection = new NetConnection();
+            GameConnection.ObjectEncoding = FluorineFx.ObjectEncoding.AMF0;
+            GameConnection.NetStatus += new NetStatusHandler(GameConnection_NetStatus);
+            GameConnection.OnConnect += new ConnectHandler(GameConnection_OnConnect);
+            GameConnection.OnDisconnect += new DisconnectHandler(GameConnection_OnDisconnect);
+            GameConnection.Connect("rtmp://red5.dooping.nl:1935/ion/"+roomname, true);
+        }
+
+        void GameConnection_OnDisconnect(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void GameConnection_OnConnect(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void GameConnection_NetStatus(object sender, NetStatusEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public static ServerConnection get()

@@ -291,6 +291,7 @@ namespace ION
             if (selection == SELECTION.REFRESH)
             {
                // serverCon.getHosts();
+                //serverCon.getNumberofHosts();
             }
             else if (selection == SELECTION.BACK)
             {
