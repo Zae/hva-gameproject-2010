@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+ 
  
 namespace ION
 {
@@ -23,16 +25,16 @@ namespace ION
         //protected const int baseHalfWidth = 140;
         //protected const int baseHalfHeight = 46;
 
-        private static int scale = 15;
+        private static float scale = 15;
 
-        public static int baseHalfWidth = baseHalfWidthConstant * scale;
-        public static int baseHalfHeight = baseHalfHeightConstant * scale;
+        public static float baseHalfWidth = baseHalfWidthConstant * scale;
+        public static float baseHalfHeight = baseHalfHeightConstant * scale;
 
         //private const int baseHalfWidthConstant = 140;
         //private const int baseHalfHeightConstant = 46;
 
-        private const int baseHalfWidthConstant = 3; 
-        private const int baseHalfHeightConstant = 1;
+        private const float baseHalfWidthConstant = 3;
+        private const float baseHalfHeightConstant = 1;
 
 
         //public abstract void draw(int x, int y, SpriteBatch spriteBatch);
@@ -110,6 +112,11 @@ namespace ION
                 baseHalfHeight = baseHalfHeightConstant* scale;
             }
                
+        }
+
+        public Vector2 GetPos(float translationX, float translationY)
+        {
+            return new Vector2((ION.halfWidth + (visualX * baseHalfWidth) * (15.0f / scale) - (baseHalfWidth * (15.0f / scale))), ((visualY * baseHalfHeight) * (15.0f / scale) - (baseHalfWidth + baseHalfHeight) * (15.0f / scale)));
         }
 
     }

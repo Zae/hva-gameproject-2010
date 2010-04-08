@@ -100,6 +100,7 @@
     <Compile Include="Grid\Strategies\BleedStrategy.cs" />
     <Compile Include="Grid\Strategies\FlowStrategy.cs" />
     <Compile Include="Grid\Strategies\GridStrategy.cs" />
+    <Compile Include="Tools\HitmapColorPool.cs" />
     <Compile Include="Tools\Images.cs" />
     <Compile Include="Tools\Music.cs" />
     <Compile Include="Tools\Players.cs" />

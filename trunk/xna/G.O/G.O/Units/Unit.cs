@@ -15,7 +15,7 @@ namespace ION
         protected int health = 100;
         //protected int tileX;
         //protected int tileY;
-        protected Vector2 pos, targetPos;//replaced two int values with a 2d vector
+        protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
 
         protected int inTileX;
@@ -40,10 +40,19 @@ namespace ION
         protected float visualZ;
         protected float visualX;
         protected float visualY;
-        
-        public void Update()
+
+        public void Update(float x, float y)
         {
-            move();
+            if (pos != targetPos)
+            {
+                move();
+                //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
+            }
+            
+            //will move this to the above if statement when the unit know its tile
+            virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) + (baseHalfWidth*1.1f);
+            virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfWidth * 1.6f);
+            
         }
 
         //move units towards their target
@@ -96,6 +105,16 @@ namespace ION
         public float GetScale()
         {
             return baseHalfWidthConstant;
+        }
+
+        public void SetTarget(Vector2 newTarget)
+        {
+            targetPos = newTarget;
+        }
+
+        public Vector2 GetVirtualPos()
+        {
+            return virtualPos;
         }
         // new
 
