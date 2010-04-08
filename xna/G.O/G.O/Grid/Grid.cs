@@ -407,12 +407,10 @@ namespace ION
             {
                 mouseLeftPressed(soldier.GetVirtualPos().X, soldier.GetVirtualPos().Y, translationX, translationY);
             }
-        
 
-
-            float[] re = SerializeTileArrayToRSOArray(map);
-            //byte[] rs = Serializer.Serialize(map);
-            GridRSO.SetAttribute("Grid", re);
+            /** Disabled for performance, works perfectly tho! **/
+            //byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);            
+            //GridRSO.SetAttribute("Grid", rs);
         }
 
         private Tile createTile(char c, int x, int y)
@@ -436,12 +434,12 @@ namespace ION
             updateStrategy.reset();
             //updateStrategy = new FlowStrategy();
 
-            //GridRSO = RemoteSharedObject.GetRemote("Grid", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
-            //GridRSO.NetStatus +=new NetStatusHandler(GridRSO_NetStatus);
-            //GridRSO.OnConnect += new ConnectHandler(GridRSO_OnConnect);
-            //GridRSO.OnDisconnect += new DisconnectHandler(GridRSO_OnDisconnect);
-            //GridRSO.Sync += new SyncHandler(GridRSO_Sync);
-            //GridRSO.Connect(ION.get().serverConnection.GameConnection);
+            GridRSO = RemoteSharedObject.GetRemote("Grid", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
+            GridRSO.NetStatus +=new NetStatusHandler(GridRSO_NetStatus);
+            GridRSO.OnConnect += new ConnectHandler(GridRSO_OnConnect);
+            GridRSO.OnDisconnect += new DisconnectHandler(GridRSO_OnDisconnect);
+            GridRSO.Sync += new SyncHandler(GridRSO_Sync);
+            GridRSO.Connect(ION.get().serverConnection.GameConnection);
 
             //load the xml file into the XmlTextReader object. 
             try
@@ -554,7 +552,11 @@ namespace ION
 
         void GridRSO_Sync(object sender, SyncEventArgs e)
         {
-            //throw new NotImplementedException();
+            byte[] grid = (byte[])GridRSO.GetAttribute("Grid");
+            if (grid != null)
+            {
+                float[,] f = Serializer.Deserialize(grid);
+            }
         }
 
         void GridRSO_OnDisconnect(object sender, EventArgs e)
