@@ -9,6 +9,8 @@ using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using ION.GridStrategies;
+using FluorineFx;
+using FluorineFx.Net;
 
 namespace ION
 {
@@ -41,8 +43,7 @@ namespace ION
         private float virtualX = 0;
         private float virtualY = 0;
 
-
-
+        private RemoteSharedObject GridRSO;
 
         public void mouseRightPressed(float x, float y, float translationX, float translationY)
         {
@@ -373,15 +374,33 @@ namespace ION
 
             updateStrategy.draw();
         }
+        private float[,] SerializeTileArrayToRSOArray(Tile[,] map)
+        {
+            float[,] result = new float[Grid.width, Grid.height];
 
+            for (int i = 0; i < Grid.width; i++)
+            {
+                for (int j = 0; j < Grid.height; j++)
+                {
+                    if (map[i, j] is ResourceTile)
+                    {
+                        result[i, j] = ((ResourceTile)map[i, j]).charge;
+                    }
+                    else
+                    {
+                        result[i, j] = 0f;
+                    }
+                }
+            }
+            return result;
+        }
         public void update(int ellapsed)
         {
 
             updateStrategy.update(ellapsed);
-            
-        }
 
-        
+            GridRSO.SetAttribute("Grid", SerializeTileArrayToRSOArray(map));
+        }
 
         private Tile createTile(char c, int x, int y)
         {
@@ -403,6 +422,13 @@ namespace ION
             updateStrategy = strategy;
             updateStrategy.reset();
             //updateStrategy = new FlowStrategy();
+
+            GridRSO = RemoteSharedObject.GetRemote("Grid", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
+            GridRSO.NetStatus +=new NetStatusHandler(GridRSO_NetStatus);
+            GridRSO.OnConnect += new ConnectHandler(GridRSO_OnConnect);
+            GridRSO.OnDisconnect += new DisconnectHandler(GridRSO_OnDisconnect);
+            GridRSO.Sync += new SyncHandler(GridRSO_Sync);
+            GridRSO.Connect(ION.get().serverConnection.GameConnection);
 
             //load the xml file into the XmlTextReader object. 
             try
@@ -499,6 +525,27 @@ namespace ION
             {
                 Console.WriteLine("exception in grid: " + e.ToString());
             }
+        }
+
+        void GridRSO_Sync(object sender, SyncEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        void GridRSO_OnDisconnect(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        void GridRSO_OnConnect(object sender, EventArgs e)
+        {
+            
+            //throw new NotImplementedException();
+        }
+
+        void GridRSO_NetStatus(object sender, NetStatusEventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         public Tile[,] getMap()

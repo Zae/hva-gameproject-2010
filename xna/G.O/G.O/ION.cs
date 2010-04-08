@@ -33,7 +33,8 @@ namespace ION
          * 
          **/
         private State state;
-        
+
+        public ServerConnection serverConnection;
 
         public static ION instance;
 
@@ -47,6 +48,7 @@ namespace ION
 
             graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(preparingDeviceSettings);
 
+            graphics.ToggleFullScreen();
             graphics.ToggleFullScreen();
 
             width = graphics.GraphicsDevice.DisplayMode.Width;
