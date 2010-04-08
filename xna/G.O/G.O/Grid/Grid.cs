@@ -374,9 +374,13 @@ namespace ION
 
             updateStrategy.draw();
         }
-        private float[,] SerializeTileArrayToRSOArray(Tile[,] map)
+        private float[] SerializeTileArrayToRSOArray(Tile[,] map)
         {
-            float[,] result = new float[Grid.width, Grid.height];
+            float[] result = new float[Grid.width*Grid.height+2];
+            int counter=2;
+
+            result[0] = (float)Grid.width;
+            result[1] = (float)Grid.height;
 
             for (int i = 0; i < Grid.width; i++)
             {
@@ -384,11 +388,11 @@ namespace ION
                 {
                     if (map[i, j] is ResourceTile)
                     {
-                        result[i, j] = ((ResourceTile)map[i, j]).charge;
+                        result[counter++] = ((ResourceTile)map[i, j]).charge;
                     }
                     else
                     {
-                        result[i, j] = 0f;
+                        result[counter++] = 0f;
                     }
                 }
             }
@@ -396,7 +400,6 @@ namespace ION
         }
         public void update(int ellapsed, Unit soldier, float translationX, float translationY)
         {
-
         
 
             updateStrategy.update(ellapsed);
@@ -406,7 +409,10 @@ namespace ION
             }
         
 
-            //GridRSO.SetAttribute("Grid", SerializeTileArrayToRSOArray(map));
+
+            float[] re = SerializeTileArrayToRSOArray(map);
+            //byte[] rs = Serializer.Serialize(map);
+            GridRSO.SetAttribute("Grid", re);
         }
 
         private Tile createTile(char c, int x, int y)

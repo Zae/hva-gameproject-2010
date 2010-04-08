@@ -57,7 +57,7 @@ namespace SharedObjectTest
             _netConnection.NetStatus += new NetStatusHandler(_netConnection_NetStatus);
             _netConnection.Client = this;
             //FMS test
-            _netConnection.Connect("rtmp://127.0.0.1:1935/gameserver/room1", true);
+            _netConnection.Connect("rtmp://red.dooping.nl:1935/ion/room1", true);
         }
 
         void _netConnection_OnConnect(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace SharedObjectTest
             System.Console.WriteLine("Connected to server. Connecting to RSO...");
             //_sharedObject = RemoteSharedObject.GetRemote("users", _netConnection.Uri.ToString(), false);
             //Our custom UsersRSO will handle "ChatMsg" messages
-            _sharedObject = RemoteSharedObject.GetRemote("Player1", _netConnection.Uri.ToString(), false);
+            _sharedObject = RemoteSharedObject.GetRemote("Grid", _netConnection.Uri.ToString(), false);
 
             _sharedObject.OnConnect += new ConnectHandler(_sharedObject_OnConnect);
             _sharedObject.OnDisconnect += new DisconnectHandler(_sharedObject_OnDisconnect);
@@ -117,7 +117,7 @@ namespace SharedObjectTest
                 else
                     System.Console.WriteLine(info["code"].ToString());
             }
-            object whateva = _sharedObject.GetAttribute("X");
+            object whateva = _sharedObject.GetAttribute("Grid");
             //Send some message when you are ready
             //_sharedObject.Send("msgFromClient", "test message");
         }
