@@ -33,6 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< .mine
+    <Reference Include="FluorineFx, Version=1.0.0.15, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\G.O\FluorineFx\bin\x86\Debug\FluorineFx.dll</HintPath>
+    </Reference>
+=======
+>>>>>>> .r109
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

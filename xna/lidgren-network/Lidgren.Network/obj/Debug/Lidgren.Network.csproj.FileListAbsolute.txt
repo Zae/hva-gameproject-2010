@@ -1,0 +1,10 @@
+C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\bin\Debug\Lidgren.Network.dll
+C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\bin\Debug\Lidgren.Network.pdb
+C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\obj\Debug\Lidgren.Network.dll
+C:\Users\Qadri\Desktop\lidgren-network\Lidgren.Network\obj\Debug\Lidgren.Network.pdb
+D:\Projects\Gaming tech\Land Conquerer Project\ION\xna\lidgren-network\Lidgren.Network\bin\Debug\Lidgren.Network.dll
+D:\Projects\Gaming tech\Land Conquerer Project\ION\xna\lidgren-network\Lidgren.Network\bin\Debug\Lidgren.Network.pdb
+D:\Projects\Gaming tech\Land Conquerer Project\ION\xna\lidgren-network\Lidgren.Network\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\Gaming tech\Land Conquerer Project\ION\xna\lidgren-network\Lidgren.Network\obj\Debug\Lidgren.Network.dll
+D:\Projects\Gaming tech\Land Conquerer Project\ION\xna\lidgren-network\Lidgren.Network\obj\Debug\Lidgren.Network.pdb

@@ -27,7 +27,6 @@ namespace ION
         public static int halfWidth;
         public static int height;
         public static int halfHeight;
-
         private bool restartPressed = false;
         
         /**
@@ -104,6 +103,7 @@ namespace ION
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             primitiveBatch = new PrimitiveBatch(GraphicsDevice);
+           
 
             // TODO: use this.Content to load your game content here
             Fonts.font = Content.Load<SpriteFont>("fontItems/TitleFont");
@@ -194,7 +194,7 @@ namespace ION
             {
                 this.Exit();
             }
-            if (keyState.IsKeyDown(Keys.R))
+            if (keyState.IsKeyDown(Keys.R)&& keyState.IsKeyDown(Keys.LeftShift))
             {
                 if (!restartPressed)
                 {

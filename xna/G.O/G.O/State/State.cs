@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace ION
 {
@@ -21,6 +22,17 @@ namespace ION
         public abstract void focusLost();
 
         public abstract void focusGained();
+
+        public Boolean mouseIn(int mx, int my, Rectangle rect)
+        {
+            if ((mx > rect.X && mx < (rect.X + rect.Width)) && (my > rect.Y && my < (rect.Y + rect.Height)))
+            {
+                return true;
+            }
+
+            return false;
+
+        }
         
 
     }
