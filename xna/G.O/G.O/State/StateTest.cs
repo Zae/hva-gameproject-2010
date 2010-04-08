@@ -50,8 +50,8 @@ namespace ION
         private bool increaseSpeedDown = false;
         private bool decreaseSpeedDown = false;
 
-        private BallUnit soldier;
-
+        // a list to hold the blue army
+        private List<Unit> blueArmy;
 
         public StateTest()
         {
@@ -62,7 +62,9 @@ namespace ION
 
             map = new Grid(levels[level], strategies[strategy]);
 
-            soldier = new BallUnit();
+
+            blueArmy = new List<Unit>();
+            blueArmy.Add(new BallUnit());
 
             actionOnScreenSound = Music.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
@@ -82,7 +84,11 @@ namespace ION
             ION.spriteBatch.End();
 
             map.draw(translationX, translationY);
-            soldier.draw(translationX, translationY, 0, 0);
+
+            for (int i = 0; i < blueArmy.Count(); i++)
+            {
+                blueArmy[i].draw(translationX, translationY, 0, 0);
+            }
 
             int y = 0;
             ION.spriteBatch.Begin();
@@ -96,7 +102,7 @@ namespace ION
 
         public override void update(int ellapsed)
         {
-            map.update(ellapsed);
+            map.update(ellapsed, blueArmy[0], translationX, translationY);
             
             //Handles which background music to play
             if (MediaPlayer.State.Equals(MediaState.Stopped))
@@ -252,6 +258,12 @@ namespace ION
                 }
             }
 
+            if (keyState.IsKeyDown(Keys.G))
+            {
+                //soldier = new BallUnit(map.GetBlueBlueBase());
+                blueArmy.Add(new BallUnit(new Vector2(ION.halfWidth - (blueArmy[0].GetScale() / 2), -(blueArmy[0].GetScale() / 4)), blueArmy[0].GetVirtualPos()));
+            }
+
             if (keyState.IsKeyDown(Keys.Space))
             {
                 actionOnScreen = true;
@@ -292,7 +304,10 @@ namespace ION
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
+                //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
+                //blueArmy[0].SetTarget(new Vector2(mouseState.X, mouseState.Y));
+                map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, blueArmy[0]);// pass the currently selected unit
+                
             }
             else if (mouseState.LeftButton == ButtonState.Released)
             {
@@ -311,7 +326,10 @@ namespace ION
             previousMouseX = mouseState.X;
             previousMouseY = mouseState.Y;
 
-            soldier.Update();
+            for(int i = 0; i < blueArmy.Count(); i++)
+            {
+                blueArmy[i].Update(translationX, translationY);
+            }
         }
 
         //Used to fade in and fade out the action sound

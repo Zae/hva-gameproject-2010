@@ -394,12 +394,19 @@ namespace ION
             }
             return result;
         }
-        public void update(int ellapsed)
+        public void update(int ellapsed, Unit soldier, float translationX, float translationY)
         {
 
-            updateStrategy.update(ellapsed);
+        
 
-            GridRSO.SetAttribute("Grid", SerializeTileArrayToRSOArray(map));
+            updateStrategy.update(ellapsed);
+            if (soldier != null)
+            {
+                mouseLeftPressed(soldier.GetVirtualPos().X, soldier.GetVirtualPos().Y, translationX, translationY);
+            }
+        
+
+            //GridRSO.SetAttribute("Grid", SerializeTileArrayToRSOArray(map));
         }
 
         private Tile createTile(char c, int x, int y)
@@ -423,12 +430,12 @@ namespace ION
             updateStrategy.reset();
             //updateStrategy = new FlowStrategy();
 
-            GridRSO = RemoteSharedObject.GetRemote("Grid", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
-            GridRSO.NetStatus +=new NetStatusHandler(GridRSO_NetStatus);
-            GridRSO.OnConnect += new ConnectHandler(GridRSO_OnConnect);
-            GridRSO.OnDisconnect += new DisconnectHandler(GridRSO_OnDisconnect);
-            GridRSO.Sync += new SyncHandler(GridRSO_Sync);
-            GridRSO.Connect(ION.get().serverConnection.GameConnection);
+            //GridRSO = RemoteSharedObject.GetRemote("Grid", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
+            //GridRSO.NetStatus +=new NetStatusHandler(GridRSO_NetStatus);
+            //GridRSO.OnConnect += new ConnectHandler(GridRSO_OnConnect);
+            //GridRSO.OnDisconnect += new DisconnectHandler(GridRSO_OnDisconnect);
+            //GridRSO.Sync += new SyncHandler(GridRSO_Sync);
+            //GridRSO.Connect(ION.get().serverConnection.GameConnection);
 
             //load the xml file into the XmlTextReader object. 
             try
@@ -526,6 +533,18 @@ namespace ION
                 Console.WriteLine("exception in grid: " + e.ToString());
             }
         }
+        public void mouseLeftPressed(float x, float y, float translationX, float translationY, Unit soldier)
+        {
+            mouseLeftPressed(x, y, translationX, translationY);
+            if (selectedTile != null)
+            {
+                if (soldier != null)
+                {
+                    soldier.SetTarget(selectedTile.GetPos(translationX, translationY));
+                }
+            }
+        }
+
 
         void GridRSO_Sync(object sender, SyncEventArgs e)
         {
