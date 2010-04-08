@@ -187,16 +187,8 @@ namespace ION
 
 
         //checks if the mouse coordinates are in the rectangle
-        public Boolean mouseIn(int mx, int my, Rectangle rect)
-        {
-            if ((mx > rect.X && mx < (rect.X + rect.Width)) && (my > rect.Y && my < (rect.Y + rect.Height)))
-            {
-                return true;
-            }
-
-            return false;
-        
-        }
+       
+     
         private void selectionUp()
         {
 

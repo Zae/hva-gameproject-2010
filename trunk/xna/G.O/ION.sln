@@ -62,4 +62,18 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6713A4A-3707-4D52-AB32-7A57DAA08999}.Debug|x86.ActiveCfg = Debug|x86
+		{E6713A4A-3707-4D52-AB32-7A57DAA08999}.Debug|x86.Build.0 = Debug|x86
+		{E6713A4A-3707-4D52-AB32-7A57DAA08999}.Release|x86.ActiveCfg = Release|x86
+		{E6713A4A-3707-4D52-AB32-7A57DAA08999}.Release|x86.Build.0 = Release|x86
+		{04ABE560-1A89-470B-A7EA-64B12BC5BA61}.Debug|x86.ActiveCfg = Debug|x86
+		{04ABE560-1A89-470B-A7EA-64B12BC5BA61}.Debug|x86.Build.0 = Debug|x86
+		{04ABE560-1A89-470B-A7EA-64B12BC5BA61}.Release|x86.ActiveCfg = Release|x86
+		{04ABE560-1A89-470B-A7EA-64B12BC5BA61}.Release|x86.Build.0 = Release|x86
+		{5392AC86-8F8E-432A-90F1-24BE124AFB55}.Debug|x86.ActiveCfg = Debug|x86
+		{5392AC86-8F8E-432A-90F1-24BE124AFB55}.Release|x86.ActiveCfg = Release|x86
+		{45784560-0210-4E64-93A8-B33E442B9AD1}.Debug|x86.ActiveCfg = Debug|x86
+		{45784560-0210-4E64-93A8-B33E442B9AD1}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
 EndGlobal

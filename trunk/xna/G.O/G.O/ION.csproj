@@ -56,6 +56,10 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Game_Elements, Version=2.2.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Qadri\Desktop\Game_Elements.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d" />
     <Reference Include="mscorlib">
@@ -77,6 +81,10 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="TomShane.Neoforce.Controls, Version=0.6.1805.1653, Culture=neutral, PublicKeyToken=f1d905e03f113061, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Tom Shane\Neoforce Controls\Bin\TomShane.Neoforce.Controls.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,8 @@ using System.Net;
 using System.IO;
 using FluorineFx.Net;
 using FluorineFx.Messaging.Api.Service;
+using Game_Elements;
+using TomShane.Neoforce.Controls;
 
 namespace ION
 {
@@ -21,22 +23,35 @@ namespace ION
         public enum SELECTION
         {
             BACK = 1,
-            START
+            START,
+            NAMEFIELD
 
         }
+
+        
+   
         public SELECTION selection = SELECTION.BACK;
 
-
-
+        private Color fadeColor = new Color(255, 255, 255, 220);
+        
+        
         private Rectangle backButton;
         private Rectangle startButton;
+        private Rectangle nameField;
 
         private bool mousePressed = false;
         public bool upPressed = false;
         public bool downPressed = false;
         public bool enterPressed = false;
+        public bool inTextField = false;
 
-
+        
+        
+        String name = "";
+        String tempName=" ";
+        bool[] pressedKeys = new bool[256];
+        bool spacePressed = false;
+        bool backPressed = false;
 
         
 
@@ -45,11 +60,13 @@ namespace ION
 
         public StateHost()
         {
+            
+            
+
             backButton = new Rectangle((ION.width / 2) - 500, (ION.height / 2) + 300, Images.buttonBack.Width, Images.buttonBack.Height);
             startButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
-
-
-
+            nameField = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 100, Images.buttonJoin.Width, Images.buttonJoin.Height);
+           
         }
 
 
@@ -57,8 +74,81 @@ namespace ION
         public override void draw()
         {
             ION.get().GraphicsDevice.Clear(Color.Black);
+           
             ION.spriteBatch.Begin();
             ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
+           
+
+
+
+            if (selection == SELECTION.NAMEFIELD)
+            {
+                //Draw haaighlighted
+                ION.spriteBatch.Draw(Images.white1px, nameField, Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, name, new Vector2(nameField.X + 15, nameField.Y + 15), Color.Black);
+                KeyboardState keyState = Keyboard.GetState();
+
+
+                if (keyState.GetPressedKeys().Length > 0)
+                {
+                    foreach(Keys k in keyState.GetPressedKeys())
+                    {
+                        if (k.ToString().Length == 1)
+                        {
+                            pressedKeys[k.ToString()[0]]=true;
+                        }
+                        if (k.Equals(Keys.Back))
+                        {
+                            backPressed = true;
+                        }
+                        if (k.Equals(Keys.Space))
+                        {
+                            spacePressed = true;
+                        }
+                    }
+                }
+
+                if (keyState.GetPressedKeys().Length == 0)
+                {
+                    int i = 0;
+                    foreach(bool b in pressedKeys)
+                    {
+                        if (b)
+                        {
+                            name += (char)i;
+                           // b = false;
+                        }
+                        i++;
+                    }
+                    pressedKeys = new bool[256];
+
+                    if (spacePressed)
+                    {
+                        name += " ";
+                        spacePressed = false;
+                    }
+                    if (backPressed && name.Length>0)
+                    {
+                        name = name.Substring(0, name.Length - 1);
+                        backPressed = false;
+                    }
+
+                }
+
+
+                   
+
+            }
+            else
+            {
+
+
+              //Draw normally
+              ION.spriteBatch.Draw(Images.white1px, nameField, fadeColor);
+              ION.spriteBatch.DrawString(Fonts.font, name, new Vector2(nameField.X + 15, nameField.Y + 15), Color.Black);
+            }
+            
+           
 
             if (selection == SELECTION.BACK)
             {
@@ -82,7 +172,7 @@ namespace ION
             }
 
             ION.spriteBatch.End();
-
+            
         }
 
         public override void update(int ellapsed)
@@ -95,6 +185,16 @@ namespace ION
                 mousePressed = true;
             }
 
+            if (mouseIn(mouseState.X, mouseState.Y, nameField))
+            {
+                selection = SELECTION.NAMEFIELD;
+                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+                {
+                    makeSelection();
+                    mousePressed = false;
+                }
+
+            }
 
 
             if (mouseIn(mouseState.X, mouseState.Y, startButton))
@@ -120,19 +220,15 @@ namespace ION
 
         }
 
-        public Boolean mouseIn(int mx, int my, Rectangle rect)
-        {
-            if ((mx > rect.X && mx < (rect.X + rect.Width)) && (my > rect.Y && my < (rect.Y + rect.Height)))
-            {
-                return true;
-            }
-
-            return false;
-
-        }
+      
 
         private void makeSelection()
         {
+
+            if (selection == SELECTION.NAMEFIELD)
+            {
+                inTextField = true;
+            }
             if (selection == SELECTION.START)
             {
                 //TODO

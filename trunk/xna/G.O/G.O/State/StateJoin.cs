@@ -53,12 +53,12 @@ namespace ION
         private Rectangle row4;
         private Rectangle row5;
         private Rectangle row6;
-
+        private List<Rectangle> rows;
         //private ServerConnection serverCon;
 
 
         //temp
-        String[] tempHosts;
+        String[,] tempHosts;
 
 
 
@@ -67,9 +67,9 @@ namespace ION
         {
             instance = this;
 
-            
 
-            tempHosts = new String[]{"server1","server2","server3"};
+
+            tempHosts = new String[,] { { "server1", "room1", "grid1" }, { "server2", "room2", "grid2" }, { "server3", "room3", "grid3" } };
             backButton = new Rectangle((ION.width / 2) - 500, (ION.height / 2) +300, Images.buttonBack.Width, Images.buttonBack.Height);
             joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
             refreshButton = new Rectangle((ION.width / 2) + 225, (ION.height / 2) + 300, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
@@ -81,6 +81,15 @@ namespace ION
             row4 = new Rectangle(hostsTable.X, row1.Y + 150, 600, 50);
             row5 = new Rectangle(hostsTable.X, row1.Y + 200, 600, 50);
             row6 = new Rectangle(hostsTable.X, row1.Y + 250, 600, 50);
+
+            rows = new List<Rectangle>();
+           
+            rows.Add(row1);
+            rows.Add(row2);
+            rows.Add(row3);
+            rows.Add(row4);
+            rows.Add(row5);
+            rows.Add(row6);
 
             selected = row1;
             //serverCon = new ServerConnection();
@@ -105,9 +114,13 @@ namespace ION
             ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
 
             //update hosts in table
-            //foreach(String s: tempHosts){
 
-            //}
+           // foreach(String s in tempHosts){
+
+                
+              //  ION.spriteBatch.DrawString(Fonts.font, s, new Vector2((rows[.X) + 15, ((row1.X) + 15) );
+           //
+           // }
 
 
             if (selection == SELECTION.BACK)
@@ -142,7 +155,7 @@ namespace ION
                 //Draw normally
                 ION.spriteBatch.Draw(Images.buttonRefresh, refreshButton, Color.White);
             }
-
+            fillTable();
             ION.spriteBatch.End();
         }
 
@@ -271,16 +284,7 @@ namespace ION
         }
 
 
-        public Boolean mouseIn(int mx, int my, Rectangle rect)
-        {
-            if ((mx > rect.X && mx < (rect.X + rect.Width)) && (my > rect.Y && my < (rect.Y + rect.Height)))
-            {
-                return true;
-            }
-
-            return false;
-
-        }
+       
 
         private void makeSelection()
         {
@@ -323,10 +327,35 @@ namespace ION
                 selection = SELECTION.BACK;
             }
             Console.WriteLine("sel: " + (int)selection);
-
-
         }
 
+
+        //fills the table with server information
+        private bool fillTable()
+        {
+          
+
+            int row =0;
+            int collumn = 0;
+           
+            foreach(String s in tempHosts){
+
+                //ION.spriteBatch.DrawString(Fonts.font, "Return to menu? (Y/N)", new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.Red);
+                
+                ION.spriteBatch.DrawString(Fonts.font, s, new Vector2((rows[row].X  + 15 +collumn*210), (rows[row].Y) + 15), Color.Green);
+                collumn++;
+                if (collumn > 2)
+                {
+                    collumn = 0;
+                    row++;
+                }
+                
+
+
+           }
+
+            return false;
+        }
         //public void showHosts(Host[] hostList)
         //{
 

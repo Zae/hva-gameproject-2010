@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Media;
 using System.Net;
 using System.IO;
 
+
+
 namespace ION
 {
     class StateMP : State
@@ -22,7 +24,7 @@ namespace ION
         }
         public SELECTION selection = SELECTION.HOST;
 
- 
+
 
         private Rectangle hostButton;
         private Rectangle joinButton;
@@ -36,6 +38,7 @@ namespace ION
 
         public StateMP()
         {
+            
             hostButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2), Images.buttonNewGame.Width, Images.buttonNewGame.Height);
             joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 70, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
             backButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2)+140, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
@@ -43,6 +46,7 @@ namespace ION
 
         public override void draw()
         {
+            
             ION.get().GraphicsDevice.Clear(Color.Black);
             ION.spriteBatch.Begin();
             ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
@@ -168,16 +172,6 @@ namespace ION
         }
 
 
-        public Boolean mouseIn(int mx, int my, Rectangle rect)
-        {
-            if ((mx > rect.X && mx < (rect.X + rect.Width)) && (my > rect.Y && my < (rect.Y + rect.Height)))
-            {
-                return true;
-            }
-
-            return false;
-
-        }
 
         private void makeSelection()
         {

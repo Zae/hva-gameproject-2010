@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ION.UI
 {
-    class PushButton
+    class PushButton 
     {
         public Texture2D normal;
         public Texture2D mouseOver;
@@ -17,6 +17,7 @@ namespace ION.UI
         
         public PushButton(int x, int y, int width, int height, Texture2D normal, Texture2D mouseOver, Texture2D onPress)
         {
+           
             dimensions = new Rectangle(x, y, width, height);
             this.normal = normal;
             this.mouseOver = mouseOver;
