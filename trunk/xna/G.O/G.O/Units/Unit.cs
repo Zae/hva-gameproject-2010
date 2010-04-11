@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using System.IO;
 
 namespace ION
 {
-    public abstract class Unit
+    public abstract class Unit : Serializable
     {
         private Colors hitmapColor = new Colors();
 
@@ -118,5 +119,19 @@ namespace ION
         }
         // new
 
+        public override MemoryStream Serialize()
+        {
+            MemoryStream stream = new MemoryStream();
+            BinaryWriter writer = new BinaryWriter(stream);
+
+            writer.Write(this.owner);
+            writer.Write(this.health);
+            writer.Write(this.pos.X);
+            writer.Write(this.pos.Y);
+
+            writer.Close();
+
+            return stream;
+        }
     }
 }

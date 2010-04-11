@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace ION.GridStrategies
 {
-    public abstract class GridStrategy
+    public abstract class GridStrategy : Serializable
     {
         public string name;
         public int speed = 0;
@@ -23,5 +24,14 @@ namespace ION.GridStrategies
 
         public abstract void increaseSpeed();
         public abstract void decreaseSpeed();
+
+        public override MemoryStream Serialize()
+        {
+            MemoryStream stream = new MemoryStream();
+            BinaryWriter writer = new BinaryWriter(stream);
+            writer.Write(this.name);
+            writer.Close();
+            return stream;
+        }
     }
 }

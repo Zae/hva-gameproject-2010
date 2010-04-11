@@ -1,5 +1,6 @@
 ﻿using System;
 using ION.GridStrategies;
+using System.IO;
 
 namespace ION
 {
@@ -21,8 +22,8 @@ namespace ION
         }
         public static Byte[] Serialize(Tile[,] input, int width, int height)
         {
-            System.IO.MemoryStream stream = new System.IO.MemoryStream();
-            System.IO.BinaryWriter writer = new System.IO.BinaryWriter(stream);
+            MemoryStream stream = new MemoryStream();
+            BinaryWriter writer = new BinaryWriter(stream);
 
             writer.Write(width);
             writer.Write(height);
@@ -43,39 +44,37 @@ namespace ION
                 }
             }
 
-            byte[] byteArray = new byte[stream.Length];
-            stream.Seek(0, System.IO.SeekOrigin.Begin);
+            byte[] byteArray = streamTobyteArray(stream);
 
-            stream.Read(byteArray, 0, (int)stream.Length); // Make sure stream isn't too long, might want to check Length vs. int.MaxValue
+            writer.Close();
             stream.Close();
 
             return byteArray;
         }
         public static Byte[] Serialize(GridStrategy input){
-            System.IO.MemoryStream stream = new System.IO.MemoryStream();
-            System.IO.BinaryWriter writer = new System.IO.BinaryWriter(stream);
-
-            writer.Write(input.name);
-
-            byte[] byteArray = new byte[stream.Length];
-            stream.Seek(0, System.IO.SeekOrigin.Begin);
-
-            stream.Read(byteArray, 0, (int)stream.Length); // Make sure stream isn't too long, might want to check Length vs. int.MaxValue
+            MemoryStream stream = input.Serialize();
+            byte[] byteArray = streamTobyteArray(stream);
             stream.Close();
-
             return byteArray;
         }
-        
+        public static Byte[] Serialize(Unit input)
+        {
+            MemoryStream stream = input.Serialize();
+            Byte[] byteArray = Serializer.streamTobyteArray(stream);
+            stream.Close();
+            return byteArray;
+        }
+
         #endregion
 
         #region Deserialize
 
-        public static float[,] Deserialize(Byte[] input)
+        public static float[,] DeserializeFloat(Byte[] input)
         {
-            System.IO.MemoryStream stream = new System.IO.MemoryStream();
+            MemoryStream stream = new MemoryStream();
             stream.Write(input, 0, input.Length); // Make sure stream isn't too long, might want to check Length vs. int.MaxValue
             stream.Seek(0, System.IO.SeekOrigin.Begin);
-            System.IO.BinaryReader reader = new System.IO.BinaryReader(stream);
+            BinaryReader reader = new BinaryReader(stream);
 
             int width = reader.ReadInt32();
             int height = reader.ReadInt32();
@@ -97,7 +96,7 @@ namespace ION
             
             return result;
         }
-        public static GridStrategy Deserialize(byte[] input)
+        public static GridStrategy DeserializeGridStrategy(Byte[] input)
         {
             System.IO.MemoryStream stream = new System.IO.MemoryStream();
             stream.Write(input, 0, input.Length); // Make sure stream isn't too long, might want to check Length vs. int.MaxValue
@@ -126,7 +125,22 @@ namespace ION
 
             return result;
         }
-        
+
         #endregion
+
+        #region Helper Methods
+
+        private static byte[] streamTobyteArray(MemoryStream stream)
+        {
+            byte[] bytes = new byte[stream.Length];
+            stream.Seek(0, SeekOrigin.Begin);
+
+            stream.Read(bytes, 0, (int)stream.Length); // Make sure stream isn't too long, might want to check Length vs. int.MaxValue
+
+            return bytes;
+        }
+
+        #endregion
+        
     }
 }
