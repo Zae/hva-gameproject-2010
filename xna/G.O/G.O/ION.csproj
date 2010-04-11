@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Grid\Strategies\CreepStrategy.cs" />
     <Compile Include="MultiPlayer\Host.cs" />
+    <Compile Include="MultiPlayer\Serializable.cs" />
     <Compile Include="MultiPlayer\Serialization.cs" />
     <Compile Include="MultiPlayer\ServerConnection.cs" />
     <Compile Include="State\StateIntro.cs" />
