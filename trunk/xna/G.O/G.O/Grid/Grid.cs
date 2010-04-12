@@ -387,7 +387,7 @@ namespace ION
             /** Disabled for performance, works perfectly tho! **/
             if (GridRSO != null && GridRSO.Connected)
             {
-                byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);            
+                byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
                 GridRSO.SetAttribute("Grid", rs);
             }
         }

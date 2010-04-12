@@ -46,21 +46,14 @@ namespace ION
 
             byte[] byteArray = streamTobyteArray(stream);
 
-            writer.Close();
             stream.Close();
 
             return byteArray;
         }
-        public static Byte[] Serialize(GridStrategy input){
-            MemoryStream stream = input.Serialize();
-            byte[] byteArray = streamTobyteArray(stream);
-            stream.Close();
-            return byteArray;
-        }
-        public static Byte[] Serialize(Unit input)
+        public static Byte[] Serialize(Serializable input)
         {
             MemoryStream stream = input.Serialize();
-            Byte[] byteArray = Serializer.streamTobyteArray(stream);
+            Byte[] byteArray = streamTobyteArray(stream);
             stream.Close();
             return byteArray;
         }

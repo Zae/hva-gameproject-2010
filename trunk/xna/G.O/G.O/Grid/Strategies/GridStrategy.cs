@@ -25,13 +25,17 @@ namespace ION.GridStrategies
         public abstract void increaseSpeed();
         public abstract void decreaseSpeed();
 
-        public override MemoryStream Serialize()
+        public MemoryStream Serialize()
         {
             MemoryStream stream = new MemoryStream();
             BinaryWriter writer = new BinaryWriter(stream);
             writer.Write(this.name);
             writer.Close();
             return stream;
+        }
+        public void Deserialize(MemoryStream inData)
+        {
+            throw new NotImplementedException();
         }
     }
 }
