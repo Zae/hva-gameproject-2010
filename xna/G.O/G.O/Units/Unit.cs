@@ -119,7 +119,7 @@ namespace ION
         }
         // new
 
-        public override MemoryStream Serialize()
+        public MemoryStream Serialize()
         {
             MemoryStream stream = new MemoryStream();
             BinaryWriter writer = new BinaryWriter(stream);
@@ -129,9 +129,11 @@ namespace ION
             writer.Write(this.pos.X);
             writer.Write(this.pos.Y);
 
-            writer.Close();
-
             return stream;
+        }
+        public void Deserialize(MemoryStream inData)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -3,15 +3,9 @@ using System.IO;
 
 namespace ION
 {
-    public abstract class Serializable
+    public interface Serializable
     {
-        public virtual MemoryStream Serialize()
-        {
-            return new MemoryStream();
-        }
-        public virtual void Deserialize(MemoryStream inData)
-        {
-
-        }
+        MemoryStream Serialize();
+        void Deserialize(MemoryStream inData);
     }
 }
