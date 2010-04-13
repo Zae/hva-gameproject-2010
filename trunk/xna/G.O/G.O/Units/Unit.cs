@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using System.IO;
 
 namespace ION
 {
-    public abstract class Unit : Serializable
+    public abstract class Unit
     {
         private Colors hitmapColor = new Colors();
 
@@ -34,7 +33,7 @@ namespace ION
 
         public static float baseHalfWidth = baseHalfWidthConstant * scale;
         public static float baseHalfHeight = baseHalfHeightConstant * scale;
-        
+
         private const float baseHalfWidthConstant = 3;
         private const float baseHalfHeightConstant = 1;
 
@@ -42,18 +41,35 @@ namespace ION
         protected float visualX;
         protected float visualY;
 
-        public void Update(float x, float y)
+        public bool selected = false;
+
+
+
+        public void Update(float translationX, float translationY)
         {
             if (pos != targetPos)
             {
                 move();
                 //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
             }
-            
+
             //will move this to the above if statement when the unit know its tile
-            virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) + (baseHalfWidth*1.1f);
-            virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfWidth * 1.6f);
-            
+            virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
+            virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
+
+
+        }
+
+        public void UpdateTile(Vector2 newInTile)
+        {
+            inTileX = (int)newInTile.X;
+            inTileY = (int)newInTile.Y;
+
+
+
+            //Vector2 tilePos = map.GetTile(pos.X, pos.Y, translationX, translationX);
+            //inTileX = tilePos.X;
+            //inTileY = tilePos.Y;
         }
 
         //move units towards their target
@@ -119,21 +135,9 @@ namespace ION
         }
         // new
 
-        public MemoryStream Serialize()
+        public Vector2 GetTile()
         {
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
-
-            writer.Write(this.owner);
-            writer.Write(this.health);
-            writer.Write(this.pos.X);
-            writer.Write(this.pos.Y);
-
-            return stream;
-        }
-        public void Deserialize(MemoryStream inData)
-        {
-            throw new NotImplementedException();
+            return new Vector2(inTileX, inTileY);
         }
     }
 }

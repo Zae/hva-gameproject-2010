@@ -45,6 +45,27 @@ namespace ION
 
         private RemoteSharedObject GridRSO;
 
+
+
+        public void mouseRightPressed(float x, float y, float translationX, float translationY, List<Unit> blueArmy)
+        {
+            mouseRightPressed(x, y, translationX, translationY);
+            if (selectedTile != null)
+            {
+                for (int i = 0; i < blueArmy.Count(); i++)
+                {
+                    if (blueArmy[i] != null && blueArmy[i].selected)
+                    {
+                        blueArmy[i].SetTarget(selectedTile.GetPos(translationX, translationY));
+                    }
+
+                }
+            }
+
+        }
+
+
+
         public void mouseRightPressed(float x, float y, float translationX, float translationY)
         {
             //drawHitTest = true;
@@ -54,7 +75,7 @@ namespace ION
             mouseWorldY = y - translationY;
 
             //get the true value from the origin in tile units
-            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight))-1;
+            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
             float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
 
             //get the closest even value to that position
@@ -79,7 +100,7 @@ namespace ION
                 {
                     rt.receive(0.06f);
                 }
-            
+
                 if (selectedTile != null)
                 {
                     selectedTile.setSelected(false);
@@ -117,13 +138,13 @@ namespace ION
         public void mouseLeftPressed(float x, float y, float translationX, float translationY)
         {
             //drawHitTest = true;
- 
+
             //translate the screen input to world coordinates
             mouseWorldX = x - translationX - ION.halfWidth;
             mouseWorldY = y - translationY;
 
             //get the true value from the origin in tile units
-            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight))-1;
+            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
             float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
 
             //get the closest even value to that position
@@ -134,7 +155,7 @@ namespace ION
             uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
 
             //pass the position and the color and see if you get back anything
-            Tile tile = getTile(tilesVertical,tilesHorizontal, color);
+            Tile tile = getTile(tilesVertical, tilesHorizontal, color);
 
             if (tile != null && tile is ResourceTile)
             {
@@ -165,6 +186,28 @@ namespace ION
                     selectedTile = null;
                 }
             }
+        }
+
+
+        public void mouseLeftPressed(float x, float y, float translationX, float translationY, List<Unit> blueArmy)
+        {
+            mouseLeftPressed(x, y, translationX, translationY);
+            if (selectedTile != null)
+            {
+                for (int i = 0; i < blueArmy.Count(); i++)
+                {
+                    //unselect this unit by default
+                    blueArmy[i].selected = false;
+                    //check if the current tile matches the units tile, if so changed the units selected to true
+                    if (GetTile(x, y, translationX, translationY) == blueArmy[i].GetTile())
+                    {
+                        blueArmy[i].selected = true;//select unit
+                    }
+
+
+                }
+            }
+
         }
 
         public void createUnit(float x, float y, float translationX, float translationY, int owner)
@@ -374,14 +417,17 @@ namespace ION
 
             updateStrategy.draw();
         }
-        public void update(int ellapsed, Unit soldier, float translationX, float translationY)
+        public void update(int ellapsed, List<Unit> blueArmy, float translationX, float translationY)
         {
-        
+
 
             updateStrategy.update(ellapsed);
-            if (soldier != null)
+            for (int i = 0; i < blueArmy.Count(); i++)
             {
-                mouseLeftPressed(soldier.GetVirtualPos().X, soldier.GetVirtualPos().Y, translationX, translationY);
+                if (blueArmy[i] != null)
+                {
+                    mouseLeftPressed(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
+                }
             }
 
             /** Disabled for performance, works perfectly tho! **/
@@ -566,5 +612,71 @@ namespace ION
         {
             return perspectiveMap;
         }
+
+        //public Vector2 GetBlueBlueBase()
+        //{
+        //    Vector2 basePosition = new Vector2();
+        //    return basePosition;
+        //}
+
+        // new
+        public Vector2 GetTile(float x, float y, float translationX, float translationY)
+        {
+            //translate the screen input to world coordinates
+            mouseWorldX = x - translationX - ION.halfWidth;
+            mouseWorldY = y - translationY;
+
+            //get the true value from the origin in tile units
+            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
+            float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
+
+            //get the closest even value to that position
+            int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
+            int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
+
+            //get the color at that position on the hitmap
+            uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
+
+            //pass the position and the color and see if you get back anything
+            Tile tile = getTile(tilesVertical, tilesHorizontal, color);
+
+            if (tile != null && tile is ResourceTile)
+            {
+                ResourceTile rt = (ResourceTile)tile;
+
+                //if (rt.owner != Players.PLAYER1)
+                //{
+                //    rt.sustain(0.06f, Players.PLAYER1);
+                //}
+                //else
+                //{
+                //    rt.receive(0.06f);
+                //}
+
+                //if (selectedTile != null)
+                //{
+                //    selectedTile.setSelected(false);
+                //}
+
+                tile.setSelected(true);
+                selectedTile = tile;
+            }
+            else
+            {
+                if (selectedTile != null)
+                {
+                    selectedTile.setSelected(false);
+                    selectedTile = null;
+                }
+            }
+
+            return new Vector2(tile.indexX, tile.indexY);
+        }
+
+        public Vector2 GetTileScreenPos(Vector2 tileCords, float translationX, float translationY)
+        {
+            return new Vector2(map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).X, map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).Y);
+        }
+        // new
     }
 }

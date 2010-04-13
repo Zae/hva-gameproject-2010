@@ -40,9 +40,19 @@ namespace ION
             //ION.spriteBatch.End();
             //virtualPos.X += baseHalfWidth;
             //virtualPos.Y += baseHalfWidth * 1.5f;
-            ION.spriteBatch.Begin();
-            ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
-            ION.spriteBatch.End();
+
+            if (selected)
+            {
+                ION.spriteBatch.Begin();
+                ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
+                ION.spriteBatch.End();
+            }
+            else
+            {
+                ION.spriteBatch.Begin();
+                ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
+                ION.spriteBatch.End();
+            }
         }
 
 
