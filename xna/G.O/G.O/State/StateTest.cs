@@ -53,6 +53,11 @@ namespace ION
         // a list to hold the blue army
         private List<Unit> blueArmy;
 
+        //we need to create a shared object blueUnits
+
+
+        static int unitCounter = 0;
+
         public StateTest()
         {
             instance = this;
@@ -102,7 +107,8 @@ namespace ION
 
         public override void update(int ellapsed)
         {
-            map.update(ellapsed, blueArmy[0], translationX, translationY);
+
+            map.update(ellapsed, blueArmy, translationX, translationY);
             
             //Handles which background music to play
             if (MediaPlayer.State.Equals(MediaState.Stopped))
@@ -261,7 +267,8 @@ namespace ION
             if (keyState.IsKeyDown(Keys.G))
             {
                 //soldier = new BallUnit(map.GetBlueBlueBase());
-                blueArmy.Add(new BallUnit(new Vector2(ION.halfWidth - (blueArmy[0].GetScale() / 2), -(blueArmy[0].GetScale() / 4)), blueArmy[0].GetVirtualPos()));
+                //blueArmy.Add(new BallUnit(new Vector2(ION.halfWidth - (blueArmy[0].GetScale() / 2), -(blueArmy[0].GetScale() / 4)), blueArmy[0].GetVirtualPos()));
+                blueArmy.Add(new BallUnit(map.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), map.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
             }
 
             if (keyState.IsKeyDown(Keys.Space))
@@ -306,7 +313,7 @@ namespace ION
             {
                 //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
                 //blueArmy[0].SetTarget(new Vector2(mouseState.X, mouseState.Y));
-                map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, blueArmy[0]);// pass the currently selected unit
+                map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, blueArmy);// pass the currently selected unit
                 
             }
             else if (mouseState.LeftButton == ButtonState.Released)
@@ -316,7 +323,7 @@ namespace ION
 
             if (mouseState.RightButton == ButtonState.Pressed)
             {
-                map.mouseRightPressed(mouseState.X, mouseState.Y, translationX, translationY);
+                map.mouseRightPressed(mouseState.X, mouseState.Y, translationX, translationY, blueArmy);
             }
             else if (mouseState.RightButton == ButtonState.Released)
             {
@@ -326,10 +333,31 @@ namespace ION
             previousMouseX = mouseState.X;
             previousMouseY = mouseState.Y;
 
-            for(int i = 0; i < blueArmy.Count(); i++)
+            for (int i = 0; i < blueArmy.Count(); i++)
             {
+                //updates the unit
                 blueArmy[i].Update(translationX, translationY);
+
+                //tells the unit what tile it is currently on
+                Vector2 temp = map.GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
+                blueArmy[i].UpdateTile(map.GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY));
             }
+
+
+
+
+            unitCounter++;
+
+            if (unitCounter > 1000)
+            {
+                unitCounter = 0;
+                CreateBlueUnit();
+            }
+        }
+
+        void CreateBlueUnit()
+        {
+            blueArmy.Add(new BallUnit(map.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), map.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
         }
 
         //Used to fade in and fade out the action sound
