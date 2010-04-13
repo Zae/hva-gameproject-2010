@@ -45,10 +45,7 @@ namespace ION
 
             ION.instance.serverConnection = new ServerConnection();
 
-            /**
-             * This line of code should be moved to StateJoin or something...
-             */
-            ION.instance.serverConnection.JoinRoom("room1");
+         
         }
 
         public override void draw()

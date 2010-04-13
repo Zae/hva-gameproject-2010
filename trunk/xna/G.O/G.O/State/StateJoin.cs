@@ -69,7 +69,7 @@ namespace ION
 
 
 
-            tempHosts = new String[,] { { "server1", "room1", "grid1" }, { "server2", "room2", "grid2" }, { "server3", "room3", "grid3" } };
+            //tempHosts = new String[,] { { "server1", "room1", "grid1" }, { "server2", "room2", "grid2" }, { "server3", "room3", "grid3" } };
             backButton = new Rectangle((ION.width / 2) - 500, (ION.height / 2) +300, Images.buttonBack.Width, Images.buttonBack.Height);
             joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
             refreshButton = new Rectangle((ION.width / 2) + 225, (ION.height / 2) + 300, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
@@ -113,14 +113,7 @@ namespace ION
             //ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
             ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
 
-            //update hosts in table
-
-           // foreach(String s in tempHosts){
-
-                
-              //  ION.spriteBatch.DrawString(Fonts.font, s, new Vector2((rows[.X) + 15, ((row1.X) + 15) );
-           //
-           // }
+       
 
 
             if (selection == SELECTION.BACK)
@@ -155,13 +148,19 @@ namespace ION
                 //Draw normally
                 ION.spriteBatch.Draw(Images.buttonRefresh, refreshButton, Color.White);
             }
-            fillTable();
+
+            if (tempHosts != null)
+            {
+
+                fillTable();
+            }
             ION.spriteBatch.End();
         }
 
 
         public override void update(int ellapsed)
         {
+            
 
             //mouse handling
             MouseState mouseState = Mouse.GetState();
@@ -290,8 +289,8 @@ namespace ION
         {
             if (selection == SELECTION.REFRESH)
             {
-               // serverCon.getHosts();
-                //serverCon.getNumberofHosts();
+
+                ION.get().serverConnection.getHosts();
             }
             else if (selection == SELECTION.BACK)
             {
@@ -357,13 +356,23 @@ namespace ION
 
             return false;
         }
-        //public void showHosts(Host[] hostList)
-        //{
+        
+        public void showHosts(String[] hostList)
+        {
 
-        //    Console.WriteLine("lijstje uit serverConnection, eerste server: " + hostList[0].hostname);
-        //    this.hosts = hostList;
+           // Console.WriteLine("lijstje uit serverConnection, eerste server: " + hostList[0].hostname);
+            
+            int i = 0;
+            tempHosts = new String[1, hostList.Length];
+            foreach (string s in hostList)
+            {
 
-        //}
+                tempHosts[0, i] = s;
+                i++;
+            }
+
+
+        }
 
         public override void focusGained()
         {

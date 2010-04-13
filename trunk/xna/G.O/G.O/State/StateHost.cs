@@ -231,7 +231,8 @@ namespace ION
             }
             if (selection == SELECTION.START)
             {
-                //TODO
+                ION.instance.serverConnection.JoinRoom(name);
+                
             }
             else if (selection == SELECTION.BACK)
             {

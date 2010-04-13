@@ -27,7 +27,9 @@ namespace ION{
             LobbyConnection.NetStatus += new NetStatusHandler(LobbyConnection_NetStatus);
             LobbyConnection.OnConnect += new ConnectHandler(LobbyConnection_OnConnect);
             LobbyConnection.OnDisconnect += new DisconnectHandler(LobbyConnection_OnDisconnect);
+
             LobbyConnection.Connect("rtmp://red5.dooping.nl:1935/ion", true);
+
         }
 
         void LobbyConnection_OnDisconnect(object sender, EventArgs e)
@@ -70,7 +72,7 @@ namespace ION{
                     System.Console.WriteLine("result " + i + ": " + result[i].ToString());
                 }
 
-                //StateJoin.get().showHosts(result);
+                StateJoin.get().showHosts(result);
 
 
                 System.Console.WriteLine("Press 'Enter' to exit");
