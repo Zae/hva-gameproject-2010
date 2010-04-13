@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using System.IO;
 
 namespace ION
 {
-    public abstract class Unit
+    public abstract class Unit : Serializable
     {
         private Colors hitmapColor = new Colors();
 
@@ -124,9 +125,15 @@ namespace ION
             return baseHalfWidthConstant;
         }
 
-        public void SetTarget(Vector2 newTarget)
+        public Byte[] SetTarget(Vector2 newTarget)
         {
             targetPos = newTarget;
+            
+            return Serializer.Serialize(this);
+        }
+        public Vector2 GetTarget()
+        {
+            return targetPos;
         }
 
         public Vector2 GetVirtualPos()
@@ -139,5 +146,29 @@ namespace ION
         {
             return new Vector2(inTileX, inTileY);
         }
+
+        #region Serializable Members
+
+        public MemoryStream Serialize()
+        {
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms);
+
+            //instead of calling GetTile and writing the X and Y values seperate
+            //I cut the middle man and directly write inTileX and inTileY.
+            bw.Write(inTileX);
+            bw.Write(inTileY);
+            bw.Write(this.targetPos.X);
+            bw.Write(this.targetPos.Y);
+
+            return ms;
+        }
+
+        public void Deserialize(MemoryStream inData)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
