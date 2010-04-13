@@ -18,6 +18,22 @@ namespace ION{
 
         public NetConnection GameConnection;
 
+        public class Protocol
+        {
+            public const String addUnit = "addUnit";
+            public const String setTarget = "setTarget";
+        }
+
+        private Boolean _isHost;
+
+        public Boolean isHost
+        {
+            get
+            {
+                return _isHost;
+            }
+        }
+
         public ServerConnection()
             
         {
@@ -29,7 +45,6 @@ namespace ION{
             LobbyConnection.OnDisconnect += new DisconnectHandler(LobbyConnection_OnDisconnect);
 
             LobbyConnection.Connect("rtmp://red5.dooping.nl:1935/ion", true);
-
         }
 
         void LobbyConnection_OnDisconnect(object sender, EventArgs e)
@@ -112,14 +127,23 @@ namespace ION{
 
         public void JoinRoom(String roomname)
         {
+            this._isHost = false;
+            createRoom(roomname);
+        }
+        public void HostRoom(String roomname)
+        {
+            this._isHost = true;
+            createRoom(roomname);
+        }
+        private void createRoom(String roomname)
+        {
             GameConnection = new NetConnection();
             GameConnection.ObjectEncoding = FluorineFx.ObjectEncoding.AMF0;
             GameConnection.NetStatus += new NetStatusHandler(GameConnection_NetStatus);
             GameConnection.OnConnect += new ConnectHandler(GameConnection_OnConnect);
             GameConnection.OnDisconnect += new DisconnectHandler(GameConnection_OnDisconnect);
-            GameConnection.Connect("rtmp://red5.dooping.nl:1935/ion/"+roomname, true);
+            GameConnection.Connect("rtmp://red5.dooping.nl:1935/ion/" + roomname, true);
         }
-
         void GameConnection_OnDisconnect(object sender, EventArgs e)
         {
             throw new NotImplementedException();

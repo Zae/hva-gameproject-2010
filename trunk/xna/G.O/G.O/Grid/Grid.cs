@@ -43,7 +43,9 @@ namespace ION
         private float virtualX = 0;
         private float virtualY = 0;
 
-        private RemoteSharedObject GridRSO;
+        public RemoteSharedObject GridRSO;
+        public RemoteSharedObject LocalUnits;
+        public RemoteSharedObject RemoteUnits;
 
 
 
@@ -56,9 +58,9 @@ namespace ION
                 {
                     if (blueArmy[i] != null && blueArmy[i].selected)
                     {
-                        blueArmy[i].SetTarget(selectedTile.GetPos(translationX, translationY));
+                        Byte[] buffer = blueArmy[i].SetTarget(selectedTile.GetPos(translationX, translationY));
+                        this.LocalUnits.SetAttribute("SetTarget", buffer);
                     }
-
                 }
             }
 
@@ -433,8 +435,8 @@ namespace ION
             /** Disabled for performance, works perfectly tho! **/
             if (GridRSO != null && GridRSO.Connected)
             {
-                byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
-                GridRSO.SetAttribute("Grid", rs);
+                //byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
+                //GridRSO.SetAttribute("Grid", rs);
             }
         }
 
@@ -459,7 +461,7 @@ namespace ION
             updateStrategy.reset();
             //updateStrategy = new FlowStrategy();
 
-            if (ION.get().serverConnection != null && ION.get().serverConnection.GameConnection.Connected)
+            if (ION.get().serverConnection != null && ION.get().serverConnection.GameConnection != null && ION.get().serverConnection.GameConnection.Connected)
             {
                 GridRSO = RemoteSharedObject.GetRemote("Grid", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
                 GridRSO.NetStatus += new NetStatusHandler(GridRSO_NetStatus);
@@ -467,6 +469,25 @@ namespace ION
                 GridRSO.OnDisconnect += new DisconnectHandler(GridRSO_OnDisconnect);
                 GridRSO.Sync += new SyncHandler(GridRSO_Sync);
                 GridRSO.Connect(ION.get().serverConnection.GameConnection);
+            }
+
+            if (ION.get().serverConnection != null && ION.get().serverConnection.GameConnection != null && ION.get().serverConnection.GameConnection.Connected)
+            {
+                if (ION.get().serverConnection.isHost)
+                {
+                    LocalUnits = RemoteSharedObject.GetRemote("ServerUnits", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
+                    RemoteUnits = RemoteSharedObject.GetRemote("ClientUnits", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
+                }
+                else
+                {
+                    LocalUnits = RemoteSharedObject.GetRemote("ClientUnits", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
+                    RemoteUnits = RemoteSharedObject.GetRemote("ServerUnits", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
+                }
+                LocalUnits.NetStatus += new NetStatusHandler(LocalUnits_NetStatus);
+                LocalUnits.OnConnect += new ConnectHandler(LocalUnits_OnConnect);
+                LocalUnits.OnDisconnect += new DisconnectHandler(LocalUnits_OnDisconnect);
+                LocalUnits.Sync += new SyncHandler(LocalUnits_Sync);
+                LocalUnits.Connect(ION.get().serverConnection.GameConnection);
             }
 
             //load the xml file into the XmlTextReader object. 
@@ -565,6 +586,26 @@ namespace ION
                 Console.WriteLine("exception in grid: " + e.ToString());
             }
         }
+
+        void LocalUnits_Sync(object sender, SyncEventArgs e)
+        {
+            throw new NotImplementedException(); 
+        }
+
+        void LocalUnits_OnDisconnect(object sender, EventArgs e)
+{
+ 	throw new NotImplementedException();
+}
+
+        void LocalUnits_OnConnect(object sender, EventArgs e)
+{
+ 	throw new NotImplementedException();
+}
+
+        void LocalUnits_NetStatus(object sender, NetStatusEventArgs e)
+{
+ 	throw new NotImplementedException();
+}
         public void mouseLeftPressed(float x, float y, float translationX, float translationY, Unit soldier)
         {
             mouseLeftPressed(x, y, translationX, translationY);

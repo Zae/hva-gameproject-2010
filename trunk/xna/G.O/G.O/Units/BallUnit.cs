@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ION
 {
-    class BallUnit : Unit
+    public class BallUnit : Unit
     {
 
         public BallUnit()

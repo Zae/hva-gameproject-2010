@@ -66,7 +66,7 @@ namespace ION
 
 
             map = new Grid(levels[level], strategies[strategy]);
-
+            map.RemoteUnits.Sync += new FluorineFx.Net.SyncHandler(RemoteUnits_Sync);
 
             blueArmy = new List<Unit>();
             blueArmy.Add(new BallUnit());
@@ -75,6 +75,31 @@ namespace ION
             actionOnScreenSound.IsLooped = true;
         }
 
+        void RemoteUnits_Sync(object sender, FluorineFx.Net.SyncEventArgs e)
+        {
+            foreach (KeyValuePair<String, Object> kvp in e.ChangeList[0])
+            {
+                if (kvp.Key == "name")
+                {
+                    switch ((String)kvp.Value)
+                    {
+                        case ServerConnection.Protocol.addUnit:
+                            //RedArmy.add(Serializer.DeserializeBallUnit(map.RemoteUnits.GetAttribute(ServerConnection.Protocol.addUnit)));
+                            break;
+                        case ServerConnection.Protocol.setTarget:
+                            BallUnit ru = Serializer.DeserializeBallUnit((Byte[])map.RemoteUnits.GetAttribute(ServerConnection.Protocol.setTarget));
+                            foreach (BallUnit Bu in blueArmy)
+                            {
+                                if (Bu.GetTile() == ru.GetTile())
+                                {
+                                    Bu.SetTarget(ru.GetTarget());
+                                }
+                            }
+                            break;
+                    }
+                }
+            }
+        }
         public static StateTest get()
         {
             return instance;
@@ -357,7 +382,10 @@ namespace ION
 
         void CreateBlueUnit()
         {
-            blueArmy.Add(new BallUnit(map.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), map.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
+            BallUnit bu = new BallUnit(map.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), map.GetTileScreenPos(new Vector2(11, 13), translationX, translationY));
+            blueArmy.Add(bu);
+            Byte[] buffer = Serializer.Serialize(bu);
+            map.LocalUnits.SetAttribute("addUnit", buffer);
         }
 
         //Used to fade in and fade out the action sound
