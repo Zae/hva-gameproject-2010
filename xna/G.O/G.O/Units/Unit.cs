@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using System.IO;
 
 namespace ION
 {
-    public abstract class Unit : Serializable
+    public abstract class Unit : IDepthEnabled
     {
         private Colors hitmapColor = new Colors();
 
@@ -19,10 +18,10 @@ namespace ION
         protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
 
-        protected int inTileX;
-        protected int inTileY;
+        public int inTileX;
+        public int inTileY;
 
-        public abstract void draw(float x, float y, float width, float height);
+        public abstract void draw(float x, float y);
 
 
 
@@ -65,7 +64,8 @@ namespace ION
         {
             inTileX = (int)newInTile.X;
             inTileY = (int)newInTile.Y;
-
+            
+            
 
 
             //Vector2 tilePos = map.GetTile(pos.X, pos.Y, translationX, translationX);
@@ -125,15 +125,9 @@ namespace ION
             return baseHalfWidthConstant;
         }
 
-        public Byte[] SetTarget(Vector2 newTarget)
+        public void SetTarget(Vector2 newTarget)
         {
             targetPos = newTarget;
-            
-            return Serializer.Serialize(this);
-        }
-        public Vector2 GetTarget()
-        {
-            return targetPos;
         }
 
         public Vector2 GetVirtualPos()
@@ -147,28 +141,20 @@ namespace ION
             return new Vector2(inTileX, inTileY);
         }
 
-        #region Serializable Members
-
-        public MemoryStream Serialize()
+        //Inherited from IDepthEnabled
+        public int getTileX() 
         {
-            MemoryStream ms = new MemoryStream();
-            BinaryWriter bw = new BinaryWriter(ms);
-
-            //instead of calling GetTile and writing the X and Y values seperate
-            //I cut the middle man and directly write inTileX and inTileY.
-            bw.Write(inTileX);
-            bw.Write(inTileY);
-            bw.Write(this.targetPos.X);
-            bw.Write(this.targetPos.Y);
-
-            return ms;
+            return inTileX;
         }
 
-        public void Deserialize(MemoryStream inData)
+        public int getTileY()
         {
-            throw new NotImplementedException();
+            return inTileY;
         }
 
-        #endregion
+        public void drawDepthEnabled(float translationX, float translationY)
+        {
+            draw(translationX, translationY);
+        }
     }
 }
