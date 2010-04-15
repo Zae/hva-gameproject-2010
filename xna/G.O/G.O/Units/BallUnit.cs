@@ -67,5 +67,10 @@ namespace ION
         }
 
 
+
+        internal void Deserialize(System.IO.MemoryStream memoryStream)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

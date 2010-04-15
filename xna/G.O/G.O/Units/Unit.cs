@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace ION
 {
@@ -18,8 +19,8 @@ namespace ION
         protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
 
-        public int inTileX;
-        public int inTileY;
+        public int inTileX = 100;
+        public int inTileY = 100;
 
         public abstract void draw(float x, float y);
 
@@ -65,9 +66,10 @@ namespace ION
             inTileX = (int)newInTile.X;
             inTileY = (int)newInTile.Y;
             
-            
+            //Tell the Grid this Unit's tile position has changed
+            Grid.updateDepthEnabledItem(this);
 
-
+            //Debug.WriteLine("new tilexy: " + inTileX + "," + inTileY);
             //Vector2 tilePos = map.GetTile(pos.X, pos.Y, translationX, translationX);
             //inTileX = tilePos.X;
             //inTileY = tilePos.Y;
