@@ -8,15 +8,18 @@ using System.Diagnostics;
 
 namespace ION
 {
-    class BaseTile : ResourceTile
+    class BaseTile : ResourceTile, IDepthEnabled
     {
 
         private Color baseColor = new Color();
+        private Texture2D baseImage;
 
         public BaseTile(int indexX, int indexY, int owner)
         {
             sID++;
             id = sID;
+
+            baseImage = Players.getBaseImage(owner);
             
             this.indexX = indexX;
             this.indexY = indexY;
@@ -57,7 +60,7 @@ namespace ION
             //GO.primitiveBatch.End();
             
             ION.spriteBatch.Begin();
-            ION.spriteBatch.Draw(Images.baseImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), getBaseColor(owner));
+            ION.spriteBatch.Draw(baseImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
             ION.spriteBatch.End();
         }
 
@@ -175,6 +178,20 @@ namespace ION
 
         //}
 
+        //Inherited from IDepthEnabled
+        public int getTileX()
+        {
+            return indexX;
+        }
 
+        public int getTileY()
+        {
+            return indexY;
+        }
+
+        public void drawDepthEnabled(float translationX, float translationY)
+        {
+            draw(translationX, translationY);
+        }
     }
 }

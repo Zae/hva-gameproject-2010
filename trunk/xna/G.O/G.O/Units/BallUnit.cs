@@ -17,7 +17,6 @@ namespace ION
 
             movementSpeed = 1f;
 
-
         }
 
         public BallUnit(Vector2 newPos, Vector2 newTarget)
@@ -31,7 +30,7 @@ namespace ION
         }
 
 
-        public override void draw(float x, float y, float width, float height)
+        public override void draw(float x, float y)
         {
             //virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x);
             //virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (y);
@@ -44,13 +43,25 @@ namespace ION
             if (selected)
             {
                 ION.spriteBatch.Begin();
+
+                //NORMAL TEXTURE PROPORTIONS
+                //ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4 )), Color.White);
+                
+                //EGG TEXTURE PROPORTIONS
                 ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
+               
                 ION.spriteBatch.End();
             }
             else
             {
                 ION.spriteBatch.Begin();
+
+                //NORMAL TEXTURE PROPORTIONS
+                //ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4 )), Color.White);
+
+                //EGG TEXTURE PROPORTIONS
                 ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
+               
                 ION.spriteBatch.End();
             }
         }

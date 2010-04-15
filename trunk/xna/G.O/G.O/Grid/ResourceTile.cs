@@ -38,11 +38,6 @@ namespace ION
         
         public float nextCharge = 0;
 
-        protected Unit unit = null;
-
-        //This is buggy but for testing
-        //private const float minimumFlux = 0.03f;
-
         public const float MAX_CHARGE = 1.0f;
 
         private Color tileColor = new Color();
@@ -67,23 +62,6 @@ namespace ION
             ION.spriteBatch.DrawString(Fonts.font, "charge: "+charge, location, Color.Black);
             ION.spriteBatch.End();
         }
-
-        public bool hasUnit()
-        {
-            if (unit != null)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public void setUnit(Unit unit)
-        {
-            this.unit = unit;
-        }
-
-
-
 
 
 
@@ -129,7 +107,8 @@ namespace ION
             //}
 
 
-            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth*2), (int)(baseHalfHeight * 2)), tileColor);
+            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
+            //ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
             
             
             
@@ -166,9 +145,9 @@ namespace ION
             //    ION.spriteBatch.End();
             //}
 
-            if(unit != null) {
-                unit.draw(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
-            }
+            //if(unit != null) {
+            //    unit.draw(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
+            //}
 
    
         }

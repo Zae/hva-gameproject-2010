@@ -29,6 +29,13 @@ namespace ION
 
         public static Tile[] perspectiveMap;
 
+        public static List<ResourceTile> resourceTiles;
+
+        public static List<MountainTile> mountainTiles;
+
+        public static List<IDepthEnabled> depthItems;
+        //public 
+        //public static 
 
 
         private GridStrategy updateStrategy;
@@ -43,9 +50,11 @@ namespace ION
         private float virtualX = 0;
         private float virtualY = 0;
 
-        public RemoteSharedObject GridRSO;
-        public RemoteSharedObject LocalUnits;
-        public RemoteSharedObject RemoteUnits;
+        private RemoteSharedObject GridRSO;
+
+        // a list to hold the blue army
+        public List<Unit> blueArmy = new List<Unit>();
+
 
 
 
@@ -58,15 +67,13 @@ namespace ION
                 {
                     if (blueArmy[i] != null && blueArmy[i].selected)
                     {
-                        Byte[] buffer = blueArmy[i].SetTarget(selectedTile.GetPos(translationX, translationY));
-                        this.LocalUnits.SetAttribute("SetTarget", buffer);
+                        blueArmy[i].SetTarget(selectedTile.GetPos(translationX, translationY));
                     }
+
                 }
             }
 
         }
-
-
 
         public void mouseRightPressed(float x, float y, float translationX, float translationY)
         {
@@ -212,54 +219,54 @@ namespace ION
 
         }
 
-        public void createUnit(float x, float y, float translationX, float translationY, int owner)
-        {
-            //translate the screen input to world coordinates
-            mouseWorldX = x - translationX - ION.halfWidth;
-            mouseWorldY = y - translationY;
+        //public void createUnit(float x, float y, float translationX, float translationY, int owner)
+        //{
+        //    //translate the screen input to world coordinates
+        //    mouseWorldX = x - translationX - ION.halfWidth;
+        //    mouseWorldY = y - translationY;
 
-            //get the true value from the origin in tile units
-            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
-            float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
+        //    //get the true value from the origin in tile units
+        //    float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
+        //    float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
 
-            //get the closest even value to that position
-            int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
-            int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
-            //int tilesVertical = (int)tilesVerticalQ;
-            //int tilesHorizontal = (int)tilesHorizontalQ;
-            //Debug.WriteLine("********");
-            //Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
-            //Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:"+tilesVertical);
-            //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
+        //    //get the closest even value to that position
+        //    int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
+        //    int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
+        //    //int tilesVertical = (int)tilesVerticalQ;
+        //    //int tilesHorizontal = (int)tilesHorizontalQ;
+        //    //Debug.WriteLine("********");
+        //    //Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
+        //    //Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:"+tilesVertical);
+        //    //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
 
-            //get the color at that position on the hitmap
-            uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
+        //    //get the color at that position on the hitmap
+        //    uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
 
-            //pass the position and the color and see if you get back anything
-
-
+        //    //pass the position and the color and see if you get back anything
 
 
-            Tile tile = getTile(tilesVertical, tilesHorizontal, color);
 
-            if (tile != null)
-            {
-                if (tile is ResourceTile)
-                {
-                    ResourceTile resourceTile = (ResourceTile)tile;
-                    if (!resourceTile.hasUnit())
-                    {
-                        //BallUnit b = new BallUnit(owner);
-                       // resourceTile.setUnit(b);
-                    }
-                }
-            }
-            else
-            {
+
+        //    Tile tile = getTile(tilesVertical, tilesHorizontal, color);
+
+        //    if (tile != null)
+        //    {
+        //        if (tile is ResourceTile)
+        //        {
+        //            ResourceTile resourceTile = (ResourceTile)tile;
+        //            if (!resourceTile.hasUnit())
+        //            {
+        //                //BallUnit b = new BallUnit(owner);
+        //               // resourceTile.setUnit(b);
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
                 
-            }
+        //    }
            
-        }
+        //}
 
 
         private uint doHitmapTest(float x, float y, float translationX, float translationY, int visualX, int visualY) 
@@ -403,11 +410,26 @@ namespace ION
 
         public void draw(float translationX, float translationY)
         {
-            for (int i = 0; i < tileCount; i++)
+            //for (int i = 0; i < tileCount; i++)
+            //{
+            //    perspectiveMap[i].draw(translationX, translationY);
+            //    //perspectiveMap[i].drawDebug(translationX, translationY);
+            //}
+
+            foreach(ResourceTile rt in resourceTiles) 
             {
-                perspectiveMap[i].draw(translationX, translationY);
-                //perspectiveMap[i].drawDebug(translationX, translationY);
+                rt.draw(translationX, translationY);
             }
+
+            foreach (IDepthEnabled de in depthItems)
+            {
+                de.drawDepthEnabled(translationX, translationY);
+            }
+
+            //for (int i = 0; i < blueArmy.Count(); i++)
+            //{
+            //    blueArmy[i].draw(translationX, translationY);
+            //}
 
             if (drawHitTest)
             {
@@ -417,6 +439,7 @@ namespace ION
                 ION.spriteBatch.End();
             }
 
+            //GridStrategy might want to do some debug rendering
             updateStrategy.draw();
         }
         public void update(int ellapsed, List<Unit> blueArmy, float translationX, float translationY)
@@ -424,6 +447,8 @@ namespace ION
 
 
             updateStrategy.update(ellapsed);
+
+            
             for (int i = 0; i < blueArmy.Count(); i++)
             {
                 if (blueArmy[i] != null)
@@ -432,11 +457,23 @@ namespace ION
                 }
             }
 
+
+            for (int i = 0; i < blueArmy.Count(); i++)
+            {
+                //updates the unit
+                blueArmy[i].Update(translationX, translationY);
+
+                //tells the unit what tile it is currently on
+                Vector2 temp = GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
+                blueArmy[i].UpdateTile(GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY));
+            }
+
+
             /** Disabled for performance, works perfectly tho! **/
             if (GridRSO != null && GridRSO.Connected)
             {
-                //byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
-                //GridRSO.SetAttribute("Grid", rs);
+                byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
+                GridRSO.SetAttribute("Grid", rs);
             }
         }
 
@@ -444,11 +481,15 @@ namespace ION
         {
             if (c == 'N')
             {
-                return new ResourceTile(x,y);
+                ResourceTile newTile = new ResourceTile(x,y);
+                resourceTiles.Add(newTile);
+                return newTile;
             }
             else if (c == 'M')
             {
-                return new MountainTile(x,y);
+                MountainTile newTile = new MountainTile(x,y);
+                depthItems.Add(newTile);
+                return newTile;
             }
 
             return null;
@@ -459,9 +500,12 @@ namespace ION
         {
             updateStrategy = strategy;
             updateStrategy.reset();
-            //updateStrategy = new FlowStrategy();
 
-            if (ION.get().serverConnection != null && ION.get().serverConnection.GameConnection != null && ION.get().serverConnection.GameConnection.Connected)
+            resourceTiles = new List<ResourceTile>();
+            mountainTiles = new List<MountainTile>();
+            depthItems = new List<IDepthEnabled>();
+        
+            if (ION.get().serverConnection != null && ION.get().serverConnection.GameConnection.Connected)
             {
                 GridRSO = RemoteSharedObject.GetRemote("Grid", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
                 GridRSO.NetStatus += new NetStatusHandler(GridRSO_NetStatus);
@@ -469,25 +513,6 @@ namespace ION
                 GridRSO.OnDisconnect += new DisconnectHandler(GridRSO_OnDisconnect);
                 GridRSO.Sync += new SyncHandler(GridRSO_Sync);
                 GridRSO.Connect(ION.get().serverConnection.GameConnection);
-            }
-
-            if (ION.get().serverConnection != null && ION.get().serverConnection.GameConnection != null && ION.get().serverConnection.GameConnection.Connected)
-            {
-                if (ION.get().serverConnection.isHost)
-                {
-                    LocalUnits = RemoteSharedObject.GetRemote("ServerUnits", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
-                    RemoteUnits = RemoteSharedObject.GetRemote("ClientUnits", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
-                }
-                else
-                {
-                    LocalUnits = RemoteSharedObject.GetRemote("ClientUnits", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
-                    RemoteUnits = RemoteSharedObject.GetRemote("ServerUnits", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
-                }
-                LocalUnits.NetStatus += new NetStatusHandler(LocalUnits_NetStatus);
-                LocalUnits.OnConnect += new ConnectHandler(LocalUnits_OnConnect);
-                LocalUnits.OnDisconnect += new DisconnectHandler(LocalUnits_OnDisconnect);
-                LocalUnits.Sync += new SyncHandler(LocalUnits_Sync);
-                LocalUnits.Connect(ION.get().serverConnection.GameConnection);
             }
 
             //load the xml file into the XmlTextReader object. 
@@ -517,8 +542,7 @@ namespace ION
                     {
                         positionsX[i] = int.Parse(XmlRdr.GetAttribute(3 + (i * 2)));
                         positionsY[i] = int.Parse(XmlRdr.GetAttribute(3 + (i * 2) + 1));
-
-                        //map[xPos, yPos] = new BaseTile(xPos, yPos, i + 1);
+ 
                     }
 
 
@@ -565,7 +589,9 @@ namespace ION
                     //finally take the player position and put them into the map
                     for (int i = 0; i < playerCount; i++)
                     {
-                        map[positionsX[i], positionsY[i]] = new BaseTile(positionsX[i], positionsY[i], i + 1);
+                        BaseTile newBase = new BaseTile(positionsX[i], positionsY[i], i + 1);
+                        map[positionsX[i], positionsY[i]] = newBase;
+                        depthItems.Add(newBase);
                     }
 
                  
@@ -586,26 +612,6 @@ namespace ION
                 Console.WriteLine("exception in grid: " + e.ToString());
             }
         }
-
-        void LocalUnits_Sync(object sender, SyncEventArgs e)
-        {
-            throw new NotImplementedException(); 
-        }
-
-        void LocalUnits_OnDisconnect(object sender, EventArgs e)
-{
- 	throw new NotImplementedException();
-}
-
-        void LocalUnits_OnConnect(object sender, EventArgs e)
-{
- 	throw new NotImplementedException();
-}
-
-        void LocalUnits_NetStatus(object sender, NetStatusEventArgs e)
-{
- 	throw new NotImplementedException();
-}
         public void mouseLeftPressed(float x, float y, float translationX, float translationY, Unit soldier)
         {
             mouseLeftPressed(x, y, translationX, translationY);
@@ -653,12 +659,6 @@ namespace ION
         {
             return perspectiveMap;
         }
-
-        //public Vector2 GetBlueBlueBase()
-        //{
-        //    Vector2 basePosition = new Vector2();
-        //    return basePosition;
-        //}
 
         // new
         public Vector2 GetTile(float x, float y, float translationX, float translationY)
@@ -718,6 +718,55 @@ namespace ION
         {
             return new Vector2(map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).X, map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).Y);
         }
-        // new
+
+        public void CreateBlueUnit(float translationX, float translationY)
+        {
+            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY));
+            blueArmy.Add(newUnit);
+            depthItems.Add(newUnit);
+        }
+
+        public static void addDepthEnabledItem(IDepthEnabled newItem)
+        {
+            //add the item to the list
+
+            //TODO hardcoding for a south-west perspective
+            foreach(IDepthEnabled other in depthItems) {
+
+                if (other.getTileX() > newItem.getTileX())
+                {
+                    continue;
+                }
+                else if (other.getTileX() == newItem.getTileX())
+                {
+
+                }
+                else
+                {
+                    //TODO
+                  // depthItems.I
+                }
+                //if x >
+                //add before that item
+
+                //if x == x and y <
+                
+                // y >
+
+
+
+
+            }
+        }
+
+        public static void removeDepthEnabledItem(IDepthEnabled newItem)
+        {
+            //remove the item from the list
+        }
+
+        public static void updateDepthEnabledItem(IDepthEnabled newItem)
+        {
+            //look for its new place in the list
+        }
     }
 }

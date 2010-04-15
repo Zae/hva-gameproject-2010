@@ -80,7 +80,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Grid\IDepthEnabled.cs" />
     <Compile Include="Grid\Strategies\CreepStrategy.cs" />
+    <Compile Include="Grid\Strategies\ThunderStrategy.cs" />
     <Compile Include="MultiPlayer\Host.cs" />
     <Compile Include="MultiPlayer\Serializable.cs" />
     <Compile Include="MultiPlayer\Serialization.cs" />

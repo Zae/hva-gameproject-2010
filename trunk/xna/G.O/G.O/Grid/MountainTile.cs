@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ION
 {
-    class MountainTile : Tile
+    class MountainTile : Tile, IDepthEnabled
     {
 
         public MountainTile(int indexX, int indexY)
@@ -76,6 +76,22 @@ namespace ION
 
         public override void update()
         {
+        }
+
+        //Inherited from IDepthEnabled
+        public int getTileX()
+        {
+            return indexX;
+        }
+
+        public int getTileY()
+        {
+            return indexY;
+        }
+
+        public void drawDepthEnabled(float translationX, float translationY)
+        {
+            draw(translationX, translationY);
         }
 
     }
