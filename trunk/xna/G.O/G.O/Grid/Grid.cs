@@ -244,9 +244,6 @@ namespace ION
 
         //    //pass the position and the color and see if you get back anything
 
-
-
-
         //    Tile tile = getTile(tilesVertical, tilesHorizontal, color);
 
         //    if (tile != null)
@@ -488,7 +485,7 @@ namespace ION
             else if (c == 'M')
             {
                 MountainTile newTile = new MountainTile(x,y);
-                depthItems.Add(newTile);
+                addDepthEnabledItem(newTile);
                 return newTile;
             }
 
@@ -591,7 +588,7 @@ namespace ION
                     {
                         BaseTile newBase = new BaseTile(positionsX[i], positionsY[i], i + 1);
                         map[positionsX[i], positionsY[i]] = newBase;
-                        depthItems.Add(newBase);
+                        addDepthEnabledItem(newBase);
                     }
 
                  
@@ -723,15 +720,18 @@ namespace ION
         {
             BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY));
             blueArmy.Add(newUnit);
-            depthItems.Add(newUnit);
+            addDepthEnabledItem(newUnit);
         }
 
         public static void addDepthEnabledItem(IDepthEnabled newItem)
         {
             //add the item to the list
-
+            int index = -1;
+            bool inserted = false;
             //TODO hardcoding for a south-west perspective
             foreach(IDepthEnabled other in depthItems) {
+
+                index++;
 
                 if (other.getTileX() > newItem.getTileX())
                 {
@@ -739,34 +739,55 @@ namespace ION
                 }
                 else if (other.getTileX() == newItem.getTileX())
                 {
-
+                    if (other.getTileY() >= newItem.getTileY())
+                    {
+                        depthItems.Insert(index, newItem);
+                        inserted = true;
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
                 else
                 {
-                    //TODO
-                  // depthItems.I
+                    depthItems.Insert(index, newItem);
+                    inserted = true;
+                    break;
                 }
-                //if x >
-                //add before that item
-
-                //if x == x and y <
-                
-                // y >
-
-
-
-
+            }
+            if (!inserted)
+            {
+                depthItems.Add(newItem);
             }
         }
 
         public static void removeDepthEnabledItem(IDepthEnabled newItem)
         {
-            //remove the item from the list
+            depthItems.Remove(newItem);
         }
 
         public static void updateDepthEnabledItem(IDepthEnabled newItem)
         {
-            //look for its new place in the list
+            //TODO 
+            //Now I just remove and re-insert the item
+            //A faster algorithm could be made
+
+            depthItems.Remove(newItem);
+            addDepthEnabledItem(newItem);
+            
+            //The best implementation would be along these lines:
+            //Get the current index
+            //Look for the next item if it is not the last item in the list
+            //If the next item is more in the foreground on the basis of the perspective
+            //Change direction and look for the previous item more to the beginning of the list
+            //If that item is more in the foreground, continue the search in that direction untill you find its right place
+            //This way items that are most in the foreground are not penelized to search through everything in the background
+            //Because this is what happens when calling addDepthEnabledItem()
+
+
+
         }
     }
 }

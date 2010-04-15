@@ -105,6 +105,9 @@ namespace ION
                 case "FlowStrategy":
                     result = new FlowStrategy();
                     break;
+                case "ThunderStrategy":
+                    result = new ThunderStrategy();
+                    break;
                 default:
                     throw new NotSupportedException();
             }

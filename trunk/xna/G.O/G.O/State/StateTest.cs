@@ -54,7 +54,7 @@ namespace ION
         //we need to create a shared object blueUnits
 
 
-        static int unitCounter = 0;
+        static int unitCounter = 999;
 
         public StateTest()
         {
@@ -62,12 +62,7 @@ namespace ION
 
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
-
             map = new Grid(levels[level], strategies[strategy]);
-
-
-            //blueArmy = new List<Unit>();
-            map.blueArmy.Add(new BallUnit());
 
             actionOnScreenSound = Music.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
@@ -284,10 +279,6 @@ namespace ION
             }
 
             scrollValue = mouseState.ScrollWheelValue;
-
-            
-
-            //Debug.WriteLine("scrollvalue = " +mouseState.ScrollWheelValue);
 
             if (mouseState.MiddleButton == ButtonState.Pressed)
             {
