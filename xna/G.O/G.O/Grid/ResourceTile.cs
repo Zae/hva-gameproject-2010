@@ -42,6 +42,11 @@ namespace ION
 
         private Color tileColor = new Color();
 
+        public bool isSpiking = false;
+        public int spikeCount = 0;
+        public static float spikeCharge = 0.9f;
+        public static int spikeDuration = 5;
+      
         public ResourceTile()
         {
         }
@@ -335,9 +340,22 @@ namespace ION
 
                 tileColor.A = 255;
             }
-            
+
             else if (owner == Players.PLAYER1)
             {
+                if (charge > 1.0f)
+                {
+                    //Debug.WriteLine("1BALBALABLABLABLA");
+                    float temp = charge - 1.0f;
+                    tileColor.R = 0;
+                    tileColor.G = (byte)((temp * 255));
+                    tileColor.B = 255;
+
+                    //tileColor.A = (byte)(charge * 255);
+                    tileColor.A = 255;
+                    return tileColor;
+                }
+                
                 tileColor.R = (byte)(255 - (charge * 255));
                 tileColor.G = (byte)(255 - (charge * 255));
                 tileColor.B = 255;
@@ -347,6 +365,18 @@ namespace ION
             }
             else if (owner == Players.PLAYER2)
             {
+                if (charge > 1.0f)
+                {
+                    //Debug.WriteLine("2BALBALABLABLABLA");
+                    float temp = charge - 1.0f;
+                    tileColor.R = 255;
+                    tileColor.G = (byte)((temp * 255));
+                    tileColor.B = 0;
+
+                    //tileColor.A = (byte)(charge * 255);
+                    tileColor.A = 255;
+                }
+                
                 tileColor.R = 255;
                 tileColor.G = (byte)(255 - (charge * 255));
                 tileColor.B = (byte)(255 - (charge * 255));

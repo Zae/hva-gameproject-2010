@@ -126,10 +126,6 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <Compile Include="Grid\Strategies\unitItems\redballcharge.png" />
-    <Compile Include="Grid\Strategies\unitItems\redball.png" />
-    <Compile Include="Grid\Strategies\unitItems\blueballcharge.png" />
-    <Compile Include="Grid\Strategies\unitItems\blueball.png" />
   </ItemGroup>
   <ItemGroup>
     <NestedContentProject Include="Content\Content.contentproj">

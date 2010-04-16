@@ -56,6 +56,9 @@ namespace ION
         public float player1Control = 0.0f;
         public float player2Control = 0.0f;
 
+        Vector2 oldMousePos, mousePos;
+        bool leftMouseDown = false;
+
      
         //we need to create a shared object blueUnits
 
@@ -301,12 +304,22 @@ namespace ION
             {
                 //grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
                 //blueArmy[0].SetTarget(new Vector2(mouseState.X, mouseState.Y));
-                grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, grid.blueArmy);// pass the currently selected unit
                 
+                grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, grid.blueArmy, oldMousePos);// pass the currently selected unit
+
+                if (!leftMouseDown)
+                {
+                    oldMousePos.X = (mouseState.X);
+                    oldMousePos.Y = (mouseState.Y);
+                }
+                leftMouseDown = true;
+                mousePos.X = (mouseState.X);
+                mousePos.Y = (mouseState.Y);
             }
             else if (mouseState.LeftButton == ButtonState.Released)
             {
                 grid.mouseLeftReleased(mouseState.X, mouseState.Y, translationX, translationY);
+                leftMouseDown = false;
             }
 
             if (mouseState.RightButton == ButtonState.Pressed)
