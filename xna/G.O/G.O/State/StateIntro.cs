@@ -18,7 +18,7 @@ namespace ION
         private bool motion5 = true;
         private bool motion6 = true;
         private int now = 0;
-        private int playTime = 6000;
+        private int playTime = 4000;
 
         private float scale;
         private float fullScale;
@@ -115,45 +115,8 @@ namespace ION
                 logoX += ellapsed * dX;
                 logoY += ellapsed * dY;
             }
+          
             else if (now < 1400)
-            {
-                if (motion2)
-                {
-                    motion2 = false;
-
-                
-                    logoX = ION.width + logoWidth;
-                    logoY = -logoHeight;
-
-                    dX = ((ION.width-logoWidth) - logoX) / 120;
-                    dY = ((ION.height-logoHeight) - logoY) / 120;
-
-                    return;
-                }
-                
-                logoX += ellapsed * dX;
-                logoY += ellapsed * dY;
-            }
-            else if (now < 2100)
-            {
-                if (motion3)
-                {
-                    motion3 = false;
-
-                
-                    logoX = -logoWidth;
-                    logoY = -logoHeight;
-
-                    dX = ((ION.width + logoWidth) - logoX) / 120;
-                    dY = ((ION.height + logoHeight) - logoY) / 120;
-
-                    return;
-                }
-
-                logoX += ellapsed * dX;
-                logoY += ellapsed * dY;
-            }
-            else if (now < 2800)
             {
                 if (motion4)
                 {
@@ -172,7 +135,7 @@ namespace ION
                 logoX += ellapsed * dX;
                 logoY += ellapsed * dY;
             }
-            else if (now < 2900)
+            else if (now < 1500)
             {
                 if (motion5)
                 {
@@ -201,12 +164,13 @@ namespace ION
                 logoX += ellapsed * dX;
                 logoY += ellapsed * dY;
             }
-            else if (now > 2900 && now < 3500)
+                 //else if (now > 2900 && now < 3500)
+            else if (now > 1500 && now < 2100)
             {
                 logoX = (ION.width - logoWidth) / 2;
                 logoY = (ION.height - logoHeight) / 2;
             }
-            else if (now > 3500 && now < 3700)
+            else if (now > 2100 && now < 2300)
             {
                 if (motion6)
                 {
@@ -233,7 +197,7 @@ namespace ION
 
 
             }
-            if ( now > 3700)  
+            if ( now > 2300)  
             {
                 logoWidth = logoFullWidth;
                 logoHeight = logoFullHeight;
