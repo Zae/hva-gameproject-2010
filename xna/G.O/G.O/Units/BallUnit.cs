@@ -48,7 +48,7 @@ namespace ION
                 //ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4 )), Color.White);
                 
                 //EGG TEXTURE PROPORTIONS
-                ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
+                ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (scale * 0.5f)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
                
                 ION.spriteBatch.End();
             }
@@ -60,7 +60,7 @@ namespace ION
                 //ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4 )), Color.White);
 
                 //EGG TEXTURE PROPORTIONS
-                ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
+                ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (scale * 0.5f)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
                
                 ION.spriteBatch.End();
             }
