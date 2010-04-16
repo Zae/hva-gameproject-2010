@@ -50,6 +50,8 @@ namespace ION
         public static Texture2D tableHosts;
         public static Texture2D buttonRefreshF;
 
+        public static Texture2D greenPixel;
+
 
 
         public static Texture2D[] chargeCountImages = new Texture2D[10];
