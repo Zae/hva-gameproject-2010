@@ -27,7 +27,7 @@ namespace ION
 
         private int level = 0;
         private string[] levels = { "MediumLevelTest.xml", "Level1.xml", "LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml"
-
+        
         private GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy(), new BleedStrategy() };
         private int strategy = 0;
 
@@ -50,7 +50,10 @@ namespace ION
         private bool increaseSpeedDown = false;
         private bool decreaseSpeedDown = false;
 
-     
+
+        Vector2 oldMousePos, mousePos;
+        bool leftMouseDown = false;
+
         //we need to create a shared object blueUnits
 
 
@@ -92,6 +95,32 @@ namespace ION
             ION.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the map around, press Left-Alt to recenter the map", new Vector2(10, y += 15), Color.White);
             ION.spriteBatch.DrawString(Fonts.font, "N - M change Level (now: " + levels[level] + ") J - K change GridStrategy (now: " + strategies[strategy].name + ")", new Vector2(10, y += 15), Color.White);
             ION.spriteBatch.DrawString(Fonts.font, "I - O change game speed (now: "+map.getUpdateStrategy().speed, new Vector2(10, y += 15), Color.White);
+
+
+
+
+
+            if (leftMouseDown)
+            {
+                //    //draw a rectangle from oldMousePos to mousePos
+                //if (oldMousePos.X > mousePos.X && oldMousePos.Y < mousePos.Y)
+                //{
+                //    ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)mousePos.X, (int)oldMousePos.Y, (int)(oldMousePos.X - mousePos.X), (int)(mousePos.Y - oldMousePos.Y)), Color.Green);
+                //}
+                //else if (oldMousePos.X < mousePos.X && oldMousePos.Y > mousePos.Y)
+                //{
+                //    ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)oldMousePos.X, (int)mousePos.Y, (int)(mousePos.X - oldMousePos.X), (int)(oldMousePos.Y - mousePos.Y)), Color.Green);
+                //}
+                //else// normal
+                //{
+                //    ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)oldMousePos.X, (int)oldMousePos.Y, (int)(mousePos.X - oldMousePos.X), (int)(mousePos.Y - oldMousePos.Y)), Color.Green);
+                //}
+
+                //draw a rectangle from oldMousePos to mousePos
+                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)oldMousePos.X, (int)oldMousePos.Y, (int)(mousePos.X - oldMousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// normal
+                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)mousePos.X, (int)oldMousePos.Y, (int)(oldMousePos.X - mousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// inverted
+                
+            }
             ION.spriteBatch.End();
         }
 
@@ -290,12 +319,23 @@ namespace ION
             {
                 //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
                 //blueArmy[0].SetTarget(new Vector2(mouseState.X, mouseState.Y));
-                map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, map.blueArmy);// pass the currently selected unit
+                map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, map.blueArmy, oldMousePos);// pass the currently selected unit
+                
+                if (!leftMouseDown)
+                {
+                    oldMousePos.X = (mouseState.X);
+                    oldMousePos.Y = (mouseState.Y);
+                } 
+                leftMouseDown = true;
+                mousePos.X = (mouseState.X);
+                mousePos.Y = (mouseState.Y);
+
                 
             }
             else if (mouseState.LeftButton == ButtonState.Released)
             {
                 map.mouseLeftReleased(mouseState.X, mouseState.Y, translationX, translationY);
+                leftMouseDown = false;
             }
 
             if (mouseState.RightButton == ButtonState.Pressed)

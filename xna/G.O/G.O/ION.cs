@@ -155,6 +155,9 @@ namespace ION
             Images.buttonRefreshF = Content.Load<Texture2D>("menuItems/RefreshButtonF");
             Images.tableHosts = Content.Load<Texture2D>("menuItems/HostsTable");
 
+            Images.greenPixel = Content.Load<Texture2D>("menuItems/greenPixel");
+            
+
 
 
             for (int i = 0; i < Images.chargeCountImages.Length; i++)

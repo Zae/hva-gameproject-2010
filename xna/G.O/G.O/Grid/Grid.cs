@@ -139,10 +139,13 @@ namespace ION
             drawHitTest = false;
         }
 
+        // UNDER CONSTRUCTION
+        // drag selection
         public void mouseLeftReleased(float x, float y, float translationX, float translationY)
         {
             drawHitTest = false;
         }
+        // UNDER CONSTRUCTION
 
         public void mouseLeftPressed(float x, float y, float translationX, float translationY)
         {
@@ -198,7 +201,7 @@ namespace ION
         }
 
 
-        public void mouseLeftPressed(float x, float y, float translationX, float translationY, List<Unit> blueArmy)
+        public void mouseLeftPressed(float x, float y, float translationX, float translationY, List<Unit> blueArmy, Vector2 oldMousePos)
         {
             mouseLeftPressed(x, y, translationX, translationY);
             if (selectedTile != null)
@@ -207,10 +210,23 @@ namespace ION
                 {
                     //unselect this unit by default
                     blueArmy[i].selected = false;
+
                     //check if the current tile matches the units tile, if so changed the units selected to true
                     if (GetTile(x, y, translationX, translationY) == blueArmy[i].GetTile())
                     {
                         blueArmy[i].selected = true;//select unit
+                    }
+
+                    // if this unit is in between the 2 mouse positions
+                    if (
+                        ((blueArmy[i].GetVirtualPos().X > x && blueArmy[i].GetVirtualPos().X < oldMousePos.X)
+                        || (blueArmy[i].GetVirtualPos().X < x && blueArmy[i].GetVirtualPos().X > oldMousePos.X))
+                        && ((blueArmy[i].GetVirtualPos().Y > y && blueArmy[i].GetVirtualPos().Y < oldMousePos.Y)
+                        || (blueArmy[i].GetVirtualPos().Y < y && blueArmy[i].GetVirtualPos().Y > oldMousePos.Y))
+                        )
+                    {
+                        // set unit to selected
+                        blueArmy[i].selected = true;
                     }
 
 
@@ -260,13 +276,13 @@ namespace ION
         //    }
         //    else
         //    {
-                
+
         //    }
-           
+
         //}
 
 
-        private uint doHitmapTest(float x, float y, float translationX, float translationY, int visualX, int visualY) 
+        private uint doHitmapTest(float x, float y, float translationX, float translationY, int visualX, int visualY)
         {
             string sColorval = "NONE";
             uint[] myUint = new uint[1];
@@ -298,7 +314,7 @@ namespace ION
 
             if (viewDirection == SOUTH_WEST)
             {
-                if(color == Colors.color_red)
+                if (color == Colors.color_red)
                 {
                     lookForX--;
                     lookForY--;
@@ -329,7 +345,7 @@ namespace ION
             }
 
             return null;
-           
+
         }
 
         private void settleIndexZ(int newViewDirection)
@@ -358,7 +374,7 @@ namespace ION
                     //Debug.WriteLine("tileCount = " + tileCount);
                     //Debug.WriteLine("x = " + x);
                     //Debug.WriteLine("y = " + y);
-                    
+
                     if (x <= xMax && y <= yMax && x >= 0 && y >= 0)
                     {
                         map[x, y].setIndexZ(i);
@@ -396,7 +412,7 @@ namespace ION
                             relativeY += 1;
                         }
 
-                        
+
                     }
                 }
 
@@ -413,7 +429,7 @@ namespace ION
             //    //perspectiveMap[i].drawDebug(translationX, translationY);
             //}
 
-            foreach(ResourceTile rt in resourceTiles) 
+            foreach (ResourceTile rt in resourceTiles)
             {
                 rt.draw(translationX, translationY);
             }
@@ -428,6 +444,8 @@ namespace ION
             //    blueArmy[i].draw(translationX, translationY);
             //}
 
+
+
             if (drawHitTest)
             {
                 ION.spriteBatch.Begin();
@@ -438,6 +456,8 @@ namespace ION
 
             //GridStrategy might want to do some debug rendering
             updateStrategy.draw();
+
+
         }
         public void update(int ellapsed, List<Unit> blueArmy, float translationX, float translationY)
         {
@@ -445,7 +465,7 @@ namespace ION
 
             updateStrategy.update(ellapsed);
 
-            
+
             for (int i = 0; i < blueArmy.Count(); i++)
             {
                 if (blueArmy[i] != null)
@@ -478,13 +498,13 @@ namespace ION
         {
             if (c == 'N')
             {
-                ResourceTile newTile = new ResourceTile(x,y);
+                ResourceTile newTile = new ResourceTile(x, y);
                 resourceTiles.Add(newTile);
                 return newTile;
             }
             else if (c == 'M')
             {
-                MountainTile newTile = new MountainTile(x,y);
+                MountainTile newTile = new MountainTile(x, y);
                 addDepthEnabledItem(newTile);
                 return newTile;
             }
@@ -501,7 +521,7 @@ namespace ION
             resourceTiles = new List<ResourceTile>();
             mountainTiles = new List<MountainTile>();
             depthItems = new List<IDepthEnabled>();
-        
+
             if (ION.get().serverConnection != null && ION.get().serverConnection.GameConnection.Connected)
             {
                 GridRSO = RemoteSharedObject.GetRemote("Grid", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
@@ -539,7 +559,7 @@ namespace ION
                     {
                         positionsX[i] = int.Parse(XmlRdr.GetAttribute(3 + (i * 2)));
                         positionsY[i] = int.Parse(XmlRdr.GetAttribute(3 + (i * 2) + 1));
- 
+
                     }
 
 
@@ -582,7 +602,7 @@ namespace ION
                             }
                         }
                     }
-                    
+
                     //finally take the player position and put them into the map
                     for (int i = 0; i < playerCount; i++)
                     {
@@ -591,8 +611,8 @@ namespace ION
                         addDepthEnabledItem(newBase);
                     }
 
-                 
-               
+
+
 
                 }
                 else
@@ -638,7 +658,7 @@ namespace ION
 
         void GridRSO_OnConnect(object sender, EventArgs e)
         {
-            
+
             //throw new NotImplementedException();
         }
 
@@ -729,7 +749,8 @@ namespace ION
             int index = -1;
             bool inserted = false;
             //TODO hardcoding for a south-west perspective
-            foreach(IDepthEnabled other in depthItems) {
+            foreach (IDepthEnabled other in depthItems)
+            {
 
                 index++;
 
@@ -776,7 +797,7 @@ namespace ION
 
             depthItems.Remove(newItem);
             addDepthEnabledItem(newItem);
-            
+
             //The best implementation would be along these lines:
             //Get the current index
             //Look for the next item if it is not the last item in the list
