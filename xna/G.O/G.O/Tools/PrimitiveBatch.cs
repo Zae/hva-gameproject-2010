@@ -22,7 +22,7 @@ namespace ION
 
     // PrimitiveBatch is a class that handles efficient rendering automatically for its
     // users, in a similar way to SpriteBatch. PrimitiveBatch can render lines, points,
-    // and triangles to the screen. In this sample, it is used to draw a spacewars
+    // and triangles to the screen. In this sample, it is used to drawDebug a spacewars
     // retro scene.
     public class PrimitiveBatch : IDisposable
     {
@@ -33,8 +33,8 @@ namespace ION
         // buffer that is unnecessarily large will waste memory.
         const int DefaultBufferSize = 500;
 
-        // a block of vertices that calling AddVertex will fill. Flush will draw using
-        // this array, and will determine how many primitives to draw from
+        // a block of vertices that calling AddVertex will fill. Flush will drawDebug using
+        // this array, and will determine how many primitives to drawDebug from
         // positionInBuffer.
         VertexPositionColor[] vertices = new VertexPositionColor[DefaultBufferSize];
 
@@ -47,11 +47,11 @@ namespace ION
         // created automatically using VertexPositionColor's vertex elements.
         VertexDeclaration vertexDeclaration;
 
-        // a basic effect, which contains the shaders that we will use to draw our
+        // a basic effect, which contains the shaders that we will use to drawDebug our
         // primitives.
         BasicEffect basicEffect;
 
-        // the device that we will issue draw calls to.
+        // the device that we will issue drawDebug calls to.
         GraphicsDevice device;
 
         // this value is set by Begin, and is the type of primitives that we are
@@ -81,7 +81,7 @@ namespace ION
             device = graphicsDevice;
 
             // create a vertex declaration, which tells the graphics card what kind of
-            // data to expect during a draw call. We're drawing using
+            // data to expect during a drawDebug call. We're drawing using
             // VertexPositionColors, so we'll use those vertex elements.
             vertexDeclaration = new VertexDeclaration(graphicsDevice,
                 VertexPositionColor.VertexElements);
@@ -155,7 +155,7 @@ namespace ION
             hasBegun = true;
         }
 
-        // AddVertex is called to add another vertex to be rendered. To draw a point,
+        // AddVertex is called to add another vertex to be rendered. To drawDebug a point,
         // AddVertex must be called once. for lines, twice, and for triangles 3 times.
         // this function can only be called once begin has been called.
         // if there is not enough room in the vertices buffer, Flush is called
@@ -187,7 +187,7 @@ namespace ION
         }
 
         // End is called once all the primitives have been drawn using AddVertex.
-        // it will call Flush to actually submit the draw call to the graphics card, and
+        // it will call Flush to actually submit the drawDebug call to the graphics card, and
         // then tell the basic effect to end.
         public void End()
         {
@@ -197,7 +197,7 @@ namespace ION
                     ("Begin must be called before End can be called.");
             }
 
-            // Draw whatever the user wanted us to draw
+            // Draw whatever the user wanted us to drawDebug
             Flush();
 
             // and then tell basic effect that we're done.
@@ -206,9 +206,9 @@ namespace ION
             hasBegun = false;
         }
 
-        // Flush is called to issue the draw call to the graphics card. Once the draw
+        // Flush is called to issue the drawDebug call to the graphics card. Once the drawDebug
         // call is made, positionInBuffer is reset, so that AddVertex can start over
-        // at the beginning. End will call this to draw the primitives that the user
+        // at the beginning. End will call this to drawDebug the primitives that the user
         // requested, and AddVertex will call this if there is not enough room in the
         // buffer.
         private void Flush()
@@ -225,10 +225,10 @@ namespace ION
                 return;
             }
 
-            // how many primitives will we draw?
+            // how many primitives will we drawDebug?
             int primitiveCount = positionInBuffer / numVertsPerPrimitive;
 
-            // submit the draw call to the graphics card
+            // submit the drawDebug call to the graphics card
             device.DrawUserPrimitives<VertexPositionColor>(primitiveType, vertices, 0,
                 primitiveCount);
 
@@ -240,7 +240,7 @@ namespace ION
         #region Helper functions
 
         // NumVertsPerPrimitive is a boring helper function that tells how many vertices
-        // it will take to draw each kind of primitive.
+        // it will take to drawDebug each kind of primitive.
         static private int NumVertsPerPrimitive(PrimitiveType primitive)
         {
             int numVertsPerPrimitive;

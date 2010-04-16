@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Grid\IDepthEnabled.cs" />
+    <Compile Include="Grid\Sector.cs" />
     <Compile Include="Grid\Strategies\CreepStrategy.cs" />
     <Compile Include="Grid\Strategies\ThunderStrategy.cs" />
     <Compile Include="MultiPlayer\Host.cs" />
@@ -114,13 +115,21 @@
     <Compile Include="State\StateTitle.cs" />
     <Compile Include="Grid\Tile.cs" />
     <Compile Include="Tools\Tool.cs" />
+    <Compile Include="UI\GUIComponent.cs" />
+    <Compile Include="UI\GUIComposite.cs" />
+    <Compile Include="UI\GUIManager.cs" />
     <Compile Include="UI\PushButton.cs" />
+    <Compile Include="UI\ResourceCounter.cs" />
     <Compile Include="Units\BallUnit.cs" />
     <Compile Include="Units\Unit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Compile Include="Grid\Strategies\unitItems\redballcharge.png" />
+    <Compile Include="Grid\Strategies\unitItems\redball.png" />
+    <Compile Include="Grid\Strategies\unitItems\blueballcharge.png" />
+    <Compile Include="Grid\Strategies\unitItems\blueball.png" />
   </ItemGroup>
   <ItemGroup>
     <NestedContentProject Include="Content\Content.contentproj">
@@ -160,6 +169,9 @@
       <Project>{A9B8375B-579D-4F8A-B00C-F2828DB58F3A}</Project>
       <Name>FluorineFx-3.5</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

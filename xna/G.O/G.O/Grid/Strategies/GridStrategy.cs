@@ -18,7 +18,7 @@ namespace ION.GridStrategies
 
         public abstract void reset();
 
-        public abstract void draw();
+        public abstract void drawDebug();
 
         public abstract void update(int ellapsed);
 

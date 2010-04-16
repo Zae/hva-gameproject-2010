@@ -37,7 +37,7 @@ namespace ION
         private const float baseHalfHeightConstant = 1;
 
 
-        //public abstract void draw(int x, int y, SpriteBatch spriteBatch);
+        //public abstract void drawDebug(int x, int y, SpriteBatch spriteBatch);
 
         public abstract void draw(float translationX, float translationY);
         public abstract void drawDebug(float translationX, float translationY);

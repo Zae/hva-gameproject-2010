@@ -51,7 +51,7 @@ namespace ION
             if (pos != targetPos)
             {
                 move();
-                //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
+                //grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
             }
 
             //will move this to the above if statement when the unit know its tile
@@ -70,7 +70,7 @@ namespace ION
             Grid.updateDepthEnabledItem(this);
 
             //Debug.WriteLine("new tilexy: " + inTileX + "," + inTileY);
-            //Vector2 tilePos = map.GetTile(pos.X, pos.Y, translationX, translationX);
+            //Vector2 tilePos = grid.GetTile(pos.X, pos.Y, translationX, translationX);
             //inTileX = tilePos.X;
             //inTileY = tilePos.Y;
         }

@@ -36,15 +36,14 @@ namespace ION.GridStrategies
             avgTimeSpent = 0;
         }
 
-        public override void draw()
+        public override void drawDebug()
         {
-            int y = 200;
-            ION.spriteBatch.Begin();
-            ION.spriteBatch.DrawString(Fonts.font, "Average time spent on calculations: "+avgTimeSpent, new Vector2(10, y += 15), Color.Black);
-            ION.spriteBatch.DrawString(Fonts.font, "Last time spent on calculations: " + lastTimeSpent, new Vector2(10, y += 15), Color.Black);
-            ION.spriteBatch.DrawString(Fonts.font, "Total time spent on calculations: " + totalTimeSpent, new Vector2(10, y += 15), Color.Black);
-   
-            ION.spriteBatch.End();
+            //int y = 200;
+            //ION.spriteBatch.Begin();
+            //ION.spriteBatch.DrawString(Fonts.font, "Average time spent on calculations: "+avgTimeSpent, new Vector2(10, y += 15), Color.Black);
+            //ION.spriteBatch.DrawString(Fonts.font, "Last time spent on calculations: " + lastTimeSpent, new Vector2(10, y += 15), Color.Black);
+            //ION.spriteBatch.DrawString(Fonts.font, "Total time spent on calculations: " + totalTimeSpent, new Vector2(10, y += 15), Color.Black);
+            //ION.spriteBatch.End();
         }
 
         public override void increaseSpeed()

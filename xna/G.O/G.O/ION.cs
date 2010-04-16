@@ -49,7 +49,7 @@ namespace ION
             graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(preparingDeviceSettings);
 
             graphics.ToggleFullScreen();
-            graphics.ToggleFullScreen();
+            //graphics.ToggleFullScreen();
 
             width = graphics.GraphicsDevice.DisplayMode.Width;
             halfWidth = width / 2;
@@ -102,7 +102,7 @@ namespace ION
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
+            // Create a new SpriteBatch, which can be used to drawDebug textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             primitiveBatch = new PrimitiveBatch(GraphicsDevice);
            
@@ -114,6 +114,12 @@ namespace ION
             //Images.starfieldImage = Content.Load<Texture2D>("miscItems/starfield");
             Images.starfieldImage = Content.Load<Texture2D>("miscItems/blue_red");
 
+            //GUI Stuff
+            Images.commandsBar = Content.Load<Texture2D>("guiItems/commandsBar");
+            Images.moveButtonNormal = Content.Load<Texture2D>("guiItems/moveButtonNormal");
+            Images.attackButtonNormal = Content.Load<Texture2D>("guiItems/attackButtonNormal");
+            Images.statusBar = Content.Load<Texture2D>("guiItems/statusBar");
+            
             
             //Title Menu
             Images.ION_LOGO = Content.Load<Texture2D>("menuItems/ION_LOGO");
@@ -223,7 +229,7 @@ namespace ION
         }
 
         /// <summary>
-        /// This is called when the game should draw itself.
+        /// This is called when the game should drawDebug itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)

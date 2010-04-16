@@ -19,7 +19,7 @@ namespace ION.GridStrategies
            
         }
 
-        public override void draw()
+        public override void drawDebug()
         {
           
         }
@@ -50,7 +50,7 @@ namespace ION.GridStrategies
                 step = -1;
             }
 
-            //now tell all Tiles to update, we use the perspective map for that
+            //now tell all Tiles to update, we use the perspective grid for that
             //because it might be faster?
             for (int i = 0; i < Grid.tileCount; i++)
             {
@@ -80,7 +80,7 @@ namespace ION.GridStrategies
                     ////The tile to the bottom-right of this tile
                     //if(isValid(i+1,j+1))
                     //{
-                    //    other.tileVersusTile(map[i+1,j+1]);
+                    //    other.tileVersusTile(grid[i+1,j+1]);
                     //}
 
                     //The tile to the bottom of this tile
@@ -92,7 +92,7 @@ namespace ION.GridStrategies
                     ////The tile to the bottom left of this tile
                     //if (isValid(i-1,j+1))
                     //{
-                    //    other.tileVersusTile(map[i-1,j+1]);
+                    //    other.tileVersusTile(grid[i-1,j+1]);
                     //}
 
                 }
@@ -139,7 +139,7 @@ namespace ION.GridStrategies
                     ////The tile to the bottom-right of this tile
                     //if (isValid(i + 1, j + 1))
                     //{
-                    //    other = Grid.map[otherX, otherY];
+                    //    other = Grid.grid[otherX, otherY];
                     //    tileAidTile(other, other);
                     //}
 
@@ -157,7 +157,7 @@ namespace ION.GridStrategies
                     ////The tile to the bottom left of this tile
                     //if (isValid(i - 1, j + 1))
                     //{
-                    //    other = Grid.map[otherX, otherY];
+                    //    other = Grid.grid[otherX, otherY];
                     //    tileAidTile(other, other);
                     //}
 

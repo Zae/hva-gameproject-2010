@@ -18,6 +18,8 @@ namespace ION
     {
 
         public static Tile[,] map;
+        public static Sector[,] sectors;
+
         public static int width;
         public static int height;
         public static int tileCount;
@@ -344,6 +346,12 @@ namespace ION
                 }
             }
 
+            //Need to translate the coordinate for this to work, but it would be faster
+            //if (lookForX >= 0 && lookForX < width && lookForY >= 0 && lookForY < height)
+            //{
+            //    return map[lookForX, lookForY];
+            //}
+
             return null;
 
         }
@@ -425,7 +433,7 @@ namespace ION
         {
             //for (int i = 0; i < tileCount; i++)
             //{
-            //    perspectiveMap[i].draw(translationX, translationY);
+            //    perspectiveMap[i].drawDebug(translationX, translationY);
             //    //perspectiveMap[i].drawDebug(translationX, translationY);
             //}
 
@@ -441,7 +449,7 @@ namespace ION
 
             //for (int i = 0; i < blueArmy.Count(); i++)
             //{
-            //    blueArmy[i].draw(translationX, translationY);
+            //    blueArmy[i].drawDebug(translationX, translationY);
             //}
 
 
@@ -455,7 +463,7 @@ namespace ION
             }
 
             //GridStrategy might want to do some debug rendering
-            updateStrategy.draw();
+            updateStrategy.drawDebug();
 
 
         }
@@ -603,7 +611,7 @@ namespace ION
                         }
                     }
 
-                    //finally take the player position and put them into the map
+                    //finally take the player position and put them into the grid
                     for (int i = 0; i < playerCount; i++)
                     {
                         BaseTile newBase = new BaseTile(positionsX[i], positionsY[i], i + 1);
