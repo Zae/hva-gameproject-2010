@@ -9,18 +9,34 @@ namespace ION.GridStrategies
 {
     class ThunderStrategy : GridStrategy
     {
+        private Random random;
+
+        private int seed = 0;
+
+        private ResourceTile[] neighbours = new ResourceTile[8];
+
+
+        //Speed control
+        private int step = -1;
+        private int maxStep = 50;
+
+        //Timing control
+        private int iterations = 0;
+
+        
         public ThunderStrategy()
         {
             name = "ThunderStrategy";
+            random = new Random(seed);
+            
         }
 
 
         public override void reset()
         {
-  
         }
 
-        public override void draw()
+        public override void drawDebug()
         {
             //int y = 200;
             //ION.spriteBatch.Begin();
@@ -33,56 +49,52 @@ namespace ION.GridStrategies
 
         public override void increaseSpeed()
         {
-            //if (maxStep > 0)
-            //{
-            //    maxStep--;
-            //    speed++;
-            //    step = -2;
-            //}
+            if (maxStep > 0)
+            {
+                maxStep--;
+                speed++;
+                step = -2;
+            }
         }
         public override void decreaseSpeed()
         {
-            //maxStep++;
-            //speed--;
-            //step = -2;
+            maxStep++;
+            speed--;
+            step = -2;
         }
 
         public override void update(int ellapsed)
         {
-            ////do unit stuff
-            //step++;
-            //if (step == 0)
-            //{
-            //    DateTime timeBefore;
-            //    DateTime timeAfter;
-            //    TimeSpan timeTaken;
+            //do unit stuff
+            step++;
+            if (step == 0)
+            {
 
-            //    timeBefore = DateTime.Now;
-            //    recalculateGrid();
-            //    timeAfter = DateTime.Now;
+                recalculateGrid();
 
-            //    iterations++;
-            //    timeTaken = timeAfter - timeBefore;
-            //    lastTimeSpent = timeTaken.Milliseconds;
-            //    totalTimeSpent += lastTimeSpent;
-            //    avgTimeSpent = totalTimeSpent / iterations;
-
-            //    //now tell all Tiles to update
-            //    //We do this every step because unit interactions might have happened
-            //    for (int i = 0; i < Grid.tileCount; i++)
-            //    {
-            //        Grid.perspectiveMap[i].update();
-            //    }
+                iterations++;
+                
+                //now tell all Tiles to update
+                //We do this every step because unit interactions might have happened
+                for (int i = 0; i < Grid.tileCount; i++)
+                {
+                    Grid.perspectiveMap[i].update();
+                }
 
 
-            //}
-            //if (step == maxStep)
-            //{
+            }
+            if (step == maxStep)
+            {
 
-            //    step = -1;
-            //}
+                step = -1;
+            }
 
 
+        }
+
+        private void recalculateGrid()
+        {
+           
         }
     }
 }

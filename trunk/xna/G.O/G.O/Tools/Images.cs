@@ -29,6 +29,12 @@ namespace ION
         public static Texture2D blueBaseImage;
         public static Texture2D redBaseImage;
 
+        //guiItems
+        public static Texture2D commandsBar;
+        public static Texture2D moveButtonNormal;
+        public static Texture2D attackButtonNormal;
+        public static Texture2D statusBar;
+
 
         //menuItems
         public static Texture2D ION_LOGO;

@@ -9,13 +9,15 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 using ION.GridStrategies;
+using ION.UI;
 
 namespace ION
 {
     public class StateTest : State
     {
 
-        private Grid map;
+        private Grid grid;
+        private GUIManager gui;
 
         private float scrollValue;
 
@@ -27,7 +29,7 @@ namespace ION
 
         private int level = 0;
         private string[] levels = { "MediumLevelTest.xml", "Level1.xml", "LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml"
-        
+
         private GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy(), new BleedStrategy() };
         private int strategy = 0;
 
@@ -50,10 +52,11 @@ namespace ION
         private bool increaseSpeedDown = false;
         private bool decreaseSpeedDown = false;
 
+        public int playerEnergy = 0;
+        public float player1Control = 0.0f;
+        public float player2Control = 0.0f;
 
-        Vector2 oldMousePos, mousePos;
-        bool leftMouseDown = false;
-
+     
         //we need to create a shared object blueUnits
 
 
@@ -65,7 +68,8 @@ namespace ION
 
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
-            map = new Grid(levels[level], strategies[strategy]);
+            grid = new Grid(levels[level], strategies[strategy]);
+            gui = new GUIManager();
 
             actionOnScreenSound = Music.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
@@ -84,50 +88,28 @@ namespace ION
             ION.spriteBatch.Draw(Images.starfieldImage, new Rectangle(0, 0, ION.width, ION.height), Color.White);
             ION.spriteBatch.End();
 
-            map.draw(translationX, translationY);
+            grid.draw(translationX, translationY);
 
     
 
-            int y = 0;
-            ION.spriteBatch.Begin();
-            ION.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly", new Vector2(10, y += 15), Color.White);
-            ION.spriteBatch.DrawString(Fonts.font, "Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, y += 15), Color.White);
-            ION.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the map around, press Left-Alt to recenter the map", new Vector2(10, y += 15), Color.White);
-            ION.spriteBatch.DrawString(Fonts.font, "N - M change Level (now: " + levels[level] + ") J - K change GridStrategy (now: " + strategies[strategy].name + ")", new Vector2(10, y += 15), Color.White);
-            ION.spriteBatch.DrawString(Fonts.font, "I - O change game speed (now: "+map.getUpdateStrategy().speed, new Vector2(10, y += 15), Color.White);
+            //int y = 0;
+            //ION.spriteBatch.Begin();
+            //ION.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly", new Vector2(10, y += 15), Color.White);
+            //ION.spriteBatch.DrawString(Fonts.font, "Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, y += 15), Color.White);
+            //ION.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the grid around, press Left-Alt to recenter the grid", new Vector2(10, y += 15), Color.White);
+            //ION.spriteBatch.DrawString(Fonts.font, "N - M change Level (now: " + levels[level] + ") J - K change GridStrategy (now: " + strategies[strategy].name + ")", new Vector2(10, y += 15), Color.White);
+            //ION.spriteBatch.DrawString(Fonts.font, "I - O change game speed (now: "+grid.getUpdateStrategy().speed, new Vector2(10, y += 15), Color.White);
+            //ION.spriteBatch.End();
 
-
-
-
-
-            if (leftMouseDown)
-            {
-                //    //draw a rectangle from oldMousePos to mousePos
-                //if (oldMousePos.X > mousePos.X && oldMousePos.Y < mousePos.Y)
-                //{
-                //    ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)mousePos.X, (int)oldMousePos.Y, (int)(oldMousePos.X - mousePos.X), (int)(mousePos.Y - oldMousePos.Y)), Color.Green);
-                //}
-                //else if (oldMousePos.X < mousePos.X && oldMousePos.Y > mousePos.Y)
-                //{
-                //    ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)oldMousePos.X, (int)mousePos.Y, (int)(mousePos.X - oldMousePos.X), (int)(oldMousePos.Y - mousePos.Y)), Color.Green);
-                //}
-                //else// normal
-                //{
-                //    ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)oldMousePos.X, (int)oldMousePos.Y, (int)(mousePos.X - oldMousePos.X), (int)(mousePos.Y - oldMousePos.Y)), Color.Green);
-                //}
-
-                //draw a rectangle from oldMousePos to mousePos
-                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)oldMousePos.X, (int)oldMousePos.Y, (int)(mousePos.X - oldMousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// normal
-                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)mousePos.X, (int)oldMousePos.Y, (int)(oldMousePos.X - mousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// inverted
-                
-            }
-            ION.spriteBatch.End();
+            gui.draw();
         }
 
         public override void update(int ellapsed)
         {
 
-            map.update(ellapsed, map.blueArmy, translationX, translationY);
+            grid.update(ellapsed, grid.blueArmy, translationX, translationY);
+
+            playerEnergy++;
             
             //Handles which background music to play
             if (MediaPlayer.State.Equals(MediaState.Stopped))
@@ -169,7 +151,7 @@ namespace ION
                 {
                     level = 0;
                 }
-                map = new Grid(levels[level],strategies[strategy]);   
+                grid = new Grid(levels[level],strategies[strategy]);   
             }
             else if (keyState.IsKeyUp(Keys.M))
             {
@@ -187,7 +169,7 @@ namespace ION
                 {
                     level = levels.Length - 1;
                 }
-                map = new Grid(levels[level],strategies[strategy]);  
+                grid = new Grid(levels[level],strategies[strategy]);  
             }
             else if (keyState.IsKeyUp(Keys.N))
             {
@@ -206,7 +188,7 @@ namespace ION
                 {
                     strategy = 0;
                 }
-                map = new Grid(levels[level],strategies[strategy]);
+                grid = new Grid(levels[level],strategies[strategy]);
             }
             else if (keyState.IsKeyUp(Keys.K))
             {
@@ -224,7 +206,7 @@ namespace ION
                 {
                     strategy = strategies.Length - 1;
                 }
-                map = new Grid(levels[level],strategies[strategy]);
+                grid = new Grid(levels[level],strategies[strategy]);
             }
             else if (keyState.IsKeyUp(Keys.J))
             {
@@ -235,7 +217,7 @@ namespace ION
             if (keyState.IsKeyDown(Keys.O) && !increaseSpeedDown)
             {
                 //increaseSpeedDown = true;
-                map.getUpdateStrategy().increaseSpeed();
+                grid.getUpdateStrategy().increaseSpeed();
             }
             else if (keyState.IsKeyUp(Keys.O))
             {
@@ -245,7 +227,7 @@ namespace ION
             if (keyState.IsKeyDown(Keys.I) && !decreaseSpeedDown)
             {
                // decreaseSpeedDown = true;
-                map.getUpdateStrategy().decreaseSpeed();
+                grid.getUpdateStrategy().decreaseSpeed();
             }
             else if (keyState.IsKeyUp(Keys.I))
             {
@@ -261,24 +243,24 @@ namespace ION
 
             if (keyState.IsKeyDown(Keys.RightAlt))
             {
-                for (int i = 0; i < map.getPerspectiveMap().Length; i++)
+                for (int i = 0; i < grid.getPerspectiveMap().Length; i++)
                 {
-                    if (map.getPerspectiveMap()[i] is ResourceTile)
+                    if (grid.getPerspectiveMap()[i] is ResourceTile)
                     {
-                        ((ResourceTile)map.getPerspectiveMap()[i]).nextCharge = 0.01f;
+                        ((ResourceTile)grid.getPerspectiveMap()[i]).nextCharge = 0.01f;
                     }
-                    if (map.getPerspectiveMap()[i] is BaseTile)
+                    if (grid.getPerspectiveMap()[i] is BaseTile)
                     {
-                        ((ResourceTile)map.getPerspectiveMap()[i]).nextCharge = 999.0f;
+                        ((ResourceTile)grid.getPerspectiveMap()[i]).nextCharge = 999.0f;
                     }
                 }
             }
 
             if (keyState.IsKeyDown(Keys.G))
             {
-                //soldier = new BallUnit(map.GetBlueBlueBase());
+                //soldier = new BallUnit(grid.GetBlueBlueBase());
                 //blueArmy.Add(new BallUnit(new Vector2(ION.halfWidth - (blueArmy[0].GetScale() / 2), -(blueArmy[0].GetScale() / 4)), blueArmy[0].GetVirtualPos()));
-                map.blueArmy.Add(new BallUnit(map.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), map.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
+                grid.blueArmy.Add(new BallUnit(grid.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), grid.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
             }
 
             if (keyState.IsKeyDown(Keys.Space))
@@ -317,34 +299,23 @@ namespace ION
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
+                //grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
                 //blueArmy[0].SetTarget(new Vector2(mouseState.X, mouseState.Y));
-                map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, map.blueArmy, oldMousePos);// pass the currently selected unit
-                
-                if (!leftMouseDown)
-                {
-                    oldMousePos.X = (mouseState.X);
-                    oldMousePos.Y = (mouseState.Y);
-                } 
-                leftMouseDown = true;
-                mousePos.X = (mouseState.X);
-                mousePos.Y = (mouseState.Y);
-
+                grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, grid.blueArmy);// pass the currently selected unit
                 
             }
             else if (mouseState.LeftButton == ButtonState.Released)
             {
-                map.mouseLeftReleased(mouseState.X, mouseState.Y, translationX, translationY);
-                leftMouseDown = false;
+                grid.mouseLeftReleased(mouseState.X, mouseState.Y, translationX, translationY);
             }
 
             if (mouseState.RightButton == ButtonState.Pressed)
             {
-                map.mouseRightPressed(mouseState.X, mouseState.Y, translationX, translationY, map.blueArmy);
+                grid.mouseRightPressed(mouseState.X, mouseState.Y, translationX, translationY, grid.blueArmy);
             }
             else if (mouseState.RightButton == ButtonState.Released)
             {
-                map.mouseRightReleased(mouseState.X, mouseState.Y, translationX, translationY);
+                grid.mouseRightReleased(mouseState.X, mouseState.Y, translationX, translationY);
             }
 
             previousMouseX = mouseState.X;
@@ -360,7 +331,7 @@ namespace ION
             if (unitCounter > 1000)
             {
                 unitCounter = 0;
-                map.CreateBlueUnit(translationX,translationY);
+                grid.CreateBlueUnit(translationX,translationY);
             }
         }
 

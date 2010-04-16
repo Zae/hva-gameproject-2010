@@ -390,8 +390,27 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="menuItems\greenPixel.png">
-      <Name>greenPixel</Name>
+    <Compile Include="guiItems\commandsBar.png">
+      <Name>commandsBar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="guiItems\moveButtonNormal.png">
+      <Name>moveButtonNormal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="guiItems\attackButtonNormal.png">
+      <Name>attackButtonNormal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="guiItems\statusBar.png">
+      <Name>statusBar</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -146,7 +146,7 @@ namespace ION
             //}
 
             //if(unit != null) {
-            //    unit.draw(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
+            //    unit.drawDebug(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
             //}
 
    
