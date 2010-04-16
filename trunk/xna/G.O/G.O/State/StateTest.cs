@@ -28,7 +28,7 @@ namespace ION
         private int playqueue = 1;
 
         private int level = 0;
-        private string[] levels = { "MediumLevelTest.xml", "Level1.xml", "LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml"
+        private string[] levels = { "MediumLevelTest.xml", "PathLevelTest","LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml","Level1.xml"
 
         private GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy(), new BleedStrategy() };
         private int strategy = 0;
