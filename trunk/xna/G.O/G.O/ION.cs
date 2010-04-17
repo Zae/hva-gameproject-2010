@@ -109,6 +109,8 @@ namespace ION
 
             // TODO: use this.Content to load your game content here
             Fonts.font = Content.Load<SpriteFont>("fontItems/TitleFont");
+            Fonts.small = Content.Load<SpriteFont>("fontItems/SmallFont");
+
 
             Images.teamLogoImage = Content.Load<Texture2D>("miscItems/logo-game-ninjas");
             //Images.starfieldImage = Content.Load<Texture2D>("miscItems/starfield");
@@ -119,6 +121,7 @@ namespace ION
             Images.moveButtonNormal = Content.Load<Texture2D>("guiItems/moveButtonNormal");
             Images.attackButtonNormal = Content.Load<Texture2D>("guiItems/attackButtonNormal");
             Images.statusBar = Content.Load<Texture2D>("guiItems/statusBar");
+            Images.selectionBar = Content.Load<Texture2D>("guiItems/selectionBar");
             
             
             //Title Menu
@@ -162,6 +165,7 @@ namespace ION
             Images.tableHosts = Content.Load<Texture2D>("menuItems/HostsTable");
 
             Images.greenPixel = Content.Load<Texture2D>("menuItems/greenPixel");
+            Images.helpFile = Content.Load<Texture2D>("miscItems/helpfile");
             
 
 
@@ -180,7 +184,8 @@ namespace ION
             Music.actionSound1 = Content.Load<SoundEffect>("sfxItems/ActionSound1");
 
             //state = new StateTitle();
-            state = new StateIntro();
+            //state = new StateIntro();
+            state = new StateTest();
             state.focusGained();
         }
 

@@ -72,8 +72,6 @@ namespace ION
 
         public override void draw(float translationX, float translationY)
         {
-
-
             //GO.primitiveBatch.Begin(PrimitiveType.LineList);
             //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
             //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Yellow);
@@ -111,12 +109,9 @@ namespace ION
             //    ION.spriteBatch.Draw(Images.borderImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), tileColor);
             //}
 
-
             ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
             //ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
-            
-            
-            
+             
             ION.spriteBatch.End();
 
             //if (selected)
@@ -230,61 +225,6 @@ namespace ION
                 canDonateNW--;
             }
         }
-
-        //public float getCharge()
-        //{
-        //    return charge;
-        //}
-
-        //public void setCharge(float newCharge)
-        //{
-        //    if (newCharge <= 1.0f && newCharge >= 0.0f)
-        //    {
-        //        charge = newCharge;
-        //    }
-        //}
-
-        //public virtual void addCharge(float addition, int player)
-        //{
-        //    if (player != owner)
-        //    {
-        //        if (nextCharge - addition < 0.0f)
-        //        {
-        //            owner = player;
-        //            nextCharge = 0.0f;
-        //        }
-        //        else
-        //        {
-        //            nextCharge -= addition;
-        //        }
-        //    }
-        //    else
-        //    {
-
-        //        if (nextCharge + addition > 1.0f)
-        //        {
-        //            nextCharge = 1.0f;
-        //        }
-        //        else
-        //        {
-        //            nextCharge += addition;
-        //        }
-        //    }
-        //}
-
-        //public virtual void removeCharge(float addition, int owner)
-        //{
-        //    if (nextCharge - addition < 0.0f)
-        //    {
-        //        nextCharge = 0.0f;
-        //        nextOwner = Players.NEUTRAL;
-        //    }
-        //    else
-        //    {
-        //        nextCharge -= addition;
-        //    }
-
-        //}
 
         public virtual void donate(float charge)
         {

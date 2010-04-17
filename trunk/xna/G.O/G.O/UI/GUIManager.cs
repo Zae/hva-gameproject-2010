@@ -23,6 +23,12 @@ namespace ION.UI
             GUIComposite statusBar = new GUIComposite(ION.width - Images.statusBar.Width - 20,20, Images.statusBar);
             statusBar.add(new ResourceCounter(67, 32));
             addComponent(statusBar);
+
+            GUIComposite generalInfo = new GUIComposite(20, 20, Images.selectionBar);
+            generalInfo.add(new LevelInfo(15, 10));
+            generalInfo.add(new StrategyInfo(15, 25));
+            generalInfo.add(new GUILabel(15, 40, "Hold H for Help"));
+            addComponent(generalInfo);
         }
 
         public void addComponent(GUIComponent component)
@@ -30,16 +36,11 @@ namespace ION.UI
             components.Add(component);
         }
 
-        public bool resolveMouseMoved(int mouseX, int mouseY)
+        public bool handleMouse(int ellapsed)
         {
+            //
             return false;
         }
-
-        public bool resolveMouseDown(int mouseX, int mouseY)
-        {
-            return false;
-        }
-
         public void draw()
         {
             ION.spriteBatch.Begin();

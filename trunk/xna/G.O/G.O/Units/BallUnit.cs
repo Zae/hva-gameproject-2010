@@ -15,7 +15,7 @@ namespace ION
             pos = new Vector2(ION.halfWidth - (scale / 2), -(scale / 4));
             targetPos = new Vector2(500, 500);
 
-            movementSpeed = 1f;
+            movementSpeed = 5f;
 
         }
 
@@ -24,7 +24,7 @@ namespace ION
             pos = newPos;
             targetPos = newTarget;
 
-            movementSpeed = 1f;
+            movementSpeed = 5f;
 
 
         }
