@@ -151,7 +151,7 @@ namespace ION
 
         public void mouseLeftPressed(float x, float y, float translationX, float translationY)
         {
-            //drawHitTest = true;
+            drawHitTest = true;
 
             //translate the screen input to world coordinates
             mouseWorldX = x - translationX - ION.halfWidth;
@@ -490,7 +490,11 @@ namespace ION
 
                 //tells the unit what tile it is currently on
                 Vector2 temp = GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
-                blueArmy[i].UpdateTile(GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY));
+                if (temp != null)
+                {
+                    blueArmy[i].UpdateTile(temp);
+                }
+                //blueArmy[i].UpdateTile(GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY));
             }
 
 
@@ -734,6 +738,12 @@ namespace ION
                     selectedTile.setSelected(false);
                     selectedTile = null;
                 }
+            }
+            if (tile == null)
+            {
+                Debug.WriteLine("HEEELP TILE IS NULL! getTile()");
+                return new Vector2(0,0);
+
             }
 
             return new Vector2(tile.indexX, tile.indexY);

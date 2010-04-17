@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using System.Diagnostics;
 using ION.GridStrategies;
 using ION.UI;
+using ION.Controls;
 
 namespace ION
 {
@@ -18,6 +19,7 @@ namespace ION
 
         private Grid grid;
         private GUIManager gui;
+        private ControlState controls;
 
         private float scrollValue;
 
@@ -27,11 +29,11 @@ namespace ION
 
         private int playqueue = 1;
 
-        private int level = 0;
-        private string[] levels = { "MediumLevelTest.xml", "PathLevelTest","LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml","Level1.xml"
+        public int level = 0;
+        public string[] levels = { "MediumLevelTest.xml", "PathLevelTest.xml","LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml","Level1.xml"
 
-        private GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy(), new BleedStrategy() };
-        private int strategy = 0;
+        public GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy(), new BleedStrategy() };
+        public int strategy = 0;
 
         private bool actionOnScreen = false;
 
@@ -59,6 +61,8 @@ namespace ION
         Vector2 oldMousePos, mousePos;
         bool leftMouseDown = false;
 
+        public bool showHelpFile = false;
+
      
         //we need to create a shared object blueUnits
 
@@ -73,6 +77,7 @@ namespace ION
 
             grid = new Grid(levels[level], strategies[strategy]);
             gui = new GUIManager();
+            controls = new NeutralState();
 
             actionOnScreenSound = Music.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
@@ -93,18 +98,17 @@ namespace ION
 
             grid.draw(translationX, translationY);
 
-    
 
-            //int y = 0;
-            //ION.spriteBatch.Begin();
-            //ION.spriteBatch.DrawString(Fonts.font, "Press Escape for Menu, F1 to quit directly", new Vector2(10, y += 15), Color.White);
-            //ION.spriteBatch.DrawString(Fonts.font, "Space to trigger action sounds (now: " + actionOnScreen + ")(musicvolume:" + MediaPlayer.Volume + ")", new Vector2(10, y += 15), Color.White);
-            //ION.spriteBatch.DrawString(Fonts.font, "Use the middle mouse button to drag the grid around, press Left-Alt to recenter the grid", new Vector2(10, y += 15), Color.White);
-            //ION.spriteBatch.DrawString(Fonts.font, "N - M change Level (now: " + levels[level] + ") J - K change GridStrategy (now: " + strategies[strategy].name + ")", new Vector2(10, y += 15), Color.White);
-            //ION.spriteBatch.DrawString(Fonts.font, "I - O change game speed (now: "+grid.getUpdateStrategy().speed, new Vector2(10, y += 15), Color.White);
-            //ION.spriteBatch.End();
 
             gui.draw();
+
+
+            if (showHelpFile)
+            {
+                ION.spriteBatch.Begin();
+                ION.spriteBatch.Draw(Images.helpFile, new Rectangle(ION.halfWidth-(Images.helpFile.Width/2),ION.halfHeight-(Images.helpFile.Height/2), Images.helpFile.Width,Images.helpFile.Height), Color.White);
+                ION.spriteBatch.End();
+            }
         }
 
         public override void update(int ellapsed)
@@ -113,6 +117,12 @@ namespace ION
             grid.update(ellapsed, grid.blueArmy, translationX, translationY);
 
             playerEnergy++;
+
+            if (!gui.handleMouse(ellapsed))
+            {
+                controls.handleMouse(ellapsed);
+            }
+            controls.handleKeyboard(ellapsed);
             
             //Handles which background music to play
             if (MediaPlayer.State.Equals(MediaState.Stopped))
@@ -275,6 +285,15 @@ namespace ION
                 actionOnScreen = false;
             }
             handleActionSound(ellapsed);
+
+            if (keyState.IsKeyDown(Keys.H))
+            {
+                showHelpFile = true;
+            }
+            else
+            {
+                showHelpFile = false;
+            }
 
             //Handle mouse input
 

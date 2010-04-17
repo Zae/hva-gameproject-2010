@@ -9,24 +9,20 @@ namespace ION
 {
     public abstract class Unit : IDepthEnabled
     {
-        private Colors hitmapColor = new Colors();
+        //TODO might not even use this method
+        //private Colors hitmapColor = new Colors();
 
         protected int owner;
 
         protected int health = 100;
-        //protected int tileX;
-        //protected int tileY;
-        protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
+        protected Vector2 pos, targetPos, virtualPos, finalTarget;
 
-        public int inTileX = 100;
-        public int inTileY = 100;
+        public int inTileX;
+        public int inTileY;
 
         public abstract void draw(float x, float y);
 
-
-
-        // new
         protected float movementSpeed;
         protected float captureSpeed;
 
@@ -52,12 +48,13 @@ namespace ION
             {
                 move();
                 //grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
+                //will move this to the above if statement when the unit know its tile
+                virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
+                virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
+
             }
 
-            //will move this to the above if statement when the unit know its tile
-            virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
-            virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
-
+           
 
         }
 
@@ -69,10 +66,6 @@ namespace ION
             //Tell the Grid this Unit's tile position has changed
             Grid.updateDepthEnabledItem(this);
 
-            //Debug.WriteLine("new tilexy: " + inTileX + "," + inTileY);
-            //Vector2 tilePos = grid.GetTile(pos.X, pos.Y, translationX, translationX);
-            //inTileX = tilePos.X;
-            //inTileY = tilePos.Y;
         }
 
         //move units towards their target

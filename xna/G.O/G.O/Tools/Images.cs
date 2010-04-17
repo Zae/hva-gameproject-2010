@@ -34,6 +34,7 @@ namespace ION
         public static Texture2D moveButtonNormal;
         public static Texture2D attackButtonNormal;
         public static Texture2D statusBar;
+        public static Texture2D selectionBar;
 
 
         //menuItems
@@ -57,6 +58,8 @@ namespace ION
         public static Texture2D buttonRefreshF;
 
         public static Texture2D greenPixel;
+
+        public static Texture2D helpFile;
 
 
 

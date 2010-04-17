@@ -10,6 +10,7 @@ namespace ION
     {
 
         public static SpriteFont font;
+        public static SpriteFont small;
 
     }
 }
