@@ -53,56 +53,27 @@ namespace ION
 
         public ResourceTile(int indexX, int indexY)
         {
-            sID = sID+1;
-            id = sID;
             
             this.indexX = indexX;
             this.indexY = indexY;
         }
         public override void drawDebug(float translationX, float translationY)
         {
-            ION.spriteBatch.Begin();
+            
             Vector2 location = new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
             //ION.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.Black);
             ION.spriteBatch.DrawString(Fonts.font, "charge: "+charge, location, Color.Black);
-            ION.spriteBatch.End();
+            
         }
 
 
 
         public override void draw(float translationX, float translationY)
         {
-            //GO.primitiveBatch.Begin(PrimitiveType.LineList);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Yellow);
-            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)),Color.Yellow);
-            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Yellow);
-            //GO.primitiveBatch.End();
-
-            //GO.primitiveBatch.Begin(PrimitiveType.LineList);
-            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth) - 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
-            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Yellow);
-            //GO.primitiveBatch.End();
-
-            //GO.primitiveBatch.Begin(PrimitiveType.LineList);
-            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
-            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + baseHalfHeight), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth) - 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + 1), Color.Yellow);
-            //GO.primitiveBatch.End();
-
-            //GO.primitiveBatch.Begin(PrimitiveType.LineList);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
-            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + baseHalfHeight), Color.Yellow);
-            ////GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)),Color.Yellow);
-            //GO.primitiveBatch.AddVertex(new Vector2(GO.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + 1), Color.Yellow);
-            //GO.primitiveBatch.End();
 
             tileColor = getAppropriateColor(owner, charge);
 
-            ION.spriteBatch.Begin(); 
+      
 
             //if (owner != Players.NEUTRAL)
             //{
@@ -110,25 +81,10 @@ namespace ION
             //}
 
             ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
-            //ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
-             
-            ION.spriteBatch.End();
+         
 
             //if (selected)
             //{
-            //    ION.primitiveBatch.Begin(PrimitiveType.LineList);
-            //    ION.primitiveBatch.AddVertex(new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Red);
-            //    //GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Yellow);
-            //    ION.primitiveBatch.AddVertex(new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Red);
-            //    //GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Yellow);
-            //    ION.primitiveBatch.End();
-
-            //    ION.primitiveBatch.Begin(PrimitiveType.LineList);
-            //    //GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth) + 1, (visualY * baseHalfHeight) + translationY + (baseHalfHeight)), Color.Yellow);
-            //    ION.primitiveBatch.AddVertex(new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY + (baseHalfHeight * 2) - 1), Color.Red);
-            //    //GO.primitiveBatch.AddVertex(new Vector2(GO.baseHalfWidth + (visualX * baseHalfWidth) + translationX + (baseHalfWidth), (visualY * baseHalfHeight) + translationY + (baseHalfHeight)),Color.Yellow);
-            //    ION.primitiveBatch.AddVertex(new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX, (visualY * baseHalfHeight) + translationY), Color.Red);
-            //    ION.primitiveBatch.End();
             //}
 
             //if (selected)
@@ -144,21 +100,12 @@ namespace ION
             //    ION.spriteBatch.Draw(chargeImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
             //    ION.spriteBatch.End();
             //}
-
-            //if(unit != null) {
-            //    unit.drawDebug(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2);
-            //}
-
-   
         }
 
         public override void update()
         {
-            //Debug.WriteLine("UPDATING TILE!");
             owner = nextOwner;
             charge = nextCharge;
-
-            
         }
 
         public override void releaseMomentum()
@@ -281,21 +228,33 @@ namespace ION
                 tileColor.A = 255;
             }
 
+            //if (isSpiking)
+            //{
+            //    tileColor.R = 255;
+            //    tileColor.G = 255;
+            //    tileColor.B = 0;
+
+            //    tileColor.A = 255;
+
+
+            //}
+
             else if (owner == Players.PLAYER1)
             {
                 if (charge > 1.0f)
                 {
-                    //Debug.WriteLine("1BALBALABLABLABLA");
+                    //Debug.WriteLine("charge?" + charge);
                     float temp = charge - 1.0f;
                     tileColor.R = 0;
-                    tileColor.G = (byte)((temp * 255));
+                    tileColor.G = (byte)(temp * 255);
+                   // tileColor.G = 255;
                     tileColor.B = 255;
 
                     //tileColor.A = (byte)(charge * 255);
                     tileColor.A = 255;
                     return tileColor;
                 }
-                
+
                 tileColor.R = (byte)(255 - (charge * 255));
                 tileColor.G = (byte)(255 - (charge * 255));
                 tileColor.B = 255;
@@ -307,16 +266,16 @@ namespace ION
             {
                 if (charge > 1.0f)
                 {
-                    //Debug.WriteLine("2BALBALABLABLABLA");
                     float temp = charge - 1.0f;
                     tileColor.R = 255;
-                    tileColor.G = (byte)((temp * 255));
+                    tileColor.G = (byte)(temp * 255);
                     tileColor.B = 0;
 
                     //tileColor.A = (byte)(charge * 255);
                     tileColor.A = 255;
+                    return tileColor;
                 }
-                
+
                 tileColor.R = 255;
                 tileColor.G = (byte)(255 - (charge * 255));
                 tileColor.B = (byte)(255 - (charge * 255));

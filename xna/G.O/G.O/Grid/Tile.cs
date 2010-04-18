@@ -18,33 +18,16 @@ namespace ION
         public int indexX;
         public int indexY;
 
-        public int id = -1;
-
-        public static int sID = -1;
-
-        //protected const int baseHalfWidth = 140;
-        //protected const int baseHalfHeight = 46;
-
         private static float scale = 15;
 
         public static float baseHalfWidth = baseHalfWidthConstant * scale;
         public static float baseHalfHeight = baseHalfHeightConstant * scale;
 
-        //private const int baseHalfWidthConstant = 140;
-        //private const int baseHalfHeightConstant = 46;
-
         private const float baseHalfWidthConstant = 3;
         private const float baseHalfHeightConstant = 1;
 
-
-        //public abstract void drawDebug(int x, int y, SpriteBatch spriteBatch);
-
         public abstract void draw(float translationX, float translationY);
         public abstract void drawDebug(float translationX, float translationY);
-
-        //public abstract void tileVersusTile(Tile b);
-
-        //public abstract void tileAidTile(Tile b);
 
         public abstract void update();
         public abstract void releaseMomentum();

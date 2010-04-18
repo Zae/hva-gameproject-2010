@@ -96,9 +96,6 @@ namespace ION
             GridStrategy result;
             switch (nameofStrategy)
             {
-                case "BleedStrategy":
-                    result = new BleedStrategy();
-                    break;
                 case "CreepStrategy":
                     result = new CreepStrategy();
                     break;
