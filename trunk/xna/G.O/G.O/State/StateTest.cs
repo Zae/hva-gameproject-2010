@@ -32,7 +32,7 @@ namespace ION
         public int level = 0;
         public string[] levels = { "MediumLevelTest.xml", "PathLevelTest.xml","LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml","Level1.xml"
 
-        public GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy(), new BleedStrategy() };
+        public GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy() };
         public int strategy = 0;
 
         private bool actionOnScreen = false;

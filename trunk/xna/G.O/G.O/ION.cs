@@ -183,9 +183,9 @@ namespace ION
             Music.logoSound = Content.Load<SoundEffect>("sfxItems/LogoSound");
             Music.actionSound1 = Content.Load<SoundEffect>("sfxItems/ActionSound1");
 
-            //state = new StateTitle();
+            state = new StateTitle();
             //state = new StateIntro();
-            state = new StateTest();
+            //state = new StateTest();
             state.focusGained();
         }
 

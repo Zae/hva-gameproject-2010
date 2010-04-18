@@ -237,53 +237,6 @@ namespace ION
 
         }
 
-        //public void createUnit(float x, float y, float translationX, float translationY, int owner)
-        //{
-        //    //translate the screen input to world coordinates
-        //    mouseWorldX = x - translationX - ION.halfWidth;
-        //    mouseWorldY = y - translationY;
-
-        //    //get the true value from the origin in tile units
-        //    float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
-        //    float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
-
-        //    //get the closest even value to that position
-        //    int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
-        //    int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
-        //    //int tilesVertical = (int)tilesVerticalQ;
-        //    //int tilesHorizontal = (int)tilesHorizontalQ;
-        //    //Debug.WriteLine("********");
-        //    //Debug.WriteLine("tileHQ:" + tilesHorizontalQ + " tilesVQ:" + tilesVerticalQ);
-        //    //Debug.WriteLine("tileH:" + tilesHorizontal + " tilesV:"+tilesVertical);
-        //    //Debug.WriteLine("INTtileHQ:" + (int)tilesHorizontalQ + "INTtilesVQ:" + (int)tilesVerticalQ);
-
-        //    //get the color at that position on the hitmap
-        //    uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
-
-        //    //pass the position and the color and see if you get back anything
-
-        //    Tile tile = getTile(tilesVertical, tilesHorizontal, color);
-
-        //    if (tile != null)
-        //    {
-        //        if (tile is ResourceTile)
-        //        {
-        //            ResourceTile resourceTile = (ResourceTile)tile;
-        //            if (!resourceTile.hasUnit())
-        //            {
-        //                //BallUnit b = new BallUnit(owner);
-        //               // resourceTile.setUnit(b);
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-
-        //    }
-
-        //}
-
-
         private uint doHitmapTest(float x, float y, float translationX, float translationY, int visualX, int visualY)
         {
             string sColorval = "NONE";
@@ -431,28 +384,30 @@ namespace ION
 
         public void draw(float translationX, float translationY)
         {
-            //for (int i = 0; i < tileCount; i++)
-            //{
-            //    perspectiveMap[i].drawDebug(translationX, translationY);
-            //    //perspectiveMap[i].drawDebug(translationX, translationY);
-            //}
+    
 
+            ION.spriteBatch.Begin(); 
             foreach (ResourceTile rt in resourceTiles)
             {
-                rt.draw(translationX, translationY);
+               rt.draw(translationX, translationY);
+               //rt.drawDebug(translationX, translationY);
             }
+            ION.spriteBatch.End();
 
+            //ION.spriteBatch.Begin();
+            //for (int i = 0; i < tileCount; i++)
+            //{
+            //    //perspectiveMap[i].draw(translationX, translationY);
+            //    //perspectiveMap[i].drawDebug(translationX, translationY);
+            //}
+            //ION.spriteBatch.End();
+
+            ION.spriteBatch.Begin(); 
             foreach (IDepthEnabled de in depthItems)
             {
                 de.drawDepthEnabled(translationX, translationY);
             }
-
-            //for (int i = 0; i < blueArmy.Count(); i++)
-            //{
-            //    blueArmy[i].drawDebug(translationX, translationY);
-            //}
-
-
+            ION.spriteBatch.End();
 
             if (drawHitTest)
             {

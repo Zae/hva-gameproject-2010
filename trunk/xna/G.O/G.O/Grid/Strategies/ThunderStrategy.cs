@@ -132,6 +132,26 @@ namespace ION.GridStrategies
         private void recalculateTile(ResourceTile todo, ResourceTile[] neighbours, int validCount)
         {
 
+            if (todo.isSpiking)
+            {
+                if (todo.charge < 0.8f)
+                {
+                    todo.isSpiking = false;
+                    return;
+                }
+                todo.donate(0.1f);
+                return;
+            }
+
+            if (todo.charge > ResourceTile.spikeCharge)
+            {
+                todo.isSpiking = true;
+                todo.spikeCount = ResourceTile.spikeDuration;
+                todo.nextCharge = 1.8f;
+                return;
+            }
+
+
             float friendlyCharge = 0.0f;
             int friendlyTileCount = 0;
             float enemyCharge = 0.0f;
@@ -171,20 +191,22 @@ namespace ION.GridStrategies
                 friendlyCharge += todo.charge;
                 float fAvg = (friendlyCharge / (friendlyTileCount));
                 float eAvg = enemyCharge / (enemyTileCount);
+                //float fAvg = (friendlyCharge / (friendlyTileCount));
+                //float eAvg = enemyCharge / (enemyTileCount);
 
                 fAvg += (float)random.NextDouble();
                 fAvg = fAvg / 2;
 
-                eAvg += (float)random.NextDouble();
-                eAvg = eAvg / 2;
+                //eAvg += (float)random.NextDouble();
+                //eAvg = eAvg / 2;
 
                 if (eAvg > fAvg)
                 {
                     if (todo.charge == 0.0f)
                     {
-                        todo.sustain(0.05f, getWinningPlayer(neighbours, validCount));
+                        todo.sustain(0.07f, getWinningPlayer(neighbours, validCount));
                     }
-                    todo.donate(0.05f);
+                    todo.donate(0.07f);
 
                 }
 
@@ -195,31 +217,22 @@ namespace ION.GridStrategies
                     {
                         toGet = 0.05f;
                     }
-                    ////else if (toGet < 0.05f)
-                    ////{
-                    ////    toGet = 0.05f;
-                    ////}
-
-                    todo.receive(toGet);
-                    //todo.receive(0.1f);
+       
+                    todo.receive(toGet);    
                 }
                 else if (fAvg < todo.charge)
                 {
                     float toLose = todo.charge - fAvg;
-                    if (toLose > 0.05f)
+                    if (toLose > 0.08f)
                     {
-                        toLose = 0.05f;
+                        toLose = 0.08f;
                     }
-                    //else if (toLose < 0.05f)
-                    //{
-                    //    toLose = 0.0f;
-                    //}
-                    //todo.receive(fAvg - todo.charge);
 
                     todo.donate(toLose);
                 }
 
 
+                //TODO is this of any use?
                 //float chargeDiff = friendlyCharge - enemyCharge;
 
                 //if (chargeDiff > 0 && chargeDiff > todo.charge)
@@ -231,21 +244,6 @@ namespace ION.GridStrategies
                 //    todo.donate(0.1f);
                 //}
             }
-
-            ////Handle the result for a tile owned by a player
-            //if (todo.owner > 0)
-            //{
-            //    float chargeDiff = friendlyCharge - enemyCharge;
-
-            //    if (chargeDiff > 0 && chargeDiff > todo.charge)
-            //    {
-            //        todo.receive(0.1f);
-            //    }
-            //    else
-            //    {
-            //        todo.donate(0.1f);
-            //    }
-            //}
 
             //Handle the result for a neutral tile
             else
@@ -276,7 +274,7 @@ namespace ION.GridStrategies
                     }
 
                     //The tile becomes owned by the winning player
-                    if (highest >= 0.9f)
+                    if (highest >= 1.0f)
                     {
                         todo.nextOwner = winningPlayer;
                         todo.nextCharge = 0.0f;
@@ -286,12 +284,6 @@ namespace ION.GridStrategies
                 }
             }
 
-            if (todo.charge > ResourceTile.spikeCharge)
-            {
-                todo.isSpiking = true;
-                todo.spikeCount = ResourceTile.spikeDuration;
-                todo.charge = 2.0f;
-            }
         }
 
         private int getWinningPlayer(ResourceTile[] neighbours, int validCount)
