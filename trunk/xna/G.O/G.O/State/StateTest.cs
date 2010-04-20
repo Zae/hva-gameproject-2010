@@ -100,6 +100,17 @@ namespace ION
 
 
 
+            if (leftMouseDown)
+            {
+                ION.spriteBatch.Begin();
+                //draw a rectangle from oldMousePos to mousePos
+                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)oldMousePos.X, (int)oldMousePos.Y, (int)(mousePos.X - oldMousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// normal
+                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)mousePos.X, (int)oldMousePos.Y, (int)(oldMousePos.X - mousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// inverted
+                ION.spriteBatch.End();
+            }
+            
+
+
             gui.draw();
 
 

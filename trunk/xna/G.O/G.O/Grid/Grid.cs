@@ -262,6 +262,8 @@ namespace ION
             return myUint[0];
         }
 
+        
+
         private Tile getTile(int tilesVertical, int tilesHorizontal, uint color)
         {
             int lookForX = tilesHorizontal;
@@ -298,6 +300,7 @@ namespace ION
                     return perspectiveMap[i];
                 }
             }
+
 
             //Need to translate the coordinate for this to work, but it would be faster
             //if (lookForX >= 0 && lookForX < width && lookForY >= 0 && lookForY < height)
@@ -435,11 +438,7 @@ namespace ION
                 {
                     mouseLeftPressed(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
                 }
-            }
 
-
-            for (int i = 0; i < blueArmy.Count(); i++)
-            {
                 //updates the unit
                 blueArmy[i].Update(translationX, translationY);
 

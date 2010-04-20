@@ -15,7 +15,7 @@ namespace ION
             pos = new Vector2(ION.halfWidth - (scale / 2), -(scale / 4));
             targetPos = new Vector2(500, 500);
 
-            movementSpeed = 5f;
+            movementSpeed = 1f;
 
         }
 
@@ -24,7 +24,7 @@ namespace ION
             pos = newPos;
             targetPos = newTarget;
 
-            movementSpeed = 5f;
+            movementSpeed = 1f;
 
 
         }
@@ -42,25 +42,21 @@ namespace ION
 
             if (selected)
             {
-                
-
                 //NORMAL TEXTURE PROPORTIONS
-                ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y)+(baseHalfHeight*2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4 )), Color.White);
-                
-                ////EGG TEXTURE PROPORTIONS
+                ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+
+                //EGG TEXTURE PROPORTIONS
                 //ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (scale * 0.5f)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
-             
             }
             else
             {
-               
                 //NORMAL TEXTURE PROPORTIONS
                 ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
 
-                ////EGG TEXTURE PROPORTIONS
+                //EGG TEXTURE PROPORTIONS
                 //ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (scale * 0.5f)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
-              
             }
+
         }
 
 

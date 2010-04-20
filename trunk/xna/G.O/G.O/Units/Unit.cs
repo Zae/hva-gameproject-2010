@@ -9,20 +9,24 @@ namespace ION
 {
     public abstract class Unit : IDepthEnabled
     {
-        //TODO might not even use this method
-        //private Colors hitmapColor = new Colors();
+        private Colors hitmapColor = new Colors();
 
         protected int owner;
 
         protected int health = 100;
+        //protected int tileX;
+        //protected int tileY;
+        protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
-        protected Vector2 pos, targetPos, virtualPos, finalTarget;
 
-        public int inTileX;
-        public int inTileY;
+        public int inTileX = 100;
+        public int inTileY = 100;
 
         public abstract void draw(float x, float y);
 
+
+
+        // new
         protected float movementSpeed;
         protected float captureSpeed;
 
@@ -47,14 +51,13 @@ namespace ION
             if (pos != targetPos)
             {
                 move();
-                //grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
-                //will move this to the above if statement when the unit know its tile
-                virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
-                virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
-
+                //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
             }
 
-           
+            //will move this to the above if statement when the unit know its tile
+            virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
+            virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
+
 
         }
 
@@ -62,10 +65,14 @@ namespace ION
         {
             inTileX = (int)newInTile.X;
             inTileY = (int)newInTile.Y;
-            
+
             //Tell the Grid this Unit's tile position has changed
             Grid.updateDepthEnabledItem(this);
 
+            //Debug.WriteLine("new tilexy: " + inTileX + "," + inTileY);
+            //Vector2 tilePos = map.GetTile(pos.X, pos.Y, translationX, translationX);
+            //inTileX = tilePos.X;
+            //inTileY = tilePos.Y;
         }
 
         //move units towards their target
@@ -137,7 +144,7 @@ namespace ION
         }
 
         //Inherited from IDepthEnabled
-        public int getTileX() 
+        public int getTileX()
         {
             return inTileX;
         }
