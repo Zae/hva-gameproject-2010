@@ -113,7 +113,6 @@
     <Compile Include="State\StateJoin.cs" />
     <Compile Include="State\StateMP.cs" />
     <Compile Include="State\StatePaused.cs" />
-    <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTitle.cs" />
     <Compile Include="Grid\Tile.cs" />
     <Compile Include="Tools\Tool.cs" />
@@ -131,6 +130,10 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Compile Include="State\StateNetworkTest.cs" />
+    <Compile Include="State\StateTest.cs" />
+    <Compile Include="State\StateTicTacToe.cs" />
+    <Compile Include="State\TicTacToeTestStuff\CheckedState.cs" />
   </ItemGroup>
   <ItemGroup>
     <NestedContentProject Include="Content\Content.contentproj">

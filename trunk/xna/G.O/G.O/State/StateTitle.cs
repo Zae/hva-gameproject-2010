@@ -164,6 +164,13 @@ namespace ION
                 makeSelection();
             }
 
+            if(keyState.IsKeyDown(Keys.N)){
+                ION.get().setState(new StateNetworkTest());
+            }
+            if (keyState.IsKeyDown(Keys.T))
+            {
+                ION.get().setState(new StateTicTacToe());
+            }
         }
 
         
