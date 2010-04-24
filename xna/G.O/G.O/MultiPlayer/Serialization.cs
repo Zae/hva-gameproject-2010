@@ -50,6 +50,17 @@ namespace ION
 
             return byteArray;
         }
+        public static Byte[] Serialize(CheckedState[,] input)
+        {
+            MemoryStream ms = new MemoryStream();
+            foreach (CheckedState tile in input)
+            {
+                MemoryStream tmp = tile.Serialize();
+                tmp.WriteTo(ms);
+                tmp.Close();
+            }
+            return streamTobyteArray(ms);
+        }
         public static Byte[] Serialize(Serializable input)
         {
             MemoryStream stream = input.Serialize();
@@ -119,6 +130,25 @@ namespace ION
             BallUnit bu = new BallUnit();
             bu.Deserialize(byteArrayToStream(input));
             return bu;
+        }
+        public static CheckedState[,] DeserializeCheckedState(Byte[] input)
+        {
+            MemoryStream ms = byteArrayToStream(input);
+            BinaryReader br = new BinaryReader(ms);
+            CheckedState[,] result = new CheckedState[3, 3];
+            int counter=0;
+            while (ms.Position < ms.Length)
+            {
+                int i = counter / 3;
+                int j = counter % 3;
+
+                CheckedState cs = new CheckedState();
+                cs.CurrentState = (CheckedState.States)br.ReadInt32();
+                result[i, j] = cs;
+
+                counter++;
+            }
+            return result;
         }
 
         #endregion
