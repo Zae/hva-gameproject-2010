@@ -10,7 +10,6 @@ namespace ION
 {
     class BaseTile : ResourceTile, IDepthEnabled
     {
-
         private Color baseColor = new Color();
         private Texture2D baseImage;
 
@@ -144,7 +143,7 @@ namespace ION
         //    //}
 
         //}
-
+        
         //Inherited from IDepthEnabled
         public int getTileX()
         {

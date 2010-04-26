@@ -152,6 +152,7 @@ namespace ION
             Images.redUnitImage = Content.Load<Texture2D>("unitItems/redball");
             Images.redUnitChargeImage = Content.Load<Texture2D>("unitItems/redballcharge");
             Images.unitHitmapImage = Content.Load<Texture2D>("toolItems/ballhitmap");
+            Images.unitWayPoint = Content.Load<Texture2D>("unitItems/greenArrow");
             Images.baseHitmapImage = Content.Load<Texture2D>("toolItems/base_hitmap");
             Images.baseImage = Content.Load<Texture2D>("tileItems/base_tile");
             //Images.texturedResourceImage = Content.Load<Texture2D>("tileItems/texturetile");

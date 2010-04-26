@@ -44,7 +44,12 @@ namespace ION
 
         public bool selected = false;
 
+        public Queue<Tile> destination;
 
+        public Unit()
+        {
+            destination = new Queue<Tile>();
+        }
 
         public void Update(float translationX, float translationY)
         {
@@ -52,6 +57,19 @@ namespace ION
             {
                 move();
                 //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
+            }
+            else
+            {
+                // Code for waypoints
+                if (destination.Count() != 0)//(destination.Last<Tile>() != null)//here
+                {
+                    //targetPos = new Vector2(destination.Last<Tile>().indexX, destination.Last<Tile>().indexY);
+
+                    Tile temp = destination.Dequeue();
+
+                    targetPos = temp.GetPos(translationX, translationY);
+                }
+                // Code for waypoints
             }
 
             //will move this to the above if statement when the unit know its tile
@@ -157,6 +175,35 @@ namespace ION
         public void drawDepthEnabled(float translationX, float translationY)
         {
             draw(translationX, translationY);
+        }
+
+        // Queue Stuff
+        // this is for waypoints (shift-click)
+        public void AddDestination(Tile newDest)
+        {
+            destination.Enqueue(newDest);
+        }
+
+        public void EmptyWayPoints()
+        {
+            destination = new Queue<Tile>();
+        }
+        // Queue Stuff
+
+        public void DrawWayPoints(float translationX, float translationY)
+        {
+            if (selected)
+            {
+
+                for (int i = 0; i < destination.Count; i++)
+                {
+                    ION.spriteBatch.Draw(Images.unitWayPoint, new Rectangle((int)(((destination.ToArray()[i].GetPos(translationX, translationY).X + 30 - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)), (int)(((destination.ToArray()[i].GetPos(translationX, translationY).Y + 35) * (scale / 15.0f)) + (translationY) + (scale * 0.5f)), (int)(30 * (scale / 15.0f)), (int)(30 * (scale / 15.0f))), Microsoft.Xna.Framework.Graphics.Color.White);
+                }
+                if (pos != targetPos)// - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)
+                {// * (scale / 15.0f)) + (translationY) + (scale * 0.5f))
+                    ION.spriteBatch.Draw(Images.unitWayPoint, new Rectangle((int)(((targetPos.X + 30 - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)), (int)(((targetPos.Y + 35) * (scale / 15.0f)) + (translationY) + (scale * 0.5f)), (int)(30 * (scale / 15.0f)), (int)(30 * (scale / 15.0f))), Microsoft.Xna.Framework.Graphics.Color.White);
+                }
+            }
         }
     }
 }

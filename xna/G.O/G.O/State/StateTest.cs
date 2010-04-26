@@ -99,7 +99,6 @@ namespace ION
             grid.draw(translationX, translationY);
 
 
-
             if (leftMouseDown)
             {
                 ION.spriteBatch.Begin();
@@ -352,7 +351,19 @@ namespace ION
                 leftMouseDown = false;
             }
 
-            if (mouseState.RightButton == ButtonState.Pressed)
+
+            if (keyState.IsKeyDown(Keys.LeftShift))// if actions are being queued up
+            {
+                if (mouseState.RightButton == ButtonState.Pressed)
+                {//here
+                    grid.shiftMouseRightPressed(mouseState.X, mouseState.Y, translationX, translationY, grid.blueArmy);
+                }
+                else if (mouseState.RightButton == ButtonState.Released)
+                {
+                    grid.mouseRightReleased(mouseState.X, mouseState.Y, translationX, translationY);
+                }
+            }
+            else if (mouseState.RightButton == ButtonState.Pressed)
             {
                 grid.mouseRightPressed(mouseState.X, mouseState.Y, translationX, translationY, grid.blueArmy);
             }

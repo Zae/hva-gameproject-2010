@@ -25,6 +25,7 @@ namespace ION
         public static Texture2D redUnitImage;
         public static Texture2D redUnitChargeImage;
         public static Texture2D unitHitmapImage;
+        public static Texture2D unitWayPoint;
 
         public static Texture2D blueBaseImage;
         public static Texture2D redBaseImage;
