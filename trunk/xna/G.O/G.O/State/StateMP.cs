@@ -25,7 +25,7 @@ namespace ION
         public SELECTION selection = SELECTION.HOST;
 
 
-
+        
         private Rectangle hostButton;
         private Rectangle joinButton;
         private Rectangle backButton;
