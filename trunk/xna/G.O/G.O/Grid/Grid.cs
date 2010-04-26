@@ -69,7 +69,26 @@ namespace ION
                 {
                     if (blueArmy[i] != null && blueArmy[i].selected)
                     {
+                        blueArmy[i].EmptyWayPoints();
                         blueArmy[i].SetTarget(selectedTile.GetPos(translationX, translationY));
+                    }
+
+                }
+            }
+
+        }
+
+        public void shiftMouseRightPressed(float x, float y, float translationX, float translationY, List<Unit> blueArmy)
+        {
+            mouseRightPressed(x, y, translationX, translationY);
+            if (selectedTile != null)
+            {
+                for (int i = 0; i < blueArmy.Count(); i++)
+                {
+                    if (blueArmy[i] != null && blueArmy[i].selected)
+                    {
+                        //blueArmy[i].SetTarget(selectedTile.GetPos(translationX, translationY));
+                        blueArmy[i].AddDestination(selectedTile);// here
                     }
 
                 }
@@ -423,6 +442,13 @@ namespace ION
             //GridStrategy might want to do some debug rendering
             updateStrategy.drawDebug();
 
+
+            ION.spriteBatch.Begin();
+            for (int i = 0; i < blueArmy.Count; i++)
+            {
+                blueArmy[i].DrawWayPoints(translationX, translationY);
+            }
+            ION.spriteBatch.End();
 
         }
         public void update(int ellapsed, List<Unit> blueArmy, float translationX, float translationY)
