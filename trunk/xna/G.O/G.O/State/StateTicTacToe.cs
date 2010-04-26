@@ -12,9 +12,6 @@ namespace ION
         private CheckedState[,] grid;
         private Rectangle gridLocation;
 
-        private ServerConnection ServerConn;
-        private NetConnection GameConn;
-
         private RemoteSharedObject GridRSO;
         private const String GRIDRSONAME = "GridRsoName";
 
@@ -36,14 +33,16 @@ namespace ION
 
             if (ION.instance.serverConnection != null && ION.instance.serverConnection.GameConnection != null)
             {
-                ServerConn = ION.instance.serverConnection;
-                GameConn = ServerConn.GameConnection;
-                GridRSO = RemoteSharedObject.GetRemote(GRIDRSONAME, GameConn.Uri.ToString(), false);
+                GridRSO = RemoteSharedObject.GetRemote(GRIDRSONAME, ION.instance.serverConnection.GameConnection.Uri.ToString(), false);
                 GridRSO.NetStatus += new NetStatusHandler(GridRSO_NetStatus);
                 GridRSO.OnConnect += new ConnectHandler(GridRSO_OnConnect);
                 GridRSO.OnDisconnect += new DisconnectHandler(GridRSO_OnDisconnect);
                 GridRSO.Sync += new SyncHandler(GridRSO_Sync);
-                GridRSO.Connect(GameConn);
+                GridRSO.Connect(ION.instance.serverConnection.GameConnection);
+            }
+            else
+            {
+                throw new NotSupportedException();
             }
         }
 
@@ -102,6 +101,26 @@ namespace ION
             ION.primitiveBatch.AddVertex(new Vector2(gridLocation.Right, gridLocation.Top + gridLocation.Height / 3*2), Color.White);
 
             ION.primitiveBatch.End();
+
+            ION.spriteBatch.Begin();
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    switch (grid[i, j].CurrentState)
+                    {
+                        case CheckedState.States.CROSS:
+                            ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle(gridLocation.X*j+gridLocation.Width/3, gridLocation.Y*i+gridLocation.Height/3, gridLocation.Width / 3, gridLocation.Height / 3), Color.White);
+                            break;
+                        case CheckedState.States.CIRCLE:
+                            ION.spriteBatch.Draw(Images.redUnitImage, new Rectangle(gridLocation.X * j + gridLocation.Width / 3, gridLocation.Y * i + gridLocation.Height / 3, gridLocation.Width / 3, gridLocation.Height / 3), Color.White);
+                            break;
+                    }
+                }
+            }
+
+            ION.spriteBatch.End();
         }
 
         public override void update(int elapsed)
@@ -146,7 +165,7 @@ namespace ION
                     CheckedState tile = grid[i, j];
                     if (!tile.Checked)
                     {
-                        if (ServerConn.isHost)
+                        if (ION.instance.serverConnection.isHost)
                         {
                             tile.CurrentState = CheckedState.States.CROSS;
                         }
