@@ -43,7 +43,10 @@ namespace ION
             joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 70, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
             backButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2)+140, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
 
-            ION.instance.serverConnection = new ServerConnection();
+            if (ION.instance.serverConnection == null)
+            {
+                ION.instance.serverConnection = new ServerConnection();
+            }
 
          
         }
