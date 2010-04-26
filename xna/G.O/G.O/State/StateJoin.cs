@@ -40,10 +40,11 @@ namespace ION
         public bool upPressed = false;
         public bool downPressed = false;
         public bool enterPressed = false;
+        public bool wait = false;
 
 
 
-        private Color fadeColor = new Color(0, 255, 255, 128);
+        private Color fadeColor = new Color(0, 255, 255, 200);
 
         private Rectangle selected;
 
@@ -54,11 +55,9 @@ namespace ION
         private Rectangle row5;
         private Rectangle row6;
         private List<Rectangle> rows;
-        //private ServerConnection serverCon;
-
-
+        
         //temp
-        String[,] tempHosts;
+        String[] tempHosts;
 
 
 
@@ -92,8 +91,12 @@ namespace ION
             rows.Add(row6);
 
             selected = row1;
-            //serverCon = new ServerConnection();
+           // for (int i = 0; i < 4; i++)
+           // {
 
+             //   ION.get().serverConnection.JoinRoom("room " + i);
+
+            //}
 
         }
 
@@ -168,12 +171,14 @@ namespace ION
             {
                 mousePressed = true;
             }
+           
 
             if (mouseIn(mouseState.X, mouseState.Y, refreshButton))
             {
                 selection = SELECTION.REFRESH;
                 if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
                 {
+                    Console.WriteLine("refresh pressed");
                     makeSelection();
                     mousePressed = false;
                 }
@@ -202,42 +207,22 @@ namespace ION
 
             //row selection
             ION.spriteBatch.Begin();
-            if (mouseIn(mouseState.X, mouseState.Y, row1))
+            foreach (Rectangle row in rows)
             {
-                selected = row1;
-                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
-                Console.WriteLine("row1");
+                if (mouseIn(mouseState.X, mouseState.Y, row))
+                {
+                    selected = row;
+                    ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
+                    if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+                    {
+                        ION.get().serverConnection.JoinRoom(tempHosts[rows.IndexOf(row)]);
+                        mousePressed = false;
+                    }
+                }
             }
-            if (mouseIn(mouseState.X, mouseState.Y, row2))
-            {
-                selected = row2;
-                //ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
-                Console.WriteLine("row2");
-            }
-            if (mouseIn(mouseState.X, mouseState.Y, row3))
-            {
-                selected = row3;
-                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
-                Console.WriteLine("row3");
-            }
-            if (mouseIn(mouseState.X, mouseState.Y, row4))
-            {
-                selected = row4;
-                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
-                Console.WriteLine("row4");
-            }
-            if (mouseIn(mouseState.X, mouseState.Y, row5))
-            {
-                selected = row5;
-                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
-                Console.WriteLine("row5");
-            }
-            if (mouseIn(mouseState.X, mouseState.Y, row6))
-            {
-                selected = row6;
-                ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
-                Console.WriteLine("row6");
-            }
+            
+                
+          
 
             ION.spriteBatch.End();
 
@@ -279,6 +264,11 @@ namespace ION
                 makeSelection();
             }
 
+            if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+            {
+                mousePressed = false;
+            }
+
 
         }
 
@@ -289,7 +279,7 @@ namespace ION
         {
             if (selection == SELECTION.REFRESH)
             {
-
+                Console.WriteLine("servercon.gethosts()");
                 ION.get().serverConnection.getHosts();
             }
             else if (selection == SELECTION.BACK)
@@ -336,19 +326,20 @@ namespace ION
           
 
             int row =0;
-            int collumn = 0;
+            //int collumn = 0;
            
             foreach(String s in tempHosts){
-
+                ION.spriteBatch.DrawString(Fonts.font, s, new Vector2((rows[row].X + 15 ), (rows[row].Y) + 15), Color.White);
+                row++;
                 //ION.spriteBatch.DrawString(Fonts.font, "Return to menu? (Y/N)", new Vector2((ION.width / 2) - 100, (ION.height / 2)), Color.Red);
-                
-                ION.spriteBatch.DrawString(Fonts.font, s, new Vector2((rows[row].X  + 15 +collumn*210), (rows[row].Y) + 15), Color.Green);
-                collumn++;
-                if (collumn > 2)
-                {
-                    collumn = 0;
-                    row++;
-                }
+
+                //ION.spriteBatch.DrawString(Fonts.font, s, new Vector2((rows[row].X + 15 + collumn * 210), (rows[row].Y) + 15), Color.Green);
+                //collumn++;
+               // if (collumn > 2)
+               // {
+                   // collumn = 0;
+                   // row++;
+               // }
                 
 
 
@@ -361,15 +352,17 @@ namespace ION
         {
 
            // Console.WriteLine("lijstje uit serverConnection, eerste server: " + hostList[0].hostname);
-            
+            tempHosts = hostList;
+            /*
             int i = 0;
-            tempHosts = new String[1, hostList.Length];
+            tempHosts = new String[hostList.Length];
             foreach (string s in hostList)
             {
 
                 tempHosts[0, i] = s;
                 i++;
             }
+             */
 
 
         }

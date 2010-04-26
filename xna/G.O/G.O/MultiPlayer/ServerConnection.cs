@@ -49,14 +49,14 @@ namespace ION{
 
         void LobbyConnection_OnDisconnect(object sender, EventArgs e)
         {
-            Console.WriteLine("LobbyConnection lost, reconnecting...");
+            Console.WriteLine("LobbyConnection lost, ");
             //LobbyConnection.Connect("rtmp://127.0.0.1:1935/gameserver", true);
         }
 
         void LobbyConnection_OnConnect(object sender, EventArgs e)
         {
             Console.WriteLine("Connected to Lobby Server");
-            Console.WriteLine("Querying Serverlist...");
+            //Console.WriteLine("Querying Serverlist...");
 
             LobbyRSObject = RemoteSharedObject.GetRemote("Chat", LobbyConnection.Uri.ToString(), false);
             LobbyRSObject.NetStatus += new NetStatusHandler(LobbyRSObject_NetStatus);
@@ -80,16 +80,22 @@ namespace ION{
         {
             public void ResultReceived(IPendingServiceCall call)
             {
-               // object result = ;
-                String[] result = (String[])call.Result;
-                for (int i = 0; i < result.Length; i++)
-                {
+                
+               Object[] callRes = (Object[])call.Result;
+               String[] result = new String[callRes.Length];
+               System.Console.WriteLine("number of rooms: " +callRes.Length);
+               for (int i = 0; i < callRes.Length; i++)
+               {
+                    
+                    result[i]=callRes[i].ToString();
                     System.Console.WriteLine("result " + i + ": " + result[i].ToString());
-                }
 
-                StateJoin.get().showHosts(result);
+               }
+               
 
+               StateJoin.get().showHosts(result);
 
+               // System.Console.WriteLine("number of rooms: "+result.Length);
                 System.Console.WriteLine("Press 'Enter' to exit");
             }
 
@@ -122,6 +128,7 @@ namespace ION{
         public void getHosts()
         {
            // LobbyConnection.Call("getHosts", new getHostsMsgHandler());
+            Console.WriteLine("servercon.gethosts() in servercon");
             LobbyConnection.Call("getHosts", new getHostsMsgHandler());
         }
 
