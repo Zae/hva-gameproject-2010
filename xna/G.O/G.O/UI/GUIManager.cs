@@ -15,6 +15,8 @@ namespace ION.UI
  
             //make some components here
 
+            // the button images should also be added to a button list, so that their sprites can checked agains the mouse's pos
+
             GUIComposite commandsBar = new GUIComposite(ION.width - Images.commandsBar.Width - 20,ION.height - Images.commandsBar.Height - 20, Images.commandsBar);
             commandsBar.add(new GUIComponent(25,25,Images.moveButtonNormal));
             commandsBar.add(new GUIComponent(50+Images.moveButtonNormal.Width, 25, Images.attackButtonNormal));

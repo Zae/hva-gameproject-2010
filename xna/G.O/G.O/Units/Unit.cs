@@ -96,6 +96,16 @@ namespace ION
         //move units towards their target
         void move()
         {
+            //Rules for moving units
+            //1.	Units only move in 8 directions
+            //2.	Units will form in a circle around the selected way point
+            //3.	If there is an obstacle in the way, plot a course around it
+            //4.	If there is a unit in the way, don’t perform move this turn
+            //5.	If the unit has no waypoints, treat as obstacle
+            //6.	If there is are obstacle stopping you from getting your waypoint or on your waypoint, go to next waypoint  if there is one,  otherwise stop
+            //7.	If there is a unit in the way, and it is trying to move into your tile, treat it as an obstacle
+
+
             //if not at target
             if (pos != targetPos)
             {
