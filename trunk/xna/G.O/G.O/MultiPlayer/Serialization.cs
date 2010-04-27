@@ -1,7 +1,6 @@
 ﻿using System;
 using ION.GridStrategies;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ION
 {
@@ -150,6 +149,10 @@ namespace ION
                 counter++;
             }
             return result;
+        }
+        public static CheckedState[,] DeserializeCheckedState(Object[] input)
+        {
+            return DeserializeCheckedState(DeserializeObjectArr(input));
         }
         public static Byte[] DeserializeObjectArr(Object[] input)
         {

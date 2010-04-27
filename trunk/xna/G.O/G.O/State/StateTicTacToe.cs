@@ -48,13 +48,11 @@ namespace ION
 
         void GridRSO_Sync(object sender, SyncEventArgs e)
         {
-            Object[] b = (Object[])GridRSO.GetAttribute("grid");
-            Byte[] bytes = Serializer.DeserializeObjectArr(b);
-
-            //Byte[] bytes = (Byte[])GridRSO.GetAttribute("grid");
-            if (bytes != null)
+            Object[] remotegrid = (Object[])GridRSO.GetAttribute("grid");
+            
+            if (remotegrid != null)
             {
-                grid = Serializer.DeserializeCheckedState(bytes);
+                grid = Serializer.DeserializeCheckedState(remotegrid);
             }
         }
 
