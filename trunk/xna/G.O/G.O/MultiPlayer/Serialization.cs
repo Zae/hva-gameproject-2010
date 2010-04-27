@@ -1,6 +1,7 @@
 ﻿using System;
 using ION.GridStrategies;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ION
 {
@@ -147,6 +148,15 @@ namespace ION
                 result[i, j] = cs;
 
                 counter++;
+            }
+            return result;
+        }
+        public static Byte[] DeserializeObjectArr(Object[] input)
+        {
+            Byte[] result = new Byte[input.Length];
+            for (int i = 0; i < input.Length; i++)
+            {
+                result[i] = Byte.Parse(input[i].ToString());
             }
             return result;
         }
