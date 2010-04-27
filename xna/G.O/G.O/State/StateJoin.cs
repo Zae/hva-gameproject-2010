@@ -291,6 +291,8 @@ namespace ION
 
             else if (selection == SELECTION.JOIN)
             {
+                ION.get().serverConnection.JoinRoom(tempHosts[0]);
+
                 
 
             }

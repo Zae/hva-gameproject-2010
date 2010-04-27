@@ -127,6 +127,8 @@ namespace ION
         {
             MouseState mouseState = Mouse.GetState();
 
+
+            if(Keyboard.GetState().IsKeyDown(Keys.Escape)) ION.get().setState(new StateTitle());
             int i, j = 0;
 
             if (mouseState.LeftButton == ButtonState.Pressed)
