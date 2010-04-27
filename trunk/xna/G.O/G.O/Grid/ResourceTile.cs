@@ -96,9 +96,9 @@ namespace ION
             //{
             //    Texture2D chargeImage = Images.getChargeCountImage(charge);
 
-            //    ION.spriteBatch.Begin();
-            //    ION.spriteBatch.Draw(chargeImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), Color.White);
-            //    ION.spriteBatch.End();
+                
+            //    ION.spriteBatch.Draw(chargeImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
+           
             //}
         }
 

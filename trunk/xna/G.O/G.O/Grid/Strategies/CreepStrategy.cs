@@ -88,6 +88,8 @@ namespace ION.GridStrategies
                 {
                     Grid.perspectiveMap[i].update();
                 }
+
+                
             
                 
             }
