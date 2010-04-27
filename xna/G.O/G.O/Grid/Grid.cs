@@ -29,6 +29,8 @@ namespace ION
 
         private Tile selectedTile = null;
 
+        int blabal = 0;
+
         public static Tile[] perspectiveMap;
 
         public static List<ResourceTile> resourceTiles;
@@ -406,25 +408,27 @@ namespace ION
 
         public void draw(float translationX, float translationY)
         {
-    
+            ION.spriteBatch.Begin();
 
-            ION.spriteBatch.Begin(); 
+            int blabla = 0;
             foreach (ResourceTile rt in resourceTiles)
             {
-               rt.draw(translationX, translationY);
-               //rt.drawDebug(translationX, translationY);
+                    rt.draw(translationX, translationY);
+                    //rt.drawDebug(translationX, translationY);
+                
             }
             ION.spriteBatch.End();
 
             //ION.spriteBatch.Begin();
             //for (int i = 0; i < tileCount; i++)
             //{
+              
             //    //perspectiveMap[i].draw(translationX, translationY);
             //    //perspectiveMap[i].drawDebug(translationX, translationY);
             //}
             //ION.spriteBatch.End();
 
-            ION.spriteBatch.Begin(); 
+            ION.spriteBatch.Begin();
             foreach (IDepthEnabled de in depthItems)
             {
                 de.drawDepthEnabled(translationX, translationY);
@@ -474,7 +478,6 @@ namespace ION
                 {
                     blueArmy[i].UpdateTile(temp);
                 }
-                //blueArmy[i].UpdateTile(GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY));
             }
 
 
@@ -595,17 +598,34 @@ namespace ION
                         }
                     }
 
+
+                    Debug.WriteLine("resourceTileCount:" + resourceTiles.Count);
                     //finally take the player position and put them into the grid
+                    List<ResourceTile> toRemove = new List<ResourceTile>();
                     for (int i = 0; i < playerCount; i++)
                     {
                         BaseTile newBase = new BaseTile(positionsX[i], positionsY[i], i + 1);
                         map[positionsX[i], positionsY[i]] = newBase;
                         addDepthEnabledItem(newBase);
+
+                        //remove the ResrouceTiles from the map
+                       
+
+                        foreach (ResourceTile rt in resourceTiles)
+                        {
+                            if (rt.indexX == positionsX[i] && rt.indexY == positionsY[i])
+                            {
+                                toRemove.Add(rt);
+                            }
+                        }
                     }
-
-
-
-
+                    Debug.WriteLine("toremove size:" + toRemove.Count);
+                    foreach(ResourceTile rt in toRemove) 
+                    {
+                        resourceTiles.Remove(rt);
+                    }
+                   
+                    Debug.WriteLine("resourceTileCount:" + resourceTiles.Count);
                 }
                 else
                 {

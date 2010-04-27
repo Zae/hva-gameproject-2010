@@ -10,13 +10,13 @@ namespace ION
 {
     public abstract class Tile
     {
-        protected int visualZ;
-        protected int visualX;
-        protected int visualY;
+        protected int visualZ = -1;
+        protected int visualX = -1;
+        protected int visualY = -1;
         protected bool selected = false;
 
-        public int indexX;
-        public int indexY;
+        public int indexX = -1;
+        public int indexY = -1;
 
         private static float scale = 15;
 

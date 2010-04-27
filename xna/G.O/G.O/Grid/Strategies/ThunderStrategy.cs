@@ -27,10 +27,8 @@ namespace ION.GridStrategies
         public ThunderStrategy()
         {
             name = "ThunderStrategy";
-            random = new Random(seed);
-            
+            random = new Random(seed);   
         }
-
 
         public override void reset()
         {
@@ -38,13 +36,6 @@ namespace ION.GridStrategies
 
         public override void drawDebug()
         {
-            //int y = 200;
-            //ION.spriteBatch.Begin();
-            //ION.spriteBatch.DrawString(Fonts.font, "Average time spent on calculations: " + avgTimeSpent, new Vector2(10, y += 15), Color.Black);
-            //ION.spriteBatch.DrawString(Fonts.font, "Last time spent on calculations: " + lastTimeSpent, new Vector2(10, y += 15), Color.Black);
-            //ION.spriteBatch.DrawString(Fonts.font, "Total time spent on calculations: " + totalTimeSpent, new Vector2(10, y += 15), Color.Black);
-
-            //ION.spriteBatch.End();
         }
 
         public override void increaseSpeed()
@@ -73,14 +64,11 @@ namespace ION.GridStrategies
                 recalculateGrid();
 
                 iterations++;
-                
-                //now tell all Tiles to update
-                //We do this every step because unit interactions might have happened
-                for (int i = 0; i < Grid.tileCount; i++)
-                {
-                    Grid.perspectiveMap[i].update();
-                }
 
+                foreach (ResourceTile rt in Grid.resourceTiles)
+                {
+                    rt.update();
+                }
 
             }
             if (step == maxStep)
