@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ION.UI
 {
-    class GUIComponent
+    public class GUIComponent
     {
 
         public Rectangle screenRectangle;
@@ -35,8 +35,12 @@ namespace ION.UI
             screenRectangle.Offset(screenX, screenY);
         }
 
-        public virtual bool handleMouse(int x, int y)
+        public virtual bool handleMouse(Point evalPoint)
         {
+            if (screenRectangle.Contains(evalPoint))
+            {
+                return true;
+            }
             return false;
         }
 

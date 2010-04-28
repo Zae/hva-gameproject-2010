@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
+using ION.UI;
 
 namespace ION.Controls
 {
@@ -11,31 +12,66 @@ namespace ION.Controls
 
         public override void draw()
         {
-            //draw bounding box/health bar around unit?
-            //should that be done from here or from the selected unit?
         }
 
-        public override void handleMouse(MouseState mouseState)
+        public override void handleInput(MouseState mouseState, KeyboardState keyState)
         {
-           //left click canceles the selection
-            //but make sure that the left click is propegated to the NeutralState!
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                //This is a hack to not update the GUI directly, but we wait until in NeutralState to make sure we don't have a new selection
+                //StateTest.get().gui.applyState(GUIManager.NONE_SELECTED);
+                StateTest.get().controls = new NeutralState();
+                return;
+            }
 
-            //right click directs the units to the specified tile
-            //if the tile is occupied by an enemy, this changes into a attack command on that enemy
+            if (keyState.IsKeyDown(Keys.LeftShift))// if actions are being queued up
+            {
+                if (mouseState.RightButton == ButtonState.Pressed)
+                {//here
+                    shiftMouseRightPressed(mouseState.X, mouseState.Y, StateTest.translationX, StateTest.translationY);
+                }
+            }
+            else if (mouseState.RightButton == ButtonState.Pressed)
+            {
+                mouseRightPressed(mouseState.X, mouseState.Y, StateTest.translationX, StateTest.translationY);
+            }
 
-
-            base.handleMouse(mouseState);
+            base.handleInput(mouseState, keyState);
         }
 
-        public override void handleKeyboard(KeyboardState keyboardState)
+        public void mouseRightPressed(float x, float y, float translationX, float translationY)
         {
-            //left click canceles the selection
-            //but make sure that the left click is propegated to the NeutralState!
+            List<Unit> blueArmy = Grid.get().blueArmy;
+            
+            Grid.get().selectTile(x, y, translationX, translationY);
+            if (Grid.get().selectedTile != null)
+            {
+                for (int i = 0; i < blueArmy.Count(); i++)
+                {
+                    if (blueArmy[i] != null && blueArmy[i].selected)
+                    {
+                        blueArmy[i].EmptyWayPoints();
+                        blueArmy[i].SetTarget(Grid.get().selectedTile.GetPos(translationX, translationY));
+                    }
+                }
+            }
+        }
 
-            //right click directs the units to the specified tile
-            //if the tile is occupied by an enemy, this changes into a attack command on that enemy
-
-
+        public void shiftMouseRightPressed(float x, float y, float translationX, float translationY)
+        {
+            List<Unit> blueArmy = Grid.get().blueArmy;
+            
+            Grid.get().selectTile(x, y, translationX, translationY);
+            if (Grid.get().selectedTile != null)
+            {
+                for (int i = 0; i < blueArmy.Count(); i++)
+                {
+                    if (blueArmy[i] != null && blueArmy[i].selected)
+                    {
+                        blueArmy[i].AddDestination(Grid.get().selectedTile);// here
+                    }
+                }
+            }
         }
     }
 }

@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace ION.UI
 {
-    class GUIManager
+    public class GUIManager
     {
 
         private List<GUIComponent> components = new List<GUIComponent>();
 
-        public const int NEUTRAL = 0;
+        public const int NONE_SELECTED = 0;
         public const int BASE_SELECTED = 1;
         public const int UNITS_SELECTED = 2;
+        public static int state = 0;
+
+        public Point evalPoint = new Point(0, 0);
 
         private static GUIComposite commandsBar;
 
@@ -33,7 +37,7 @@ namespace ION.UI
             generalInfo.add(new GUILabel(15, 40, "Hold H for Help"));
             addComponent(generalInfo);
 
-            applyState(NEUTRAL);
+            applyState(NONE_SELECTED);
         }
 
         public void addComponent(GUIComponent component)
@@ -44,10 +48,12 @@ namespace ION.UI
         public bool handleMouse(int x, int y)
         {
             bool mouseHandled = false;
+            evalPoint.X = x;
+            evalPoint.Y = y;
 
             foreach (GUIComponent component in components)
             {
-                if(component.handleMouse(x,y))
+                if (component.handleMouse(evalPoint))
                 {
                     return true; 
                 }
@@ -66,10 +72,12 @@ namespace ION.UI
             ION.spriteBatch.End();
         }
 
-        public static void applyState(int guiState) 
+        public void applyState(int guiState) 
         {
-            if(guiState == NEUTRAL) 
+            if(guiState == NONE_SELECTED) 
             {
+                state = guiState;
+                
                 //update the selection screen
                 //update the buttons
                 commandsBar.clear();
@@ -83,10 +91,12 @@ namespace ION.UI
             }
             else if(guiState == BASE_SELECTED) 
             {
+                state = guiState;
+                
                 //update the selection screen
                 //update the buttons
                 commandsBar.clear();
-                commandsBar.add(new GUIComponent(12, 5, Images.emptyButton));
+                commandsBar.add(new Button(12, 5, Images.newUnitButtonNormal, new NewUnitHandler()));
                 commandsBar.add(new GUIComponent(18 + Images.emptyButton.Width, 5, Images.emptyButton));
                 commandsBar.add(new GUIComponent(23 + (Images.emptyButton.Width * 2), 5, Images.emptyButton));
 
@@ -96,6 +106,8 @@ namespace ION.UI
             }
             else if(guiState == UNITS_SELECTED) 
             {
+                state = guiState;
+                
                 commandsBar.clear();
                 commandsBar.add(new Button(12, 5, Images.moveButtonNormal, new MoveHandler()));
                 commandsBar.add(new Button(18 + Images.emptyButton.Width, 5, Images.stopButtonNormal, new StopHandler()));

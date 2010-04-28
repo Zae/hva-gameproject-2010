@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ION
 {
-    class MountainTile : Tile, IDepthEnabled
+    public class MountainTile : Tile, IDepthEnabled
     {
 
         public MountainTile(int indexX, int indexY)

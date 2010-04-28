@@ -11,7 +11,7 @@ namespace ION
     {
         private Colors hitmapColor = new Colors();
 
-        protected int owner;
+        public int owner;
 
         protected int health = 100;
         //protected int tileX;
@@ -56,7 +56,7 @@ namespace ION
             if (pos != targetPos)
             {
                 move();
-                //map.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
+                //map.selectOnMap(mouseState.X, mouseState.Y, translationX, translationY);
             }
             else
             {

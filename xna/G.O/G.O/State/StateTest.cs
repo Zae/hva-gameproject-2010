@@ -17,16 +17,15 @@ namespace ION
     public class StateTest : State
     {
 
-        private Grid grid;
-        private GUIManager gui;
-        private ControlState controls;
+        public Grid grid;
+        public GUIManager gui;
+        public ControlState controls;
 
         public float scrollValue;
 
         private static StateTest instance;
 
         private bool musicPaused = false;
-
         private int playqueue = 1;
 
         public int level = 0;
@@ -38,26 +37,20 @@ namespace ION
         private bool actionOnScreen = false;
         private SoundEffectInstance actionOnScreenSound = null;
 
-        private float translationX = 0f;
-        private float translationY = 0f;
+        public static float translationX = 0f;
+        public static float translationY = 0f;
 
-        private float previousMouseX = 0f;
-        private float previousMouseY = 0f;
+        public static float previousMouseX = 0f;
+        public static float previousMouseY = 0f;
 
         private bool nextMapDown = false;
         private bool previousMapDown = false;
 
         private bool nextStrategyDown = false;
         private bool previousStrategyDown = false;
-
-        private bool increaseSpeedDown = false;
-        private bool decreaseSpeedDown = false;
    
         public float player1Control = 0.0f;
         public float player2Control = 0.0f;
-
-        Vector2 oldMousePos, mousePos;
-        bool leftMouseDown = false;
 
         public bool showHelpFile = false;
 
@@ -94,15 +87,8 @@ namespace ION
 
             grid.draw(translationX, translationY);
 
-            if (leftMouseDown)
-            {
-                ION.spriteBatch.Begin();
-                //draw a rectangle from oldMousePos to mousePos
-                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)oldMousePos.X, (int)oldMousePos.Y, (int)(mousePos.X - oldMousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// normal
-                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)mousePos.X, (int)oldMousePos.Y, (int)(oldMousePos.X - mousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// inverted
-                ION.spriteBatch.End();
-            }
-            
+            controls.draw();
+      
             gui.draw();
 
             if (showHelpFile)
@@ -125,10 +111,9 @@ namespace ION
 
             if (!gui.handleMouse(mouseState.X,mouseState.Y))
             {
-                controls.handleMouse(mouseState);
+                controls.handleInput(mouseState,keyState);
             }
-            controls.handleKeyboard(keyState);
-            
+
             //Handles which background music to play
             if (MediaPlayer.State.Equals(MediaState.Stopped))
             {
@@ -247,22 +232,6 @@ namespace ION
                 translationX = 0;
                 translationY = 0;
             }
-
-            //if (keyState.IsKeyDown(Keys.RightAlt))
-            //{
-            //    for (int i = 0; i < grid.getPerspectiveMap().Length; i++)
-            //    {
-            //        if (grid.getPerspectiveMap()[i] is ResourceTile)
-            //        {
-            //            ((ResourceTile)grid.getPerspectiveMap()[i]).nextCharge = 0.01f;
-            //        }
-            //        if (grid.getPerspectiveMap()[i] is BaseTile)
-            //        {
-            //            ((ResourceTile)grid.getPerspectiveMap()[i]).nextCharge = 999.0f;
-            //        }
-            //    }
-            //}
-
     
             //DEBUG MUSIC
             if (keyState.IsKeyDown(Keys.Space))
@@ -285,57 +254,7 @@ namespace ION
                 showHelpFile = false;
             }
 
-            if (mouseState.MiddleButton == ButtonState.Pressed)
-            {
-                translationX += mouseState.X - previousMouseX;
-                translationY += mouseState.Y - previousMouseY;
-            }
 
-            if (mouseState.LeftButton == ButtonState.Pressed)
-            {
-                //grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY);
-                //blueArmy[0].SetTarget(new Vector2(mouseState.X, mouseState.Y));
-                
-                grid.mouseLeftPressed(mouseState.X, mouseState.Y, translationX, translationY, grid.blueArmy, oldMousePos);// pass the currently selected unit
-
-                if (!leftMouseDown)
-                {
-                    oldMousePos.X = (mouseState.X);
-                    oldMousePos.Y = (mouseState.Y);
-                }
-                leftMouseDown = true;
-                mousePos.X = (mouseState.X);
-                mousePos.Y = (mouseState.Y);
-            }
-            else if (mouseState.LeftButton == ButtonState.Released)
-            {
-                grid.mouseLeftReleased(mouseState.X, mouseState.Y, translationX, translationY);
-                leftMouseDown = false;
-            }
-
-
-            if (keyState.IsKeyDown(Keys.LeftShift))// if actions are being queued up
-            {
-                if (mouseState.RightButton == ButtonState.Pressed)
-                {//here
-                    grid.shiftMouseRightPressed(mouseState.X, mouseState.Y, translationX, translationY, grid.blueArmy);
-                }
-                else if (mouseState.RightButton == ButtonState.Released)
-                {
-                    grid.mouseRightReleased(mouseState.X, mouseState.Y, translationX, translationY);
-                }
-            }
-            else if (mouseState.RightButton == ButtonState.Pressed)
-            {
-                grid.mouseRightPressed(mouseState.X, mouseState.Y, translationX, translationY, grid.blueArmy);
-            }
-            else if (mouseState.RightButton == ButtonState.Released)
-            {
-                grid.mouseRightReleased(mouseState.X, mouseState.Y, translationX, translationY);
-            }
-
-            previousMouseX = mouseState.X;
-            previousMouseY = mouseState.Y;
 
             //Debug automatically spawn units
             unitCounter++;
