@@ -28,9 +28,19 @@ namespace ION.UI
             }
         }
 
-        public override bool handleMouse(Point evalPoint)
+        public override bool handleMouse(Point evalPoint, bool leftPressed)
         {
-            return false;
+            if(screenRectangle.Contains(evalPoint)) 
+            {
+                mouseOver = true;
+
+                return true;
+            }
+            else 
+            {
+                mouseOver = false;
+                return false;
+            }
         }
 
     }

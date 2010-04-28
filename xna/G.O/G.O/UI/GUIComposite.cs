@@ -42,18 +42,16 @@ namespace ION.UI
             children.Clear();
         }
 
-        public override bool handleMouse(Point evalPoint)
+        public override bool handleMouse(Point evalPoint, bool leftPressed)
         {
-
-            if (base.handleMouse(evalPoint))
+            if (base.handleMouse(evalPoint, leftPressed))
             {
                 foreach (GUIComponent guic in children)
                 {
-                    guic.handleMouse(evalPoint);
+                    guic.handleMouse(evalPoint, leftPressed);
                 }
                 return true;
             }
-
             return false;
         } 
 

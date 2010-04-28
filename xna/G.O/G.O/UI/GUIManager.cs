@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace ION.UI
 {
@@ -45,15 +46,21 @@ namespace ION.UI
             components.Add(component);
         }
 
-        public bool handleMouse(int x, int y)
+        public bool handleMouse(MouseState mouseState)
         {
             bool mouseHandled = false;
-            evalPoint.X = x;
-            evalPoint.Y = y;
+            evalPoint.X = mouseState.X;
+            evalPoint.Y = mouseState.Y;
+
+            bool leftPressed = false;
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                leftPressed = true;
+            }
 
             foreach (GUIComponent component in components)
             {
-                if (component.handleMouse(evalPoint))
+                if (component.handleMouse(evalPoint, leftPressed))
                 {
                     return true; 
                 }

@@ -109,7 +109,9 @@ namespace ION
             //get mouse input
             MouseState mouseState = Mouse.GetState();
 
-            if (!gui.handleMouse(mouseState.X,mouseState.Y))
+
+
+            if (!gui.handleMouse(mouseState))
             {
                 controls.handleInput(mouseState,keyState);
             }
