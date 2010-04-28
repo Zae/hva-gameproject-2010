@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ION
 {
-    interface IDepthEnabled
+    public interface IDepthEnabled
     {
 
         int getTileX();

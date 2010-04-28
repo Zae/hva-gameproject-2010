@@ -6,33 +6,34 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ION.Controls
 {
-    class ControlState
+    public class ControlState
     {
 
-        public virtual void handleMouse(MouseState mouseState)
+        public virtual void handleInput(MouseState mouseState, KeyboardState keyboardState)
         {
-
-            //Handle mouse input
+            //Handle Zoom from every context
             if (mouseState.ScrollWheelValue > StateTest.get().scrollValue)
             {
                 Tile.zoomIn();
                 Unit.zoomIn();
-                //Debug.WriteLine("zoomIn");
-
             }
             else if (mouseState.ScrollWheelValue < StateTest.get().scrollValue)
             {
                 Tile.zoomOut();
                 Unit.zoomOut();
-                // Debug.WriteLine("zoomOut");
+            }
+            StateTest.get().scrollValue = mouseState.ScrollWheelValue;
+
+            if (mouseState.MiddleButton == ButtonState.Pressed)
+            {
+                StateTest.translationX += mouseState.X - StateTest.previousMouseX;
+                StateTest.translationY += mouseState.Y - StateTest.previousMouseY;
             }
 
-            StateTest.get().scrollValue = mouseState.ScrollWheelValue;
+            StateTest.previousMouseX = mouseState.X;
+            StateTest.previousMouseY = mouseState.Y;
         }
 
-        public virtual void handleKeyboard(KeyboardState keyboardState)
-        {
-        }
         public virtual void draw()
         {
         }

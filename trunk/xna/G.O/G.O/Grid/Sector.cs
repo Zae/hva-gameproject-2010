@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ION
 {
-    class Sector
+    public class Sector
     {
 
         public int relativePosX;

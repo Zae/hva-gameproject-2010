@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace ION.UI
 {
@@ -41,9 +42,19 @@ namespace ION.UI
             children.Clear();
         }
 
-        public override bool handleMouse(int x, int y)
+        public override bool handleMouse(Point evalPoint)
         {
-            return base.handleMouse(x, y);
+
+            if (base.handleMouse(evalPoint))
+            {
+                foreach (GUIComponent guic in children)
+                {
+                    guic.handleMouse(evalPoint);
+                }
+                return true;
+            }
+
+            return false;
         } 
 
     }

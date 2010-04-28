@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace ION.UI
 {
@@ -27,7 +28,7 @@ namespace ION.UI
             }
         }
 
-        public override bool handleMouse(int x, int y)
+        public override bool handleMouse(Point evalPoint)
         {
             return false;
         }

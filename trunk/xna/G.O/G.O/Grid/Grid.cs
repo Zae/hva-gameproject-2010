@@ -14,9 +14,10 @@ using FluorineFx.Net;
 
 namespace ION
 {
-    class Grid
+    public class Grid
     {
-
+        private static Grid instance = null;
+        
         public static Tile[,] map;
         public static Sector[,] sectors;
 
@@ -27,20 +28,13 @@ namespace ION
         public float mouseWorldX = 0;
         public float mouseWorldY = 0;
 
-        private Tile selectedTile = null;
-
-        int blabal = 0;
+        public Tile selectedTile = null;
 
         public static Tile[] perspectiveMap;
-
         public static List<ResourceTile> resourceTiles;
-
         public static List<MountainTile> mountainTiles;
-
         public static List<IDepthEnabled> depthItems;
-        //public 
-        //public static 
-
+        public static BaseTile[] playerBases;
 
         private GridStrategy updateStrategy;
 
@@ -59,55 +53,21 @@ namespace ION
         // a list to hold the blue army
         public List<Unit> blueArmy = new List<Unit>();
 
-        public static BaseTile[] playerBases;
-
         public static int playerNumber = -1;
         public static int[] playerInfluences;
         public static float resources = 0;
-
 
         public static BaseTile getPlayerBase(int owner)
         {
             return playerBases[owner - 1];
         }
 
-        public void mouseRightPressed(float x, float y, float translationX, float translationY, List<Unit> blueArmy)
+        public static Grid get()
         {
-            mouseRightPressed(x, y, translationX, translationY);
-            if (selectedTile != null)
-            {
-                for (int i = 0; i < blueArmy.Count(); i++)
-                {
-                    if (blueArmy[i] != null && blueArmy[i].selected)
-                    {
-                        blueArmy[i].EmptyWayPoints();
-                        blueArmy[i].SetTarget(selectedTile.GetPos(translationX, translationY));
-                    }
-
-                }
-            }
-
+            return instance;
         }
 
-        public void shiftMouseRightPressed(float x, float y, float translationX, float translationY, List<Unit> blueArmy)
-        {
-            mouseRightPressed(x, y, translationX, translationY);
-            if (selectedTile != null)
-            {
-                for (int i = 0; i < blueArmy.Count(); i++)
-                {
-                    if (blueArmy[i] != null && blueArmy[i].selected)
-                    {
-                        //blueArmy[i].SetTarget(selectedTile.GetPos(translationX, translationY));
-                        blueArmy[i].AddDestination(selectedTile);// here
-                    }
-
-                }
-            }
-
-        }
-
-        public void mouseRightPressed(float x, float y, float translationX, float translationY)
+        public void selectTile(float x, float y, float translationX, float translationY)
         {
             //drawHitTest = true;
 
@@ -127,144 +87,12 @@ namespace ION
             uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
 
             //pass the position and the color and see if you get back anything
-            Tile tile = getTile(tilesVertical, tilesHorizontal, color);
-
-            if (tile != null && tile is ResourceTile)
-            {
-                ResourceTile rt = (ResourceTile)tile;
-
-                if (rt.owner != Players.PLAYER2)
-                {
-                    rt.sustain(0.06f, Players.PLAYER2);
-                }
-                else
-                {
-                    rt.receive(0.06f);
-                }
-
-                if (selectedTile != null)
-                {
-                    selectedTile.setSelected(false);
-                }
-
-                tile.setSelected(true);
-                selectedTile = tile;
-            }
-            else
-            {
-                if (selectedTile != null)
-                {
-                    selectedTile.setSelected(false);
-                    selectedTile = null;
-                }
-            }
-
+            selectedTile = getTile(tilesVertical, tilesHorizontal, color);
         }
 
         public GridStrategy getUpdateStrategy()
         {
             return updateStrategy;
-        }
-
-        public void mouseRightReleased(float x, float y, float translationX, float translationY)
-        {
-            drawHitTest = false;
-        }
-
-        // UNDER CONSTRUCTION
-        // drag selection
-        public void mouseLeftReleased(float x, float y, float translationX, float translationY)
-        {
-            drawHitTest = false;
-        }
-        // UNDER CONSTRUCTION
-
-        public void mouseLeftPressed(float x, float y, float translationX, float translationY)
-        {
-            drawHitTest = true;
-
-            //translate the screen input to world coordinates
-            mouseWorldX = x - translationX - ION.halfWidth;
-            mouseWorldY = y - translationY;
-
-            //get the true value from the origin in tile units
-            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
-            float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
-
-            //get the closest even value to that position
-            int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
-            int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
-
-            //get the color at that position on the hitmap
-            uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
-
-            //pass the position and the color and see if you get back anything
-            Tile tile = getTile(tilesVertical, tilesHorizontal, color);
-
-            if (tile != null && tile is ResourceTile)
-            {
-                ResourceTile rt = (ResourceTile)tile;
-
-                if (rt.owner != Players.PLAYER1)
-                {
-                    rt.sustain(0.06f, Players.PLAYER1);
-                }
-                else
-                {
-                    rt.receive(0.06f);
-                }
-
-                if (selectedTile != null)
-                {
-                    selectedTile.setSelected(false);
-                }
-
-                tile.setSelected(true);
-                selectedTile = tile;
-            }
-            else
-            {
-                if (selectedTile != null)
-                {
-                    selectedTile.setSelected(false);
-                    selectedTile = null;
-                }
-            }
-        }
-
-
-        public void mouseLeftPressed(float x, float y, float translationX, float translationY, List<Unit> blueArmy, Vector2 oldMousePos)
-        {
-            mouseLeftPressed(x, y, translationX, translationY);
-            if (selectedTile != null)
-            {
-                for (int i = 0; i < blueArmy.Count(); i++)
-                {
-                    //unselect this unit by default
-                    blueArmy[i].selected = false;
-
-                    //check if the current tile matches the units tile, if so changed the units selected to true
-                    if (GetTile(x, y, translationX, translationY) == blueArmy[i].GetTile())
-                    {
-                        blueArmy[i].selected = true;//select unit
-                    }
-
-                    // if this unit is in between the 2 mouse positions
-                    if (
-                        ((blueArmy[i].GetVirtualPos().X > x && blueArmy[i].GetVirtualPos().X < oldMousePos.X)
-                        || (blueArmy[i].GetVirtualPos().X < x && blueArmy[i].GetVirtualPos().X > oldMousePos.X))
-                        && ((blueArmy[i].GetVirtualPos().Y > y && blueArmy[i].GetVirtualPos().Y < oldMousePos.Y)
-                        || (blueArmy[i].GetVirtualPos().Y < y && blueArmy[i].GetVirtualPos().Y > oldMousePos.Y))
-                        )
-                    {
-                        // set unit to selected
-                        blueArmy[i].selected = true;
-                    }
-
-
-                }
-            }
-
         }
 
         private uint doHitmapTest(float x, float y, float translationX, float translationY, int visualX, int visualY)
@@ -291,8 +119,6 @@ namespace ION
 
             return myUint[0];
         }
-
-        
 
         private Tile getTile(int tilesVertical, int tilesHorizontal, uint color)
         {
@@ -340,6 +166,237 @@ namespace ION
 
             return null;
 
+        }
+
+        public void draw(float translationX, float translationY)
+        {
+            ION.spriteBatch.Begin();
+
+            foreach (ResourceTile rt in resourceTiles)
+            {
+                    rt.draw(translationX, translationY);
+                    //rt.drawDebug(translationX, translationY);
+            }
+            ION.spriteBatch.End();
+
+            ION.spriteBatch.Begin();
+            foreach (IDepthEnabled de in depthItems)
+            {
+                de.drawDepthEnabled(translationX, translationY);
+            }
+            ION.spriteBatch.End();
+
+            if (drawHitTest)
+            {
+                ION.spriteBatch.Begin();
+                ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(0, 0, Images.tileHitmapImage.Width, Images.tileHitmapImage.Height), Color.White);
+                ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX, (int)virtualY, 5, 5), Color.Black);
+                ION.spriteBatch.End();
+            }
+
+            //GridStrategy might want to do some debug rendering
+            //updateStrategy.drawDebug();
+
+            ION.spriteBatch.Begin();
+            for (int i = 0; i < blueArmy.Count; i++)
+            {
+                blueArmy[i].DrawWayPoints(translationX, translationY);
+            }
+            ION.spriteBatch.End();
+        }
+
+        public void update(int ellapsed, List<Unit> blueArmy, float translationX, float translationY)
+        {
+            updateStrategy.update(ellapsed);
+
+            for (int i = 0; i < blueArmy.Count(); i++)
+            {
+                //TODO units should make a more difuse effect on the grid
+                //if (blueArmy[i] != null)
+                //{
+                //    selectTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
+                //}
+
+                //updates the unit
+                blueArmy[i].Update(translationX, translationY);
+
+                //tells the unit what tile it is currently on
+                Vector2 temp = GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
+                if (temp != null)
+                {
+                    blueArmy[i].UpdateTile(temp);
+                }
+            }
+
+            //Reset the influence variables
+            for (int i = 0; i < playerInfluences.Length; i++)
+            {
+                playerInfluences[i] = 0;
+            }
+
+            //Update the resources of the player
+            foreach(ResourceTile rt in resourceTiles) 
+            {
+                playerInfluences[rt.owner] += 1;
+
+                if (rt.owner == playerNumber)
+                {
+                    //TODO find a good place for this
+                    resources += (rt.charge /1000);
+                }
+            }
+
+            /** Disabled for performance, works perfectly tho! **/
+            if (GridRSO != null && GridRSO.Connected)
+            {
+                byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
+                GridRSO.SetAttribute("Grid", rs);
+            }
+        }
+
+        private Tile createTile(char c, int x, int y)
+        {
+            if (c == 'N')
+            {
+                ResourceTile newTile = new ResourceTile(x, y);
+                resourceTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == 'M')
+            {
+                MountainTile newTile = new MountainTile(x, y);
+                addDepthEnabledItem(newTile);
+                return newTile;
+            }
+
+            return null;
+        }
+
+        void GridRSO_Sync(object sender, SyncEventArgs e)
+        {
+            byte[] grid = (byte[])GridRSO.GetAttribute("Grid");
+            if (grid != null)
+            {
+                float[,] f = Serializer.DeserializeFloat(grid);
+            }
+        }
+
+        void GridRSO_OnDisconnect(object sender, EventArgs e)
+        {
+        }
+
+        void GridRSO_OnConnect(object sender, EventArgs e)
+        {
+        }
+
+        void GridRSO_NetStatus(object sender, NetStatusEventArgs e)
+        {
+        }
+
+        public List<Unit> getSelection() 
+        {
+            List<Unit> selection = new List<Unit>();
+            
+            foreach (Unit u in blueArmy)
+            {
+                if (u.selected && u.owner == playerNumber)
+                {
+                    selection.Add(u);
+                }
+            }
+
+            return selection;
+        }
+
+        // new
+        public Vector2 GetTile(float x, float y, float translationX, float translationY)
+        {
+            selectTile(x, y, translationX, translationY);
+
+            if (selectedTile == null)
+            {
+                Debug.WriteLine("HEEELP TILE IS NULL! getTile()");
+                return new Vector2(0,0);
+
+            }
+
+            return new Vector2(selectedTile.indexX, selectedTile.indexY);
+        }
+
+        public Vector2 GetTileScreenPos(Vector2 tileCords, float translationX, float translationY)
+        {
+            return new Vector2(map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).X, map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).Y);
+        }
+
+        public void CreateBlueUnit(float translationX, float translationY)
+        {
+            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY));
+            blueArmy.Add(newUnit);
+            addDepthEnabledItem(newUnit);
+        }
+
+        public static void addDepthEnabledItem(IDepthEnabled newItem)
+        {
+            //add the item to the list
+            int index = -1;
+            bool inserted = false;
+            //TODO hardcoding for a south-west perspective
+            foreach (IDepthEnabled other in depthItems)
+            {
+                index++;
+
+                if (other.getTileX() > newItem.getTileX())
+                {
+                    continue;
+                }
+                else if (other.getTileX() == newItem.getTileX())
+                {
+                    if (other.getTileY() >= newItem.getTileY())
+                    {
+                        depthItems.Insert(index, newItem);
+                        inserted = true;
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    depthItems.Insert(index, newItem);
+                    inserted = true;
+                    break;
+                }
+            }
+            if (!inserted)
+            {
+                depthItems.Add(newItem);
+            }
+        }
+
+        public static void removeDepthEnabledItem(IDepthEnabled newItem)
+        {
+            depthItems.Remove(newItem);
+        }
+
+        public static void updateDepthEnabledItem(IDepthEnabled newItem)
+        {
+            //TODO 
+            //Now I just remove and re-insert the item
+            //A faster algorithm could be made
+
+            depthItems.Remove(newItem);
+            addDepthEnabledItem(newItem);
+
+            //The best implementation would be along these lines:
+            //Get the current index
+            //Look for the next item if it is not the last item in the list
+            //If the next item is more in the foreground on the basis of the perspective
+            //Change direction and look for the previous item more to the beginning of the list
+            //If that item is more in the foreground, continue the search in that direction untill you find its right place
+            //This way items that are most in the foreground are not penelized to search through everything in the background
+            //Because this is what happens when calling addDepthEnabledItem()
         }
 
         private void settleIndexZ(int newViewDirection)
@@ -405,128 +462,16 @@ namespace ION
 
                             relativeY += 1;
                         }
-
-
                     }
                 }
-
             }
-
             this.viewDirection = newViewDirection;
         }
 
-        public void draw(float translationX, float translationY)
-        {
-            ION.spriteBatch.Begin();
-
-            int blabla = 0;
-            foreach (ResourceTile rt in resourceTiles)
-            {
-                    rt.draw(translationX, translationY);
-                    //rt.drawDebug(translationX, translationY);
-            }
-            ION.spriteBatch.End();
-
-            ION.spriteBatch.Begin();
-            foreach (IDepthEnabled de in depthItems)
-            {
-                de.drawDepthEnabled(translationX, translationY);
-            }
-            ION.spriteBatch.End();
-
-            if (drawHitTest)
-            {
-                ION.spriteBatch.Begin();
-                ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(0, 0, Images.tileHitmapImage.Width, Images.tileHitmapImage.Height), Color.White);
-                ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX, (int)virtualY, 5, 5), Color.Black);
-                ION.spriteBatch.End();
-            }
-
-            //GridStrategy might want to do some debug rendering
-            //updateStrategy.drawDebug();
-
-
-            ION.spriteBatch.Begin();
-            for (int i = 0; i < blueArmy.Count; i++)
-            {
-                blueArmy[i].DrawWayPoints(translationX, translationY);
-            }
-            ION.spriteBatch.End();
-
-        }
-        public void update(int ellapsed, List<Unit> blueArmy, float translationX, float translationY)
-        {
-
-
-            updateStrategy.update(ellapsed);
-
-
-            for (int i = 0; i < blueArmy.Count(); i++)
-            {
-                if (blueArmy[i] != null)
-                {
-                    mouseLeftPressed(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
-                }
-
-                //updates the unit
-                blueArmy[i].Update(translationX, translationY);
-
-                //tells the unit what tile it is currently on
-                Vector2 temp = GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
-                if (temp != null)
-                {
-                    blueArmy[i].UpdateTile(temp);
-                }
-            }
-
-            //Reset the influence variables
-            for (int i = 0; i < playerInfluences.Length; i++)
-            {
-                playerInfluences[i] = 0;
-            }
-
-            //Update the resources of the player
-            foreach(ResourceTile rt in resourceTiles) 
-            {
-                playerInfluences[rt.owner] += 1;
-
-                if (rt.owner == playerNumber)
-                {
-                    //TODO find a good place for this
-                    resources += (rt.charge /1000);
-                }
-            }
-
-
-            /** Disabled for performance, works perfectly tho! **/
-            if (GridRSO != null && GridRSO.Connected)
-            {
-                byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
-                GridRSO.SetAttribute("Grid", rs);
-            }
-        }
-
-        private Tile createTile(char c, int x, int y)
-        {
-            if (c == 'N')
-            {
-                ResourceTile newTile = new ResourceTile(x, y);
-                resourceTiles.Add(newTile);
-                return newTile;
-            }
-            else if (c == 'M')
-            {
-                MountainTile newTile = new MountainTile(x, y);
-                addDepthEnabledItem(newTile);
-                return newTile;
-            }
-
-            return null;
-        }
-
-
         public Grid(String levelname, GridStrategy strategy, int playerNumber)
         {
+            instance = this;
+
             Grid.playerNumber = playerNumber;
 
             updateStrategy = strategy;
@@ -566,7 +511,7 @@ namespace ION
                     tileCount = width * height;
                     ////Now read the player count and positions of these players
                     int playerCount = int.Parse(XmlRdr.GetAttribute(2));
-                    playerInfluences = new int[playerCount+1];
+                    playerInfluences = new int[playerCount + 1];
 
                     int[] positionsX = new int[playerCount];
                     int[] positionsY = new int[playerCount];
@@ -631,7 +576,7 @@ namespace ION
                         addDepthEnabledItem(newBase);
 
                         //remove the ResrouceTiles from the map
-                       
+
 
                         foreach (ResourceTile rt in resourceTiles)
                         {
@@ -642,11 +587,11 @@ namespace ION
                         }
                     }
                     Debug.WriteLine("toremove size:" + toRemove.Count);
-                    foreach(ResourceTile rt in toRemove) 
+                    foreach (ResourceTile rt in toRemove)
                     {
                         resourceTiles.Remove(rt);
                     }
-                   
+
                     Debug.WriteLine("resourceTileCount:" + resourceTiles.Count);
                 }
                 else
@@ -662,193 +607,6 @@ namespace ION
             {
                 Console.WriteLine("exception in grid: " + e.ToString());
             }
-        }
-        public void mouseLeftPressed(float x, float y, float translationX, float translationY, Unit soldier)
-        {
-            mouseLeftPressed(x, y, translationX, translationY);
-            if (selectedTile != null)
-            {
-                if (soldier != null)
-                {
-                    soldier.SetTarget(selectedTile.GetPos(translationX, translationY));
-                }
-            }
-        }
-
-
-        void GridRSO_Sync(object sender, SyncEventArgs e)
-        {
-            byte[] grid = (byte[])GridRSO.GetAttribute("Grid");
-            if (grid != null)
-            {
-                float[,] f = Serializer.DeserializeFloat(grid);
-            }
-        }
-
-        void GridRSO_OnDisconnect(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
-
-        void GridRSO_OnConnect(object sender, EventArgs e)
-        {
-
-            //throw new NotImplementedException();
-        }
-
-        void GridRSO_NetStatus(object sender, NetStatusEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public Tile[,] getMap()
-        {
-            return map;
-        }
-
-        public Tile[] getPerspectiveMap()
-        {
-            return perspectiveMap;
-        }
-
-        // new
-        public Vector2 GetTile(float x, float y, float translationX, float translationY)
-        {
-            //translate the screen input to world coordinates
-            mouseWorldX = x - translationX - ION.halfWidth;
-            mouseWorldY = y - translationY;
-
-            //get the true value from the origin in tile units
-            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
-            float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
-
-            //get the closest even value to that position
-            int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
-            int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
-
-            //get the color at that position on the hitmap
-            uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
-
-            //pass the position and the color and see if you get back anything
-            Tile tile = getTile(tilesVertical, tilesHorizontal, color);
-
-            if (tile != null && tile is ResourceTile)
-            {
-                ResourceTile rt = (ResourceTile)tile;
-
-                //if (rt.owner != Players.PLAYER1)
-                //{
-                //    rt.sustain(0.06f, Players.PLAYER1);
-                //}
-                //else
-                //{
-                //    rt.receive(0.06f);
-                //}
-
-                //if (selectedTile != null)
-                //{
-                //    selectedTile.setSelected(false);
-                //}
-
-                tile.setSelected(true);
-                selectedTile = tile;
-            }
-            else
-            {
-                if (selectedTile != null)
-                {
-                    selectedTile.setSelected(false);
-                    selectedTile = null;
-                }
-            }
-            if (tile == null)
-            {
-                Debug.WriteLine("HEEELP TILE IS NULL! getTile()");
-                return new Vector2(0,0);
-
-            }
-
-            return new Vector2(tile.indexX, tile.indexY);
-        }
-
-        public Vector2 GetTileScreenPos(Vector2 tileCords, float translationX, float translationY)
-        {
-            return new Vector2(map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).X, map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).Y);
-        }
-
-        public void CreateBlueUnit(float translationX, float translationY)
-        {
-            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY));
-            blueArmy.Add(newUnit);
-            addDepthEnabledItem(newUnit);
-        }
-
-        public static void addDepthEnabledItem(IDepthEnabled newItem)
-        {
-            //add the item to the list
-            int index = -1;
-            bool inserted = false;
-            //TODO hardcoding for a south-west perspective
-            foreach (IDepthEnabled other in depthItems)
-            {
-
-                index++;
-
-                if (other.getTileX() > newItem.getTileX())
-                {
-                    continue;
-                }
-                else if (other.getTileX() == newItem.getTileX())
-                {
-                    if (other.getTileY() >= newItem.getTileY())
-                    {
-                        depthItems.Insert(index, newItem);
-                        inserted = true;
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                else
-                {
-                    depthItems.Insert(index, newItem);
-                    inserted = true;
-                    break;
-                }
-            }
-            if (!inserted)
-            {
-                depthItems.Add(newItem);
-            }
-        }
-
-        public static void removeDepthEnabledItem(IDepthEnabled newItem)
-        {
-            depthItems.Remove(newItem);
-        }
-
-        public static void updateDepthEnabledItem(IDepthEnabled newItem)
-        {
-            //TODO 
-            //Now I just remove and re-insert the item
-            //A faster algorithm could be made
-
-            depthItems.Remove(newItem);
-            addDepthEnabledItem(newItem);
-
-            //The best implementation would be along these lines:
-            //Get the current index
-            //Look for the next item if it is not the last item in the list
-            //If the next item is more in the foreground on the basis of the perspective
-            //Change direction and look for the previous item more to the beginning of the list
-            //If that item is more in the foreground, continue the search in that direction untill you find its right place
-            //This way items that are most in the foreground are not penelized to search through everything in the background
-            //Because this is what happens when calling addDepthEnabledItem()
-
-
-
         }
     }
 }

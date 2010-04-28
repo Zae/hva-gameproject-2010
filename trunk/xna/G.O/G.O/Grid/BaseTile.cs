@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace ION
 {
-    class BaseTile : ResourceTile, IDepthEnabled
+    public class BaseTile : ResourceTile, IDepthEnabled
     {
         private Color baseColor = new Color();
         private Texture2D baseImage;
