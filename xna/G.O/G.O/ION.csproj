@@ -121,7 +121,6 @@
     <Compile Include="UI\GUILabel.cs" />
     <Compile Include="UI\GUIManager.cs" />
     <Compile Include="UI\LevelInfo.cs" />
-    <Compile Include="UI\PushButton.cs" />
     <Compile Include="UI\Labels\ResourceCounter.cs" />
     <Compile Include="UI\Labels\StrategyInfo.cs" />
     <Compile Include="Units\BallUnit.cs" />
@@ -134,6 +133,14 @@
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />
     <Compile Include="State\TicTacToeTestStuff\CheckedState.cs" />
+    <Compile Include="UI\Button.cs" />
+    <Compile Include="UI\ButtonHandlers\AttackHandler.cs" />
+    <Compile Include="UI\ButtonHandlers\ButtonHandler.cs" />
+    <Compile Include="UI\ButtonHandlers\DefensiveHandler.cs" />
+    <Compile Include="UI\ButtonHandlers\MoveHandler.cs" />
+    <Compile Include="UI\ButtonHandlers\NewUnitHandler.cs" />
+    <Compile Include="UI\ButtonHandlers\StopHandler.cs" />
+    <Compile Include="UI\InfluenceDisplayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <NestedContentProject Include="Content\Content.contentproj">

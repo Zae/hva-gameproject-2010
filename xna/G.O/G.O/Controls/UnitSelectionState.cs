@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 
 namespace ION.Controls
 {
@@ -14,7 +15,7 @@ namespace ION.Controls
             //should that be done from here or from the selected unit?
         }
 
-        public override void handleMouse(int ellapsed)
+        public override void handleMouse(MouseState mouseState)
         {
            //left click canceles the selection
             //but make sure that the left click is propegated to the NeutralState!
@@ -23,9 +24,10 @@ namespace ION.Controls
             //if the tile is occupied by an enemy, this changes into a attack command on that enemy
 
 
+            base.handleMouse(mouseState);
         }
 
-        public override void handleKeyboard(int ellapsed)
+        public override void handleKeyboard(KeyboardState keyboardState)
         {
             //left click canceles the selection
             //but make sure that the left click is propegated to the NeutralState!

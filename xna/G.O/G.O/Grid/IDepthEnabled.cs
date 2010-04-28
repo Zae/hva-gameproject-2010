@@ -12,6 +12,11 @@ namespace ION
 
         int getTileY();
 
+        /// <summary>
+        /// blabla
+        /// </summary>
+        /// <param name="translationX">bla</param>
+        /// <param name="translationY">bla</param>
         void drawDepthEnabled(float translationX, float translationY);
        
 

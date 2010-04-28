@@ -59,8 +59,17 @@ namespace ION
         // a list to hold the blue army
         public List<Unit> blueArmy = new List<Unit>();
 
+        public static BaseTile[] playerBases;
+
+        public static int playerNumber = -1;
+        public static int[] playerInfluences;
+        public static float resources = 0;
 
 
+        public static BaseTile getPlayerBase(int owner)
+        {
+            return playerBases[owner - 1];
+        }
 
         public void mouseRightPressed(float x, float y, float translationX, float translationY, List<Unit> blueArmy)
         {
@@ -415,18 +424,8 @@ namespace ION
             {
                     rt.draw(translationX, translationY);
                     //rt.drawDebug(translationX, translationY);
-                
             }
             ION.spriteBatch.End();
-
-            //ION.spriteBatch.Begin();
-            //for (int i = 0; i < tileCount; i++)
-            //{
-              
-            //    //perspectiveMap[i].draw(translationX, translationY);
-            //    //perspectiveMap[i].drawDebug(translationX, translationY);
-            //}
-            //ION.spriteBatch.End();
 
             ION.spriteBatch.Begin();
             foreach (IDepthEnabled de in depthItems)
@@ -444,7 +443,7 @@ namespace ION
             }
 
             //GridStrategy might want to do some debug rendering
-            updateStrategy.drawDebug();
+            //updateStrategy.drawDebug();
 
 
             ION.spriteBatch.Begin();
@@ -480,6 +479,24 @@ namespace ION
                 }
             }
 
+            //Reset the influence variables
+            for (int i = 0; i < playerInfluences.Length; i++)
+            {
+                playerInfluences[i] = 0;
+            }
+
+            //Update the resources of the player
+            foreach(ResourceTile rt in resourceTiles) 
+            {
+                playerInfluences[rt.owner] += 1;
+
+                if (rt.owner == playerNumber)
+                {
+                    //TODO find a good place for this
+                    resources += (rt.charge /1000);
+                }
+            }
+
 
             /** Disabled for performance, works perfectly tho! **/
             if (GridRSO != null && GridRSO.Connected)
@@ -508,8 +525,10 @@ namespace ION
         }
 
 
-        public Grid(String levelname, GridStrategy strategy)
+        public Grid(String levelname, GridStrategy strategy, int playerNumber)
         {
+            Grid.playerNumber = playerNumber;
+
             updateStrategy = strategy;
             updateStrategy.reset();
 
@@ -547,6 +566,7 @@ namespace ION
                     tileCount = width * height;
                     ////Now read the player count and positions of these players
                     int playerCount = int.Parse(XmlRdr.GetAttribute(2));
+                    playerInfluences = new int[playerCount+1];
 
                     int[] positionsX = new int[playerCount];
                     int[] positionsY = new int[playerCount];
@@ -602,9 +622,11 @@ namespace ION
                     Debug.WriteLine("resourceTileCount:" + resourceTiles.Count);
                     //finally take the player position and put them into the grid
                     List<ResourceTile> toRemove = new List<ResourceTile>();
+                    playerBases = new BaseTile[playerCount];
                     for (int i = 0; i < playerCount; i++)
                     {
                         BaseTile newBase = new BaseTile(positionsX[i], positionsY[i], i + 1);
+                        playerBases[i] = newBase;
                         map[positionsX[i], positionsY[i]] = newBase;
                         addDepthEnabledItem(newBase);
 

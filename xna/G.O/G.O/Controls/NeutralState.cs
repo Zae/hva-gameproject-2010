@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 
 namespace ION.Controls
 {
@@ -18,7 +19,7 @@ namespace ION.Controls
             
         }
 
-        public override void handleMouse(int ellapsed)
+        public override void handleMouse(MouseState mouseState)
         {
             //nothing is selected
 
@@ -27,10 +28,10 @@ namespace ION.Controls
 
             //holding and dragging left mouse makes a selection box
 
-
+            base.handleMouse(mouseState);
         }
 
-        public override void handleKeyboard(int ellapsed)
+        public override void handleKeyboard(KeyboardState keyboardState)
         {
             //left click canceles the selection
             //but make sure that the left click is propegated to the NeutralState!

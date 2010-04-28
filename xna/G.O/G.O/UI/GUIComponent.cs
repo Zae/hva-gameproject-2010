@@ -35,5 +35,10 @@ namespace ION.UI
             screenRectangle.Offset(screenX, screenY);
         }
 
+        public virtual bool handleMouse(int x, int y)
+        {
+            return false;
+        }
+
     }
 }
