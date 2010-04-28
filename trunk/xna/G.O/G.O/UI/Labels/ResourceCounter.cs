@@ -21,7 +21,7 @@ namespace ION.UI
 
         public override void draw()
         {
-            ION.spriteBatch.DrawString(Fonts.font, emptyString+StateTest.get().playerEnergy, position,Color.Gray);
+            ION.spriteBatch.DrawString(Fonts.font, emptyString+(int)Grid.resources, position,Color.Gray);
         }
 
         public override void offset(int screenX, int screenY)

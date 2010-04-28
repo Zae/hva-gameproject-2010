@@ -21,8 +21,8 @@ namespace ION
             this.indexY = indexY;
             this.owner = owner;
             this.nextOwner = owner;
-            this.charge = 999.0f;
-            this.nextCharge = 999.0f;
+            this.charge = 1.0f;
+            this.nextCharge = 1.0f;
         }
 
         public override void draw(float translationX, float translationY)

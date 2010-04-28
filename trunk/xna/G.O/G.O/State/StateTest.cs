@@ -21,7 +21,7 @@ namespace ION
         private GUIManager gui;
         private ControlState controls;
 
-        private float scrollValue;
+        public float scrollValue;
 
         private static StateTest instance;
 
@@ -36,7 +36,6 @@ namespace ION
         public int strategy = 0;
 
         private bool actionOnScreen = false;
-
         private SoundEffectInstance actionOnScreenSound = null;
 
         private float translationX = 0f;
@@ -53,8 +52,7 @@ namespace ION
 
         private bool increaseSpeedDown = false;
         private bool decreaseSpeedDown = false;
-
-        public int playerEnergy = 0;
+   
         public float player1Control = 0.0f;
         public float player2Control = 0.0f;
 
@@ -63,11 +61,9 @@ namespace ION
 
         public bool showHelpFile = false;
 
-     
-        //we need to create a shared object blueUnits
-
-
         static int unitCounter = 999;
+
+        public List<Unit> selection = new List<Unit>();
 
         public StateTest()
         {
@@ -75,7 +71,7 @@ namespace ION
 
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
-            grid = new Grid(levels[level], strategies[strategy]);
+            grid = new Grid(levels[level], strategies[strategy],Players.PLAYER1);
             gui = new GUIManager();
             controls = new NeutralState();
 
@@ -98,7 +94,6 @@ namespace ION
 
             grid.draw(translationX, translationY);
 
-
             if (leftMouseDown)
             {
                 ION.spriteBatch.Begin();
@@ -108,10 +103,7 @@ namespace ION
                 ION.spriteBatch.End();
             }
             
-
-
             gui.draw();
-
 
             if (showHelpFile)
             {
@@ -123,16 +115,19 @@ namespace ION
 
         public override void update(int ellapsed)
         {
-
             grid.update(ellapsed, grid.blueArmy, translationX, translationY);
 
-            playerEnergy++;
+            //get keyboard input
+            KeyboardState keyState = Keyboard.GetState();
 
-            if (!gui.handleMouse(ellapsed))
+            //get mouse input
+            MouseState mouseState = Mouse.GetState();
+
+            if (!gui.handleMouse(mouseState.X,mouseState.Y))
             {
-                controls.handleMouse(ellapsed);
+                controls.handleMouse(mouseState);
             }
-            controls.handleKeyboard(ellapsed);
+            controls.handleKeyboard(keyState);
             
             //Handles which background music to play
             if (MediaPlayer.State.Equals(MediaState.Stopped))
@@ -148,14 +143,6 @@ namespace ION
                     playqueue = 1;
                 }
             }
-
-            //Handle keyboard input
-            KeyboardState keyState = Keyboard.GetState();
-
-            //Handles mouse input
-            MouseState mouseState = Mouse.GetState();
-
-            
             
             if(keyState.IsKeyDown(Keys.Escape)) 
             {
@@ -174,7 +161,9 @@ namespace ION
                 {
                     level = 0;
                 }
-                grid = new Grid(levels[level],strategies[strategy]);   
+                grid = new Grid(levels[level],strategies[strategy],Players.PLAYER1);
+                gui = new GUIManager();
+                controls = new NeutralState();
             }
             else if (keyState.IsKeyUp(Keys.M))
             {
@@ -192,7 +181,9 @@ namespace ION
                 {
                     level = levels.Length - 1;
                 }
-                grid = new Grid(levels[level],strategies[strategy]);  
+                grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
+                gui = new GUIManager();
+                controls = new NeutralState();
             }
             else if (keyState.IsKeyUp(Keys.N))
             {
@@ -211,7 +202,9 @@ namespace ION
                 {
                     strategy = 0;
                 }
-                grid = new Grid(levels[level],strategies[strategy]);
+                grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
+                gui = new GUIManager();
+                controls = new NeutralState();
             }
             else if (keyState.IsKeyUp(Keys.K))
             {
@@ -229,7 +222,9 @@ namespace ION
                 {
                     strategy = strategies.Length - 1;
                 }
-                grid = new Grid(levels[level],strategies[strategy]);
+                grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
+                gui = new GUIManager();
+                controls = new NeutralState();
             }
             else if (keyState.IsKeyUp(Keys.J))
             {
@@ -237,55 +232,39 @@ namespace ION
             }
 
             //SPEED CHANGING
-            if (keyState.IsKeyDown(Keys.O) && !increaseSpeedDown)
+            if (keyState.IsKeyDown(Keys.O))
             {
-                //increaseSpeedDown = true;
                 grid.getUpdateStrategy().increaseSpeed();
             }
-            else if (keyState.IsKeyUp(Keys.O))
+            if (keyState.IsKeyDown(Keys.I))
             {
-                //increaseSpeedDown = false;
-            }
-
-            if (keyState.IsKeyDown(Keys.I) && !decreaseSpeedDown)
-            {
-               // decreaseSpeedDown = true;
                 grid.getUpdateStrategy().decreaseSpeed();
             }
-            else if (keyState.IsKeyUp(Keys.I))
-            {
-                //decreaseSpeedDown = false;
-            }
-     
 
+            //CENTER MAP
             if (keyState.IsKeyDown(Keys.LeftAlt))
             {
                 translationX = 0;
                 translationY = 0;
             }
 
-            if (keyState.IsKeyDown(Keys.RightAlt))
-            {
-                for (int i = 0; i < grid.getPerspectiveMap().Length; i++)
-                {
-                    if (grid.getPerspectiveMap()[i] is ResourceTile)
-                    {
-                        ((ResourceTile)grid.getPerspectiveMap()[i]).nextCharge = 0.01f;
-                    }
-                    if (grid.getPerspectiveMap()[i] is BaseTile)
-                    {
-                        ((ResourceTile)grid.getPerspectiveMap()[i]).nextCharge = 999.0f;
-                    }
-                }
-            }
+            //if (keyState.IsKeyDown(Keys.RightAlt))
+            //{
+            //    for (int i = 0; i < grid.getPerspectiveMap().Length; i++)
+            //    {
+            //        if (grid.getPerspectiveMap()[i] is ResourceTile)
+            //        {
+            //            ((ResourceTile)grid.getPerspectiveMap()[i]).nextCharge = 0.01f;
+            //        }
+            //        if (grid.getPerspectiveMap()[i] is BaseTile)
+            //        {
+            //            ((ResourceTile)grid.getPerspectiveMap()[i]).nextCharge = 999.0f;
+            //        }
+            //    }
+            //}
 
-            if (keyState.IsKeyDown(Keys.G))
-            {
-                //soldier = new BallUnit(grid.GetBlueBlueBase());
-                //blueArmy.Add(new BallUnit(new Vector2(ION.halfWidth - (blueArmy[0].GetScale() / 2), -(blueArmy[0].GetScale() / 4)), blueArmy[0].GetVirtualPos()));
-                grid.blueArmy.Add(new BallUnit(grid.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), grid.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
-            }
-
+    
+            //DEBUG MUSIC
             if (keyState.IsKeyDown(Keys.Space))
             {
                 actionOnScreen = true;
@@ -296,6 +275,7 @@ namespace ION
             }
             handleActionSound(ellapsed);
 
+            //HELP FILE
             if (keyState.IsKeyDown(Keys.H))
             {
                 showHelpFile = true;
@@ -304,24 +284,6 @@ namespace ION
             {
                 showHelpFile = false;
             }
-
-            //Handle mouse input
-
-            if (mouseState.ScrollWheelValue > scrollValue)
-            {
-                Tile.zoomIn();
-                Unit.zoomIn();
-                //Debug.WriteLine("zoomIn");
-
-            }
-            else if (mouseState.ScrollWheelValue < scrollValue)
-            {
-                Tile.zoomOut();
-                Unit.zoomOut();
-               // Debug.WriteLine("zoomOut");
-            }
-
-            scrollValue = mouseState.ScrollWheelValue;
 
             if (mouseState.MiddleButton == ButtonState.Pressed)
             {
@@ -375,11 +337,7 @@ namespace ION
             previousMouseX = mouseState.X;
             previousMouseY = mouseState.Y;
 
-
-
-
-
-
+            //Debug automatically spawn units
             unitCounter++;
 
             if (unitCounter > 1000)

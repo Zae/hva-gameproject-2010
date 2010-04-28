@@ -11,12 +11,8 @@ namespace ION.UI
 
         private List<GUIComponent> children;
 
-
-
         public GUIComposite(int screenX, int screenY, Texture2D imageNormal): base(screenX, screenY, imageNormal)
         {
-            
-
             children = new List<GUIComponent>();
         }
 
@@ -39,6 +35,16 @@ namespace ION.UI
                 guic.draw();
             }
         }
+
+        public void clear()
+        {
+            children.Clear();
+        }
+
+        public override bool handleMouse(int x, int y)
+        {
+            return base.handleMouse(x, y);
+        } 
 
     }
 }
