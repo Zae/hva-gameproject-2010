@@ -192,18 +192,18 @@ namespace ION.GridStrategies
                 {
                     if (todo.charge == 0.0f)
                     {
-                        todo.sustain(0.07f, getWinningPlayer(neighbours, validCount));
+                        todo.sustain(0.02f, getWinningPlayer(neighbours, validCount));
                     }
-                    todo.donate(0.07f);
+                    todo.donate(0.02f);
 
                 }
 
-                else if (fAvg > todo.charge - 0.0f)
+                if (fAvg > todo.charge - 0.0f)
                 {
                     float toGet = fAvg - todo.charge;
-                    if (toGet > 0.05f)
+                    if (toGet > 0.01f)
                     {
-                        toGet = 0.05f;
+                        toGet = 0.01f;
                     }
        
                     todo.receive(toGet);    
@@ -211,9 +211,9 @@ namespace ION.GridStrategies
                 else if (fAvg < todo.charge)
                 {
                     float toLose = todo.charge - fAvg;
-                    if (toLose > 0.08f)
+                    if (toLose > 0.02f)
                     {
-                        toLose = 0.08f;
+                        toLose = 0.02f;
                     }
 
                     todo.donate(toLose);
@@ -262,10 +262,10 @@ namespace ION.GridStrategies
                     }
 
                     //The tile becomes owned by the winning player
-                    if (highest >= 1.0f)
+                    if (highest >= 0.5f)
                     {
                         todo.nextOwner = winningPlayer;
-                        todo.nextCharge = 0.0f;
+                        todo.nextCharge = 0.1f;
                     }
 
 

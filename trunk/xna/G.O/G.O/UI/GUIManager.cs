@@ -35,7 +35,7 @@ namespace ION.UI
             GUIComposite generalInfo = new GUIComposite(20, 20, Images.selectionBar);
             generalInfo.add(new LevelInfo(15, 10));
             generalInfo.add(new StrategyInfo(15, 25));
-            generalInfo.add(new GUILabel(15, 40, "Hold H for Help"));
+            generalInfo.add(new Label(15, 40, "Hold H for Help"));
             addComponent(generalInfo);
 
             applyState(NONE_SELECTED);

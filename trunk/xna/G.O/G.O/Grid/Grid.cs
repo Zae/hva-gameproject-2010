@@ -212,10 +212,22 @@ namespace ION
             for (int i = 0; i < blueArmy.Count(); i++)
             {
                 //TODO units should make a more difuse effect on the grid
-                //if (blueArmy[i] != null)
-                //{
-                //    selectTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
-                //}
+                if (blueArmy[i] != null)
+                {
+                    selectTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
+                    if (selectedTile is ResourceTile)
+                    {
+                        ResourceTile rt = (ResourceTile)selectedTile;
+                        if (rt.owner == playerNumber)
+                        {
+                            rt.receive(0.02f);
+                        }
+                        else
+                        {
+                            rt.sustain(0.02f, playerNumber);
+                        }
+                    }
+                }
 
                 //updates the unit
                 blueArmy[i].Update(translationX, translationY);
