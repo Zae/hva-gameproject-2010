@@ -7,12 +7,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ION.UI
 {
-    class GUILabel : GUIComponent
+    class Label : GUIComponent
     {
         Vector2 position;
         string message;
 
-        public GUILabel(int screenX, int screenY, string message) : base(screenX,screenY,Images.white1px)
+        public Label(int screenX, int screenY, string message) : base(screenX,screenY,Images.white1px)
         {
             position = new Vector2(screenX, screenY);
             this.message = message;
