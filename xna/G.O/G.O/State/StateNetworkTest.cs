@@ -5,6 +5,7 @@ using System.Text;
 using FluorineFx.Net;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace ION
 {
@@ -12,9 +13,11 @@ namespace ION
     {
         private RemoteSharedObject rso;
 
-        private static UInt64 counter=0;
+        private static ulong counter = ulong.MinValue;
 
-        private int messagetime = 0;
+        long messagetime = 0;
+        long localtime;
+        long remotetimelong;
 
         private int y = 0;
 
@@ -34,9 +37,9 @@ namespace ION
         void rso_Sync(object sender, SyncEventArgs e)
         {
             DateTime time = DateTime.Now;
-            long remotetimelong = (long)rso.GetAttribute("Timer");
+            remotetimelong = Serializer.DeserializeLong((Object[])rso.GetAttribute("Timer"));
             DateTime remotetime = DateTime.FromBinary(remotetimelong);
-            messagetime = time.CompareTo(remotetime);
+            messagetime = (time.Ticks - remotetime.Ticks) / TimeSpan.TicksPerMillisecond;
         }
 
         void rso_OnDisconnect(object sender, EventArgs e)
@@ -55,14 +58,39 @@ namespace ION
         }
         public override void draw()
         {
+            ION.get().GraphicsDevice.Clear(Color.Black);
             ION.spriteBatch.Begin();
-            ION.spriteBatch.DrawString(Fonts.font, "MessageTime:" + messagetime.ToString(), new Vector2(10, y += 15), Color.White);
+            if (ION.instance.serverConnection.isHost)
+            {
+                ION.spriteBatch.DrawString(Fonts.font, "WE ARE HOST, WE ONLY SEND TIME!", new Vector2(10, y + 15), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, localtime.ToString(), new Vector2(10, y + 35), Color.White);
+            }
+            else
+            {
+                ION.spriteBatch.DrawString(Fonts.font, "Ping: " + messagetime.ToString() + " ms", new Vector2(10, y + 15), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, remotetimelong.ToString(), new Vector2(10, y + 35), Color.White);
+            }
+            
+            ION.spriteBatch.End();
         }
 
         public override void update(int ellapsed)
         {
-            DateTime time = DateTime.Now;
-            rso.SetAttribute("Timer", time.ToBinary());
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape)) ION.get().setState(new StateTitle());
+
+            if (ION.instance.serverConnection.isHost)
+            {
+                if (counter >= ulong.MaxValue)
+                {
+                    counter = ulong.MinValue;
+                }
+                if (counter++ % 10 == 0) // slow the updating down a bit so we can actually SEE the ping :P
+                {
+                    DateTime time = DateTime.Now;
+                    localtime = time.ToBinary();
+                    rso.SetAttribute("Timer", Serializer.Serialize(localtime));
+                }
+            }
         }
 
         public override void focusLost()
