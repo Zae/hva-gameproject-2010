@@ -20,6 +20,17 @@ namespace ION
         {
             throw new NotImplementedException();
         }
+        public static Byte[] Serialize(long input)
+        {
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms);
+
+            bw.Write(input);
+            byte[] byteArray = streamTobyteArray(ms);
+            ms.Close();
+
+            return byteArray;
+        }
         public static Byte[] Serialize(Tile[,] input, int width, int height)
         {
             MemoryStream stream = new MemoryStream();
@@ -73,6 +84,20 @@ namespace ION
 
         #region Deserialize
 
+        public static long DeserializeLong(Byte[] input)
+        {
+            MemoryStream ms = byteArrayToStream(input);
+            BinaryReader br = new BinaryReader(ms);
+
+            long result = br.ReadInt64();
+            ms.Close();
+
+            return result;
+        }
+        public static long DeserializeLong(Object[] input)
+        {
+            return DeserializeLong(DeserializeObjectArr(input));
+        }
         public static float[,] DeserializeFloat(Byte[] input)
         {
             MemoryStream stream = byteArrayToStream(input);
