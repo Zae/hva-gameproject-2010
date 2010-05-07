@@ -46,8 +46,9 @@ namespace ION
 
         public Queue<Tile> destination;
 
-        public Unit()
+        public Unit(int owner)
         {
+            this.owner = owner;
             destination = new Queue<Tile>();
         }
 
@@ -128,7 +129,7 @@ namespace ION
 
         public static void zoomIn()
         {
-            if (scale <= 80)
+            if (scale <= 25)
             {
                 scale += 1;
 
@@ -141,7 +142,7 @@ namespace ION
 
         public static void zoomOut()
         {
-            if (scale >= 5)
+            if (scale >= 8)
             {
                 scale -= 1;
                 baseHalfWidth = baseHalfWidthConstant * scale;
@@ -202,9 +203,9 @@ namespace ION
 
         public void DrawWayPoints(float translationX, float translationY)
         {
-            if (selected)
+            //When selected and owned by the player
+            if (selected && owner == Grid.playerNumber)
             {
-
                 for (int i = 0; i < destination.Count; i++)
                 {
                     ION.spriteBatch.Draw(Images.unitWayPoint, new Rectangle((int)(((destination.ToArray()[i].GetPos(translationX, translationY).X + 30 - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)), (int)(((destination.ToArray()[i].GetPos(translationX, translationY).Y + 35) * (scale / 15.0f)) + (translationY) + (scale * 0.5f)), (int)(30 * (scale / 15.0f)), (int)(30 * (scale / 15.0f))), Microsoft.Xna.Framework.Graphics.Color.White);

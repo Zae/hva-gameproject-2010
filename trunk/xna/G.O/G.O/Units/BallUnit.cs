@@ -10,25 +10,23 @@ namespace ION
     public class BallUnit : Unit
     {
 
-        public BallUnit()
+        public BallUnit() : base(-1) //Sending a invalid number to the base class as a test, I think this constructor in only used to deserialize into after
         {
             destination = new Queue<Tile>();
 
             pos = new Vector2(ION.halfWidth - (scale / 2), -(scale / 4));
             targetPos = new Vector2(500, 500);
 
-            movementSpeed = 1f;
+            movementSpeed = 2f;
 
         }
 
-        public BallUnit(Vector2 newPos, Vector2 newTarget)
+        public BallUnit(Vector2 newPos, Vector2 newTarget, int owner) : base(owner)
         {
             pos = newPos;
             targetPos = newTarget;
 
-            movementSpeed = 1f;
-
-
+            movementSpeed = 2f;
         }
 
 

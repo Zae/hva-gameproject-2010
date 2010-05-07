@@ -73,28 +73,31 @@ namespace ION
             selected = newSelected;
         }
 
-        public static void zoomIn()
+        public static bool zoomIn()
         {
-            if (scale <= 80)
+            if (scale <= 25)
             {
                 scale += 1;
 
                 baseHalfWidth = baseHalfWidthConstant * scale;
                 baseHalfHeight = baseHalfHeightConstant * scale;
+                return true;
             }
-          
-           
+
+            return false;
         }
 
-        public static void zoomOut()
+        public static bool zoomOut()
         {
-            if (scale >= 5)
+            if (scale >= 8)
             {
                 scale -= 1;
                 baseHalfWidth = baseHalfWidthConstant * scale;
                 baseHalfHeight = baseHalfHeightConstant* scale;
+                return true;
             }
-               
+
+            return false;
         }
 
         public Vector2 GetPos(float translationX, float translationY)

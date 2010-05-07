@@ -48,10 +48,12 @@ namespace ION
         private float virtualX = 0;
         private float virtualY = 0;
 
+        private ThemeManager theme;
+
         private RemoteSharedObject GridRSO;
 
         // a list to hold the blue army
-        public List<Unit> blueArmy = new List<Unit>();
+        public List<Unit> allUnits = new List<Unit>();
 
         public static int playerNumber = -1;
         public static int[] playerInfluences;
@@ -88,6 +90,29 @@ namespace ION
 
             //pass the position and the color and see if you get back anything
             selectedTile = getTile(tilesVertical, tilesHorizontal, color);
+        }
+
+        public Tile getTile(float x, float y, float translationX, float translationY)
+        {
+            //drawHitTest = true;
+
+            //translate the screen input to world coordinates
+            mouseWorldX = x - translationX - ION.halfWidth;
+            mouseWorldY = y - translationY;
+
+            //get the true value from the origin in tile units
+            float tilesVerticalQ = (float)(((float)mouseWorldY / (float)Tile.baseHalfHeight)) - 1;
+            float tilesHorizontalQ = (float)((float)mouseWorldX / (float)Tile.baseHalfWidth);
+
+            //get the closest even value to that position
+            int tilesVertical = Tool.closestEvenInt(tilesVerticalQ);
+            int tilesHorizontal = Tool.closestEvenInt(tilesHorizontalQ);
+
+            //get the color at that position on the hitmap
+            uint color = doHitmapTest(x, y, translationX, translationY, tilesHorizontal, tilesVertical);
+
+            //pass the position and the color and see if you get back anything
+            return getTile(tilesVertical, tilesHorizontal, color);
         }
 
         public GridStrategy getUpdateStrategy()
@@ -172,6 +197,8 @@ namespace ION
         {
             ION.spriteBatch.Begin();
 
+            theme.drawGroundTexture();
+
             foreach (ResourceTile rt in resourceTiles)
             {
                     rt.draw(translationX, translationY);
@@ -184,23 +211,23 @@ namespace ION
             {
                 de.drawDepthEnabled(translationX, translationY);
             }
-            ION.spriteBatch.End();
+            //ION.spriteBatch.End();
 
             if (drawHitTest)
             {
-                ION.spriteBatch.Begin();
+                //ION.spriteBatch.Begin();
                 ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(0, 0, Images.tileHitmapImage.Width, Images.tileHitmapImage.Height), Color.White);
                 ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX, (int)virtualY, 5, 5), Color.Black);
-                ION.spriteBatch.End();
+                //ION.spriteBatch.End();
             }
 
             //GridStrategy might want to do some debug rendering
             //updateStrategy.drawDebug();
 
-            ION.spriteBatch.Begin();
-            for (int i = 0; i < blueArmy.Count; i++)
-            {
-                blueArmy[i].DrawWayPoints(translationX, translationY);
+            //ION.spriteBatch.Begin();
+            for (int i = 0; i < allUnits.Count; i++)
+            {        
+                allUnits[i].DrawWayPoints(translationX, translationY);
             }
             ION.spriteBatch.End();
         }
@@ -309,7 +336,7 @@ namespace ION
         {
             List<Unit> selection = new List<Unit>();
             
-            foreach (Unit u in blueArmy)
+            foreach (Unit u in allUnits)
             {
                 if (u.selected && u.owner == playerNumber)
                 {
@@ -342,8 +369,8 @@ namespace ION
 
         public void CreateBlueUnit(float translationX, float translationY)
         {
-            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY));
-            blueArmy.Add(newUnit);
+            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY), playerNumber);
+            allUnits.Add(newUnit);
             addDepthEnabledItem(newUnit);
         }
 
@@ -521,29 +548,50 @@ namespace ION
                     width = int.Parse(XmlRdr.GetAttribute(0));
                     height = int.Parse(XmlRdr.GetAttribute(1));
                     tileCount = width * height;
+
+                    //See if this level can fit in the number of available Sectors
+                    if ((width / Sector.TILES_PER_SECTOR_AXIS) > Sector.MAX_SECTOR_ON_AXIS || (width / Sector.TILES_PER_SECTOR_AXIS) > Sector.MAX_SECTOR_ON_AXIS)
+                    {
+                        Debug.WriteLine("FATAL ERROR: Cannot house this amount of Sectors");
+                        ION.get().Exit();
+                    }
+
+                    if ((width % Sector.TILES_PER_SECTOR_AXIS > 0 || height % Sector.TILES_PER_SECTOR_AXIS > 0)) 
+                    {
+                        Debug.WriteLine("FATAL ERROR: This Level is not formatted for the current Tile per Sector");
+                        ION.get().Exit();
+                    }
+
+                    sectors = new Sector[width/Sector.TILES_PER_SECTOR_AXIS,height/Sector.TILES_PER_SECTOR_AXIS];
+                    //sectors.
+
+
+                
+
                     ////Now read the player count and positions of these players
                     int playerCount = int.Parse(XmlRdr.GetAttribute(2));
                     playerInfluences = new int[playerCount + 1];
 
                     int[] positionsX = new int[playerCount];
                     int[] positionsY = new int[playerCount];
+
                     for (int i = 0; i < playerCount; i++)
                     {
                         positionsX[i] = int.Parse(XmlRdr.GetAttribute(3 + (i * 2)));
                         positionsY[i] = int.Parse(XmlRdr.GetAttribute(3 + (i * 2) + 1));
-
                     }
-
 
                     map = new Tile[width, height];
                     perspectiveMap = new Tile[tileCount];
 
-                    String rawLevel = XmlRdr.ReadElementContentAsString();
+                    //Load the theme
+                    string themeName = (XmlRdr.GetAttribute(3+(playerCount*2)));
+                    theme = new ThemeManager(themeName,width,height);
 
+                    String rawLevel = XmlRdr.ReadElementContentAsString();
                     // Debug.WriteLine("The raw level data reads: " + rawLevel);
 
                     int length = rawLevel.Length;
-
                     //for (int i = 0; i < length; i++)
                     //{
                     //    Debug.WriteLine("char " + i + " reads: " + rawLevel[i]);
@@ -562,7 +610,6 @@ namespace ION
                                 colom = 0;
                                 row++;
                             }
-
                             map[colom, row] = createTile(rawLevel[i], colom, row);
                             colom++;
                         }
@@ -574,9 +621,7 @@ namespace ION
                             }
                         }
                     }
-
-
-                    Debug.WriteLine("resourceTileCount:" + resourceTiles.Count);
+         
                     //finally take the player position and put them into the grid
                     List<ResourceTile> toRemove = new List<ResourceTile>();
                     playerBases = new BaseTile[playerCount];
@@ -588,8 +633,6 @@ namespace ION
                         addDepthEnabledItem(newBase);
 
                         //remove the ResrouceTiles from the map
-
-
                         foreach (ResourceTile rt in resourceTiles)
                         {
                             if (rt.indexX == positionsX[i] && rt.indexY == positionsY[i])
@@ -598,13 +641,11 @@ namespace ION
                             }
                         }
                     }
-                    Debug.WriteLine("toremove size:" + toRemove.Count);
                     foreach (ResourceTile rt in toRemove)
                     {
                         resourceTiles.Remove(rt);
                     }
 
-                    Debug.WriteLine("resourceTileCount:" + resourceTiles.Count);
                 }
                 else
                 {
@@ -619,6 +660,24 @@ namespace ION
             {
                 Console.WriteLine("exception in grid: " + e.ToString());
             }
+        }
+
+        public void onResize()
+        {
+            theme.resizeGroundTexture();
+        }
+
+        public List<Unit> getPlayerUnits()
+        {
+            List<Unit> playerUnits = new List<Unit>();
+            foreach(Unit u in allUnits) 
+            {
+                if (u.owner == playerNumber)
+                {
+                    playerUnits.Add(u);
+                }
+            }
+            return playerUnits;
         }
     }
 }

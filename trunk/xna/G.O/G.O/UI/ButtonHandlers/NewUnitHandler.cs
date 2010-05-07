@@ -14,8 +14,8 @@ namespace ION.UI
             //if (keyState.IsKeyDown(Keys.G))
             //{
             //    //soldier = new BallUnit(grid.GetBlueBlueBase());
-            //    //blueArmy.Add(new BallUnit(new Vector2(ION.halfWidth - (blueArmy[0].GetScale() / 2), -(blueArmy[0].GetScale() / 4)), blueArmy[0].GetVirtualPos()));
-            //    grid.blueArmy.Add(new BallUnit(grid.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), grid.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
+            //    //allUnits.Add(new BallUnit(new Vector2(ION.halfWidth - (allUnits[0].GetScale() / 2), -(allUnits[0].GetScale() / 4)), allUnits[0].GetVirtualPos()));
+            //    grid.allUnits.Add(new BallUnit(grid.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), grid.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
             //}
             
         }

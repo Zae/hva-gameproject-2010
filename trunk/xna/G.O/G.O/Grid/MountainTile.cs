@@ -10,6 +10,8 @@ namespace ION
     public class MountainTile : Tile, IDepthEnabled
     {
 
+        public static Color themeColor = Color.White;
+
         public MountainTile(int indexX, int indexY)
         {
             this.indexX = indexX;
@@ -31,7 +33,7 @@ namespace ION
 
         public override void draw(float translationX, float translationY)
         {     
-            ION.spriteBatch.Draw(Images.mountainImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth+baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);                 
+            ION.spriteBatch.Draw(Images.mountainImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth+baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);                 
         }
 
 

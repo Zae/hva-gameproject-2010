@@ -225,7 +225,7 @@ namespace ION
                 tileColor.G = 255;
                 tileColor.B = 255;
 
-                tileColor.A = 255;
+                tileColor.A = 50;
             }
 
             //if (isSpiking)
@@ -255,12 +255,13 @@ namespace ION
                     return tileColor;
                 }
 
-                tileColor.R = (byte)(255 - (charge * 255));
+                tileColor.R = 0;
                 tileColor.G = (byte)(255 - (charge * 255));
                 tileColor.B = 255;
 
                 //tileColor.A = (byte)(charge * 255);
-                tileColor.A = 255;
+                //tileColor.A = (byte)(255 - (charge * 255));
+                tileColor.A = 170;
             }
             else if (owner == Players.PLAYER2)
             {
@@ -278,10 +279,11 @@ namespace ION
 
                 tileColor.R = 255;
                 tileColor.G = (byte)(255 - (charge * 255));
-                tileColor.B = (byte)(255 - (charge * 255));
+                tileColor.B = 0;
 
                 //tileColor.A = (byte)(charge * 255);
-                tileColor.A = 255;
+                //tileColor.A = (byte)(255 - (charge * 255));
+                tileColor.A = 170;
             }
 
             return tileColor;
