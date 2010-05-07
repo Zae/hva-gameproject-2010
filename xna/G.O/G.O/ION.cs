@@ -147,7 +147,7 @@ namespace ION
 
             //Load Misc items
             Images.teamLogoImage = Content.Load<Texture2D>("miscItems/logo-game-ninjas");
-            Images.starfieldImage = Content.Load<Texture2D>("miscItems/blue_red");
+            //Images.starfieldImage = Content.Load<Texture2D>("miscItems/blue_red");
 
             //GUI Items
             Images.commandsBar = Content.Load<Texture2D>("guiItems/commandsBar");
@@ -190,7 +190,7 @@ namespace ION
             Images.blueUnitChargeImage = Content.Load<Texture2D>("unitItems/blueballcharge");
             Images.redUnitImage = Content.Load<Texture2D>("unitItems/redball");
             Images.redUnitChargeImage = Content.Load<Texture2D>("unitItems/redballcharge");
-            Images.unitHitmapImage = Content.Load<Texture2D>("toolItems/ballhitmap");
+            //c Images.unitHitmapImage = Content.Load<Texture2D>("toolItems/ballhitmap");
             Images.unitWayPoint = Content.Load<Texture2D>("unitItems/greenArrow");
             Images.baseHitmapImage = Content.Load<Texture2D>("toolItems/base_hitmap");
             Images.baseImage = Content.Load<Texture2D>("tileItems/base_tile");
@@ -211,6 +211,29 @@ namespace ION
             for (int i = 0; i < Images.chargeCountImages.Length; i++)
             {
                 Images.chargeCountImages[i] = Content.Load<Texture2D>("chargeCountItems/"+(i + 1).ToString());
+            }
+
+            int players = 1;
+            string[] directions = new string[] { "s", "se", "e", "ne", "n", "nw", "w", "sw" };
+
+            Images.unit = new Texture2D[players, directions.Length];
+            Images.unit_selected = new Texture2D[players, directions.Length];
+
+            for (int i = 0; i < players; i++)
+            {
+                for (int j = 0; j < directions.Length; j++)
+                {
+                    Images.unit[i, j] = Images.chargeCountImages[i] = Content.Load<Texture2D>("unitItems/player" + (i + 1).ToString() + "unit_" + directions[j]);
+                    Images.unit_selected[i, j] = Images.chargeCountImages[i] = Content.Load<Texture2D>("unitItems/player" + (i + 1).ToString() + "unit_selected_" + directions[j]);
+                }
+            }
+
+
+
+            //Load the numerical pictures that can signal the value of a tile
+            for (int i = 0; i < Images.chargeCountImages.Length; i++)
+            {
+                Images.chargeCountImages[i] = Content.Load<Texture2D>("chargeCountItems/" + (i + 1).ToString());
             }
 
             
