@@ -37,7 +37,7 @@ namespace ION.Controls
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 //grid.selectOnMap(mouseState.X, mouseState.Y, translationX, translationY);
-                //blueArmy[0].SetTarget(new Vector2(mouseState.X, mouseState.Y));
+                //allUnits[0].SetTarget(new Vector2(mouseState.X, mouseState.Y));
 
                 if (!leftMouseDown)
                 {
@@ -77,34 +77,34 @@ namespace ION.Controls
 
         public void selectOnMap(float x, float y, float translationX, float translationY)
         {
-            List<Unit> blueArmy = Grid.get().blueArmy;
+            List<Unit> playerArmy = Grid.get().getPlayerUnits();
 
      
             Grid.get().selectTile(x, y, translationX, translationY);
             if (Grid.get().selectedTile != null)
             {
-                for (int i = 0; i < blueArmy.Count(); i++)
+                for (int i = 0; i < playerArmy.Count(); i++)
                 {
                     //unselect this unit by default
-                    blueArmy[i].selected = false;
+                    playerArmy[i].selected = false;
 
                     //check if the current tile matches the units tile, if so changed the units selected to true
-                    if (Grid.get().GetTile(x, y, translationX, translationY) == blueArmy[i].GetTile())
+                    if (Grid.get().GetTile(x, y, translationX, translationY) == playerArmy[i].GetTile())
                     {
-                        blueArmy[i].selected = true;//select unit
+                        playerArmy[i].selected = true;//select unit
                         selectedUnits = true;
                     }
 
                     // if this unit is in between the 2 mouse positions
                     if (
-                        ((blueArmy[i].GetVirtualPos().X > x && blueArmy[i].GetVirtualPos().X < oldMousePos.X)
-                        || (blueArmy[i].GetVirtualPos().X < x && blueArmy[i].GetVirtualPos().X > oldMousePos.X))
-                        && ((blueArmy[i].GetVirtualPos().Y > y && blueArmy[i].GetVirtualPos().Y < oldMousePos.Y)
-                        || (blueArmy[i].GetVirtualPos().Y < y && blueArmy[i].GetVirtualPos().Y > oldMousePos.Y))
+                        ((playerArmy[i].GetVirtualPos().X > x && playerArmy[i].GetVirtualPos().X < oldMousePos.X)
+                        || (playerArmy[i].GetVirtualPos().X < x && playerArmy[i].GetVirtualPos().X > oldMousePos.X))
+                        && ((playerArmy[i].GetVirtualPos().Y > y && playerArmy[i].GetVirtualPos().Y < oldMousePos.Y)
+                        || (playerArmy[i].GetVirtualPos().Y < y && playerArmy[i].GetVirtualPos().Y > oldMousePos.Y))
                         )
                     {
                         // set unit to selected
-                        blueArmy[i].selected = true;
+                        playerArmy[i].selected = true;
                         selectedUnits = true;
                     }
 

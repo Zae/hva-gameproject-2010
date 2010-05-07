@@ -29,7 +29,7 @@ namespace ION
         private int playqueue = 1;
 
         public int level = 0;
-        public string[] levels = { "MediumLevelTest.xml", "PathLevelTest.xml","LargeLevelTest.xml"}; //also available ,"BigLevelTest.xml","Level1.xml"
+        public string[] levels = { "MediumLevelTest.xml", "PathLevelTest.xml", "LargeLevelTest.xml" };
 
         public GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy() };
         public int strategy = 0;
@@ -81,9 +81,9 @@ namespace ION
         {
             ION.get().GraphicsDevice.Clear(Color.Gray);
 
-            ION.spriteBatch.Begin();
-            ION.spriteBatch.Draw(Images.starfieldImage, new Rectangle(0, 0, ION.width, ION.height), Color.White);
-            ION.spriteBatch.End();
+            //ION.spriteBatch.Begin();
+            //ION.spriteBatch.Draw(Images.starfieldImage, new Rectangle(0, 0, ION.width, ION.height), Color.White);
+            //ION.spriteBatch.End();
 
             grid.draw(translationX, translationY);
 
@@ -101,7 +101,7 @@ namespace ION
 
         public override void update(int ellapsed)
         {
-            grid.update(ellapsed, grid.blueArmy, translationX, translationY);
+            grid.update(ellapsed, grid.allUnits, translationX, translationY);
 
             //get keyboard input
             KeyboardState keyState = Keyboard.GetState();

@@ -17,7 +17,6 @@ namespace ION
         public static Texture2D baseHitmapImage;
         public static Texture2D borderImage;
         public static Texture2D resourceImage;
-        //public static Texture2D texturedResourceImage;
         public static Texture2D white1px;
         public static Texture2D tileHitmapImage;
         public static Texture2D blueUnitImage;
@@ -29,6 +28,9 @@ namespace ION
 
         public static Texture2D blueBaseImage;
         public static Texture2D redBaseImage;
+
+        //environment
+        public static Texture2D groundTexture;
 
         //guiItems
         public static Texture2D commandsBar;

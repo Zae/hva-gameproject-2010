@@ -228,6 +228,12 @@ namespace ION
             state.focusGained();
         }
 
+        public void loadGroundTexture(string name)
+        {
+            
+            Images.groundTexture = Content.Load<Texture2D>("tileItems/"+name);  
+        }
+
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
@@ -286,6 +292,15 @@ namespace ION
             state.draw();
 
             base.Draw(gameTime);
+        }
+
+        public static bool onScreen(int x, int y)
+        {
+            if (x > 0 && x <= ION.width && y > 0 && y <= ION.height)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -118,11 +118,7 @@
     <Compile Include="Tools\Tool.cs" />
     <Compile Include="UI\GUIComponent.cs" />
     <Compile Include="UI\GUIComposite.cs" />
-    <Compile Include="UI\Implementations\Label.cs" />
     <Compile Include="UI\GUIManager.cs" />
-    <Compile Include="UI\Implementations\LevelInfo.cs" />
-    <Compile Include="UI\Implementations\ResourceCounter.cs" />
-    <Compile Include="UI\Implementations\StrategyInfo.cs" />
     <Compile Include="Units\BallUnit.cs" />
     <Compile Include="Units\Unit.cs" />
   </ItemGroup>
@@ -134,14 +130,19 @@
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />
     <Compile Include="State\TicTacToeTestStuff\CheckedState.cs" />
+    <Compile Include="Tools\ThemeManager.cs" />
     <Compile Include="UI\Implementations\Button.cs" />
+    <Compile Include="UI\Implementations\InfluenceDisplayer.cs" />
+    <Compile Include="UI\Implementations\Label.cs" />
+    <Compile Include="UI\Implementations\LevelInfo.cs" />
+    <Compile Include="UI\Implementations\ResourceCounter.cs" />
+    <Compile Include="UI\Implementations\StrategyInfo.cs" />
     <Compile Include="UI\ButtonHandlers\AttackHandler.cs" />
     <Compile Include="UI\ButtonHandlers\ButtonHandler.cs" />
     <Compile Include="UI\ButtonHandlers\DefensiveHandler.cs" />
     <Compile Include="UI\ButtonHandlers\MoveHandler.cs" />
     <Compile Include="UI\ButtonHandlers\NewUnitHandler.cs" />
     <Compile Include="UI\ButtonHandlers\StopHandler.cs" />
-    <Compile Include="UI\Implementations\InfluenceDisplayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <NestedContentProject Include="Content\Content.contentproj">

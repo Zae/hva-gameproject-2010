@@ -56,7 +56,7 @@ namespace ION.GridStrategies
 
         public override void update(int ellapsed)
         {
-            //do unit stuff
+            
             step++;
             if (step == 0)
             {
@@ -65,16 +65,18 @@ namespace ION.GridStrategies
 
                 iterations++;
 
-                foreach (ResourceTile rt in Grid.resourceTiles)
-                {
-                    rt.update();
-                }
+        
 
             }
             if (step == maxStep)
             {
 
                 step = -1;
+            }
+
+            foreach (ResourceTile rt in Grid.resourceTiles)
+            {
+                rt.update();
             }
 
 
@@ -117,9 +119,11 @@ namespace ION.GridStrategies
         }
 
 
-        private void recalculateTile(ResourceTile todo, ResourceTile[] neighbours, int validCount)
+        private void recalculateTile(ResourceTile todo, ResourceTile[] neighbours, int validCount, int spikingCount)
         {
 
+            
+            
             if (todo.isSpiking)
             {
                 if (todo.charge < 0.8f)
@@ -173,20 +177,24 @@ namespace ION.GridStrategies
 
             if (todo.owner > 0)
             {
-                //float fAvg = friendlyCharge / (friendlyTileCount + (neutralTiles / 8) + 1);
-                //float eAvg = enemyCharge / (enemyTileCount + (neutralTiles / 8) + 1);
 
                 friendlyCharge += todo.charge;
-                float fAvg = (friendlyCharge / (friendlyTileCount));
-                float eAvg = enemyCharge / (enemyTileCount);
+
+                float fAvg = friendlyCharge / (friendlyTileCount + (neutralTiles/32));
+                float eAvg = enemyCharge / (enemyTileCount + (neutralTiles/32));
+
+               
                 //float fAvg = (friendlyCharge / (friendlyTileCount));
+                //float eAvg = enemyCharge / (enemyTileCount);
+
+                //float fAvg = (friendlyCharge / (friendlyTileCount+1));
                 //float eAvg = enemyCharge / (enemyTileCount);
 
                 fAvg += (float)random.NextDouble();
                 fAvg = fAvg / 2;
 
-                //eAvg += (float)random.NextDouble();
-                //eAvg = eAvg / 2;
+                eAvg += (float)random.NextDouble();
+                eAvg = eAvg / 2;
 
                 if (eAvg > fAvg)
                 {
@@ -194,11 +202,11 @@ namespace ION.GridStrategies
                     {
                         todo.sustain(0.02f, getWinningPlayer(neighbours, validCount));
                     }
-                    todo.donate(0.02f);
+                    todo.donate(0.03f);
 
                 }
 
-                if (fAvg > todo.charge - 0.0f)
+                else if (fAvg > todo.charge - 0.0f)
                 {
                     float toGet = fAvg - todo.charge;
                     if (toGet > 0.01f)
@@ -272,6 +280,8 @@ namespace ION.GridStrategies
                 }
             }
 
+    
+
         }
 
         private int getWinningPlayer(ResourceTile[] neighbours, int validCount)
@@ -315,18 +325,27 @@ namespace ION.GridStrategies
             int y = t.indexY;
 
             int validCount = 0;
+            int spikeCount = 0;
 
 
             //Horizontal and Vertical
             if (Grid.map[x, y - 1] is ResourceTile)
             {
                 neighbours[validCount] = (ResourceTile)Grid.map[x, y - 1];
+                if (neighbours[validCount].isSpiking)
+                {
+                    spikeCount++;
+                }
                 validCount++;
             }
 
             if (Grid.map[x + 1, y] is ResourceTile)
             {
                 neighbours[validCount] = (ResourceTile)Grid.map[x + 1, y];
+                if (neighbours[validCount].isSpiking)
+                {
+                    spikeCount++;
+                }
                 validCount++;
             }
 
@@ -335,6 +354,10 @@ namespace ION.GridStrategies
             if (Grid.map[x, y + 1] is ResourceTile)
             {
                 neighbours[validCount] = (ResourceTile)Grid.map[x, y + 1];
+                if (neighbours[validCount].isSpiking)
+                {
+                    spikeCount++;
+                }
                 validCount++;
             }
 
@@ -343,6 +366,10 @@ namespace ION.GridStrategies
             if (Grid.map[x - 1, y] is ResourceTile)
             {
                 neighbours[validCount] = (ResourceTile)Grid.map[x - 1, y];
+                if (neighbours[validCount].isSpiking)
+                {
+                    spikeCount++;
+                }
                 validCount++;
             }
 
@@ -350,28 +377,44 @@ namespace ION.GridStrategies
             //if (Grid.map[x - 1, y - 1] is ResourceTile)
             //{
             //    neighbours[validCount] = (ResourceTile)Grid.map[x - 1, y - 1];
+            //if (neighbours[validCount].isSpiking)
+            //{
+            //    spikeCount++;
+            //}
             //    validCount++;
             //}
 
             //if (Grid.map[x + 1, y - 1] is ResourceTile)
             //{
             //    neighbours[validCount] = (ResourceTile)Grid.map[x + 1, y - 1];
+            //if (neighbours[validCount].isSpiking)
+            //{
+            //    spikeCount++;
+            //}
             //    validCount++;
             //}
 
             //if (Grid.map[x + 1, y + 1] is ResourceTile)
             //{
             //    neighbours[validCount] = (ResourceTile)Grid.map[x + 1, y + 1];
+            //if (neighbours[validCount].isSpiking)
+            //{
+            //    spikeCount++;
+            //}
             //    validCount++;
             //}
 
             //if (Grid.map[x - 1, y + 1] is ResourceTile)
             //{
             //    neighbours[validCount] = (ResourceTile)Grid.map[x - 1, y + 1];
+            //if (neighbours[validCount].isSpiking)
+            //{
+            //    spikeCount++;
+            //}
             //    validCount++;
             //}
 
-            recalculateTile(todo, neighbours, validCount);
+            recalculateTile(todo, neighbours, validCount,spikeCount);
 
         }
 
@@ -388,6 +431,7 @@ namespace ION.GridStrategies
 
 
             int validCount = 0;
+            int spikeCount = 0;
 
             int x = t.indexX;
             int y = t.indexY;
@@ -396,6 +440,10 @@ namespace ION.GridStrategies
             if (isValid(x, y - 1) && Grid.map[x, y - 1] is ResourceTile)
             {
                 neighbours[validCount] = (ResourceTile)Grid.map[x, y - 1];
+                if (neighbours[validCount].isSpiking)
+                {
+                    spikeCount++;
+                }
                 validCount++;
 
             }
@@ -404,6 +452,10 @@ namespace ION.GridStrategies
             {
 
                 neighbours[validCount] = (ResourceTile)Grid.map[x + 1, y];
+                if (neighbours[validCount].isSpiking)
+                {
+                    spikeCount++;
+                }
                 validCount++;
             }
            
@@ -411,6 +463,10 @@ namespace ION.GridStrategies
             {
 
                 neighbours[validCount] = (ResourceTile)Grid.map[x, y + 1];
+                if (neighbours[validCount].isSpiking)
+                {
+                    spikeCount++;
+                }
                 validCount++;
             }
            
@@ -418,6 +474,10 @@ namespace ION.GridStrategies
             {
 
                 neighbours[validCount] = (ResourceTile)Grid.map[x - 1, y];
+                if (neighbours[validCount].isSpiking)
+                {
+                    spikeCount++;
+                }
                 validCount++;
             }
 
@@ -426,6 +486,10 @@ namespace ION.GridStrategies
             //{
 
             //    neighbours[validCount] = (ResourceTile)Grid.map[x - 1, y - 1];
+            //if (neighbours[validCount].isSpiking)
+            //{
+            //    spikeCount++;
+            //}
             //    validCount++;
 
             //}
@@ -433,25 +497,37 @@ namespace ION.GridStrategies
             //{
 
             //    neighbours[validCount] = (ResourceTile)Grid.map[x + 1, y - 1];
+            //if (neighbours[validCount].isSpiking)
+            //{
+            //    spikeCount++;
+            //}
             //    validCount++;
             //}
             //if (isValid(x + 1, y + 1) && Grid.map[x + 1, y + 1] is ResourceTile)
             //{
 
             //    neighbours[validCount] = (ResourceTile)Grid.map[x + 1, y + 1];
+            //if (neighbours[validCount].isSpiking)
+            //{
+            //    spikeCount++;
+            //}
             //    validCount++;
             //}
             //if (isValid(x - 1, y + 1) && Grid.map[x - 1, y + 1] is ResourceTile)
             //{
 
             //    neighbours[validCount] = (ResourceTile)Grid.map[x - 1, y + 1];
+            //if (neighbours[validCount].isSpiking)
+            //{
+            //    spikeCount++;
+            //}
             //    validCount++;
             //}
 
 
 
 
-            recalculateTile(todo, neighbours, validCount);
+            recalculateTile(todo, neighbours, validCount,spikeCount);
 
         }
 

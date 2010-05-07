@@ -41,17 +41,17 @@ namespace ION.Controls
 
         public void mouseRightPressed(float x, float y, float translationX, float translationY)
         {
-            List<Unit> blueArmy = Grid.get().blueArmy;
+            List<Unit> playerUnits = Grid.get().getPlayerUnits();
             
             Grid.get().selectTile(x, y, translationX, translationY);
             if (Grid.get().selectedTile != null)
             {
-                for (int i = 0; i < blueArmy.Count(); i++)
+                for (int i = 0; i < playerUnits.Count(); i++)
                 {
-                    if (blueArmy[i] != null && blueArmy[i].selected)
+                    if (playerUnits[i] != null && playerUnits[i].selected)
                     {
-                        blueArmy[i].EmptyWayPoints();
-                        blueArmy[i].SetTarget(Grid.get().selectedTile.GetPos(translationX, translationY));
+                        playerUnits[i].EmptyWayPoints();
+                        playerUnits[i].SetTarget(Grid.get().selectedTile.GetPos(translationX, translationY));
                     }
                 }
             }
@@ -59,16 +59,16 @@ namespace ION.Controls
 
         public void shiftMouseRightPressed(float x, float y, float translationX, float translationY)
         {
-            List<Unit> blueArmy = Grid.get().blueArmy;
+            List<Unit> playerUnits = Grid.get().getPlayerUnits();
             
             Grid.get().selectTile(x, y, translationX, translationY);
             if (Grid.get().selectedTile != null)
             {
-                for (int i = 0; i < blueArmy.Count(); i++)
+                for (int i = 0; i < playerUnits.Count(); i++)
                 {
-                    if (blueArmy[i] != null && blueArmy[i].selected)
+                    if (playerUnits[i] != null && playerUnits[i].selected)
                     {
-                        blueArmy[i].AddDestination(Grid.get().selectedTile);// here
+                        playerUnits[i].AddDestination(Grid.get().selectedTile);// here
                     }
                 }
             }
