@@ -13,6 +13,8 @@ namespace ION
 
         public int owner;
 
+        public int direction = 4;
+
         protected int health = 100;
         //protected int tileX;
         //protected int tileY;
@@ -119,6 +121,50 @@ namespace ION
                     temp = temp * movementSpeed;
                     //move the unit by that amount
                     pos += temp;
+
+                    //Update the direction it faces
+                    //TODO @michiel
+                    if (temp.X > 0)
+                    {
+                        if (temp.Y > 0)
+                        {
+                            direction = 1;
+                        }
+                        else if (temp.Y < 0)
+                        {
+                            direction = 3;
+                        }
+                        else
+                        {
+                            direction = 2;
+                        }
+                    }
+                    else if (temp.X < 0)
+                    {
+                        if (temp.Y > 0)
+                        {
+                            direction = 7;
+                        }
+                        else if (temp.Y < 0)
+                        {
+                            direction = 5;
+                        }
+                        else
+                        {
+                            direction = 6;
+                        }
+                    }
+                    else
+                    {
+                        if (temp.Y > 0)
+                        {
+                            direction = 0;
+                        }
+                        else if (temp.Y < 0)
+                        {
+                            direction = 4;
+                        }
+                    }
                 }
                 else
                 {

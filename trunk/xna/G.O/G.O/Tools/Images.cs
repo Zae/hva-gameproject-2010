@@ -10,7 +10,6 @@ namespace ION
     {
 
         public static Texture2D teamLogoImage;
-        public static Texture2D starfieldImage;
 
         public static Texture2D mountainImage;
         public static Texture2D baseImage;
@@ -19,11 +18,13 @@ namespace ION
         public static Texture2D resourceImage;
         public static Texture2D white1px;
         public static Texture2D tileHitmapImage;
+
+
         public static Texture2D blueUnitImage;
         public static Texture2D blueUnitChargeImage;
         public static Texture2D redUnitImage;
         public static Texture2D redUnitChargeImage;
-        public static Texture2D unitHitmapImage;
+        //public static Texture2D unitHitmapImage;
         public static Texture2D unitWayPoint;
 
         public static Texture2D blueBaseImage;
@@ -31,6 +32,9 @@ namespace ION
 
         //environment
         public static Texture2D groundTexture;
+
+        public static Texture2D[,] unit;
+        public static Texture2D[,] unit_selected;
 
         //guiItems
         public static Texture2D commandsBar;
@@ -83,8 +87,19 @@ namespace ION
             else
             {
                 return chargeCountImages[chargeCountImages.Length-1];
+            } 
+        }
+
+        public static Texture2D getUnitImage(int owner, int direction,bool selected)
+        {
+            if (selected)
+            {
+                return unit_selected[owner - 1, direction];
             }
-            
+            else
+            {
+                return unit[owner - 1, direction];
+            }
         }
     }
 }
