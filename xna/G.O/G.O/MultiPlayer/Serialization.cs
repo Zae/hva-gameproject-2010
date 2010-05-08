@@ -8,10 +8,6 @@ namespace ION
     {
         #region Serialize
 
-        public static Byte[] Serialize(String[] input)
-        {
-            throw new NotImplementedException();
-        }
         public static Byte[] Serialize(float[] input)
         {
             throw new NotImplementedException();
@@ -79,11 +75,49 @@ namespace ION
             stream.Close();
             return byteArray;
         }
+        public static Byte[] Serialize(String[] input)
+        {
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms);
+
+            bw.Write(input.Length);  //32bit int!
+
+            foreach (String str in input)
+            {
+                bw.Write(str);
+            }
+
+            Byte[] result = streamTobyteArray(ms);
+            ms.Close();
+
+            return result;
+        }
 
         #endregion
 
         #region Deserialize
 
+        public static String[] DeserializeStringArr(Byte[] input)
+        {
+            MemoryStream ms = byteArrayToStream(input);
+            BinaryReader br = new BinaryReader(ms);
+
+            int length = br.ReadInt32();
+
+            String[] result = new String[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = br.ReadString();
+            }
+            ms.Close();
+            return result;
+
+        }
+        public static String[] DeserializeStringArr(Object[] input)
+        {
+            return DeserializeStringArr(DeserializeObjectArr(input));
+        }
         public static long DeserializeLong(Byte[] input)
         {
             MemoryStream ms = byteArrayToStream(input);
