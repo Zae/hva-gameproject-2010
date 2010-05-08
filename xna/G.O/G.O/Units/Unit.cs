@@ -16,11 +16,10 @@ namespace ION
         public int direction = 4;
 
         protected int health = 100;
-        //protected int tileX;
-        //protected int tileY;
+
         protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
-
+        //TODO magic numbers?
         public int inTileX = 100;
         public int inTileY = 100;
 
