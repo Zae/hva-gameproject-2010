@@ -60,21 +60,26 @@ namespace ION
 
         public void drawGroundTexture()
         {
-            temp.X = ION.halfWidth + (int)StateTest.translationX-(((int)width/2));
-            temp.Y = (int)StateTest.translationY- (((int)height/2)*2);
-            temp.Width = (int)width;
-            temp.Height = (int)height;
-            ION.spriteBatch.Draw(Images.groundTexture, temp, Color.White);
-            
-            for(int i=0;i<countX+1;i++) {
-                temp.X -= ((int)width/2);
-                temp.Y += ((int)height/2);
-                 ION.spriteBatch.Draw(Images.groundTexture, temp, Color.White);
-               // temp.Width = (int)width;
-              //  temp.Height = (int)height;
-            }
-         
+            for (int j = -2; j < countY + 2; j++)
+            {
 
+
+                temp.X = ION.halfWidth + (int)StateTest.translationX - (((int)width / 2) - (j*(int)width/2));
+                temp.Y = (int)StateTest.translationY - (((int)height / 2) * 2 - (j*(((int)height/2))));
+                temp.Width = (int)width;
+                temp.Height = (int)height;
+                ION.spriteBatch.Draw(Images.groundTexture, temp, Color.White);
+
+                for (int i = 0; i < countX; i++)
+                {
+                    temp.X -= ((int)width / 2);
+                    temp.Y += ((int)height / 2);
+                    ION.spriteBatch.Draw(Images.groundTexture, temp, Color.White);
+                    // temp.Width = (int)width;
+                    //  temp.Height = (int)height;
+                }
+
+            }
            
         }
     }
