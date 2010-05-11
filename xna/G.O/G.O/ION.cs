@@ -213,7 +213,7 @@ namespace ION
                 Images.chargeCountImages[i] = Content.Load<Texture2D>("chargeCountItems/"+(i + 1).ToString());
             }
 
-            int players = 1;
+            int players = 2;
             string[] directions = new string[] { "s", "se", "e", "ne", "n", "nw", "w", "sw" };
 
             Images.unit = new Texture2D[players, directions.Length];

@@ -114,149 +114,167 @@ namespace ION
             {
 
 
-                //// working //
-                ////TODO @emmet
-                ////1.	Units only move in 8 directions
-                //// this code gets the angle of the vector in radians (note: this angle is either left or right of "X = 0")
-                //Vector2 tempAngle = targetPos - pos;
-                //double length = Math.Sqrt((tempAngle.X * tempAngle.X) + (tempAngle.Y * tempAngle.Y));
-                //float angle = (float)(Math.Acos(tempAngle.Y / length));
+                // working //
+                //TODO @emmet
+                //1.	Units only move in 8 directions
+                // this code gets the angle of the vector in radians (note: this angle is either left or right of "X = 0")
+                Vector2 tempAngle = targetPos - pos;
+                double length = Math.Sqrt((tempAngle.X * tempAngle.X) + (tempAngle.Y * tempAngle.Y));
+                float angle = (float)(Math.Acos(tempAngle.Y / length));
 
-                //// this accounts for the angle being to the left of "X = 0"
-                //if (tempAngle.X < 0.0f)
-                //    angle = (MathHelper.Pi * 2) - angle;
+                // this accounts for the angle being to the left of "X = 0"
+                if (tempAngle.X < 0.0f)
+                    angle = (MathHelper.Pi * 2.0f) - angle;
 
-                //// converts angle to degrees
-                //angle = MathHelper.ToDegrees(angle);
+                // converts angle to degrees
+                angle = MathHelper.ToDegrees(angle);
 
-                //if (angle < 0)
-                //    angle += 360;
+                
+                if (angle < 0)
+                    angle += 360;
 
-                //if (tempAngle.Length() > movementSpeed)//move toward target at speed
+                if (tempAngle.Length() > movementSpeed)//move toward target at speed
+                {
+                    Vector2 directionVector;
+                    if (angle < 0)
+                        angle += 360;
+                    if (angle < 0)
+                        angle += 360;
+                    if (angle < 35.75 || angle > 324.25)
+                    {
+                        angle = 0f;//direction = new Vector2(0, 1);
+                        facing = direction.south;
+                    }
+                    else if (angle < 80.75)
+                    {
+                        angle = 71.5f;//direction = new Vector2(1, 1);
+                        facing = direction.southEast;
+                    }
+                    else if (angle < 99.25)
+                    {
+                        angle = 90f;//direction = new Vector2(1, 0);
+                        facing = direction.east;
+                    }
+                    else if (angle < 144.25)
+                    {
+                        angle = 108.5f;//direction = new Vector2(1, -1);
+                        facing = direction.northEast;
+                    }
+                    else if (angle < 160.75)
+                    {
+                        angle = 180f;//direction = new Vector2(0, -1);
+                        facing = direction.north;
+                    }
+                    else if (angle < 215.75)
+                    {
+                        angle = 151.5f;//direction = new Vector2(-1, -1);
+                        facing = direction.northWest;
+                    }
+                    else if (angle < 279.25)
+                    {
+                        angle = 270f;//direction = new Vector2(-1, 0);
+                        facing = direction.west;
+                    }
+                    else
+                    {
+                        angle = 288.5f;//direction = new Vector2(-1, -1);
+                        facing = direction.southWest;
+                    }
+
+
+                    directionVector = new Vector2((float)Math.Sin((double)angle), (float)Math.Cos((double)angle));
+                    //normalize the length to the of the direction the unit is moving
+                    directionVector.Normalize();
+                    //multiply by the units speed
+                    directionVector = directionVector * movementSpeed;
+                    //move the unit by that amount
+                    pos += directionVector;
+                }
+                else
+                {
+                    pos = targetPos;//pop to target
+                }
+
+                // working //
+
+
+
+
+
+                //// old code
+
+                //Vector2 temp = targetPos - pos;
+                //if (temp.Length() > movementSpeed)//move toward target at speed
                 //{
-                //    Vector2 direction;
-                //    if (angle < 0)
-                //        angle += 360;
-                //    if (angle < 35.75 || angle > 324.25)
+                //    //normalize the length to the of the direction the unit is moving
+                //    temp.Normalize();
+                //    //multiply by the units speed
+                //    temp = temp * movementSpeed;
+                //    //move the unit by that amount
+                //    pos += temp;
+
+
+
+
+                //    //Update the direction it faces
+                //    //TODO @michiel
+                //    if (temp.X > 0)
                 //    {
-                //        angle = 0f;//direction = new Vector2(0, 1);
+                //        if (temp.Y > 0)
+                //        {
+                //            facing = direction.southEast;
+                //        }
+                //        else if (temp.Y < 0)
+                //        {
+                //            facing = direction.northEast;
+                //        }
+                //        else
+                //        {
+                //            facing = direction.east;
+                //        }
                 //    }
-                //    else if (angle < 80.75)
+                //    else if (temp.X < 0)
                 //    {
-                //        angle = 71.5f;//direction = new Vector2(1, 1);
-                //    }
-                //    else if (angle < 99.25)
-                //    {
-                //        angle = 90f;//direction = new Vector2(1, 0);
-                //    }
-                //    else if (angle < 144.25)
-                //    {
-                //        angle = 108.5f;//direction = new Vector2(1, -1);
-                //    }
-                //    else if (angle < 160.75)
-                //    {
-                //        angle = 180f;//direction = new Vector2(0, -1);
-                //    }
-                //    else if (angle < 215.75)
-                //    {
-                //        angle = 151.5f;//direction = new Vector2(-1, -1);
-                //    }
-                //    else if (angle < 279.25)
-                //    {
-                //        angle = 270f;//direction = new Vector2(-1, 0);
+                //        if (temp.Y > 0)
+                //        {
+                //            facing = direction.southWest;
+                //        }
+                //        else if (temp.Y < 0)
+                //        {
+                //            facing = direction.northWest;
+                //        }
+                //        else
+                //        {
+                //            facing = direction.west;
+                //        }
                 //    }
                 //    else
                 //    {
-                //        angle = 288.5f;//direction = new Vector2(-1, -1);
+                //        if (temp.Y > 0)
+                //        {
+                //            facing = direction.south;
+                //        }
+                //        else if (temp.Y < 0)
+                //        {
+                //            facing = direction.north;
+                //        }
                 //    }
 
 
-                //    direction = new Vector2((float)Math.Sin((double)angle), (float)Math.Cos((double)angle));
-                //    //normalize the length to the of the direction the unit is moving
-                //    direction.Normalize();
-                //    //multiply by the units speed
-                //    direction = direction * movementSpeed;
-                //    //move the unit by that amount
-                //    pos += direction;
+
+
                 //}
                 //else
                 //{
                 //    pos = targetPos;//pop to target
                 //}
 
-                //// working //
+                //// old code
 
 
 
 
 
-
-
-                Vector2 temp = targetPos - pos;
-                if (temp.Length() > movementSpeed)//move toward target at speed
-                {
-                    //normalize the length to the of the direction the unit is moving
-                    temp.Normalize();
-                    //multiply by the units speed
-                    temp = temp * movementSpeed;
-                    //move the unit by that amount
-                    pos += temp;
-
-
-
-
-                    //Update the direction it faces
-                    //TODO @michiel
-                    if (temp.X > 0)
-                    {
-                        if (temp.Y > 0)
-                        {
-                            facing = direction.southEast;
-                        }
-                        else if (temp.Y < 0)
-                        {
-                            facing = direction.northEast;
-                        }
-                        else
-                        {
-                            facing = direction.east;
-                        }
-                    }
-                    else if (temp.X < 0)
-                    {
-                        if (temp.Y > 0)
-                        {
-                            facing = direction.southWest;
-                        }
-                        else if (temp.Y < 0)
-                        {
-                            facing = direction.northWest;
-                        }
-                        else
-                        {
-                            facing = direction.west;
-                        }
-                    }
-                    else
-                    {
-                        if (temp.Y > 0)
-                        {
-                            facing = direction.south;
-                        }
-                        else if (temp.Y < 0)
-                        {
-                            facing = direction.north;
-                        }
-                    }
-
-
-
-
-                }
-                else
-                {
-                    pos = targetPos;//pop to target
-                }
             }
         }
 

@@ -374,6 +374,13 @@ namespace ION
             addDepthEnabledItem(newUnit);
         }
 
+        public void CreateRedUnit(float translationX, float translationY)
+        {
+            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(19, 19), translationX, translationY), GetTileScreenPos(new Vector2(18, 20), translationX, translationY), 2);
+            allUnits.Add(newUnit);
+            addDepthEnabledItem(newUnit);
+        }
+
         public static void addDepthEnabledItem(IDepthEnabled newItem)
         {
             //add the item to the list
