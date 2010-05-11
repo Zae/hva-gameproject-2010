@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using FluorineFx.Net;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using FluorineFx.Messaging.Api.Service;
 
 namespace ION
 {
@@ -16,10 +14,24 @@ namespace ION
         private static ulong counter = ulong.MinValue;
 
         long messagetime = 0;
+        long totaltime=0;
+        long avgtime = 0;
+        long maxtime = 0;
+        long testsdone = 0;
         long localtime;
         long remotetimelong;
 
+        DateTime beginBWTest;
+        float bandwidth;
+
         private int y = 0;
+
+        enum Tests
+        {
+            PING,
+            BANDWIDTH
+        }
+        Tests runningTest = Tests.PING;
 
         public StateNetworkTest()
         {
@@ -40,6 +52,10 @@ namespace ION
             remotetimelong = Serializer.DeserializeLong((Object[])rso.GetAttribute("Timer"));
             DateTime remotetime = DateTime.FromBinary(remotetimelong);
             messagetime = (time.Ticks - remotetime.Ticks) / TimeSpan.TicksPerMillisecond;
+            totaltime += messagetime;
+            if (messagetime > maxtime) maxtime = messagetime;
+            testsdone++;
+            avgtime = totaltime / testsdone;
         }
 
         void rso_OnDisconnect(object sender, EventArgs e)
@@ -62,35 +78,84 @@ namespace ION
             ION.spriteBatch.Begin();
             if (ION.instance.serverConnection.isHost)
             {
-                ION.spriteBatch.DrawString(Fonts.font, "WE ARE HOST, WE ONLY SEND TIME!", new Vector2(10, y + 15), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, "WE ARE HOST, WE ONLY SEND TIME! (Press P to enable)", new Vector2(10, y + 15), Color.White);
                 ION.spriteBatch.DrawString(Fonts.font, localtime.ToString(), new Vector2(10, y + 35), Color.White);
             }
             else
             {
-                ION.spriteBatch.DrawString(Fonts.font, "Ping: " + messagetime.ToString() + " ms", new Vector2(10, y + 15), Color.White);
+                ION.spriteBatch.DrawString(Fonts.font, "Ping: " + messagetime.ToString() + " ms / average: "+avgtime.ToString() + " ms / max: "+maxtime.ToString()+" ms", new Vector2(10, y + 15), Color.White);
                 ION.spriteBatch.DrawString(Fonts.font, remotetimelong.ToString(), new Vector2(10, y + 35), Color.White);
             }
+
+            ION.spriteBatch.DrawString(Fonts.font, "BW: " + bandwidth.ToString() + " kB/s (Press B to enable)", new Vector2(10, y + 75), Color.White);
             
             ION.spriteBatch.End();
         }
 
         public override void update(int ellapsed)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape)) ION.get().setState(new StateTitle());
+            //Keyboard handling
+            KeyboardState keyState = Keyboard.GetState();
+
+            if (keyState.IsKeyDown(Keys.Escape))
+            {
+                ION.get().setState(new StateTitle());
+            }
+            if (keyState.IsKeyDown(Keys.P))
+            {
+                runningTest = Tests.PING;
+            }
+            if (keyState.IsKeyDown(Keys.B))
+            {
+                runningTest = Tests.BANDWIDTH;
+            }
+
+            if (counter >= ulong.MaxValue)
+            {
+                counter = ulong.MinValue;
+            }
 
             if (ION.instance.serverConnection.isHost)
-            {
-                if (counter >= ulong.MaxValue)
-                {
-                    counter = ulong.MinValue;
-                }
-                if (counter++ % 10 == 0) // slow the updating down a bit so we can actually SEE the ping :P
+            { 
+                if (counter % 10 == 0 && runningTest == Tests.PING) // slow the updating down a bit so we can actually SEE the ping :P
                 {
                     DateTime time = DateTime.Now;
                     localtime = time.ToBinary();
                     rso.SetAttribute("Timer", Serializer.Serialize(localtime));
                 }
             }
+            if (counter % 100 == 0 && runningTest == Tests.BANDWIDTH) //slow the updating down even more
+            {
+                beginBWTest = DateTime.Now;
+
+                //create some data to send.
+                Byte[] bytearr = new Byte[100000];
+                Random rand = new Random();
+                rand.NextBytes(bytearr);
+
+                ION.instance.serverConnection.GameConnection.Call("BWCheck", new getHostsMsgHandler(this), bytearr);
+            }
+            
+            counter++;
+        }
+
+        public class getHostsMsgHandler : IPendingServiceCallback
+        {
+            StateNetworkTest _state;
+            public getHostsMsgHandler(StateNetworkTest state)
+            {
+                _state = state;
+            }
+            public void ResultReceived(IPendingServiceCall call)
+            {
+                _state.bwcheck(DateTime.Now);
+            }
+        }
+
+        public void bwcheck(DateTime datetime)
+        {
+            float milliseconds = (datetime.Ticks - beginBWTest.Ticks) / TimeSpan.TicksPerMillisecond;
+            bandwidth = (1 / (milliseconds / 1000)) * 100;
         }
 
         public override void focusLost()
