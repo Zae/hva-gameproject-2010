@@ -264,7 +264,8 @@ namespace ION
             if (unitCounter > 1000)
             {
                 unitCounter = 0;
-                grid.CreateBlueUnit(translationX,translationY);
+                grid.CreateBlueUnit(translationX, translationY);
+                grid.CreateRedUnit(translationX, translationY);
             }
         }
 

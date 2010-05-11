@@ -10,7 +10,7 @@ namespace ION
     public class BallUnit : Unit
     {
 
-        public BallUnit() : base(-1) //Sending a invalid number to the base class as a test, I think this constructor in only used to deserialize into after
+        public BallUnit() : base(-1) //Sending an invalid number to the base class as a test, I think this constructor in only used to deserialize into after
         {
             destination = new Queue<Tile>();
 

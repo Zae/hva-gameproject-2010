@@ -90,7 +90,7 @@ namespace ION
             } 
         }
 
-        public static Texture2D getUnitImage(int owner, int facing,bool selected)
+        public static Texture2D getUnitImage(int owner, int facing, bool selected)
         {
             if (selected)
             {
