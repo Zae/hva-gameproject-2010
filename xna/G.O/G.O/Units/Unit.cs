@@ -13,7 +13,8 @@ namespace ION
 
         public int owner;
 
-        public int direction = 4;
+        public enum direction { south = 0, southEast = 1, east = 2, northEast = 3, north = 4, northWest = 5, west = 6, southWest = 7 };
+        public direction facing = direction.north;
 
         protected int health = 100;
 
@@ -121,49 +122,56 @@ namespace ION
                     //move the unit by that amount
                     pos += temp;
 
+
+
+
                     //Update the direction it faces
                     //TODO @michiel
                     if (temp.X > 0)
                     {
                         if (temp.Y > 0)
                         {
-                            direction = 1;
+                            facing = direction.southEast;
                         }
                         else if (temp.Y < 0)
                         {
-                            direction = 3;
+                             facing = direction.northEast;
                         }
                         else
                         {
-                            direction = 2;
+                             facing = direction.east;
                         }
                     }
                     else if (temp.X < 0)
                     {
                         if (temp.Y > 0)
                         {
-                            direction = 7;
+                             facing = direction.southWest;
                         }
                         else if (temp.Y < 0)
                         {
-                            direction = 5;
+                             facing = direction.northWest;
                         }
                         else
                         {
-                            direction = 6;
+                             facing = direction.west;
                         }
                     }
                     else
                     {
                         if (temp.Y > 0)
                         {
-                            direction = 0;
+                             facing = direction.south;
                         }
                         else if (temp.Y < 0)
                         {
-                            direction = 4;
+                             facing = direction.north;
                         }
                     }
+
+
+
+
                 }
                 else
                 {
