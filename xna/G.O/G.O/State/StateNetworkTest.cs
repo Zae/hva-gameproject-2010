@@ -7,6 +7,9 @@ using FluorineFx.Messaging.Api.Service;
 
 namespace ION
 {
+    /// <summary>
+    /// With this state we test the network, stuff like ping and bandwidth.
+    /// </summary>
     class StateNetworkTest : State
     {
         private RemoteSharedObject rso;

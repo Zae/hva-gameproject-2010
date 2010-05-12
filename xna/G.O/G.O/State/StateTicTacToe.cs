@@ -3,10 +3,14 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FluorineFx.Net;
-using System.IO;
 
 namespace ION
 {
+    /// <summary>
+    /// This state is a little easter egg in the game. It's the game of Tic Tac Toe.
+    /// 
+    /// This has primarily been created to test the network.
+    /// </summary>
     class StateTicTacToe : State
     {
         private CheckedState[,] grid;
@@ -15,18 +19,27 @@ namespace ION
         private RemoteSharedObject GridRSO;
         private const String GRIDRSONAME = "GridRsoName";
 
+        private Boolean won;
+        private int redwins;
+        private int bluewins;
+
         public StateTicTacToe()
         {
             grid = new CheckedState[3, 3];
 
             //Stupid C# can't automatically call constructor for all
             //items in the array. :-(
-            for (uint i=0; i < 3; i++)
+            /*for (uint i=0; i < 3; i++)
             {
                 for (uint j=0; j < 3; j++)
                 {
                     grid[i, j] = new CheckedState();
                 }
+            }*/
+
+            for (uint i = 0; i < 9; i++)
+            {
+                grid[i / 3, i % 3] = new CheckedState();
             }
 
             gridLocation = new Rectangle(100, 100, 300, 300);
@@ -121,6 +134,10 @@ namespace ION
                 }
             }
 
+            if (won)
+            {
+                ION.spriteBatch.DrawString(Fonts.font, "SOMEONE WON!", new Vector2(10, 10), Color.White);
+            }
             ION.spriteBatch.End();
         }
 
@@ -178,8 +195,60 @@ namespace ION
                         }
                     }
                     GridRSO.SetAttribute("grid", Serializer.Serialize(grid));
+
+                    Boolean won = CheckForWin(tile.CurrentState);
+                    if (won)
+                    {
+                        if (ION.instance.serverConnection.isHost)
+                        {
+                            bluewins += 1;
+                        }
+                        else
+                        {
+                            redwins += 1;
+                        }
+                    }
                 }
             }
+        }
+
+        private Boolean CheckForWin(CheckedState.States state)
+        {
+            Boolean win = false;
+            //there are 7! winstates, calculate them all for both O and X;
+            if (grid[0, 0].CurrentState == state && grid[0, 1].CurrentState == state && grid[0, 2].CurrentState == state)
+            {
+                win = true;
+            }
+            if (grid[1, 0].CurrentState == state && grid[1, 1].CurrentState == state && grid[1, 2].CurrentState == state)
+            {
+                win = true;
+            }
+            if (grid[2, 0].CurrentState == state && grid[2, 1].CurrentState == state && grid[2, 2].CurrentState == state)
+            {
+                win = true;
+            }
+            if (grid[0, 0].CurrentState == state && grid[1, 0].CurrentState == state && grid[2, 0].CurrentState == state)
+            {
+                win = true;
+            }
+            if (grid[0, 1].CurrentState == state && grid[1, 1].CurrentState == state && grid[2, 1].CurrentState == state)
+            {
+                win = true;
+            }
+            if (grid[0, 2].CurrentState == state && grid[1, 2].CurrentState == state && grid[2, 2].CurrentState == state)
+            {
+                win = true;
+            }
+            if (grid[0, 0].CurrentState == state && grid[1, 1].CurrentState == state && grid[2, 2].CurrentState == state)
+            {
+                win = true;
+            }
+            if (grid[0, 2].CurrentState == state && grid[1, 1].CurrentState == state && grid[2, 0].CurrentState == state)
+            {
+                win = true;
+            }
+            return win;
         }
 
         public override void focusLost()
