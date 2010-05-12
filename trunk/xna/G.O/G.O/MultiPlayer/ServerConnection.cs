@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
-using System.IO;
 using FluorineFx.Net;
 using FluorineFx.Messaging.Api.Service;
 
-
 namespace ION{
-
+    /// <summary>
+    /// This class is the main connection to the server.
+    /// </summary>
     public class ServerConnection
     {
         public static ServerConnection instance;
@@ -35,7 +31,6 @@ namespace ION{
         }
 
         public ServerConnection()
-            
         {
             instance = this;
             LobbyConnection = new NetConnection();
@@ -64,8 +59,6 @@ namespace ION{
             LobbyRSObject.OnDisconnect += new DisconnectHandler(LobbyRSObject_OnDisconnect);
             LobbyRSObject.Sync += new SyncHandler(LobbyRSObject_Sync);
             LobbyRSObject.Connect(LobbyConnection);
-
-            
         }
 
         void LobbyRSObject_Sync(object sender, SyncEventArgs e)
@@ -75,7 +68,9 @@ namespace ION{
             //throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// Object to handle the asynchronous callback from the server.
+        /// </summary>
         public class getHostsMsgHandler : IPendingServiceCallback
         {
             public void ResultReceived(IPendingServiceCall call)
@@ -125,6 +120,9 @@ namespace ION{
             //throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Get the hosts from the server.
+        /// </summary>
         public void getHosts()
         {
            // LobbyConnection.Call("getHosts", new getHostsMsgHandler());
@@ -132,16 +130,28 @@ namespace ION{
             LobbyConnection.Call("getHosts", new getHostsMsgHandler());
         }
 
+        /// <summary>
+        /// Join a room on the server
+        /// </summary>
+        /// <param name="roomname">the name of the room</param>
         public void JoinRoom(String roomname)
         {
             this._isHost = false;
             createRoom(roomname);
         }
+        /// <summary>
+        /// Create a room on the server
+        /// </summary>
+        /// <param name="roomname">the name of the room</param>
         public void HostRoom(String roomname)
         {
             this._isHost = true;
             createRoom(roomname);
         }
+        /// <summary>
+        /// Actually create the real room on the server.
+        /// </summary>
+        /// <param name="roomname">the name of the room</param>
         private void createRoom(String roomname)
         {
             GameConnection = new NetConnection();
@@ -153,17 +163,20 @@ namespace ION{
         }
         void GameConnection_OnDisconnect(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            int a = 2;
         }
 
         void GameConnection_OnConnect(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();\
+            int a = 2;
         }
 
         void GameConnection_NetStatus(object sender, NetStatusEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            int a = 2;
         }
 
         public static ServerConnection get()

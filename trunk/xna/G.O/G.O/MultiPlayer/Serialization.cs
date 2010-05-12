@@ -4,6 +4,13 @@ using System.IO;
 
 namespace ION
 {
+    /// <summary>
+    /// Custom Serializer/Deserializer that uses as less bandwidth as possible
+    /// and yet be fast and work correctly with fluorineFx in AMF0 mode.
+    /// 
+    /// This Serializer can also Serialize/Deserialize any class that implements the Serializable Interface
+    /// </summary>
+    /// <seealso cref="Serializable"/>
     public class Serializer
     {
         #region Serialize
@@ -910,7 +917,7 @@ namespace ION
             while (stream.Position < stream.Length)
             {
                 /** Calculate the indexes **/
-                int i = (int)counter/width;
+                int i = (int)counter / width;
                 int j = counter % height;
                 result[i, j] = reader.ReadSingle();
                 counter++;
@@ -918,7 +925,7 @@ namespace ION
 
             reader.Close();
             stream.Close();
-            
+
             return result;
         }
         public static GridStrategy DeserializeGridStrategy(Byte[] input)
@@ -959,7 +966,7 @@ namespace ION
             MemoryStream ms = byteArrayToStream(input);
             BinaryReader br = new BinaryReader(ms);
             CheckedState[,] result = new CheckedState[3, 3];
-            int counter=0;
+            int counter = 0;
             while (ms.Position < ms.Length)
             {
                 int i = counter / 3;
@@ -992,6 +999,11 @@ namespace ION
 
         #region Helper Methods
 
+        /// <summary>
+        /// Private function that can convert a MemoryStream to a ByteArray.
+        /// </summary>
+        /// <param name="input">the MemoryStream to convert</param>
+        /// <returns>the created ByteArray</returns>
         private static Byte[] streamTobyteArray(MemoryStream input)
         {
             byte[] bytes = new byte[input.Length];
@@ -1001,6 +1013,11 @@ namespace ION
 
             return bytes;
         }
+        /// <summary>
+        /// Private function that can convert a ByteArray to a MemoryStream
+        /// </summary>
+        /// <param name="input">the ByteArray to convert</param>
+        /// <returns>the created MemoryStream</returns>
         private static MemoryStream byteArrayToStream(Byte[] input)
         {
             MemoryStream stream = new MemoryStream();
@@ -1011,6 +1028,6 @@ namespace ION
         }
 
         #endregion
-        
+
     }
 }

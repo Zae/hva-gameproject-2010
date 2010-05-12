@@ -1,11 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace ION
 {
+    /// <summary>
+    /// This object shows if the box has been checked with a cross, a circle or not at all.
+    /// 
+    /// This class implemented Serializable so it can be Serialized by Serializer.
+    /// </summary>
+    /// <seealso cref="StateTicTacToe"/>
     public class CheckedState : Serializable
     {
         private bool _Checked;
