@@ -180,7 +180,7 @@ namespace ION
                 //        angle = 288.5f;//direction = new Vector2(-1, -1);
                 //        facing = direction.southWest;
                 //    }
-
+                
 
                 //    directionVector = new Vector2((float)Math.Sin((double)angle), (float)Math.Cos((double)angle));
                 //    //normalize the length to the of the direction the unit is moving
