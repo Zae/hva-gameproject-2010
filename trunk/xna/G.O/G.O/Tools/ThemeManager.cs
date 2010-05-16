@@ -35,13 +35,13 @@ namespace ION
             {
                //groundTexture =
                 MountainTile.themeColor = Color.Gray;
-                ION.get().loadGroundTexture("ground_moon");           
+                ION.get().loadThemedResources("ground_moon");           
             }
             else if (theme == DIRT_THEME)
             {
                 //groundTexture =
                 MountainTile.themeColor = Color.Yellow;
-                ION.get().loadGroundTexture("ground_dirt");
+                ION.get().loadThemedResources("ground_dirt");
             }
 
             else {
@@ -62,7 +62,6 @@ namespace ION
         {
             for (int j = -2; j < countY + 2; j++)
             {
-
 
                 temp.X = ION.halfWidth + (int)StateTest.translationX - (((int)width / 2) - (j*(int)width/2));
                 temp.Y = (int)StateTest.translationY - (((int)height / 2) * 2 - (j*(((int)height/2))));

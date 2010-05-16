@@ -16,7 +16,9 @@ namespace ION
         public enum direction { south = 0, southEast = 1, east = 2, northEast = 3, north = 4, northWest = 5, west = 6, southWest = 7 };
         public direction facing = direction.north;
 
-        protected int health = 100;
+        public int id;
+        public int health;
+        public static int cost;
 
         protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
@@ -25,8 +27,6 @@ namespace ION
         public int inTileY = 100;
 
         public abstract void draw(float x, float y);
-
-
 
         // new
         protected float movementSpeed;
@@ -48,7 +48,7 @@ namespace ION
 
         public Queue<Tile> destination;
 
-        public Unit(int owner)
+        public Unit(int owner,int id)
         {
             this.owner = owner;
             destination = new Queue<Tile>();
@@ -108,7 +108,6 @@ namespace ION
             //6.	If there is are obstacle stopping you from getting your waypoint or on your waypoint, go to next waypoint  if there is one,  otherwise stop
             //7.	If there is a unit in the way, and it is trying to move into your tile, treat it as an obstacle
 
-
             //if not at target
             if (pos != targetPos)
             {
@@ -129,7 +128,7 @@ namespace ION
                 //// converts angle to degrees
                 //angle = MathHelper.ToDegrees(angle);
 
-                
+
                 //if (angle < 0)
                 //    angle += 360;
 
@@ -180,7 +179,7 @@ namespace ION
                 //        angle = 288.5f;//direction = new Vector2(-1, -1);
                 //        facing = direction.southWest;
                 //    }
-                
+
 
                 //    directionVector = new Vector2((float)Math.Sin((double)angle), (float)Math.Cos((double)angle));
                 //    //normalize the length to the of the direction the unit is moving
@@ -195,7 +194,7 @@ namespace ION
                 //    pos = targetPos;//pop to target
                 //}
 
-                //// working //
+                ////// working //
 
 
 
@@ -212,9 +211,6 @@ namespace ION
                     temp = temp * movementSpeed;
                     //move the unit by that amount
                     pos += temp;
-
-
-
 
                     //Update the direction it faces
                     //TODO @michiel
@@ -260,9 +256,6 @@ namespace ION
                         }
                     }
 
-
-
-
                 }
                 else
                 {
@@ -270,11 +263,6 @@ namespace ION
                 }
 
                 // old code
-
-
-
-
-
             }
         }
 

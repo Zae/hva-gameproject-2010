@@ -10,6 +10,8 @@ namespace ION.Controls
     class UnitSelectionState : ControlState
     {
 
+        private bool shiftPressed = false;
+
         public override void draw()
         {
         }

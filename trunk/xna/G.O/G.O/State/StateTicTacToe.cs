@@ -125,10 +125,10 @@ namespace ION
                     switch (grid[i, j].CurrentState)
                     {
                         case CheckedState.States.CROSS:
-                            ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle(gridLocation.X*j+gridLocation.Width/3, gridLocation.Y*i+gridLocation.Height/3, gridLocation.Width / 3, gridLocation.Height / 3), Color.White);
+                            ION.spriteBatch.Draw(Images.unit[0,0], new Rectangle(gridLocation.X*j+gridLocation.Width/3, gridLocation.Y*i+gridLocation.Height/3, gridLocation.Width / 3, gridLocation.Height / 3), Color.White);
                             break;
                         case CheckedState.States.CIRCLE:
-                            ION.spriteBatch.Draw(Images.redUnitImage, new Rectangle(gridLocation.X * j + gridLocation.Width / 3, gridLocation.Y * i + gridLocation.Height / 3, gridLocation.Width / 3, gridLocation.Height / 3), Color.White);
+                            ION.spriteBatch.Draw(Images.unit[1,0], new Rectangle(gridLocation.X * j + gridLocation.Width / 3, gridLocation.Y * i + gridLocation.Height / 3, gridLocation.Width / 3, gridLocation.Height / 3), Color.White);
                             break;
                     }
                 }

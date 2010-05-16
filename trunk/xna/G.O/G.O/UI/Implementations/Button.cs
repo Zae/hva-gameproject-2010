@@ -34,6 +34,11 @@ namespace ION.UI
             {
                 mouseOver = true;
 
+                if (leftPressed)
+                {
+                    handler.run();
+                }
+
                 return true;
             }
             else 
@@ -41,6 +46,7 @@ namespace ION.UI
                 mouseOver = false;
                 return false;
             }
+
         }
 
     }
