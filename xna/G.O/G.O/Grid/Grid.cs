@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using ION.GridStrategies;
 using FluorineFx;
 using FluorineFx.Net;
+using ION.MultiPlayer;
 
 namespace ION
 {
@@ -27,6 +28,8 @@ namespace ION
 
         public float mouseWorldX = 0;
         public float mouseWorldY = 0;
+
+        public int gameTick = 0;
 
         public Tile selectedTile = null;
 
@@ -55,9 +58,11 @@ namespace ION
         // a list to hold the blue army
         public List<Unit> allUnits = new List<Unit>();
 
+        public float resources = BallUnit.cost;
         public static int playerNumber = -1;
+        private static int playerUnitId = -1;
+
         public static int[] playerInfluences;
-        public static float resources = 0;
 
         public static BaseTile getPlayerBase(int owner)
         {
@@ -67,6 +72,12 @@ namespace ION
         public static Grid get()
         {
             return instance;
+        }
+
+        public static int getNewId()
+        {
+            playerUnitId++;
+            return playerUnitId;
         }
 
         public void selectTile(float x, float y, float translationX, float translationY)
@@ -195,8 +206,10 @@ namespace ION
 
         public void draw(float translationX, float translationY)
         {
+            //init the render
             ION.spriteBatch.Begin();
 
+            //draw the ground texture
             theme.drawGroundTexture();
 
             foreach (ResourceTile rt in resourceTiles)
@@ -204,66 +217,70 @@ namespace ION
                     rt.draw(translationX, translationY);
                     //rt.drawDebug(translationX, translationY);
             }
-            ION.spriteBatch.End();
 
-            ION.spriteBatch.Begin();
             foreach (IDepthEnabled de in depthItems)
             {
                 de.drawDepthEnabled(translationX, translationY);
             }
-            //ION.spriteBatch.End();
 
             if (drawHitTest)
             {
-                //ION.spriteBatch.Begin();
                 ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(0, 0, Images.tileHitmapImage.Width, Images.tileHitmapImage.Height), Color.White);
                 ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX, (int)virtualY, 5, 5), Color.Black);
-                //ION.spriteBatch.End();
             }
 
             //GridStrategy might want to do some debug rendering
             //updateStrategy.drawDebug();
 
-            //ION.spriteBatch.Begin();
             for (int i = 0; i < allUnits.Count; i++)
             {        
                 allUnits[i].DrawWayPoints(translationX, translationY);
             }
+
+            //finish up the render
             ION.spriteBatch.End();
         }
 
-        public void update(int ellapsed, List<Unit> blueArmy, float translationX, float translationY)
+        public void update(int ellapsed, List<Unit> units, float translationX, float translationY)
         {
+            gameTick++;
+
+            bool working = true;
+            while (working)
+            {
+                working = CommandDispatcher.executeCommand(gameTick); 
+            }
+            
             updateStrategy.update(ellapsed);
 
-            for (int i = 0; i < blueArmy.Count(); i++)
+            for (int i = 0; i < units.Count(); i++)
             {
-                //TODO units should make a more difuse effect on the grid
-                if (blueArmy[i] != null)
+                //TODO @michiel units should make a more difuse effect on the grid
+                if (units[i] != null)
                 {
-                    selectTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
+                    selectTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
                     if (selectedTile is ResourceTile)
                     {
                         ResourceTile rt = (ResourceTile)selectedTile;
-                        if (rt.owner == playerNumber)
+                        if (rt.owner == units[i].owner)
                         {
-                            rt.receive(0.02f);
+                            rt.receive(0.01f); 
                         }
                         else
                         {
-                            rt.sustain(0.02f, playerNumber);
+                            rt.sustain(0.02f, units[i].owner);
                         }
                     }
                 }
 
                 //updates the unit
-                blueArmy[i].Update(translationX, translationY);
+                units[i].Update(translationX, translationY);
 
                 //tells the unit what tile it is currently on
-                Vector2 temp = GetTile(blueArmy[i].GetVirtualPos().X, blueArmy[i].GetVirtualPos().Y, translationX, translationY);
+                Vector2 temp = GetTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
                 if (temp != null)
                 {
-                    blueArmy[i].UpdateTile(temp);
+                    units[i].UpdateTile(temp);
                 }
             }
 
@@ -367,19 +384,28 @@ namespace ION
             return new Vector2(map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).X, map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).Y);
         }
 
-        public void CreateBlueUnit(float translationX, float translationY)
+        //public void CreateBlueUnit(float translationX, float translationY)
+        //{
+        //    BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY), playerNumber);
+        //    allUnits.Add(newUnit);
+        //    addDepthEnabledItem(newUnit);
+        //}
+
+        public void createUnit(int owner, int id)
         {
-            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY), playerNumber);
+            BaseTile playerBase = getPlayerBase(owner);
+            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2((float)playerBase.getTileX(), (float)playerBase.getTileY()), StateTest.translationX, StateTest.translationY),
+                new Vector2((float)playerBase.getTileX() - 1, (float)playerBase.getTileY() + 1), owner, id);
             allUnits.Add(newUnit);
             addDepthEnabledItem(newUnit);
         }
 
-        public void CreateRedUnit(float translationX, float translationY)
-        {
-            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(19, 19), translationX, translationY), GetTileScreenPos(new Vector2(18, 20), translationX, translationY), 2);
-            allUnits.Add(newUnit);
-            addDepthEnabledItem(newUnit);
-        }
+        //public void CreateRedUnit(float translationX, float translationY)
+        //{
+        //    BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(19, 19), translationX, translationY), GetTileScreenPos(new Vector2(18, 20), translationX, translationY), 2);
+        //    allUnits.Add(newUnit);
+        //    addDepthEnabledItem(newUnit);
+        //}
 
         public static void addDepthEnabledItem(IDepthEnabled newItem)
         {
@@ -572,9 +598,6 @@ namespace ION
                     sectors = new Sector[width/Sector.TILES_PER_SECTOR_AXIS,height/Sector.TILES_PER_SECTOR_AXIS];
                     //sectors.
 
-
-                
-
                     ////Now read the player count and positions of these players
                     int playerCount = int.Parse(XmlRdr.GetAttribute(2));
                     playerInfluences = new int[playerCount + 1];
@@ -685,6 +708,18 @@ namespace ION
                 }
             }
             return playerUnits;
+        }
+
+        internal Unit getUnit(int unitOwner, int unitId)
+        {
+            foreach (Unit u in allUnits)
+            {
+                if (u.owner == unitOwner && u.id == unitId)
+                {
+                    return u;
+                }
+            }
+            return null;
         }
     }
 }

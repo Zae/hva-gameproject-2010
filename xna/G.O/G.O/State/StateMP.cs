@@ -59,8 +59,6 @@ namespace ION
             ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
             //ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
 
-           
-
             if (selection == SELECTION.HOST)
             {
                 //Draw highlighted
@@ -100,7 +98,6 @@ namespace ION
 
         public override void update(int ellapsed)
         {
-
             //mouse handling
             MouseState mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed)
@@ -142,7 +139,6 @@ namespace ION
             //Keyboard handling
             KeyboardState keyState = Keyboard.GetState();
 
-
             if (keyState.IsKeyDown(Keys.Up) && !upPressed)
             {
                 selectionUp();
@@ -152,7 +148,6 @@ namespace ION
             {
                 upPressed = false;
             }
-
 
             if (keyState.IsKeyDown(Keys.Down) && !downPressed)
             {
@@ -173,12 +168,8 @@ namespace ION
             {
                 enterPressed = false;
                 makeSelection();
-            }
-           
-            
+            }          
         }
-
-
 
         private void makeSelection()
         {

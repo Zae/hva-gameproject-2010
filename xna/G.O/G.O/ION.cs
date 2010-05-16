@@ -140,13 +140,15 @@ namespace ION
             spriteBatch = new SpriteBatch(GraphicsDevice);
             primitiveBatch = new PrimitiveBatch(GraphicsDevice);
            
-
             //Loading Fonts
             Fonts.font = Content.Load<SpriteFont>("fontItems/TitleFont");
             Fonts.small = Content.Load<SpriteFont>("fontItems/SmallFont");
 
             //Load Misc items
             Images.teamLogoImage = Content.Load<Texture2D>("miscItems/logo-game-ninjas");
+            Images.white1px = Content.Load<Texture2D>("toolItems/white");
+            Images.greenPixel = Content.Load<Texture2D>("menuItems/greenPixel");
+            Images.helpFile = Content.Load<Texture2D>("miscItems/helpfile");            
             //Images.starfieldImage = Content.Load<Texture2D>("miscItems/blue_red");
 
             //GUI Items
@@ -161,8 +163,7 @@ namespace ION
             Images.statusBarTemp = Content.Load<Texture2D>("guiItems/statusBarTemp");
             Images.statusBar = Content.Load<Texture2D>("guiItems/statusBar");
             Images.selectionBar = Content.Load<Texture2D>("guiItems/selectionBar");
-            
-            
+               
             //Title Menu
             Images.ION_LOGO = Content.Load<Texture2D>("menuItems/ION_LOGO");
             Images.buttonNewGame = Content.Load<Texture2D>("menuItems/newGameButton");
@@ -180,38 +181,26 @@ namespace ION
             Images.buttonBack = Content.Load<Texture2D>("menuItems/BackButton");
             Images.buttonBackF = Content.Load<Texture2D>("menuItems/BackButtonF");
 
-            //Load game images
-            Images.mountainImage = Content.Load<Texture2D>("tileItems/mountain_tile");
+            //Load Tile images
             Images.borderImage = Content.Load<Texture2D>("tileItems/border_tile");
+            Images.mountainImage = Content.Load<Texture2D>("tileItems/mountain_tile");           
             Images.resourceImage = Content.Load<Texture2D>("tileItems/resource_tile");
-            Images.white1px = Content.Load<Texture2D>("toolItems/white");
-            Images.tileHitmapImage = Content.Load<Texture2D>("toolItems/tile_hitmap");
-            Images.blueUnitImage = Content.Load<Texture2D>("unitItems/blueball");
-            Images.blueUnitChargeImage = Content.Load<Texture2D>("unitItems/blueballcharge");
-            Images.redUnitImage = Content.Load<Texture2D>("unitItems/redball");
-            Images.redUnitChargeImage = Content.Load<Texture2D>("unitItems/redballcharge");
-            //c Images.unitHitmapImage = Content.Load<Texture2D>("toolItems/ballhitmap");
-            Images.unitWayPoint = Content.Load<Texture2D>("unitItems/greenArrow");
-            Images.baseHitmapImage = Content.Load<Texture2D>("toolItems/base_hitmap");
+            
+            //Load Base images           
             Images.baseImage = Content.Load<Texture2D>("tileItems/base_tile");
             Images.blueBaseImage = Content.Load<Texture2D>("playerItems/bluebase");
             Images.redBaseImage = Content.Load<Texture2D>("playerItems/redBase");
+
+            //Load Tool images 
+            Images.tileHitmapImage = Content.Load<Texture2D>("toolItems/tile_hitmap");
 
             //Join menu
             Images.buttonRefresh = Content.Load<Texture2D>("menuItems/RefreshButton");
             Images.buttonRefreshF = Content.Load<Texture2D>("menuItems/RefreshButtonF");
             Images.tableHosts = Content.Load<Texture2D>("menuItems/HostsTable");
 
-            Images.greenPixel = Content.Load<Texture2D>("menuItems/greenPixel");
-            Images.helpFile = Content.Load<Texture2D>("miscItems/helpfile");
-            
-
-
-            //Load the numerical pictures that can signal the value of a tile
-            for (int i = 0; i < Images.chargeCountImages.Length; i++)
-            {
-                Images.chargeCountImages[i] = Content.Load<Texture2D>("chargeCountItems/"+(i + 1).ToString());
-            }
+            //Load Unit images
+            Images.unitWayPoint = Content.Load<Texture2D>("unitItems/greenArrow");
 
             int players = 2;
             string[] directions = new string[] { "s", "se", "e", "ne", "n", "nw", "w", "sw" };
@@ -228,15 +217,12 @@ namespace ION
                 }
             }
 
-
-
-            //Load the numerical pictures that can signal the value of a tile
-            for (int i = 0; i < Images.chargeCountImages.Length; i++)
-            {
-                Images.chargeCountImages[i] = Content.Load<Texture2D>("chargeCountItems/" + (i + 1).ToString());
-            }
-
-            
+            ////Load the numerical pictures that can signal the value of a tile
+            //for (int i = 0; i < Images.chargeCountImages.Length; i++)
+            //{
+            //    Images.chargeCountImages[i] = Content.Load<Texture2D>("chargeCountItems/" + (i + 1).ToString());
+            //}
+           
             Music.titleSong = Content.Load<Song>("musicItems/TitleSong");
             Music.gameSong1 = Content.Load<Song>("musicItems/GameSong1");
             Music.gameSong2 = Content.Load<Song>("musicItems/GameSong2");
@@ -248,12 +234,14 @@ namespace ION
             state = new StateTitle();
             //state = new StateIntro();
             //state = new StateTest();
+
+            //Manualy initialize the first state
             state.focusGained();
         }
 
-        public void loadGroundTexture(string name)
-        {
-            
+        //Here we load those resources that depend on the level's theme
+        public void loadThemedResources(string name)
+        {           
             Images.groundTexture = Content.Load<Texture2D>("tileItems/"+name);  
         }
 
