@@ -303,11 +303,11 @@ namespace ION
             }
 
             /** Disabled for performance, works perfectly tho! **/
-            if (GridRSO != null && GridRSO.Connected)
-            {
-                byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
-                GridRSO.SetAttribute("Grid", rs);
-            }
+            //if (GridRSO != null && GridRSO.Connected)
+           //{
+             //   byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
+              //  GridRSO.SetAttribute("Grid", rs);
+          // }
         }
 
         private Tile createTile(char c, int x, int y)

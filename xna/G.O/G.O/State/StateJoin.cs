@@ -25,7 +25,7 @@ namespace ION
         }
         public SELECTION selection = SELECTION.BACK;
        // private Host[] hosts;
-
+        private int selectedHost=0;
         private static StateJoin instance;
 
         private Rectangle backButton;
@@ -209,15 +209,12 @@ namespace ION
             ION.spriteBatch.Begin();
             foreach (Rectangle row in rows)
             {
-                if (mouseIn(mouseState.X, mouseState.Y, row))
+                if (mouseIn(mouseState.X, mouseState.Y, row)&& mouseState.LeftButton == ButtonState.Pressed==true)
                 {
+                    selectedHost = rows.IndexOf(row);
                     selected = row;
                     ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
-                    if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-                    {
-                        ION.get().serverConnection.JoinRoom(tempHosts[rows.IndexOf(row)]);
-                        mousePressed = false;
-                    }
+                   
                 }
             }
             
@@ -291,7 +288,9 @@ namespace ION
 
             else if (selection == SELECTION.JOIN)
             {
-                ION.get().serverConnection.JoinRoom(tempHosts[0]);
+                if (selectedHost < tempHosts.Length)
+                    ION.get().serverConnection.JoinRoom(tempHosts[selectedHost]);
+                else Console.WriteLine("no host found");
 
                 
 
