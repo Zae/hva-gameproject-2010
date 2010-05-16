@@ -14,12 +14,7 @@ namespace ION{
 
         public NetConnection GameConnection;
 
-        public class Protocol
-        {
-            public const String addUnit = "addUnit";
-            public const String setTarget = "setTarget";
-        }
-
+        public Protocol protocol;
         private Boolean _isHost;
 
         public Boolean isHost
@@ -171,6 +166,7 @@ namespace ION{
         {
             //throw new NotImplementedException();\
             int a = 2;
+            protocol = new Protocol();
         }
 
         void GameConnection_NetStatus(object sender, NetStatusEventArgs e)

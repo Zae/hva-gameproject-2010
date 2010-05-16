@@ -126,9 +126,13 @@
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
     <Compile Include="Controls\BaseSelectionState.cs" />
+<<<<<<< .mine
+    <Compile Include="MultiPlayer\Protocol.cs" />
+=======
     <Compile Include="MultiPlayer\CheckSumManager.cs" />
     <Compile Include="MultiPlayer\Command.cs" />
     <Compile Include="MultiPlayer\CommandDispatcher.cs" />
+>>>>>>> .r177
     <Compile Include="State\StateNetworkTest.cs" />
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />
