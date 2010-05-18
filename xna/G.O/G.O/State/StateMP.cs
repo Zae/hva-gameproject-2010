@@ -25,7 +25,13 @@ namespace ION
         public SELECTION selection = SELECTION.HOST;
 
 
-        
+        public Rectangle newGameButton;
+        public Rectangle mpButton;
+        public Rectangle quitButton;
+        public Rectangle optionsButton;
+        public Rectangle background_overlay;
+        public Rectangle background_starfield;
+        //
         private Rectangle hostButton;
         private Rectangle joinButton;
         private Rectangle backButton;
@@ -38,10 +44,16 @@ namespace ION
 
         public StateMP()
         {
-            
-            hostButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2), Images.buttonNewGame.Width, Images.buttonNewGame.Height);
-            joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 70, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
-            backButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2)+140, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            newGameButton = new Rectangle(125, 125, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            mpButton = new Rectangle(125, 200, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            optionsButton = new Rectangle(125, 275, Images.buttonOptions.Width, Images.buttonOptions.Height);
+            quitButton = new Rectangle(125, 350, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            background_overlay = new Rectangle(ION.width - Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
+            background_starfield = new Rectangle(0, 0, Images.background_starfield.Width, Images.background_starfield.Height);
+            //
+            hostButton = new Rectangle(375, 200, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            joinButton = new Rectangle(375, 275, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            backButton = new Rectangle(375, 350, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
 
             if (ION.instance.serverConnection == null)
             {
@@ -56,9 +68,24 @@ namespace ION
             
             ION.get().GraphicsDevice.Clear(Color.Black);
             ION.spriteBatch.Begin();
-            ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
-            //ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
-
+            //
+            //logo
+            Double w = Math.Ceiling((Double)ION.width / (Double)Images.background_overlay.Width);
+            Double h = Math.Ceiling((Double)ION.height / (Double)Images.background_overlay.Height);
+            for (int i = 0; i < w; i++)
+            {
+                for (int j = 0; j < h; j++)
+                {
+                    ION.spriteBatch.Draw(Images.background_starfield, new Rectangle(background_starfield.X + (i * background_starfield.Width), background_starfield.Y + (j * background_starfield.Height), background_starfield.Width, background_starfield.Height), Color.White);
+                }
+            }
+            ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
+            //
+            ION.spriteBatch.Draw(Images.buttonNewGame, newGameButton, Color.White);
+            ION.spriteBatch.Draw(Images.buttonMP, mpButton, Color.White);
+            ION.spriteBatch.Draw(Images.buttonOptions, optionsButton, Color.White);
+            ION.spriteBatch.Draw(Images.buttonQuit, quitButton, Color.White);
+            //
             if (selection == SELECTION.HOST)
             {
                 //Draw highlighted
