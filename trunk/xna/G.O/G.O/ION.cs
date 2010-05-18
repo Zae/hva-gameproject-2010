@@ -149,7 +149,7 @@ namespace ION
             Images.white1px = Content.Load<Texture2D>("toolItems/white");
             Images.greenPixel = Content.Load<Texture2D>("menuItems/greenPixel");
             Images.helpFile = Content.Load<Texture2D>("miscItems/helpfile");            
-            //Images.starfieldImage = Content.Load<Texture2D>("miscItems/blue_red");
+            Images.gameBackground = Content.Load<Texture2D>("miscItems/blue_red");
 
             //GUI Items
             Images.commandsBar = Content.Load<Texture2D>("guiItems/commandsBar");

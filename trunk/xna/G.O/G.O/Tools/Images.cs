@@ -28,6 +28,7 @@ namespace ION
 
         //environment
         public static Texture2D groundTexture;
+        public static Texture2D gameBackground;
 
         public static Texture2D[,] unit;
         public static Texture2D[,] unit_selected;
