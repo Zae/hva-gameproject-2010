@@ -33,7 +33,8 @@ namespace ION
         private Rectangle joinButton;
         private Rectangle refreshButton;
 
-
+        public Rectangle background_overlay;
+        public Rectangle background_starfield;
 
 
         private bool mousePressed = false;
@@ -73,7 +74,10 @@ namespace ION
             joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
             refreshButton = new Rectangle((ION.width / 2) + 225, (ION.height / 2) + 300, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
             hostsTable = new Rectangle((ION.width / 2) - 300, (ION.height / 2) - 70, Images.tableHosts.Width, Images.tableHosts.Height);
-
+            //
+            background_overlay = new Rectangle(ION.width - Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
+            background_starfield = new Rectangle(0, 0, Images.background_starfield.Width, Images.background_starfield.Height);
+            //
             row1 = new Rectangle(hostsTable.X, hostsTable.Y + 35, 600, 50);
             row2 = new Rectangle(hostsTable.X, row1.Y + 50, 600, 50);
             row3 = new Rectangle(hostsTable.X, row1.Y + 100, 600, 50);
@@ -111,7 +115,19 @@ namespace ION
         {
             ION.get().GraphicsDevice.Clear(Color.Black);
             ION.spriteBatch.Begin();
-            ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
+
+            //logo
+            Double w = Math.Ceiling((Double)ION.width / (Double)Images.background_overlay.Width);
+            Double h = Math.Ceiling((Double)ION.height / (Double)Images.background_overlay.Height);
+            for (int i = 0; i < w; i++)
+            {
+                for (int j = 0; j < h; j++)
+                {
+                    ION.spriteBatch.Draw(Images.background_starfield, new Rectangle(background_starfield.X + (i * background_starfield.Width), background_starfield.Y + (j * background_starfield.Height), background_starfield.Width, background_starfield.Height), Color.White);
+                }
+            }
+            ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
+
             ION.spriteBatch.Draw(Images.tableHosts, hostsTable, Color.White);
             //ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
             ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
