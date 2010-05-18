@@ -1,4 +1,4 @@
-﻿<Level Width="12" Height="12" PlayerCount="2" Base1X="2" Base1Y="5" Base2X="5" Base2Y="2" Theme="Moon">
+﻿<Level Width="12" Height="12" PlayerCount="2" Base1X="2" Base1Y="5" Base2X="5" Base2Y="2" Theme="Moon" Ground="level1_12x12">
   NMNNNNNNNNNN
   NNNNNNNNNNNN
   NNNNNNNNMNNN

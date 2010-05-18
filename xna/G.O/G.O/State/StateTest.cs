@@ -29,7 +29,7 @@ namespace ION
         private int playqueue = 1;
 
         public int level = 0;
-        public string[] levels = { "MediumLevelTest.xml", "PathLevelTest.xml", "LargeLevelTest.xml" };
+        public string[] levels = { "MediumLevelTest.xml", "PathLevelTest.xml", "LargeLevelTest.xml", "WideLevelTest.xml", "WideLevelTest2.xml" };
 
         public GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy() };
         public int strategy = 0;
@@ -79,11 +79,11 @@ namespace ION
 
         public override void draw()
         {
-            ION.get().GraphicsDevice.Clear(Color.Gray);
+            //ION.get().GraphicsDevice.Clear(Color.Black);
 
-            //ION.spriteBatch.Begin();
-            //ION.spriteBatch.Draw(Images.starfieldImage, new Rectangle(0, 0, ION.width, ION.height), Color.White);
-            //ION.spriteBatch.End();
+            ION.spriteBatch.Begin();
+            ION.spriteBatch.Draw(Images.gameBackground, new Rectangle(0, 0, ION.width, ION.height), Color.White);
+            ION.spriteBatch.End();
 
             grid.draw(translationX, translationY);
 

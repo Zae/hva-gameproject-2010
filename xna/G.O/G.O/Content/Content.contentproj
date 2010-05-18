@@ -421,15 +421,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tileItems\ground_moon.png">
-      <Name>ground_moon</Name>
+    <Compile Include="tileItems\leveltextures\pathleveltest_32x32.png">
+      <Name>pathleveltest_32x32</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tileItems\ground_dirt.png">
-      <Name>ground_dirt</Name>
+    <Compile Include="tileItems\leveltextures\mediumleveltest_32x32.png">
+      <Name>mediumleveltest_32x32</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -713,6 +713,43 @@
     </Compile>
     <Compile Include="menuItems\btn_options_hover.png">
       <Name>btn_options_hover</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tileItems\leveltextures\largeleveltest_64x64.png">
+      <Name>largeleveltest_64x64</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="levelItems\WideLevelTest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>WideLevelTest</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tileItems\leveltextures\broadleveltest_32x64.png">
+      <Name>broadleveltest_32x64</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="levelItems\WideLevelTest2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>WideLevelTest2</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tileItems\leveltextures\broadleveltest_64x32.png">
+      <Name>broadleveltest_64x32</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

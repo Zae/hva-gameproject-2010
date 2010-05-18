@@ -616,7 +616,8 @@ namespace ION
 
                     //Load the theme
                     string themeName = (XmlRdr.GetAttribute(3+(playerCount*2)));
-                    theme = new ThemeManager(themeName,width,height);
+                    string groundTexture = (XmlRdr.GetAttribute(4 + (playerCount * 2)));
+                    theme = new ThemeManager(themeName,groundTexture,width,height);
 
                     String rawLevel = XmlRdr.ReadElementContentAsString();
                     // Debug.WriteLine("The raw level data reads: " + rawLevel);

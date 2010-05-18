@@ -29,7 +29,9 @@ namespace ION.GridStrategies
         public ThunderStrategy()
         {
             name = "ThunderStrategy";
-            random = new Random(seed);   
+            random = new Random(seed);  
+ 
+
         }
 
         public override void reset()
