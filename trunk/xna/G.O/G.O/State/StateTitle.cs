@@ -15,6 +15,7 @@ namespace ION
         {
             NEWGAME = 1,
             MULTIPLAYER,
+            OPTIONS,
             QUIT
 
         }
@@ -25,6 +26,9 @@ namespace ION
         public Rectangle newGameButton;
         public Rectangle mpButton;
         public Rectangle quitButton;
+        public Rectangle optionsButton;
+        public Rectangle background_overlay;
+        public Rectangle background_starfield;
 
         private bool mousePressed = false;
         public bool upPressed = false;
@@ -33,10 +37,12 @@ namespace ION
 
         public StateTitle()
         {
-            newGameButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) , Images.buttonNewGame.Width, Images.buttonNewGame.Height);
-            mpButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 70, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
-            quitButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 140, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
-
+            newGameButton = new Rectangle(125, 125 , Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            mpButton = new Rectangle(125, 200, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            optionsButton = new Rectangle(125, 275, Images.buttonOptions.Width, Images.buttonOptions.Height);
+            quitButton = new Rectangle(125, 350, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            background_overlay = new Rectangle(ION.width-Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
+            background_starfield = new Rectangle(0, 0, Images.background_starfield.Width, Images.background_starfield.Height);
         }
 
         public override void draw()
@@ -46,9 +52,16 @@ namespace ION
             ION.spriteBatch.Begin();
 
             //logo
-            ION.spriteBatch.Draw(Images.ION_LOGO, new Rectangle((ION.width / 2) - 200, (ION.height / 2) - 170, Images.ION_LOGO.Width, Images.ION_LOGO.Height), Color.White);
-            
-
+            Double w = Math.Ceiling((Double)ION.width / (Double)Images.background_overlay.Width);
+            Double h = Math.Ceiling((Double)ION.height / (Double)Images.background_overlay.Height);
+            for (int i = 0; i < w; i++)
+            {
+                for (int j = 0; j < h; j++)
+                {
+                    ION.spriteBatch.Draw(Images.background_starfield, new Rectangle(background_starfield.X + (i * background_starfield.Width), background_starfield.Y + (j * background_starfield.Height), background_starfield.Width, background_starfield.Height), Color.White);
+                }
+            }
+            ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
 
             if (selection == SELECTION.NEWGAME)
             {
@@ -70,7 +83,16 @@ namespace ION
                 //Draw normally
                 ION.spriteBatch.Draw(Images.buttonMP, mpButton, Color.White);
             }
-
+            if (selection == SELECTION.OPTIONS)
+            {
+                //Draw highlighted
+                ION.spriteBatch.Draw(Images.buttonOptionsF, optionsButton, Color.White);
+            }
+            else
+            {
+                //Draw normally
+                ION.spriteBatch.Draw(Images.buttonOptions, optionsButton, Color.White);
+            }
 
             if (selection == SELECTION.QUIT)
             {
@@ -111,6 +133,16 @@ namespace ION
             if (mouseIn(mouseState.X, mouseState.Y, mpButton))
             {
                 selection = SELECTION.MULTIPLAYER;
+                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
+                {
+                    makeSelection();
+                    mousePressed = false;
+                }
+
+            }
+            if (mouseIn(mouseState.X, mouseState.Y, optionsButton))
+            {
+                selection = SELECTION.OPTIONS;
                 if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
                 {
                     makeSelection();
@@ -182,6 +214,10 @@ namespace ION
                 ION.get().setState(new StateTest());
             }
             else if (selection == SELECTION.QUIT)
+            {
+                ION.get().Exit();
+            }
+            else if (selection == SELECTION.OPTIONS)
             {
                 ION.get().Exit();
             }
