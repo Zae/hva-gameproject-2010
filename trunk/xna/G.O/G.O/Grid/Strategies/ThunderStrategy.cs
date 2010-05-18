@@ -148,21 +148,21 @@ namespace ION.GridStrategies
             bool setSpiking = false;
             if (totalSpiking == 0)
             {
-                if (random.NextDouble() > 0.9995)
+                if (random.NextDouble() > 0.99999)
                 {
                     setSpiking = true;
                 }
             }
             else if (xySpiking == 1 && totalSpiking == 1)
             {
-                if (random.NextDouble() > 0.99)
+                if (random.NextDouble() > 0.97)
                 {
                     setSpiking = true;
                 }
             }
-            else if (xySpiking == 2 && totalSpiking == 2)
+            else if (xySpiking == 1 && totalSpiking <= 2)
             {
-                if (random.NextDouble() > 1.99)
+                if (random.NextDouble() > 0.999)
                 {
                     setSpiking = true;
                 }
