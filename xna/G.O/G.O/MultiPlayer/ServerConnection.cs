@@ -165,6 +165,7 @@ namespace ION{
         void GameConnection_OnConnect(object sender, EventArgs e)
         {
             //throw new NotImplementedException();\
+            Console.WriteLine("gamegonnection connected!");
             int a = 2;
             protocol = new Protocol();
         }
