@@ -54,6 +54,12 @@ namespace ION
         public static Texture2D buttonQuitF;
         public static Texture2D buttonMP;
         public static Texture2D buttonMPF;
+        public static Texture2D background;
+        public static Texture2D background_overlay;
+        public static Texture2D background_starfield;
+
+        public static Texture2D buttonOptions;
+        public static Texture2D buttonOptionsF;
 
         public static Texture2D buttonJoin;
         public static Texture2D buttonJoinF;
