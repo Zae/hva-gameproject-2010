@@ -58,7 +58,7 @@ namespace ION
         // a list to hold the blue army
         public List<Unit> allUnits = new List<Unit>();
 
-        public float resources = BallUnit.cost;
+        public float resources = BallUnit.cost * 3;
         public static int playerNumber = -1;
         private static int playerUnitId = -1;
 
