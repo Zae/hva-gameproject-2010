@@ -70,8 +70,11 @@ namespace ION
         public static Texture2D buttonBackF;
 
         public static Texture2D buttonRefresh;
-        public static Texture2D tableHosts;
         public static Texture2D buttonRefreshF;
+
+        public static Texture2D TableColumnRoomname;
+        public static Texture2D TableColumnPlayers;
+        public static Texture2D TableColumnLevel;
 
         public static Texture2D helpFile;
 

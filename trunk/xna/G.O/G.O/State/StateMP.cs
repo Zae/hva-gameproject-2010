@@ -81,10 +81,10 @@ namespace ION
             }
             ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
             //
-            ION.spriteBatch.Draw(Images.buttonNewGame, newGameButton, Color.White);
-            ION.spriteBatch.Draw(Images.buttonMP, mpButton, Color.White);
-            ION.spriteBatch.Draw(Images.buttonOptions, optionsButton, Color.White);
-            ION.spriteBatch.Draw(Images.buttonQuit, quitButton, Color.White);
+            ION.spriteBatch.Draw(Images.buttonNewGame, newGameButton, Color.Gray);
+            ION.spriteBatch.Draw(Images.buttonMP, mpButton, Color.Gray);
+            ION.spriteBatch.Draw(Images.buttonOptions, optionsButton, Color.Gray);
+            ION.spriteBatch.Draw(Images.buttonQuit, quitButton, Color.Gray);
             //
             if (selection == SELECTION.HOST)
             {

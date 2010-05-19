@@ -18,10 +18,9 @@ namespace ION
     {
         public enum SELECTION
         {
-            BACK = 1,
-            JOIN,
+            JOIN = 1,
+            BACK,
             REFRESH
-
         }
         public SELECTION selection = SELECTION.BACK;
        // private Host[] hosts;
@@ -29,12 +28,16 @@ namespace ION
         private static StateJoin instance;
 
         private Rectangle backButton;
-        private Rectangle hostsTable;
         private Rectangle joinButton;
         private Rectangle refreshButton;
 
-        public Rectangle background_overlay;
-        public Rectangle background_starfield;
+        private Rectangle hostsTable;
+        private Rectangle TableColumnRoomname;
+        private Rectangle TableColumnPlayers;
+        private Rectangle TableColumnLevel;
+
+        private Rectangle background_overlay;
+        private Rectangle background_starfield;
 
 
         private bool mousePressed = false;
@@ -45,16 +48,10 @@ namespace ION
 
 
 
-        private Color fadeColor = new Color(0, 255, 255, 200);
+        private Color fadeColor = Color.Orange;
 
         private Rectangle selected;
 
-        private Rectangle row1;
-        private Rectangle row2;
-        private Rectangle row3;
-        private Rectangle row4;
-        private Rectangle row5;
-        private Rectangle row6;
         private List<Rectangle> rows;
         
         //temp
@@ -67,34 +64,29 @@ namespace ION
         {
             instance = this;
 
-
-
-            //tempHosts = new String[,] { { "server1", "room1", "grid1" }, { "server2", "room2", "grid2" }, { "server3", "room3", "grid3" } };
-            backButton = new Rectangle((ION.width / 2) - 500, (ION.height / 2) +300, Images.buttonBack.Width, Images.buttonBack.Height);
-            joinButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
-            refreshButton = new Rectangle((ION.width / 2) + 225, (ION.height / 2) + 300, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
-            hostsTable = new Rectangle((ION.width / 2) - 300, (ION.height / 2) - 70, Images.tableHosts.Width, Images.tableHosts.Height);
+            joinButton = new Rectangle(125, 125, Images.buttonJoin.Width, Images.buttonJoin.Height);
+            backButton = new Rectangle(125, 200, Images.buttonBack.Width, Images.buttonBack.Height);
+            refreshButton = new Rectangle(125, 275, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
             //
             background_overlay = new Rectangle(ION.width - Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
             background_starfield = new Rectangle(0, 0, Images.background_starfield.Width, Images.background_starfield.Height);
             //
-            row1 = new Rectangle(hostsTable.X, hostsTable.Y + 35, 600, 50);
-            row2 = new Rectangle(hostsTable.X, row1.Y + 50, 600, 50);
-            row3 = new Rectangle(hostsTable.X, row1.Y + 100, 600, 50);
-            row4 = new Rectangle(hostsTable.X, row1.Y + 150, 600, 50);
-            row5 = new Rectangle(hostsTable.X, row1.Y + 200, 600, 50);
-            row6 = new Rectangle(hostsTable.X, row1.Y + 250, 600, 50);
-
+            hostsTable = new Rectangle(425, 125, Images.TableColumnRoomname.Width + Images.TableColumnPlayers.Width + Images.TableColumnLevel.Width, Images.TableColumnRoomname.Height);
+            TableColumnRoomname = new Rectangle(hostsTable.X, hostsTable.Y, Images.TableColumnRoomname.Width, Images.TableColumnRoomname.Height);
+            TableColumnPlayers = new Rectangle(hostsTable.X+Images.TableColumnRoomname.Width, hostsTable.Y, Images.TableColumnPlayers.Width, Images.TableColumnPlayers.Height);
+            TableColumnLevel = new Rectangle(hostsTable.X + Images.TableColumnRoomname.Width+Images.TableColumnPlayers.Width, hostsTable.Y, Images.TableColumnLevel.Width, Images.TableColumnLevel.Height);
+            //
             rows = new List<Rectangle>();
-           
-            rows.Add(row1);
-            rows.Add(row2);
-            rows.Add(row3);
-            rows.Add(row4);
-            rows.Add(row5);
-            rows.Add(row6);
 
-            selected = row1;
+            int nrows=6;
+            int headerheight = 61;
+            int rowheight = ((hostsTable.Height - headerheight) / nrows);
+            for (int i = 0; i < nrows; i++)
+            {
+                rows.Add(new Rectangle(hostsTable.X, hostsTable.Y + (i * rowheight) + headerheight, hostsTable.Width, rowheight));
+            }
+
+            selected = rows[0];
            // for (int i = 0; i < 4; i++)
            // {
 
@@ -127,13 +119,27 @@ namespace ION
                 }
             }
             ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
-
-            ION.spriteBatch.Draw(Images.tableHosts, hostsTable, Color.White);
-            //ION.spriteBatch.DrawString(Fonts.font, title, new Vector2((ION.width / 2) - 15, (ION.height / 2) - 150), Color.White);
+            //
+            ION.spriteBatch.Draw(Images.TableColumnRoomname, TableColumnRoomname, Color.White);
+            ION.spriteBatch.Draw(Images.TableColumnPlayers, TableColumnPlayers, Color.White);
+            ION.spriteBatch.Draw(Images.TableColumnLevel, TableColumnLevel, Color.White);
+            //
+            ION.spriteBatch.End();
+            ION.primitiveBatch.Begin(PrimitiveType.LineList);
+            for (int j = 1; j < rows.Count; j++)
+            {
+                ION.primitiveBatch.AddVertex(new Vector2(rows[j].Left, rows[j].Top), Color.White);
+                ION.primitiveBatch.AddVertex(new Vector2(rows[j].Right, rows[j].Top), Color.White);
+            }
+            for (int k = 1; k < 3; k++)
+            {
+                ION.primitiveBatch.AddVertex(new Vector2(hostsTable.Left+k*(hostsTable.Width/3), hostsTable.Top), Color.White);
+                ION.primitiveBatch.AddVertex(new Vector2(hostsTable.Left+k*(hostsTable.Width/3), hostsTable.Bottom), Color.White);
+            }
+            ION.primitiveBatch.End();
+            ION.spriteBatch.Begin();
+            //
             ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
-
-       
-
 
             if (selection == SELECTION.BACK)
             {
@@ -307,9 +313,6 @@ namespace ION
                 if (selectedHost < tempHosts.Length)
                     ION.get().serverConnection.JoinRoom(tempHosts[selectedHost]);
                 else Console.WriteLine("no host found");
-
-                
-
             }
         }
 
@@ -317,7 +320,7 @@ namespace ION
         {
 
             selection--;
-            if (selection < SELECTION.BACK)
+            if (selection < SELECTION.JOIN)
             {
                 Console.WriteLine("if sel: " + (int)selection);
                 selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
@@ -331,7 +334,7 @@ namespace ION
             if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
             {
                 Console.WriteLine("if sel: " + (int)selection);
-                selection = SELECTION.BACK;
+                selection = SELECTION.JOIN;
             }
             Console.WriteLine("sel: " + (int)selection);
         }
