@@ -227,7 +227,9 @@ namespace ION
             //Join menu
             Images.buttonRefresh = Content.Load<Texture2D>("menuItems/btn_refresh");
             Images.buttonRefreshF = Content.Load<Texture2D>("menuItems/btn_refresh_hover");
-            Images.tableHosts = Content.Load<Texture2D>("menuItems/HostsTable");
+            Images.TableColumnRoomname = Content.Load<Texture2D>("menuItems/Roomname");
+            Images.TableColumnPlayers = Content.Load<Texture2D>("menuItems/Players");
+            Images.TableColumnLevel = Content.Load<Texture2D>("menuItems/Level");
 
             //Load Unit images
             Images.unitWayPoint = Content.Load<Texture2D>("unitItems/greenArrow");
