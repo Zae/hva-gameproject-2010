@@ -718,13 +718,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tileItems\leveltextures\largeleveltest_64x64.png">
-      <Name>largeleveltest_64x64</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="levelItems\WideLevelTest.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Name>WideLevelTest</Name>
@@ -750,6 +743,13 @@
   <ItemGroup>
     <Compile Include="tileItems\leveltextures\broadleveltest_64x32.png">
       <Name>broadleveltest_64x32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tileItems\leveltextures\largeleveltest_64x64.png">
+      <Name>largeleveltest_64x64</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

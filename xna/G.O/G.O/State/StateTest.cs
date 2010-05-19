@@ -64,7 +64,22 @@ namespace ION
 
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
-            grid = new Grid(levels[level], strategies[strategy],Players.PLAYER1);
+            grid = new Grid(levels[level], strategies[strategy],Players.PLAYER2);
+            gui = new GUIManager();
+            controls = new NeutralState();
+
+            actionOnScreenSound = Music.actionSound1.CreateInstance();
+            actionOnScreenSound.IsLooped = true;
+        }
+
+        //This is for use with multiplayer
+        public StateTest(int player, int seed, string level)
+        {
+            instance = this;
+
+            scrollValue = Mouse.GetState().ScrollWheelValue;
+
+            grid = new Grid(level, new ThunderStrategy(seed), player);
             gui = new GUIManager();
             controls = new NeutralState();
 

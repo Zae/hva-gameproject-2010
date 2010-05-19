@@ -11,7 +11,7 @@ namespace ION.GridStrategies
     {
         private Random random;
 
-        private int seed = 0;
+        //private int seed = 0;
 
         private ResourceTile[] neighbours = new ResourceTile[8];
 
@@ -26,11 +26,19 @@ namespace ION.GridStrategies
         private int iterations = 0;
 
         
-        public ThunderStrategy()
+        public ThunderStrategy(int seed)
         {
             name = "ThunderStrategy";
             random = new Random(seed);  
- 
+            
+            //new Random(
+
+        }
+
+        public ThunderStrategy()
+        {
+            name = "ThunderStrategy";
+            random = new Random(0);
 
         }
 
@@ -162,7 +170,7 @@ namespace ION.GridStrategies
                     setSpiking = true;
                 }
             }
-            else if (xySpiking == 1 && totalSpiking <= 2)
+            else if (xySpiking == 1 && totalSpiking == 2)
             {
                 if (random.NextDouble() > 0.999)
                 {
@@ -177,7 +185,6 @@ namespace ION.GridStrategies
                 todo.nextCharge = 1.8f;
                 return;
             }
-
 
             float friendlyCharge = 0.0f;
             int friendlyTileCount = 0;
