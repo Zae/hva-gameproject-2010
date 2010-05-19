@@ -13,6 +13,11 @@ namespace ION.UI
         private bool mouseOver = false;
         private ButtonHandler handler;
 
+        //TODO not really a nice fix
+        private DateTime lastTime = DateTime.Now;
+        private DateTime now;
+        private TimeSpan cooldown = new TimeSpan(0, 0, 0, 1,0); //set the number of milliseconds
+
         public Button(int x, int y, Texture2D imageNormal, ButtonHandler handler) : base(x, y, imageNormal)
         {
             this.handler = handler;
@@ -36,7 +41,14 @@ namespace ION.UI
 
                 if (leftPressed)
                 {
-                    handler.run();
+                    now = DateTime.Now;
+
+                    if (now - lastTime > cooldown)
+                    {
+                        lastTime = now;
+                        handler.run();
+                    }
+                   
                 }
 
                 return true;

@@ -10,7 +10,6 @@ using FluorineFx.Net;
 namespace ION
 {
 
-
     //example commands:
     //"SART"|<game timer>|<action time>|
     //"MOVE_UNIT_TO|<game timer>|<action time>|<unit nmbr>|<x in grid>|<y in grid>|"
