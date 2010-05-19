@@ -27,7 +27,7 @@ namespace ION
 
         public override void draw(float translationX, float translationY)
         {
-            ION.spriteBatch.Draw(baseImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
+            ION.spriteBatch.Draw(baseImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth*2)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfHeight*10)), (int)(baseHalfWidth * 4), (int)(baseHalfWidth * 4)), Color.White);
         }
 
         private Color getBaseColor(int owner)
