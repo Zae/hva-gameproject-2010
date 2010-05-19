@@ -718,6 +718,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="levelItems\WideLevelTest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>WideLevelTest</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="tileItems\leveltextures\broadleveltest_32x64.png">
       <Name>broadleveltest_32x64</Name>
       <Importer>TextureImporter</Importer>
@@ -725,8 +733,23 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="levelItems\WideLevelTest2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>WideLevelTest2</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="tileItems\leveltextures\broadleveltest_64x32.png">
       <Name>broadleveltest_64x32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tileItems\leveltextures\largeleveltest_64x64.png">
+      <Name>largeleveltest_64x64</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -746,27 +769,6 @@
       <Name>Roomname</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="tileItems\leveltextures\largeleveltest_64x64.png">
-      <Name>largeleveltest_64x64</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="levelItems\WideLevelTest.xml">
-      <Name>WideLevelTest</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="levelItems\WideLevelTest2.xml">
-      <Name>WideLevelTest2</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
