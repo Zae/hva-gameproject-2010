@@ -95,6 +95,7 @@ namespace ION
              //   ION.get().serverConnection.JoinRoom("room " + i);
 
             //}
+            ION.get().serverConnection.getHosts();
 
         }
 
