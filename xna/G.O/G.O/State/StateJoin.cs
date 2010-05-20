@@ -67,7 +67,6 @@ namespace ION
 
             joinButton = new Rectangle(125, 125, Images.buttonJoin.Width, Images.buttonJoin.Height);
             backButton = new Rectangle(125, 200, Images.buttonBack.Width, Images.buttonBack.Height);
-            refreshButton = new Rectangle(125, 275, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
             //
             background_overlay = new Rectangle(ION.width - Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
             Logo = new Rectangle(ION.width / 100 * 10, ION.height - ION.height / 100 * 7 - Images.Logo.Height, Images.Logo.Width, Images.Logo.Height);
@@ -77,6 +76,8 @@ namespace ION
             TableColumnRoomname = new Rectangle(hostsTable.X, hostsTable.Y, Images.TableColumnRoomname.Width, Images.TableColumnRoomname.Height);
             TableColumnPlayers = new Rectangle(hostsTable.X+Images.TableColumnRoomname.Width, hostsTable.Y, Images.TableColumnPlayers.Width, Images.TableColumnPlayers.Height);
             TableColumnLevel = new Rectangle(hostsTable.X + Images.TableColumnRoomname.Width+Images.TableColumnPlayers.Width, hostsTable.Y, Images.TableColumnLevel.Width, Images.TableColumnLevel.Height);
+            //
+            refreshButton = new Rectangle(hostsTable.Right - Images.buttonRefresh.Width, hostsTable.Bottom + 25, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
             //
             rows = new List<Rectangle>();
 
