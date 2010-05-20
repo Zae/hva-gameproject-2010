@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
 
 namespace ION.GridStrategies
 {
@@ -20,25 +21,31 @@ namespace ION.GridStrategies
 
         //Speed control
         private int step = -1;
-        private int maxStep = 50;
+        private int maxStep = 0;//50;
 
         //Timing control
         private int iterations = 0;
 
-        
-        public ThunderStrategy(int seed)
+        public ThunderStrategy(int seed) : base()
         {
             name = "ThunderStrategy";
-            random = new Random(seed);  
-            
-            //new Random(
+            random = new Random(seed);
 
-        }
+            //Random test
+            //Random r1 = new Random(seed);
+            //Random r2 = new Random(seed);
 
-        public ThunderStrategy()
-        {
-            name = "ThunderStrategy";
-            random = new Random(0);
+            //for (int i = 0; i < 10000000; i++)
+            //{
+            //    float f1 = (float)r1.NextDouble();
+            //    float f2 = (float)r2.NextDouble();
+            //    if (f1 != f2)
+            //    {
+            //        Debug.WriteLine("NOT THE SAME!");
+            //    }
+            //}
+
+            //Debug.WriteLine("DONE RANDOM CHECK!");
 
         }
 
@@ -145,14 +152,6 @@ namespace ION.GridStrategies
                 return;
             }
 
-            //if (todo.charge > ResourceTile.spikeCharge)
-            //{
-            //    todo.isSpiking = true;
-            //    todo.xySpikeCount = ResourceTile.spikeDuration;
-            //    todo.nextCharge = 1.8f;
-            //    return;
-            //}
-
             int totalSpiking = xySpiking + diagonalSpiking;
 
             bool setSpiking = false;
@@ -224,13 +223,6 @@ namespace ION.GridStrategies
 
                 float fAvg = friendlyCharge / (friendlyTileCount + (neutralTiles/32));
                 float eAvg = enemyCharge / (enemyTileCount + (neutralTiles/32));
-
-               
-                //float fAvg = (friendlyCharge / (friendlyTileCount));
-                //float eAvg = enemyCharge / (enemyTileCount);
-
-                //float fAvg = (friendlyCharge / (friendlyTileCount+1));
-                //float eAvg = enemyCharge / (enemyTileCount);
 
                 fAvg += (float)random.NextDouble();
                 fAvg = fAvg / 2;

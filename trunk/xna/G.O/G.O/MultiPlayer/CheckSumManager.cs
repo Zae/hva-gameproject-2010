@@ -36,12 +36,34 @@ namespace ION.MultiPlayer
     public class CheckSumProduct
     {
         public int gameTick;
-        public int sum;
+        public float sum;
 
-        public CheckSumProduct(int gameTick, int sum)
+        public CheckSumProduct(int gameTick, float sum)
         {
             this.gameTick = gameTick;
             this.sum = sum;
+        }
+
+        public static CheckSumProduct getCheckSum()
+        {
+            Grid g = Grid.get();
+
+            float sum = 0;
+
+            foreach(ResourceTile rt in Grid.resourceTiles) 
+            {
+                sum += rt.charge;
+            }
+
+            foreach (Unit u in Grid.get().allUnits)
+            {
+                sum += u.inTileX; sum += u.inTileY;
+                sum += u.health; sum += u.id;
+                sum += u.owner;
+            }
+
+            CheckSumProduct csp = new CheckSumProduct(g.gameTick,sum);
+            return csp;
         }
     }
 }

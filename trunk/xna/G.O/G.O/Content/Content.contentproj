@@ -271,28 +271,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="unitItems\blueball.png">
-      <Name>blueball</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\blueballcharge.png">
-      <Name>blueballcharge</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\redball.png">
-      <Name>redball</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\redballcharge.png">
-      <Name>redballcharge</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="tileItems\texturetile.png">
       <Name>texturetile</Name>
       <Importer>TextureImporter</Importer>
@@ -767,6 +745,27 @@
     </Compile>
     <Compile Include="menuItems\Roomname.png">
       <Name>Roomname</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="guiItems\txt_commands.png">
+      <Name>txt_commands</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="guiItems\txt_selection.png">
+      <Name>txt_selection</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="guiItems\txt_victory.png">
+      <Name>txt_victory</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -245,6 +245,13 @@ namespace ION
         {
             gameTick++;
 
+            //Checksum test
+            if (gameTick % 100 == 0)
+            {
+                CheckSumProduct scp = CheckSumProduct.getCheckSum();
+                Debug.WriteLine("product at tick "+gameTick+" = " + scp.sum);
+            }
+
             bool working = true;
             while (working)
             {

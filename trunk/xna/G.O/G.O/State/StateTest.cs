@@ -31,7 +31,7 @@ namespace ION
         public int level = 0;
         public string[] levels = { "MediumLevelTest.xml", "PathLevelTest.xml", "LargeLevelTest.xml", "WideLevelTest.xml", "WideLevelTest2.xml" };
 
-        public GridStrategy[] strategies = { new ThunderStrategy(), new CreepStrategy(), new FlowStrategy() };
+        public GridStrategy[] strategies = { new ThunderStrategy(0), new CreepStrategy(), new FlowStrategy() };
         public int strategy = 0;
 
         private bool actionOnScreen = false;
@@ -54,9 +54,12 @@ namespace ION
 
         public bool showHelpFile = false;
 
-        static int unitCounter = 999;
+        //static int unitCounter = 999;
 
         public List<Unit> selection = new List<Unit>();
+
+        //Timing controls
+
 
         public StateTest()
         {
@@ -271,15 +274,15 @@ namespace ION
                 showHelpFile = false;
             }
 
-            //Debug automatically spawn units
-            unitCounter++;
+            ////Debug automatically spawn units
+            //unitCounter++;
 
-            if (unitCounter > 1000)
-            {
-                unitCounter = 0;
-                //grid.CreateBlueUnit(translationX, translationY);
-                //grid.CreateRedUnit(translationX, translationY);
-            }
+            //if (unitCounter > 1000)
+            //{
+            //    unitCounter = 0;
+            //    //grid.CreateBlueUnit(translationX, translationY);
+            //    //grid.CreateRedUnit(translationX, translationY);
+            //}
         }
 
 
