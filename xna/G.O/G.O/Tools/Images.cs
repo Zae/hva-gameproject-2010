@@ -46,6 +46,9 @@ namespace ION
         public static Texture2D emptyButton;
         public static Texture2D buttonOverlay;
 
+        public static Texture2D textCommands;
+        public static Texture2D textSelection;
+        public static Texture2D textVictory;
 
         //menuItems
         public static Texture2D ION_LOGO;

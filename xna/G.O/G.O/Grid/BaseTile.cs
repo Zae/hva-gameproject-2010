@@ -81,7 +81,7 @@ namespace ION
             if (nextCharge + charge > 1.0f)
             {
                 nextCharge = 1.0f;
-                Debug.WriteLine("RECEPTION RESULTS IN > 1");
+                //Debug.WriteLine("RECEPTION RESULTS IN > 1");
             }
             else
             {

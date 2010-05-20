@@ -944,7 +944,7 @@ namespace ION
                     result = new FlowStrategy();
                     break;
                 case "ThunderStrategy":
-                    result = new ThunderStrategy();
+                    result = new ThunderStrategy(0);
                     break;
                 default:
                     throw new NotSupportedException();
