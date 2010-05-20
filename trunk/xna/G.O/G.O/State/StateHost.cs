@@ -32,15 +32,17 @@ namespace ION
    
         public SELECTION selection = SELECTION.BACK;
 
-        private Color fadeColor = new Color(124, 124, 255, 220);
+        private Color fadeColor = Color.Orange;
 
         private Rectangle waitScreen;
         private Rectangle backButton;
-        private Rectangle startButton;
+        private Rectangle hostButton;
+        private Rectangle nameCaption;
         private Rectangle nameField;
 
-        public Rectangle background_overlay;
-        public Rectangle background_starfield;
+        private Rectangle background_overlay;
+        private Rectangle Logo;
+        private Rectangle background_starfield;
 
         private bool mousePressed = false;
         public bool upPressed = false;
@@ -57,144 +59,132 @@ namespace ION
         bool spacePressed = false;
         bool backPressed = false;
 
-        
-
-
-
-
         public StateHost()
         {
             background_overlay = new Rectangle(ION.width - Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
+            Logo = new Rectangle(ION.width / 100 * 10, ION.height - ION.height / 100 * 7 - Images.Logo.Height, Images.Logo.Width, Images.Logo.Height);
             background_starfield = new Rectangle(0, 0, Images.background_starfield.Width, Images.background_starfield.Height);
 
             waitScreen = new Rectangle(100, 100, ION.width - 200, ION.height - 200);
-            backButton = new Rectangle((ION.width / 2) - 500, (ION.height / 2) + 300, Images.buttonBack.Width, Images.buttonBack.Height);
-            startButton = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 300, Images.buttonJoin.Width, Images.buttonJoin.Height);
-            nameField = new Rectangle((ION.width / 2) - 125, (ION.height / 2) + 100, Images.buttonJoin.Width, Images.buttonJoin.Height);
-           
+            backButton = new Rectangle(125, 125, Images.buttonBack.Width, Images.buttonBack.Height);
+            nameCaption = new Rectangle(125, 300, Images.roomCaption.Width, Images.roomCaption.Height);
+            nameField = new Rectangle(nameCaption.Right + 25, nameCaption.Top, Images.inputField.Width, Images.inputField.Height);
+            hostButton = new Rectangle(nameField.Right + 25, nameField.Top, Images.buttonJoin.Width, Images.buttonJoin.Height);
         }
-
-
 
         public override void draw()
         {
             ION.get().GraphicsDevice.Clear(Color.Black);
 
-            
-           
-                ION.spriteBatch.Begin();
+            ION.spriteBatch.Begin();
 
-                //logo
-                Double w = Math.Ceiling((Double)ION.width / (Double)Images.background_overlay.Width);
-                Double h = Math.Ceiling((Double)ION.height / (Double)Images.background_overlay.Height);
-                for (int i = 0; i < w; i++)
+            //logo
+            Double w = Math.Ceiling((Double)ION.width / (Double)Images.background_overlay.Width);
+            Double h = Math.Ceiling((Double)ION.height / (Double)Images.background_overlay.Height);
+            for (int i = 0; i < w; i++)
+            {
+                for (int j = 0; j < h; j++)
                 {
-                    for (int j = 0; j < h; j++)
+                    ION.spriteBatch.Draw(Images.background_starfield, new Rectangle(background_starfield.X + (i * background_starfield.Width), background_starfield.Y + (j * background_starfield.Height), background_starfield.Width, background_starfield.Height), Color.White);
+                }
+            }
+            ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
+            ION.spriteBatch.Draw(Images.Logo, Logo, Color.White);
+
+            ION.spriteBatch.Draw(Images.roomCaption, nameCaption, Color.White);
+            ION.spriteBatch.Draw(Images.inputField, nameField, Color.White);
+
+            if (selection == SELECTION.NAMEFIELD)
+            {
+                //Draw haaighlighted
+                ION.spriteBatch.DrawString(Fonts.font, name, new Vector2(nameField.X + 15, nameField.Y + 15), Color.Black);
+                KeyboardState keyState = Keyboard.GetState();
+
+
+                if (keyState.GetPressedKeys().Length > 0)
+                {
+                    foreach (Keys k in keyState.GetPressedKeys())
                     {
-                        ION.spriteBatch.Draw(Images.background_starfield, new Rectangle(background_starfield.X + (i * background_starfield.Width), background_starfield.Y + (j * background_starfield.Height), background_starfield.Width, background_starfield.Height), Color.White);
+                        if (k.ToString().Length == 1)
+                        {
+                            pressedKeys[k.ToString()[0]] = true;
+                        }
+                        if (k.Equals(Keys.Back))
+                        {
+                            backPressed = true;
+                        }
+                        if (k.Equals(Keys.Space))
+                        {
+                            spacePressed = true;
+                        }
                     }
                 }
-                ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
 
-                if (selection == SELECTION.NAMEFIELD)
+                if (keyState.GetPressedKeys().Length == 0)
                 {
-                    //Draw haaighlighted
-                    ION.spriteBatch.Draw(Images.white1px, nameField, Color.White);
-                    ION.spriteBatch.DrawString(Fonts.font, name, new Vector2(nameField.X + 15, nameField.Y + 15), Color.Black);
-                    KeyboardState keyState = Keyboard.GetState();
-
-
-                    if (keyState.GetPressedKeys().Length > 0)
+                    int i = 0;
+                    foreach (bool b in pressedKeys)
                     {
-                        foreach (Keys k in keyState.GetPressedKeys())
+                        if (b)
                         {
-                            if (k.ToString().Length == 1)
-                            {
-                                pressedKeys[k.ToString()[0]] = true;
-                            }
-                            if (k.Equals(Keys.Back))
-                            {
-                                backPressed = true;
-                            }
-                            if (k.Equals(Keys.Space))
-                            {
-                                spacePressed = true;
-                            }
+                            name += (char)i;
+                            // b = false;
                         }
+                        i++;
+                    }
+                    pressedKeys = new bool[256];
+
+                    if (spacePressed)
+                    {
+                        name += " ";
+                        spacePressed = false;
+                    }
+                    if (backPressed && name.Length > 0)
+                    {
+                        name = name.Substring(0, name.Length - 1);
+                        backPressed = false;
                     }
 
-                    if (keyState.GetPressedKeys().Length == 0)
-                    {
-                        int i = 0;
-                        foreach (bool b in pressedKeys)
-                        {
-                            if (b)
-                            {
-                                name += (char)i;
-                                // b = false;
-                            }
-                            i++;
-                        }
-                        pressedKeys = new bool[256];
-
-                        if (spacePressed)
-                        {
-                            name += " ";
-                            spacePressed = false;
-                        }
-                        if (backPressed && name.Length > 0)
-                        {
-                            name = name.Substring(0, name.Length - 1);
-                            backPressed = false;
-                        }
-
-                    }
-
-
-
-
-                }
-                else
-                {
-
-
-                    //Draw normally
-                    ION.spriteBatch.Draw(Images.white1px, nameField, fadeColor);
-                    ION.spriteBatch.DrawString(Fonts.font, name, new Vector2(nameField.X + 15, nameField.Y + 15), Color.Black);
                 }
 
 
 
-                if (selection == SELECTION.BACK)
-                {
-                    //Draw highlighted
-                    ION.spriteBatch.Draw(Images.buttonBackF, backButton, Color.White);
-                }
-                else
-                {
-                    //Draw normally
-                    ION.spriteBatch.Draw(Images.buttonBack, backButton, Color.White);
-                }
-                if (selection == SELECTION.START)
-                {
-                    //Draw highlighted
-                    ION.spriteBatch.Draw(Images.buttonNewGameF, startButton, Color.White);
-                }
-                else
-                {
-                    //Draw normally
-                    ION.spriteBatch.Draw(Images.buttonNewGame, startButton, Color.White);
-                }
 
-                ION.spriteBatch.End();
-                if (waitState)
-                {
-                    wait();
-                    ION.get().IsMouseVisible = false;
-                }
+            }
+            else
+            {
+                ION.spriteBatch.DrawString(Fonts.font, name, new Vector2(nameField.X + 15, nameField.Y + 15), Color.Black);
+            }
 
-           
-            
+
+
+            if (selection == SELECTION.BACK)
+            {
+                //Draw highlighted
+                ION.spriteBatch.Draw(Images.buttonBackF, backButton, Color.White);
+            }
+            else
+            {
+                //Draw normally
+                ION.spriteBatch.Draw(Images.buttonBack, backButton, Color.White);
+            }
+            if (selection == SELECTION.START)
+            {
+                //Draw highlighted
+                ION.spriteBatch.Draw(Images.buttonHostF, hostButton, Color.White);
+            }
+            else
+            {
+                //Draw normally
+                ION.spriteBatch.Draw(Images.buttonHost, hostButton, Color.White);
+            }
+
+            ION.spriteBatch.End();
+            if (waitState)
+            {
+                wait();
+                ION.get().IsMouseVisible = false;
+            }            
         }
 
         public override void update(int ellapsed)
@@ -219,7 +209,7 @@ namespace ION
             }
 
 
-            if (mouseIn(mouseState.X, mouseState.Y, startButton))
+            if (mouseIn(mouseState.X, mouseState.Y, hostButton))
             {
                 selection = SELECTION.START;
                 if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
@@ -279,7 +269,7 @@ namespace ION
         {
             ION.spriteBatch.Begin();
 
-            ION.spriteBatch.Draw(Images.white1px, waitScreen, fadeColor);
+            ION.spriteBatch.Draw(Images.waitScreen, waitScreen, Color.White);
             ION.spriteBatch.DrawString(Fonts.font, "Waiting for an opponent......", new Vector2(waitScreen.X + 100, waitScreen.Bottom - 100), Color.Black);
             ION.spriteBatch.DrawString(Fonts.font, "press 'escape' to cancel", new Vector2(waitScreen.X + 100, waitScreen.Bottom - 60), Color.Black);
             
