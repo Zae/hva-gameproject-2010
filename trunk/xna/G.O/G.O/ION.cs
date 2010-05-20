@@ -185,7 +185,6 @@ namespace ION
             Images.background_starfield = Content.Load<Texture2D>("menuItems/starfield");
 
 
-<<<<<<< .mine
             ////Title Menu
             //Images.ION_LOGO = Content.Load<Texture2D>("menuItems/ION_LOGO");
             //Images.buttonNewGame = Content.Load<Texture2D>("menuItems/newGameButton");
@@ -195,8 +194,6 @@ namespace ION
             //Images.buttonQuit = Content.Load<Texture2D>("menuItems/quitButton");
             //Images.buttonQuitF = Content.Load<Texture2D>("menuItems/quitButtonF");
 
-=======
->>>>>>> .r192
             //MultiPlayer menu
             Images.buttonJoin = Content.Load<Texture2D>("menuItems/btn_join");
             Images.buttonJoinF = Content.Load<Texture2D>("menuItems/btn_join_hover");
@@ -205,7 +202,6 @@ namespace ION
             Images.buttonBack = Content.Load<Texture2D>("menuItems/btn_back");
             Images.buttonBackF = Content.Load<Texture2D>("menuItems/btn_back_hover");
 
-<<<<<<< .mine
             Images.inputField = Content.Load<Texture2D>("menuItems/input");
             Images.roomCaption = Content.Load<Texture2D>("menuItems/room");
             Images.waitScreen = Content.Load<Texture2D>("menuItems/wait");
@@ -218,8 +214,6 @@ namespace ION
             //Images.buttonBack = Content.Load<Texture2D>("menuItems/BackButton");
             //Images.buttonBackF = Content.Load<Texture2D>("menuItems/BackButtonF");
 
-=======
->>>>>>> .r192
             //Load Tile images
             Images.borderImage = Content.Load<Texture2D>("tileItems/border_tile");
             Images.mountainImage = Content.Load<Texture2D>("tileItems/mountain_tile");           
