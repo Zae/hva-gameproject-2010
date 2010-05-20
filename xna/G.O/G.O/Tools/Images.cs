@@ -58,7 +58,7 @@ namespace ION
         public static Texture2D buttonQuitF;
         public static Texture2D buttonMP;
         public static Texture2D buttonMPF;
-        public static Texture2D background;
+        public static Texture2D Logo;
         public static Texture2D background_overlay;
         public static Texture2D background_starfield;
 
@@ -71,6 +71,10 @@ namespace ION
         public static Texture2D buttonHostF;
         public static Texture2D buttonBack;
         public static Texture2D buttonBackF;
+
+        public static Texture2D inputField;
+        public static Texture2D roomCaption;
+        public static Texture2D waitScreen;
 
         public static Texture2D buttonRefresh;
         public static Texture2D buttonRefreshF;

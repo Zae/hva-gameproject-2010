@@ -37,6 +37,7 @@ namespace ION
         private Rectangle TableColumnLevel;
 
         private Rectangle background_overlay;
+        private Rectangle Logo;
         private Rectangle background_starfield;
 
 
@@ -69,6 +70,7 @@ namespace ION
             refreshButton = new Rectangle(125, 275, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
             //
             background_overlay = new Rectangle(ION.width - Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
+            Logo = new Rectangle(ION.width / 100 * 10, ION.height - ION.height / 100 * 7 - Images.Logo.Height, Images.Logo.Width, Images.Logo.Height);
             background_starfield = new Rectangle(0, 0, Images.background_starfield.Width, Images.background_starfield.Height);
             //
             hostsTable = new Rectangle(425, 125, Images.TableColumnRoomname.Width + Images.TableColumnPlayers.Width + Images.TableColumnLevel.Width, Images.TableColumnRoomname.Height);
@@ -119,6 +121,7 @@ namespace ION
                 }
             }
             ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
+            ION.spriteBatch.Draw(Images.Logo, Logo, Color.White);
             //
             ION.spriteBatch.Draw(Images.TableColumnRoomname, TableColumnRoomname, Color.White);
             ION.spriteBatch.Draw(Images.TableColumnPlayers, TableColumnPlayers, Color.White);

@@ -617,25 +617,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="menuItems\menu_back.png">
-      <Name>menu_back</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="menuItems\menu_back_overlay.png">
-      <Name>menu_back_overlay</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="menuItems\menu_back_starfield.png">
-      <Name>menu_back_starfield</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="menuItems\btn_back.png">
       <Name>btn_back</Name>
       <Importer>TextureImporter</Importer>
@@ -749,6 +730,50 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+<<<<<<< .mine
+  <ItemGroup>
+    <Compile Include="menuItems\planet.png">
+      <Name>planet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="menuItems\input.png">
+      <Name>input</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="menuItems\ION.png">
+      <Name>ION</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="menuItems\starfield.png">
+      <Name>starfield</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="menuItems\room.png">
+      <Name>room</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="menuItems\wait.png">
+      <Name>wait</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+=======
   <ItemGroup>
     <Compile Include="guiItems\txt_commands.png">
       <Name>txt_commands</Name>
@@ -770,6 +795,7 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+>>>>>>> .r192
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

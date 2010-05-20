@@ -25,12 +25,13 @@ namespace ION
         public SELECTION selection = SELECTION.HOST;
 
 
-        public Rectangle newGameButton;
-        public Rectangle mpButton;
-        public Rectangle quitButton;
-        public Rectangle optionsButton;
-        public Rectangle background_overlay;
-        public Rectangle background_starfield;
+        private Rectangle newGameButton;
+        private Rectangle mpButton;
+        private Rectangle quitButton;
+        private Rectangle optionsButton;
+        private Rectangle background_overlay;
+        private Rectangle Logo;
+        private Rectangle background_starfield;
         //
         private Rectangle hostButton;
         private Rectangle joinButton;
@@ -49,6 +50,7 @@ namespace ION
             optionsButton = new Rectangle(125, 275, Images.buttonOptions.Width, Images.buttonOptions.Height);
             quitButton = new Rectangle(125, 350, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
             background_overlay = new Rectangle(ION.width - Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
+            Logo = new Rectangle(ION.width / 100 * 10, ION.height - ION.height / 100 * 7 - Images.Logo.Height, Images.Logo.Width, Images.Logo.Height);
             background_starfield = new Rectangle(0, 0, Images.background_starfield.Width, Images.background_starfield.Height);
             //
             hostButton = new Rectangle(375, 200, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
@@ -80,6 +82,7 @@ namespace ION
                 }
             }
             ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
+            ION.spriteBatch.Draw(Images.Logo, Logo, Color.White);
             //
             ION.spriteBatch.Draw(Images.buttonNewGame, newGameButton, Color.Gray);
             ION.spriteBatch.Draw(Images.buttonMP, mpButton, Color.Gray);
