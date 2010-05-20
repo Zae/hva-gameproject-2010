@@ -53,6 +53,7 @@ namespace ION.MultiPlayer
             foreach(ResourceTile rt in Grid.resourceTiles) 
             {
                 sum += rt.charge;
+                sum += rt.spikeCount;
             }
 
             foreach (Unit u in Grid.get().allUnits)
