@@ -16,19 +16,14 @@ namespace ION.MultiPlayer
         
         public virtual void performCommand() {
         }
-<<<<<<< .mine
+
         public virtual String toCommandParts()
         {
             return "";
         }
-=======
 
-        public virtual string toCommandParts()
-        {
 
-        }
 
->>>>>>> .r208
     }
 
     public class NewMoveCommand : Command
@@ -55,20 +50,14 @@ namespace ION.MultiPlayer
             u.EmptyWayPoints();
             u.SetTarget(Grid.map[xTarget,yTarget].GetPos(StateTest.translationX,StateTest.translationY));
         }
-<<<<<<< .mine
+
 
         public override String toCommandParts()
         {
             return "MOVE_UNIT_TO|0|"+supposedGameTick+"|"+unitOwner+"|"+unitId+"|"+xTarget+"|"+yTarget+"|";
         }
-=======
 
-        public override string toCommandParts()
-        {
 
-        }
-
->>>>>>> .r208
     }
 
     public class AddMoveCommand : Command
@@ -91,19 +80,16 @@ namespace ION.MultiPlayer
             //u.AddDestination(Grid.get().getT
         }
 
-<<<<<<< .mine
+
         public override String toCommandParts()
-=======
-        public override string toCommandParts()
->>>>>>> .r208
+
         {
-<<<<<<< .mine
+
             return "blabla";
         }
-=======
->>>>>>> .r208
 
-        }
+
+    
     }
 
     public class NewUnitCommand : Command
@@ -122,19 +108,15 @@ namespace ION.MultiPlayer
         {
             Grid.get().createUnit(unitOwner, unitId);
         }
-<<<<<<< .mine
+
 
         public override String toCommandParts()
         {
             return "CREATE_UNIT|0|"+supposedGameTick+"|"+unitOwner+"|"+unitId+"|";
         }
-=======
 
-        public override string toCommandParts()
-        {
 
-        }
->>>>>>> .r208
+
     }
 
 }
