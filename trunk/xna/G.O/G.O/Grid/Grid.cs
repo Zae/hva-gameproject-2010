@@ -190,7 +190,10 @@ namespace ION
                 Vector2 temp = GetTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
                 if (temp != null)
                 {
-                    units[i].UpdateTile(temp);
+                    if (units[i].UpdateTile(temp))
+                    {
+                        //units[i].FindPath(map, allUnits);//here
+                    }
                 }
             }
 

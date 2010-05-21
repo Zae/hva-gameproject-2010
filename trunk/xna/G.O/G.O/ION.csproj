@@ -43,6 +43,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>false</XnaCompressContent>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
@@ -130,6 +131,12 @@
     <Compile Include="MultiPlayer\CheckSumManager.cs" />
     <Compile Include="MultiPlayer\Command.cs" />
     <Compile Include="MultiPlayer\CommandDispatcher.cs" />
+    <Compile Include="PathFinding\AuthorAttribute.cs" />
+    <Compile Include="PathFinding\HighResolutionTime.cs" />
+    <Compile Include="PathFinding\IPathFinder.cs" />
+    <Compile Include="PathFinding\PathFinder.cs" />
+    <Compile Include="PathFinding\PathFinderFast.cs" />
+    <Compile Include="PathFinding\PriorityQueueB.cs" />
     <Compile Include="State\StateNetworkTest.cs" />
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />
