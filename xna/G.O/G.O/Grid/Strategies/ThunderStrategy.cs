@@ -21,6 +21,7 @@ namespace ION.GridStrategies
 
         //Speed control
         private int step = -1;
+
         private int maxStep = 25;
 
         //Timing control

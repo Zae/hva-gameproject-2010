@@ -15,7 +15,7 @@ namespace ION
     //"START"|<game timer>|<action time>|
     //"MOVE_UNIT_TO|<game timer>|<action time>|<unit owner>|<unit ID>|<x in grid>|<y in grid>|"
     //"REMOVE_UNIT|<game timer>|<action time>|<unit nmbr>"
-    //"CREAYE_UNIT|<game timer>|<action time>|<unit owner>|<unit ID>(as test)|
+    //"CREATE_UNIT|<game timer>|<action time>|<unit owner>|<unit ID>(as test)|
     //"MOVE_UNIT|<game timer>|<action time>|<unit nmbr>|<x in grid>|<y in grid>|"
 
 
@@ -82,13 +82,19 @@ namespace ION
             if (timer % 20 == 0)
             {
                 
-                Console.WriteLine("-" + timer + " commands waiting for echo:" + sentCommands.ToArray().Length);
+                Console.WriteLine( timer + " commands waiting for echo:" + sentCommands.ToArray().Length);
                 Console.WriteLine("commands waiting for execution:" + commands.ToArray().Length);
             }
-           // update();
+
+            if (!gameStarted)
+                update();
+            //else
+                //clock.Disposed();
         }
 
         // new commands get handled here
+
+
         // command = the whole string, commandPart is the part between the "|"
         void CommandSO_Sync(object sender, SyncEventArgs e)
         {
@@ -146,10 +152,13 @@ namespace ION
         public void issueCommand(String command)
         {
             String[] commandParts = splitCommand(command);
-
+            int unitOwner;
+            int unitID;
             switch (commandParts[0])
             {
 
+
+                
                 case "START":
                     Console.WriteLine("start Game message received");
                     //timer = Int32.Parse(actionParts[1]);
@@ -174,8 +183,8 @@ namespace ION
 
                 case "CREATE_UNIT":
                     tick = Int32.Parse(commandParts[2]);
-                    unitOwner = Int32.Parse(actionParts[3]);
-                    unitID = Int32.Parse(actionParts[4]);
+                    unitOwner = Int32.Parse(commandParts[3]);
+                    unitID = Int32.Parse(commandParts[4]);
                     CommandDispatcher.sinkCommand(new NewUnitCommand(tick,unitOwner,unitID));
                     break;
 

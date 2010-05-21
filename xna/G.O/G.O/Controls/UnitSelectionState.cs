@@ -54,7 +54,7 @@ namespace ION.Controls
                     if (playerUnits[i] != null && playerUnits[i].selected)
                     {
                         //playerUnits[i].EmptyWayPoints();
-                        CommandsDispatcher.issueCommand(new NewMoveCommand(Grid.get().TCP+30,playerUnits[i].owner,playerUnits[i].idrid.get().selectedTile.indexX,rid.get().selectedTile.indexY));
+                        CommandDispatcher.issueCommand(new NewMoveCommand(Grid.get().TCP+30,playerUnits[i].owner,playerUnits[i].id,Grid.get().selectedTile.indexX,Grid.get().selectedTile.indexY));
                         //if (Protocol.instance != null)
                         //    Protocol.instance.moveUnit(playerUnits[i].id, Grid.get().selectedTile.indexX, Grid.get().selectedTile.indexY);
                         //else
