@@ -23,8 +23,8 @@ namespace ION
         protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
         //TODO magic numbers?
-        public int inTileX = 100;
-        public int inTileY = 100;
+        public int inTileX = 0;
+        public int inTileY = 0;
 
         public abstract void draw(float x, float y);
 

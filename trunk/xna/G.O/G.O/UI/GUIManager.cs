@@ -23,7 +23,9 @@ namespace ION.UI
 
         public GUIManager()
         {
- 
+            GUIComponent commands = new GUIComponent(ION.width - Images.commandsBar.Width - 20 + (15), ION.height - Images.commandsBar.Height - 20 - (25), Images.textCommands);
+            addComponent(commands);
+
             commandsBar = new GUIComposite(ION.width - Images.commandsBar.Width - 20,ION.height - Images.commandsBar.Height - 20, Images.commandsBar);
             addComponent(commandsBar);
 
@@ -32,9 +34,13 @@ namespace ION.UI
             statusBar.add(new InfluenceDisplayer(168, 32, Images.statusBarTemp));
             addComponent(statusBar);
 
+            //GUIComponent victory = new GUIComponent(20 + 10, 20 + 5, Images.textVictory);
+            //addComponent(victory);
+
             GUIComposite generalInfo = new GUIComposite(20, 20, Images.selectionBar);
-            generalInfo.add(new LevelInfo(15, 10));
-            generalInfo.add(new StrategyInfo(15, 25));
+            generalInfo.add(new GUIComponent(10,5, Images.textVictory));
+            generalInfo.add(new LevelInfo(15, 30));
+            //generalInfo.add(new StrategyInfo(15, 25));
             generalInfo.add(new Label(15, 40, "Hold H for Help"));
             addComponent(generalInfo);
 

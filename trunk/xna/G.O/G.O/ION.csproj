@@ -12,7 +12,8 @@
     <XnaFrameworkVersion>v3.1</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaCrossPlatformGroupID>a0905155-984a-4084-a61b-f78c70c92f26</XnaCrossPlatformGroupID>
-    <ApplicationIcon>Units\Game.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -123,7 +124,6 @@
     <Compile Include="Units\Unit.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Units\Game.ico" />
     <Content Include="GameThumbnail.png" />
     <Compile Include="Controls\BaseSelectionState.cs" />
     <Compile Include="MultiPlayer\Protocol.cs" />
