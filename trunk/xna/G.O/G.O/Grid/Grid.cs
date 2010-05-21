@@ -12,6 +12,7 @@ using ION.GridStrategies;
 using FluorineFx;
 using FluorineFx.Net;
 using ION.MultiPlayer;
+using ION.Tools;
 
 namespace ION
 {
@@ -43,6 +44,8 @@ namespace ION
         public static BaseTile[] playerBases;
 
         private GridStrategy updateStrategy;
+
+        private StupidAI stupidAI;
 
         private int viewDirection = 1;
         private const int SOUTH_WEST = 1;
@@ -101,11 +104,11 @@ namespace ION
             currentTime = DateTime.Now;
 
             passedTime = currentTime - startTime;
-            Debug.WriteLine("passed time:" + passedTime.Milliseconds);
+           // Debug.WriteLine("passed time:" + passedTime.Milliseconds);
 
             TTP = ((float)passedTime.TotalMilliseconds / TPS) - TCP;
 
-            Debug.WriteLine("ttp:" + TTP);
+            //Debug.WriteLine("ttp:" + TTP);
 
 
             if (TTP > 1)
@@ -121,9 +124,9 @@ namespace ION
             }
 
             TCP++;
-            
 
-            
+            //Temp AI
+            stupidAI.act();
             
             //if (Protocol.instance == null)
             //    gameTick++;
@@ -162,11 +165,14 @@ namespace ION
                     ResourceTile rt = (ResourceTile)map[units[i].inTileX, units[i].inTileY];
                     if (rt.owner == units[i].owner)
                     {
-                        rt.receive(0.005f);
+                        if (rt.charge < 0.9)
+                        {
+                            rt.receive(0.005f);
+                        }
                     }
                     else
                     {
-                        rt.sustain(0.010f, units[i].owner);
+                        rt.sustain(0.020f, units[i].owner);
                     }
                 }
 
@@ -175,7 +181,10 @@ namespace ION
                 {
                     if (r.owner == units[i].owner)
                     {
-                        r.receive(0.005f);
+                        if (r.charge < 0.5)
+                        {
+                            r.receive(0.005f);
+                        }
                     }
                     else
                     {
@@ -641,6 +650,11 @@ namespace ION
         public Grid(String levelname, GridStrategy strategy, int playerNumber)
         {
             instance = this;
+
+            //Temp AI
+            int aiNumber = 1;
+            if (playerNumber == 1) aiNumber = 2;
+            stupidAI = new StupidAI(aiNumber);
 
             Grid.playerNumber = playerNumber;
 

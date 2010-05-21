@@ -40,7 +40,7 @@ namespace ION
 
         public const float MAX_CHARGE = 1.0f;
 
-        private Color tileColor = new Color();
+        public Color tileColor = new Color();
 
         public bool isSpiking = false;
         public int spikeCount = 0;
@@ -218,7 +218,7 @@ namespace ION
             }
         }
 
-        private Color getAppropriateColor(int owner, float charge)
+        public virtual Color getAppropriateColor(int owner, float charge)
         {
             if (owner == Players.NEUTRAL)
             {
