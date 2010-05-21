@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
 using ION.UI;
+using ION.MultiPlayer;
 
 namespace ION.Controls
 {
@@ -52,12 +53,12 @@ namespace ION.Controls
                 {
                     if (playerUnits[i] != null && playerUnits[i].selected)
                     {
-                        playerUnits[i].EmptyWayPoints();
-                        //CommandsDispatcher.issueCommand(new NewMoveCommand(new playerUnits[i].,,));
-                        if (Protocol.instance != null)
-                            Protocol.instance.moveUnit(playerUnits[i].id, Grid.get().selectedTile.indexX, Grid.get().selectedTile.indexY);
-                        else
-                            playerUnits[i].SetTarget(Grid.get().selectedTile.GetPos(translationX, translationY));
+                        //playerUnits[i].EmptyWayPoints();
+                        CommandsDispatcher.issueCommand(new NewMoveCommand(Grid.get().TCP+30,playerUnits[i].owner,playerUnits[i].idrid.get().selectedTile.indexX,rid.get().selectedTile.indexY));
+                        //if (Protocol.instance != null)
+                        //    Protocol.instance.moveUnit(playerUnits[i].id, Grid.get().selectedTile.indexX, Grid.get().selectedTile.indexY);
+                        //else
+                        //    playerUnits[i].SetTarget(Grid.get().selectedTile.GetPos(translationX, translationY));
                     }
                 }
             }

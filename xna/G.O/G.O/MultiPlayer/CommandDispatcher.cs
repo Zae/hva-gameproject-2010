@@ -35,7 +35,7 @@ namespace ION.MultiPlayer
         public static void issueCommand(Command command)
         {
             //push the command on the network
-
+            Protocol.instance.declareAction(command);
             string commandParts = command.ToString();
             
             //send them back directly,

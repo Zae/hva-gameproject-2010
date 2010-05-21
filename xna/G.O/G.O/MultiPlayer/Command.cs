@@ -26,7 +26,7 @@ namespace ION.MultiPlayer
         public int unitOwner;
         public int unitId;
 
-        public NewMoveCommand(int supposedGameTick, int unitOwner, int unitId, int xTarget, int yTarget, int positionsCount)
+        public NewMoveCommand(int supposedGameTick, int unitOwner, int unitId, int xTarget, int yTarget)
             : base(supposedGameTick)
         {
             this.xTarget = xTarget;
