@@ -134,6 +134,7 @@
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />
     <Compile Include="State\TicTacToeTestStuff\CheckedState.cs" />
+    <Compile Include="Tools\StupidAI.cs" />
     <Compile Include="Tools\ThemeManager.cs" />
     <Compile Include="UI\Implementations\Button.cs" />
     <Compile Include="UI\Implementations\InfluenceDisplayer.cs" />

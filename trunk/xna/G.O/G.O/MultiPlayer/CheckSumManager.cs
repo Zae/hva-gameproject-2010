@@ -63,7 +63,7 @@ namespace ION.MultiPlayer
                 sum += u.owner;
             }
 
-            CheckSumProduct csp = new CheckSumProduct(g.gameTick,sum);
+            CheckSumProduct csp = new CheckSumProduct(g.TCP,sum);
             return csp;
         }
     }
