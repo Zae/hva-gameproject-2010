@@ -33,6 +33,11 @@ namespace ION
         public static Texture2D[,] unit;
         public static Texture2D[,] unit_selected;
 
+        public static Texture2D[,,] unit_shooting;
+        public static Texture2D[,,] unit_selected_shooting;
+
+        public static Texture2D[] bulletImpact;
+
         //guiItems
         public static Texture2D commandsBar;
         public static Texture2D moveButtonNormal;

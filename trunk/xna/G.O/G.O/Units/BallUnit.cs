@@ -13,6 +13,11 @@ namespace ION
         public int health = 100;
         public static int cost = 250;
 
+        //animation test
+        private int frame = 0;
+        private int counter = 0;
+
+
         public BallUnit() : base(-1,-1) //Sending an invalid number to the base class as a test, I think this constructor in only used to deserialize into after
         {
             destination = new Queue<Tile>();
@@ -42,26 +47,36 @@ namespace ION
             //virtualPos.X += baseHalfWidth;
             //virtualPos.Y += baseHalfWidth * 1.5f;
 
-            //if (selected)
-            //{
-                //NORMAL TEXTURE PROPORTIONS
-                ION.spriteBatch.Draw(Images.getUnitImage(owner,(int)facing,selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+            //animation test code
+            counter++;
 
-                //EGG TEXTURE PROPORTIONS
-                //ION.spriteBatch.Draw(Images.blueUnitChargeImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (scale * 0.5f)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
-            //}
-            //else
-            //{
-            //    //NORMAL TEXTURE PROPORTIONS
-            //    ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+            if (counter > 0)
+            {
+                frame = 0;
+            }
+            if (counter > 15)
+            {
+                frame = 1;
+            }
+            if (counter > 30)
+            {
+                counter = 0;
+            }
 
-            //    //EGG TEXTURE PROPORTIONS
-            //    //ION.spriteBatch.Draw(Images.blueUnitImage, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (scale * 0.5f)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), Color.White);
-            //}
+
+            if (selected)
+            {
+                //do not remove
+                //ION.spriteBatch.Draw(Images.getUnitImage(owner,(int)facing,selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+
+                ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, frame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+            }
+            else
+            {
+                ION.spriteBatch.Draw(Images.unit_shooting[owner - 1, (int)facing, frame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+            }
 
         }
-
-
 
         internal void Deserialize(System.IO.MemoryStream memoryStream)
         {
