@@ -315,7 +315,7 @@ namespace ION
                 //else
                 //{
                 //    rt.sustain(0.025f, units[i].owner);
-                }
+            }
                 //TODO @michiel units should make a more difuse effect on the grid
                 //if (units[i] != null)
                 //{
@@ -337,11 +337,16 @@ namespace ION
                 //updates the unit
                 units[i].Update(translationX, translationY);
 
+
                 //tells the unit what tile it is currently on
                 Vector2 temp = GetTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
                 if (temp != null)
                 {
-                    units[i].UpdateTile(temp);
+                    if (units[i].UpdateTile(temp))//if the unit is occuping a new tile the pathfinding must be redone
+                    {
+                        //units[i].FindPath(map, allUnits);//here
+
+                    }
                 }
             }
 

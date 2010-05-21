@@ -32,6 +32,13 @@ namespace ION
         public abstract void update();
         public abstract void releaseMomentum();
 
+        public bool accessable;
+
+        public Tile()
+        {
+            accessable = false;
+        }
+
         public void setIndexZ(int newIndex)
         {
             visualZ = newIndex;
@@ -104,6 +111,29 @@ namespace ION
         {
             return new Vector2((ION.halfWidth + (visualX * baseHalfWidth) * (15.0f / scale) - (baseHalfWidth * (15.0f / scale))), ((visualY * baseHalfHeight) * (15.0f / scale) - (baseHalfWidth + baseHalfHeight) * (15.0f / scale)));
         }
+
+
+        public bool FreeTile(Tile currentTile, List<Unit> allUnits)
+        {
+            bool answer = true;
+            if (accessable)
+            {
+                for (int i = 0; i < allUnits.Count(); i++)
+                {
+                    if (allUnits[i].getTileX() == currentTile.indexX && allUnits[i].getTileY() == currentTile.indexY)
+                    {
+                        answer = false;
+                    }
+                }
+            }
+            else
+            {
+                answer = false;
+            }
+            return answer;
+
+        }
+
 
     }
 }
