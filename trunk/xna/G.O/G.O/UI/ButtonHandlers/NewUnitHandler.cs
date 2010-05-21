@@ -22,10 +22,10 @@ namespace ION.UI
             {
                 Grid.get().resources -= BallUnit.cost;
 
-                if (Protocol.instance != null)
-                    Protocol.instance.createUnit(Grid.playerNumber, Grid.getNewId());
+                //if (Protocol.instance != null)
+                //    Protocol.instance.createUnit(Grid.playerNumber, Grid.getNewId());
                    
-                else
+                //else
                 CommandDispatcher.issueCommand(new NewUnitCommand(Grid.get().TCP+30,Grid.playerNumber,Grid.getNewId()));
             }
 

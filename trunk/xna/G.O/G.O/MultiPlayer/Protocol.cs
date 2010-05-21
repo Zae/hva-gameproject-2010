@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using FluorineFx;
 using FluorineFx.Net;
+using ION.MultiPlayer;
 
 namespace ION
 {
@@ -26,6 +27,7 @@ namespace ION
         private bool gameStarted= false;
         private int commandNr;
         private Timer clock;
+        private int latency = 20;
 
         private ArrayList sentCommands;
         private ArrayList commands;
@@ -83,7 +85,7 @@ namespace ION
                 Console.WriteLine("-" + timer + " commands waiting for echo:" + sentCommands.ToArray().Length);
                 Console.WriteLine("commands waiting for execution:" + commands.ToArray().Length);
             }
-            update();
+           // update();
         }
 
         // new commands get handled here
@@ -120,24 +122,70 @@ namespace ION
                         timer = Int32.Parse(commandParts[1]);
 
                     //send an echo back
-                    declareAction(command+"E");
-                    Console.WriteLine("echo of: " + command + " is sent");
+                    //declareAction(command+"E");
+                    //Console.WriteLine("echo of: " + command + " is sent");
                 }
 
                 else
                 {
                     //remove it and dont send an echo
                     sentCommands.Remove(command);
-
+                    
                 }
 
                 //add command to commandlist, in the update is resposible for excution
-                commands.Add(commandParts);
+               
+                //commands.Add(commandParts);
+
+                issueCommand(command);
+                //performAction(commandParts);
             }
             else Console.WriteLine("empty command received :( " );
         }
 
+        public void issueCommand(String command)
+        {
+            String[] commandParts = splitCommand(command);
 
+            switch (commandParts[0])
+            {
+
+                case "START":
+                    Console.WriteLine("start Game message received");
+                    //timer = Int32.Parse(actionParts[1]);
+                    if (ION.instance.serverConnection.isHost)
+                        ION.instance.setState(new StateTest(1, 3243, "MediumLevelTest.xml"));
+                    else
+                        ION.instance.setState(new StateTest(2, 3243, "MediumLevelTest.xml"));
+
+                    gameStarted = true;
+                    break;
+
+                case "MOVE_UNIT_TO":
+                    int tick = Int32.Parse(commandParts[2]);
+                    unitOwner = Int32.Parse(commandParts[3]);
+                    unitID = Int32.Parse(commandParts[4]);
+                    int x = Int32.Parse(commandParts[5]);
+                    int y = Int32.Parse(commandParts[6]);
+                    
+                    CommandDispatcher.sinkCommand(new NewMoveCommand(tick,unitOwner,unitID,x,y));
+
+                    break;
+
+                case "CREATE_UNIT":
+                    tick = Int32.Parse(commandParts[2]);
+                    unitOwner = Int32.Parse(actionParts[3]);
+                    unitID = Int32.Parse(actionParts[4]);
+                    CommandDispatcher.sinkCommand(new NewUnitCommand(tick,unitOwner,unitID));
+                    break;
+
+                default:
+
+                    Console.WriteLine("unknwon command recieved!!!");
+                    break;
+            }
+
+        }
            
         void CommandSO_OnDisconnect(object sender, EventArgs e)
         {
@@ -251,7 +299,7 @@ namespace ION
             
             if(command[command.Length-1]!= 'E') sentCommands.Add(command+"E");
 
-            //commands.Add(splitCommand(command));
+            commands.Add(splitCommand(command));
         }
         public void startGame(int playerNr)
         {
@@ -259,20 +307,20 @@ namespace ION
            
            
             player = playerNr;
-            declareAction("START|"+timer+"|"+(timer+50)+"|");
+            declareAction("START|"+timer+"|"+(timer+latency)+"|");
 
         }
         public void moveUnit (int UnitID, int x, int y)
         {
 
-            declareAction("MOVE_UNIT_TO|" + timer + "|" + (timer + 50) + "|"+ Grid.playerNumber+"|"+ UnitID + "|" + x + "|" + y+"|");
+            declareAction("MOVE_UNIT_TO|" + timer + "|" + (timer +latency) + "|"+ Grid.playerNumber+"|"+ UnitID + "|" + x + "|" + y+"|");
 
 
         }
 
         public void createUnit(int owner, int id)
         {
-            declareAction("CREATE_UNIT|" + timer + "|" + (timer + 50) + "|" + owner+"|"+id+"|");
+            declareAction("CREATE_UNIT|" + timer + "|" + (timer + latency) + "|" + owner+"|"+id+"|");
         }
 
         public void checkGrid(int checksum)
