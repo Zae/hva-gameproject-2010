@@ -46,9 +46,10 @@ namespace ION
         public int spikeCount = 0;
         public static float spikeCharge = 0.9f;
         public static int spikeDuration = 5;
-      
+
         public ResourceTile()
         {
+            accessable = true;
         }
 
         public ResourceTile(int indexX, int indexY)
