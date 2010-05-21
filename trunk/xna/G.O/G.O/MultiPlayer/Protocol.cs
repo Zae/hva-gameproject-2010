@@ -11,10 +11,10 @@ namespace ION
 {
 
     //example commands:
-    //"SART"|<game timer>|<action time>|
-    //"MOVE_UNIT_TO|<game timer>|<action time>|<unit nmbr>|<x in grid>|<y in grid>|"
+    //"START"|<game timer>|<action time>|
+    //"MOVE_UNIT_TO|<game timer>|<action time>|<unit owner>|<unit ID>|<x in grid>|<y in grid>|"
     //"REMOVE_UNIT|<game timer>|<action time>|<unit nmbr>"
-    //"ADD_UNIT|<game timer>|<action time>|<unit nmbr>(as test)|<x in grid>|<y in grid>|"
+    //"CREAYE_UNIT|<game timer>|<action time>|<unit owner>|<unit ID>(as test)|
     //"MOVE_UNIT|<game timer>|<action time>|<unit nmbr>|<x in grid>|<y in grid>|"
 
 
@@ -23,6 +23,7 @@ namespace ION
     
     public class Protocol
     {
+        private bool gameStarted= false;
         private int commandNr;
         private Timer clock;
 
@@ -32,7 +33,7 @@ namespace ION
         public static Protocol instance;
   
         public int timer = 0;
-        private int tik = 0;
+      
         //private String command;
         public static RemoteSharedObject CommandSO;
         private int player = 1;
@@ -75,8 +76,10 @@ namespace ION
         //update every interval
         void Timer_Tick(Object source, EventArgs e)
         {
+            //Grid.get().gameTick++;
             if (timer % 20 == 0)
             {
+                
                 Console.WriteLine("-" + timer + " commands waiting for echo:" + sentCommands.ToArray().Length);
                 Console.WriteLine("commands waiting for execution:" + commands.ToArray().Length);
             }
@@ -186,20 +189,45 @@ namespace ION
 
         public void performAction(String[] actionParts)
         {
+            int unitID;
+            int unitOwner;
+           
             String action = actionParts[0];
             switch (action)
             {
+                    
                 case "START":
                     Console.WriteLine("start Game message received");
                     //timer = Int32.Parse(actionParts[1]);
-                    
-                    ION.instance.setState(new StateTest());
+                    if(ION.instance.serverConnection.isHost)
+                        ION.instance.setState(new StateTest(1,3243,"MediumLevelTest.xml"));
+                    else
+                        ION.instance.setState(new StateTest(2, 3243, "MediumLevelTest.xml"));
+
+                    gameStarted = true;
                     break;
 
                 case "MOVE_UNIT_TO":
                     Console.WriteLine("move unit message received");
-                    //int player = Int32.Parse(actionParts[2]);
-                    //ION.instance.setState(new StateTest());
+                    unitOwner = Int32.Parse(actionParts[3]);
+                    unitID = Int32.Parse(actionParts[4]);
+                    int x = Int32.Parse(actionParts[5]);
+                    int y = Int32.Parse(actionParts[6]);
+
+
+                    Unit u = Grid.get().getUnit(unitOwner, unitID);
+                    u.EmptyWayPoints();
+                    u.SetTarget(Grid.map[x, y].GetPos(StateTest.translationX, StateTest.translationY));
+
+                    
+                    break;
+
+                case "CREATE_UNIT":
+
+                    unitOwner = Int32.Parse(actionParts[3]);
+                    unitID= Int32.Parse (actionParts[4]);
+                    Grid.get().createUnit(unitOwner, unitID);
+
                     break;
 
                 default :
@@ -237,7 +265,16 @@ namespace ION
         public void moveUnit (int UnitID, int x, int y)
         {
 
+            declareAction("MOVE_UNIT_TO|" + timer + "|" + (timer + 50) + "|"+ Grid.playerNumber+"|"+ UnitID + "|" + x + "|" + y+"|");
+
+
         }
+
+        public void createUnit(int owner, int id)
+        {
+            declareAction("CREATE_UNIT|" + timer + "|" + (timer + 50) + "|" + owner+"|"+id+"|");
+        }
+
         public void checkGrid(int checksum)
         {
 
@@ -245,7 +282,8 @@ namespace ION
         public void update()
         {
             timer++;
-
+            if(gameStarted)
+                Grid.get().gameTick++;
             
             if(commands.Count>0)
             for(int i = 0; i<commands.Count; i++)
@@ -260,14 +298,15 @@ namespace ION
                     {
                         Console.WriteLine("command: " + commandParts[0] + " will be performed");
                         performAction(commandParts);
+                        commands[i] = null;
                         commands.RemoveAt(i);
                         
                         Console.Write("commandsSize = "  + commands.Count);
                         break;
                         
-                        return;
+                        
                     }
-                    else if (Int32.Parse(commandParts[2]) < timer)
+                    else if (Int32.Parse(((String[])commands[i])[2]) < timer)
                     {
                         Console.WriteLine("command: " + commandParts[0] + " is out of date:: timer = "+timer+ " execution time =" + Int32.Parse(commandParts[2]) );
                     }

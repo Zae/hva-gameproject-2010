@@ -36,7 +36,9 @@ namespace ION.MultiPlayer
         {
             //push the command on the network
 
-            //now we just send them back directly,
+            string commandParts = command.ToString();
+            
+            //send them back directly,
             sinkCommand(command);
         }
 

@@ -20,14 +20,18 @@ namespace ION.MultiPlayer
 
     public class NewMoveCommand : Command
     {
-        public int[,] targetPositions;
+        public int xTarget;
+        public int yTarget;
 
-        int unitOwner;
-        int unitId;
+        public int unitOwner;
+        public int unitId;
 
-        public NewMoveCommand(int supposedGameTick, int unitOwner, int unitId, int[,] targetPositions, int positionsCount)
+        public NewMoveCommand(int supposedGameTick, int unitOwner, int unitId, int xTarget, int yTarget, int positionsCount)
             : base(supposedGameTick)
         {
+            this.xTarget = xTarget;
+            this.yTarget = yTarget;
+
             this.unitOwner = unitOwner;
             this.unitId = unitId;
         }
@@ -35,7 +39,8 @@ namespace ION.MultiPlayer
         public override void performCommand()
         {
             Unit u = Grid.get().getUnit(unitOwner, unitId);
-            //u.AddDestination(Grid.get().getT
+            u.EmptyWayPoints();
+            u.SetTarget(Grid.map[xTarget,yTarget].GetPos(StateTest.translationX,StateTest.translationY));
         }
     }
 
@@ -57,6 +62,17 @@ namespace ION.MultiPlayer
         {
             Unit u = Grid.get().getUnit(unitOwner, unitId);
             //u.AddDestination(Grid.get().getT
+        }
+
+        public string toCommandParts()
+        {
+            return null;//"MOVE|blabla|" + owner; 
+        }
+
+        public void intoCommand(string commandParts)
+        {
+           // unitOwner =...
+
         }
     }
 

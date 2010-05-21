@@ -21,6 +21,11 @@ namespace ION.UI
             if(Grid.get().resources > BallUnit.cost) 
             {
                 Grid.get().resources -= BallUnit.cost;
+
+                if (Protocol.instance != null)
+                    Protocol.instance.createUnit(Grid.playerNumber, Grid.getNewId());
+                   
+                else
                 CommandDispatcher.issueCommand(new NewUnitCommand(Grid.get().gameTick+25,Grid.playerNumber,Grid.getNewId()));
             }
 
