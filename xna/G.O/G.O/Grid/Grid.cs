@@ -18,6 +18,7 @@ namespace ION
     public class Grid
     {
         private bool online=false;
+
         private static Grid instance = null;
         
         public static Tile[,] map;
@@ -30,8 +31,8 @@ namespace ION
         public float mouseWorldX = 0;
         public float mouseWorldY = 0;
 
-        public int gameTick = 0;
-        public int lastTick = 0;
+        //public int gameTick = 0;
+        //public int lastTick = 0;
 
         public Tile selectedTile = null;
 
@@ -70,6 +71,160 @@ namespace ION
         public float toCollect = 2500;
 
         public static int[] playerInfluences;
+
+
+        //Timing controls
+        public DateTime startTime = DateTime.Now;
+        public DateTime currentTime;
+
+        public TimeSpan passedTime;
+
+        public const int TPS = 1000 / 30; //Ticks Per Second
+        public int TCP = 0; //Ticks Currently Processed
+
+        public float TTP = 0; //Ticks To Process
+        public float intermediate = 0.0f; //Our progress between ticks
+
+        public void startGame()
+        {
+            startTime = DateTime.Now;
+            currentTime = DateTime.Now;
+            TCP = 0;
+            TTP = 0;
+            intermediate = 0.0f;
+        }
+
+        public void update(int ellapsed, List<Unit> units, float translationX, float translationY)
+        {
+            //gameTick++;
+
+            currentTime = DateTime.Now;
+
+            passedTime = currentTime - startTime;
+            Debug.WriteLine("passed time:" + passedTime.Milliseconds);
+
+            TTP = ((float)passedTime.TotalMilliseconds / TPS) - TCP;
+
+            Debug.WriteLine("ttp:" + TTP);
+
+
+            if (TTP > 1)
+            {
+                //do the next tick
+                intermediate = TTP - 1;
+            }
+            else
+            {
+                intermediate = TTP;
+                //dont do the rest of the update
+                return;
+            }
+
+            TCP++;
+            
+
+            
+            
+            //if (Protocol.instance == null)
+            //    gameTick++;
+
+            //if (gameTick == lastTick)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    lastTick = gameTick;
+            //}
+
+
+            ////Checksum test
+            //if (gameTick % 100 == 0)
+            //{
+            //    CheckSumProduct scp = CheckSumProduct.getCheckSum();
+            //    Debug.WriteLine("product at tick "+gameTick+" = " + scp.sum);
+            //}
+
+
+            bool working = true;
+            while (working)
+            {
+                working = CommandDispatcher.executeCommand(TCP);
+            }
+
+            updateStrategy.update(ellapsed);
+
+            for (int i = 0; i < units.Count(); i++)
+            {
+
+                if (map[units[i].inTileX, units[i].inTileY] is ResourceTile)
+                {
+                    ResourceTile rt = (ResourceTile)map[units[i].inTileX, units[i].inTileY];
+                    if (rt.owner == units[i].owner)
+                    {
+                        rt.receive(0.005f);
+                    }
+                    else
+                    {
+                        rt.sustain(0.010f, units[i].owner);
+                    }
+                }
+
+
+                foreach (ResourceTile r in getNeighbourhood(units[i].inTileX, units[i].inTileY))
+                {
+                    if (r.owner == units[i].owner)
+                    {
+                        r.receive(0.005f);
+                    }
+                    else
+                    {
+                        r.sustain(0.005f, units[i].owner);
+                    }
+                }
+
+                //updates the unit
+                units[i].Update(translationX, translationY);
+
+                //tells the unit what tile it is currently on
+                Vector2 temp = GetTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
+                if (temp != null)
+                {
+                    units[i].UpdateTile(temp);
+                }
+            }
+
+            //Reset the influence variables
+            for (int i = 0; i < playerInfluences.Length; i++)
+            {
+                playerInfluences[i] = 0;
+            }
+
+            //Update the resources of the player
+            foreach (ResourceTile rt in resourceTiles)
+            {
+                playerInfluences[rt.owner] += 1;
+
+                if (rt.owner == playerNumber)
+                {
+                    //TODO find a good place for this
+                    float f = (rt.charge / 1000);
+
+                    resources += f;
+                    totalCollected += f;
+                }
+            }
+
+            /** Disabled for performance, works perfectly tho! **/
+            //if (GridRSO != null && GridRSO.Connected)
+            //{
+            //   byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
+            //  GridRSO.SetAttribute("Grid", rs);
+            // }
+        }
+
+    
+        
 
         public static BaseTile getPlayerBase(int owner)
         {
@@ -230,11 +385,11 @@ namespace ION
                 de.drawDepthEnabled(translationX, translationY);
             }
 
-            if (drawHitTest)
-            {
-                ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(0, 0, Images.tileHitmapImage.Width, Images.tileHitmapImage.Height), Color.White);
-                ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX, (int)virtualY, 5, 5), Color.Black);
-            }
+            //if (drawHitTest)
+            //{
+            //    ION.spriteBatch.Draw(Images.tileHitmapImage, new Rectangle(0, 0, Images.tileHitmapImage.Width, Images.tileHitmapImage.Height), Color.White);
+            //    ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)virtualX, (int)virtualY, 5, 5), Color.Black);
+            //}
 
             //GridStrategy might want to do some debug rendering
             //updateStrategy.drawDebug();
@@ -248,136 +403,7 @@ namespace ION
             ION.spriteBatch.End();
         }
 
-        public void update(int ellapsed, List<Unit> units, float translationX, float translationY)
-        {
-            if (Protocol.instance == null)
-                gameTick++;
-
-            if(gameTick == lastTick) 
-            {
-                return;
-            }
-            else
-            {
-                lastTick = gameTick;
-            }
-
-            ////Checksum test
-            //if (gameTick % 100 == 0)
-            //{
-            //    CheckSumProduct scp = CheckSumProduct.getCheckSum();
-            //    Debug.WriteLine("product at tick "+gameTick+" = " + scp.sum);
-            //}
-
-
-            bool working = true;
-            while (working)
-            {
-                working = CommandDispatcher.executeCommand(gameTick); 
-            }
-            
-            updateStrategy.update(ellapsed);
-
-            for (int i = 0; i < units.Count(); i++)
-            {
-
-                if (map[units[i].inTileX, units[i].inTileY] is ResourceTile)
-                {
-                    ResourceTile rt = (ResourceTile)map[units[i].inTileX, units[i].inTileY];
-                    if (rt.owner == units[i].owner)
-                    {
-                        rt.receive(0.005f);
-                    }
-                    else
-                    {
-                        rt.sustain(0.010f, units[i].owner);
-                    }
-                }
-                
-
-                foreach (ResourceTile r in getNeighbourhood(units[i].inTileX,units[i].inTileY)) 
-                {
-                if (r.owner == units[i].owner)
-                {
-                    r.receive(0.005f);
-                }
-                else
-                {
-                    r.sustain(0.005f, units[i].owner);
-                }
-
-                
-                //ResourceTile rt = map[units[i].inTileX, units[i].inTileY];
-                //if (rt.owner == units[i].owner)
-                //{
-                //    rt.receive(0.01f);
-                //}
-                //else
-                //{
-                //    rt.sustain(0.025f, units[i].owner);
-            }
-                //TODO @michiel units should make a more difuse effect on the grid
-                //if (units[i] != null)
-                //{
-                    //selectTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
-                    //if (selectedTile is ResourceTile)
-                    //{
-                    //    ResourceTile rt = (ResourceTile)selectedTile;
-                    //    if (rt.owner == units[i].owner)
-                    //    {
-                    //        rt.receive(0.01f); 
-                    //    }
-                    //    else
-                    //    {
-                    //        rt.sustain(0.02f, units[i].owner);
-                    //    }
-                    //}
-                //}
-
-                //updates the unit
-                units[i].Update(translationX, translationY);
-
-
-                //tells the unit what tile it is currently on
-                Vector2 temp = GetTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
-                if (temp != null)
-                {
-                    if (units[i].UpdateTile(temp))//if the unit is occuping a new tile the pathfinding must be redone
-                    {
-                        //units[i].FindPath(map, allUnits);//here
-
-                    }
-                }
-            }
-
-            //Reset the influence variables
-            for (int i = 0; i < playerInfluences.Length; i++)
-            {
-                playerInfluences[i] = 0;
-            }
-
-            //Update the resources of the player
-            foreach(ResourceTile rt in resourceTiles) 
-            {
-                playerInfluences[rt.owner] += 1;
-
-                if (rt.owner == playerNumber)
-                {
-                    //TODO find a good place for this
-                    float f = (rt.charge / 1000);
-
-                    resources += f;
-                    totalCollected += f;
-                }
-            }
-
-            /** Disabled for performance, works perfectly tho! **/
-            //if (GridRSO != null && GridRSO.Connected)
-           //{
-             //   byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
-              //  GridRSO.SetAttribute("Grid", rs);
-          // }
-        }
+      
 
         private Tile createTile(char c, int x, int y)
         {
@@ -464,7 +490,7 @@ namespace ION
         {
             BaseTile playerBase = getPlayerBase(owner);
             BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2((float)playerBase.getTileX(), (float)playerBase.getTileY()), StateTest.translationX, StateTest.translationY),
-                new Vector2((float)playerBase.getTileX() - 1, (float)playerBase.getTileY() + 1), owner, id);
+                GetTileScreenPos(new Vector2((float)playerBase.getTileX() - 1, (float)playerBase.getTileY() + 1),StateTest.translationX, StateTest.translationY), owner, id);
             allUnits.Add(newUnit);
             addDepthEnabledItem(newUnit);
         }
@@ -767,12 +793,12 @@ namespace ION
             theme.resizeGroundTexture();
         }
 
-        public List<Unit> getPlayerUnits()
+        public List<Unit> getPlayerUnits(int number)
         {
             List<Unit> playerUnits = new List<Unit>();
             foreach(Unit u in allUnits) 
             {
-                if (u.owner == playerNumber)
+                if (u.owner == number)
                 {
                     playerUnits.Add(u);
                 }

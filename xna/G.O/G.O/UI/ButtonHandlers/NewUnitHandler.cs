@@ -26,7 +26,7 @@ namespace ION.UI
                     Protocol.instance.createUnit(Grid.playerNumber, Grid.getNewId());
                    
                 else
-                CommandDispatcher.issueCommand(new NewUnitCommand(Grid.get().gameTick+25,Grid.playerNumber,Grid.getNewId()));
+                CommandDispatcher.issueCommand(new NewUnitCommand(Grid.get().TCP+30,Grid.playerNumber,Grid.getNewId()));
             }
 
             

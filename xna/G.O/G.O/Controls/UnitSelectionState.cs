@@ -43,7 +43,7 @@ namespace ION.Controls
 
         public void mouseRightPressed(float x, float y, float translationX, float translationY)
         {
-            List<Unit> playerUnits = Grid.get().getPlayerUnits();
+            List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
             
             Grid.get().selectTile(x, y, translationX, translationY);
             if (Grid.get().selectedTile != null)
@@ -65,7 +65,7 @@ namespace ION.Controls
 
         public void shiftMouseRightPressed(float x, float y, float translationX, float translationY)
         {
-            List<Unit> playerUnits = Grid.get().getPlayerUnits();
+            List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
             
             Grid.get().selectTile(x, y, translationX, translationY);
             if (Grid.get().selectedTile != null)

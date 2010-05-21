@@ -77,7 +77,7 @@ namespace ION.Controls
 
         public void selectOnMap(float x, float y, float translationX, float translationY)
         {
-            List<Unit> playerArmy = Grid.get().getPlayerUnits();
+            List<Unit> playerArmy = Grid.get().getPlayerUnits(Grid.playerNumber);
 
      
             Grid.get().selectTile(x, y, translationX, translationY);

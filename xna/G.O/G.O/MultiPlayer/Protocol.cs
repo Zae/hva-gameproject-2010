@@ -283,7 +283,7 @@ namespace ION
         {
             timer++;
             if(gameStarted)
-                Grid.get().gameTick++;
+                Grid.get().TCP++;
             
             if(commands.Count>0)
             for(int i = 0; i<commands.Count; i++)
