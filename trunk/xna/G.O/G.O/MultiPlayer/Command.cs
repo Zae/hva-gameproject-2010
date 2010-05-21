@@ -16,6 +16,12 @@ namespace ION.MultiPlayer
 
         public virtual void performCommand() {
         }
+
+        public virtual string toCommandParts()
+        {
+
+        }
+
     }
 
     public class NewMoveCommand : Command
@@ -42,6 +48,12 @@ namespace ION.MultiPlayer
             u.EmptyWayPoints();
             u.SetTarget(Grid.map[xTarget,yTarget].GetPos(StateTest.translationX,StateTest.translationY));
         }
+
+        public override string toCommandParts()
+        {
+
+        }
+
     }
 
     public class AddMoveCommand : Command
@@ -64,14 +76,8 @@ namespace ION.MultiPlayer
             //u.AddDestination(Grid.get().getT
         }
 
-        public string toCommandParts()
+        public override string toCommandParts()
         {
-            return null;//"MOVE|blabla|" + owner; 
-        }
-
-        public void intoCommand(string commandParts)
-        {
-           // unitOwner =...
 
         }
     }
@@ -91,6 +97,11 @@ namespace ION.MultiPlayer
         public override void performCommand()
         {
             Grid.get().createUnit(unitOwner, unitId);
+        }
+
+        public override string toCommandParts()
+        {
+
         }
     }
 
