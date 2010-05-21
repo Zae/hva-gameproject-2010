@@ -266,8 +266,8 @@ namespace ION
                 {
                     for (int j = 0; j < directions.Length; j++)
                     {
-                        Images.unit_shooting[i, j, frame] = Images.chargeCountImages[i] = Content.Load<Texture2D>("unitItems/shooting/player" + (i + 1).ToString() + "unit_firing_" + directions[j]+frame);
-                        Images.unit_selected_shooting[i, j, frame] = Images.chargeCountImages[i] = Content.Load<Texture2D>("unitItems/shooting/player" + (i + 1).ToString() + "unit_selected_firing_" + directions[j]+frame);
+                        Images.unit_shooting[i, j, frame] = Content.Load<Texture2D>("unitItems/shooting/player" + (i + 1).ToString() + "unit_firing_" + directions[j]+frame);
+                        Images.unit_selected_shooting[i, j, frame] = Content.Load<Texture2D>("unitItems/shooting/player" + (i + 1).ToString() + "unit_selected_firing_" + directions[j]+frame);
                     }
                 }
             }
@@ -276,7 +276,7 @@ namespace ION
 
             for (int i = 0; i < 2; i++)
             {
-                Images.unit_shooting[i] = Images.chargeCountImages[i] = Content.Load<Texture2D>("miscItem/bulletImpact/impact"+i);
+                Images.bulletImpact[i] = Content.Load<Texture2D>("miscItems/bulletImpact/impact"+i);
             }
 
             ////Load the numerical pictures that can signal the value of a tile

@@ -53,6 +53,8 @@ namespace ION
         private float virtualX = 0;
         private float virtualY = 0;
 
+        private List<ResourceTile> tempNeighbours = new List<ResourceTile>();
+
         private ThemeManager theme;
 
         private RemoteSharedObject GridRSO;
@@ -63,6 +65,9 @@ namespace ION
         public float resources = BallUnit.cost * 3;
         public static int playerNumber = -1;
         private static int playerUnitId = -1;
+
+        public float totalCollected = 0;
+        public float toCollect = 2500;
 
         public static int[] playerInfluences;
 
@@ -257,12 +262,12 @@ namespace ION
                 lastTick = gameTick;
             }
 
-            //Checksum test
-            if (gameTick % 100 == 0)
-            {
-                CheckSumProduct scp = CheckSumProduct.getCheckSum();
-                Debug.WriteLine("product at tick "+gameTick+" = " + scp.sum);
-            }
+            ////Checksum test
+            //if (gameTick % 100 == 0)
+            //{
+            //    CheckSumProduct scp = CheckSumProduct.getCheckSum();
+            //    Debug.WriteLine("product at tick "+gameTick+" = " + scp.sum);
+            //}
 
 
             bool working = true;
@@ -275,23 +280,59 @@ namespace ION
 
             for (int i = 0; i < units.Count(); i++)
             {
-                //TODO @michiel units should make a more difuse effect on the grid
-                if (units[i] != null)
+
+                if (map[units[i].inTileX, units[i].inTileY] is ResourceTile)
                 {
-                    selectTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
-                    if (selectedTile is ResourceTile)
+                    ResourceTile rt = (ResourceTile)map[units[i].inTileX, units[i].inTileY];
+                    if (rt.owner == units[i].owner)
                     {
-                        ResourceTile rt = (ResourceTile)selectedTile;
-                        if (rt.owner == units[i].owner)
-                        {
-                            rt.receive(0.01f); 
-                        }
-                        else
-                        {
-                            rt.sustain(0.02f, units[i].owner);
-                        }
+                        rt.receive(0.005f);
+                    }
+                    else
+                    {
+                        rt.sustain(0.010f, units[i].owner);
                     }
                 }
+                
+
+                foreach (ResourceTile r in getNeighbourhood(units[i].inTileX,units[i].inTileY)) 
+                {
+                if (r.owner == units[i].owner)
+                {
+                    r.receive(0.005f);
+                }
+                else
+                {
+                    r.sustain(0.005f, units[i].owner);
+                }
+
+                
+                //ResourceTile rt = map[units[i].inTileX, units[i].inTileY];
+                //if (rt.owner == units[i].owner)
+                //{
+                //    rt.receive(0.01f);
+                //}
+                //else
+                //{
+                //    rt.sustain(0.025f, units[i].owner);
+                }
+                //TODO @michiel units should make a more difuse effect on the grid
+                //if (units[i] != null)
+                //{
+                    //selectTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
+                    //if (selectedTile is ResourceTile)
+                    //{
+                    //    ResourceTile rt = (ResourceTile)selectedTile;
+                    //    if (rt.owner == units[i].owner)
+                    //    {
+                    //        rt.receive(0.01f); 
+                    //    }
+                    //    else
+                    //    {
+                    //        rt.sustain(0.02f, units[i].owner);
+                    //    }
+                    //}
+                //}
 
                 //updates the unit
                 units[i].Update(translationX, translationY);
@@ -318,7 +359,10 @@ namespace ION
                 if (rt.owner == playerNumber)
                 {
                     //TODO find a good place for this
-                    resources += (rt.charge /1000);
+                    float f = (rt.charge / 1000);
+
+                    resources += f;
+                    totalCollected += f;
                 }
             }
 
@@ -741,6 +785,78 @@ namespace ION
                 }
             }
             return null;
+        }
+
+        private bool isValid(int x, int y)
+        {
+            if (x >= 0 && x < Grid.width && y >= 0 && y < Grid.height)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public List<ResourceTile> getNeighbourhood(int x, int y)
+        {
+            tempNeighbours.Clear();
+            
+            //Horizontal and Vertical
+            if (isValid(x, y - 1) && Grid.map[x, y - 1] is ResourceTile)
+            {
+                tempNeighbours.Add((ResourceTile)Grid.map[x, y - 1]);
+            }
+
+            if (isValid(x + 1, y) && Grid.map[x + 1, y] is ResourceTile)
+            {
+
+                tempNeighbours.Add((ResourceTile)Grid.map[x + 1, y]);
+
+            }
+
+            if (isValid(x, y + 1) && Grid.map[x, y + 1] is ResourceTile)
+            {
+
+                tempNeighbours.Add((ResourceTile)Grid.map[x, y + 1]);
+  
+            }
+
+            if (isValid(x - 1, y) && Grid.map[x - 1, y] is ResourceTile)
+            {
+
+                tempNeighbours.Add((ResourceTile)Grid.map[x - 1, y]);
+
+            }
+
+            //if (doDiagonal)
+            //{
+                if (isValid(x - 1, y - 1) && Grid.map[x - 1, y - 1] is ResourceTile)
+                {
+
+                    tempNeighbours.Add((ResourceTile)Grid.map[x - 1, y - 1]);
+ 
+
+                }
+                if (isValid(x + 1, y - 1) && Grid.map[x + 1, y - 1] is ResourceTile)
+                {
+
+                    tempNeighbours.Add((ResourceTile)Grid.map[x + 1, y - 1]);
+
+                }
+                if (isValid(x + 1, y + 1) && Grid.map[x + 1, y + 1] is ResourceTile)
+                {
+
+                    tempNeighbours.Add((ResourceTile)Grid.map[x + 1, y + 1]);
+
+                }
+                if (isValid(x - 1, y + 1) && Grid.map[x - 1, y + 1] is ResourceTile)
+                {
+
+                    tempNeighbours.Add((ResourceTile)Grid.map[x - 1, y + 1]);
+
+                }
+            //}
+
+                return tempNeighbours;
         }
     }
 }
