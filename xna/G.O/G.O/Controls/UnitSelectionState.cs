@@ -53,7 +53,11 @@ namespace ION.Controls
                     if (playerUnits[i] != null && playerUnits[i].selected)
                     {
                         playerUnits[i].EmptyWayPoints();
-                        playerUnits[i].SetTarget(Grid.get().selectedTile.GetPos(translationX, translationY));
+                        //CommandsDispatcher.issueCommand(new NewMoveCommand(new playerUnits[i].,,));
+                        if (Protocol.instance != null)
+                            Protocol.instance.moveUnit(playerUnits[i].id, Grid.get().selectedTile.indexX, Grid.get().selectedTile.indexY);
+                        else
+                            playerUnits[i].SetTarget(Grid.get().selectedTile.GetPos(translationX, translationY));
                     }
                 }
             }
@@ -71,6 +75,7 @@ namespace ION.Controls
                     if (playerUnits[i] != null && playerUnits[i].selected)
                     {
                         playerUnits[i].AddDestination(Grid.get().selectedTile);// here
+
                     }
                 }
             }
