@@ -17,6 +17,7 @@ namespace ION
 {
     public class Grid
     {
+        private bool online=false;
         private static Grid instance = null;
         
         public static Tile[,] map;
@@ -30,6 +31,7 @@ namespace ION
         public float mouseWorldY = 0;
 
         public int gameTick = 0;
+        public int lastTick = 0;
 
         public Tile selectedTile = null;
 
@@ -243,7 +245,17 @@ namespace ION
 
         public void update(int ellapsed, List<Unit> units, float translationX, float translationY)
         {
-            gameTick++;
+            if (Protocol.instance == null)
+                gameTick++;
+
+            if(gameTick == lastTick) 
+            {
+                return;
+            }
+            else
+            {
+                lastTick = gameTick;
+            }
 
             //Checksum test
             if (gameTick % 100 == 0)
@@ -251,6 +263,7 @@ namespace ION
                 CheckSumProduct scp = CheckSumProduct.getCheckSum();
                 Debug.WriteLine("product at tick "+gameTick+" = " + scp.sum);
             }
+
 
             bool working = true;
             while (working)

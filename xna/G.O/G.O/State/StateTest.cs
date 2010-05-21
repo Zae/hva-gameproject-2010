@@ -58,7 +58,6 @@ namespace ION
 
         public List<Unit> selection = new List<Unit>();
 
-        //Timing controls
 
 
         public StateTest()
@@ -67,7 +66,9 @@ namespace ION
 
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
-            grid = new Grid(levels[level], strategies[strategy],Players.PLAYER2);
+
+            grid = new Grid(levels[level], strategies[strategy],Players.PLAYER1);
+
             gui = new GUIManager();
             controls = new NeutralState();
 
@@ -119,6 +120,9 @@ namespace ION
 
         public override void update(int ellapsed)
         {
+            //update protocol
+           
+
             grid.update(ellapsed, grid.allUnits, translationX, translationY);
 
             //get keyboard input
