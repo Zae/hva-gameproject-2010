@@ -27,41 +27,54 @@ namespace ION
 
         public override void draw(float translationX, float translationY)
         {
+
+            tileColor = getAppropriateColor(owner, charge);
+
+
+
+            //if (owner != Players.NEUTRAL)
+            //{
+            //    ION.spriteBatch.Draw(Images.borderImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), tileColor);
+            //}
+
+            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
+         
+            
             ION.spriteBatch.Draw(baseImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth*2)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfHeight*10)), (int)(baseHalfWidth * 4), (int)(baseHalfWidth * 4)), Color.White);
         }
 
-        private Color getBaseColor(int owner)
-        {
-            if (owner == Players.NEUTRAL)
-            {
-                baseColor.R = 255;
-                baseColor.G = 255;
-                baseColor.B = 255;
+        //private Color getBaseColor(int owner)
+        //{
+        //    if (owner == Players.NEUTRAL)
+        //    {
+        //        baseColor.R = 255;
+        //        baseColor.G = 255;
+        //        baseColor.B = 255;
 
-                baseColor.A = 255;
-            }
+        //        baseColor.A = 255;
+        //    }
 
-            else if (owner == Players.PLAYER1)
-            {
-                baseColor.R = 20;
-                baseColor.G = 20;
-                baseColor.B = 255;
+        //    else if (owner == Players.PLAYER1)
+        //    {
+        //        baseColor.R = 20;
+        //        baseColor.G = 20;
+        //        baseColor.B = 255;
 
-                //tileColor.A = (byte)(charge * 255);
-                baseColor.A = 255;
-            }
-            else if (owner == Players.PLAYER2)
-            {
-                baseColor.R = 255;
-                baseColor.G = 20;
-                baseColor.B = 20;
+        //        //tileColor.A = (byte)(charge * 255);
+        //        baseColor.A = 255;
+        //    }
+        //    else if (owner == Players.PLAYER2)
+        //    {
+        //        baseColor.R = 255;
+        //        baseColor.G = 20;
+        //        baseColor.B = 20;
 
-                //tileColor.A = (byte)(charge * 255);
-                baseColor.A = 255;
-            }
+        //        //tileColor.A = (byte)(charge * 255);
+        //        baseColor.A = 255;
+        //    }
 
-            return baseColor;
-        }
+        //    return baseColor;
+        //}
 
         public override void donate(float charge)
         {
