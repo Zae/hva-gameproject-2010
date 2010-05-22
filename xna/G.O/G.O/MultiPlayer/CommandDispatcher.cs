@@ -16,6 +16,21 @@ namespace ION.MultiPlayer
 
         private static List<Command> commandsQueue = new List<Command>();
 
+        public static int latency = 200; //Latency to attach to commands to be safe all clients can execute the command in time
+        private static int serial = 0;
+
+        //Returns a good Tick to let the command process
+        public static int getSupposedGameTick()
+        {
+            return (int)(Grid.get().TCP + (latency / Grid.TPT));  
+        }
+
+        public static int getSerial()
+        {
+            serial++;
+            return serial;
+        }
+
         public static bool executeCommand(int gameTick)
         {
             if (commandsQueue.Count == 0)
@@ -35,10 +50,9 @@ namespace ION.MultiPlayer
         public static void issueCommand(Command command)
         {
             //push the command on the network
-            Protocol.instance.declareAction(command.toCommandParts());
-           //string commandParts = command.ToString();
+            if(Protocol.instance != null) Protocol.instance.declareAction(command.toCommandParts());
             
-            //send them back directly,
+            //send them back directly to put in your own queue
             sinkCommand(command);
         }
 
