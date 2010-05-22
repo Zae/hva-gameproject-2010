@@ -28,6 +28,8 @@ namespace ION
 
         public abstract void draw(float x, float y);
 
+        public bool firing = false;
+
         // new
         protected float movementSpeed;
         protected float captureSpeed;
@@ -44,6 +46,8 @@ namespace ION
         protected float visualX;
         protected float visualY;
 
+        public int scan = 0;
+
         public bool selected = false;
 
         public Queue<Tile> destination;
@@ -56,6 +60,11 @@ namespace ION
 
         public void Update(float translationX, float translationY)
         {
+            if (health < 0)
+            {
+                //kill this unit
+            }
+            
             if (pos != targetPos)
             {
                 move();
@@ -66,12 +75,32 @@ namespace ION
                 // Code for waypoints
                 if (destination.Count() != 0)//(destination.Last<Tile>() != null)//here
                 {
+                    
                     //targetPos = new Vector2(destination.Last<Tile>().indexX, destination.Last<Tile>().indexY);
 
                     Tile temp = destination.Dequeue();
 
                     targetPos = temp.GetPos(translationX, translationY);
                 }
+                else if(scan > 50)
+                {
+                    ////We have nowhere to go, might as well shoot some enemies
+                    //List<Unit> enemies = Grid.get().getPlayerEnemies(Grid.playerNumber);
+                    //int distance = 3;
+                    //foreach (Unit u in enemies)
+                    //{
+                    //    if (u.inTileX - inTileX > -distance && u.inTileX - inTileX < distance && u.inTileY - inTileY > -3 && u.inTileY - inTileY < 3)
+                    //    {
+                    //        firing = true;
+                    //        //fire on this unit.
+                    //        u.hit();
+                    //        break;
+                    //    }
+                    //    firing = false;
+                    //}
+                    //scan = 0;
+                }
+                scan++;
                 // Code for waypoints
             }
 
@@ -80,6 +109,11 @@ namespace ION
             virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
 
 
+        }
+
+        public void hit()
+        {
+            health -= 1;
         }
 
 

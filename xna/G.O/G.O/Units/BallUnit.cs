@@ -50,48 +50,59 @@ namespace ION
             //ION.spriteBatch.End();
             //virtualPos.X += baseHalfWidth;
             //virtualPos.Y += baseHalfWidth * 1.5f;
-
-            //animation test code
-            counter++;
-
-            if (counter > 0)
+            if (firing)
             {
-                frame = 0;
+                //animation test code
+                counter++;
+
+                if (counter > 0)
+                {
+                    frame = 0;
+                }
+                if (counter > 4)
+                {
+                    frame = 1;
+                }
+                if (counter > 10)
+                {
+                    frame = 2;
+                }
+                if (counter > 14)
+                {
+                    counter = 0;
+                }
+
+                if (selected && frame < 2)
+                {
+                    //do not remove
+                    //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+
+                    ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, frame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                }
+                else if (!selected && frame < 2)
+                {
+                    ION.spriteBatch.Draw(Images.unit_shooting[owner - 1, (int)facing, frame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                }
+
+                if (frame >= 2)
+                {
+                    //do not remove
+                    ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+
+                    //ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, frame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                }
+
             }
-            if (counter > 4)
+            else
             {
-                frame = 1;
-            }
-            if (counter > 10)
-            {
-                frame = 2;
-            }
-            if (counter > 14)
-            {
-                counter = 0;
-            }
-
-
-
-            if (selected && frame < 2)
-            {
-                //do not remove
-                //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
-
-                 ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, frame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
-            }
-            else if (!selected && frame < 2)
-            {
-                ION.spriteBatch.Draw(Images.unit_shooting[owner - 1, (int)facing, frame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
-            }
-
-            if (frame >= 2)
-            {
-                //do not remove
                 ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
 
-                //ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, frame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
             }
+            
+
+
+
+           
             //else
             //{
             //    ION.spriteBatch.Draw(Images.unit_shooting[owner - 1, (int)facing, frame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
