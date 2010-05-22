@@ -99,8 +99,6 @@ namespace ION
 
         public void update(int ellapsed, List<Unit> units, float translationX, float translationY)
         {
-            //gameTick++;
-
             currentTime = DateTime.Now;
 
             passedTime = currentTime - startTime;
@@ -241,6 +239,20 @@ namespace ION
         public static BaseTile getPlayerBase(int owner)
         {
             return playerBases[owner - 1];
+        }
+
+        public List<Unit> getPlayerEnemies(int player)
+        {
+            List<Unit> enemies = new List<Unit>();
+            foreach (Unit u in allUnits)
+            {
+                if (u.owner != player)
+                {
+                    enemies.Add(u);
+                }
+            }
+
+            return enemies;
         }
 
         public static Grid get()
@@ -906,5 +918,6 @@ namespace ION
 
                 return tempNeighbours;
         }
+
     }
 }
