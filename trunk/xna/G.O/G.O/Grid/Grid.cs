@@ -82,7 +82,8 @@ namespace ION
 
         public TimeSpan passedTime;
 
-        public const int TPS = 1000 / 30; //Ticks Per Second
+        public const int TPS = 25; // Ticks per Second
+        public const int TPT = 1000 / TPS; //Timesclice Per Tick (in milliseconds)
         public int TCP = 0; //Ticks Currently Processed
 
         public float TTP = 0; //Ticks To Process
@@ -104,7 +105,7 @@ namespace ION
             passedTime = currentTime - startTime;
            // Debug.WriteLine("passed time:" + passedTime.Milliseconds);
 
-            TTP = ((float)passedTime.TotalMilliseconds / TPS) - TCP;
+            TTP = ((float)passedTime.TotalMilliseconds / TPT) - TCP;
 
             //Debug.WriteLine("ttp:" + TTP);
 

@@ -8,10 +8,12 @@ namespace ION.MultiPlayer
     public class Command
     {
         public int supposedGameTick = -1;
+        public int serial = -1; 
 
-        public Command(int supposedGameTick)
+        public Command(int suppposedGameTick, int serial)
         {
-            this.supposedGameTick = supposedGameTick;
+            this.supposedGameTick = suppposedGameTick;
+            this.serial = serial;
         }
         
         public virtual void performCommand() {
@@ -21,8 +23,6 @@ namespace ION.MultiPlayer
         {
             return "";
         }
-
-
 
     }
 
@@ -34,8 +34,8 @@ namespace ION.MultiPlayer
         public int unitOwner;
         public int unitId;
 
-        public NewMoveCommand(int supposedGameTick, int unitOwner, int unitId, int xTarget, int yTarget)
-            : base(supposedGameTick)
+        public NewMoveCommand(int supposedGameTick, int serial,int unitOwner, int unitId, int xTarget, int yTarget)
+            : base(supposedGameTick, serial)
         {
             this.xTarget = xTarget;
             this.yTarget = yTarget;
@@ -51,12 +51,10 @@ namespace ION.MultiPlayer
             u.SetTarget(Grid.map[xTarget,yTarget].GetPos(StateTest.translationX,StateTest.translationY));
         }
 
-
         public override String toCommandParts()
         {
             return "MOVE_UNIT_TO|0|"+supposedGameTick+"|"+unitOwner+"|"+unitId+"|"+xTarget+"|"+yTarget+"|";
         }
-
 
     }
 
@@ -67,8 +65,8 @@ namespace ION.MultiPlayer
         int unitOwner;
         int unitId;
 
-        public AddMoveCommand(int supposedGameTick, int unitOwner, int unitId, int[,] targetPositions, int positionsCount)
-            : base(supposedGameTick)
+        public AddMoveCommand(int supposedGameTick, int serial,int unitOwner, int unitId, int[,] targetPositions, int positionsCount)
+            : base(supposedGameTick, serial)
         {
             this.unitOwner = unitOwner;
             this.unitId = unitId;
@@ -82,9 +80,7 @@ namespace ION.MultiPlayer
 
 
         public override String toCommandParts()
-
         {
-
             return "blabla";
         }
 
@@ -97,8 +93,8 @@ namespace ION.MultiPlayer
         int unitOwner;
         int unitId;
     
-        public NewUnitCommand(int supposedGameTick, int unitOwner, int unitId) 
-            : base(supposedGameTick)
+        public NewUnitCommand(int supposedGameTick, int serial,int unitOwner, int unitId) 
+            : base(supposedGameTick, serial)
         {
             this.unitOwner = unitOwner;
             this.unitId = unitId;
@@ -109,13 +105,10 @@ namespace ION.MultiPlayer
             Grid.get().createUnit(unitOwner, unitId);
         }
 
-
         public override String toCommandParts()
         {
             return "CREATE_UNIT|0|"+supposedGameTick+"|"+unitOwner+"|"+unitId+"|";
         }
-
-
 
     }
 

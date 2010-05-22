@@ -31,9 +31,8 @@ namespace ION.Tools
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
                 if (aiUnits.Count < 2)
-                {
-                    
-                    CommandDispatcher.issueCommand(new NewUnitCommand(Grid.get().TCP + 30, ai, newId++));
+                {                  
+                    //CommandDispatcher.parseCommand(new NewUnitCommand(ai, newId++));
                 }
 
                 foreach (Unit u in aiUnits)

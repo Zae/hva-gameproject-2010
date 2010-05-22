@@ -25,16 +25,16 @@ namespace ION
     public class Protocol
     {
         private bool gameStarted= false;
-        private int commandNr;
-        private Timer clock;
-        private int latency = 20;
+        //private int commandNr;
+        //private Timer clock;
+        //private int latency = 20;
 
         private ArrayList sentCommands;
         private ArrayList commands;
 
         public static Protocol instance;
   
-        public int timer = 0;
+        //public int timer = 0;
       
         //private String command;
         public static RemoteSharedObject CommandSO;
@@ -42,55 +42,48 @@ namespace ION
 
         public Protocol()
         {
-            //initializing Timer
-            clock = new Timer();
-            //in ms
-            clock.Interval = 10;
-            clock.Start();
+            ////initializing Timer
+            //clock = new Timer();
+            ////in ms
+            //clock.Interval = 10;
+            //clock.Start();
             
-            clock.Elapsed+= new ElapsedEventHandler(Timer_Tick);
+            //clock.Elapsed+= new ElapsedEventHandler(Timer_Tick);
 
-            commands = new ArrayList();
-            sentCommands = new ArrayList();
+            //commands = new ArrayList();
+            //sentCommands = new ArrayList();
             if (instance == null) 
             {
-
-
-
                 instance = this;
                 if (ION.get().serverConnection != null && ION.get().serverConnection.GameConnection.Connected)
-                {
-                    
+                {                   
                     CommandSO = RemoteSharedObject.GetRemote("Command", ION.get().serverConnection.GameConnection.Uri.ToString(), false);
                     CommandSO.NetStatus += new NetStatusHandler(CommandSO_NetStatus);
                     CommandSO.OnConnect += new ConnectHandler(CommandSO_OnConnect);
                     CommandSO.OnDisconnect += new DisconnectHandler(CommandSO_OnDisconnect);
                     CommandSO.Sync += new SyncHandler(CommandSO_Sync);
                     CommandSO.Connect(ION.get().serverConnection.GameConnection);
-                    Console.WriteLine("protocol constructor");
-                    
                 }
-                else Console.WriteLine("protocol cant find a gameConnection!!!!!!!!!!");
+                else Console.WriteLine("ERROR: Protocol cannot find a Game Connection");
             }
-            else instance=this;
         }
 
-        //update every interval
-        void Timer_Tick(Object source, EventArgs e)
-        {
-            //Grid.get().gameTick++;
-            if (timer % 20 == 0)
-            {
+        ////update every interval
+        //void Timer_Tick(Object source, EventArgs e)
+        //{
+        //    //Grid.get().gameTick++;
+        //    if (timer % 20 == 0)
+        //    {
                 
-                Console.WriteLine( timer + " commands waiting for echo:" + sentCommands.ToArray().Length);
-                Console.WriteLine("commands waiting for execution:" + commands.ToArray().Length);
-            }
+        //        Console.WriteLine( timer + " commands waiting for echo:" + sentCommands.ToArray().Length);
+        //        Console.WriteLine("commands waiting for execution:" + commands.ToArray().Length);
+        //    }
 
-            if (!gameStarted)
-                update();
-            //else
-                //clock.Disposed();
-        }
+        //    if (!gameStarted)
+        //        update();
+        //    //else
+        //        //clock.Disposed();
+        //}
 
         // new commands get handled here
 
@@ -98,7 +91,6 @@ namespace ION
         // command = the whole string, commandPart is the part between the "|"
         void CommandSO_Sync(object sender, SyncEventArgs e)
         {
-
             System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
             Object[] commandObjects = (Object[])CommandSO.GetAttribute("Command");
             
@@ -108,9 +100,7 @@ namespace ION
             String[] commandParts = new String[10];
 
             if (commandBytes != null)
-            {
-
-             
+            {    
                 //covert to string (original state of the command)
                 String command = enc.GetString(commandBytes);
                 Console.WriteLine("command received = " + command);
@@ -123,9 +113,9 @@ namespace ION
                 //cheks if the command is not an echo command
                 if (!sentCommands.Contains(command))
                 {
-                    //if this is the first message the timer will sync
-                    if (commandParts[0] == "START")
-                        timer = Int32.Parse(commandParts[1]);
+                    ////if this is the first message the timer will sync
+                    //if (commandParts[0] == "START")
+                    //    timer = Int32.Parse(commandParts[1]);
 
                     //send an echo back
                     //declareAction(command+"E");
@@ -135,62 +125,63 @@ namespace ION
                 else
                 {
                     //remove it and dont send an echo
-                    sentCommands.Remove(command);
-                    
+                    sentCommands.Remove(command);                    
                 }
 
                 //add command to commandlist, in the update is resposible for excution
                
                 //commands.Add(commandParts);
 
-                issueCommand(command);
+                parseCommand(command);
                 //performAction(commandParts);
             }
             else Console.WriteLine("empty command received :( " );
         }
 
-        public void issueCommand(String command)
+        public void parseCommand(String command)
         {
             String[] commandParts = splitCommand(command);
+
+            int tick;
+            int serial;
             int unitOwner;
             int unitID;
+
             switch (commandParts[0])
             {
-
-
-                
                 case "START":
                     Console.WriteLine("start Game message received");
-                    //timer = Int32.Parse(actionParts[1]);
+                    int seed = Int32.Parse(commandParts[2]);
                     if (ION.instance.serverConnection.isHost)
-                        ION.instance.setState(new StateTest(1, 3243, "MediumLevelTest.xml"));
+                        ION.instance.setState(new StateTest(1, seed, "MediumLevelTest.xml"));
                     else
-                        ION.instance.setState(new StateTest(2, 3243, "MediumLevelTest.xml"));
+                        ION.instance.setState(new StateTest(2, seed, "MediumLevelTest.xml"));
 
                     gameStarted = true;
                     break;
 
                 case "MOVE_UNIT_TO":
-                    int tick = Int32.Parse(commandParts[2]);
+                    tick = Int32.Parse(commandParts[2]);
                     unitOwner = Int32.Parse(commandParts[3]);
                     unitID = Int32.Parse(commandParts[4]);
                     int x = Int32.Parse(commandParts[5]);
                     int y = Int32.Parse(commandParts[6]);
+                    serial = Int32.Parse(commandParts[7]);
                     
-                    CommandDispatcher.sinkCommand(new NewMoveCommand(tick,unitOwner,unitID,x,y));
-
+                    CommandDispatcher.sinkCommand(new NewMoveCommand(tick,serial,unitOwner,unitID,x,y));
                     break;
 
                 case "CREATE_UNIT":
                     tick = Int32.Parse(commandParts[2]);
                     unitOwner = Int32.Parse(commandParts[3]);
                     unitID = Int32.Parse(commandParts[4]);
-                    CommandDispatcher.sinkCommand(new NewUnitCommand(tick,unitOwner,unitID));
+                    serial = Int32.Parse(commandParts[7]);
+                    
+                    CommandDispatcher.sinkCommand(new NewUnitCommand(tick,serial,unitOwner,unitID));
                     break;
 
                 default:
-
-                    Console.WriteLine("unknwon command recieved!!!");
+                    Console.WriteLine("ERROR: TRIED TO PARSE UNKNOWN COMMAND (Protocol.cs)");
                     break;
             }
 
@@ -202,10 +193,17 @@ namespace ION
 
         void CommandSO_OnConnect(object sender, EventArgs e)
         {
-            Console.WriteLine("command so connected!");
+            Console.WriteLine("Command SO connected");
             //time to sync <todo>
-           if(ION.instance.serverConnection.isHost==false)
-               startGame(2);
+            if (ION.instance.serverConnection.isHost == false)
+            {
+                DateTime zero = new DateTime(1985, 8, 6);
+                DateTime now = DateTime.Now;
+                TimeSpan passedTime = now - zero;
+                int secondsSince = (int)passedTime.TotalSeconds;
+                if (secondsSince < 0) secondsSince *= -1;
+                startGame(2, (int)passedTime.TotalSeconds);
+            }
         }
 
         void CommandSO_NetStatus(object sender, NetStatusEventArgs e)
@@ -213,9 +211,7 @@ namespace ION
 
 
         }
-
-
-      
+     
         private String[] splitCommand(String command)
         {
             string[] commandParts = new String[10];
@@ -244,56 +240,56 @@ namespace ION
         /// protocol interface
         /// 
 
-        public void performAction(String[] actionParts)
-        {
-            int unitID;
-            int unitOwner;
+        //public void performAction(String[] actionParts)
+        //{
+        //    int unitID;
+        //    int unitOwner;
            
-            String action = actionParts[0];
-            switch (action)
-            {
+        //    String action = actionParts[0];
+        //    switch (action)
+        //    {
                     
-                case "START":
-                    Console.WriteLine("start Game message received");
-                    //timer = Int32.Parse(actionParts[1]);
-                    if(ION.instance.serverConnection.isHost)
-                        ION.instance.setState(new StateTest(1,3243,"MediumLevelTest.xml"));
-                    else
-                        ION.instance.setState(new StateTest(2, 3243, "MediumLevelTest.xml"));
+        //        case "START":
+        //            Console.WriteLine("start Game message received");
+        //            //timer = Int32.Parse(actionParts[1]);
+        //            if(ION.instance.serverConnection.isHost)
+        //                ION.instance.setState(new StateTest(1,3243,"MediumLevelTest.xml"));
+        //            else
+        //                ION.instance.setState(new StateTest(2, 3243, "MediumLevelTest.xml"));
 
-                    gameStarted = true;
-                    break;
+        //            gameStarted = true;
+        //            break;
 
-                case "MOVE_UNIT_TO":
-                    Console.WriteLine("move unit message received");
-                    unitOwner = Int32.Parse(actionParts[3]);
-                    unitID = Int32.Parse(actionParts[4]);
-                    int x = Int32.Parse(actionParts[5]);
-                    int y = Int32.Parse(actionParts[6]);
+        //        case "MOVE_UNIT_TO":
+        //            Console.WriteLine("move unit message received");
+        //            unitOwner = Int32.Parse(actionParts[3]);
+        //            unitID = Int32.Parse(actionParts[4]);
+        //            int x = Int32.Parse(actionParts[5]);
+        //            int y = Int32.Parse(actionParts[6]);
 
 
-                    Unit u = Grid.get().getUnit(unitOwner, unitID);
-                    u.EmptyWayPoints();
-                    u.SetTarget(Grid.map[x, y].GetPos(StateTest.translationX, StateTest.translationY));
+        //            Unit u = Grid.get().getUnit(unitOwner, unitID);
+        //            u.EmptyWayPoints();
+        //            u.SetTarget(Grid.map[x, y].GetPos(StateTest.translationX, StateTest.translationY));
 
                     
-                    break;
+        //            break;
 
-                case "CREATE_UNIT":
+        //        case "CREATE_UNIT":
 
-                    unitOwner = Int32.Parse(actionParts[3]);
-                    unitID= Int32.Parse (actionParts[4]);
-                    Grid.get().createUnit(unitOwner, unitID);
+        //            unitOwner = Int32.Parse(actionParts[3]);
+        //            unitID= Int32.Parse (actionParts[4]);
+        //            Grid.get().createUnit(unitOwner, unitID);
 
-                    break;
+        //            break;
 
-                default :
+        //        default :
 
-                    Console.WriteLine("unknwon command recieved!!!");
-                    break;
-            }
+        //            Console.WriteLine("unknwon command recieved!!!");
+        //            break;
+        //    }
 
-        }
+        //}
         public void declareAction(String command)
         {
            
@@ -310,67 +306,47 @@ namespace ION
 
             commands.Add(splitCommand(command));
         }
-        public void startGame(int playerNr)
-        {
-
-           
-           
+        public void startGame(int playerNr, int seed)
+        {         
             player = playerNr;
-            declareAction("START|"+timer+"|"+(timer+latency)+"|");
-
-        }
-        public void moveUnit (int UnitID, int x, int y)
-        {
-
-            declareAction("MOVE_UNIT_TO|" + timer + "|" + (timer +latency) + "|"+ Grid.playerNumber+"|"+ UnitID + "|" + x + "|" + y+"|");
-
-
+            declareAction("START|"+seed+"|");
         }
 
-        public void createUnit(int owner, int id)
-        {
-            declareAction("CREATE_UNIT|" + timer + "|" + (timer + latency) + "|" + owner+"|"+id+"|");
-        }
-
-        public void checkGrid(int checksum)
-        {
-
-        }
-        public void update()
-        {
-            timer++;
-            if(gameStarted)
-                Grid.get().TCP++;
+        //public void update()
+        //{
+        //    timer++;
+        //    if(gameStarted)
+        //        Grid.get().TCP++;
             
-            if(commands.Count>0)
-            for(int i = 0; i<commands.Count; i++)
-            {
+        //    if(commands.Count>0)
+        //    for(int i = 0; i<commands.Count; i++)
+        //    {
 
-                string[] commandParts = (String[])commands[i];
-                if (commandParts != null)
-                {
+        //        string[] commandParts = (String[])commands[i];
+        //        if (commandParts != null)
+        //        {
                     
                     
-                    if (Int32.Parse(commandParts[2]) == timer)
-                    {
-                        Console.WriteLine("command: " + commandParts[0] + " will be performed");
-                        performAction(commandParts);
-                        commands[i] = null;
-                        commands.RemoveAt(i);
+        //            if (Int32.Parse(commandParts[2]) == timer)
+        //            {
+        //                Console.WriteLine("command: " + commandParts[0] + " will be performed");
+        //                performAction(commandParts);
+        //                commands[i] = null;
+        //                commands.RemoveAt(i);
                         
-                        Console.Write("commandsSize = "  + commands.Count);
-                        break;
+        //                Console.Write("commandsSize = "  + commands.Count);
+        //                break;
                         
                         
-                    }
-                    else if (Int32.Parse(((String[])commands[i])[2]) < timer)
-                    {
-                        Console.WriteLine("command: " + commandParts[0] + " is out of date:: timer = "+timer+ " execution time =" + Int32.Parse(commandParts[2]) );
-                    }
-                }
-            }
+        //            }
+        //            else if (Int32.Parse(((String[])commands[i])[2]) < timer)
+        //            {
+        //                Console.WriteLine("command: " + commandParts[0] + " is out of date:: timer = "+timer+ " execution time =" + Int32.Parse(commandParts[2]) );
+        //            }
+        //        }
+        //    }
             
-        }
+        //}
 
         
     }
