@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 namespace ION.MultiPlayer
 {
@@ -16,13 +17,14 @@ namespace ION.MultiPlayer
 
         private static List<Command> commandsQueue = new List<Command>();
 
-        public static int latency = 200; //Latency to attach to commands to be safe all clients can execute the command in time
+        public static int latency = 100; //Latency to attach to commands to be safe all clients can execute the command in time
         private static int serial = 0;
 
         //Returns a good Tick to let the command process
         public static int getSupposedGameTick()
         {
             return (int)(Grid.get().TCP + (latency / Grid.TPT));  
+            //return (int)(Grid.get().TCP + 5);
         }
 
         public static int getSerial()
@@ -33,6 +35,8 @@ namespace ION.MultiPlayer
 
         public static bool executeCommand(int gameTick)
         {
+            //Debug.WriteLine("CommandsQueue size = "+commandsQueue.Count);
+            
             if (commandsQueue.Count == 0)
             {
                 return false;
@@ -44,13 +48,20 @@ namespace ION.MultiPlayer
                 commandsQueue.RemoveAt(0);
                 return true;
             }
+
+            if (commandsQueue[0].supposedGameTick < gameTick)
+            {
+                Debug.WriteLine("HEEEEEEEEEEELP: tcp="+gameTick+" supposed:"+commandsQueue[0].supposedGameTick);
+                commandsQueue.RemoveAt(0);
+            }
+
             return false;
         }
 
         public static void issueCommand(Command command)
         {
             //push the command on the network
-            if(Protocol.instance != null) Protocol.instance.declareAction(command.toCommandParts());
+            //if(Protocol.instance != null) Protocol.instance.declareAction(command.toCommandParts());
             
             //send them back directly to put in your own queue
             sinkCommand(command);
@@ -70,6 +81,7 @@ namespace ION.MultiPlayer
                 if (queueLength == 0 || commandsQueue[queueLength - 1].supposedGameTick <= command.supposedGameTick)
                 {
                     commandsQueue.Add(command);
+                    return;
                 }
 
                 for (int i = queueLength - 2; i > -1; i--)
