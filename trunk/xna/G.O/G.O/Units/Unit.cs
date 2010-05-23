@@ -69,7 +69,6 @@ namespace ION
             if (pos != targetPos)
             {
                 move();
-                //map.selectOnMap(mouseState.X, mouseState.Y, translationX, translationY);
             }
             else
             {
@@ -121,7 +120,7 @@ namespace ION
         public bool UpdateTile(Vector2 newInTile)
         {
             //if the player is occuping a new tile it will update & return true
-            if (inTileX != (int)newInTile.X && inTileY != (int)newInTile.Y)
+            if (inTileX != (int)newInTile.X || inTileY != (int)newInTile.Y)
             {
                 inTileX = (int)newInTile.X;
                 inTileY = (int)newInTile.Y;
@@ -468,8 +467,6 @@ namespace ION
                 baseHalfWidth = baseHalfWidthConstant * scale;
                 baseHalfHeight = baseHalfHeightConstant * scale;
             }
-
-
         }
 
         public static void zoomOut()
@@ -480,7 +477,6 @@ namespace ION
                 baseHalfWidth = baseHalfWidthConstant * scale;
                 baseHalfHeight = baseHalfHeightConstant * scale;
             }
-
         }
 
         public float GetScale()
