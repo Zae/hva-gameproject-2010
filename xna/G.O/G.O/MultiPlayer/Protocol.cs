@@ -51,7 +51,7 @@ namespace ION
             //clock.Elapsed+= new ElapsedEventHandler(Timer_Tick);
 
             //commands = new ArrayList();
-            //sentCommands = new ArrayList();
+            sentCommands = new ArrayList();
             if (instance == null) 
             {
                 instance = this;
