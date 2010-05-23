@@ -277,16 +277,6 @@ namespace ION
             {
                 showHelpFile = false;
             }
-
-            ////Debug automatically spawn units
-            //unitCounter++;
-
-            //if (unitCounter > 1000)
-            //{
-            //    unitCounter = 0;
-            //    //grid.CreateBlueUnit(translationX, translationY);
-            //    //grid.CreateRedUnit(translationX, translationY);
-            //}
         }
 
 

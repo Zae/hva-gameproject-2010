@@ -58,16 +58,6 @@ namespace ION
         /// </summary>
         public ServerConnection serverConnection;
 
-        /// <summary>
-        /// These variables help determine the speed the program runs at.
-        /// Because we run a multiplayer game these become crucial to syncronizing the game between clients.
-        /// </summary>
-        public const int FPS = 30; //this implies we need FPS * iterations per second
-        private const int timeslice = 1000 / FPS; //in milliseconds, the time between frames
-        private int lastTime = 0; //the last time in 'system-clock' milliseconds a should have been called
-        private int currentTime = 0;
-        private int iteration = 0;
-
         public ION()
         {
             //Set the singleton instance for static reference

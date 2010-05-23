@@ -82,7 +82,7 @@ namespace ION
 
         public TimeSpan passedTime;
 
-        public const int TPS = 25; // Ticks per Second
+        public const int TPS = 40; // Ticks per Second
         public const int TPT = 1000 / TPS; //Timesclice Per Tick (in milliseconds)
         public int TCP = 0; //Ticks Currently Processed
 
@@ -156,7 +156,7 @@ namespace ION
 
             updateStrategy.update(ellapsed);
 
-            for (int i = 0; i < units.Count(); i++)
+            for (int i = 0; i < units.Count; i++)
             {
 
                 if (map[units[i].inTileX, units[i].inTileY] is ResourceTile)
@@ -166,12 +166,12 @@ namespace ION
                     {
                         if (rt.charge < 0.9)
                         {
-                            rt.receive(0.005f);
+                            rt.receive(0.02f);
                         }
                     }
                     else
                     {
-                        rt.sustain(0.020f, units[i].owner);
+                        rt.sustain(0.050f, units[i].owner);
                     }
                 }
 
@@ -180,14 +180,14 @@ namespace ION
                 {
                     if (r.owner == units[i].owner)
                     {
-                        if (r.charge < 0.5)
+                        if (r.charge < 0.8)
                         {
-                            r.receive(0.005f);
+                            r.receive(0.02f);
                         }
                     }
                     else
                     {
-                        r.sustain(0.005f, units[i].owner);
+                        r.sustain(0.03f, units[i].owner);
                     }
                 }
 
@@ -202,6 +202,10 @@ namespace ION
                     {
                         //units[i].FindPath(map, allUnits);//here
                     }
+                }
+                else
+                {
+                    Debug.WriteLine("UPDATE TILE WAS NULL!");
                 }
             }
 
@@ -836,7 +840,7 @@ namespace ION
             return playerUnits;
         }
 
-        internal Unit getUnit(int unitOwner, int unitId)
+        public Unit getUnit(int unitOwner, int unitId)
         {
             foreach (Unit u in allUnits)
             {

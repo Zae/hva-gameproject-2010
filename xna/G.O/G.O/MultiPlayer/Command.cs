@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 namespace ION.MultiPlayer
 {
@@ -46,9 +47,11 @@ namespace ION.MultiPlayer
 
         public override void performCommand()
         {
+            //Debug.WriteLine("commanding unit id=" + unitId + " owner=" + unitOwner);
             Unit u = Grid.get().getUnit(unitOwner, unitId);
             u.EmptyWayPoints();
-            u.SetTarget(Grid.map[xTarget,yTarget].GetPos(StateTest.translationX,StateTest.translationY));
+            //u.SetTarget(Grid.map[xTarget,yTarget].GetPos(StateTest.translationX,StateTest.translationY));
+            u.AddDestination(Grid.map[xTarget,yTarget]);
         }
 
         public override String toCommandParts()
@@ -58,35 +61,35 @@ namespace ION.MultiPlayer
 
     }
 
-    public class AddMoveCommand : Command
-    {
-        public int[,] targetPositions;
+    //public class AddMoveCommand : Command
+    //{
+    //    public int[,] targetPositions;
 
-        int unitOwner;
-        int unitId;
+    //    int unitOwner;
+    //    int unitId;
 
-        public AddMoveCommand(int supposedGameTick, int serial,int unitOwner, int unitId, int[,] targetPositions, int positionsCount)
-            : base(supposedGameTick, serial)
-        {
-            this.unitOwner = unitOwner;
-            this.unitId = unitId;
-        }
+    //    public AddMoveCommand(int supposedGameTick, int serial,int unitOwner, int unitId, int[,] targetPositions, int positionsCount)
+    //        : base(supposedGameTick, serial)
+    //    {
+    //        this.unitOwner = unitOwner;
+    //        this.unitId = unitId;
+    //    }
 
-        public override void performCommand()
-        {
-            Unit u = Grid.get().getUnit(unitOwner, unitId);
-            //u.AddDestination(Grid.get().getT
-        }
+    //    public override void performCommand()
+    //    {
+    //        Unit u = Grid.get().getUnit(unitOwner, unitId);
+    //        //u.AddDestination(Grid.get().getT
+    //    }
 
 
-        public override String toCommandParts()
-        {
-            return "blabla";
-        }
+    //    public override String toCommandParts()
+    //    {
+    //        return "blabla";
+    //    }
 
 
     
-    }
+    //}
 
     public class NewUnitCommand : Command
     {
