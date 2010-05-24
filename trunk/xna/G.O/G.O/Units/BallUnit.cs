@@ -10,7 +10,7 @@ namespace ION
     public class BallUnit : Unit
     {
 
-        public int health = 100;
+       //public int health = 1000;
         public static int cost = 250;
 
         //animation test

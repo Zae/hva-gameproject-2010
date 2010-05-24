@@ -103,7 +103,7 @@
     <Compile Include="Grid\Strategies\GridStrategy.cs" />
     <Compile Include="Tools\HitmapColorPool.cs" />
     <Compile Include="Tools\Images.cs" />
-    <Compile Include="Tools\Music.cs" />
+    <Compile Include="Tools\Sounds.cs" />
     <Compile Include="Tools\Players.cs" />
     <Compile Include="Tools\PrimitiveBatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,6 +135,7 @@
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />
     <Compile Include="State\TicTacToeTestStuff\CheckedState.cs" />
+    <Compile Include="Tools\SoundManager.cs" />
     <Compile Include="Tools\StupidAI.cs" />
     <Compile Include="Tools\ThemeManager.cs" />
     <Compile Include="UI\Implementations\Button.cs" />

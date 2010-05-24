@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace ION
 {
-    class Music
+    class Sounds
     {
-        //Music is loaded in ION.LoadContent()
+        //Sounds is loaded in ION.LoadContent()
         
         public static Song titleSong;
         public static Song gameSong1;
@@ -17,5 +17,7 @@ namespace ION
 
         public static SoundEffect logoSound;
         public static SoundEffect actionSound1;
+
+        public static SoundEffect[] fireSounds;
     }
 }

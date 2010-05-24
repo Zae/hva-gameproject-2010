@@ -49,9 +49,16 @@ namespace ION.MultiPlayer
         {
             //Debug.WriteLine("commanding unit id=" + unitId + " owner=" + unitOwner);
             Unit u = Grid.get().getUnit(unitOwner, unitId);
-            u.EmptyWayPoints();
-            //u.SetTarget(Grid.map[xTarget,yTarget].GetPos(StateTest.translationX,StateTest.translationY));
-            u.AddDestination(Grid.map[xTarget,yTarget]);
+            if (u == null)
+            {
+                Debug.WriteLine("TRIED TO FIND UNIT FOR COMMAND BUT UNIT WAS NOT PRESENT (ANYMORE)");
+            }
+            else
+            {
+                u.EmptyWayPoints();
+                u.SetTarget(Grid.map[xTarget, yTarget].GetPos(StateTest.translationX, StateTest.translationY));
+            }
+            //u.AddDestination(Grid.map[xTarget,yTarget]);
         }
 
         public override String toCommandParts()

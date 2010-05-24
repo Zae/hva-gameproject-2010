@@ -47,6 +47,8 @@ namespace ION
 
         private StupidAI stupidAI;
 
+        public List<Unit> removals = new List<Unit>();
+
         private int viewDirection = 1;
         private const int SOUTH_WEST = 1;
         private const int NORTH_WEST = 2;
@@ -89,14 +91,14 @@ namespace ION
         public float TTP = 0; //Ticks To Process
         public float intermediate = 0.0f; //Our progress between ticks
 
-        public void startGame()
-        {
-            startTime = DateTime.Now;
-            currentTime = DateTime.Now;
-            TCP = 0;
-            TTP = 0;
-            intermediate = 0.0f;
-        }
+        //public void startGame()
+        //{
+        //    startTime = DateTime.Now;
+        //    currentTime = DateTime.Now;
+        //    TCP = 0;
+        //    TTP = 0;
+        //    intermediate = 0.0f;
+        //}
 
         public void update(int ellapsed, List<Unit> units, float translationX, float translationY)
         {
@@ -126,6 +128,8 @@ namespace ION
 
             //Temp AI
             stupidAI.act();
+
+            SoundManager.update();
             
             //if (Protocol.instance == null)
             //    gameTick++;
@@ -229,6 +233,12 @@ namespace ION
                     resources += f;
                     totalCollected += f;
                 }
+            }
+
+            foreach (Unit u in removals)
+            {
+                allUnits.Remove(u);
+                depthItems.Remove((IDepthEnabled)u);
             }
 
             /** Disabled for performance, works perfectly tho! **/
@@ -925,5 +935,25 @@ namespace ION
                 return tempNeighbours;
         }
 
+
+        //internal void removeUnit(int owner, int id)
+        //{
+        //    int index = -1;
+            
+        //    for (int i = 0; i < allUnits.Count; i++)
+        //    {
+        //        if (allUnits[i].owner == owner && allUnits[i].id == id)
+        //        {
+        //            index = i;
+        //        }
+        //    }
+
+        //    allUnits.RemoveAt(index);
+        //}
+
+        public void removeUnit(Unit u)
+        {
+            removals.Add(u);
+        }
     }
 }

@@ -275,12 +275,19 @@ namespace ION
             //    Images.chargeCountImages[i] = Content.Load<Texture2D>("chargeCountItems/" + (i + 1).ToString());
             //}
            
-            Music.titleSong = Content.Load<Song>("musicItems/TitleSong");
-            Music.gameSong1 = Content.Load<Song>("musicItems/GameSong1");
-            Music.gameSong2 = Content.Load<Song>("musicItems/GameSong2");
+            Sounds.titleSong = Content.Load<Song>("musicItems/TitleSong");
+            Sounds.gameSong1 = Content.Load<Song>("musicItems/GameSong1");
+            Sounds.gameSong2 = Content.Load<Song>("musicItems/GameSong2");
 
-            Music.logoSound = Content.Load<SoundEffect>("sfxItems/LogoSound");
-            Music.actionSound1 = Content.Load<SoundEffect>("sfxItems/ActionSound1");
+            Sounds.logoSound = Content.Load<SoundEffect>("sfxItems/LogoSound");
+            Sounds.actionSound1 = Content.Load<SoundEffect>("sfxItems/ActionSound1");
+
+            Sounds.fireSounds = new SoundEffect[2];
+            //Load the various laser sounds
+            for (int i = 0; i < 2; i++)
+            {
+                Sounds.fireSounds[i] = Content.Load<SoundEffect>("sfxItems/laser"+i);
+            }
 
             //Set the inital state
             state = new StateTitle();
