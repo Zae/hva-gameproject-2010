@@ -30,6 +30,7 @@ namespace ION
         public abstract void draw(float x, float y);
 
         public bool firing = false;
+        public bool underFire = false;
 
         // new
         protected float movementSpeed;

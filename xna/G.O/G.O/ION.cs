@@ -262,8 +262,8 @@ namespace ION
                 }
             }
 
+            //Load bullet impact images
             Images.bulletImpact = new Texture2D[2];
-
             for (int i = 0; i < 2; i++)
             {
                 Images.bulletImpact[i] = Content.Load<Texture2D>("miscItems/bulletImpact/impact"+i);
@@ -281,6 +281,11 @@ namespace ION
 
             Sounds.logoSound = Content.Load<SoundEffect>("sfxItems/LogoSound");
             Sounds.actionSound1 = Content.Load<SoundEffect>("sfxItems/ActionSound1");
+
+            Sounds.selectUnit = Content.Load<SoundEffect>("sfxItems/selectunit");
+
+            Sounds.orderUnit = Content.Load<SoundEffect>("sfxItems/orderunit");
+
 
             Sounds.fireSounds = new SoundEffect[2];
             //Load the various laser sounds

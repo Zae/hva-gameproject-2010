@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using ION.Tools;
 
 namespace ION.MultiPlayer
 {
@@ -57,6 +58,12 @@ namespace ION.MultiPlayer
             {
                 u.EmptyWayPoints();
                 u.SetTarget(Grid.map[xTarget, yTarget].GetPos(StateTest.translationX, StateTest.translationY));
+
+                if (u.owner == Grid.playerNumber)
+                {
+                    SoundManager.orderUnitSound();
+                }
+              
             }
             //u.AddDestination(Grid.map[xTarget,yTarget]);
         }

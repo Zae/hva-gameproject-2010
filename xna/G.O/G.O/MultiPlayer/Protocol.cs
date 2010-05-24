@@ -145,7 +145,7 @@ namespace ION
             {
                 case "START":
                     Console.WriteLine("start Game message received");
-                    int seed = Int32.Parse(commandParts[2]);
+                    int seed = Int32.Parse(commandParts[1]);
                     if (ION.instance.serverConnection.isHost)
                         ION.instance.setState(new StateTest(1, seed, "MediumLevelTest.xml"));
                     else

@@ -17,6 +17,9 @@ namespace ION.Tools
 
         private static int levelOfAction = 0;
 
+        private static SoundEffectInstance selectUnit;
+        private static SoundEffectInstance orderUnit;
+
         public static void init()
         {
             firesoundsCount = Sounds.fireSounds.Length;
@@ -26,6 +29,11 @@ namespace ION.Tools
                 firesounds[i] = Sounds.fireSounds[i].CreateInstance();
                 firesounds[i].IsLooped = false;
             }
+
+            selectUnit = Sounds.selectUnit.CreateInstance();
+            selectUnit.IsLooped = false;
+            orderUnit = Sounds.orderUnit.CreateInstance();
+            orderUnit.IsLooped = false;
         }
 
         public static void update()
@@ -54,6 +62,22 @@ namespace ION.Tools
             }
             firesounds[firesoundsPointer].Play();
            
+        }
+
+        public static void selectUnitSound()
+        {
+            if (selectUnit.State != SoundState.Playing)
+            {
+                selectUnit.Play();
+            }
+        }
+
+        public static void orderUnitSound()
+        {
+            if (orderUnit.State != SoundState.Playing)
+            {
+                orderUnit.Play();
+            }
         }
 
 
