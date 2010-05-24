@@ -245,7 +245,8 @@ namespace ION
             CommandSO.EndUpdate();
             
             Console.WriteLine("command:" + command + " has been sent!!" + commandBytes.Length );
-            
+
+            parseCommand(command);
             //if(command[command.Length-1]!= 'E') sentCommands.Add(command+"E");
             //commands.Add(splitCommand(command));
         }
