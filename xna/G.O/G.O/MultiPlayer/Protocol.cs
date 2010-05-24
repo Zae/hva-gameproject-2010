@@ -24,21 +24,15 @@ namespace ION
     
     public class Protocol
     {
-        private bool gameStarted= false;
-        //private int commandNr;
-        //private Timer clock;
-        //private int latency = 20;
+        private bool gameStarted = false;
 
-        private ArrayList sentCommands;
-        private ArrayList commands;
+        //private ArrayList sentCommands;
+        //private ArrayList commands;
 
         public static Protocol instance;
-  
-        //public int timer = 0;
-      
+
         //private String command;
         public static RemoteSharedObject CommandSO;
-        private int player = 1;
 
         public Protocol()
         {
@@ -51,7 +45,7 @@ namespace ION
             //clock.Elapsed+= new ElapsedEventHandler(Timer_Tick);
 
             //commands = new ArrayList();
-            sentCommands = new ArrayList();
+            //sentCommands = new ArrayList();
             if (instance == null) 
             {
                 instance = this;
@@ -110,23 +104,23 @@ namespace ION
                 
                
 
-                //cheks if the command is not an echo command
-                if (!sentCommands.Contains(command))
-                {
-                    ////if this is the first message the timer will sync
-                    //if (commandParts[0] == "START")
-                    //    timer = Int32.Parse(commandParts[1]);
+                ////cheks if the command is not an echo command
+                //if (!sentCommands.Contains(command))
+                //{
+                //    ////if this is the first message the timer will sync
+                //    //if (commandParts[0] == "START")
+                //    //    timer = Int32.Parse(commandParts[1]);
 
-                    //send an echo back
-                    //declareAction(command+"E");
-                    //Console.WriteLine("echo of: " + command + " is sent");
-                }
+                //    //send an echo back
+                //    //declareAction(command+"E");
+                //    //Console.WriteLine("echo of: " + command + " is sent");
+                //}
 
-                else
-                {
-                    //remove it and dont send an echo
-                    sentCommands.Remove(command);                    
-                }
+                //else
+                //{
+                //    //remove it and dont send an echo
+                //    sentCommands.Remove(command);                    
+                //}
 
                 //add command to commandlist, in the update is resposible for excution
                
@@ -197,18 +191,18 @@ namespace ION
             //time to sync <todo>
             if (ION.instance.serverConnection.isHost == false)
             {
-                DateTime zero = new DateTime(1985, 8, 6);
-                DateTime now = DateTime.Now;
-                TimeSpan passedTime = now - zero;
-                int secondsSince = (int)passedTime.TotalSeconds;
-                if (secondsSince < 0) secondsSince *= -1;
-                startGame(2, (int)passedTime.TotalSeconds);
+                //DateTime zero = new DateTime(1985, 8, 6);
+                //DateTime now = DateTime.Now;
+                //TimeSpan passedTime = now - zero;
+                //int secondsSince = (int)passedTime.TotalSeconds;
+                //if (secondsSince < 0) secondsSince *= -1;
+                //startGame(2, (int)passedTime.TotalSeconds);
+                startGame(0);
             }
         }
 
         void CommandSO_NetStatus(object sender, NetStatusEventArgs e)
         {
-
 
         }
      
@@ -240,56 +234,6 @@ namespace ION
         /// protocol interface
         /// 
 
-        //public void performAction(String[] actionParts)
-        //{
-        //    int unitID;
-        //    int unitOwner;
-           
-        //    String action = actionParts[0];
-        //    switch (action)
-        //    {
-                    
-        //        case "START":
-        //            Console.WriteLine("start Game message received");
-        //            //timer = Int32.Parse(actionParts[1]);
-        //            if(ION.instance.serverConnection.isHost)
-        //                ION.instance.setState(new StateTest(1,3243,"MediumLevelTest.xml"));
-        //            else
-        //                ION.instance.setState(new StateTest(2, 3243, "MediumLevelTest.xml"));
-
-        //            gameStarted = true;
-        //            break;
-
-        //        case "MOVE_UNIT_TO":
-        //            Console.WriteLine("move unit message received");
-        //            unitOwner = Int32.Parse(actionParts[3]);
-        //            unitID = Int32.Parse(actionParts[4]);
-        //            int x = Int32.Parse(actionParts[5]);
-        //            int y = Int32.Parse(actionParts[6]);
-
-
-        //            Unit u = Grid.get().getUnit(unitOwner, unitID);
-        //            u.EmptyWayPoints();
-        //            u.SetTarget(Grid.map[x, y].GetPos(StateTest.translationX, StateTest.translationY));
-
-                    
-        //            break;
-
-        //        case "CREATE_UNIT":
-
-        //            unitOwner = Int32.Parse(actionParts[3]);
-        //            unitID= Int32.Parse (actionParts[4]);
-        //            Grid.get().createUnit(unitOwner, unitID);
-
-        //            break;
-
-        //        default :
-
-        //            Console.WriteLine("unknwon command recieved!!!");
-        //            break;
-        //    }
-
-        //}
         public void declareAction(String command)
         {
            
@@ -302,13 +246,11 @@ namespace ION
             
             Console.WriteLine("command:" + command + " has been sent!!" + commandBytes.Length );
             
-            if(command[command.Length-1]!= 'E') sentCommands.Add(command+"E");
-
-            commands.Add(splitCommand(command));
+            //if(command[command.Length-1]!= 'E') sentCommands.Add(command+"E");
+            //commands.Add(splitCommand(command));
         }
-        public void startGame(int playerNr, int seed)
+        public void startGame(int seed)
         {         
-            player = playerNr;
             declareAction("START|"+seed+"|");
         }
 

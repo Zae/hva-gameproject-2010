@@ -40,9 +40,8 @@ namespace ION
         
         public StateIntro()
         {
-            logoSound = Music.logoSound.CreateInstance();
+            logoSound = Sounds.logoSound.CreateInstance();
             logoSound.IsLooped = false;
-
         }
 
         public override void draw()
@@ -225,7 +224,7 @@ namespace ION
         public override void focusGained()
         {
             ION.get().IsMouseVisible = true;
-            //MediaPlayer.Play(Music.titleSong);
+            //MediaPlayer.Play(Sounds.titleSong);
             //MediaPlayer.IsRepeating = true;
         }
 

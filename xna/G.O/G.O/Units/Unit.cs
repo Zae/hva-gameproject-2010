@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using ION.Tools;
 
 namespace ION
 {
@@ -17,8 +18,8 @@ namespace ION
         public direction facing = direction.north;
 
         public int id;
-        public int health;
-        public static int cost;
+        public int health = 100;
+        public static int cost = 0;
 
         protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
@@ -63,7 +64,13 @@ namespace ION
         {
             if (health < 0)
             {
-                //kill this unit
+                //put this unit in some sort of death animation list somewhere
+
+                //remove it from the grid
+                Grid.get().removeUnit(this);
+
+                //the end
+                return;
             }
             
             if (pos != targetPos)
@@ -82,33 +89,34 @@ namespace ION
 
                     targetPos = temp.GetPos(translationX, translationY);
                 }
-                else if(scan > 50)
-                {
-                    ////We have nowhere to go, might as well shoot some enemies
-                    //List<Unit> enemies = Grid.get().getPlayerEnemies(Grid.playerNumber);
-                    //int distance = 3;
-                    //foreach (Unit u in enemies)
-                    //{
-                    //    if (u.inTileX - inTileX > -distance && u.inTileX - inTileX < distance && u.inTileY - inTileY > -3 && u.inTileY - inTileY < 3)
-                    //    {
-                    //        firing = true;
-                    //        //fire on this unit.
-                    //        u.hit();
-                    //        break;
-                    //    }
-                    //    firing = false;
-                    //}
-                    //scan = 0;
-                }
-                scan++;
-                // Code for waypoints
+                
             }
+            if (scan > 4)
+            {
+                //We have nowhere to go, might as well shoot some enemies
+                List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
+                if (enemies.Count == 0) firing = false;
+                int distance = 8;
+                foreach (Unit u in enemies)
+                {
+                    if ((u.inTileX - inTileX > -distance && u.inTileX - inTileX < distance) && (u.inTileY - inTileY > -distance && u.inTileY - inTileY < distance))
+                    {
+                        firing = true;
+                        SoundManager.fireSound(Grid.TPS * 2);
+                        //fire on this unit.
+                        u.hit();
+                        break;
+                    }
+                    firing = false;
+                }
+                scan = 0;
+            }
+            scan++;
+            // Code for waypoints
 
             //will move this to the above if statement when the unit know its tile
             virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
             virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
-
-
         }
 
         public void hit()
@@ -134,11 +142,6 @@ namespace ION
             {
                 return false;
             }
-
-            //Debug.WriteLine("new tilexy: " + inTileX + "," + inTileY);
-            //Vector2 tilePos = map.GetTile(pos.X, pos.Y, translationX, translationX);
-            //inTileX = tilePos.X;
-            //inTileY = tilePos.Y;
         }
 
 

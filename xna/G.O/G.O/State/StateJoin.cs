@@ -395,7 +395,7 @@ namespace ION
         public override void focusGained()
         {
             ION.get().IsMouseVisible = true;
-            MediaPlayer.Play(Music.titleSong);
+            MediaPlayer.Play(Sounds.titleSong);
             MediaPlayer.IsRepeating = true;
         }
 

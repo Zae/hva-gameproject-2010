@@ -11,6 +11,7 @@ using System.Diagnostics;
 using ION.GridStrategies;
 using ION.UI;
 using ION.Controls;
+using ION.Tools;
 
 namespace ION
 {
@@ -34,7 +35,7 @@ namespace ION
         public GridStrategy[] strategies = { new ThunderStrategy(0), new CreepStrategy(), new FlowStrategy() };
         public int strategy = 0;
 
-        private bool actionOnScreen = false;
+        public bool actionOnScreen = false;
         private SoundEffectInstance actionOnScreenSound = null;
 
         public static float translationX = 0f;
@@ -66,13 +67,14 @@ namespace ION
 
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
+            SoundManager.init();
 
             grid = new Grid(levels[level], strategies[strategy],Players.PLAYER1);
 
             gui = new GUIManager();
             controls = new NeutralState();
 
-            actionOnScreenSound = Music.actionSound1.CreateInstance();
+            actionOnScreenSound = Sounds.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
         }
 
@@ -87,7 +89,7 @@ namespace ION
             gui = new GUIManager();
             controls = new NeutralState();
 
-            actionOnScreenSound = Music.actionSound1.CreateInstance();
+            actionOnScreenSound = Sounds.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
         }
 
@@ -143,12 +145,12 @@ namespace ION
             {
                 if (playqueue == 1)
                 {
-                    MediaPlayer.Play(Music.gameSong1);
+                    MediaPlayer.Play(Sounds.gameSong1);
                     playqueue = 2;
                 }
                 else if (playqueue == 2)
                 {
-                    MediaPlayer.Play(Music.gameSong2);
+                    MediaPlayer.Play(Sounds.gameSong2);
                     playqueue = 1;
                 }
             }
@@ -257,15 +259,15 @@ namespace ION
                 translationY = 0;
             }
     
-            //DEBUG MUSIC
-            if (keyState.IsKeyDown(Keys.Space))
-            {
-                actionOnScreen = true;
-            }
-            else
-            {
-                actionOnScreen = false;
-            }
+            ////DEBUG MUSIC
+            //if (keyState.IsKeyDown(Keys.Space))
+            //{
+            //    actionOnScreen = true;
+            //}
+            //else
+            //{
+            //    actionOnScreen = false;
+            //}
             handleActionSound(ellapsed);
 
             //HELP FILE

@@ -158,22 +158,17 @@ namespace ION{
         }
         void GameConnection_OnDisconnect(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
-            int a = 2;
         }
 
         void GameConnection_OnConnect(object sender, EventArgs e)
         {
             //throw new NotImplementedException();\
             Console.WriteLine("gamegonnection connected!");
-            int a = 2;
             protocol = new Protocol();
         }
 
         void GameConnection_NetStatus(object sender, NetStatusEventArgs e)
         {
-            //throw new NotImplementedException();
-            int a = 2;
         }
 
         public static ServerConnection get()
