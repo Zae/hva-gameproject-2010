@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ION.UI;
+using ION.Tools;
 
 namespace ION.Controls
 {
@@ -86,13 +87,19 @@ namespace ION.Controls
                 for (int i = 0; i < playerArmy.Count(); i++)
                 {
                     //unselect this unit by default
-                    playerArmy[i].selected = false;
+                    //playerArmy[i].selected = false;
 
                     //check if the current tile matches the units tile, if so changed the units selected to true
                     if (Grid.get().GetTile(x, y, translationX, translationY) == playerArmy[i].GetTile())
                     {
                         playerArmy[i].selected = true;//select unit
                         selectedUnits = true;
+
+                        SoundManager.selectUnitSound();
+                    }
+                    else
+                    {
+                        playerArmy[i].selected = false;
                     }
 
                     // if this unit is in between the 2 mouse positions
@@ -106,6 +113,12 @@ namespace ION.Controls
                         // set unit to selected
                         playerArmy[i].selected = true;
                         selectedUnits = true;
+
+                        SoundManager.selectUnitSound();
+                    }
+                    else
+                    {
+                        playerArmy[i].selected = false;
                     }
 
 

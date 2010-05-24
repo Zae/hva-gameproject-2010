@@ -242,13 +242,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="miscItems\starfield.jpg">
-      <Name>starfield</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="levelItems\LargeLevelTest.xml">
       <Name>LargeLevelTest</Name>
       <Importer>XmlImporter</Importer>
@@ -1137,6 +1130,25 @@
     </Compile>
     <Compile Include="sfxItems\laser1.wav">
       <Name>laser1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="sfxItems\hit.wav">
+      <Name>hit</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="sfxItems\orderunit.wav">
+      <Name>orderunit</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="sfxItems\selectunit.wav">
+      <Name>selectunit</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>

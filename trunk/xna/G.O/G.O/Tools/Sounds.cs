@@ -18,6 +18,10 @@ namespace ION
         public static SoundEffect logoSound;
         public static SoundEffect actionSound1;
 
+        public static SoundEffect selectUnit;
+        public static SoundEffect orderUnit;
+
+
         public static SoundEffect[] fireSounds;
     }
 }
