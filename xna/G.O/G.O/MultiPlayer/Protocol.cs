@@ -34,6 +34,8 @@ namespace ION
         //private String command;
         public static RemoteSharedObject CommandSO;
 
+        private static Char[] StringSplitToken;
+
         public Protocol()
         {
             ////initializing Timer
@@ -59,6 +61,9 @@ namespace ION
                     CommandSO.Connect(ION.get().serverConnection.GameConnection);
                 }
                 else Console.WriteLine("ERROR: Protocol cannot find a Game Connection");
+
+                StringSplitToken = new char[1];
+                Char.TryParse("|", out StringSplitToken[0]);
             }
         }
 
@@ -208,28 +213,28 @@ namespace ION
      
         private String[] splitCommand(String command)
         {
-            string[] commandParts = new String[10];
-            string commandPart = "";
-            int partNumber = 0;
-            for (int i = 0; i < command.Length; i++)
-            {
-                commandPart += command[i];
+            //string[] commandParts = new String[10];
+            //string commandPart = "";
+            //int partNumber = 0;
+            //for (int i = 0; i < command.Length; i++)
+            //{
+            //    commandPart += command[i];
 
 
-                //Console.WriteLine("comPart=" + commandPart);
-                if (command[i] == '|')
-                {
-                    //part without last char "|"
-                    commandParts[partNumber] = commandPart.Substring(0, commandPart.Length - 1);
-                    //Console.WriteLine("part = "+commandParts[partNumber]);
-                    commandPart = "";
-                    partNumber++;
-                }
-            }
-            return commandParts;
-           
+            //    //Console.WriteLine("comPart=" + commandPart);
+            //    if (command[i] == '|')
+            //    {
+            //        //part without last char "|"
+            //        commandParts[partNumber] = commandPart.Substring(0, commandPart.Length - 1);
+            //        //Console.WriteLine("part = "+commandParts[partNumber]);
+            //        commandPart = "";
+            //        partNumber++;
+            //    }
+            //}
+            
+            //return commandParts;
+            return command.Split(StringSplitToken, StringSplitOptions.RemoveEmptyEntries);
         }
-
 
         /// protocol interface
         /// 
