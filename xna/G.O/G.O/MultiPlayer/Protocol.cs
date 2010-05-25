@@ -172,7 +172,7 @@ namespace ION
                     tick = Int32.Parse(commandParts[2]);
                     unitOwner = Int32.Parse(commandParts[3]);
                     unitID = Int32.Parse(commandParts[4]);
-                    serial = Int32.Parse(commandParts[7]);
+                    serial = Int32.Parse(commandParts[5]);
                     
                     CommandDispatcher.sinkCommand(new NewUnitCommand(tick,serial,unitOwner,unitID));
                     break;
