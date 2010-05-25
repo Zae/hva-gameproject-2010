@@ -196,13 +196,13 @@ namespace ION
                 }
 
                 //updates the unit
-                units[i].Update(translationX, translationY);
+                //units[i].Update(translationX, translationY);
 
                 //tells the unit what tile it is currently on
                 Vector2 temp = GetTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
                 if (temp != null)
                 {
-                    if (units[i].UpdateTile(temp))
+                    if (units[i].Update(temp, allUnits, map, translationX, translationY))
                     {
                         //units[i].FindPath(map, allUnits);//here
                     }

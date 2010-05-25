@@ -54,7 +54,8 @@ namespace ION
 
         public ResourceTile(int indexX, int indexY)
         {
-            
+            accessable = true;
+
             this.indexX = indexX;
             this.indexY = indexY;
         }

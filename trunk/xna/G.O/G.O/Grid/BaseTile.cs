@@ -15,6 +15,8 @@ namespace ION
 
         public BaseTile(int indexX, int indexY, int owner)
         {
+            accessable = true;
+
             baseImage = Players.getBaseImage(owner);
             
             this.indexX = indexX;

@@ -61,8 +61,11 @@ namespace ION
             destination = new Queue<Tile>();
         }
 
-        public void Update(float translationX, float translationY)
+        public bool Update(Vector2 newInTile, List<Unit> allUnits, Tile[,] grid, float translationX, float translationY)
         {
+            bool returnValue = false;
+            returnValue = UpdateTile(newInTile, allUnits, grid, translationX, translationY);
+
             if (health < 0)
             {
                 //put this unit in some sort of death animation list somewhere
@@ -71,7 +74,7 @@ namespace ION
                 Grid.get().removeUnit(this);
 
                 //the end
-                return;
+                return returnValue;
             }
             
             if (pos != targetPos)
@@ -118,6 +121,8 @@ namespace ION
             //will move this to the above if statement when the unit know its tile
             virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
             virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
+
+            return returnValue;
         }
 
         public void hit()
@@ -129,16 +134,53 @@ namespace ION
         }
 
 
-        public bool UpdateTile(Vector2 newInTile)
+        public bool UpdateTile(Vector2 newInTile, List<Unit> allUnits, Tile[,] grid, float translationX, float translationY)
         {
             //if the player is occuping a new tile it will update & return true
             if (inTileX != (int)newInTile.X || inTileY != (int)newInTile.Y)
             {
-                inTileX = (int)newInTile.X;
-                inTileY = (int)newInTile.Y;
+                bool test = false;
+                if (!grid[(int)newInTile.X, (int)newInTile.Y].accessable)
+                {
+                    test = true;
+                }
+                else
+                {
+                    //for (int i = 0; i < allUnits.Count(); i++)
+                    //{
+                    //    if (allUnits[i].inTileX == (int)newInTile.X && allUnits[i].inTileY == (int)newInTile.Y)
+                    //    {
+                    //        test = true;
+                    //    }
+                    //}
+                }
 
-                //Tell the Grid this Unit's tile position has changed
-                Grid.updateDepthEnabledItem(this);
+
+                if (test)
+                {
+                    //set waypoint to current tile
+                    EmptyWayPoints();
+
+                    //destination.Enqueue(grid[inTileX, inTileY]);
+
+                    //pos = targetPos;
+                    targetPos = grid[inTileX, inTileY].GetPos(translationX, translationY);
+
+                    //Tile temp = destination.Dequeue();
+                    //targetPos = temp.GetPos(translationX, translationY);
+
+                    return false;
+                }
+                else
+                {
+                    grid[inTileX, inTileY].accessable = true;
+                    inTileX = (int)newInTile.X;
+                    inTileY = (int)newInTile.Y;
+                    grid[inTileX, inTileY].accessable = false;
+
+                    //Tell the Grid this Unit's tile position has changed
+                    Grid.updateDepthEnabledItem(this);
+                }
 
                 return true;
             }
@@ -146,153 +188,158 @@ namespace ION
             {
                 return false;
             }
+
+            //Debug.WriteLine("new tilexy: " + inTileX + "," + inTileY);
+            //Vector2 tilePos = map.GetTile(pos.X, pos.Y, translationX, translationX);
+            //inTileX = tilePos.X;
+            //inTileY = tilePos.Y;
         }
 
 
-        ////PathFinding
-        //public void FindPath(Tile[,] map, List<Unit> allUnits)
-        //{
-        //    //1) Add the starting square (or node) to the open list.
-        //    //2) Repeat the following:
-        //    //a) Look for the lowest F cost square on the open list. We refer to this as the current square.
-        //    //b) Switch it to the closed list.
-        //    //c) For each of the 8 squares adjacent to this current square …
-        //    //    *
-        //    //      If it is not walkable or if it is on the closed list, ignore it. Otherwise do the following.           
-        //    //    *
-        //    //      If it isn’t on the open list, add it to the open list. Make the current square the parent of this square. Record the F, G, and H costs of the square. 
-        //    //    *
-        //    //      If it is on the open list already, check to see if this path to that square is better, using G cost as the measure. A lower G cost means that this is a better path. If so, change the parent of the square to the current square, and recalculate the G and F scores of the square. If you are keeping your open list sorted by F score, you may need to resort the list to account for the change.
-        //    //d) Stop when you:
-        //    //    * Add the target square to the closed list, in which case the path has been found (see note below), or
-        //    //    * Fail to find the target square, and the open list is empty. In this case, there is no path.   
-        //    //3) Save the path. Working backwards from the target square, go from each square to its parent square until you reach the starting square. That is your path.
+        //PathFinding
+        public void FindPath(Tile[,] map, List<Unit> allUnits)
+        {
+            //1) Add the starting square (or node) to the open list.
+            //2) Repeat the following:
+            //a) Look for the lowest F cost square on the open list. We refer to this as the current square.
+            //b) Switch it to the closed list.
+            //c) For each of the 8 squares adjacent to this current square …
+            //    *
+            //      If it is not walkable or if it is on the closed list, ignore it. Otherwise do the following.           
+            //    *
+            //      If it isn’t on the open list, add it to the open list. Make the current square the parent of this square. Record the F, G, and H costs of the square. 
+            //    *
+            //      If it is on the open list already, check to see if this path to that square is better, using G cost as the measure. A lower G cost means that this is a better path. If so, change the parent of the square to the current square, and recalculate the G and F scores of the square. If you are keeping your open list sorted by F score, you may need to resort the list to account for the change.
+            //d) Stop when you:
+            //    * Add the target square to the closed list, in which case the path has been found (see note below), or
+            //    * Fail to find the target square, and the open list is empty. In this case, there is no path.   
+            //3) Save the path. Working backwards from the target square, go from each square to its parent square until you reach the starting square. That is your path.
 
-        //    float f = 0.0f;
-        //    //create the open list of nodes, initially containing only our starting node
-        //    List<Tile> openNodes = new List<Tile>();
-        //    List<float> openNodesF = new List<float>();
-        //    openNodes.Add((Tile)map[inTileX, inTileY]);
-        //    openNodesF.Add(0f);
+            float f = 0.0f;
+            //create the open list of nodes, initially containing only our starting node
+            List<Tile> openNodes = new List<Tile>();
+            List<float> openNodesF = new List<float>();
+            openNodes.Add((Tile)map[inTileX, inTileY]);
+            openNodesF.Add(0f);
 
-        //    //    create the closed list of nodes, initially empty
-        //    List<Tile> closedNodes = new List<Tile>();
-        //    List<float> closedNodesG = new List<float>();
-        //    float g = 0.0f;
+            //    create the closed list of nodes, initially empty
+            List<Tile> closedNodes = new List<Tile>();
+            List<float> closedNodesG = new List<float>();
+            float g = 0.0f;
 
-        //    //    while (we have not reached our goal) {
-        //    while ((closedNodes.Count() != 0 && closedNodes[closedNodes.Count() - 1] != destination.First<Tile>()) || closedNodes.Count() == 0)//while closedNodes does not contain the target tile
-        //    {
-        //        //        consider the best node in the open list (the node with the lowest f value)
-        //        // NOTE: positive elements in the array have a distance of 10, negitave elements have a distance of 14
-        //        Tile currentTile = openNodes[openNodes.Count() - 1];// the current tile
-        //        Tile[] checkTiles = new Tile[8];// the 8 tiles touching the current
-        //        if (map[inTileX - 1, inTileY] != null)
-        //        {
-        //            checkTiles[0] = map[inTileX - 1, inTileY];
-        //        }
-        //        if (map[inTileX - 1, inTileY - 1] != null)
-        //        {
-        //            checkTiles[1] = map[inTileX - 1, inTileY - 1];
-        //        }
-        //        if (map[inTileX, inTileY - 1] != null)
-        //        {
-        //            checkTiles[2] = map[inTileX, inTileY - 1];
-        //        }
-        //        if (map[inTileX + 1, inTileY - 1] != null)
-        //        {
-        //            checkTiles[3] = map[inTileX + 1, inTileY - 1];
-        //        }
-        //        if (map[inTileX + 1, inTileY] != null)
-        //        {
-        //            checkTiles[4] = map[inTileX + 1, inTileY];
-        //        }
-        //        if (map[inTileX + 1, inTileY + 1] != null)
-        //        {
-        //            checkTiles[5] = map[inTileX + 1, inTileY + 1];
-        //        }
-        //        if (map[inTileX, inTileY + 1] != null)
-        //        {
-        //            checkTiles[6] = map[inTileX, inTileY + 1];
-        //        }
-        //        if (map[inTileX - 1, inTileY + 1] != null)
-        //        {
-        //            checkTiles[7] = map[inTileX - 1, inTileY + 1];
-        //        }
+            //    while (we have not reached our goal) {
+            while ((closedNodes.Count() != 0 && closedNodes[closedNodes.Count() - 1] != destination.First<Tile>()) || closedNodes.Count() == 0)//while closedNodes does not contain the target tile
+            {
+                //        consider the best node in the open list (the node with the lowest f value)
+                // NOTE: positive elements in the array have a distance of 10, negitave elements have a distance of 14
+                Tile currentTile = openNodes[openNodes.Count() - 1];// the current tile
+                Tile[] checkTiles = new Tile[8];// the 8 tiles touching the current
+                if (map[inTileX - 1, inTileY] != null)
+                {
+                    checkTiles[0] = map[inTileX - 1, inTileY];
+                }
+                if (map[inTileX - 1, inTileY - 1] != null)
+                {
+                    checkTiles[1] = map[inTileX - 1, inTileY - 1];
+                }
+                if (map[inTileX, inTileY - 1] != null)
+                {
+                    checkTiles[2] = map[inTileX, inTileY - 1];
+                }
+                if (map[inTileX + 1, inTileY - 1] != null)
+                {
+                    checkTiles[3] = map[inTileX + 1, inTileY - 1];
+                }
+                if (map[inTileX + 1, inTileY] != null)
+                {
+                    checkTiles[4] = map[inTileX + 1, inTileY];
+                }
+                if (map[inTileX + 1, inTileY + 1] != null)
+                {
+                    checkTiles[5] = map[inTileX + 1, inTileY + 1];
+                }
+                if (map[inTileX, inTileY + 1] != null)
+                {
+                    checkTiles[6] = map[inTileX, inTileY + 1];
+                }
+                if (map[inTileX - 1, inTileY + 1] != null)
+                {
+                    checkTiles[7] = map[inTileX - 1, inTileY + 1];
+                }
 
-        //        int closestTile = 0;// specifys the closest tile to touching the current tile to the destination tile
-        //        float closest = 1000000000000000f;// initalized as huge so that any distance will be smaller
-        //        for (int i = 0; i < 8; i++)// checks which tile is closest to the target
-        //        {
-        //            if (checkTiles[i] != null && map[checkTiles[i].indexX, checkTiles[i].indexY].FreeTile(checkTiles[i], allUnits))
-        //            {
-        //                Vector2 temp = checkTiles[i].GetPos(1, 1) - currentTile.GetPos(1, 1);
-        //                if ((float)temp.Length() < closest)
-        //                {
-        //                    closest = (float)temp.Length();
-        //                    closestTile = i;
-        //                }
-        //            }
-        //        }
-
-
-
-        //        //        if (this node is the goal) {
-        //        if (false/*temp*/ && checkTiles[closestTile] == destination.First<Tile>())//here
-        //        {
-        //            //            then we're done
-        //        }
-        //        else
-        //        {
-        //            //            move the current node to the closed list and consider all of its neighbors
-        //            closedNodes.Add(checkTiles[closestTile]);
-        //            if (closestTile % 2 == 0)
-        //            {
-        //                closedNodesG.Add(10f); g += 10f;
-        //            }
-        //            else
-        //            {
-        //                closedNodesG.Add(14f); g += 14f;
-        //            }
-        //            //            for (each neighbor) {
-        //            for (int i = 0; i < 8; i++)
-        //            {
-        //                bool ifCheck = false;
-        //                for (int j = 0; j < closedNodes.Count(); j++)
-        //                {
-
-        //                    //                if (this neighbor is in the closed list and our current g value is lower) {
-        //                    if (g < g + 10)
-        //                    {
-        //                        ifCheck = true;
-        //                        //                    update the neighbor with the new, lower, g value 
-        //                        // checkTiles[i].gValue or checkTiles[i,1] where 1 is the gValue and 0 is the tile
-        //                        //                    change the neighbor's parent to our current node
-        //                    }
-        //                }
-        //                for (int j = 0; j < openNodes.Count(); j++)
-        //                {
-        //                    //                else if (this neighbor is in the open list and our current g value is lower) {
-        //                    if (!ifCheck && checkTiles[i] == openNodes[j])
-        //                    {
-        //                        ifCheck = true;
-        //                        //                    update the neighbor with the new, lower, g value 
-        //                        //                    change the neighbor's parent to our current node
-        //                    }
-
-        //                }
-        //                //                else this neighbor is not in either the open or closed list {
-        //                if (!ifCheck)
-        //                {
-        //                    //                    add the neighbor to the open list and set its g value
-
-        //                }
-        //            }
-        //        }
-        //    }
+                int closestTile = 0;// specifys the closest tile to touching the current tile to the destination tile
+                float closest = 1000000000000000f;// initalized as huge so that any distance will be smaller
+                for (int i = 0; i < 8; i++)// checks which tile is closest to the target
+                {
+                    if (checkTiles[i] != null && map[checkTiles[i].indexX, checkTiles[i].indexY].FreeTile(checkTiles[i], allUnits))
+                    {
+                        Vector2 temp = checkTiles[i].GetPos(1, 1) - currentTile.GetPos(1, 1);
+                        if ((float)temp.Length() < closest)
+                        {
+                            closest = (float)temp.Length();
+                            closestTile = i;
+                        }
+                    }
+                }
 
 
-        //}
+
+                //        if (this node is the goal) {
+                if (false/*temp*/ && checkTiles[closestTile] == destination.First<Tile>())//here
+                {
+                    //            then we're done
+                }
+                else
+                {
+                    //            move the current node to the closed list and consider all of its neighbors
+                    closedNodes.Add(checkTiles[closestTile]);
+                    if (closestTile % 2 == 0)
+                    {
+                        closedNodesG.Add(10f); g += 10f;
+                    }
+                    else
+                    {
+                        closedNodesG.Add(14f); g += 14f;
+                    }
+                    //            for (each neighbor) {
+                    for (int i = 0; i < 8; i++)
+                    {
+                        bool ifCheck = false;
+                        for (int j = 0; j < closedNodes.Count(); j++)
+                        {
+
+                            //                if (this neighbor is in the closed list and our current g value is lower) {
+                            if (g < g + 10)
+                            {
+                                ifCheck = true;
+                                //                    update the neighbor with the new, lower, g value 
+                                // checkTiles[i].gValue or checkTiles[i,1] where 1 is the gValue and 0 is the tile
+                                //                    change the neighbor's parent to our current node
+                            }
+                        }
+                        for (int j = 0; j < openNodes.Count(); j++)
+                        {
+                            //                else if (this neighbor is in the open list and our current g value is lower) {
+                            if (!ifCheck && checkTiles[i] == openNodes[j])
+                            {
+                                ifCheck = true;
+                                //                    update the neighbor with the new, lower, g value 
+                                //                    change the neighbor's parent to our current node
+                            }
+
+                        }
+                        //                else this neighbor is not in either the open or closed list {
+                        if (!ifCheck)
+                        {
+                            //                    add the neighbor to the open list and set its g value
+
+                        }
+                    }
+                }
+            }
+
+
+        }
 
 
         //move units towards their target

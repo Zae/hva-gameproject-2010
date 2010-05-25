@@ -14,6 +14,8 @@ namespace ION
 
         public MountainTile(int indexX, int indexY)
         {
+            accessable = false;
+
             this.indexX = indexX;
             this.indexY = indexY;
         } 

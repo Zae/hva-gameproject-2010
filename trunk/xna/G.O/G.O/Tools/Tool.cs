@@ -9,29 +9,15 @@ namespace ION
     {
         //public static int toClosestInt(float value)
         //{
-        //    if (value > 0)
+        //    //float temp = value % 1;
+        //    if (temp > 0.5)
         //    {
-        //        if ((value - (int)value) > 0.5f)
-        //        {
-        //            return (int)value + 1;
-        //        }
-        //        else
-        //        {
-        //            return (int)value;
-        //        }
+        //        return (int)value + 1;
         //    }
-        //    else if (value < 0)
+        //    else
         //    {
-        //        if ((value - (int)value) < -0.5f)
-        //        {
-        //            return (int)value - 1;
-        //        }
-        //        else
-        //        {
-        //            return (int)value;
-        //        }
+        //        return (int)value;
         //    }
-        //    return 0;
         //}
 
         public static int closestEvenInt(float value)
@@ -39,7 +25,7 @@ namespace ION
             //If the int value is uneven
             if (((int)value) % 2 != 0)
             {
-                if ((int)value < 0)
+                if ((int)value < 1)
                 {
                     return ((int)value - 1);
                 }
@@ -52,6 +38,8 @@ namespace ION
             {
                 return (int)value;
             }
+
+            
 
         }
     }
