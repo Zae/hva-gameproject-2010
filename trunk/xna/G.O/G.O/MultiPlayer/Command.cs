@@ -124,7 +124,7 @@ namespace ION.MultiPlayer
 
         public override String toCommandParts()
         {
-            return "CREATE_UNIT|0|"+supposedGameTick+"|"+unitOwner+"|"+unitId+"|";
+            return "CREATE_UNIT|0|"+supposedGameTick+"|"+unitOwner+"|"+unitId+"|"+serial+"|";
         }
 
     }
