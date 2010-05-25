@@ -68,7 +68,7 @@ namespace ION
         // a list to hold the blue army
         public List<Unit> allUnits = new List<Unit>();
 
-        public float resources = BallUnit.cost * 3;
+        public float resources = Robot.cost * 42;
         public static int playerNumber = -1;
         private static int playerUnitId = -1;
 
@@ -353,7 +353,7 @@ namespace ION
                 sColorval = myUint[0].ToString();
             }
 
-            //Debug.WriteLine(frame++ + " Color under mouse is: " + Colors.getColor(myUint[0]) + " uint:" + sColorval);
+            //Debug.WriteLine(FiringFrame++ + " Color under mouse is: " + Colors.getColor(myUint[0]) + " uint:" + sColorval);
 
             return myUint[0];
         }
@@ -521,7 +521,7 @@ namespace ION
 
         //public void CreateBlueUnit(float translationX, float translationY)
         //{
-        //    BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY), playerNumber);
+        //    Robot newUnit = new Robot(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY), playerNumber);
         //    allUnits.Add(newUnit);
         //    addDepthEnabledItem(newUnit);
         //}
@@ -529,7 +529,7 @@ namespace ION
         public void createUnit(int owner, int id)
         {
             BaseTile playerBase = getPlayerBase(owner);
-            BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2((float)playerBase.getTileX(), (float)playerBase.getTileY()), StateTest.translationX, StateTest.translationY),
+            Robot newUnit = new Robot(GetTileScreenPos(new Vector2((float)playerBase.getTileX(), (float)playerBase.getTileY()), StateTest.translationX, StateTest.translationY),
                 GetTileScreenPos(new Vector2((float)playerBase.getTileX() - 1, (float)playerBase.getTileY() + 1),StateTest.translationX, StateTest.translationY), owner, id);
             allUnits.Add(newUnit);
             addDepthEnabledItem(newUnit);
@@ -537,7 +537,7 @@ namespace ION
 
         //public void CreateRedUnit(float translationX, float translationY)
         //{
-        //    BallUnit newUnit = new BallUnit(GetTileScreenPos(new Vector2(19, 19), translationX, translationY), GetTileScreenPos(new Vector2(18, 20), translationX, translationY), 2);
+        //    Robot newUnit = new Robot(GetTileScreenPos(new Vector2(19, 19), translationX, translationY), GetTileScreenPos(new Vector2(18, 20), translationX, translationY), 2);
         //    allUnits.Add(newUnit);
         //    addDepthEnabledItem(newUnit);
         //}

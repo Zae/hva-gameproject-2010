@@ -121,7 +121,7 @@
     <Compile Include="UI\GUIComponent.cs" />
     <Compile Include="UI\GUIComposite.cs" />
     <Compile Include="UI\GUIManager.cs" />
-    <Compile Include="Units\BallUnit.cs" />
+    <Compile Include="Units\Robot.cs" />
     <Compile Include="Units\Unit.cs" />
   </ItemGroup>
   <ItemGroup>

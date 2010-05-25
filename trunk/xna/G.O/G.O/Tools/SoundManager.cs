@@ -28,12 +28,15 @@ namespace ION.Tools
             {
                 firesounds[i] = Sounds.fireSounds[i].CreateInstance();
                 firesounds[i].IsLooped = false;
+                firesounds[i].Volume = 0.2f;
             }
 
             selectUnit = Sounds.selectUnit.CreateInstance();
             selectUnit.IsLooped = false;
+            
             orderUnit = Sounds.orderUnit.CreateInstance();
             orderUnit.IsLooped = false;
+           
         }
 
         public static void update()
