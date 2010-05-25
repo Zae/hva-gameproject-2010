@@ -54,6 +54,11 @@ namespace ION
 
             drawUnderFireAnimation(x,y);
 
+            if (owner == 1)
+            {
+                Vector2 position = new Vector2(100, 300);
+                ION.spriteBatch.DrawString(Fonts.font, "Unit tile: X=" + inTileX + "   Y=" + inTileY, position, Color.White);
+            }
         }
 
         private void drawUnderFireAnimation(float x, float y)
