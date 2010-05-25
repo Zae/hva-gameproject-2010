@@ -97,7 +97,7 @@ namespace ION
                 //We have nowhere to go, might as well shoot some enemies
                 List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
                 if (enemies.Count == 0) firing = false;
-                int distance = 8;
+                int distance = 4;
                 foreach (Unit u in enemies)
                 {
                     if ((u.inTileX - inTileX > -distance && u.inTileX - inTileX < distance) && (u.inTileY - inTileY > -distance && u.inTileY - inTileY < distance))
@@ -123,6 +123,9 @@ namespace ION
         public void hit()
         {
             health -= 1;
+
+            //this will trigger or keep alive the animation
+            underFire = true;
         }
 
 

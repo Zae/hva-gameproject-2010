@@ -107,8 +107,6 @@ namespace ION
                 //split the command into parts between the "|"
                 commandParts = splitCommand(command);
                 
-               
-
                 ////cheks if the command is not an echo command
                 //if (!sentCommands.Contains(command))
                 //{

@@ -955,9 +955,9 @@ namespace ION
 
             return result;
         }
-        public static BallUnit DeserializeBallUnit(Byte[] input)
+        public static Robot DeserializeBallUnit(Byte[] input)
         {
-            BallUnit bu = new BallUnit();
+            Robot bu = new Robot();
             bu.Deserialize(byteArrayToStream(input));
             return bu;
         }
