@@ -77,6 +77,7 @@ namespace ION
             actionOnScreenSound = Sounds.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
 
+         
            
         }
 
@@ -87,8 +88,7 @@ namespace ION
 
         public override void draw()
         {
-            //ION.get().GraphicsDevice.Clear(Color.Black);
-
+      
             ION.spriteBatch.Begin();
             ION.spriteBatch.Draw(Images.gameBackground, new Rectangle(0, 0, ION.width, ION.height), Color.White);
             ION.spriteBatch.End();
@@ -299,12 +299,10 @@ namespace ION
                     {
                         actionOnScreenSound.Volume = newVolume;
                     }
-
                 } 
             }
             else
-            {
-                
+            {             
                 if (MediaPlayer.Volume < 1.0f)
                 {
                     MediaPlayer.Volume = MediaPlayer.Volume + (0.0003f * ellapsed);
@@ -335,8 +333,6 @@ namespace ION
 
         public override void focusGained()
         {
-            ION.get().IsMouseVisible = true;
-
             if (musicPaused)
             {
                 MediaPlayer.Resume();
@@ -346,8 +342,6 @@ namespace ION
 
         public override void focusLost()
         {
-            ION.get().IsMouseVisible = false;
-            
             MediaPlayer.Pause();
             musicPaused = true;
         }

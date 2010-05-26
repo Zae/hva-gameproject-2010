@@ -19,6 +19,8 @@ namespace ION.Controls
 
         public override void handleInput(MouseState mouseState, KeyboardState keyState)
         {
+            GUIManager.mousePointerState = Images.MOUSE_MOVE;
+            
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 //This is a hack to not update the GUI directly, but we wait until in NeutralState to make sure we don't have a new selection

@@ -177,16 +177,6 @@ namespace ION
             Images.Logo = Content.Load<Texture2D>("menuItems/ION");
             Images.background_starfield = Content.Load<Texture2D>("menuItems/starfield");
 
-
-            ////Title Menu
-            //Images.ION_LOGO = Content.Load<Texture2D>("menuItems/ION_LOGO");
-            //Images.buttonNewGame = Content.Load<Texture2D>("menuItems/newGameButton");
-            //Images.buttonNewGameF = Content.Load<Texture2D>("menuItems/newGameButtonF");
-            //Images.buttonMP = Content.Load<Texture2D>("menuItems/mpButton");
-            //Images.buttonMPF = Content.Load<Texture2D>("menuItems/mpButtonF");
-            //Images.buttonQuit = Content.Load<Texture2D>("menuItems/quitButton");
-            //Images.buttonQuitF = Content.Load<Texture2D>("menuItems/quitButtonF");
-
             //MultiPlayer menu
             Images.buttonJoin = Content.Load<Texture2D>("menuItems/btn_join");
             Images.buttonJoinF = Content.Load<Texture2D>("menuItems/btn_join_hover");
@@ -198,14 +188,6 @@ namespace ION
             Images.inputField = Content.Load<Texture2D>("menuItems/input");
             Images.roomCaption = Content.Load<Texture2D>("menuItems/room");
             Images.waitScreen = Content.Load<Texture2D>("menuItems/wait");
-
-            ////MultiPlayer menu
-            //Images.buttonJoin = Content.Load<Texture2D>("menuItems/JoinButton");
-            //Images.buttonJoinF = Content.Load<Texture2D>("menuItems/JoinButtonF");
-            //Images.buttonHost = Content.Load<Texture2D>("menuItems/HostButton");
-            //Images.buttonHostF = Content.Load<Texture2D>("menuItems/HostButtonF");
-            //Images.buttonBack = Content.Load<Texture2D>("menuItems/BackButton");
-            //Images.buttonBackF = Content.Load<Texture2D>("menuItems/BackButtonF");
 
             //Load Tile images
             Images.borderImage = Content.Load<Texture2D>("tileItems/border_tile");
@@ -220,10 +202,6 @@ namespace ION
             //Load Tool images 
             Images.tileHitmapImage = Content.Load<Texture2D>("toolItems/tile_hitmap");
 
-            ////Join menu
-            //Images.buttonRefresh = Content.Load<Texture2D>("menuItems/RefreshButton");
-            //Images.buttonRefreshF = Content.Load<Texture2D>("menuItems/RefreshButtonF");
-
             //Join menu
             Images.buttonRefresh = Content.Load<Texture2D>("menuItems/btn_refresh");
             Images.buttonRefreshF = Content.Load<Texture2D>("menuItems/btn_refresh_hover");
@@ -233,6 +211,16 @@ namespace ION
 
             //Load Unit images
             Images.unitWayPoint = Content.Load<Texture2D>("unitItems/greenArrow");
+
+            //Load Unit images
+            Images.unitWayPoint = Content.Load<Texture2D>("unitItems/greenArrow");
+
+            Images.mousePointers = new Texture2D[4];
+            Images.mousePointers[0] = Content.Load<Texture2D>("guiItems/mousePointers/mousepointer");
+            Images.mousePointers[1] = Content.Load<Texture2D>("guiItems/mousePointers/moveunitpointer");
+            Images.mousePointers[2] = Content.Load<Texture2D>("guiItems/mousePointers/attackunitpointer");
+            Images.mousePointers[3] = Content.Load<Texture2D>("guiItems/mousePointers/mousetranslation");
+
 
             int players = 2;
             string[] directions = new string[] { "s", "se", "e", "ne", "n", "nw", "w", "sw" };
@@ -252,7 +240,6 @@ namespace ION
             int frames = 2;
             Images.unit_shooting = new Texture2D[players, directions.Length, 2];
             Images.unit_selected_shooting = new Texture2D[players, directions.Length, 2];
-
             for (int frame = 0; frame < frames; frame++)
             {
                 for (int i = 0; i < players; i++)

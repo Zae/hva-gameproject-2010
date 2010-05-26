@@ -179,14 +179,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="levelItems\BigLevelTest.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Name>BigLevelTest</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="fontItems\BigFont.spritefont">
       <Name>BigFont</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -1198,22 +1190,29 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="guiItems\mouesPointers\attackunitpointer.png">
+    <Compile Include="guiItems\mousePointers\attackunitpointer.png">
       <Name>attackunitpointer</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="guiItems\mouesPointers\mousepointer.png">
+    <Compile Include="guiItems\mousePointers\mousepointer.png">
       <Name>mousepointer</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="guiItems\mouesPointers\moveunitpointer.png">
+    <Compile Include="guiItems\mousePointers\moveunitpointer.png">
       <Name>moveunitpointer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="guiItems\mousePointers\mousetranslation.png">
+      <Name>mousetranslation</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
