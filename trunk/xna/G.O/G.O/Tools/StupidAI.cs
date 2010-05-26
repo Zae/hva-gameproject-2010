@@ -30,7 +30,7 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 2)
+                if (aiUnits.Count < 4)
                 {
                     CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), CommandDispatcher.getSerial(),ai, newId++));
                 }
@@ -48,7 +48,7 @@ namespace ION.Tools
                                                                             , u.id
                                                                             , x
                                                                             , y));
-                       //u.AddDestination(Grid.map[x, y]);
+                        
                     }
                 }
 

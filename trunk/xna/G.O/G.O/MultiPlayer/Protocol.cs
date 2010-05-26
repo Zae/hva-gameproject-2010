@@ -150,9 +150,9 @@ namespace ION
                     Console.WriteLine("start Game message received");
                     int seed = Int32.Parse(commandParts[1]);
                     if (ION.instance.serverConnection.isHost)
-                        ION.instance.setState(new StateTest(1, seed, "MediumLevelTest.xml"));
+                        ION.instance.setState(new StateTest(1, seed, "MediumLevelTest.xml",true));
                     else
-                        ION.instance.setState(new StateTest(2, seed, "MediumLevelTest.xml"));
+                        ION.instance.setState(new StateTest(2, seed, "MediumLevelTest.xml",true));
 
                     gameStarted = true;
                     break;
@@ -249,13 +249,14 @@ namespace ION
             
             Console.WriteLine("command:" + command + " has been sent!!" + commandBytes.Length );
 
-            parseCommand(command);
+            //parseCommand(command);
             //if(command[command.Length-1]!= 'E') sentCommands.Add(command+"E");
             //commands.Add(splitCommand(command));
         }
         public void startGame(int seed)
         {         
             declareAction("START|"+seed+"|");
+            parseCommand("START|" + seed + "|");
         }
 
         //public void update()

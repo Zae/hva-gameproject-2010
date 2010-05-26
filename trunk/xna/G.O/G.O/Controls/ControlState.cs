@@ -15,7 +15,7 @@ namespace ION.Controls
             //Handle Zoom from every context
             if (mouseState.ScrollWheelValue > StateTest.get().scrollValue)
             {
-                Tile t = Grid.get().getTile((float)ION.halfWidth, (float)ION.halfHeight, StateTest.translationX, StateTest.translationY);
+                Tile t = Grid.get().getTile((float)ION.halfWidth, (float)ION.halfHeight, StateTest.get().translationX, StateTest.get().translationY);
 
                 if (t != null)
                 {
@@ -29,13 +29,13 @@ namespace ION.Controls
                     float newX = (ION.halfWidth + (t.getVisualX() * Tile.baseHalfWidth));
                     float newY = (t.getVisualY() * Tile.baseHalfHeight);
 
-                    StateTest.translationX -= (newX - oldX);
-                    StateTest.translationY -= (newY - oldY);
+                    StateTest.get().translationX -= (newX - oldX);
+                    StateTest.get().translationY -= (newY - oldY);
                 }
             }
             else if (mouseState.ScrollWheelValue < StateTest.get().scrollValue)
             {
-                Tile t = Grid.get().getTile((float)ION.halfWidth, (float)ION.halfHeight, StateTest.translationX, StateTest.translationY);
+                Tile t = Grid.get().getTile((float)ION.halfWidth, (float)ION.halfHeight, StateTest.get().translationX, StateTest.get().translationY);
                 if (t != null)
                 {
                     float oldX = (ION.halfWidth + (t.getVisualX() * Tile.baseHalfWidth));
@@ -48,22 +48,22 @@ namespace ION.Controls
                     float newX = (ION.halfWidth + (t.getVisualX() * Tile.baseHalfWidth));
                     float newY = (t.getVisualY() * Tile.baseHalfHeight);
 
-                    StateTest.translationX -= (newX - oldX);
-                    StateTest.translationY -= (newY - oldY);
+                    StateTest.get().translationX -= (newX - oldX);
+                    StateTest.get().translationY -= (newY - oldY);
                 }
             }
             StateTest.get().scrollValue = mouseState.ScrollWheelValue;
 
             if (mouseState.MiddleButton == ButtonState.Pressed)
             {
-                float newTranslationX = StateTest.translationX + mouseState.X - StateTest.previousMouseX;
-                float newTranslationY = StateTest.translationY + mouseState.Y - StateTest.previousMouseY;
+                float newTranslationX = StateTest.get().translationX + mouseState.X - StateTest.previousMouseX;
+                float newTranslationY = StateTest.get().translationY + mouseState.Y - StateTest.previousMouseY;
 
                 Tile t = Grid.get().getTile((float)ION.halfWidth, (float)ION.halfHeight, newTranslationX, newTranslationY);
                 if (t != null)
                 {
-                    StateTest.translationX += mouseState.X - StateTest.previousMouseX;
-                    StateTest.translationY += mouseState.Y - StateTest.previousMouseY;
+                    StateTest.get().translationX += mouseState.X - StateTest.previousMouseX;
+                    StateTest.get().translationY += mouseState.Y - StateTest.previousMouseY;
                 }
             }
 

@@ -38,8 +38,8 @@ namespace ION
         public bool actionOnScreen = false;
         private SoundEffectInstance actionOnScreenSound = null;
 
-        public static float translationX = 0f;
-        public static float translationY = 0f;
+        public float translationX = 0f;
+        public float translationY = 0f;
 
         public static float previousMouseX = 0f;
         public static float previousMouseY = 0f;
@@ -55,35 +55,20 @@ namespace ION
 
         public bool showHelpFile = false;
 
-        //static int unitCounter = 999;
-
         public List<Unit> selection = new List<Unit>();
 
+        public bool online = false;
 
-
-        public StateTest()
+        //This is for use with multiplayer
+        public StateTest(int player, int seed, string level, bool online)
         {
             instance = this;
+
+            this.online = online;
 
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
             SoundManager.init();
-
-            grid = new Grid(levels[level], strategies[strategy],Players.PLAYER1);
-
-            gui = new GUIManager();
-            controls = new NeutralState();
-
-            actionOnScreenSound = Sounds.actionSound1.CreateInstance();
-            actionOnScreenSound.IsLooped = true;
-        }
-
-        //This is for use with multiplayer
-        public StateTest(int player, int seed, string level)
-        {
-            instance = this;
-
-            scrollValue = Mouse.GetState().ScrollWheelValue;
 
             grid = new Grid(level, new ThunderStrategy(seed), player);
             gui = new GUIManager();
@@ -122,9 +107,6 @@ namespace ION
 
         public override void update(int ellapsed)
         {
-            //update protocol
-           
-
             grid.update(ellapsed, grid.allUnits, translationX, translationY);
 
             //get keyboard input
@@ -132,8 +114,6 @@ namespace ION
 
             //get mouse input
             MouseState mouseState = Mouse.GetState();
-
-
 
             if (!gui.handleMouse(mouseState))
             {
@@ -154,103 +134,107 @@ namespace ION
                     playqueue = 1;
                 }
             }
+
+            if (!online)
+            {
+                if (keyState.IsKeyDown(Keys.Escape))
+                {
+                    ION.get().setState(new StatePaused());
+                }
+
+                //MAP CHANGING CONTROLS
+                if (keyState.IsKeyDown(Keys.M) && !nextMapDown)
+                {
+                    nextMapDown = true;
+                    if (level < levels.Length - 1)
+                    {
+                        level++;
+                    }
+                    else
+                    {
+                        level = 0;
+                    }
+                    grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
+                    gui = new GUIManager();
+                    controls = new NeutralState();
+                }
+                else if (keyState.IsKeyUp(Keys.M))
+                {
+                    nextMapDown = false;
+                }
+
+                if (keyState.IsKeyDown(Keys.N) && !previousMapDown)
+                {
+                    previousMapDown = true;
+                    if (level > 0)
+                    {
+                        level--;
+                    }
+                    else
+                    {
+                        level = levels.Length - 1;
+                    }
+                    grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
+                    gui = new GUIManager();
+                    controls = new NeutralState();
+                }
+                else if (keyState.IsKeyUp(Keys.N))
+                {
+                    previousMapDown = false;
+                }
+
+                //STRATEGY CHANGING CONTROLS
+                if (keyState.IsKeyDown(Keys.K) && !nextStrategyDown)
+                {
+                    nextStrategyDown = true;
+                    if (strategy < strategies.Length - 1)
+                    {
+                        strategy++;
+                    }
+                    else
+                    {
+                        strategy = 0;
+                    }
+                    grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
+                    gui = new GUIManager();
+                    controls = new NeutralState();
+                }
+                else if (keyState.IsKeyUp(Keys.K))
+                {
+                    nextStrategyDown = false;
+                }
+
+                if (keyState.IsKeyDown(Keys.J) && !previousStrategyDown)
+                {
+                    previousStrategyDown = true;
+                    if (strategy > 0)
+                    {
+                        strategy--;
+                    }
+                    else
+                    {
+                        strategy = strategies.Length - 1;
+                    }
+                    grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
+                    gui = new GUIManager();
+                    controls = new NeutralState();
+                }
+                else if (keyState.IsKeyUp(Keys.J))
+                {
+                    previousStrategyDown = false;
+                }
+
+                //SPEED CHANGING
+                if (keyState.IsKeyDown(Keys.O))
+                {
+                    grid.getUpdateStrategy().increaseSpeed();
+                }
+                if (keyState.IsKeyDown(Keys.I))
+                {
+                    grid.getUpdateStrategy().decreaseSpeed();
+                }
+            }
             
-            if(keyState.IsKeyDown(Keys.Escape)) 
-            {
-                ION.get().setState(new StatePaused()); 
-            }
-
-            //MAP CHANGING CONTROLS
-            if (keyState.IsKeyDown(Keys.M) && !nextMapDown)
-            {
-                nextMapDown = true;
-                if (level < levels.Length - 1)
-                {
-                    level++;
-                }
-                else
-                {
-                    level = 0;
-                }
-                grid = new Grid(levels[level],strategies[strategy],Players.PLAYER1);
-                gui = new GUIManager();
-                controls = new NeutralState();
-            }
-            else if (keyState.IsKeyUp(Keys.M))
-            {
-                nextMapDown = false;
-            }
-
-            if (keyState.IsKeyDown(Keys.N) && !previousMapDown)
-            {
-                previousMapDown = true;
-                if (level > 0)
-                {
-                    level--;
-                }
-                else
-                {
-                    level = levels.Length - 1;
-                }
-                grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
-                gui = new GUIManager();
-                controls = new NeutralState();
-            }
-            else if (keyState.IsKeyUp(Keys.N))
-            {
-                previousMapDown = false;
-            }
-
-            //STRATEGY CHANGING CONTROLS
-            if (keyState.IsKeyDown(Keys.K) && !nextStrategyDown)
-            {
-                nextStrategyDown = true;
-                if (strategy < strategies.Length - 1)
-                {
-                    strategy++;
-                }
-                else
-                {
-                    strategy = 0;
-                }
-                grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
-                gui = new GUIManager();
-                controls = new NeutralState();
-            }
-            else if (keyState.IsKeyUp(Keys.K))
-            {
-                nextStrategyDown = false;
-            }
-
-            if (keyState.IsKeyDown(Keys.J) && !previousStrategyDown)
-            {
-                previousStrategyDown = true;
-                if (strategy > 0)
-                {
-                    strategy--;
-                }
-                else
-                {
-                    strategy = strategies.Length - 1;
-                }
-                grid = new Grid(levels[level], strategies[strategy], Players.PLAYER1);
-                gui = new GUIManager();
-                controls = new NeutralState();
-            }
-            else if (keyState.IsKeyUp(Keys.J))
-            {
-                previousStrategyDown = false;
-            }
-
-            //SPEED CHANGING
-            if (keyState.IsKeyDown(Keys.O))
-            {
-                grid.getUpdateStrategy().increaseSpeed();
-            }
-            if (keyState.IsKeyDown(Keys.I))
-            {
-                grid.getUpdateStrategy().decreaseSpeed();
-            }
 
             //CENTER MAP
             if (keyState.IsKeyDown(Keys.LeftAlt))
@@ -339,9 +323,10 @@ namespace ION
                 {
                      actionOnScreenSound.Stop();
                 }
-
             }
-            
+
+            actionOnScreenSound.Volume = 0.0f;
+            MediaPlayer.Volume = 0.0f;
         }
 
         public override void focusGained()

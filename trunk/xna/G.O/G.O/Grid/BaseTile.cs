@@ -10,7 +10,6 @@ namespace ION
 {
     public class BaseTile : ResourceTile, IDepthEnabled
     {
-        private Color baseColor = new Color();
         private Texture2D baseImage;
 
         public BaseTile(int indexX, int indexY, int owner)
@@ -32,132 +31,19 @@ namespace ION
 
             tileColor = getAppropriateColor(owner, charge);
 
+            //ION.spriteBatch.Draw
+            //(Images.white1px, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) + ((int)Tile.baseHalfWidth * 0.63)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2) + (int)(baseHalfHeight * 0.55)), 
+            //(int)(baseHalfWidth * 0.75), (int)(baseHalfHeight * 3)), Color.Gray);
 
 
-            //if (owner != Players.NEUTRAL)
-            //{
-            //    ION.spriteBatch.Draw(Images.borderImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), tileColor);
-            //}
+            //ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth * 2)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfHeight * 10)), (int)(baseHalfWidth * 4), (int)(baseHalfWidth * 4)), Color.Gray);
+
 
             ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
          
             
             ION.spriteBatch.Draw(baseImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth*2)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfHeight*10)), (int)(baseHalfWidth * 4), (int)(baseHalfWidth * 4)), Color.White);
         }
-
-        //private Color getBaseColor(int owner)
-        //{
-        //    if (owner == Players.NEUTRAL)
-        //    {
-        //        baseColor.R = 255;
-        //        baseColor.G = 255;
-        //        baseColor.B = 255;
-
-        //        baseColor.A = 255;
-        //    }
-
-        //    else if (owner == Players.PLAYER1)
-        //    {
-        //        baseColor.R = 20;
-        //        baseColor.G = 20;
-        //        baseColor.B = 255;
-
-        //        //tileColor.A = (byte)(charge * 255);
-        //        baseColor.A = 255;
-        //    }
-        //    else if (owner == Players.PLAYER2)
-        //    {
-        //        baseColor.R = 255;
-        //        baseColor.G = 20;
-        //        baseColor.B = 20;
-
-        //        //tileColor.A = (byte)(charge * 255);
-        //        baseColor.A = 255;
-        //    }
-
-        //    return baseColor;
-        //}
-
-        public override void donate(float charge)
-        {
-            //if (nextCharge - charge < 0.0f)
-            //{
-            //    nextCharge = 0.0f;
-            //    Debug.WriteLine("DONATION RESULTS IN  < 0");
-            //}
-            //else
-            //{
-            //    nextCharge -= charge;
-            //}
-        }
-
-        public override void receive(float charge)
-        {
-            if (nextCharge + charge > 1.0f)
-            {
-                nextCharge = 1.0f;
-                //Debug.WriteLine("RECEPTION RESULTS IN > 1");
-            }
-            else
-            {
-                nextCharge += charge;
-            }
-        }
-
-        public override void sustain(float charge, int player)
-        {
-            if (nextCharge - charge < 0.0f)
-            {
-                nextCharge = 0.0f;
-                nextOwner = player;
-            }
-            else
-            {
-                nextCharge -= charge;
-            }
-        }
-
-        //public override void addCharge(float addition, int player)
-        //{
-        //    //if (player != owner)
-        //    //{
-        //    //    if (charge - addition < 0.0f)
-        //    //    {
-        //    //        nextOwner = player;
-        //    //        nextCharge = 0.0000000001f;
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        nextCharge = charge - addition;
-        //    //    }
-        //    //}
-        //    //else
-        //    //{
-
-        //    //    if (charge + addition > 1.0f)
-        //    //    {
-        //    //        nextCharge = 1.0f;
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        nextCharge = charge + addition;
-        //    //    }
-        //    //}
-        //}
-
-        //public override void removeCharge(float addition, int owner)
-        //{
-        //    //if (charge - addition < 0.0f)
-        //    //{
-        //    //    nextCharge = 0.0f;
-        //    //    nextOwner = Players.NEUTRAL;
-        //    //}
-        //    //else
-        //    //{
-        //    //    nextCharge = charge - addition;
-        //    //}
-
-        //}
         
         //Inherited from IDepthEnabled
         public int getTileX()

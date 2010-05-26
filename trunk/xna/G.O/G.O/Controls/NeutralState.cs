@@ -49,7 +49,7 @@ namespace ION.Controls
                 mousePos.X = (mouseState.X);
                 mousePos.Y = (mouseState.Y);
 
-                selectOnMap(mouseState.X, mouseState.Y, StateTest.translationX, StateTest.translationY);   
+                selectOnMap(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);   
             }
             else if (mouseState.LeftButton == ButtonState.Released)
             {

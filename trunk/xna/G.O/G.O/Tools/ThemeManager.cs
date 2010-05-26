@@ -93,8 +93,8 @@ namespace ION
             //}
             //temp.X -= ((int)width / 2);
             //temp.Y += ((int)height / 2);
-            temp.X = ION.halfWidth - ((int)width / 2) + (int)StateTest.translationX -(int)(xDiff * (Tile.baseHalfWidth/2));
-            temp.Y = (int)StateTest.translationY;// -((int)height / 2);
+            temp.X = ION.halfWidth - ((int)width / 2) + (int)StateTest.get().translationX - (int)(xDiff * (Tile.baseHalfWidth / 2));
+            temp.Y = (int)StateTest.get().translationY;// -((int)height / 2);
             temp.Width = (int)width;
             temp.Height = (int)height;
             //temp.X = ION.halfWidth + (int)StateTest.translationX - (((int)width / 2));
