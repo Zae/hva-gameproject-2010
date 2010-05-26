@@ -32,7 +32,7 @@ namespace ION
         public int level = 0;
         public string[] levels = { "MediumLevelTest.xml", "PathLevelTest.xml", "LargeLevelTest.xml", "WideLevelTest.xml", "WideLevelTest2.xml" };
 
-        public GridStrategy[] strategies = { new ThunderStrategy(0), new CreepStrategy(), new FlowStrategy() };
+        public GridStrategy[] strategies = { new ThunderStrategy(0) };
         public int strategy = 0;
 
         public bool actionOnScreen = false;
@@ -54,6 +54,8 @@ namespace ION
         public float player2Control = 0.0f;
 
         public bool showHelpFile = false;
+
+        public Rectangle screenRectangle = new Rectangle(0, 0, ION.width, ION.height);
 
         public List<Unit> selection = new List<Unit>();
 
@@ -90,7 +92,7 @@ namespace ION
         {
       
             ION.spriteBatch.Begin();
-            ION.spriteBatch.Draw(Images.gameBackground, new Rectangle(0, 0, ION.width, ION.height), Color.White);
+            ION.spriteBatch.Draw(Images.gameBackground, screenRectangle, Color.White);
             ION.spriteBatch.End();
 
             grid.draw(translationX, translationY);

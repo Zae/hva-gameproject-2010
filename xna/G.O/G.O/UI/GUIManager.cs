@@ -65,9 +65,10 @@ namespace ION.UI
 
         public bool handleMouse(MouseState mouseState)
         {
-            bool mouseHandled = false;
             evalPoint.X = mouseState.X;
             evalPoint.Y = mouseState.Y;
+
+            mousePointerState = Images.MOUSE_POINTER;
 
             mousePointer.X = evalPoint.X - mousePointerOffsetX;
             mousePointer.Y = evalPoint.Y - mousePointerOffsetY;
