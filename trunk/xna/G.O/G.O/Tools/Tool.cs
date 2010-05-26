@@ -7,6 +7,8 @@ namespace ION
 {
     class Tool
     {
+        public static Random unsafeRandom = new Random(0);
+        
         //public static int toClosestInt(float value)
         //{
         //    //float temp = value % 1;

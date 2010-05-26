@@ -16,9 +16,12 @@ namespace ION
         //animation test
         private int FiringFrame = 0;
         private int FiringCounter = 0;
+
         private int UnderFireFrame = 0;
         private int UnderFireCounter = 0;
-
+        public int UnderFireOffsetX = 0;
+        public int UnderFireOffsetY = 0;
+ 
         public Robot() : base(-1,-1) //Sending an invalid number to the base class as a test, I think this constructor in only used to deserialize into after
         {
             destination = new Queue<Tile>();
@@ -43,29 +46,33 @@ namespace ION
     
 
         public override void draw(float x, float y)
-        {
-            //drawFiringAnimation(float x, float y)
+        {       
+            selectionRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) + (Tile.baseHalfWidth * 0.63));
+            selectionRectangle.Y =   (int)(((pos.Y) * (scale/ 15.0f)) + (y) + (baseHalfHeight * 2)+(baseHalfHeight*0.55));
+            selectionRectangle.Width = (int)(baseHalfWidth * 0.75);
+            selectionRectangle.Height = (int)(baseHalfHeight * 3);
 
-            ION.spriteBatch.Draw(Images.white1px, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) + ((int)Tile.baseHalfWidth * 0.63)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)+(int)(baseHalfHeight*0.55)), (int)(baseHalfWidth * 0.75), (int)(baseHalfHeight * 3)), Color.Gray);
+            drawingRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x));
+            drawingRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2));
+            drawingRectangle.Width = (int)(baseHalfWidth * 2);
+            drawingRectangle.Height = (int)(baseHalfHeight * 4);
+
+            //ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
 
             if (selected)
             {
-                ION.spriteBatch.Draw(Images.selectionBoxBack, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                ION.spriteBatch.Draw(Images.selectionBoxBack, drawingRectangle, Color.White);
             }
 
             if (!drawFiringAnimation(x, y))
             {
-                ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, true), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, true), drawingRectangle, Color.White);
             }
 
-     
             if (selected)
             {
-                ION.spriteBatch.Draw(Images.selectionBoxFront, new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
             }
-
-            
-            
 
             drawUnderFireAnimation(x,y);
         }
@@ -74,6 +81,12 @@ namespace ION
         {
             if (underFire)
             {
+                if (UnderFireCounter == 0)
+                {
+                    UnderFireOffsetX = (int)(Tool.unsafeRandom.NextDouble() * selectionRectangle.Width);
+                    UnderFireOffsetY = (int)(Tool.unsafeRandom.NextDouble() * selectionRectangle.Height);               
+                }
+                
                 //animation test code
                 UnderFireCounter++;
 
@@ -81,19 +94,18 @@ namespace ION
                 {
                     UnderFireFrame = 0;
                 }
-                if (UnderFireCounter > 14)
+                if (UnderFireCounter > 10)
                 {
                     UnderFireFrame = 1;            
                 }
-                if (UnderFireCounter > 25)
+                if (UnderFireCounter > 20)
                 {
                     UnderFireCounter = 0;
                     underFire = false;
                     return;
                 }
 
-                ION.spriteBatch.Draw(Images.bulletImpact[UnderFireFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 0.5)), (int)(baseHalfWidth * 0.5), (int)(baseHalfHeight * 4)), Color.White);
-                
+                ION.spriteBatch.Draw(Images.bulletImpact[UnderFireFrame], new Rectangle(selectionRectangle.X + UnderFireOffsetX, selectionRectangle.Y + UnderFireOffsetY, (int)(baseHalfWidth * 0.5), (int)(baseHalfHeight)), Color.White);
             }
         }
 

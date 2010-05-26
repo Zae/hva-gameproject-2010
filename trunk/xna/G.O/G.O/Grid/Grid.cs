@@ -287,8 +287,6 @@ namespace ION
 
         public void selectTile(float x, float y, float translationX, float translationY)
         {
-            //drawHitTest = true;
-
             //translate the screen input to world coordinates
             mouseWorldX = x - translationX - ION.halfWidth;
             mouseWorldY = y - translationY;
@@ -310,8 +308,6 @@ namespace ION
 
         public Tile getTile(float x, float y, float translationX, float translationY)
         {
-            //drawHitTest = true;
-
             //translate the screen input to world coordinates
             mouseWorldX = x - translationX - ION.halfWidth;
             mouseWorldY = y - translationY;
