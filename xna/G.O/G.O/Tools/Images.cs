@@ -8,6 +8,11 @@ namespace ION
 {
     class Images
     {
+        public static Texture2D[] mousePointers;
+        public const int MOUSE_POINTER = 0;
+        public const int MOUSE_MOVE = 1;
+        public const int MOUSE_ATTACK = 2;
+        public const int MOUSE_TRANSLATE = 3;
 
         public static Texture2D teamLogoImage;
 

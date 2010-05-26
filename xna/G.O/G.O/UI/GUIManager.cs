@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ION.UI
 {
@@ -16,6 +17,11 @@ namespace ION.UI
         public const int BASE_SELECTED = 1;
         public const int UNITS_SELECTED = 2;
         public static int state = 0;
+
+        public Rectangle mousePointer = new Rectangle();
+        public static int mousePointerState = 0;
+        public int mousePointerOffsetX = (int)Images.mousePointers[0].Width/2;
+        public int mousePointerOffsetY = (int)Images.mousePointers[0].Height/2;
 
         public Point evalPoint = new Point(0, 0);
 
@@ -44,7 +50,12 @@ namespace ION.UI
             generalInfo.add(new Label(15, 40, "Hold H for Help"));
             addComponent(generalInfo);
 
-            applyState(NONE_SELECTED);
+            ION.get().IsMouseVisible = false;
+            mousePointer.Width = Images.mousePointers[0].Width;
+            mousePointer.Height = Images.mousePointers[0].Height;
+
+
+            applyState(NONE_SELECTED); 
         }
 
         public void addComponent(GUIComponent component)
@@ -57,6 +68,10 @@ namespace ION.UI
             bool mouseHandled = false;
             evalPoint.X = mouseState.X;
             evalPoint.Y = mouseState.Y;
+
+            mousePointer.X = evalPoint.X - mousePointerOffsetX;
+            mousePointer.Y = evalPoint.Y - mousePointerOffsetY;
+
 
             bool leftPressed = false;
             if (mouseState.LeftButton == ButtonState.Pressed)
@@ -82,7 +97,16 @@ namespace ION.UI
             {
                 guic.draw();
             }
+
+            drawMousePointer();
+
             ION.spriteBatch.End();
+        }
+
+        public void drawMousePointer()
+        {
+           
+            ION.spriteBatch.Draw(Images.mousePointers[mousePointerState], mousePointer, Color.White);
         }
 
         public void applyState(int guiState) 

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using ION.UI;
 
 namespace ION.Controls
 {
@@ -56,6 +57,8 @@ namespace ION.Controls
 
             if (mouseState.MiddleButton == ButtonState.Pressed)
             {
+                GUIManager.mousePointerState = Images.MOUSE_TRANSLATE;
+                
                 float newTranslationX = StateTest.get().translationX + mouseState.X - StateTest.previousMouseX;
                 float newTranslationY = StateTest.get().translationY + mouseState.Y - StateTest.previousMouseY;
 

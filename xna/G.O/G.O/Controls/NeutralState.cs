@@ -35,6 +35,8 @@ namespace ION.Controls
 
         public override void handleInput(MouseState mouseState, KeyboardState keyboardState)
         {
+            GUIManager.mousePointerState = Images.MOUSE_POINTER;
+            
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 //grid.selectOnMap(mouseState.X, mouseState.Y, translationX, translationY);
