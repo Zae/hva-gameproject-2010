@@ -78,18 +78,31 @@ namespace ION.MultiPlayer
             {
                 int queueLength = commandsQueue.Count;
 
-                if (queueLength == 0 || commandsQueue[queueLength - 1].supposedGameTick <= command.supposedGameTick)
+                if (queueLength == 0)
                 {
                     commandsQueue.Add(command);
                     return;
                 }
 
-                for (int i = queueLength - 2; i > -1; i--)
+                for (int i = queueLength - 1; i > -1; i--)
                 {
                     if (commandsQueue[i].supposedGameTick <= command.supposedGameTick)
                     {
-                        commandsQueue.Insert(i + 1, command);
+                        if (commandsQueue[i].owner == command.owner)
+                        {
+                            if (commandsQueue[i].serial < command.serial)
+                            {
+                                commandsQueue.Insert(i + 1, command);
+                                break;
+                            }
+                        }
+                        else if (commandsQueue[i].owner < command.owner)
+                        {
+                            commandsQueue.Insert(i + 1, command);
+                            break;
+                        }
                     }
+
                 }
                 
             }

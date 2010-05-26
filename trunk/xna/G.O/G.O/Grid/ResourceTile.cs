@@ -11,25 +11,6 @@ namespace ION
     public class ResourceTile : Tile
     {
 
-        //remembering past interations
-        public int canDonateNW = 0;
-        public int canDonateN = 0;
-        public int canDonateNE = 0;
-        public int canDonateE = 0;
-        public int canDonateSE = 0;
-        public int canDonateS = 0;
-        public int canDonateSW = 0;
-        public int canDonateW = 0;
-
-        public int nextCanDonateNW = 0;
-        public int nextCanDonateN = 0;
-        public int nextCanDonateNE = 0;
-        public int nextCanDonateE = 0;
-        public int nextCanDonateSE = 0;
-        public int nextCanDonateS = 0;
-        public int nextCanDonateSW = 0;
-        public int nextCanDonateW = 0;
-
         public int owner = Players.NEUTRAL;
 
         public int nextOwner = Players.NEUTRAL;
@@ -41,6 +22,8 @@ namespace ION
         public const float MAX_CHARGE = 1.0f;
 
         public Color tileColor = new Color();
+
+        public Rectangle drawingRectangle = new Rectangle();
 
         public bool isSpiking = false;
         public int spikeCount = 0;
@@ -60,47 +43,33 @@ namespace ION
             this.indexY = indexY;
         }
         public override void drawDebug(float translationX, float translationY)
-        {
-            
+        {           
             Vector2 location = new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
             //ION.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.Black);
-            ION.spriteBatch.DrawString(Fonts.font, "charge: "+charge, location, Color.Black);
-            
+            ION.spriteBatch.DrawString(Fonts.font, "charge: "+charge, location, Color.Black);           
         }
-
-
 
         public override void draw(float translationX, float translationY)
         {
+            drawingRectangle.X = (int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth));
+            drawingRectangle.Y = (int)((visualY * baseHalfHeight) + translationY);
+            drawingRectangle.Width = (int)(baseHalfWidth * 2);
+            drawingRectangle.Height = (int)(baseHalfHeight * 2);
 
             tileColor = getAppropriateColor(owner, charge);
 
-      
+            //if (owner == Players.NEUTRAL)
+            //{
+            ION.spriteBatch.Draw(Images.borderImage, drawingRectangle, tileColor);
+            //}
+
+            ION.spriteBatch.Draw(Images.resourceImage, drawingRectangle, tileColor);
+
 
             //if (owner != Players.NEUTRAL)
             //{
-            //    ION.spriteBatch.Draw(Images.borderImage, new Rectangle(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth), (visualY * baseHalfHeight) + translationY, baseHalfWidth * 2, baseHalfHeight * 2), tileColor);
-            //}
-
-            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
-         
-
-            //if (selected)
-            //{
-            //}
-
-            //if (selected)
-            //{
-            //    addCharge(0.04f,Players.PLAYER1);
-            //}
-
-            //if (owner != Players.NEUTRAL)
-            //{
-            //    Texture2D chargeImage = Images.getChargeCountImage(charge);
-
-                
+            //    Texture2D chargeImage = Images.getChargeCountImage(charge);   
             //    ION.spriteBatch.Draw(chargeImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
-           
             //}
         }
 
@@ -108,71 +77,6 @@ namespace ION
         {
             owner = nextOwner;
             charge = nextCharge;
-        }
-
-        public override void releaseMomentum()
-        {
-            canDonateE += nextCanDonateE;
-            nextCanDonateE = 0;
-
-            canDonateSE += nextCanDonateSE;
-            nextCanDonateSE = 0;
-
-            canDonateS += nextCanDonateS;
-            nextCanDonateS = 0;
-
-            canDonateSW += nextCanDonateSW;
-            nextCanDonateSW = 0;
-
-            canDonateW += nextCanDonateW;
-            nextCanDonateW = 0;
-
-            canDonateNW += nextCanDonateNW;
-            nextCanDonateNW = 0;
-
-            canDonateN += nextCanDonateN;
-            nextCanDonateN = 0;
-
-            canDonateNE += nextCanDonateNE;
-            nextCanDonateNE = 0;
-            
-            
-            
-            
-            
-            //Update the momentum counters
-            if (canDonateN > 0)
-            {
-                canDonateN--;
-            }
-            if (canDonateNE > 0)
-            {
-                canDonateNE--;
-            }
-            if (canDonateE > 0)
-            {
-                canDonateE--;
-            }
-            if (canDonateSE > 0)
-            {
-                canDonateSE--;
-            }
-            if (canDonateS > 0)
-            {
-                canDonateS--;
-            }
-            if (canDonateSW > 0)
-            {
-                canDonateSW--;
-            }
-            if (canDonateW > 0)
-            {
-                canDonateW--;
-            }
-            if (canDonateNW > 0)
-            {
-                canDonateNW--;
-            }
         }
 
         public virtual void donate(float charge)
@@ -290,11 +194,6 @@ namespace ION
 
             return tileColor;
         }
-
-   
-
-
-
 
     }
 }

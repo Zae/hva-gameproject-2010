@@ -30,7 +30,6 @@ namespace ION
         public abstract void drawDebug(float translationX, float translationY);
 
         public abstract void update();
-        public abstract void releaseMomentum();
 
         public bool accessable;
 

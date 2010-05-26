@@ -57,7 +57,7 @@ namespace ION
                 //ION.spriteBatch.Draw(Images.teamLogoImage, new Rectangle(0, 0, 200, 200), Color.White);
                 int y = 0;
                 //ION.spriteBatch.Begin();
-                ION.spriteBatch.DrawString(Fonts.font, "ellapsed: " + now, new Vector2(10, y += 15), Color.Green);
+                //ION.spriteBatch.DrawString(Fonts.font, "ellapsed: " + now, new Vector2(10, y += 15), Color.Green);
                 //ION.spriteBatch.End();
             }
            

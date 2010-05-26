@@ -937,12 +937,6 @@ namespace ION
             GridStrategy result;
             switch (nameofStrategy)
             {
-                case "CreepStrategy":
-                    result = new CreepStrategy();
-                    break;
-                case "FlowStrategy":
-                    result = new FlowStrategy();
-                    break;
                 case "ThunderStrategy":
                     result = new ThunderStrategy(0);
                     break;

@@ -28,11 +28,6 @@ namespace ION
             
         }
 
-        public override void releaseMomentum()
-        {
-            
-        }
-
         public override void draw(float translationX, float translationY)
         {     
             ION.spriteBatch.Draw(Images.mountainImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth+baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);                 

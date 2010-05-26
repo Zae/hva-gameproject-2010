@@ -10,11 +10,13 @@ namespace ION.MultiPlayer
     public class Command
     {
         public int supposedGameTick = -1;
-        public int serial = -1; 
+        public int serial = -1;
+        public int owner = -1;
 
-        public Command(int suppposedGameTick, int serial)
+        public Command(int suppposedGameTick, int owner, int serial)
         {
             this.supposedGameTick = suppposedGameTick;
+            this.owner = owner;
             this.serial = serial;
         }
         
@@ -37,7 +39,7 @@ namespace ION.MultiPlayer
         public int unitId;
 
         public NewMoveCommand(int supposedGameTick, int serial,int unitOwner, int unitId, int xTarget, int yTarget)
-            : base(supposedGameTick, serial)
+            : base(supposedGameTick,unitOwner, serial)
         {
             this.xTarget = xTarget;
             this.yTarget = yTarget;
@@ -111,7 +113,7 @@ namespace ION.MultiPlayer
         int unitId;
     
         public NewUnitCommand(int supposedGameTick, int serial,int unitOwner, int unitId) 
-            : base(supposedGameTick, serial)
+            : base(supposedGameTick,unitOwner, serial)
         {
             this.unitOwner = unitOwner;
             this.unitId = unitId;
