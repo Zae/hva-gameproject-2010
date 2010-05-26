@@ -84,7 +84,7 @@ namespace ION
 
         public TimeSpan passedTime;
 
-        public const int TPS = 40; // Ticks per Second
+        public const int TPS = 30; // Ticks per Second
         public const int TPT = 1000 / TPS; //Timesclice Per Tick (in milliseconds)
         public int TCP = 0; //Ticks Currently Processed
 
@@ -127,7 +127,10 @@ namespace ION
             TCP++;
 
             //Temp AI
-            stupidAI.act();
+            if (!StateTest.get().online)
+            {
+                stupidAI.act();
+            }
 
             SoundManager.update();
             
@@ -529,8 +532,8 @@ namespace ION
         public void createUnit(int owner, int id)
         {
             BaseTile playerBase = getPlayerBase(owner);
-            Robot newUnit = new Robot(GetTileScreenPos(new Vector2((float)playerBase.getTileX(), (float)playerBase.getTileY()), StateTest.translationX, StateTest.translationY),
-                GetTileScreenPos(new Vector2((float)playerBase.getTileX() - 1, (float)playerBase.getTileY() + 1),StateTest.translationX, StateTest.translationY), owner, id);
+            Robot newUnit = new Robot(GetTileScreenPos(new Vector2((float)playerBase.getTileX(), (float)playerBase.getTileY()), StateTest.get().translationX, StateTest.get().translationY),
+                GetTileScreenPos(new Vector2((float)playerBase.getTileX() - 1, (float)playerBase.getTileY() + 1), StateTest.get().translationX, StateTest.get().translationY), owner, id);
             allUnits.Add(newUnit);
             addDepthEnabledItem(newUnit);
         }

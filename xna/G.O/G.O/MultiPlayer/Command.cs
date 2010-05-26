@@ -57,7 +57,7 @@ namespace ION.MultiPlayer
             else
             {
                 u.EmptyWayPoints();
-                u.SetTarget(Grid.map[xTarget, yTarget].GetPos(StateTest.translationX, StateTest.translationY));
+                u.SetTarget(Grid.map[xTarget, yTarget].GetPos(StateTest.get().translationX, StateTest.get().translationY));
 
                 if (u.owner == Grid.playerNumber)
                 {
@@ -70,7 +70,7 @@ namespace ION.MultiPlayer
 
         public override String toCommandParts()
         {
-            return "MOVE_UNIT_TO|0|"+supposedGameTick+"|"+unitOwner+"|"+unitId+"|"+xTarget+"|"+yTarget+"|";
+            return "MOVE_UNIT_TO|0|"+supposedGameTick+"|"+unitOwner+"|"+unitId+"|"+xTarget+"|"+yTarget+"|"+serial+"|";
         }
 
     }

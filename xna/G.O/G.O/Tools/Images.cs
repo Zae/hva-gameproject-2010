@@ -13,11 +13,12 @@ namespace ION
 
         public static Texture2D mountainImage;
         public static Texture2D baseImage;
-        public static Texture2D baseHitmapImage;
         public static Texture2D borderImage;
         public static Texture2D resourceImage;
         public static Texture2D white1px;
         public static Texture2D greenPixel;
+        public static Texture2D selectionBoxBack;
+        public static Texture2D selectionBoxFront;
 
         public static Texture2D tileHitmapImage;
 

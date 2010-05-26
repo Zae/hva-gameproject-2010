@@ -141,6 +141,9 @@ namespace ION
             Images.helpFile = Content.Load<Texture2D>("miscItems/helpfile");            
             Images.gameBackground = Content.Load<Texture2D>("miscItems/blue_red");
 
+            Images.selectionBoxBack = Content.Load<Texture2D>("miscItems/boxback");
+            Images.selectionBoxFront = Content.Load<Texture2D>("miscItems/boxfront");
+
             //GUI Items
             Images.commandsBar = Content.Load<Texture2D>("guiItems/commandsBar");
             Images.moveButtonNormal = Content.Load<Texture2D>("guiItems/moveButtonNormal");

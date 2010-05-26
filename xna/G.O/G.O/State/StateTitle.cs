@@ -214,7 +214,7 @@ namespace ION
         {
             if (selection == SELECTION.NEWGAME)
             {
-                ION.get().setState(new StateTest());
+                ION.get().setState(new StateTest(1,0,"MediumLevelTest.xml",false));
             }
             else if (selection == SELECTION.QUIT)
             {

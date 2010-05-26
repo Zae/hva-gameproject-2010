@@ -31,12 +31,12 @@ namespace ION.Controls
             {
                 if (mouseState.RightButton == ButtonState.Pressed)
                 {//here
-                    shiftMouseRightPressed(mouseState.X, mouseState.Y, StateTest.translationX, StateTest.translationY);
+                    shiftMouseRightPressed(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);
                 }
             }
             else if (mouseState.RightButton == ButtonState.Pressed)
             {
-                mouseRightPressed(mouseState.X, mouseState.Y, StateTest.translationX, StateTest.translationY);
+                mouseRightPressed(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);
             }
 
             base.handleInput(mouseState, keyState);
