@@ -14,6 +14,9 @@ namespace ION
 
         public int owner;
 
+        public Rectangle drawingRectangle = new Rectangle();
+        public Rectangle selectionRectangle = new Rectangle();
+
         public enum direction { south = 0, southEast = 1, east = 2, northEast = 3, north = 4, northWest = 5, west = 6, southWest = 7 };
         public direction facing = direction.north;
 

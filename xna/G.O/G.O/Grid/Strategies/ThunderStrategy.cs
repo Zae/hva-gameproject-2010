@@ -12,8 +12,6 @@ namespace ION.GridStrategies
     {
         private Random random;
 
-        //private int seed = 0;
-
         private ResourceTile[] neighbours = new ResourceTile[8];
 
         private bool doDiagonal = true;
@@ -31,23 +29,6 @@ namespace ION.GridStrategies
         {
             name = "ThunderStrategy";
             random = new Random(seed);
-
-            //Random test
-            //Random r1 = new Random(seed);
-            //Random r2 = new Random(seed);
-
-            //for (int i = 0; i < 10000000; i++)
-            //{
-            //    float f1 = (float)r1.NextDouble();
-            //    float f2 = (float)r2.NextDouble();
-            //    if (f1 != f2)
-            //    {
-            //        Debug.WriteLine("NOT THE SAME!");
-            //    }
-            //}
-
-            //Debug.WriteLine("DONE RANDOM CHECK!");
-
         }
 
         public override void reset()
@@ -220,6 +201,11 @@ namespace ION.GridStrategies
             if (todo.owner > 0)
             {
 
+                if (friendlyTileCount == 0)
+                {
+                    todo.sustain(0.02f, Players.NEUTRAL);
+                }
+                
                 friendlyCharge += todo.charge;
 
                 float fAvg = friendlyCharge / (friendlyTileCount + (neutralTiles/32));

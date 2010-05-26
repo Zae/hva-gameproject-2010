@@ -76,6 +76,8 @@ namespace ION
 
             actionOnScreenSound = Sounds.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
+
+           
         }
 
         public static StateTest get()
@@ -114,6 +116,8 @@ namespace ION
 
             //get mouse input
             MouseState mouseState = Mouse.GetState();
+
+           
 
             if (!gui.handleMouse(mouseState))
             {
