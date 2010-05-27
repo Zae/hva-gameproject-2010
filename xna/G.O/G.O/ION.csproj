@@ -150,6 +150,7 @@
     <Compile Include="UI\ButtonHandlers\MoveHandler.cs" />
     <Compile Include="UI\ButtonHandlers\NewUnitHandler.cs" />
     <Compile Include="UI\ButtonHandlers\StopHandler.cs" />
+    <Compile Include="Units\Tower.cs" />
   </ItemGroup>
   <ItemGroup>
     <NestedContentProject Include="Content\Content.contentproj">

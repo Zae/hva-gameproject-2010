@@ -519,6 +519,26 @@ namespace ION
             addDepthEnabledItem(newUnit);
         }
 
+        public void createTowerUnit(int owner)
+        {
+            for (int i = 0; i < allUnits.Count(); i++)
+            {
+                if (allUnits[i].owner == owner && allUnits[i].selected && resources >= Tower.cost)
+                {
+                    resources -= Tower.cost;
+                    List<Unit> temp = new List<Unit>();
+                    temp.Add(allUnits[i]);
+                    allUnits.RemoveAt(i);
+                    allUnits.Add(new Tower(GetTileScreenPos(new Vector2((float)temp[0].inTileX, (float)temp[0].inTileY), StateTest.get().translationX, StateTest.get().translationY), owner, temp[0].id));
+                    allUnits[i].selected = false;
+                    temp.Clear();
+                    
+                }
+            }
+            
+            
+        }
+
         public static void addDepthEnabledItem(IDepthEnabled newItem)
         {
             //add the item to the list

@@ -14,7 +14,8 @@ namespace ION.MultiPlayer
         {
             NEW_UNIT,
             MOVE_UNIT,
-            START_GAME
+            START_GAME,
+            NEW_TOWER
         }
 
         public int supposedGameTick = -1;
@@ -255,6 +256,28 @@ namespace ION.MultiPlayer
         }
 
         #endregion
+    }
+
+    public class NewTowerUnitCommand : Command
+    {
+        int unitOwner;
+
+        public NewTowerUnitCommand(int supposedGameTick, int serial, int unitOwner)
+            : base(COMMANDTYPES.NEW_TOWER, supposedGameTick, unitOwner, serial)
+        {
+            this.unitOwner = unitOwner;
+        }
+
+        public override void performCommand()
+        {
+            Grid.get().createTowerUnit(unitOwner);
+        }
+
+        //public override String toCommandParts()
+        //{
+        //    return "CREATE_UNIT|0|" + supposedGameTick + "|" + unitOwner + "|" + unitId + "|" + serial + "|";
+        //}
+
     }
 
 }
