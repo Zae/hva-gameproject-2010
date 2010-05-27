@@ -1,6 +1,7 @@
 ﻿using System;
 using ION.GridStrategies;
 using System.IO;
+using ION.MultiPlayer;
 
 namespace ION
 {
@@ -978,6 +979,14 @@ namespace ION
         {
             return DeserializeCheckedState(DeserializeObjectArray(input));
         }
+        public static Command DeserializeCommand(Byte[] input)
+        {
+            return Command.DeserializeCommand(byteArrayToStream(input));
+        }
+        public static Command DeserializeCommand(Object[] input)
+        {
+            return DeserializeCommand(DeserializeObjectArray(input));
+        }
 
         public static Byte[] DeserializeObjectArray(Object[] input)
         {
@@ -1022,6 +1031,5 @@ namespace ION
         }
 
         #endregion
-
     }
 }

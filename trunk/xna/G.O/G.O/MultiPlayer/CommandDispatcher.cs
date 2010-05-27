@@ -62,7 +62,8 @@ namespace ION.MultiPlayer
         public static void issueCommand(Command command)
         {
             //push the command on the network
-            if (Protocol.instance != null) Protocol.instance.declareAction(command.toCommandParts());
+            //if (Protocol.instance != null) Protocol.instance.declareAction(command.toCommandParts());
+            if (Protocol.instance != null) Protocol.instance.declareAction(command);
             
             //send them back directly to put in your own queue
             sinkCommand(command);
