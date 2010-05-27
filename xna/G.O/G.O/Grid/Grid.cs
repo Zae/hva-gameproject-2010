@@ -458,6 +458,12 @@ namespace ION
                 addDepthEnabledItem(newTile);
                 return newTile;
             }
+            else if (c == 'V')
+            {
+                VoidTile newTile = new VoidTile(x, y);
+                //addDepthEnabledItem(newTile);
+                return newTile;
+            }
 
             return null;
         }
@@ -518,13 +524,6 @@ namespace ION
             return new Vector2(map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).X, map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).Y);
         }
 
-        //public void CreateBlueUnit(float translationX, float translationY)
-        //{
-        //    Robot newUnit = new Robot(GetTileScreenPos(new Vector2(12, 12), translationX, translationY), GetTileScreenPos(new Vector2(11, 13), translationX, translationY), playerNumber);
-        //    allUnits.Add(newUnit);
-        //    addDepthEnabledItem(newUnit);
-        //}
-
         public void createUnit(int owner, int id)
         {
             BaseTile playerBase = getPlayerBase(owner);
@@ -533,13 +532,6 @@ namespace ION
             allUnits.Add(newUnit);
             addDepthEnabledItem(newUnit);
         }
-
-        //public void CreateRedUnit(float translationX, float translationY)
-        //{
-        //    Robot newUnit = new Robot(GetTileScreenPos(new Vector2(19, 19), translationX, translationY), GetTileScreenPos(new Vector2(18, 20), translationX, translationY), 2);
-        //    allUnits.Add(newUnit);
-        //    addDepthEnabledItem(newUnit);
-        //}
 
         public static void addDepthEnabledItem(IDepthEnabled newItem)
         {
@@ -772,7 +764,7 @@ namespace ION
                     bool newRowStarted = false;
                     for (int i = 0; i < length; i++)
                     {
-                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M')
+                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M' || rawLevel[i] == 'V')
                         {
                             if (!newRowStarted)
                             {
@@ -933,22 +925,6 @@ namespace ION
 
                 return tempNeighbours;
         }
-
-
-        //internal void removeUnit(int owner, int id)
-        //{
-        //    int index = -1;
-            
-        //    for (int i = 0; i < allUnits.Count; i++)
-        //    {
-        //        if (allUnits[i].owner == owner && allUnits[i].id == id)
-        //        {
-        //            index = i;
-        //        }
-        //    }
-
-        //    allUnits.RemoveAt(index);
-        //}
 
         public void removeUnit(Unit u)
         {
