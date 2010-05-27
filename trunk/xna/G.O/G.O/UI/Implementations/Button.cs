@@ -16,7 +16,7 @@ namespace ION.UI
         //TODO not really a nice fix
         private DateTime lastTime = DateTime.Now;
         private DateTime now;
-        private TimeSpan cooldown = new TimeSpan(0, 0, 0, 1,0); //set the number of milliseconds
+        private TimeSpan cooldown = new TimeSpan(0, 0, 0, 0,250); //set the number of milliseconds
 
         public Button(int x, int y, Texture2D imageNormal, ButtonHandler handler) : base(x, y, imageNormal)
         {

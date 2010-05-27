@@ -30,6 +30,9 @@ namespace ION
         public static float spikeCharge = 0.9f;
         public static int spikeDuration = 5;
 
+        //Tells you if FloodFill.getPath() has passed this tile. Only use from FloodFill.cs
+        public bool floofFillFlag = false;
+
         public ResourceTile()
         {
             accessable = true;
