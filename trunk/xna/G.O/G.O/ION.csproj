@@ -125,6 +125,7 @@
   <ItemGroup>
     <Content Include="GameThumbnail.png" />
     <Compile Include="Controls\BaseSelectionState.cs" />
+    <Compile Include="Grid\VoidTile.cs" />
     <Compile Include="MultiPlayer\Protocol.cs" />
     <Compile Include="MultiPlayer\CheckSumManager.cs" />
     <Compile Include="MultiPlayer\Command.cs" />
