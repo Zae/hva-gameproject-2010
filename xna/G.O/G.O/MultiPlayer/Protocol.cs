@@ -67,74 +67,51 @@ namespace ION
             }
         }
 
-        ////update every interval
-        //void Timer_Tick(Object source, EventArgs e)
-        //{
-        //    //Grid.get().gameTick++;
-        //    if (timer % 20 == 0)
-        //    {
-                
-        //        Console.WriteLine( timer + " commands waiting for echo:" + sentCommands.ToArray().Length);
-        //        Console.WriteLine("commands waiting for execution:" + commands.ToArray().Length);
-        //    }
-
-        //    if (!gameStarted)
-        //        update();
-        //    //else
-        //        //clock.Disposed();
-        //}
-
-        // new commands get handled here
-
-
-        // command = the whole string, commandPart is the part between the "|"
         void CommandSO_Sync(object sender, SyncEventArgs e)
         {
-            System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
-            Object[] commandObjects = (Object[])CommandSO.GetAttribute("Command");
+            //System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+            //Object[] commandObjects = (Object[])CommandSO.GetAttribute("Command");
             
             //gets the object bytes
-            Byte[] commandBytes  = Serializer.DeserializeObjectArray(commandObjects);
+            //Byte[] commandBytes  = Serializer.DeserializeObjectArray(commandObjects);
                        
-            String[] commandParts = new String[10];
+            //String[] commandParts = new String[10];
 
-            if (commandBytes != null)
-            {    
-                //covert to string (original state of the command)
-                String command = enc.GetString(commandBytes);
-                Console.WriteLine("command received = " + command);
+            //if (commandBytes != null)
+            //{    
+            //    //covert to string (original state of the command)
+            //    String command = enc.GetString(commandBytes);
+            //    Console.WriteLine("command received = " + command);
 
-                //split the command into parts between the "|"
-                commandParts = splitCommand(command);
-                
-                ////cheks if the command is not an echo command
-                //if (!sentCommands.Contains(command))
-                //{
-                //    ////if this is the first message the timer will sync
-                //    //if (commandParts[0] == "START")
-                //    //    timer = Int32.Parse(commandParts[1]);
+            //    //split the command into parts between the "|"
+            //    //commandParts = splitCommand(command);
 
-                //    //send an echo back
-                //    //declareAction(command+"E");
-                //    //Console.WriteLine("echo of: " + command + " is sent");
-                //}
-
-                //else
-                //{
-                //    //remove it and dont send an echo
-                //    sentCommands.Remove(command);                    
-                //}
-
-                //add command to commandlist, in the update is resposible for excution
-               
-                //commands.Add(commandParts);
-
+            //    //parseCommand(command);
+            //    //performAction(commandParts);
+            //    CommandDispatcher.sinkCommand(command);
+            //}
+            //else Console.WriteLine("empty command received :( " );
+            Object[] objectArray = (Object[])CommandSO.GetAttribute("Command");
+            if (objectArray != null)
+            {
+                Command command = Serializer.DeserializeCommand(objectArray);
                 parseCommand(command);
-                //performAction(commandParts);
             }
-            else Console.WriteLine("empty command received :( " );
         }
 
+        public void parseCommand(Command command)
+        {
+            switch (command._commandType)
+            {
+                //Can't call CommandDispatcher.sinkCommand because StartCommand has no timing.
+                case Command.COMMANDTYPES.START_GAME:
+                    command.performCommand();
+                    break;
+                default:
+                    CommandDispatcher.sinkCommand(command);
+                    break;
+            }
+        }
         public void parseCommand(String command)
         {
             String[] commandParts = splitCommand(command);
@@ -236,7 +213,12 @@ namespace ION
 
         /// protocol interface
         /// 
-
+        public void declareAction(Command command)
+        {
+            CommandSO.BeginUpdate();
+            CommandSO.SetAttribute("Command", Serializer.Serialize(command));
+            CommandSO.EndUpdate();
+        }
         public void declareAction(String command)
         {
            
@@ -255,46 +237,11 @@ namespace ION
         }
         public void startGame(int seed)
         {         
-            declareAction("START|"+seed+"|");
-            parseCommand("START|" + seed + "|");
-        }
-
-        //public void update()
-        //{
-        //    timer++;
-        //    if(gameStarted)
-        //        Grid.get().TCP++;
-            
-        //    if(commands.Count>0)
-        //    for(int i = 0; i<commands.Count; i++)
-        //    {
-
-        //        string[] commandParts = (String[])commands[i];
-        //        if (commandParts != null)
-        //        {
-                    
-                    
-        //            if (Int32.Parse(commandParts[2]) == timer)
-        //            {
-        //                Console.WriteLine("command: " + commandParts[0] + " will be performed");
-        //                performAction(commandParts);
-        //                commands[i] = null;
-        //                commands.RemoveAt(i);
-                        
-        //                Console.Write("commandsSize = "  + commands.Count);
-        //                break;
-                        
-                        
-        //            }
-        //            else if (Int32.Parse(((String[])commands[i])[2]) < timer)
-        //            {
-        //                Console.WriteLine("command: " + commandParts[0] + " is out of date:: timer = "+timer+ " execution time =" + Int32.Parse(commandParts[2]) );
-        //            }
-        //        }
-        //    }
-            
-        //}
-
-        
+            //declareAction("START|"+seed+"|");
+            StartGameCommand command = new StartGameCommand(0, 0, 0);
+            declareAction(command);
+            parseCommand(command);
+            gameStarted = true;
+        }        
     }
 }

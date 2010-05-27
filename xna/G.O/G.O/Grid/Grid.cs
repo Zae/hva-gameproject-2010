@@ -656,13 +656,13 @@ namespace ION
         {
             instance = this;
 
-            //Temp AI
-            int aiNumber = 1;
-            if (playerNumber == 1) aiNumber = 2;
-            stupidAI = new StupidAI(aiNumber);
+            
 
             Grid.playerNumber = playerNumber;
-
+            if (!online)
+            {
+                stupidAI = new StupidAI(playerNumber + 1);
+            }
             updateStrategy = strategy;
             updateStrategy.reset();
 
