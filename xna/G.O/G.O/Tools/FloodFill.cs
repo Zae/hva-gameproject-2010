@@ -37,22 +37,22 @@ namespace ION.Tools
                 
                 foreach (ResourceTile rt in steps[steps.Count - 1])
                 {
-                    nextStep.AddRange(getValidNeighbours(rt));
+                     nextStep.AddRange(getValidNeighbours(rt));
                 }
 
                 //Tells us if the target can't be reached
                 if (!foundTarget && nextStep.Count == 0)
                 {
                     return path;
-                }
-                else
-                {
-                    steps.Add(nextStep);
-                }
+                }  
 
                 if (foundTarget)
                 {
                     findingTarget = false;
+                }
+                else
+                {
+                    steps.Add(nextStep);
                 }
             }
 
@@ -104,23 +104,36 @@ namespace ION.Tools
 
             ResourceTile temp;
 
-            temp = getValidNeighbour(x-1,y-1);
-            if (temp != null) result.Add(temp);
-            temp = getValidNeighbour(x, y - 1);
-            if (temp != null) result.Add(temp);
-            temp = getValidNeighbour(x + 1, y - 1);
-            if (temp != null) result.Add(temp);
-            temp = getValidNeighbour(x - 1, y );
-            if (temp != null) result.Add(temp);
-            temp = getValidNeighbour(x + 1, y );
-            if (temp != null) result.Add(temp);
-            temp = getValidNeighbour(x - 1, y + 1);
-            if (temp != null) result.Add(temp);
-            temp = getValidNeighbour(x, y + 1);
-            if (temp != null) result.Add(temp);
-            temp = getValidNeighbour(x + 1, y + 1);
-            if (temp != null) result.Add(temp);
+            //while (!foundTarget)
+            //{
 
+            //Horizontal/Vertical
+                temp = getValidNeighbour(x, y - 1);
+                if (temp != null) result.Add(temp);
+   
+                temp = getValidNeighbour(x - 1, y);
+                if (temp != null) result.Add(temp);
+
+                temp = getValidNeighbour(x + 1, y);
+                if (temp != null) result.Add(temp);
+
+                temp = getValidNeighbour(x, y + 1);
+                if (temp != null) result.Add(temp);
+
+
+            //Diagonal
+                temp = getValidNeighbour(x - 1, y - 1);
+                if (temp != null) result.Add(temp);
+
+                temp = getValidNeighbour(x + 1, y - 1);
+                if (temp != null) result.Add(temp);
+
+                temp = getValidNeighbour(x - 1, y + 1);
+                if (temp != null) result.Add(temp);
+
+                temp = getValidNeighbour(x + 1, y + 1);
+                if (temp != null) result.Add(temp);
+            //}
             return result;
         }
 
@@ -136,6 +149,7 @@ namespace ION.Tools
                     if (rt.indexX == target.indexX && rt.indexY == target.indexY)
                     {
                         foundTarget = true;
+                        return null;
                     }
 
                     if (rt.floofFillFlag == false)

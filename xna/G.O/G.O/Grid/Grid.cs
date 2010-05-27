@@ -133,19 +133,6 @@ namespace ION
             }
 
             SoundManager.update();
-            
-            //if (Protocol.instance == null)
-            //    gameTick++;
-
-            //if (gameTick == lastTick)
-            //{
-            //    return;
-            //}
-            //else
-            //{
-            //    lastTick = gameTick;
-            //}
-
 
             ////Checksum test
             //if (gameTick % 100 == 0)
@@ -153,7 +140,6 @@ namespace ION
             //    CheckSumProduct scp = CheckSumProduct.getCheckSum();
             //    Debug.WriteLine("product at tick "+gameTick+" = " + scp.sum);
             //}
-
 
             bool working = true;
             while (working)
