@@ -1173,21 +1173,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="miscItems\statusBars\healthbar.png">
-      <Name>healthbar</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="miscItems\statusBars\healthbar_not_full.png">
-      <Name>healthbar_not_full</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="miscItems\statusBars\healthbar_overlay.png">
-      <Name>healthbar_overlay</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="guiItems\mousePointers\attackunitpointer.png">
@@ -1213,6 +1198,23 @@
   <ItemGroup>
     <Compile Include="guiItems\mousePointers\mousetranslation.png">
       <Name>mousetranslation</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="miscItems\statusBars\FullHealth.png">
+      <Name>FullHealth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="miscItems\statusBars\HealthMeter.png">
+      <Name>HealthMeter</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="miscItems\statusBars\NotFullHealth.png">
+      <Name>NotFullHealth</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

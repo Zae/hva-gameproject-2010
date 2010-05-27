@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace ION
 {
     public class Robot : Unit
     {
+        public const int cost = 250;
 
-       //public int health = 1000;
-        public static int cost = 250;
+        public const int maxHealth = 100; 
+
+        public Rectangle healtRectangle = new Rectangle();
 
         //animation test
         private int FiringFrame = 0;
@@ -24,6 +27,8 @@ namespace ION
  
         public Robot() : base(-1,-1) //Sending an invalid number to the base class as a test, I think this constructor in only used to deserialize into after
         {
+            health = maxHealth; 
+            
             destination = new Queue<Tile>();
 
             pos = new Vector2(ION.halfWidth - (scale / 2), -(scale / 4));
@@ -34,6 +39,8 @@ namespace ION
 
         public Robot(Vector2 newPos, Vector2 newTarget, int owner, int id) : base(owner,id)
         {
+            health = maxHealth;
+            
             pos = newPos;
             targetPos = newTarget;
 
@@ -143,8 +150,45 @@ namespace ION
 
             if (selected)
             {
+                healtRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) 
+                    + (Tile.baseHalfWidth * 0.56));
+                healtRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2) 
+                    + (baseHalfHeight * 0.1));
+                healtRectangle.Width = (int)(baseHalfWidth * 0.9);
+                healtRectangle.Height = (int)(baseHalfHeight * 0.38);
+
+                healtRectangle.Width = (int)(healtRectangle.Width * ((float)health / (float)maxHealth));
+
+                Color healthBarColor;
+                if (health > (maxHealth / 1.5))
+                {
+                    healthBarColor = Color.Green;
+                }
+                else if(health > (maxHealth / 3)) 
+                {
+                    healthBarColor = Color.Orange;
+                }
+                else 
+                {
+                    healthBarColor = Color.Red;
+                }
+                
                 ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
+                if (health < maxHealth)
+                {
+                    ION.spriteBatch.Draw(Images.unitHealth[2], drawingRectangle, healthBarColor);
+                }
+                else
+                {
+                    ION.spriteBatch.Draw(Images.unitHealth[1], drawingRectangle, healthBarColor);
+                }
+
+                ION.spriteBatch.Draw(Images.white1px, healtRectangle, healthBarColor);
+
+                ION.spriteBatch.Draw(Images.unitHealth[0], drawingRectangle, Color.White);
             }
+
+            //Draw health and energy stuff
 
             drawUnderFireAnimation(x,y);
         }
@@ -192,15 +236,15 @@ namespace ION
                 {
                     FiringFrame = 0;
                 }
-                if (FiringCounter > 4)
+                if (FiringCounter > 3)
                 {
                     FiringFrame = 1;
                 }
-                if (FiringCounter > 10)
+                if (FiringCounter > 6)
                 {
                     FiringFrame = 2;
                 }
-                if (FiringCounter > 14)
+                if (FiringCounter > 9)
                 {
                     FiringCounter = 0;
                 }
@@ -212,8 +256,7 @@ namespace ION
 
                     ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
                 }
-
-                if (FiringFrame >= 2)
+                else if (FiringFrame >= 2)
                 {
                     //do not remove
                     ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, true), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);

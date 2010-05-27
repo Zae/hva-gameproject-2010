@@ -15,6 +15,8 @@ namespace ION.Tools
 
         public int newId = 0;
 
+        public int serial = 0;
+
         public Random r = new Random(123);
 
         public StupidAI(int ai)
@@ -32,7 +34,8 @@ namespace ION.Tools
 
                 if (aiUnits.Count < 4)
                 {
-                    CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), CommandDispatcher.getSerial(),ai, newId++));
+                    serial++;
+                    CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), serial,ai, newId++));
                 }
 
                 foreach (Unit u in aiUnits)
@@ -42,8 +45,9 @@ namespace ION.Tools
                         int x = (int)(Grid.width * r.NextDouble());
                         int y = (int)(Grid.height * r.NextDouble());
 
+                        serial++;
                         CommandDispatcher.issueCommand(new NewMoveCommand(CommandDispatcher.getSupposedGameTick()
-                                                                            , CommandDispatcher.getSerial()
+                                                                            , serial
                                                                             , u.owner
                                                                             , u.id
                                                                             , x

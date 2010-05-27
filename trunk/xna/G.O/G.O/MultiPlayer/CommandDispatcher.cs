@@ -24,7 +24,6 @@ namespace ION.MultiPlayer
         public static int getSupposedGameTick()
         {
             return (int)(Grid.get().TCP + (latency / Grid.TPT));  
-            //return (int)(Grid.get().TCP + 5);
         }
 
         public static int getSerial()

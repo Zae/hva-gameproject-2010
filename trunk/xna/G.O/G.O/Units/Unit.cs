@@ -21,8 +21,7 @@ namespace ION
         public direction facing = direction.north;
 
         public int id;
-        public int health = 100;
-        public static int cost = 0;
+        public int health;
         public static int damage = 1;
 
         protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
