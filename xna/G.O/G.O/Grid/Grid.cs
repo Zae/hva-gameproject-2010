@@ -862,7 +862,7 @@ namespace ION
             return null;
         }
 
-        private bool isValid(int x, int y)
+        public bool isValid(int x, int y)
         {
             if (x >= 0 && x < Grid.width && y >= 0 && y < Grid.height)
             {

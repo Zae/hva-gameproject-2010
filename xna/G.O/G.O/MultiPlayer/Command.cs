@@ -56,10 +56,21 @@ namespace ION.MultiPlayer
             {
                 Debug.WriteLine("TRIED TO FIND UNIT FOR COMMAND BUT UNIT WAS NOT PRESENT (ANYMORE)");
             }
+            else if(Grid.map[xTarget,yTarget] is ResourceTile == false) 
+            {
+                //@TODO Deny this for now
+            }
             else
             {
                 u.EmptyWayPoints();
-                u.SetTarget(Grid.map[xTarget, yTarget].GetPos(StateTest.get().translationX, StateTest.get().translationY));
+
+                List<ResourceTile> path = FloodFill.getPath((ResourceTile)Grid.map[u.inTileX, u.inTileY], (ResourceTile)Grid.map[xTarget, yTarget]);
+
+                foreach (ResourceTile rt in path)
+                {
+                    u.AddDestination(rt);
+                }
+                //u.SetTarget(Grid.map[xTarget, yTarget].GetPos(StateTest.get().translationX, StateTest.get().translationY));
 
                 if (u.owner == Grid.playerNumber)
                 {
