@@ -329,8 +329,8 @@ namespace ION
                 }
             }
 
-            actionOnScreenSound.Volume = 0.0f;
-            MediaPlayer.Volume = 0.0f;
+            //actionOnScreenSound.Volume = 0.0f;
+            //MediaPlayer.Volume = 0.0f;
         }
 
         public override void focusGained()

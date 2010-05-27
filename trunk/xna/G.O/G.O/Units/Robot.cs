@@ -94,11 +94,11 @@ namespace ION
                 {
                     UnderFireFrame = 0;
                 }
-                if (UnderFireCounter > 10)
+                if (UnderFireCounter > 5)
                 {
                     UnderFireFrame = 1;            
                 }
-                if (UnderFireCounter > 20)
+                if (UnderFireCounter > 10)
                 {
                     UnderFireCounter = 0;
                     underFire = false;
