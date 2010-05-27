@@ -18,7 +18,7 @@ namespace ION.UI
             //    grid.allUnits.Add(new Robot(grid.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), grid.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
             //}
 
-            if(Grid.get().resources > Robot.cost) 
+            if(Grid.get().resources >= Robot.cost) 
             {
                 Grid.get().resources -= Robot.cost;
 

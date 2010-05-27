@@ -7,11 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace ION
 {
-    public class Robot : Unit
+    public class Tower : Unit
     {
-
-       //public int health = 1000;
-        public static int cost = 250;
+        public static int cost = 500;
 
         //animation test
         private int FiringFrame = 0;
@@ -21,21 +19,13 @@ namespace ION
         private int UnderFireCounter = 0;
         public int UnderFireOffsetX = 0;
         public int UnderFireOffsetY = 0;
- 
-        public Robot() : base(-1,-1) //Sending an invalid number to the base class as a test, I think this constructor in only used to deserialize into after
+
+        
+        public Tower(Vector2 newPos, int owner, int id) : base(owner,id)
         {
-            destination = new Queue<Tile>();
+            damage = 2;
 
-            pos = new Vector2(ION.halfWidth - (scale / 2), -(scale / 4));
-            targetPos = new Vector2(500, 500);
-
-            movementSpeed = 2f;
-        }
-
-        public Robot(Vector2 newPos, Vector2 newTarget, int owner, int id) : base(owner,id)
-        {
             pos = newPos;
-            targetPos = newTarget;
 
             BaseTile playerBase = Grid.getPlayerBase(owner);
             inTileX = playerBase.getTileX();
@@ -44,83 +34,15 @@ namespace ION
             movementSpeed = 2f;
         }
 
-        //move units towards their target
         public override void move()
         {
-            //if not at target
-            if (pos != targetPos)
-            {
-
-                // old code
-
-                Vector2 temp = targetPos - pos;
-                if (temp.Length() > movementSpeed)//move toward target at speed
-                {
-                    //normalize the length to the of the direction the unit is moving
-                    temp.Normalize();
-                    //multiply by the units speed
-                    temp = temp * movementSpeed;
-                    //move the unit by that amount
-                    pos += temp;
-
-                    //Update the direction it faces
-                    //TODO @michiel
-                    if (temp.X > 0)
-                    {
-                        if (temp.Y > 0)
-                        {
-                            facing = direction.southEast;
-                        }
-                        else if (temp.Y < 0)
-                        {
-                            facing = direction.northEast;
-                        }
-                        else
-                        {
-                            facing = direction.east;
-                        }
-                    }
-                    else if (temp.X < 0)
-                    {
-                        if (temp.Y > 0)
-                        {
-                            facing = direction.southWest;
-                        }
-                        else if (temp.Y < 0)
-                        {
-                            facing = direction.northWest;
-                        }
-                        else
-                        {
-                            facing = direction.west;
-                        }
-                    }
-                    else
-                    {
-                        if (temp.Y > 0)
-                        {
-                            facing = direction.south;
-                        }
-                        else if (temp.Y < 0)
-                        {
-                            facing = direction.north;
-                        }
-                    }
-
-                }
-                else
-                {
-                    pos = targetPos;//pop to target
-                }
-
-                // old code
-            }
+            EmptyWayPoints();
         }
 
         public override void draw(float x, float y)
-        {       
+        {
             selectionRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) + (Tile.baseHalfWidth * 0.63));
-            selectionRectangle.Y =   (int)(((pos.Y) * (scale/ 15.0f)) + (y) + (baseHalfHeight * 2)+(baseHalfHeight*0.55));
+            selectionRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2) + (baseHalfHeight * 0.55));
             selectionRectangle.Width = (int)(baseHalfWidth * 0.75);
             selectionRectangle.Height = (int)(baseHalfHeight * 3);
 
@@ -146,7 +68,7 @@ namespace ION
                 ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
             }
 
-            drawUnderFireAnimation(x,y);
+            drawUnderFireAnimation(x, y);
         }
 
         private void drawUnderFireAnimation(float x, float y)
@@ -156,9 +78,9 @@ namespace ION
                 if (UnderFireCounter == 0)
                 {
                     UnderFireOffsetX = (int)(Tool.unsafeRandom.NextDouble() * selectionRectangle.Width);
-                    UnderFireOffsetY = (int)(Tool.unsafeRandom.NextDouble() * selectionRectangle.Height);               
+                    UnderFireOffsetY = (int)(Tool.unsafeRandom.NextDouble() * selectionRectangle.Height);
                 }
-                
+
                 //animation test code
                 UnderFireCounter++;
 
@@ -168,7 +90,7 @@ namespace ION
                 }
                 if (UnderFireCounter > 5)
                 {
-                    UnderFireFrame = 1;            
+                    UnderFireFrame = 1;
                 }
                 if (UnderFireCounter > 10)
                 {
@@ -228,9 +150,5 @@ namespace ION
             }
         }
 
-        internal void Deserialize(System.IO.MemoryStream memoryStream)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
