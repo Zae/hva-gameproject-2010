@@ -221,6 +221,10 @@ namespace ION
             Images.mousePointers[2] = Content.Load<Texture2D>("guiItems/mousePointers/attackunitpointer");
             Images.mousePointers[3] = Content.Load<Texture2D>("guiItems/mousePointers/mousetranslation");
 
+            Images.unitHealth = new Texture2D[3];
+            Images.unitHealth[0] = Content.Load<Texture2D>("miscItems/statusBars/HealthMeter");
+            Images.unitHealth[1] = Content.Load<Texture2D>("miscItems/statusBars/FullHealth");
+            Images.unitHealth[2] = Content.Load<Texture2D>("miscItems/statusBars/NotFullHealth");
 
             int players = 2;
             string[] directions = new string[] { "s", "se", "e", "ne", "n", "nw", "w", "sw" };

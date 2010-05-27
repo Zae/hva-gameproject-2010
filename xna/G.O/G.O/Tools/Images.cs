@@ -39,6 +39,9 @@ namespace ION
         public static Texture2D[,] unit;
         public static Texture2D[,] unit_selected;
 
+        public static Texture2D[] unitHealth;
+
+
         public static Texture2D[,,] unit_shooting;
         public static Texture2D[,,] unit_selected_shooting;
 
