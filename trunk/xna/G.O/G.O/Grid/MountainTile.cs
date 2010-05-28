@@ -54,5 +54,10 @@ namespace ION
             draw(translationX, translationY);
         }
 
+        public bool hitTest(int x, int y)
+        {
+            return false;
+        }
+
     }
 }

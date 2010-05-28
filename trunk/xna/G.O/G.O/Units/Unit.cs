@@ -686,6 +686,12 @@ namespace ION
             draw(translationX, translationY);
         }
 
+        public bool hitTest(int x, int y)
+        {
+            return false;
+        }
+
+
         // Queue Stuff
         // this is for waypoints (shift-click)
         public void AddDestination(Tile newDest)

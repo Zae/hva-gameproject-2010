@@ -16,10 +16,11 @@ namespace ION
 
         public Rectangle healtRectangle = new Rectangle();
 
-        //animation test
+        //fire animation helper variables
         private int FiringFrame = 0;
         private int FiringCounter = 0;
 
+        //under-fire animation helper variables
         private int UnderFireFrame = 0;
         private int UnderFireCounter = 0;
         public int UnderFireOffsetX = 0;
@@ -150,6 +151,7 @@ namespace ION
 
             if (selected)
             {
+                //Draw health and energy stuff
                 healtRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) 
                     + (Tile.baseHalfWidth * 0.56));
                 healtRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2) 
@@ -159,6 +161,7 @@ namespace ION
 
                 healtRectangle.Width = (int)(healtRectangle.Width * ((float)health / (float)maxHealth));
 
+                //Get a good color for the healthbar
                 Color healthBarColor;
                 if (health > (maxHealth / 1.5))
                 {
@@ -187,9 +190,7 @@ namespace ION
 
                 ION.spriteBatch.Draw(Images.unitHealth[0], drawingRectangle, Color.White);
             }
-
-            //Draw health and energy stuff
-
+   
             drawUnderFireAnimation(x,y);
         }
 

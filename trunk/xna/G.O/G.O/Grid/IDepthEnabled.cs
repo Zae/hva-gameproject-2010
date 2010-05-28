@@ -12,6 +12,8 @@ namespace ION
 
         int getTileY();
 
+        bool hitTest(int x,int y);
+
         /// <summary>
         /// blabla
         /// </summary>
