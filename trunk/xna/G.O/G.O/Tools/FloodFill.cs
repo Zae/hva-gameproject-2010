@@ -60,7 +60,7 @@ namespace ION.Tools
 
             //The situation is now that the target tile is not in steps.
             //Only the layer before the target tile is in steps.
-            for (int i = steps.Count - 1; i >= 0; i--)
+            for (int i = steps.Count - 1; i > 0; i--)
             {
                 foreach (ResourceTile rt in steps[i])
                 {
@@ -142,7 +142,7 @@ namespace ION.Tools
             if (Grid.get().isValid(x, y))
             {
                 Tile t = Grid.map[x, y];
-                if (t is ResourceTile)
+                if (t is ResourceTile && t.accessable)
                 {
                     ResourceTile rt = (ResourceTile)t;
 
