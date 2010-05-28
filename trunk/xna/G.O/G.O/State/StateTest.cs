@@ -269,6 +269,10 @@ namespace ION
             {
                 showHelpFile = false;
             }
+            if (keyState.IsKeyDown(Keys.Tab))
+            {
+                grid.ChangeMountainTile();
+            }
         }
 
 
