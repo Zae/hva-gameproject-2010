@@ -191,7 +191,14 @@ namespace ION
 
             //Load Tile images
             Images.borderImage = Content.Load<Texture2D>("tileItems/border_tile");
-            Images.mountainImage = Content.Load<Texture2D>("tileItems/mountain_tile");           
+            Images.mountainImage = Content.Load<Texture2D>("tileItems/mountain_tile");
+            Images.mountainFloorImage = Content.Load<Texture2D>("tileItems/mountain_tile_floor");
+            Images.iceImage = Content.Load<Texture2D>("tileItems/ice_tile");
+            Images.glassImage = Content.Load<Texture2D>("tileItems/glass_tile");
+            Images.crystalImage = Content.Load<Texture2D>("tileItems/crystal_tile");
+            Images.iceFloorImage = Content.Load<Texture2D>("tileItems/ice_tile_floor");
+            Images.glassFloorImage = Content.Load<Texture2D>("tileItems/glass_tile_floor");
+            Images.crystalFloorImage = Content.Load<Texture2D>("tileItems/crystal_tile_floor");           
             Images.resourceImage = Content.Load<Texture2D>("tileItems/resource_tile");
             
             //Load Base images           

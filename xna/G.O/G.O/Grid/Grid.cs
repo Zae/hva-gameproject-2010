@@ -440,8 +440,9 @@ namespace ION
             }
             else if (c == 'M')
             {
-                MountainTile newTile = new MountainTile(x, y);
+                MountainTile newTile = new MountainTile(x, y, 10);
                 addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
                 return newTile;
             }
             else if (c == 'V')
@@ -935,6 +936,14 @@ namespace ION
         public void removeUnit(Unit u)
         {
             removals.Add(u);
+        }
+
+        public void ChangeMountainTile()
+        {
+            for (int i = 0; i < mountainTiles.Count(); i++)
+            {
+                mountainTiles[i].update();
+            }
         }
     }
 }
