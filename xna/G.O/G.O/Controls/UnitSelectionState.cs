@@ -12,6 +12,8 @@ namespace ION.Controls
     {
 
         private bool shiftPressed = false;
+        private bool rightMouseDown = false;
+        //private bool leftMouseDown = false;
 
         public override void draw()
         {

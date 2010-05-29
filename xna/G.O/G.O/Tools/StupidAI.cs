@@ -9,7 +9,7 @@ namespace ION.Tools
     public class StupidAI
     {
         private int counter = 0;
-        private int actOn = 50;
+        private int actOn = 200;
 
         public int ai = -1;
 
@@ -32,7 +32,7 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 4)
+                if (aiUnits.Count < 26)
                 {
                     serial++;
                     CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), serial,ai, newId++));

@@ -256,13 +256,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tileItems\texturetile.png">
-      <Name>texturetile</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="playerItems\redbase.png">
       <Name>redbase</Name>
       <Importer>TextureImporter</Importer>
