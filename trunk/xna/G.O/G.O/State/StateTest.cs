@@ -71,6 +71,7 @@ namespace ION
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
             SoundManager.init();
+            Damage.init(seed);
 
             grid = new Grid(level, new ThunderStrategy(seed), player);
             gui = new GUIManager();

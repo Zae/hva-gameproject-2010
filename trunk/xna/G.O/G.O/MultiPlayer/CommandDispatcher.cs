@@ -17,13 +17,14 @@ namespace ION.MultiPlayer
 
         private static List<Command> commandsQueue = new List<Command>();
 
-        public static int latency = 200; //Latency to attach to commands to be safe all clients can execute the command in time
+        public static int latency = 250; //Latency to attach to commands to be safe all clients can execute the command in time
         private static int serial = 0;
 
         //Returns a good Tick to let the command process
         public static int getSupposedGameTick()
         {
-            return (int)(Grid.get().TCP + (latency / Grid.TPT));  
+            //Debug.WriteLine("Supposed tick: tcp=" + Grid.get().TCP + " supposed:" + (int)((float)Grid.get().TCP + ((float)latency / (float)Grid.TPT)));
+            return (int)(Grid.get().TCP + ((float)latency / (float)Grid.TPT));  
         }
 
         public static int getSerial()
@@ -50,7 +51,8 @@ namespace ION.MultiPlayer
 
             if (commandsQueue[0].supposedGameTick < gameTick)
             {
-                Debug.WriteLine("HEEEEEEEEEEELP: tcp="+gameTick+" supposed:"+commandsQueue[0].supposedGameTick);
+                Debug.WriteLine("ERROR IN COMMANDDISPATCHER: TCP="+gameTick+" SUPPOSED:"+commandsQueue[0].supposedGameTick);
+                commandsQueue[0].performCommand();
                 commandsQueue.RemoveAt(0);
                 return true;
             }
@@ -74,6 +76,7 @@ namespace ION.MultiPlayer
             if (command.supposedGameTick < Grid.get().TCP)
             {
                 //this is a insolvable situation, go resync 
+                Debug.WriteLine("ERROR IN COMMANDDISPATCHER.SINKCOMMAND (COMMAND RECEIVED TOO LATE): TCP=" + Grid.get().TCP + " SUPPOSED:" + commandsQueue[0].supposedGameTick);
             }
             else
             {

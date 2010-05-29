@@ -142,6 +142,7 @@
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />
     <Compile Include="State\TicTacToeTestStuff\CheckedState.cs" />
+    <Compile Include="Tools\Damage.cs" />
     <Compile Include="Tools\FloodFill.cs" />
     <Compile Include="Tools\SoundManager.cs" />
     <Compile Include="Tools\StupidAI.cs" />

@@ -129,7 +129,7 @@ namespace ION
             //Temp AI
             if (!StateTest.get().online)
             {
-                stupidAI.act();
+                stupidAI.act();          
             }
 
             SoundManager.update();
@@ -682,7 +682,9 @@ namespace ION
             Grid.playerNumber = playerNumber;
             if (!online)
             {
-                stupidAI = new StupidAI(playerNumber + 1);
+                int aiPlayer = 1; if (playerNumber == 1) aiPlayer = playerNumber + 1;
+                stupidAI = new StupidAI(aiPlayer);
+        
             }
             updateStrategy = strategy;
             updateStrategy.reset();

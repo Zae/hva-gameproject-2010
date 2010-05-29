@@ -22,7 +22,8 @@ namespace ION
 
         public int id;
         public int health;
-        public static int damage = 1;
+        public int damage;
+        public int damageType; 
 
         protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
 
@@ -119,7 +120,7 @@ namespace ION
                         firing = true;
                         SoundManager.fireSound(Grid.TPS * 2);
                         //fire on this unit.
-                        u.hit(damage);
+                        u.hit(Damage.getDamage(damage,damage+10),u.damageType);
                         break;
                     }
                     firing = false;
@@ -136,8 +137,9 @@ namespace ION
             return returnValue;
         }
 
-        public void hit(int damageTaken)
+        public void hit(int damageTaken, int damageType)
         {
+            
             health -= damageTaken;
 
             //this will trigger or keep alive the animation

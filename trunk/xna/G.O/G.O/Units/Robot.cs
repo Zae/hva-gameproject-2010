@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using ION.Tools;
 
 namespace ION
 {
@@ -15,6 +16,8 @@ namespace ION
         public const int maxHealth = 100; 
 
         public Rectangle healtRectangle = new Rectangle();
+
+        private static Random damageRandom;
 
         //fire animation helper variables
         private int FiringFrame = 0;
@@ -28,7 +31,10 @@ namespace ION
  
         public Robot() : base(-1,-1) //Sending an invalid number to the base class as a test, I think this constructor in only used to deserialize into after
         {
-            health = maxHealth; 
+            health = maxHealth;
+
+            damage = 10;
+            damageType = Damage.TYPE_SMALL_GUN;
             
             destination = new Queue<Tile>();
 
