@@ -83,5 +83,10 @@ namespace ION
             return false;
         }
 
+        public bool hitTest(Rectangle r)
+        {
+            return false;
+        }
+
     }
 }

@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GameThumbnail.png" />
+    <Compile Include="Controls\AddUnitSelectionState.cs" />
     <Compile Include="Controls\BaseSelectionState.cs" />
     <Compile Include="Grid\VoidTile.cs" />
     <Compile Include="MultiPlayer\Protocol.cs" />
