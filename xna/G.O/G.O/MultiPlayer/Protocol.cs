@@ -116,6 +116,7 @@ namespace ION
         {
             String[] commandParts = splitCommand(command);
 
+            int x, y;
             int tick;
             int serial;
             int unitOwner;
@@ -134,12 +135,12 @@ namespace ION
                     gameStarted = true;
                     break;
 
-                case "MOVE_UNIT_TO":
+                case "MOVE_UNIT":
                     tick = Int32.Parse(commandParts[2]);
                     unitOwner = Int32.Parse(commandParts[3]);
                     unitID = Int32.Parse(commandParts[4]);
-                    int x = Int32.Parse(commandParts[5]);
-                    int y = Int32.Parse(commandParts[6]);
+                    x = Int32.Parse(commandParts[5]);
+                    y = Int32.Parse(commandParts[6]);
                     serial = Int32.Parse(commandParts[7]);
                     
                     CommandDispatcher.sinkCommand(new NewMoveCommand(tick,serial,unitOwner,unitID,x,y));
@@ -153,6 +154,19 @@ namespace ION
                     
                     CommandDispatcher.sinkCommand(new NewUnitCommand(tick,serial,unitOwner,unitID));
                     break;
+
+                case"ADD_MOVE_UNIT":
+
+                    tick = Int32.Parse(commandParts[2]);
+                    unitOwner = Int32.Parse(commandParts[3]);
+                    unitID = Int32.Parse(commandParts[4]);
+                    x = Int32.Parse(commandParts[5]);
+                    y = Int32.Parse(commandParts[6]);
+                    serial = Int32.Parse(commandParts[7]);
+
+                    CommandDispatcher.sinkCommand(new AddMoveCommand(tick, serial, unitOwner, unitID, x, y));
+                    break;
+
 
                 default:
                     Console.WriteLine("ERROR: TRIED TO PARSE UNKNOWN COMMAND (Protocol.cs)");
