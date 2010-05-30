@@ -11,9 +11,9 @@ namespace ION.Controls
     class UnitSelectionState : ControlState
     {
 
-       // private bool shiftPressed = false;
+        private bool shiftPressed = false;
         private bool rightMouseDown = false;
-      // private bool leftMouseDown = false;
+        private bool leftMouseDown = false;
 
         public override void draw()
         {
@@ -23,32 +23,55 @@ namespace ION.Controls
         {
             GUIManager.mousePointerState = Images.MOUSE_MOVE;
 
-            if (mouseState.RightButton == ButtonState.Released)
-            {
-                rightMouseDown = false;
-            }
-
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 //This is a hack to not update the GUI directly, but we wait until in NeutralState to make sure we don't have a new selection
                 //StateTest.get().gui.applyState(GUIManager.NONE_SELECTED);
-                StateTest.get().controls = new NeutralState();
-                return;
-            }
-
-            if (keyState.IsKeyDown(Keys.LeftShift))// if actions are being queued up
-            {
-                
-                if (mouseState.RightButton == ButtonState.Pressed && rightMouseDown== false)
-                {//here
-                    rightMouseDown=true;
-                    shiftMouseRightPressed(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);
+                if (!leftMouseDown)
+                {
+                    leftMouseDown = true;
                 }
             }
-            else if (mouseState.RightButton == ButtonState.Pressed)
+            else
             {
+                //This means we have released the left mouse button
+                if (leftMouseDown)
+                {
+                    StateTest.get().controls = new NeutralState();
+                    return;
+                }
+                leftMouseDown = false;
+            }
 
-                mouseRightPressed(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);
+            if (keyState.IsKeyDown(Keys.LeftShift))
+            {
+                if (mouseState.RightButton == ButtonState.Pressed)
+                {
+                    if (!rightMouseDown)
+                    {
+                        shiftMouseRightPressed(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);
+                        rightMouseDown = true;
+                    }
+                }
+                else
+                {
+                    rightMouseDown = false;
+                }
+            }
+            else
+            {
+                if (mouseState.RightButton == ButtonState.Pressed)
+                {
+                    if (!rightMouseDown)
+                    {
+                        mouseRightPressed(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);
+                        rightMouseDown = true;
+                    }
+                }
+                else
+                {
+                    rightMouseDown = false;
+                }
             }
 
             base.handleInput(mouseState, keyState);
@@ -86,13 +109,7 @@ namespace ION.Controls
                 {
                     if (playerUnits[i] != null && playerUnits[i].selected)
                     {
-
-                     
-                            CommandDispatcher.issueCommand(new AddMoveCommand(CommandDispatcher.getSupposedGameTick()
-                                                                            , CommandDispatcher.getSerial()
-                                                                            , playerUnits[i].owner
-                                                                            , playerUnits[i].id, Grid.get().selectedTile.indexX
-                                                                            , Grid.get().selectedTile.indexY));
+                        playerUnits[i].AddDestination(Grid.get().selectedTile);// here
 
                     }
                 }

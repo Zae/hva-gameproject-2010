@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace ION
 {
@@ -13,6 +14,8 @@ namespace ION
         int getTileY();
 
         bool hitTest(int x,int y);
+        bool hitTest(Rectangle r);
+
 
         /// <summary>
         /// blabla

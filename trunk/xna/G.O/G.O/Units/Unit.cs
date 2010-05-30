@@ -690,6 +690,19 @@ namespace ION
 
         public bool hitTest(int x, int y)
         {
+            if(selectionRectangle.Contains(x,y))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool hitTest(Rectangle r)
+        {
+            if (selectionRectangle.Intersects(r))
+            {
+                return true;
+            }
             return false;
         }
 
