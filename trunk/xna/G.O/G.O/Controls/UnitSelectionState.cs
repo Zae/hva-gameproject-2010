@@ -11,9 +11,9 @@ namespace ION.Controls
     class UnitSelectionState : ControlState
     {
 
-        private bool shiftPressed = false;
+       // private bool shiftPressed = false;
         private bool rightMouseDown = false;
-        //private bool leftMouseDown = false;
+      // private bool leftMouseDown = false;
 
         public override void draw()
         {
@@ -22,7 +22,12 @@ namespace ION.Controls
         public override void handleInput(MouseState mouseState, KeyboardState keyState)
         {
             GUIManager.mousePointerState = Images.MOUSE_MOVE;
-            
+
+            if (mouseState.RightButton == ButtonState.Released)
+            {
+                rightMouseDown = false;
+            }
+
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 //This is a hack to not update the GUI directly, but we wait until in NeutralState to make sure we don't have a new selection
@@ -33,13 +38,16 @@ namespace ION.Controls
 
             if (keyState.IsKeyDown(Keys.LeftShift))// if actions are being queued up
             {
-                if (mouseState.RightButton == ButtonState.Pressed)
+                
+                if (mouseState.RightButton == ButtonState.Pressed && rightMouseDown== false)
                 {//here
+                    rightMouseDown=true;
                     shiftMouseRightPressed(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);
                 }
             }
             else if (mouseState.RightButton == ButtonState.Pressed)
             {
+
                 mouseRightPressed(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);
             }
 
@@ -78,7 +86,13 @@ namespace ION.Controls
                 {
                     if (playerUnits[i] != null && playerUnits[i].selected)
                     {
-                        playerUnits[i].AddDestination(Grid.get().selectedTile);// here
+
+                     
+                            CommandDispatcher.issueCommand(new AddMoveCommand(CommandDispatcher.getSupposedGameTick()
+                                                                            , CommandDispatcher.getSerial()
+                                                                            , playerUnits[i].owner
+                                                                            , playerUnits[i].id, Grid.get().selectedTile.indexX
+                                                                            , Grid.get().selectedTile.indexY));
 
                     }
                 }

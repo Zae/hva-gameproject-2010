@@ -95,7 +95,7 @@ namespace ION.MultiPlayer
                     unitID = br.ReadInt32();
                     targetx = br.ReadInt32();
                     targety = br.ReadInt32();
-                    Console.WriteLine("command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetX="+targetx+", targetY="+targety);
+                    Console.WriteLine("new move umnit-- command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetX="+targetx+", targetY="+targety);
                     return new NewMoveCommand(sgt, serial, owner, unitID, targetx, targety);
 #else
                     return new NewMoveCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
@@ -129,7 +129,7 @@ namespace ION.MultiPlayer
                     unitID = br.ReadInt32();
                     targetx = br.ReadInt32();
                     targety = br.ReadInt32();
-                    Console.WriteLine("command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetX=" + targetx + ", targetY=" + targety);
+                    Console.WriteLine("addMoveUnit-- command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetX=" + targetx + ", targetY=" + targety);
                     return new AddMoveCommand(sgt, serial, owner, unitID, targetx, targety);
 #else
                     return new AddMoveCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
@@ -328,7 +328,7 @@ namespace ION.MultiPlayer
         /// <param name="xTarget">The x index of the grid.</param>
         /// <param name="yTarget">The y index of the grid.</param>
         public AddMoveCommand(int supposedGameTick, int serial, int owner, int unitId, int xTarget, int yTarget)
-            : base(COMMANDTYPES.MOVE_UNIT, supposedGameTick, owner, serial)
+            : base(COMMANDTYPES.ADD_MOVE_UNIT, supposedGameTick, owner, serial)
         {
             this.xTarget = xTarget;
             this.yTarget = yTarget;
@@ -363,11 +363,14 @@ namespace ION.MultiPlayer
                     last = (ResourceTile)Grid.map[u.inTileX, u.inTileY];
                 }
 
+
+                //u.AddDestination(Grid.map[xTarget,yTarget]);
+
                 List<ResourceTile> path = FloodFill.getPath(last, (ResourceTile)Grid.map[xTarget, yTarget]);
 
                 foreach (ResourceTile rt in path)
                 {
-                    u.AddDestination(rt);
+                 u.AddDestination(rt);
                 }
 
                 //If this unit belonges to the player, make a sound
