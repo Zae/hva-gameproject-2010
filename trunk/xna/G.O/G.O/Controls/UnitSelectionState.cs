@@ -109,8 +109,11 @@ namespace ION.Controls
                 {
                     if (playerUnits[i] != null && playerUnits[i].selected)
                     {
-                        playerUnits[i].AddDestination(Grid.get().selectedTile);// here
-
+                            CommandDispatcher.issueCommand(new AddMoveCommand(CommandDispatcher.getSupposedGameTick()
+	                                                                            , CommandDispatcher.getSerial()
+	                                                                            , playerUnits[i].owner
+	                                                                            , playerUnits[i].id, Grid.get().selectedTile.indexX
+	                                                                            , Grid.get().selectedTile.indexY));
                     }
                 }
             }
