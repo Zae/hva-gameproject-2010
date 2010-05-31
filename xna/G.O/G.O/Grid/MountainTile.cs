@@ -24,11 +24,9 @@ namespace ION
         } 
 
         public override void drawDebug(float translationX, float translationY)
-        {
-            
-            Vector2 location = new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
-            ION.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.White);
-            
+        {            
+            //Vector2 location = new Vector2(ION.halfWidth + (visualX * baseHalfWidth) + translationX - 40, (visualY * baseHalfHeight) + translationY + baseHalfHeight);
+            //ION.spriteBatch.DrawString(Fonts.font, "(z=" + visualZ + ":x=" + visualX + ":y=" + visualY + ")", location, Color.White);            
         }
 
         public override void draw(float translationX, float translationY)
@@ -86,6 +84,11 @@ namespace ION
         public bool hitTest(Rectangle r)
         {
             return false;
+        }
+
+        public int getOwner()
+        {
+            return Players.NEUTRAL;
         }
 
     }

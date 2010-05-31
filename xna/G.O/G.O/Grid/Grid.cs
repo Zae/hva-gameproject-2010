@@ -405,6 +405,11 @@ namespace ION
                     //rt.drawDebug(translationX, translationY);
             }
 
+            for (int i = 0; i < allUnits.Count; i++)
+            {
+                allUnits[i].DrawWayPoints(translationX, translationY);
+            }
+
             foreach (IDepthEnabled de in depthItems)
             {
                 de.drawDepthEnabled(translationX, translationY);
@@ -419,10 +424,7 @@ namespace ION
             //GridStrategy might want to do some debug rendering
             //updateStrategy.drawDebug();
 
-            for (int i = 0; i < allUnits.Count; i++)
-            {        
-                allUnits[i].DrawWayPoints(translationX, translationY);
-            }
+   
 
             //finish up the render
             ION.spriteBatch.End();

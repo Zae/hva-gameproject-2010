@@ -16,6 +16,8 @@ namespace ION
         bool hitTest(int x,int y);
         bool hitTest(Rectangle r);
 
+        int getOwner();
+
         /// <summary>
         /// blabla
         /// </summary>

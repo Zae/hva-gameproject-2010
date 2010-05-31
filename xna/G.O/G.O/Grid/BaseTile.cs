@@ -96,5 +96,10 @@ namespace ION
             }
             return false;
         }
+
+        public int getOwner()
+        {
+            return owner;
+        }
     }
 }

@@ -253,30 +253,24 @@ namespace ION
             string[] directions = new string[] { "s", "se", "e", "ne", "n", "nw", "w", "sw" };
 
             Images.unit = new Texture2D[players, directions.Length];
-            Images.unit_selected = new Texture2D[players, directions.Length];
 
             for (int i = 0; i < players; i++)
             {
                 for (int j = 0; j < directions.Length; j++)
                 {
-                    Images.unit[i, j] = Images.chargeCountImages[i] = Content.Load<Texture2D>("unitItems/player" + (i + 1).ToString() + "unit_" + directions[j]);
-                    Images.unit_selected[i, j] = Images.chargeCountImages[i] = Content.Load<Texture2D>("unitItems/player" + (i + 1).ToString() + "unit_selected_" + directions[j]);
+                    Images.unit[i, j] = Content.Load<Texture2D>("unitItems/player" + (i + 1).ToString() + "unit_" + directions[j]);
                 }
             }
 
             int frames = 2;
-            Images.unit_shooting = new Texture2D[players, directions.Length, 2];
-            Images.unit_selected_shooting = new Texture2D[players, directions.Length, 2];
+            Images.unit_shooting_overlay = new Texture2D[directions.Length,frames];
             for (int frame = 0; frame < frames; frame++)
             {
-                for (int i = 0; i < players; i++)
-                {
                     for (int j = 0; j < directions.Length; j++)
                     {
-                        Images.unit_shooting[i, j, frame] = Content.Load<Texture2D>("unitItems/shooting/player" + (i + 1).ToString() + "unit_firing_" + directions[j]+frame);
-                        Images.unit_selected_shooting[i, j, frame] = Content.Load<Texture2D>("unitItems/shooting/player" + (i + 1).ToString() + "unit_selected_firing_" + directions[j]+frame);
+                        //Images.unit_shooting_overlay[j, frame] = Content.Load<Texture2D>("unitItems/shooting/overlay_unit_firing_" + directions[j]+frame);
+                        Images.unit_shooting_overlay[j, frame] = Content.Load<Texture2D>("unitItems/shooting/overlay_unit_firing_ne" + frame);
                     }
-                }
             }
 
             //Load bullet impact images

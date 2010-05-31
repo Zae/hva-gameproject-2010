@@ -717,6 +717,11 @@ namespace ION
             return false;
         }
 
+        public int getOwner()
+        {
+            return owner;
+        }
+
         // Queue Stuff
         // this is for waypoints (shift-click)
         public void AddDestination(Tile newDest)
@@ -736,9 +741,12 @@ namespace ION
             //When selected and owned by the player
             if (selected && owner == Grid.playerNumber)
             {
-                for (int i = 0; i < destination.Count; i++)
+                int size = destination.Count;
+                Tile[] asArray = destination.ToArray();
+                
+                for (int i = 0; i < size; i++)
                 {
-                    ION.spriteBatch.Draw(Images.unitWayPoint, new Rectangle((int)(((destination.ToArray()[i].GetPos(translationX, translationY).X + 30 - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)), (int)(((destination.ToArray()[i].GetPos(translationX, translationY).Y + 35) * (scale / 15.0f)) + (translationY) + (scale * 0.5f)), (int)(30 * (scale / 15.0f)), (int)(30 * (scale / 15.0f))), Microsoft.Xna.Framework.Graphics.Color.White);
+                    ION.spriteBatch.Draw(Images.unitWayPoint, asArray[i].drawingRectangle, Microsoft.Xna.Framework.Graphics.Color.White);
                 }
                 if (pos != targetPos)// - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)
                 {// * (scale / 15.0f)) + (translationY) + (scale * 0.5f))

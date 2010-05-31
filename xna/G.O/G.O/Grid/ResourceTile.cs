@@ -23,8 +23,6 @@ namespace ION
 
         public Color tileColor = new Color();
 
-        public Rectangle drawingRectangle = new Rectangle();
-
         public bool isSpiking = false;
         public int spikeCount = 0;
         public static float spikeCharge = 0.9f;
@@ -44,6 +42,8 @@ namespace ION
 
             this.indexX = indexX;
             this.indexY = indexY;
+
+            drawingRectangle = new Rectangle();
         }
         public override void drawDebug(float translationX, float translationY)
         {           
