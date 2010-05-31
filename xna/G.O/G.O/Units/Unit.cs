@@ -16,18 +16,20 @@ namespace ION
 
         public Rectangle drawingRectangle = new Rectangle();
         public Rectangle selectionRectangle = new Rectangle();
+        public Point focalPoint = new Point();
 
         public enum direction { south = 0, southEast = 1, east = 2, northEast = 3, north = 4, northWest = 5, west = 6, southWest = 7 };
         public direction facing = direction.north;
 
+        //don't initialize these, subclasses of unit must specify these in the constructor (or base())
         public int id;
         public int health;
         public int damage;
         public int damageType; 
 
-        protected Vector2 pos, targetPos, virtualPos;//replaced two int values with a 2d vector
+        protected Vector2 pos, targetPos, virtualPos;
 
-        //TODO magic numbers?
+        //the index of the tile the unit is on
         public int inTileX = 0;
         public int inTileY = 0;
 
@@ -40,7 +42,7 @@ namespace ION
         protected float movementSpeed;
         protected float captureSpeed;
 
-        protected static float scale = 15;
+        protected static float scale = 15; //TODO this should be externalized
 
         public static float baseHalfWidth = baseHalfWidthConstant * scale;
         public static float baseHalfHeight = baseHalfHeightConstant * scale;
@@ -109,7 +111,7 @@ namespace ION
             }
             if (scan > 4)
             {
-                //We have nowhere to go, might as well shoot some enemies
+                
                 List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
                 if (enemies.Count == 0) firing = false;
                 int distance = 4;
@@ -121,6 +123,7 @@ namespace ION
                         SoundManager.fireSound(Grid.TPS * 2);
                         //fire on this unit.
                         u.hit(Damage.getDamage(damage,damage+10),u.damageType);
+                        faceUnit(u);
                         break;
                     }
                     firing = false;
@@ -135,6 +138,14 @@ namespace ION
             virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
 
             return returnValue;
+        }
+
+        private void faceUnit(Unit u)
+        {
+            //get the center of the selectionbox of the unit.
+            //compare it with the center of this unit's selection box
+            //work out the number of degrees
+            //select the right facing 
         }
 
         public void hit(int damageTaken, int damageType)
@@ -705,7 +716,6 @@ namespace ION
             }
             return false;
         }
-
 
         // Queue Stuff
         // this is for waypoints (shift-click)

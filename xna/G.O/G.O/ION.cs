@@ -138,6 +138,8 @@ namespace ION
         /// </summary>
         protected override void LoadContent()
         {
+            
+            
             // Create a new SpriteBatch, which can be used to drawDebug textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             primitiveBatch = new PrimitiveBatch(GraphicsDevice);
@@ -188,6 +190,8 @@ namespace ION
             Images.background_overlay = Content.Load<Texture2D>("menuItems/planet");
             Images.Logo = Content.Load<Texture2D>("menuItems/ION");
             Images.background_starfield = Content.Load<Texture2D>("menuItems/starfield");
+
+           
 
             //MultiPlayer menu
             Images.buttonJoin = Content.Load<Texture2D>("menuItems/btn_join");

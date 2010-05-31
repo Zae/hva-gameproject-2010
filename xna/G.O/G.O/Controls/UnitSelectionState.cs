@@ -25,19 +25,22 @@ namespace ION.Controls
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                //This is a hack to not update the GUI directly, but we wait until in NeutralState to make sure we don't have a new selection
-                //StateTest.get().gui.applyState(GUIManager.NONE_SELECTED);
+                
                 if (!leftMouseDown)
                 {
                     leftMouseDown = true;
                 }
+
             }
             else
             {
                 //This means we have released the left mouse button
                 if (leftMouseDown)
                 {
+                    StateTest.get().gui.applyState(GUIManager.NONE_SELECTED);
                     StateTest.get().controls = new NeutralState();
+                    deselectUnits();
+                    leftMouseDown = false;
                     return;
                 }
                 leftMouseDown = false;
@@ -116,6 +119,14 @@ namespace ION.Controls
 	                                                                            , Grid.get().selectedTile.indexY));
                     }
                 }
+            }
+        }
+
+        private void deselectUnits()
+        {
+            foreach (Unit u in Grid.get().getPlayerUnits(Grid.playerNumber))
+            {
+                u.selected = false;
             }
         }
     }
