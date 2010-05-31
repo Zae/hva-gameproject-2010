@@ -10,6 +10,7 @@ using System.Net;
 using System.IO;
 using FluorineFx.Net;
 using FluorineFx.Messaging.Api.Service;
+using WindowSystem;
 
 
 
@@ -38,7 +39,7 @@ namespace ION
         private Rectangle backButton;
         private Rectangle hostButton;
         private Rectangle nameCaption;
-        private Rectangle nameField;
+        private TextBox nameField;
 
         private Rectangle background_overlay;
         private Rectangle Logo;
@@ -68,8 +69,13 @@ namespace ION
             waitScreen = new Rectangle(100, 100, ION.width - 200, ION.height - 200);
             backButton = new Rectangle(125, 125, Images.buttonBack.Width, Images.buttonBack.Height);
             nameCaption = new Rectangle(125, 300, Images.roomCaption.Width, Images.roomCaption.Height);
-            nameField = new Rectangle(nameCaption.Right + 25, nameCaption.Top, Images.inputField.Width, Images.inputField.Height);
-            hostButton = new Rectangle(nameField.Right + 25, nameField.Top, Images.buttonJoin.Width, Images.buttonJoin.Height);
+            //nameField = new Rectangle(nameCaption.Right + 25, nameCaption.Top, Images.inputField.Width, Images.inputField.Height);
+            nameField = new TextBox(ION.instance, ION.instance.gui);
+            nameField.X = nameCaption.Right+25;
+            nameField.Y = nameCaption.Top;
+            hostButton = new Rectangle(nameField.X + nameField.Width + 25, nameField.Y, Images.buttonJoin.Width, Images.buttonJoin.Height);
+
+            ION.instance.gui.Add(nameField);
         }
 
         public override void draw()
@@ -92,71 +98,6 @@ namespace ION
             ION.spriteBatch.Draw(Images.Logo, Logo, Color.White);
 
             ION.spriteBatch.Draw(Images.roomCaption, nameCaption, Color.White);
-            ION.spriteBatch.Draw(Images.inputField, nameField, Color.White);
-
-            if (selection == SELECTION.NAMEFIELD)
-            {
-                //Draw haaighlighted
-                ION.spriteBatch.DrawString(Fonts.font, name, new Vector2(nameField.X + 15, nameField.Y + 15), Color.Black);
-                KeyboardState keyState = Keyboard.GetState();
-
-
-                if (keyState.GetPressedKeys().Length > 0)
-                {
-                    foreach (Keys k in keyState.GetPressedKeys())
-                    {
-                        if (k.ToString().Length == 1)
-                        {
-                            pressedKeys[k.ToString()[0]] = true;
-                        }
-                        if (k.Equals(Keys.Back))
-                        {
-                            backPressed = true;
-                        }
-                        if (k.Equals(Keys.Space))
-                        {
-                            spacePressed = true;
-                        }
-                    }
-                }
-
-                if (keyState.GetPressedKeys().Length == 0)
-                {
-                    int i = 0;
-                    foreach (bool b in pressedKeys)
-                    {
-                        if (b)
-                        {
-                            name += (char)i;
-                            // b = false;
-                        }
-                        i++;
-                    }
-                    pressedKeys = new bool[256];
-
-                    if (spacePressed)
-                    {
-                        name += " ";
-                        spacePressed = false;
-                    }
-                    if (backPressed && name.Length > 0)
-                    {
-                        name = name.Substring(0, name.Length - 1);
-                        backPressed = false;
-                    }
-
-                }
-
-
-
-
-            }
-            else
-            {
-                ION.spriteBatch.DrawString(Fonts.font, name, new Vector2(nameField.X + 15, nameField.Y + 15), Color.Black);
-            }
-
-
 
             if (selection == SELECTION.BACK)
             {
@@ -191,23 +132,11 @@ namespace ION
         {
 
             //mouse handling
-            MouseState mouseState = Mouse.GetState();
+            Microsoft.Xna.Framework.Input.MouseState mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 mousePressed = true;
             }
-
-            if (mouseIn(mouseState.X, mouseState.Y, nameField))
-            {
-                selection = SELECTION.NAMEFIELD;
-                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-                {
-                    makeSelection();
-                    mousePressed = false;
-                }
-
-            }
-
 
             if (mouseIn(mouseState.X, mouseState.Y, hostButton))
             {
@@ -243,14 +172,9 @@ namespace ION
 
         private void makeSelection()
         {
-
-            if (selection == SELECTION.NAMEFIELD)
-            {
-                inTextField = true;
-            }
             if (selection == SELECTION.START)
             {
-                ION.instance.serverConnection.HostRoom(name);
+                ION.instance.serverConnection.HostRoom(nameField.Text);
                 waitState = true;
                 wait();
                 

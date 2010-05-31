@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using FluorineFx.Net;
+using WindowSystem;
+using InputEventSystem;
 
 
 namespace ION
@@ -41,6 +43,9 @@ namespace ION
         public static int halfWidth;
         public static int height;
         public static int halfHeight;
+
+        public InputEvents input;
+        public GUIManager gui;
 
         /// <summary>
         /// Helper variable for the user input handled by this class.
@@ -77,6 +82,12 @@ namespace ION
 
             //Give the Content class a valid content root directory
             Content.RootDirectory = "Content";
+
+            this.input = new InputEvents(this);
+            Components.Add(this.input);
+            this.gui = new GUIManager(this);
+            Components.Add(this.gui);
+            // GUI requires variable timing to function correctly
         }
 
         /// <summary>
@@ -116,6 +127,7 @@ namespace ION
         /// </summary>
         protected override void Initialize()
         {
+            this.gui.Initialize();
             //We currently don't specify anything at this stage in the program.
             base.Initialize();
         }
