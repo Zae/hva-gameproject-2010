@@ -268,8 +268,8 @@ namespace ION
             {
                     for (int j = 0; j < directions.Length; j++)
                     {
-                        //Images.unit_shooting_overlay[j, frame] = Content.Load<Texture2D>("unitItems/shooting/overlay_unit_firing_" + directions[j]+frame);
-                        Images.unit_shooting_overlay[j, frame] = Content.Load<Texture2D>("unitItems/shooting/overlay_unit_firing_ne" + frame);
+                        Images.unit_shooting_overlay[j, frame] = Content.Load<Texture2D>("unitItems/shooting/overlay_unit_firing_" + directions[j]+frame);
+                        //Images.unit_shooting_overlay[j, frame] = Content.Load<Texture2D>("unitItems/shooting/overlay_unit_firing_ne" + frame);
                     }
             }
 
