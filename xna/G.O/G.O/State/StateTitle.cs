@@ -206,6 +206,10 @@ namespace ION
             {
                 ION.get().setState(new StateTicTacToe());
             }
+            if (keyState.IsKeyDown(Keys.G))
+            {
+                ION.get().setState(new GuiTestState());
+            }
         }
 
         

@@ -139,6 +139,7 @@
     <Compile Include="MultiPlayer\CheckSumManager.cs" />
     <Compile Include="MultiPlayer\Command.cs" />
     <Compile Include="MultiPlayer\CommandDispatcher.cs" />
+    <Compile Include="State\GuiTestState.cs" />
     <Compile Include="State\StateNetworkTest.cs" />
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />
@@ -199,6 +200,14 @@
     <ProjectReference Include="..\FluorineFx\FluorineFx-3.5.csproj">
       <Project>{A9B8375B-579D-4F8A-B00C-F2828DB58F3A}</Project>
       <Name>FluorineFx-3.5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InputEventSystem\InputEventSystem.csproj">
+      <Project>{EB30C454-C629-4B9C-B146-CB18A9F46D45}</Project>
+      <Name>InputEventSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowSystem\WindowSystem.csproj">
+      <Project>{F20853ED-0E08-4456-BBB2-A5FC806F60A7}</Project>
+      <Name>WindowSystem</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
