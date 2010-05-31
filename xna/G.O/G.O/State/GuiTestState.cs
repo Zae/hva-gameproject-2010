@@ -11,15 +11,24 @@ namespace ION
     class GuiTestState  : State
     {
         private TextBox textbox;
+        private TextButton textbutton;
+
+        private List<UIComponent> ComponentList;
 
         public GuiTestState()
         {
-            //ION.instance.gui = new GUIManager(ION.instance);
+            ComponentList = new List<UIComponent>();
+            //
             textbox = new TextBox(ION.instance, ION.instance.gui);
             textbox.X = 100;
             textbox.Y = 100;
+            textbutton = new TextButton(ION.instance, ION.instance.gui);
+            textbutton.X = 200;
+            textbutton.Y = 200;
+            textbutton.Text = "Knopje";
 
-            ION.instance.gui.Add(textbox);
+            ComponentList.Add(textbox);
+            ComponentList.Add(textbutton);
         }
         public override void draw()
         {
@@ -33,6 +42,11 @@ namespace ION
 
         public override void focusGained()
         {
+            foreach (UIComponent uicomponent in ComponentList)
+            {
+                ION.instance.gui.Add(uicomponent);
+            }
+            //
             ION.get().IsMouseVisible = true;
             MediaPlayer.Play(Sounds.titleSong);
             MediaPlayer.IsRepeating = true;
@@ -40,6 +54,11 @@ namespace ION
 
         public override void focusLost()
         {
+            foreach (UIComponent uicomponent in ComponentList)
+            {
+                ION.instance.gui.Remove(uicomponent);
+            }
+            //
             ION.get().IsMouseVisible = false;
             MediaPlayer.Stop();
         }

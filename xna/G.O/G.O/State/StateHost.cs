@@ -29,7 +29,7 @@ namespace ION
 
         }
 
-        
+        private List<UIComponent> ComponentList;
    
         public SELECTION selection = SELECTION.BACK;
 
@@ -52,13 +52,7 @@ namespace ION
         public bool inTextField = false;
         private bool waitState = false;
 
-        
-        
-        String name = "";
-        String tempName=" ";
         bool[] pressedKeys = new bool[256];
-        bool spacePressed = false;
-        bool backPressed = false;
 
         public StateHost()
         {
@@ -69,13 +63,13 @@ namespace ION
             waitScreen = new Rectangle(100, 100, ION.width - 200, ION.height - 200);
             backButton = new Rectangle(125, 125, Images.buttonBack.Width, Images.buttonBack.Height);
             nameCaption = new Rectangle(125, 300, Images.roomCaption.Width, Images.roomCaption.Height);
-            //nameField = new Rectangle(nameCaption.Right + 25, nameCaption.Top, Images.inputField.Width, Images.inputField.Height);
             nameField = new TextBox(ION.instance, ION.instance.gui);
             nameField.X = nameCaption.Right+25;
             nameField.Y = nameCaption.Top;
             hostButton = new Rectangle(nameField.X + nameField.Width + 25, nameField.Y, Images.buttonJoin.Width, Images.buttonJoin.Height);
 
-            ION.instance.gui.Add(nameField);
+            ComponentList = new List<UIComponent>();
+            ComponentList.Add(nameField);
         }
 
         public override void draw()
@@ -201,12 +195,14 @@ namespace ION
 
         }
 
-
-
-
-
         public override void focusGained()
         {
+            //push all gui components of this state to the gui manager
+            foreach (UIComponent uic in ComponentList)
+            {
+                ION.instance.gui.Add(uic);
+            }
+            //
             ION.get().IsMouseVisible = true;
             //MediaPlayer.Play(Sounds.titleSong);
             //MediaPlayer.IsRepeating = true;
@@ -214,6 +210,12 @@ namespace ION
 
         public override void focusLost()
         {
+            //remove all the gui components of this state from the gui manager
+            foreach (UIComponent uic in ComponentList)
+            {
+                ION.instance.gui.Remove(uic);
+            }
+            //
             ION.get().IsMouseVisible = false;
             //MediaPlayer.Stop();
         }
