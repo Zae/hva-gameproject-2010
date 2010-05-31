@@ -68,11 +68,11 @@ namespace ION.Controls
                 StateTest.get().gui.applyState(GUIManager.BASE_SELECTED);
                 StateTest.get().controls = new BaseSelectionState();
             }
-            //This is a hack to not let the GUI update until it is sure it has not selected anything, also see UnitSelectionState
-            else if (!leftMouseDown && GUIManager.state != GUIManager.NONE_SELECTED)
-            {
-                StateTest.get().gui.applyState(GUIManager.NONE_SELECTED);
-            }
+            ////This is a hack to not let the GUI update until it is sure it has not selected anything, also see UnitSelectionState
+            //else if (!leftMouseDown && GUIManager.state != GUIManager.NONE_SELECTED)
+            //{
+            //    StateTest.get().gui.applyState(GUIManager.NONE_SELECTED);
+            //}
 
             base.handleInput(mouseState, keyboardState);
         }

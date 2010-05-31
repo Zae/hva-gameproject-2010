@@ -340,6 +340,8 @@ namespace ION
 
         public override void focusGained()
         {
+            ION.get().gui.Visible = false;
+            
             if (musicPaused)
             {
                 MediaPlayer.Resume();
@@ -351,6 +353,9 @@ namespace ION
         {
             MediaPlayer.Pause();
             musicPaused = true;
+
+            ION.get().gui.Visible = true;
+            
         }
     }
 }

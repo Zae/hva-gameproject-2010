@@ -89,7 +89,7 @@ namespace ION
         public int TCP = 0; //Ticks Currently Processed
 
         public float TTP = 0; //Ticks To Process
-        public float intermediate = 0.0f; //Our progress between ticks
+        public float intermediate = 0.0f; //Our progress between ticks, for drawing purposes only
 
         //public void startGame()
         //{
@@ -103,7 +103,7 @@ namespace ION
         public void update(int ellapsed, List<Unit> units, float translationX, float translationY)
         {
             currentTime = DateTime.Now;
-
+            ION.get().IsMouseVisible = false;
             passedTime = currentTime - startTime;
            // Debug.WriteLine("passed time:" + passedTime.Milliseconds);
 
