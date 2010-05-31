@@ -391,174 +391,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="unitItems\player1unit_e.png">
-      <Name>player1unit_e</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_n.png">
-      <Name>player1unit_n</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_ne.png">
-      <Name>player1unit_ne</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_nw.png">
-      <Name>player1unit_nw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_s.png">
-      <Name>player1unit_s</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_se.png">
-      <Name>player1unit_se</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_selected_e.png">
-      <Name>player1unit_selected_e</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_selected_n.png">
-      <Name>player1unit_selected_n</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_selected_ne.png">
-      <Name>player1unit_selected_ne</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_selected_nw.png">
-      <Name>player1unit_selected_nw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_selected_s.png">
-      <Name>player1unit_selected_s</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_selected_se.png">
-      <Name>player1unit_selected_se</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_selected_sw.png">
-      <Name>player1unit_selected_sw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_selected_w.png">
-      <Name>player1unit_selected_w</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_sw.png">
-      <Name>player1unit_sw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player1unit_w.png">
-      <Name>player1unit_w</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="unitItems\player2unit_e.png">
-      <Name>player2unit_e</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_n.png">
-      <Name>player2unit_n</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_ne.png">
-      <Name>player2unit_ne</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_nw.png">
-      <Name>player2unit_nw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_se.png">
-      <Name>player2unit_se</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_selected_e.png">
-      <Name>player2unit_selected_e</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_selected_n.png">
-      <Name>player2unit_selected_n</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_selected_ne.png">
-      <Name>player2unit_selected_ne</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_selected_nw.png">
-      <Name>player2unit_selected_nw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_selected_se.png">
-      <Name>player2unit_selected_se</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_selected_sw.png">
-      <Name>player2unit_selected_sw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_selected_w.png">
-      <Name>player2unit_selected_w</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_sw.png">
-      <Name>player2unit_sw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\player2unit_w.png">
-      <Name>player2unit_w</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="unitItems\player2unit_s.png">
-      <Name>player2unit_s</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="unitItems\player2unit_selected_s.png">
-      <Name>player2unit_selected_s</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="menuItems\btn_newgame.png">
       <Name>btn_newgame</Name>
       <Importer>TextureImporter</Importer>
@@ -772,328 +604,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="unitItems\shooting\player1unit_firing_e0.png">
-      <Name>player1unit_firing_e0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_e1.png">
-      <Name>player1unit_firing_e1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_n0.png">
-      <Name>player1unit_firing_n0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_n1.png">
-      <Name>player1unit_firing_n1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_ne0.png">
-      <Name>player1unit_firing_ne0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_ne1.png">
-      <Name>player1unit_firing_ne1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_nw0.png">
-      <Name>player1unit_firing_nw0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_nw1.png">
-      <Name>player1unit_firing_nw1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_s0.png">
-      <Name>player1unit_firing_s0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_s1.png">
-      <Name>player1unit_firing_s1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_se0.png">
-      <Name>player1unit_firing_se0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_se1.png">
-      <Name>player1unit_firing_se1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_sw0.png">
-      <Name>player1unit_firing_sw0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_sw1.png">
-      <Name>player1unit_firing_sw1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_w0.png">
-      <Name>player1unit_firing_w0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_firing_w1.png">
-      <Name>player1unit_firing_w1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_e0.png">
-      <Name>player1unit_selected_firing_e0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_e1.png">
-      <Name>player1unit_selected_firing_e1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_n0.png">
-      <Name>player1unit_selected_firing_n0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_n1.png">
-      <Name>player1unit_selected_firing_n1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_ne0.png">
-      <Name>player1unit_selected_firing_ne0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_ne1.png">
-      <Name>player1unit_selected_firing_ne1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_nw0.png">
-      <Name>player1unit_selected_firing_nw0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_nw1.png">
-      <Name>player1unit_selected_firing_nw1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_s0.png">
-      <Name>player1unit_selected_firing_s0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_s1.png">
-      <Name>player1unit_selected_firing_s1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_se0.png">
-      <Name>player1unit_selected_firing_se0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_se1.png">
-      <Name>player1unit_selected_firing_se1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_sw0.png">
-      <Name>player1unit_selected_firing_sw0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_sw1.png">
-      <Name>player1unit_selected_firing_sw1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_w0.png">
-      <Name>player1unit_selected_firing_w0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player1unit_selected_firing_w1.png">
-      <Name>player1unit_selected_firing_w1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_e0.png">
-      <Name>player2unit_firing_e0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_e1.png">
-      <Name>player2unit_firing_e1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_n0.png">
-      <Name>player2unit_firing_n0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_n1.png">
-      <Name>player2unit_firing_n1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_ne0.png">
-      <Name>player2unit_firing_ne0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_ne1.png">
-      <Name>player2unit_firing_ne1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_nw0.png">
-      <Name>player2unit_firing_nw0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_nw1.png">
-      <Name>player2unit_firing_nw1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_s0.png">
-      <Name>player2unit_firing_s0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_s1.png">
-      <Name>player2unit_firing_s1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_se0.png">
-      <Name>player2unit_firing_se0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_se1.png">
-      <Name>player2unit_firing_se1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_sw0.png">
-      <Name>player2unit_firing_sw0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_sw1.png">
-      <Name>player2unit_firing_sw1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_w0.png">
-      <Name>player2unit_firing_w0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_firing_w1.png">
-      <Name>player2unit_firing_w1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_e0.png">
-      <Name>player2unit_selected_firing_e0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_e1.png">
-      <Name>player2unit_selected_firing_e1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_n0.png">
-      <Name>player2unit_selected_firing_n0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_n1.png">
-      <Name>player2unit_selected_firing_n1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_ne0.png">
-      <Name>player2unit_selected_firing_ne0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_ne1.png">
-      <Name>player2unit_selected_firing_ne1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_nw0.png">
-      <Name>player2unit_selected_firing_nw0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_nw1.png">
-      <Name>player2unit_selected_firing_nw1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_s0.png">
-      <Name>player2unit_selected_firing_s0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_s1.png">
-      <Name>player2unit_selected_firing_s1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_se0.png">
-      <Name>player2unit_selected_firing_se0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_se1.png">
-      <Name>player2unit_selected_firing_se1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_sw0.png">
-      <Name>player2unit_selected_firing_sw0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_sw1.png">
-      <Name>player2unit_selected_firing_sw1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_w0.png">
-      <Name>player2unit_selected_firing_w0</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="unitItems\shooting\player2unit_selected_firing_w1.png">
-      <Name>player2unit_selected_firing_w1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="miscItems\bulletImpact\impact0.png">
       <Name>impact0</Name>
       <Importer>TextureImporter</Importer>
@@ -1254,7 +764,142 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="turretItems\" />
+    <Compile Include="unitItems\shooting\overlay_unit_firing_ne1.png">
+      <Name>overlay_unit_firing_ne1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="unitItems\shooting\overlay_unit_firing_ne0.png">
+      <Name>overlay_unit_firing_ne0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="turretItems\player2turret_e.png">
+      <Name>player2turret_e</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_n.png">
+      <Name>player2turret_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_nw.png">
+      <Name>player2turret_nw</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_s.png">
+      <Name>player2turret_s</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_se.png">
+      <Name>player2turret_se</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_sw.png">
+      <Name>player2turret_sw</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_w.png">
+      <Name>player2turret_w</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2unit_ne.png">
+      <Name>player2unit_ne</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="unitItems\player1unit_e.png">
+      <Name>player1unit_e</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player1unit_n.png">
+      <Name>player1unit_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player1unit_ne.png">
+      <Name>player1unit_ne</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player1unit_nw.png">
+      <Name>player1unit_nw</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player1unit_s.png">
+      <Name>player1unit_s</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player1unit_se.png">
+      <Name>player1unit_se</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player1unit_sw.png">
+      <Name>player1unit_sw</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player1unit_w.png">
+      <Name>player1unit_w</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player2unit_e.png">
+      <Name>player2unit_e</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player2unit_n.png">
+      <Name>player2unit_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player2unit_ne.png">
+      <Name>player2unit_ne</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player2unit_nw.png">
+      <Name>player2unit_nw</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player2unit_s.png">
+      <Name>player2unit_s</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player2unit_se.png">
+      <Name>player2unit_se</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player2unit_sw.png">
+      <Name>player2unit_sw</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="unitItems\player2unit_w.png">
+      <Name>player2unit_w</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

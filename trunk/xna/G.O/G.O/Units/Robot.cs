@@ -150,10 +150,9 @@ namespace ION
                 ION.spriteBatch.Draw(Images.selectionBoxBack, drawingRectangle, Color.White);
             }
 
-            if (!drawFiringAnimation(x, y))
-            {
-                ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, true), drawingRectangle, Color.White);
-            }
+            ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), drawingRectangle, Color.White);
+            drawFiringAnimation(x, y);
+            drawUnderFireAnimation(x, y);
 
             if (selected)
             {
@@ -197,7 +196,6 @@ namespace ION
                 ION.spriteBatch.Draw(Images.unitHealth[0], drawingRectangle, Color.White);
             }
    
-            drawUnderFireAnimation(x,y);
         }
 
         private void drawUnderFireAnimation(float x, float y)
@@ -261,12 +259,12 @@ namespace ION
                     //do not remove
                     //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
 
-                    ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    ION.spriteBatch.Draw(Images.unit_shooting_overlay[(int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
                 }
                 else if (FiringFrame >= 2)
                 {
                     //do not remove
-                    ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, true), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
 
                     //ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
                 }

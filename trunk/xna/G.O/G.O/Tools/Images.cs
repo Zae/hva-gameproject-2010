@@ -44,13 +44,13 @@ namespace ION
         public static Texture2D gameBackground;
 
         public static Texture2D[,] unit;
-        public static Texture2D[,] unit_selected;
+        //public static Texture2D[,] unit_selected;
 
         public static Texture2D[] unitHealth;
 
 
-        public static Texture2D[,,] unit_shooting;
-        public static Texture2D[,,] unit_selected_shooting;
+        public static Texture2D[,] unit_shooting_overlay;
+        //public static Texture2D[,,] unit_selected_shooting;
 
         public static Texture2D[] bulletImpact;
 
@@ -122,16 +122,9 @@ namespace ION
             } 
         }
 
-        public static Texture2D getUnitImage(int owner, int facing, bool selected)
+        public static Texture2D getUnitImage(int owner, int facing)
         {
-            if (selected)
-            {
-                return unit_selected[owner - 1, facing];
-            }
-            else
-            {
                 return unit[owner - 1, facing];
-            }
         }
     }
 }

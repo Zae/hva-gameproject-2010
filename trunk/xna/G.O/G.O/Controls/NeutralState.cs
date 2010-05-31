@@ -21,123 +21,150 @@ namespace ION.Controls
         private bool selectedUnits = false;
         private bool selectedBase = false;
 
+        private bool boxSelection = false;
+        private float deadzone = 25.0f;
+
+        private Rectangle r0 = new Rectangle();
+        private Rectangle r1 = new Rectangle();
+
         public override void draw()
         {
-            if (leftMouseDown)
+            if (boxSelection)
             {
+                r0.X = (int)oldMousePos.X;
+                r0.Y = (int)oldMousePos.Y;
+                r0.Width = (int)(mousePos.X - oldMousePos.X);
+                r0.Height = (int)(mousePos.Y - oldMousePos.Y);
+                r1.X = (int)mousePos.X;
+                r1.Y = (int)oldMousePos.Y;
+                r1.Width = (int)(oldMousePos.X - mousePos.X);
+                r1.Height =  (int)(mousePos.Y - oldMousePos.Y);
+                
                 ION.spriteBatch.Begin();
-                //draw a rectangle from oldMousePos to mousePos
-                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)oldMousePos.X, (int)oldMousePos.Y, (int)(mousePos.X - oldMousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// normal
-                ION.spriteBatch.Draw(Images.greenPixel, new Rectangle((int)mousePos.X, (int)oldMousePos.Y, (int)(oldMousePos.X - mousePos.X), (int)(mousePos.Y - oldMousePos.Y)), new Color(Color.GreenYellow, 127));// inverted
+                ION.spriteBatch.Draw(Images.greenPixel,r0, new Color(Color.GreenYellow, 127));// normal
+                ION.spriteBatch.Draw(Images.greenPixel, r1, new Color(Color.GreenYellow, 127));// inverted
                 ION.spriteBatch.End();
             }
         }
 
         public override void handleInput(MouseState mouseState, KeyboardState keyboardState)
         {
+            //Set the right cursor image
             GUIManager.mousePointerState = Images.MOUSE_POINTER;
             
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                //grid.selectOnMap(mouseState.X, mouseState.Y, translationX, translationY);
-                //allUnits[0].SetTarget(new Vector2(mouseState.X, mouseState.Y));
-
+                //This detects the first moment the left mouse button got pressed down
                 if (!leftMouseDown)
                 {
+                    //Record the position where this happened
                     oldMousePos.X = (mouseState.X);
                     oldMousePos.Y = (mouseState.Y);
+                    //Set the flag
+                    leftMouseDown = true;
                 }
-                leftMouseDown = true;
+                
+                //We update these as long as the left mouse button is held down
                 mousePos.X = (mouseState.X);
                 mousePos.Y = (mouseState.Y);
 
-                selectOnMap(mouseState.X, mouseState.Y, StateTest.get().translationX, StateTest.get().translationY);   
+                //if currently not box selecting 
+                if (!boxSelection)
+                {
+                    float diff = oldMousePos.Length() - mousePos.Length();
+                    if (diff > deadzone || diff < -deadzone)
+                    {
+                        boxSelection = true;
+                    }
+                }
             }
             else if (mouseState.LeftButton == ButtonState.Released)
             {
-                leftMouseDown = false;
+                if (leftMouseDown)
+                {         
+                    if (!boxSelection)
+                    {
+                        selectOnMap(mouseState.X, mouseState.Y);
+                    }
+                    else
+                    {
+                        selectOnMap(r0);
+                        //selectOnMap(r1);                      
+                    }
+                    //Reset both flags
+                    leftMouseDown = false;
+                    boxSelection = false;
+                }
             }
 
-            if (selectedUnits && !leftMouseDown)
+            if (selectedUnits)
             {
+                SoundManager.selectUnitSound();
                 StateTest.get().gui.applyState(GUIManager.UNITS_SELECTED);
                 StateTest.get().controls = new UnitSelectionState();
             }
-            else if (selectedBase && !leftMouseDown)
+            else if (selectedBase)
             {
+                //TODO //SoundManager.selectBaseSound();
                 StateTest.get().gui.applyState(GUIManager.BASE_SELECTED);
                 StateTest.get().controls = new BaseSelectionState();
             }
-            ////This is a hack to not let the GUI update until it is sure it has not selected anything, also see UnitSelectionState
-            //else if (!leftMouseDown && GUIManager.state != GUIManager.NONE_SELECTED)
-            //{
-            //    StateTest.get().gui.applyState(GUIManager.NONE_SELECTED);
-            //}
 
             base.handleInput(mouseState, keyboardState);
         }
 
 
-        public void selectOnMap(float x, float y, float translationX, float translationY)
+        public void selectOnMap(int x, int y)
         {
-            List<Unit> playerArmy = Grid.get().getPlayerUnits(Grid.playerNumber);
-
-     
-            Grid.get().selectTile(x, y, translationX, translationY);
-            if (Grid.get().selectedTile != null)
+            List<IDepthEnabled> depthItems = Grid.depthItems;
+            IDepthEnabled result = null;
+            int count = depthItems.Count;
+            for (int i = depthItems.Count - 1; i >= 0; i--)
             {
-                for (int i = 0; i < playerArmy.Count(); i++)
+                if (depthItems[i].hitTest(x,y) && depthItems[i].getOwner() == Grid.playerNumber)
                 {
-                    //unselect this unit by default
-                    //playerArmy[i].selected = false;
-
-                    //check if the current tile matches the units tile, if so changed the units selected to true
-                    if (Grid.get().GetTile(x, y, translationX, translationY) == playerArmy[i].GetTile())
-                    {
-                        playerArmy[i].selected = true;//select unit
-                        selectedUnits = true;
-
-                        SoundManager.selectUnitSound();
-                    }
-                    else
-                    {
-                        playerArmy[i].selected = false;
-                    }
-
-                    // if this unit is in between the 2 mouse positions
-                    if (
-                        ((playerArmy[i].GetVirtualPos().X > x && playerArmy[i].GetVirtualPos().X < oldMousePos.X)
-                        || (playerArmy[i].GetVirtualPos().X < x && playerArmy[i].GetVirtualPos().X > oldMousePos.X))
-                        && ((playerArmy[i].GetVirtualPos().Y > y && playerArmy[i].GetVirtualPos().Y < oldMousePos.Y)
-                        || (playerArmy[i].GetVirtualPos().Y < y && playerArmy[i].GetVirtualPos().Y > oldMousePos.Y))
-                        )
-                    {
-                        // set unit to selected
-                        playerArmy[i].selected = true;
-                        selectedUnits = true;
-
-                        SoundManager.selectUnitSound();
-                    }
-                    else
-                    {
-                        playerArmy[i].selected = false;
-                    }
-
-
+                    result = depthItems[i];
+                    break;
                 }
             }
 
-            if (!selectedUnits)
+            if (result is Unit)
             {
-                if (Grid.get().selectedTile != null && Grid.get().selectedTile is BaseTile)
+                ((Unit)result).selected = true;
+                selectedUnits = true;
+            }
+            else if (result is BaseTile)
+            {
+                // TODO //((BaseTile)result).sekected = true;
+                selectedBase = true;
+            }
+
+        }
+
+        public void selectOnMap(Rectangle r)
+        {
+            List<IDepthEnabled> depthItems = Grid.depthItems;
+            IDepthEnabled result = null;
+            int count = depthItems.Count;
+            for (int i = depthItems.Count - 1; i >= 0; i--)
+            {
+                if (depthItems[i].hitTest(r) && depthItems[i].getOwner() == Grid.playerNumber)
                 {
-                    if (((BaseTile)Grid.get().selectedTile).owner == Grid.playerNumber)
-                    {
-                        selectedBase = true;
-                    }
+                    result = depthItems[i];
+                    break;
                 }
             }
 
+            if (result is Unit)
+            {
+                ((Unit)result).selected = true;
+                selectedUnits = true;
+            }
+            else if (result is BaseTile)
+            {
+                // TODO //((BaseTile)result).sekected = true;
+                selectedBase = true;
+            }
         }
 
     }

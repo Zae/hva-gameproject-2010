@@ -18,6 +18,8 @@ namespace ION
         public int indexX = -1;
         public int indexY = -1;
 
+        public Rectangle drawingRectangle;
+
         private static float scale = 15;
 
         public static float baseHalfWidth = baseHalfWidthConstant * scale;
@@ -50,8 +52,7 @@ namespace ION
 
         public void setVisualX(int newVisualIndex)
         {
-            visualX = newVisualIndex;
-            
+            visualX = newVisualIndex;           
         }
 
         public int getVisualX()
