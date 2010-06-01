@@ -89,7 +89,7 @@ namespace ION.Controls
                     else
                     {
                         selectOnMap(r0);
-                        //selectOnMap(r1);                      
+                        selectOnMap(r1);                      
                     }
                     //Reset both flags
                     leftMouseDown = false;
@@ -138,33 +138,31 @@ namespace ION.Controls
                 // TODO //((BaseTile)result).sekected = true;
                 selectedBase = true;
             }
-
         }
 
         public void selectOnMap(Rectangle r)
         {
             List<IDepthEnabled> depthItems = Grid.depthItems;
-            IDepthEnabled result = null;
+            List<IDepthEnabled> result = new List<IDepthEnabled>();
             int count = depthItems.Count;
             for (int i = depthItems.Count - 1; i >= 0; i--)
             {
-                if (depthItems[i].hitTest(r) && depthItems[i].getOwner() == Grid.playerNumber)
+                if (depthItems[i].hitTest(r) && depthItems[i].getOwner() == Grid.playerNumber && depthItems[i] is Unit)
                 {
-                    result = depthItems[i];
-                    break;
+                    result.Add(depthItems[i]);
                 }
             }
 
-            if (result is Unit)
+            foreach(IDepthEnabled ide in result) 
             {
-                ((Unit)result).selected = true;
+                ((Unit)ide).selected = true;
                 selectedUnits = true;
             }
-            else if (result is BaseTile)
-            {
-                // TODO //((BaseTile)result).sekected = true;
-                selectedBase = true;
-            }
+            //else if (result is BaseTile)
+            //{
+            //    // TODO //((BaseTile)result).sekected = true;
+            //    selectedBase = true;
+            //}
         }
 
     }
