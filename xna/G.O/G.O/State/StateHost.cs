@@ -168,6 +168,7 @@ namespace ION
         {
             if (selection == SELECTION.START)
             {
+
                 ION.instance.serverConnection.HostRoom(nameField.Text);
                 waitState = true;
                 wait();
