@@ -944,6 +944,26 @@ namespace ION
             {
                 mountainTiles[i].update();
             }
+
+            // old code
+            //// if this unit is in between the 2 mouse positions
+            //if (
+            //    ((playerArmy[i].GetVirtualPos().X > x && playerArmy[i].GetVirtualPos().X < oldMousePos.X)
+            //    || (playerArmy[i].GetVirtualPos().X < x && playerArmy[i].GetVirtualPos().X > oldMousePos.X))
+            //    && ((playerArmy[i].GetVirtualPos().Y > y && playerArmy[i].GetVirtualPos().Y < oldMousePos.Y)
+            //    || (playerArmy[i].GetVirtualPos().Y < y && playerArmy[i].GetVirtualPos().Y > oldMousePos.Y))
+            //    )
+            //{
+            //    // set unit to selected
+            //    playerArmy[i].selected = true;
+            //    selectedUnits = true;
+
+            //    SoundManager.selectUnitSound();
+            //}
+            //else
+            //{
+            //    playerArmy[i].selected = false;
+            //}
         }
     }
 }
