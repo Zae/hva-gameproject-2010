@@ -191,7 +191,7 @@ namespace ION
                 //int secondsSince = (int)passedTime.TotalSeconds;
                 //if (secondsSince < 0) secondsSince *= -1;
                 //startGame(2, (int)passedTime.TotalSeconds);
-                startGame(0);
+                //startGame(0);
             }
         }
 

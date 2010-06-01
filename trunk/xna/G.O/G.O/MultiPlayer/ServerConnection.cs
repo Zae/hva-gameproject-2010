@@ -58,8 +58,20 @@ namespace ION{
 
         void LobbyRSObject_Sync(object sender, SyncEventArgs e)
         {
-            int a = 2;
-            String message = (String)this.LobbyRSObject.GetAttribute("SystemMessage");
+
+            //Handling Lybby messages
+            
+            String message = (String)this.LobbyRSObject.GetAttribute("Chat");
+
+            if (message== "join" && isHost)
+            {
+                System.Console.WriteLine("a player has joined the Lobby room!");
+            }
+            if (message.Contains("ready") && isHost)
+            {
+                System.Console.WriteLine("player "+ message[message.Length-1].ToString() +" is ready");
+                Protocol.instance.startGame(0);
+            }
             //throw new NotImplementedException();
         }
 
@@ -101,7 +113,10 @@ namespace ION{
 
         void LobbyRSObject_OnConnect(object sender, EventArgs e)
         {
+
             Console.WriteLine("LobbyObject connected.");
+            
+            
         }
 
         void LobbyRSObject_NetStatus(object sender, NetStatusEventArgs e)
@@ -131,6 +146,13 @@ namespace ION{
         /// <param name="roomname">the name of the room</param>
         public void JoinRoom(String roomname)
         {
+            if (!isHost)
+            {
+
+                LobbyRSObject.SetAttribute("Chat", "join");
+                LobbyRSObject.SetAttribute("Chat", "ready2");
+                Console.WriteLine("lobby message set to 'joind' and 'ready2'");
+            }
             this._isHost = false;
             createRoom(roomname);
         }
@@ -140,6 +162,7 @@ namespace ION{
         /// <param name="roomname">the name of the room</param>
         public void HostRoom(String roomname)
         {
+
             this._isHost = true;
             createRoom(roomname);
         }

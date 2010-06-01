@@ -139,7 +139,11 @@
     <Compile Include="MultiPlayer\CheckSumManager.cs" />
     <Compile Include="MultiPlayer\Command.cs" />
     <Compile Include="MultiPlayer\CommandDispatcher.cs" />
+
+    <Compile Include="State\StateLobby.cs" />
+
     <Compile Include="State\GuiTestState.cs" />
+
     <Compile Include="State\StateNetworkTest.cs" />
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />

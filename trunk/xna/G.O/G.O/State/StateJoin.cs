@@ -376,19 +376,9 @@ namespace ION
         public void showHosts(String[] hostList)
         {
 
-           // Console.WriteLine("lijstje uit serverConnection, eerste server: " + hostList[0].hostname);
+           
             tempHosts = hostList;
-            /*
-            int i = 0;
-            tempHosts = new String[hostList.Length];
-            foreach (string s in hostList)
-            {
-
-                tempHosts[0, i] = s;
-                i++;
-            }
-             */
-
+            
 
         }
 
