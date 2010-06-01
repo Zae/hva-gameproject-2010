@@ -11,10 +11,17 @@ namespace ION
     {
         public static int cost = 500;
 
-        //animation test
+        public const int maxHealth = 250;
+
+        public Rectangle healtRectangle = new Rectangle();
+
+        private static Random damageRandom;
+
+        //fire animation helper variables
         private int FiringFrame = 0;
         private int FiringCounter = 0;
 
+        //under-fire animation helper variables
         private int UnderFireFrame = 0;
         private int UnderFireCounter = 0;
         public int UnderFireOffsetX = 0;
@@ -24,6 +31,7 @@ namespace ION
         public Tower(Vector2 newPos, int owner, int id) : base(owner,id)
         {
             damage = 2;
+            health = 250;
 
             pos = newPos;
 
@@ -31,12 +39,24 @@ namespace ION
             inTileX = playerBase.getTileX();
             inTileY = playerBase.getTileY();
 
-            movementSpeed = 2f;
+            movementSpeed = 0f;
+
+            init();
+        }
+
+        private void init()
+        {
+            FiringFrame = 0;
+            FiringCounter = 0;
         }
 
         public override void move()
         {
             EmptyWayPoints();
+
+            facing++;
+            if((int)facing>7)
+                facing = 0;
         }
 
         public override void draw(float x, float y)
@@ -58,9 +78,9 @@ namespace ION
                 ION.spriteBatch.Draw(Images.selectionBoxBack, drawingRectangle, Color.White);
             }
 
-            if (!drawFiringAnimation(x, y))
+            //if (!drawFiringAnimation(x, y))
             {
-                ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), drawingRectangle, Color.White);
+                ION.spriteBatch.Draw(Images.getTurretImage(owner, (int)facing), drawingRectangle, Color.White);
             }
 
             if (selected)
@@ -130,17 +150,16 @@ namespace ION
                 if (FiringFrame < 2)
                 {
                     //do not remove
-                    //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    //ION.spriteBatch.Draw(Images.getTowerImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
 
-                    ION.spriteBatch.Draw(Images.unit_shooting_overlay[(int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    //ION.spriteBatch.Draw(Images.tower_shooting_overlay[(int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
                 }
 
                 if (FiringFrame >= 2)
                 {
                     //do not remove
-                    ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    //ION.spriteBatch.Draw(Images.getTowerImage(owner, (int)facing), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
 
-                    //ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
                 }
                 return true;
             }

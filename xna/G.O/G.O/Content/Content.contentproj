@@ -799,11 +799,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="turretItems\player2unit_ne.png">
-      <Name>player2unit_ne</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="unitItems\player1unit_e.png">
@@ -1007,6 +1002,13 @@
     </Compile>
     <Compile Include="turretItems\player1turret_w.png">
       <Name>player1turret_w</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="turretItems\player2turret_ne.png">
+      <Name>player2turret_ne</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

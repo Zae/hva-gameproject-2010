@@ -257,6 +257,7 @@ namespace ION
             int players = 2;
             string[] directions = new string[] { "s", "se", "e", "ne", "n", "nw", "w", "sw" };
 
+            // Units
             Images.unit = new Texture2D[players, directions.Length];
 
             for (int i = 0; i < players; i++)
@@ -283,6 +284,18 @@ namespace ION
             for (int i = 0; i < 2; i++)
             {
                 Images.bulletImpact[i] = Content.Load<Texture2D>("miscItems/bulletImpact/impact"+i);
+            }
+
+
+            // Towers
+            Images.turret = new Texture2D[players, directions.Length];
+
+            for (int i = 0; i < players; i++)
+            {
+                for (int j = 0; j < directions.Length; j++)
+                {
+                    Images.turret[i, j] = Content.Load<Texture2D>("turretItems/player" + (i + 1).ToString() + "turret_" + directions[j]);
+                }
             }
 
             ////Load the numerical pictures that can signal the value of a tile
