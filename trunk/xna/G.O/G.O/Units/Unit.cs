@@ -82,8 +82,7 @@ namespace ION
 
                 grid[inTileX, inTileY].accessable = true;
 
-                //remove it from the grid
-                Grid.get().removeUnit(this);
+                Die();
 
                 //the end
                 return returnValue;
@@ -753,6 +752,13 @@ namespace ION
                     ION.spriteBatch.Draw(Images.unitWayPoint, new Rectangle((int)(((targetPos.X + 30 - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)), (int)(((targetPos.Y + 35) * (scale / 15.0f)) + (translationY) + (scale * 0.5f)), (int)(30 * (scale / 15.0f)), (int)(30 * (scale / 15.0f))), Microsoft.Xna.Framework.Graphics.Color.White);
                 }
             }
+        }
+
+        public void Die()
+        {
+            Grid.map[inTileX, inTileY].accessable = true;
+            //remove it from the grid
+            Grid.get().removeUnit(this);
         }
     }
 }

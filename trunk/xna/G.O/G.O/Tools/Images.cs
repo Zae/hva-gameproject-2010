@@ -44,6 +44,7 @@ namespace ION
         public static Texture2D gameBackground;
 
         public static Texture2D[,] unit;
+        public static Texture2D[,] turret;
         //public static Texture2D[,] unit_selected;
 
         public static Texture2D[] unitHealth;
@@ -119,12 +120,17 @@ namespace ION
             else
             {
                 return chargeCountImages[chargeCountImages.Length-1];
-            } 
+            }
         }
 
         public static Texture2D getUnitImage(int owner, int facing)
         {
-                return unit[owner - 1, facing];
+            return unit[owner - 1, facing];
+        }
+
+        public static Texture2D getTurretImage(int owner, int facing)
+        {
+            return turret[owner - 1, facing];
         }
     }
 }
