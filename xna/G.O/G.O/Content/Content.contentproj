@@ -502,6 +502,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultSkin.skin">
+      <Name>DefaultSkin</Name>
+      <Importer>SkinImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+    <Compile Include="Fonts\DefaultFont.spritefont">
+      <Name>DefaultFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Fonts\DefaultHeading.spritefont">
+      <Name>DefaultHeading</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="levelItems\WideLevelTest2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Name>WideLevelTest2</Name>
@@ -1009,6 +1024,19 @@
   <ItemGroup>
     <Compile Include="turretItems\player2turret_ne.png">
       <Name>player2turret_ne</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WindowSystemSkinPipeline\WindowSystemSkinPipeline.csproj">
+      <Project>{81A42C0E-0E1F-40FF-9604-0D6AB4BEE4DD}</Project>
+      <Name>WindowSystemSkinPipeline</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\DefaultStyle.png">
+      <Name>DefaultStyle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
