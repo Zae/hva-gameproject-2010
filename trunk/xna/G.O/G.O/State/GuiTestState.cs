@@ -12,6 +12,7 @@ namespace ION
     {
         private TextBox textbox;
         private TextButton textbutton;
+        private CheckBox check;
 
         private List<UIComponent> ComponentList;
 
@@ -26,9 +27,20 @@ namespace ION
             textbutton.X = 200;
             textbutton.Y = 200;
             textbutton.Text = "Knopje";
-
+            check = new CheckBox(ION.instance, ION.instance.gui);
+            check.X = 300;
+            check.Y = 300;
+            //
+            textbutton.Click += new ClickHandler(textbutton_Click);
+            //
             ComponentList.Add(textbox);
             ComponentList.Add(textbutton);
+            ComponentList.Add(check);
+        }
+
+        void textbutton_Click(UIComponent sender)
+        {
+            check.IsChecked = !check.IsChecked;
         }
         public override void draw()
         {
