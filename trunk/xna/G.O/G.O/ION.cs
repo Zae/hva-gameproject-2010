@@ -69,6 +69,8 @@ namespace ION
             instance = this;
 
             //Setup the graphics configuration to match the client
+            
+
             graphics = new GraphicsDeviceManager(this);
             graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(preparingDeviceSettings);
             graphics.ToggleFullScreen();
@@ -82,6 +84,9 @@ namespace ION
 
             //Give the Content class a valid content root directory
             Content.RootDirectory = "Content";
+
+            //graphics.GraphicsDevice.SamplerStates[0].MinFilter = TextureFilter.Linear;
+            //graphics.ApplyChanges();
 
             this.input = new InputEvents(this);
             Components.Add(this.input);
