@@ -20,12 +20,13 @@ namespace ION.MultiPlayer
         /// the order and only add new command on the end of the list to minimize errors.</remarks>
         public enum COMMANDTYPES
         {
-            NEW_UNIT,
+            NEW_ROBOT,
             MOVE_UNIT,
             START_GAME,
             NEW_TOWER,
             ADD_MOVE_UNIT,
-            ATTACK_UNIT
+            ATTACK_UNIT,
+            STOP_UNIT
         }
 
         public int supposedGameTick = -1;
@@ -77,7 +78,7 @@ namespace ION.MultiPlayer
 
             switch (ct)
             {
-                case COMMANDTYPES.NEW_UNIT:
+                case COMMANDTYPES.NEW_ROBOT:
 #if DEBUG
                     sgt=br.ReadInt32();
                     serial = br.ReadInt32();
@@ -437,7 +438,7 @@ namespace ION.MultiPlayer
         /// <param name="owner">The owner of the unit (playerNumber)</param>
         /// <param name="unitId">The id of the unit (index of the list)</param>
         public NewUnitCommand(int supposedGameTick, int serial, int owner, int unitId) 
-            : base(COMMANDTYPES.NEW_UNIT, supposedGameTick, owner, serial)
+            : base(COMMANDTYPES.NEW_ROBOT, supposedGameTick, owner, serial)
         {
             this.unitId = unitId;
         }
@@ -609,6 +610,65 @@ namespace ION.MultiPlayer
             bw.Write((Int32)unitId);
             bw.Write((Int32)targetOwner);
             bw.Write((Int32)targetID);
+
+            return ms;
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// AttackUnitCommand version of Command.
+    /// 
+    /// This command is sent when a unit is moved.
+    /// </summary>
+    public class StopUnitCommand : Command
+    {
+
+        public int unitId;
+        /// <summary>
+        /// Constructor for the NewMoveCommand command.
+        /// </summary>
+        /// <param name="supposedGameTick">The tick on which the game should start so al games start at the same time.</param>
+        /// <param name="serial">The command serial.</param>
+        /// <param name="owner">The owner of the unit. (PlayerNumber)</param>
+        /// <param name="unitId">The id of the unit (index of the list)</param>
+        /// <param name="xTarget">The x index of the grid.</param>
+        /// <param name="yTarget">The y index of the grid.</param>
+        public StopUnitCommand(int supposedGameTick, int serial, int owner, int unitId)
+            : base(COMMANDTYPES.STOP_UNIT, supposedGameTick, owner, serial)
+        {
+
+            this.unitId = unitId;
+        }
+        /// <summary>
+        /// CommandDispatcher calls this function to perform the command. It overrides the performCommand of the base
+        /// class so this class can define it's own functionality.
+        /// </summary>
+        public override void performCommand()
+        {
+            Unit u = Grid.get().getUnit(owner, unitId);
+            if (u != null)
+            {
+                u.stop();
+            }           
+        }
+
+        #region Serializable Members
+        /// <summary>
+        /// Serialize serializes the important data of the command so it can be deserialized.
+        /// </summary>
+        /// <returns>MemoryStream with the data of the command.</returns>
+        public override MemoryStream Serialize()
+        {
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms);
+
+            bw.Write((Int32)_commandType);
+            bw.Write((Int32)supposedGameTick);
+            bw.Write((Int32)serial);
+            bw.Write((Int32)owner);
+            bw.Write((Int32)unitId);
 
             return ms;
         }

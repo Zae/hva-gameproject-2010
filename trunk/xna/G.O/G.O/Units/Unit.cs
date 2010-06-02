@@ -78,7 +78,6 @@ namespace ION
             {
                 //put this unit in some sort of death animation list somewhere
 
-
                 grid[inTileX, inTileY].accessable = true;
 
                 Die();
@@ -120,8 +119,8 @@ namespace ION
                         firing = true;
                         SoundManager.fireSound(Grid.TPS * 2);
                         //fire on this unit.
-                        u.hit(Damage.getDamage(damage,damage+10),u.damageType);
-                        faceUnit(u);
+                        u.hit(Damage.getDamage(damage,damage+damage),u.damageType);
+                        face(u.pos);
                         break;
                     }
                     firing = false;
@@ -138,12 +137,80 @@ namespace ION
             return returnValue;
         }
 
-        private void faceUnit(Unit u)
+        private void face(Vector2 facePos)
         {
             //get the center of the selectionbox of the unit.
             //compare it with the center of this unit's selection box
             //work out the number of degrees
             //select the right facing 
+
+            //        //// working //
+            //        ////TODO @emmet
+            //        ////1.	Units only move in 8 directions
+            //        //// this code gets the angle of the vector in radians (note: this angle is either left or right of "X = 0")
+            Vector2 tempAngle = facePos - pos;
+            double length = Math.Sqrt((tempAngle.X * tempAngle.X) + (tempAngle.Y * tempAngle.Y));
+            float angle = (float)(Math.Acos(tempAngle.Y / length));
+
+            // this accounts for the angle being to the left of "X = 0"
+            if (tempAngle.X < 0.0f)
+                angle = (MathHelper.Pi * 2.0f) - angle;
+
+            // converts angle to degrees
+            angle = MathHelper.ToDegrees(angle);
+
+
+            if (angle < 0)
+                angle += 360;
+
+            if (tempAngle.Length() > movementSpeed)//move toward target at speed
+            {
+                Vector2 directionVector;
+                if (angle < 0)
+                    angle += 360;
+                if (angle < 0)
+                    angle += 360;
+                if (angle < 35.75 || angle > 324.25)
+                {
+                    angle = 0f;//direction = new Vector2(0, 1);
+                    facing = direction.south;
+                }
+                else if (angle < 80.75)
+                {
+                    angle = 71.5f;//direction = new Vector2(1, 1);
+                    facing = direction.southEast;
+                }
+                else if (angle < 99.25)
+                {
+                    angle = 90f;//direction = new Vector2(1, 0);
+                    facing = direction.east;
+                }
+                else if (angle < 144.25)
+                {
+                    angle = 108.5f;//direction = new Vector2(1, -1);
+                    facing = direction.northEast;
+                }
+                else if (angle < 160.75)
+                {
+                    angle = 180f;//direction = new Vector2(0, -1);
+                    facing = direction.north;
+                }
+                else if (angle < 215.75)
+                {
+                    angle = 151.5f;//direction = new Vector2(-1, -1);
+                    facing = direction.northWest;
+                }
+                else if (angle < 279.25)
+                {
+                    angle = 270f;//direction = new Vector2(-1, 0);
+                    facing = direction.west;
+                }
+                else
+                {
+                    angle = 288.5f;//direction = new Vector2(-1, -1);
+                    facing = direction.southWest;
+                }
+            }
         }
 
         public void hit(int damageTaken, int damageType)
@@ -769,6 +836,13 @@ namespace ION
             Grid.map[inTileX, inTileY].accessable = true;
             //remove it from the grid
             Grid.get().removeUnit(this);
+        }
+
+        public virtual void stop()
+        {
+            //do stopping things like dumping waypoints etc. 
+            EmptyWayPoints();
+
         }
     }
 }

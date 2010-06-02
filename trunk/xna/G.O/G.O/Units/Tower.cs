@@ -17,8 +17,6 @@ namespace ION
 
         public Rectangle firingRectangle = new Rectangle();
 
-        private static Random damageRandom;
-
         //fire animation helper variables
         private int FiringFrame = 0;
         private int FiringCounter = 0;
@@ -31,10 +29,9 @@ namespace ION
 
         public int tmp = 0;
 
-        
         public Tower(Vector2 newPos, int owner, int id) : base(owner,id)
         {
-            damage = 2;
+            damage = 3;
             health = 250;
 
             pos = newPos;
@@ -72,6 +69,7 @@ namespace ION
 
         public override void draw(float x, float y)
         {
+            //TODO is selectionRectangle different from Robot's? Does it matter?
             selectionRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) + (Tile.baseHalfWidth * 0.63));
             selectionRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2) + (baseHalfHeight * 0.55));
             selectionRectangle.Width = (int)(baseHalfWidth * 0.75);
@@ -81,8 +79,6 @@ namespace ION
             drawingRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2));
             drawingRectangle.Width = (int)(baseHalfWidth * 2);
             drawingRectangle.Height = (int)(baseHalfHeight * 4);
-
-
 
             //ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
 
@@ -98,6 +94,48 @@ namespace ION
             if (selected)
             {
                 ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
+            }
+
+            if (selected || showDetails)
+            {
+                //Draw health and energy stuff
+                healtRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)
+                    + (Tile.baseHalfWidth * 0.56));
+                healtRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)
+                    + (baseHalfHeight * 0.1));
+                healtRectangle.Width = (int)(baseHalfWidth * 0.9);
+                healtRectangle.Height = (int)(baseHalfHeight * 0.38);
+
+                healtRectangle.Width = (int)(healtRectangle.Width * ((float)health / (float)maxHealth));
+
+                //Get a good color for the healthbar
+                Color healthBarColor;
+                if (health > (maxHealth / 1.5))
+                {
+                    healthBarColor = Color.Green;
+                }
+                else if (health > (maxHealth / 3))
+                {
+                    healthBarColor = Color.Orange;
+                }
+                else
+                {
+                    healthBarColor = Color.Red;
+                }
+
+                ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
+                if (health < maxHealth)
+                {
+                    ION.spriteBatch.Draw(Images.unitHealth[2], drawingRectangle, healthBarColor);
+                }
+                else
+                {
+                    ION.spriteBatch.Draw(Images.unitHealth[1], drawingRectangle, healthBarColor);
+                }
+
+                ION.spriteBatch.Draw(Images.white1px, healtRectangle, healthBarColor);
+
+                ION.spriteBatch.Draw(Images.unitHealth[0], drawingRectangle, Color.White);
             }
       
         }
