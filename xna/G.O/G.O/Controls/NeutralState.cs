@@ -24,25 +24,16 @@ namespace ION.Controls
         private bool boxSelection = false;
         private float deadzone = 25.0f;
 
-        private Rectangle r0 = new Rectangle();
-        private Rectangle r1 = new Rectangle();
+        private Rectangle r = new Rectangle();
 
         public override void draw()
         {
             if (boxSelection)
             {
-                r0.X = (int)oldMousePos.X;
-                r0.Y = (int)oldMousePos.Y;
-                r0.Width = (int)(mousePos.X - oldMousePos.X);
-                r0.Height = (int)(mousePos.Y - oldMousePos.Y);
-                r1.X = (int)mousePos.X;
-                r1.Y = (int)oldMousePos.Y;
-                r1.Width = (int)(oldMousePos.X - mousePos.X);
-                r1.Height =  (int)(mousePos.Y - oldMousePos.Y);
-                
+                calcValidSelectionBox(mousePos, oldMousePos);
+
                 ION.spriteBatch.Begin();
-                ION.spriteBatch.Draw(Images.greenPixel,r0, new Color(Color.GreenYellow, 127));// normal
-                ION.spriteBatch.Draw(Images.greenPixel, r1, new Color(Color.GreenYellow, 127));// inverted
+                ION.spriteBatch.Draw(Images.greenPixel,r, new Color(Color.GreenYellow, 127));
                 ION.spriteBatch.End();
             }
         }
@@ -71,7 +62,7 @@ namespace ION.Controls
                 //if currently not box selecting 
                 if (!boxSelection)
                 {
-                    float diff = oldMousePos.Length() - mousePos.Length();
+                    float diff = oldMousePos.X - mousePos.X;
                     if (diff > deadzone || diff < -deadzone)
                     {
                         boxSelection = true;
@@ -88,8 +79,7 @@ namespace ION.Controls
                     }
                     else
                     {
-                        selectOnMap(r0);
-                        selectOnMap(r1);                      
+                        selectOnMap(r);            
                     }
                     //Reset both flags
                     leftMouseDown = false;
@@ -108,6 +98,17 @@ namespace ION.Controls
                 //TODO //SoundManager.selectBaseSound();
                 StateTest.get().gui.applyState(GUIManager.BASE_SELECTED);
                 StateTest.get().controls = new BaseSelectionState();
+            }
+            else
+            {
+                if (boxSelection)
+                {
+                    base.showContext(r);
+                }
+                else
+                {
+                    base.showContext(mousePos);
+                }
             }
 
             base.handleInput(mouseState, keyboardState);
@@ -163,6 +164,38 @@ namespace ION.Controls
             //    // TODO //((BaseTile)result).sekected = true;
             //    selectedBase = true;
             //}
+        }
+
+        public void calcValidSelectionBox(Vector2 mousePos, Vector2 oldMousePos)
+        {
+            //r.X = (int)oldMousePos.X;
+            //r.Y = (int)oldMousePos.Y;
+            //r.Width = (int)(mousePos.X - oldMousePos.X);
+            //r.Height = (int)(mousePos.Y - oldMousePos.Y);
+
+            if (mousePos.X < oldMousePos.X)
+            {
+                r.X = (int)mousePos.X;
+                r.Width = (int)(oldMousePos.X - mousePos.X);
+
+          
+            }
+            else
+            {
+                r.X = (int)oldMousePos.X;
+                r.Width = (int)(mousePos.X - oldMousePos.X);
+
+            }
+            if (mousePos.Y < oldMousePos.Y)
+            {
+                r.Y = (int)mousePos.Y;
+                r.Height = (int)(oldMousePos.Y - mousePos.Y);
+            }
+            else
+            {
+                r.Y = (int)oldMousePos.Y;
+                r.Height = (int)(mousePos.Y - oldMousePos.Y);
+            }
         }
 
     }

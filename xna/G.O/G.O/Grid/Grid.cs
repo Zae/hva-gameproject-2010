@@ -395,6 +395,9 @@ namespace ION
         {
             //init the render
             ION.spriteBatch.Begin();
+            //ION.spriteBatch.Begin(SpriteBlendMode.AlphaBlend,SpriteSortMode.Immediate,SaveStateMode.None);
+            //ION.graphics.GraphicsDevice.SamplerStates[0].MinFilter = TextureFilter.GaussianQuad;
+            //ION.graphics.GraphicsDevice.SamplerStates[0].MagFilter = TextureFilter.GaussianQuad;
 
             //draw the ground texture
             theme.drawGroundTexture();
@@ -501,8 +504,7 @@ namespace ION
             if (selectedTile == null)
             {
                 Debug.WriteLine("HEEELP TILE IS NULL! getTile()");
-                return new Vector2(0,0);
-
+                return new Vector2(-1, -1);
             }
 
             return new Vector2(selectedTile.indexX, selectedTile.indexY);
@@ -543,6 +545,9 @@ namespace ION
             //add the item to the list
             int index = -1;
             bool inserted = false;
+
+            //Debug.WriteLine("INSERTING DEPTH ENABLED ITEM!");
+
             //TODO hardcoding for a south-west perspective
             foreach (IDepthEnabled other in depthItems)
             {

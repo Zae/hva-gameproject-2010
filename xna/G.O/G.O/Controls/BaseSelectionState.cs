@@ -12,6 +12,12 @@ namespace ION.Controls
 
         //put variables for specific buttons
 
+        public BaseSelectionState()
+        {
+            Grid.getPlayerBase(Grid.playerNumber).selected = true; 
+        }
+
+
         public override void draw()
         {
             //draw the right type of cursor
@@ -22,7 +28,9 @@ namespace ION.Controls
 
         public override void handleInput(MouseState mouseState, KeyboardState keyboardState)
         {
+            
             //nothing is selected
+
 
             //release left click tries to select something
 
@@ -36,6 +44,7 @@ namespace ION.Controls
             //if the tile is occupied by an enemy, this changes into a attack command on that enemy
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
+                Grid.getPlayerBase(Grid.playerNumber).selected = false; 
                 StateTest.get().gui.applyState(GUIManager.NONE_SELECTED);
                 StateTest.get().controls = new NeutralState();
                 return;

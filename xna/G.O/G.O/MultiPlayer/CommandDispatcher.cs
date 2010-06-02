@@ -62,6 +62,10 @@ namespace ION.MultiPlayer
 
         public static void issueCommand(Command command)
         {
+            Debug.WriteLine("ISSUED COMMAND:" + command._commandType);
+
+
+            
             //push the command on the network
             //if (Protocol.instance != null) Protocol.instance.declareAction(command.toCommandParts());
             if (Protocol.instance != null) Protocol.instance.declareAction(command);

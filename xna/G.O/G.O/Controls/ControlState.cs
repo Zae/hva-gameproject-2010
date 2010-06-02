@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using ION.UI;
+using Microsoft.Xna.Framework;
 
 namespace ION.Controls
 {
@@ -76,6 +77,17 @@ namespace ION.Controls
 
         public virtual void draw()
         {
+        }
+
+        public void showContext(Vector2 screenPos)
+        {
+            //lights up what is under the mouse
+
+        }
+
+        public void showContext(Rectangle screenRect)
+        {
+            //light up what is in a rectangle on screen
         }
 
     }
