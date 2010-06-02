@@ -1041,6 +1041,88 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_e0.png">
+      <Name>overlay_turret_firing_e0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_e1.png">
+      <Name>overlay_turret_firing_e1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_n0.png">
+      <Name>overlay_turret_firing_n0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_n1.png">
+      <Name>overlay_turret_firing_n1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_ne0.png">
+      <Name>overlay_turret_firing_ne0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_ne1.png">
+      <Name>overlay_turret_firing_ne1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_nw0.png">
+      <Name>overlay_turret_firing_nw0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_nw1.png">
+      <Name>overlay_turret_firing_nw1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_s0.png">
+      <Name>overlay_turret_firing_s0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_s1.png">
+      <Name>overlay_turret_firing_s1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_se0.png">
+      <Name>overlay_turret_firing_se0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_se1.png">
+      <Name>overlay_turret_firing_se1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_sw0.png">
+      <Name>overlay_turret_firing_sw0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_sw1.png">
+      <Name>overlay_turret_firing_sw1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_w0.png">
+      <Name>overlay_turret_firing_w0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\firing_animation\overlay_turret_firing_w1.png">
+      <Name>overlay_turret_firing_w1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
