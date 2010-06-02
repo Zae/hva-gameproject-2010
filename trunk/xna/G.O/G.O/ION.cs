@@ -298,6 +298,16 @@ namespace ION
                 }
             }
 
+            frames = 2;
+            Images.tower_shooting_overlay = new Texture2D[directions.Length, frames];
+            for (int frame = 0; frame < frames; frame++)
+            {
+                for (int j = 0; j < directions.Length; j++)
+                {
+                    Images.tower_shooting_overlay[j, frame] = Content.Load<Texture2D>("turretItems/firing_animation/overlay_turret_firing_" + directions[j] + frame);
+                }
+            }
+
             ////Load the numerical pictures that can signal the value of a tile
             //for (int i = 0; i < Images.chargeCountImages.Length; i++)
             //{

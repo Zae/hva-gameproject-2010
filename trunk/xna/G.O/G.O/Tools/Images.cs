@@ -45,13 +45,12 @@ namespace ION
 
         public static Texture2D[,] unit;
         public static Texture2D[,] turret;
-        //public static Texture2D[,] unit_selected;
 
         public static Texture2D[] unitHealth;
 
 
         public static Texture2D[,] unit_shooting_overlay;
-        //public static Texture2D[,,] unit_selected_shooting;
+        public static Texture2D[,] tower_shooting_overlay;
 
         public static Texture2D[] bulletImpact;
 

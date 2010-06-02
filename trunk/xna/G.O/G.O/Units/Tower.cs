@@ -15,6 +15,8 @@ namespace ION
 
         public Rectangle healtRectangle = new Rectangle();
 
+        public Rectangle firingRectangle = new Rectangle();
+
         private static Random damageRandom;
 
         //fire animation helper variables
@@ -26,6 +28,8 @@ namespace ION
         private int UnderFireCounter = 0;
         public int UnderFireOffsetX = 0;
         public int UnderFireOffsetY = 0;
+
+        public int tmp = 0;
 
         
         public Tower(Vector2 newPos, int owner, int id) : base(owner,id)
@@ -54,9 +58,16 @@ namespace ION
         {
             EmptyWayPoints();
 
-            facing++;
-            if((int)facing>7)
-                facing = 0;
+            tmp++;
+            if (tmp > 15)
+            {
+                facing++;
+                if ((int)facing > 7)
+                    facing = 0;
+
+                tmp = 0;
+            }
+     
         }
 
         public override void draw(float x, float y)
@@ -71,6 +82,8 @@ namespace ION
             drawingRectangle.Width = (int)(baseHalfWidth * 2);
             drawingRectangle.Height = (int)(baseHalfHeight * 4);
 
+
+
             //ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
 
             if (selected)
@@ -78,17 +91,15 @@ namespace ION
                 ION.spriteBatch.Draw(Images.selectionBoxBack, drawingRectangle, Color.White);
             }
 
-            //if (!drawFiringAnimation(x, y))
-            {
-                ION.spriteBatch.Draw(Images.getTurretImage(owner, (int)facing), drawingRectangle, Color.White);
-            }
+            ION.spriteBatch.Draw(Images.getTurretImage(owner, (int)facing), drawingRectangle, Color.White);
+            drawFiringAnimation(x, y);
+            drawUnderFireAnimation(x, y);
 
             if (selected)
             {
                 ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
             }
-
-            drawUnderFireAnimation(x, y);
+      
         }
 
         private void drawUnderFireAnimation(float x, float y)
@@ -127,6 +138,12 @@ namespace ION
         {
             if (firing)
             {
+
+                firingRectangle.X = drawingRectangle.X - (int)(baseHalfWidth);
+                firingRectangle.Y = drawingRectangle.Y - (int)(baseHalfHeight * 4);
+                firingRectangle.Width = drawingRectangle.Width*2;
+                firingRectangle.Height = drawingRectangle.Height * 2;
+
                 //animation test code
                 FiringCounter++;
 
@@ -134,15 +151,15 @@ namespace ION
                 {
                     FiringFrame = 0;
                 }
-                if (FiringCounter > 4)
+                if (FiringCounter > 3)
                 {
                     FiringFrame = 1;
                 }
-                if (FiringCounter > 10)
+                if (FiringCounter > 6)
                 {
                     FiringFrame = 2;
                 }
-                if (FiringCounter > 14)
+                if (FiringCounter > 9)
                 {
                     FiringCounter = 0;
                 }
@@ -150,16 +167,16 @@ namespace ION
                 if (FiringFrame < 2)
                 {
                     //do not remove
-                    //ION.spriteBatch.Draw(Images.getTowerImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
 
-                    //ION.spriteBatch.Draw(Images.tower_shooting_overlay[(int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    ION.spriteBatch.Draw(Images.tower_shooting_overlay[(int)facing, FiringFrame],firingRectangle, Color.White);
                 }
-
-                if (FiringFrame >= 2)
+                else if (FiringFrame >= 2)
                 {
                     //do not remove
-                    //ION.spriteBatch.Draw(Images.getTowerImage(owner, (int)facing), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
 
+                    //ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
                 }
                 return true;
             }

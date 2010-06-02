@@ -38,7 +38,7 @@ namespace ION
             inTileX = playerBase.getTileX();
             inTileY = playerBase.getTileY();
 
-            movementSpeed = 2f;
+            movementSpeed = 4f;
         }
 
         //move units towards their target
