@@ -17,8 +17,6 @@ namespace ION
 
         public Rectangle healtRectangle = new Rectangle();
 
-        private static Random damageRandom;
-
         //fire animation helper variables
         private int FiringFrame = 0;
         private int FiringCounter = 0;
@@ -28,21 +26,6 @@ namespace ION
         private int UnderFireCounter = 0;
         public int UnderFireOffsetX = 0;
         public int UnderFireOffsetY = 0;
- 
-        public Robot() : base(-1,-1) //Sending an invalid number to the base class as a test, I think this constructor in only used to deserialize into after
-        {
-            health = maxHealth;
-
-            damage = 10;
-            damageType = Damage.TYPE_SMALL_GUN;
-            
-            destination = new Queue<Tile>();
-
-            pos = new Vector2(ION.halfWidth - (scale / 2), -(scale / 4));
-            targetPos = new Vector2(500, 500);
-
-            movementSpeed = 2f;
-        }
 
         public Robot(Vector2 newPos, Vector2 newTarget, int owner, int id) : base(owner,id)
         {
@@ -154,7 +137,7 @@ namespace ION
             drawFiringAnimation(x, y);
             drawUnderFireAnimation(x, y);
 
-            if (selected)
+            if (selected || showDetails)
             {
                 //Draw health and energy stuff
                 healtRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) 

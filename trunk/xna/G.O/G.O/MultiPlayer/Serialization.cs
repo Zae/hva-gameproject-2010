@@ -950,12 +950,7 @@ namespace ION
 
             return result;
         }
-        public static Robot DeserializeBallUnit(Byte[] input)
-        {
-            Robot bu = new Robot();
-            bu.Deserialize(byteArrayToStream(input));
-            return bu;
-        }
+
         public static CheckedState[,] DeserializeCheckedState(Byte[] input)
         {
             MemoryStream ms = byteArrayToStream(input);

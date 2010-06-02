@@ -15,6 +15,9 @@ namespace ION.Controls
         private bool rightMouseDown = false;
         private bool leftMouseDown = false;
 
+        private bool moveOrder = false;
+        private bool attackOrder = false;
+
         public override void draw()
         {
         }
@@ -82,6 +85,8 @@ namespace ION.Controls
 
         public void mouseRightPressed(float x, float y, float translationX, float translationY)
         {
+            
+            
             List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
             
             Grid.get().selectTile(x, y, translationX, translationY);

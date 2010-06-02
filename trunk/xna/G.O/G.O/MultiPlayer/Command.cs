@@ -24,7 +24,8 @@ namespace ION.MultiPlayer
             MOVE_UNIT,
             START_GAME,
             NEW_TOWER,
-            ADD_MOVE_UNIT
+            ADD_MOVE_UNIT,
+            ATTACK_UNIT
         }
 
         public int supposedGameTick = -1;
@@ -71,7 +72,7 @@ namespace ION.MultiPlayer
             BinaryReader br = new BinaryReader(inData);
             COMMANDTYPES ct = (COMMANDTYPES)br.ReadInt32();
 #if DEBUG
-            int sgt,serial,owner,unitID,targetx,targety,seed;
+            int sgt,serial,owner,unitID,targetx,targety,seed,targetOwner,targetID;
 #endif
 
             switch (ct)
@@ -133,6 +134,19 @@ namespace ION.MultiPlayer
                     return new AddMoveCommand(sgt, serial, owner, unitID, targetx, targety);
 #else
                     return new AddMoveCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
+#endif
+                case COMMANDTYPES.ATTACK_UNIT:
+#if DEBUG
+                    sgt = br.ReadInt32();
+                    serial = br.ReadInt32();
+                    owner = br.ReadInt32();
+                    unitID = br.ReadInt32();
+                    targetOwner = br.ReadInt32();
+                    targetID = br.ReadInt32();
+                    Console.WriteLine("attackUnit-- command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetOwner=" + targetOwner + ", targetID=" + targetID);
+                    return new AttackUnitCommand(sgt, serial, owner, unitID, targetOwner, targetID);
+#else
+                     return new AttackUnitCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
 #endif
                 default:
                     return new Command();
@@ -498,6 +512,107 @@ namespace ION.MultiPlayer
 
             return ms;
         }
+        #endregion
+    }
+
+    /// <summary>
+    /// AttackUnitCommand version of Command.
+    /// 
+    /// This command is sent when a unit is moved.
+    /// </summary>
+    public class AttackUnitCommand : Command
+    {
+        public int targetOwner;
+        public int targetID;
+
+        public int unitId;
+        /// <summary>
+        /// Constructor for the NewMoveCommand command.
+        /// </summary>
+        /// <param name="supposedGameTick">The tick on which the game should start so al games start at the same time.</param>
+        /// <param name="serial">The command serial.</param>
+        /// <param name="owner">The owner of the unit. (PlayerNumber)</param>
+        /// <param name="unitId">The id of the unit (index of the list)</param>
+        /// <param name="xTarget">The x index of the grid.</param>
+        /// <param name="yTarget">The y index of the grid.</param>
+        public AttackUnitCommand(int supposedGameTick, int serial, int owner, int unitId, int targetOwner, int targetID)
+            : base(COMMANDTYPES.ATTACK_UNIT, supposedGameTick, owner, serial)
+        {
+            this.targetOwner = targetOwner;
+            this.targetID = targetID;
+
+            this.unitId = unitId;
+        }
+        /// <summary>
+        /// CommandDispatcher calls this function to perform the command. It overrides the performCommand of the base
+        /// class so this class can define it's own functionality.
+        /// </summary>
+        public override void performCommand()
+        {
+            ////Debug.WriteLine("commanding unit id=" + unitId + " owner=" + unitOwner);
+            //Unit u = Grid.get().getUnit(owner, unitId);
+            //if (u == null)
+            //{
+            //    Debug.WriteLine("TRIED TO FIND UNIT FOR COMMAND BUT UNIT WAS NOT PRESENT (ANYMORE)");
+            //}
+            //else if (Grid.map[xTarget, yTarget] is ResourceTile == false)
+            //{
+            //    //@TODO Deny this for now
+            //}
+            //else
+            //{
+            //    //get the last waypoint of this unit
+            //    ResourceTile last;
+            //    if (u.destination.Count > 0)
+            //    {
+            //        last = (ResourceTile)u.destination.Last<Tile>();
+            //    }
+            //    else
+            //    {
+            //        last = (ResourceTile)Grid.map[u.inTileX, u.inTileY];
+            //    }
+
+
+            //    //u.AddDestination(Grid.map[xTarget,yTarget]);
+
+            //    List<ResourceTile> path = FloodFill.getPath(last, (ResourceTile)Grid.map[xTarget, yTarget]);
+
+            //    foreach (ResourceTile rt in path)
+            //    {
+            //        u.AddDestination(rt);
+            //    }
+
+            //    //If this unit belonges to the player, make a sound
+            //    if (u.owner == Grid.playerNumber)
+            //    {
+            //        SoundManager.orderUnitSound();
+            //    }
+
+            //}
+
+        }
+
+        #region Serializable Members
+        /// <summary>
+        /// Serialize serializes the important data of the command so it can be deserialized.
+        /// </summary>
+        /// <returns>MemoryStream with the data of the command.</returns>
+        public override MemoryStream Serialize()
+        {
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms);
+
+            bw.Write((Int32)_commandType);
+            bw.Write((Int32)supposedGameTick);
+            bw.Write((Int32)serial);
+            bw.Write((Int32)owner);
+            bw.Write((Int32)unitId);
+            bw.Write((Int32)targetOwner);
+            bw.Write((Int32)targetID);
+
+            return ms;
+        }
+
         #endregion
     }
 }

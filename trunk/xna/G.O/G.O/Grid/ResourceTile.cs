@@ -63,10 +63,12 @@ namespace ION
 
             //if (owner == Players.NEUTRAL)
             //{
-            ION.spriteBatch.Draw(Images.borderImage, drawingRectangle, tileColor);
+    
             //}
 
+            ION.spriteBatch.Draw(Images.borderImage, drawingRectangle, Color.White);
             ION.spriteBatch.Draw(Images.resourceImage, drawingRectangle, tileColor);
+            
 
 
             //if (owner != Players.NEUTRAL)

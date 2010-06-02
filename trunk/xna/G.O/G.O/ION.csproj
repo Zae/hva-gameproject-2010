@@ -124,7 +124,7 @@
     <Compile Include="State\StateTitle.cs" />
     <Compile Include="Grid\Tile.cs" />
     <Compile Include="Tools\Tool.cs" />
-    <Compile Include="UI\GUIComponent.cs" />
+    <Compile Include="UI\ButtonHandlers\GUIComponent.cs" />
     <Compile Include="UI\GUIComposite.cs" />
     <Compile Include="UI\GUIManager.cs" />
     <Compile Include="Units\Robot.cs" />
@@ -139,11 +139,7 @@
     <Compile Include="MultiPlayer\CheckSumManager.cs" />
     <Compile Include="MultiPlayer\Command.cs" />
     <Compile Include="MultiPlayer\CommandDispatcher.cs" />
-
-    <Compile Include="State\StateLobby.cs" />
-
     <Compile Include="State\GuiTestState.cs" />
-
     <Compile Include="State\StateNetworkTest.cs" />
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />

@@ -38,9 +38,7 @@ namespace ION
         public bool firing = false;
         public bool underFire = false;
 
-        // new
         protected float movementSpeed;
-        protected float captureSpeed;
 
         protected static float scale = 15; //TODO this should be externalized
 
@@ -57,6 +55,7 @@ namespace ION
         public int scan = 0;
 
         public bool selected = false;
+        public bool showDetails = false; //used to show only details such as health, but not mark this unit selected.
 
         public Queue<Tile> destination;
 
@@ -159,9 +158,18 @@ namespace ION
 
         public bool UpdateTile(Vector2 newInTile, List<Unit> allUnits, Tile[,] grid, float translationX, float translationY)
         {
+            
+            if (newInTile.X < 0)
+            {
+               
+                    return false;
+            }
+            
             //if the player is occuping a new tile it will update & return true
             if (inTileX != (int)newInTile.X || inTileY != (int)newInTile.Y)
             {
+                
+                
                 bool test = false;
                 if (!grid[(int)newInTile.X, (int)newInTile.Y].accessable)
                 {
@@ -747,9 +755,11 @@ namespace ION
                 {
                     ION.spriteBatch.Draw(Images.unitWayPoint, asArray[i].drawingRectangle, Microsoft.Xna.Framework.Graphics.Color.White);
                 }
+
+                //TODO 
                 if (pos != targetPos)// - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)
                 {// * (scale / 15.0f)) + (translationY) + (scale * 0.5f))
-                    ION.spriteBatch.Draw(Images.unitWayPoint, new Rectangle((int)(((targetPos.X + 30 - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)), (int)(((targetPos.Y + 35) * (scale / 15.0f)) + (translationY) + (scale * 0.5f)), (int)(30 * (scale / 15.0f)), (int)(30 * (scale / 15.0f))), Microsoft.Xna.Framework.Graphics.Color.White);
+                    //ION.spriteBatch.Draw(Images.unitWayPoint, asArray[i].drawingRectangle, Microsoft.Xna.Framework.Graphics.Color.White);
                 }
             }
         }

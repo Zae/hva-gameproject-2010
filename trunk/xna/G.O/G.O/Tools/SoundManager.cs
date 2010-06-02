@@ -56,13 +56,15 @@ namespace ION.Tools
 
         public static void fireSound(int ticks)
         {
-            levelOfAction+=2;
-            
+            levelOfAction+=3;
+
             firesoundsPointer++;
             if (firesoundsPointer == firesoundsCount)
             {
                 firesoundsPointer = 0;
             }
+
+
             firesounds[firesoundsPointer].Play();
            
         }
