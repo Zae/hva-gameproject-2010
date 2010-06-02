@@ -34,11 +34,13 @@ namespace ION
             pos = newPos;
             targetPos = newTarget;
 
+            damage = 2;
+
             BaseTile playerBase = Grid.getPlayerBase(owner);
             inTileX = playerBase.getTileX();
             inTileY = playerBase.getTileY();
 
-            movementSpeed = 4f;
+            movementSpeed = 2f;
         }
 
         //move units towards their target
@@ -62,45 +64,49 @@ namespace ION
 
                     //Update the direction it faces
                     //TODO @michiel
-                    if (temp.X > 0)
+                    if(!firing) 
                     {
-                        if (temp.Y > 0)
+
+                        if (temp.X > 0)
                         {
-                            facing = direction.southEast;
+                            if (temp.Y > 0)
+                            {
+                                facing = direction.southEast;
+                            }
+                            else if (temp.Y < 0)
+                            {
+                                facing = direction.northEast;
+                            }
+                            else
+                            {
+                                facing = direction.east;
+                            }
                         }
-                        else if (temp.Y < 0)
+                        else if (temp.X < 0)
                         {
-                            facing = direction.northEast;
+                            if (temp.Y > 0)
+                            {
+                                facing = direction.southWest;
+                            }
+                            else if (temp.Y < 0)
+                            {
+                                facing = direction.northWest;
+                            }
+                            else
+                            {
+                                facing = direction.west;
+                            }
                         }
                         else
                         {
-                            facing = direction.east;
-                        }
-                    }
-                    else if (temp.X < 0)
-                    {
-                        if (temp.Y > 0)
-                        {
-                            facing = direction.southWest;
-                        }
-                        else if (temp.Y < 0)
-                        {
-                            facing = direction.northWest;
-                        }
-                        else
-                        {
-                            facing = direction.west;
-                        }
-                    }
-                    else
-                    {
-                        if (temp.Y > 0)
-                        {
-                            facing = direction.south;
-                        }
-                        else if (temp.Y < 0)
-                        {
-                            facing = direction.north;
+                            if (temp.Y > 0)
+                            {
+                                facing = direction.south;
+                            }
+                            else if (temp.Y < 0)
+                            {
+                                facing = direction.north;
+                            }
                         }
                     }
 

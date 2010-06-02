@@ -62,7 +62,7 @@ namespace ION.MultiPlayer
 
         public static void issueCommand(Command command)
         {
-            Debug.WriteLine("ISSUED COMMAND:" + command._commandType);
+            //Debug.WriteLine("ISSUED COMMAND:" + command._commandType);
 
 
             
