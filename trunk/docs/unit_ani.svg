@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   width="513"
+   height="342"
+   version="1.0"
+   sodipodi:docname="player1unit_se.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs5">
+    <linearGradient
+       id="linearGradient3160">
+      <stop
+         style="stop-color:#c7ce4b;stop-opacity:0.33913043;"
+         offset="0"
+         id="stop3162" />
+      <stop
+         id="stop3168"
+         offset="0.83783782"
+         style="stop-color:#ffffff;stop-opacity:0.73043478;" />
+      <stop
+         style="stop-color:#c7ce8a;stop-opacity:0.65217394;"
+         offset="1"
+         id="stop3164" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective9" />
+    <inkscape:perspective
+       id="perspective3225"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3248"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2407"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3194"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3211"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-height="753"
+     inkscape:window-width="1280"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="false"
+     inkscape:zoom="0.53021443"
+     inkscape:cx="303.26005"
+     inkscape:cy="14.80239"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:current-layer="svg2" />
+  <image
+     xlink:href="E:\DropBox\My Dropbox\Game Project\unitItems\player1unit_se.png"
+     sodipodi:absref="E:\DropBox\My Dropbox\Game Project\unitItems\player1unit_se.png"
+     width="513"
+     height="342"
+     id="image11"
+     x="739.32355"
+     y="49.036766"
+     style="opacity:0"
+     inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\shootOverlay_ne0.png"
+     inkscape:export-xdpi="89.991127"
+     inkscape:export-ydpi="89.991127" />
+  <path
+     style="fill:#dd2f25;fill-opacity:0.57558139;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M -917.23682,-50.825027 L -921.10149,-45.672157 L -921.74558,-39.231077 L -917.02213,-35.151717 L -903.92524,-37.942857 C -903.92524,-37.942857 -904.99876,-46.530967 -907.1458,-47.389787 C -909.29282,-48.248597 -917.02213,-50.825027 -917.23682,-50.825027 z"
+     id="path3208" />
+  <path
+     style="fill:#ddb856;fill-opacity:0.49418604;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M -884.29829,-38.254777 C -889.26933,-42.048317 -889.98275,-46.236317 -891.81253,-56.168035 C -900.22812,-58.681215 -908.63523,-59.605515 -917.02036,-56.419785 C -923.90524,-51.983727 -929.07094,-45.846787 -930.2216,-35.737467 C -930.10056,-36.971897 -926.03841,-21.310597 -922.95164,-21.672717 C -897.54568,-24.111557 -898.93729,-25.960857 -884.29829,-38.254777 z"
+     id="path3210"
+     sodipodi:nodetypes="cccccc"
+     inkscape:transform-center-y="6.8704859" />
+  <path
+     style="fill:#c7ce8a;fill-opacity:0.27906979;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M -936.82432,-199.60169 C -970.42629,-213.27958 -1020.1974,-174.71296 -1022.7843,-139.7641 C -1012.7332,-124.58636 -1013.4468,-64.162835 -1022.1763,-52.903025 C -1013.6344,-47.545967 -1004.8118,-42.309287 -990.16929,-39.566787 C -993.2618,-35.662537 -991.32669,-33.769337 -990.16929,-31.565047 C -996.06222,-24.291777 -999.81521,-30.775247 -1011.5073,13.778173 C -980.11068,22.646083 -927.68447,24.626013 -915.15294,-4.5591471 L -929.72514,-39.117247 L -919.66403,-35.234247 C -914.49546,-40.247617 -912.91617,-44.593797 -914.81953,-50.235787 L -924.82171,-53.569845 C -878.80618,-85.694345 -870.75641,-159.80725 -936.82432,-199.60169 z"
+     id="path3212"
+     sodipodi:nodetypes="cccccccccccc" />
+  <path
+     style="fill:#e94d47;fill-opacity:0.58139535;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M -942.99277,-30.971207 L -947.23634,-25.313117 L -947.9436,-18.240507 L -942.75702,-13.761187 L -928.37604,-16.825987 C -928.37604,-16.825987 -929.55481,-26.256127 -931.91235,-27.199147 C -934.26988,-28.142157 -942.75702,-30.971207 -942.99277,-30.971207 z"
+     id="path3214" />
+  <path
+     style="fill:#ddbe47;fill-opacity:0.54651166;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M -904.99427,-12.043157 C -910.45269,-16.208647 -913.06653,-25.932587 -915.07572,-36.838077 C -924.31643,-39.597657 -933.54782,-40.612587 -942.75508,-37.114507 C -950.315,-32.243517 -955.98718,-25.504857 -957.25065,-14.404367 C -957.11774,-15.759827 -949.72855,7.2945329 -946.33913,6.8969129 C -945.01622,6.7417129 -922.56398,-6.1224371 -913.67649,4.4119229 C -911.78266,6.6566929 -906.73812,-14.019297 -904.99427,-12.043157 z"
+     id="path3216"
+     sodipodi:nodetypes="ccccssc"
+     inkscape:transform-center-y="7.5441177" />
+  <path
+     style="fill:#c7ce8a;fill-opacity:0.27906979;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 1034.3985,112.05995 C 1000.7965,98.382056 951.02536,136.94869 948.4385,171.89755 C 958.4896,187.07529 957.77596,247.49881 949.04653,258.75862 C 957.58835,264.11568 966.41104,269.35236 981.05351,272.09486 C 977.961,275.99911 979.89611,277.89231 981.05351,280.0966 C 975.16058,287.36987 971.40759,280.8864 959.71552,325.43982 C 991.11212,334.30773 1043.5383,336.28766 1056.0699,307.1025 L 1041.4977,272.5444 L 1051.5588,276.4274 C 1056.7273,271.41403 1058.3066,267.06785 1056.4033,261.42586 L 1046.4011,258.0918 C 1092.4166,225.9673 1100.4664,151.8544 1034.3985,112.05995 z"
+     id="path3235"
+     sodipodi:nodetypes="cccccccccccc"
+     inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\shootOverlay_ne0.png"
+     inkscape:export-xdpi="89"
+     inkscape:export-ydpi="89" />
+  <image
+     y="-1171.8605"
+     x="-197.02327"
+     id="image3237"
+     height="100.17495"
+     width="64.70929"
+     sodipodi:absref="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash.png"
+     xlink:href="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash.png"
+     transform="matrix(-0.3897559,0.9209182,-0.9209182,-0.3897559,0,0)"
+     style="opacity:0.81807712"
+     inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\shootOverlay_ne0.png"
+     inkscape:export-xdpi="89"
+     inkscape:export-ydpi="89" />
+  <image
+     y="-1167.1852"
+     x="-37.809971"
+     id="image3239"
+     height="103.98051"
+     width="67.167542"
+     sodipodi:absref="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash.png"
+     xlink:href="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash.png"
+     transform="matrix(0.2675556,-0.9635424,-0.9635424,-0.2675556,0,0)"
+     style="opacity:0.9246153"
+     inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\shootOverlay_ne0.png"
+     inkscape:export-xdpi="89"
+     inkscape:export-ydpi="89" />
+  <path
+     style="fill:#c7ce8a;fill-opacity:0.27906979;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M -411.20905,-220.89203 C -444.81102,-234.56992 -494.58217,-196.00329 -497.16903,-161.05443 C -487.11793,-145.87669 -487.83157,-85.453172 -496.561,-74.193362 C -488.01918,-68.836302 -479.19649,-63.599622 -464.55402,-60.857122 C -467.64653,-56.952872 -465.71142,-55.059672 -464.55402,-52.855382 C -470.44695,-45.582112 -474.19994,-52.065582 -485.89201,-7.5121621 C -454.49541,1.3557479 -402.0692,3.3356779 -389.53767,-25.849482 L -404.10987,-60.407582 L -394.04876,-56.524582 C -388.88019,-61.537952 -387.3009,-65.884132 -389.20426,-71.526122 L -399.20644,-74.860182 C -353.19091,-106.98468 -345.14114,-181.09758 -411.20905,-220.89203 z"
+     id="path3304"
+     sodipodi:nodetypes="cccccccccccc" />
+  <image
+     y="252.24867"
+     x="29.769318"
+     id="image3306"
+     height="138.08272"
+     width="132.90462"
+     sodipodi:absref="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash2.png"
+     xlink:href="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash2.png"
+     transform="matrix(-0.3800833,0.9249523,-0.9249523,-0.3800833,0,0)"
+     style="opacity:0.77730773;fill:none;fill-opacity:0.49418604" />
+  <image
+     y="246.99333"
+     x="-201.01949"
+     id="image3308"
+     height="160"
+     width="154"
+     sodipodi:absref="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash2.png"
+     xlink:href="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash2.png"
+     transform="matrix(0.4135766,-0.9104693,-0.9104693,-0.4135766,0,0)" />
+  <image
+     xlink:href="E:\DropBox\My Dropbox\Game Project\unitItems\player1unit_se.png"
+     sodipodi:absref="E:\DropBox\My Dropbox\Game Project\unitItems\player1unit_se.png"
+     width="513"
+     height="342"
+     id="image3310"
+     x="-932.64746"
+     y="146.14577"
+     style="opacity:1"
+     inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\shootOverlay_ne.png"
+     inkscape:export-xdpi="89.991127"
+     inkscape:export-ydpi="89.991127" />
+  <path
+     style="opacity:1;fill:#c7ce8a;fill-opacity:0.27906979;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M -637.91651,209.41831 C -671.51848,195.74042 -721.28963,234.30705 -723.87649,269.25591 C -713.82539,284.43365 -714.53903,344.85717 -723.26846,356.11698 C -714.72664,361.47404 -705.90395,366.71072 -691.26148,369.45322 C -694.35399,373.35747 -692.41888,375.25067 -691.26148,377.45496 C -697.15441,384.72823 -700.9074,378.24476 -712.59947,422.79818 C -681.20287,431.66609 -628.77666,433.64602 -616.24513,404.46086 L -630.81733,369.90276 L -620.75622,373.78576 C -615.58765,368.77239 -614.00836,364.42621 -615.91172,358.78422 L -625.9139,355.45016 C -579.89837,323.32566 -571.8486,249.21276 -637.91651,209.41831 z"
+     id="path3312"
+     sodipodi:nodetypes="cccccccccccc"
+     inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\shootOverlay_ne.png"
+     inkscape:export-xdpi="89.991127"
+     inkscape:export-ydpi="89.991127" />
+  <image
+     y="298.38849"
+     x="513.95355"
+     id="image3314"
+     height="138.08272"
+     width="132.90462"
+     sodipodi:absref="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash2.png"
+     xlink:href="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash2.png"
+     transform="matrix(-0.3800833,0.9249523,-0.9249523,-0.3800833,0,0)"
+     style="opacity:1;fill:none;fill-opacity:0.49418604"
+     inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\shootOverlay_ne.png"
+     inkscape:export-xdpi="89.991127"
+     inkscape:export-ydpi="89.991127" />
+  <image
+     y="275.43723"
+     x="-686.56476"
+     id="image3316"
+     height="160"
+     width="154"
+     sodipodi:absref="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash2.png"
+     xlink:href="E:\DropBox\My Dropbox\Game Project\animation\muzzleflash2.png"
+     transform="matrix(0.4135766,-0.9104693,-0.9104693,-0.4135766,0,0)"
+     inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\shootOverlay_ne.png"
+     inkscape:export-xdpi="89.991127"
+     inkscape:export-ydpi="89.991127"
+     style="opacity:1" />
+  <image
+     y="0"
+     x="0"
+     id="image2409"
+     height="342"
+     width="513"
+     sodipodi:absref="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\player2unit_n.png"
+     xlink:href="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\player2unit_n.png"
+     style="opacity:0"
+     inkscape:export-filename="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\shooting\overlay_unit_firing_n1.png"
+     inkscape:export-xdpi="89.736839"
+     inkscape:export-ydpi="89.736839" />
+  <path
+     style="fill:#c6cd6c;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:0.21511627999999999;opacity:1"
+     d="M 195.37594,80.609662 C 199.16852,87.093312 203.52885,93.6678 222.71524,102.61446 C 210.4228,145.03371 218.82836,180.98483 226.0493,217.30614 C 219.25596,243.55286 214.45784,267.13928 220.7148,275.9856 C 211.64552,273.14201 202.28644,270.97464 198.71,255.31443 L 214.71349,223.30745 L 209.379,219.30658 L 209.379,210.63802 C 164.76198,174.54336 157.86339,123.97609 195.37594,80.609662 z"
+     id="path2413"
+     sodipodi:nodetypes="ccccccccc"
+     inkscape:export-filename="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\shooting\overlay_unit_firing_n1.png"
+     inkscape:export-xdpi="89.736839"
+     inkscape:export-ydpi="89.736839" />
+  <path
+     style="fill:#c6cd6c;fill-opacity:0.21511627999999999;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:1"
+     d="M 319.09959,81.170489 C 315.30701,87.654139 310.94668,94.228627 291.76029,103.17529 C 304.05273,145.59454 295.64717,181.54566 288.42623,217.86697 C 295.21957,244.11369 300.01769,267.70011 293.76073,276.54643 C 302.83001,273.70284 312.18909,271.53547 315.76553,255.87526 L 299.76204,223.86828 L 305.09653,219.86741 L 305.09653,211.19885 C 349.71355,175.10419 356.61214,124.53692 319.09959,81.170489 z"
+     id="path3185"
+     sodipodi:nodetypes="ccccccccc"
+     inkscape:export-filename="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\shooting\overlay_unit_firing_n1.png"
+     inkscape:export-xdpi="89.736839"
+     inkscape:export-ydpi="89.736839" />
+  <image
+     y="0.78826207"
+     x="68.648056"
+     id="image3213"
+     height="206"
+     width="385"
+     sodipodi:absref="C:\Documents and Settings\Owner\Desktop\testor.png"
+     xlink:href="testor.png"
+     inkscape:export-filename="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\shooting\overlay_unit_firing_n1.png"
+     inkscape:export-xdpi="89.736839"
+     inkscape:export-ydpi="89.736839" />
+</svg>

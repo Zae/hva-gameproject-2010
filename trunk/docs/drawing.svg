@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="drawing.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3325">
+      <stop
+         style="stop-color:#ec431c;stop-opacity:1;"
+         offset="0"
+         id="stop3327" />
+      <stop
+         style="stop-color:#ec431c;stop-opacity:0;"
+         offset="1"
+         id="stop3329" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective2390"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3325"
+       id="radialGradient3331"
+       cx="50.714288"
+       cy="855.20139"
+       fx="50.714288"
+       fy="855.20139"
+       r="20"
+       gradientTransform="matrix(1.2586606,0.1805937,-0.524163,0.8423974,520.47882,134.5732)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3325"
+       id="radialGradient3337"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1.1615902,0.176882,0.6674278,-0.9294778,-212.00046,1670.4263)"
+       cx="50.714288"
+       cy="855.20139"
+       fx="50.714288"
+       fy="855.20139"
+       r="20" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="493.04326"
+     inkscape:cy="948.21526"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="753"
+     inkscape:window-x="0"
+     inkscape:window-y="12">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2397" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="opacity:1">
+    <path
+       style="opacity:1;fill:#364287;fill-opacity:0.97647059;fill-rule:evenodd;stroke:#000000;stroke-width:0.75805676px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 138.98948,93.595422 C 138.98948,93.595422 119.0852,378.76712 122.70416,376.17452 C 126.32312,373.58212 442.07727,405.98802 439.36306,400.80312 C 436.64883,395.61812 424.88722,87.114252 424.88722,87.114252 L 138.98948,93.595422 z"
+       id="path3341"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100"
+       inkscape:export-ydpi="100" />
+    <path
+       style="fill:#364287;fill-opacity:0.97647059;fill-rule:evenodd;stroke:#000000;stroke-width:0.75805676px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 89.537017,1028.1351 C 89.537017,1028.1351 69.632717,742.96338 73.251717,745.55598 C 76.870717,748.14838 392.62476,715.74248 389.91056,720.92738 C 387.19636,726.11238 375.43466,1034.6163 375.43466,1034.6163 L 89.537017,1028.1351 z"
+       id="path3339"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100"
+       inkscape:export-ydpi="100" />
+    <image
+       style="opacity:1"
+       y="735.90021"
+       x="-44.367966"
+       id="image3311"
+       height="342"
+       width="513"
+       sodipodi:absref="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\player1unit_se.png"
+       xlink:href="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\player1unit_se.png"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <image
+       y="74.709534"
+       x="10.959761"
+       id="image2392"
+       height="342"
+       width="513"
+       sodipodi:absref="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\player1unit_se.png"
+       xlink:href="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\player1unit_se.png"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:url(#radialGradient3331);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 120.82692,853.98496 C 127.63881,860.29199 155.29913,869.59037 106.29929,867.88949 C 138.93473,869.91831 160.88468,872.62354 115.67319,879.58026 C 129.82656,876.17046 150.24278,858.45497 153.15353,880.7256 C 120.24606,849.68266 149.82201,867.86063 154.99276,865.2229 C 162.78984,861.24542 161.40591,846.19541 155.2598,849.19545 C 146.07013,853.68109 154.20413,872.45081 120.82692,853.98496 z"
+       id="path3313"
+       sodipodi:nodetypes="ccccssc"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100"
+       inkscape:export-ydpi="100" />
+    <path
+       style="opacity:1;fill:#eccc1c;fill-opacity:0.22580644;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 110.56368,849.10797 C 120.69204,858.48568 161.81924,872.31114 88.96303,869.78215 C 137.48756,872.79873 170.12418,876.82106 102.90078,887.16476 C 123.94492,882.09482 154.30111,855.75429 158.62903,888.86773 C 109.7,842.71105 153.67552,869.73924 161.3637,865.81729 C 172.95693,859.9033 170.89921,837.52596 161.76076,841.98662 C 148.09697,848.65616 160.1911,876.56423 110.56368,849.10797 z"
+       id="path3315"
+       sodipodi:nodetypes="ccccssc"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100"
+       inkscape:export-ydpi="100" />
+    <path
+       style="opacity:1;fill:url(#radialGradient3337);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 312.32299,889.81232 C 307.10335,885.79883 282.64315,884.71522 328.93095,872.8584 C 298.28117,879.91977 277.93514,883.41869 322.35103,864.52659 C 308.20011,871.58978 285.22568,893.71357 286.91399,873.74115 C 312.01449,893.66555 287.50891,884.82583 282.0604,888.70454 C 273.84447,894.55333 272.14864,908.21024 278.59786,903.72602 C 288.2407,897.02123 284.25778,881.74697 312.32299,889.81232 z"
+       id="path3333"
+       sodipodi:nodetypes="ccccssc"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100"
+       inkscape:export-ydpi="100" />
+    <path
+       style="opacity:1;fill:#eccc1c;fill-opacity:0.22580644;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 321.1132,891.54517 C 313.35229,885.57766 276.98328,883.96645 345.80701,866.33697 C 300.23491,876.83628 269.9831,882.03869 336.02356,853.94868 C 314.98301,864.45071 280.82312,897.34581 283.33344,867.64949 C 320.65451,897.2744 284.21799,884.13093 276.1168,889.89805 C 263.9008,898.59442 261.37934,918.90042 270.96845,912.23298 C 285.30605,902.26386 279.38401,879.55307 321.1132,891.54517 z"
+       id="path3335"
+       sodipodi:nodetypes="ccccssc"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100"
+       inkscape:export-ydpi="100" />
+    <path
+       style="opacity:1;fill:#364287;fill-opacity:0.97647059;fill-rule:evenodd;stroke:#000000;stroke-width:0.75805676px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 407.22348,413.5342 C 407.22348,413.5342 122.05178,393.62992 124.64438,397.24888 C 127.23678,400.86784 94.830879,716.62199 100.01578,713.90778 C 105.20078,711.19355 413.70465,699.43194 413.70465,699.43194 L 407.22348,413.5342 z"
+       id="path3343"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100"
+       inkscape:export-ydpi="100" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2">
+    <path
+       style="fill:#ecbc8f;fill-opacity:0.13548387;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 311.12698,146.76042 C 266.14894,150.64979 258.07983,169.91789 243.95184,186.66145 C 245.85315,230.08586 236.90799,253.98661 232.84016,286.66655 C 237.50489,292.68438 242.02082,298.82621 254.55844,298.2833 L 232.84016,353.84169 C 261.96643,357.71322 288.9116,369.2186 328.29957,337.17418 L 312.13713,290.20208 C 372.59557,255.31605 360.82401,175.16438 311.12698,146.76042 z"
+       id="path3195"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <image
+       style="opacity:1"
+       y="371.23514"
+       x="15.231031"
+       id="image3207"
+       height="342"
+       width="513"
+       sodipodi:absref="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\player1unit_se.png"
+       xlink:href="E:\Development\hva-gameproject-2010\xna\G.O\G.O\Content\unitItems\player1unit_se.png"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#ecbc8f;fill-opacity:0.13548387;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 315.63419,442.27588 C 276.32423,446.16525 269.27198,465.43335 256.92438,482.17691 C 258.58609,525.60132 250.76819,549.50207 247.21298,582.18201 C 251.28986,588.19984 255.2367,594.34167 266.19435,593.79876 L 247.21298,649.35715 C 272.66879,653.22868 296.21837,664.73406 330.64272,632.68964 L 316.51705,585.71754 C 369.35659,550.83151 359.06847,470.67984 315.63419,442.27588 z"
+       id="path3209"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d8cb0d;fill-opacity:0.14193546;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 323.07734,584.99833 L 332.12956,564.88227 L 333.63826,588.01573 L 346.7137,586.50702 L 333.63826,597.57086 L 336.65568,615.67531 L 322.07154,601.59408 L 312.01351,612.6579 L 315.03092,595.55926 L 303.46419,580.97511 L 323.07734,584.99833 z"
+       id="path3211"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d82e0d;fill-opacity:0.1935484;fill-rule:evenodd;stroke:none;stroke-width:0.70162469px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 321.26002,594.84022 L 306.74282,591.83692 L 321.69856,587.47184 L 318.80101,579.1143 L 327.96684,586.07767 L 339.40336,581.45661 L 332.29382,593.07858 L 341.01939,598.06248 L 329.36218,598.57784 L 321.48246,608.29374 L 321.26002,594.84022 z"
+       id="path3213"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d5cc31;fill-opacity:0.38709675;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 325.57985,588.08257 C 327.59023,588.15252 350.39948,583.41098 350.39948,583.41098 L 373.71963,607.36993 L 329.83629,610.37173 L 321.78183,596.0017 L 325.57985,588.08257 z"
+       id="path3215"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#ec220d;fill-opacity:0.36129031;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 324.3127,594.22759 C 325.73511,594.9388 336.04766,599.91727 336.04766,599.91727 C 336.04766,599.91727 347.78263,597.78363 346.3602,597.07243 C 344.93778,596.36121 330.00238,591.73835 330.00238,591.73835 L 324.3127,594.22759 z"
+       id="path3217"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d8cb0d;fill-opacity:0.14193546;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 302.24991,309.14789 L 315.10706,280.57646 L 317.24991,313.4336 L 335.82134,311.29074 L 317.24991,327.00503 L 321.53563,352.71932 L 300.82134,332.71932 L 286.53563,348.4336 L 290.82134,324.14789 L 274.39277,303.4336 L 302.24991,309.14789 z"
+       id="path3257"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d82e0d;fill-opacity:0.1935484;fill-rule:evenodd;stroke:none;stroke-width:0.70162469px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 299.66872,323.12662 L 279.0495,318.86095 L 300.29159,312.66109 L 296.1761,300.79063 L 309.19462,310.6809 L 325.43824,304.11748 L 315.34035,320.62451 L 327.73354,327.70328 L 311.17645,328.43528 L 299.98466,342.23505 L 299.66872,323.12662 z"
+       id="path3259"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d5cc31;fill-opacity:0.38709675;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 305.80429,313.52853 C 308.6597,313.62789 341.05637,306.89333 341.05637,306.89333 L 374.17866,340.92295 L 311.84984,345.18649 L 300.40986,324.7763 L 305.80429,313.52853 z"
+       id="path3261"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#ec220d;fill-opacity:0.36129031;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 304.00453,322.25648 C 306.02483,323.26663 320.67204,330.3377 320.67204,330.3377 C 320.67204,330.3377 337.33956,327.30724 335.31925,326.29709 C 333.29895,325.28693 312.08575,318.72094 312.08575,318.72094 L 304.00453,322.25648 z"
+       id="path3263"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#364387;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:0.97419357"
+       d="M 480.83261,116.96092 L 480.83261,900.8393 C 480.83261,900.8393 723.26922,900.8393 725.28953,890.73777 C 727.30983,880.63625 713.16769,133.12337 713.16769,133.12337 L 480.83261,116.96092 z"
+       id="path3309"
+       sodipodi:nodetypes="ccscc"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d8cb0d;fill-opacity:0.14193546;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 581.08198,326.60584 L 593.93908,298.03441 L 596.08198,330.89155 L 614.65338,328.74869 L 596.08198,344.46298 L 600.36768,370.17727 L 579.65338,350.17727 L 565.36768,365.89155 L 569.65338,341.60584 L 553.22478,320.89155 L 581.08198,326.60584 z"
+       id="path2399"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d82e0d;fill-opacity:0.1935484;fill-rule:evenodd;stroke:none;stroke-width:0.70162469px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 578.50078,340.58457 L 557.88148,336.3189 L 579.12358,330.11904 L 575.00808,318.24858 L 588.02668,328.13885 L 604.27028,321.57543 L 594.17238,338.08246 L 606.56558,345.16123 L 590.00848,345.89323 L 578.81668,359.693 L 578.50078,340.58457 z"
+       id="path2403"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d5cc31;fill-opacity:0.38709675;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 584.63628,330.98648 C 587.49168,331.08584 619.88838,324.35128 619.88838,324.35128 L 653.01068,358.3809 L 590.68188,362.64444 L 579.24188,342.23425 L 584.63628,330.98648 z"
+       id="path2401"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#ec220d;fill-opacity:0.36129031;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 582.83658,339.71443 C 584.85688,340.72458 599.50408,347.79565 599.50408,347.79565 C 599.50408,347.79565 616.17158,344.76519 614.15128,343.75504 C 612.13098,342.74488 590.91778,336.17889 590.91778,336.17889 L 582.83658,339.71443 z"
+       id="path3193"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d8cb0d;fill-opacity:0.14193546;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 603.34848,245.25202 L 612.91658,223.98956 L 614.51128,248.44139 L 628.33188,246.8467 L 614.51128,258.54105 L 617.70058,277.67727 L 602.28538,262.79355 L 591.65408,274.4879 L 594.84348,256.41481 L 582.61758,240.99953 L 603.34848,245.25202 z"
+       id="path3219"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d82e0d;fill-opacity:0.1935484;fill-rule:evenodd;stroke:none;stroke-width:0.70162469px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 601.15398,256.36847 L 588.70288,253.7926 L 601.53008,250.04876 L 599.04488,242.88067 L 606.90628,248.853 L 616.71518,244.88962 L 610.61748,254.85755 L 618.10118,259.13213 L 608.10308,259.57416 L 601.34478,267.90728 L 601.15398,256.36847 z"
+       id="path3221"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d5cc31;fill-opacity:0.38709675;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 602.95048,251.47405 C 604.47878,251.52723 621.81838,247.92271 621.81838,247.92271 L 639.54628,266.1363 L 606.18618,268.41826 L 600.06318,257.49417 L 602.95048,251.47405 z"
+       id="path3223"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#ec220d;fill-opacity:0.36129031;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 601.87218,255.07157 C 603.89248,256.08172 618.53968,263.15279 618.53968,263.15279 C 618.53968,263.15279 635.20718,260.12233 633.18688,259.11218 C 631.16658,258.10202 609.95338,251.53603 609.95338,251.53603 L 601.87218,255.07157 z"
+       id="path3225"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d8cb0d;fill-opacity:0.14193546;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 577.70948,440.8668 L 594.89478,402.67727 L 597.75898,446.59522 L 622.58218,443.73101 L 597.75898,464.73525 L 603.48748,499.10584 L 575.80008,472.37317 L 556.70528,493.3774 L 562.43368,460.91631 L 540.47468,433.22889 L 577.70948,440.8668 z"
+       id="path3227"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d82e0d;fill-opacity:0.1935484;fill-rule:evenodd;stroke:none;stroke-width:0.70162469px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 574.37248,458.96131 L 557.98858,455.21026 L 574.86738,449.75838 L 571.59728,439.32001 L 581.94168,448.01708 L 594.84878,442.2455 L 586.82508,456.76106 L 596.67258,462.98582 L 583.51648,463.62951 L 574.62358,475.76443 L 574.37248,458.96131 z"
+       id="path3229"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d5cc31;fill-opacity:0.38709675;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 589.20148,448.76234 C 593.66048,448.87652 644.25108,441.137 644.25108,441.137 L 695.97488,480.24468 L 598.64218,485.14445 L 580.77748,461.68855 L 589.20148,448.76234 z"
+       id="path3231"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#ec220d;fill-opacity:0.36129031;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 597.22928,460.4753 C 600.67048,462.41712 625.61898,476.00993 625.61898,476.00993 C 625.61898,476.00993 654.00858,470.18444 650.56748,468.24261 C 647.12628,466.30077 610.99398,453.67888 610.99398,453.67888 L 597.22928,460.4753 z"
+       id="path3233"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d8cb0d;fill-opacity:0.21290325;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 582.88688,574.43551 L 598.17598,540.45967 L 600.72418,579.53189 L 622.80848,576.9837 L 600.72418,595.67042 L 605.82058,626.2487 L 581.18808,602.4656 L 564.20018,621.15231 L 569.29658,592.27285 L 549.76038,567.64034 L 582.88688,574.43551 z"
+       id="path3243"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d5cc31;fill-opacity:0.38709675;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 635.73578,594.90457 C 639.11648,595.04654 677.47328,585.42272 677.47328,585.42272 L 716.68918,634.05176 L 642.89358,640.14446 L 629.34898,610.97786 L 635.73578,594.90457 z"
+       id="path3247"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#ec220d;fill-opacity:0.36129031;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 639.37218,608.86039 C 641.43828,609.93265 656.41778,617.4385 656.41778,617.4385 C 656.41778,617.4385 673.46348,614.22171 671.39738,613.14944 C 669.33118,612.07717 647.63678,605.10745 647.63678,605.10745 L 639.37218,608.86039 z"
+       id="path3249"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d8cb0d;fill-opacity:0.07741939;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 535.41608,698.41798 L 558.34318,647.46902 L 562.16428,706.06033 L 595.28118,702.23915 L 562.16428,730.2611 L 569.80668,776.11519 L 532.86868,740.45091 L 507.39418,768.47283 L 515.03648,725.16621 L 485.74088,688.22818 L 535.41608,698.41798 z"
+       id="path3251"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+    <path
+       style="fill:#d5cc31;fill-opacity:0.23225804;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 632.76218,729.66511 C 635.56228,729.85897 667.33158,716.71779 667.33158,716.71779 L 699.81248,783.12004 L 638.69068,791.43953 L 627.47218,751.61296 L 632.76218,729.66511 z"
+       id="path3253"
+       inkscape:export-filename="C:\Documents and Settings\Owner\Desktop\gunfire.png"
+       inkscape:export-xdpi="100.71486"
+       inkscape:export-ydpi="100.71486" />
+  </g>
+</svg>
