@@ -46,6 +46,7 @@ namespace ION
 
         public InputEvents input;
         public GUIManager gui;
+        private Skin skin;
 
         /// <summary>
         /// Helper variable for the user input handled by this class.
@@ -148,6 +149,10 @@ namespace ION
             // Create a new SpriteBatch, which can be used to drawDebug textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             primitiveBatch = new PrimitiveBatch(GraphicsDevice);
+
+            //Loading skin for GUI
+            skin = Content.Load<Skin>("IONSkin");
+            this.gui.ApplySkin(skin, true, true);
            
             //Loading Fonts
             Fonts.font = Content.Load<SpriteFont>("fontItems/TitleFont");
