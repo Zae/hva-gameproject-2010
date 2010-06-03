@@ -10,32 +10,38 @@ namespace ION
 {
     class GuiTestState  : State
     {
-        private TextBox textbox;
-        private TextButton textbutton;
-        private CheckBox check;
-
         private List<UIComponent> ComponentList;
+
+        private CheckBox check;
 
         public GuiTestState()
         {
             ComponentList = new List<UIComponent>();
             //
-            textbox = new TextBox(ION.instance, ION.instance.gui);
+            TextBox textbox = new TextBox(ION.instance, ION.instance.gui);
             textbox.X = 100;
             textbox.Y = 100;
-            textbutton = new TextButton(ION.instance, ION.instance.gui);
+            TextButton textbutton = new TextButton(ION.instance, ION.instance.gui);
             textbutton.X = 200;
-            textbutton.Y = 200;
+            textbutton.Y = 100;
             textbutton.Text = "Knopje";
             check = new CheckBox(ION.instance, ION.instance.gui);
             check.X = 300;
-            check.Y = 300;
+            check.Y = 100;
+            ComboBox combo = new ComboBox(ION.instance, ION.instance.gui);
+            combo.X = 400;
+            combo.Y = 100;
+            combo.AddEntry("Testing");
+            combo.AddEntry("the");
+            combo.AddEntry("combo");
+            combo.AddEntry("box");
             //
             textbutton.Click += new ClickHandler(textbutton_Click);
             //
             ComponentList.Add(textbox);
             ComponentList.Add(textbutton);
             ComponentList.Add(check);
+            ComponentList.Add(combo);
         }
 
         void textbutton_Click(UIComponent sender)
@@ -59,7 +65,7 @@ namespace ION
                 ION.instance.gui.Add(uicomponent);
             }
             //
-            ION.get().IsMouseVisible = true;
+            ION.get().IsMouseVisible = false;
             MediaPlayer.Play(Sounds.titleSong);
             MediaPlayer.IsRepeating = true;
         }

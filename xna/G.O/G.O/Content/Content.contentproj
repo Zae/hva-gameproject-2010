@@ -502,8 +502,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultSkin.skin">
-      <Name>DefaultSkin</Name>
+    <Compile Include="IONSkin.skin">
+      <Name>IONSkin</Name>
       <Importer>SkinImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </Compile>
@@ -516,6 +516,11 @@
       <Name>DefaultHeading</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultSkin.skin">
+      <Name>DefaultSkin</Name>
+      <Importer>SkinImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <None Include="levelItems\WideLevelTest2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1119,6 +1124,13 @@
     </Compile>
     <Compile Include="turretItems\firing_animation\overlay_turret_firing_w1.png">
       <Name>overlay_turret_firing_w1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\IONStyle.png">
+      <Name>IONStyle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
