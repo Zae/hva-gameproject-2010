@@ -75,6 +75,10 @@ namespace ION
             selectionRectangle.Width = (int)(baseHalfWidth * 0.75);
             selectionRectangle.Height = (int)(baseHalfHeight * 3);
 
+            focalPoint.X = selectionRectangle.Center.X;
+            focalPoint.Y = selectionRectangle.Center.Y;
+
+
             drawingRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x));
             drawingRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2));
             drawingRectangle.Width = (int)(baseHalfWidth * 2);
@@ -204,17 +208,11 @@ namespace ION
 
                 if (FiringFrame < 2)
                 {
-                    //do not remove
-                    //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
-
-                    ION.spriteBatch.Draw(Images.tower_shooting_overlay[(int)facing, FiringFrame],firingRectangle, Color.White);
+                    ION.spriteBatch.Draw(Images.tower_shooting_overlay[(int)facing, FiringFrame], firingRectangle, Color.White);
                 }
                 else if (FiringFrame >= 2)
                 {
-                    //do not remove
-                    //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
-
-                    //ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    //Do not shot fire animation 
                 }
                 return true;
             }
