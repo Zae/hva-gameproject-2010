@@ -94,7 +94,12 @@ namespace ION.MultiPlayer
 
                 for (int i = queueLength - 1; i > -1; i--)
                 {
-                    if (commandsQueue[i].supposedGameTick <= command.supposedGameTick)
+                    if (commandsQueue[i].supposedGameTick < command.supposedGameTick)
+                    {
+                        commandsQueue.Insert(i + 1, command);
+                        break;
+                    }
+                    else if (commandsQueue[i].supposedGameTick == command.supposedGameTick)
                     {
                         if (commandsQueue[i].owner == command.owner)
                         {
@@ -110,7 +115,6 @@ namespace ION.MultiPlayer
                             break;
                         }
                     }
-
                 }
                 
             }

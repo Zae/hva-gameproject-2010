@@ -16,12 +16,11 @@
     </ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
     <ManifestCertificateThumbprint>A92174E4D31BF35CE0C9A7F0E3F8CA06BC911D4F</ManifestCertificateThumbprint>
     <ManifestKeyFile>ION_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
-    <PublishUrl>F:\Projecten\Verdieping 2\Blok 3\Land Conquerer\published\</PublishUrl>
+    <PublishUrl>C:\Documents and Settings\Owner\Desktop\ION\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -35,7 +34,7 @@
     <ProductName>ION</ProductName>
     <PublisherName>Game Ninjas</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>

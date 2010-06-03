@@ -127,6 +127,9 @@ namespace ION
             selectionRectangle.Width = (int)(baseHalfWidth * 0.75);
             selectionRectangle.Height = (int)(baseHalfHeight * 3);
 
+            focalPoint.X = selectionRectangle.Center.X;
+            focalPoint.Y = selectionRectangle.Center.Y;
+
             drawingRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x));
             drawingRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2));
             drawingRectangle.Width = (int)(baseHalfWidth * 2);

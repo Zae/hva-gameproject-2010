@@ -19,6 +19,8 @@ namespace ION.Tools
 
         public Random r = new Random(123);
 
+        public bool managePlayer = true;
+
         public StupidAI(int ai)
         {
             this.ai = ai;
@@ -32,7 +34,7 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 5)
+                if (aiUnits.Count < 25)
                 {
                     serial++;
                     CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), serial,ai, newId++));
@@ -53,6 +55,39 @@ namespace ION.Tools
                                                                             , x
                                                                             , y));
                         
+                    }
+                }
+
+                if (managePlayer)
+                {
+                    //do things
+                    List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
+
+                    if (playerUnits.Count < 25)
+                    {
+                        serial++;
+                        CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick()
+                                                                    , CommandDispatcher.getSerial()
+                                                                    , Grid.playerNumber
+                                                                    , Grid.getNewId()));
+                    }
+
+                    foreach (Unit u in playerUnits)
+                    {
+                        if (u.destination.Count == 0)
+                        {
+                            int x = (int)(Grid.width * r.NextDouble());
+                            int y = (int)(Grid.height * r.NextDouble());
+
+                            serial++;
+                            CommandDispatcher.issueCommand(new NewMoveCommand(CommandDispatcher.getSupposedGameTick()
+                                                                                , CommandDispatcher.getSerial()
+                                                                                , u.owner
+                                                                                , u.id
+                                                                                , x
+                                                                                , y));
+
+                        }
                     }
                 }
 
