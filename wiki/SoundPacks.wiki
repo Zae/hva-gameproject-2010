@@ -1,0 +1,11 @@
+#summary Explanation of Sound Packs
+#labels Featured
+
+= Introduction =
+
+All soundpacks created here are freely downloadable under the [http://creativecommons.org/licenses/by/3.0/ Creative Commons 3.0 BY] license.
+
+
+= Details =
+
+The packs are divided in splitted archives to overcome the 100MB cap of googlecode. You need [http://www.7-zip.org/ 7-zip] to decompress the archives.
