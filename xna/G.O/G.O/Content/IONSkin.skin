@@ -57,45 +57,45 @@
 	<WindowSystem.MenuBar
 		HMargin = "5"
         VMargin = "2"
-        Skin = "78,67,13,15"
+        Skin = "34,176,13,15"
 			/>
 	<WindowSystem.MenuItem
 		HMargin = "5"
         VMargin = "2"
-        HighlightSkin = "61,67,15,15"
-        ArrowSkin = "114,43,4,7"
+        HighlightSkin = "53,176,15,15"
+        ArrowSkin = "114,45,7,11"
 			/>
 	<WindowSystem.MessageBox
-		InfoSkin = "1,91,25,25"
-        ErrorSkin = "27,91,25,25"
-        WarningSkin = "53,91,25,25"
-        QuestionSkin = "79,91,25,25"
+		InfoSkin = "163,7,25,26"
+        ErrorSkin = "6,38,25,26"
+        WarningSkin = "5,5,26,25"
+        QuestionSkin = "163,38,26,26"
 			/>
 	<WindowSystem.PopUpMenu
 		HMargin = "2"
         VMargin = "2"
-        Skin = "84,41,25,25"
+        Skin = "6,175,25,25"
 		   />
 	<WindowSystem.RadioButton
-		Skin = "1,59,15,15"
-        HoverSkin = "17,59,15,15"
-        PressedSkin = "33,59,15,15"
-        CheckedSkin = "1,75,15,15"
-        CheckedHoverSkin = "17,75,15,15"
-        CheckedPressedSkin = "33,75,15,15"
+		Skin = "6,75,25,25"
+        HoverSkin = "33,75,26,26"
+        PressedSkin = "59,75,26,25"
+        CheckedSkin = "163,70,25,25"
+        CheckedHoverSkin = "190,70,25,25"
+        CheckedPressedSkin = "216,70,26,25"
 		   />
 	<WindowSystem.ScrollBar
 		ButtonSize = "17"
-        BackgroundSkin = "66,5,17,17"
-        TopButtonSkin = "84,23,17,17"
-        TopButtonHoverSkin = "102,23,17,17"
-        TopButtonPressedSkin = "120,23,17,17"
-        BottomButtonSkin = "84,5,17,17"
-        BottomButtonHoverSkin = "102,5,17,17"
-        BottomButtonPressedSkin = "120,5,17,17"
-        ThumbSkin = "66,23,17,10"
-        ThumbHoverSkin = "66,34,17,10"
-        ThumbPressedSkin = "66,45,17,10"
+        BackgroundSkin = "6,203,17,17"
+        TopButtonSkin = "163,102,26,26"
+        TopButtonHoverSkin = "190,102,26,26"
+        TopButtonPressedSkin = "217,102,26,26"
+        BottomButtonSkin = "163,136,26,26"
+        BottomButtonHoverSkin = "189,136,26,26"
+        BottomButtonPressedSkin = "216,136,26,26"
+        ThumbSkin = "163,169,26,13"
+        ThumbHoverSkin = "190,169,26,13"
+        ThumbPressedSkin = "217,169,26,13"
 		   />
 	<WindowSystem.TextBox
 		Width = "260"
@@ -103,28 +103,28 @@
         HMargin = "5"
         VMargin = "2"
         Font = "Content/Fonts/DefaultFont"
-        Skin = "84,41,25,25"
+        Skin = "6,175,25,25"
 		   />
 	<WindowSystem.TextButton
 		Width = "65"
         Height = "25"
         EdgeSize = "12"
         Font = "Content/Fonts/DefaultFont"
-        Skin = "1,142,25,25"
-        HoverSkin = "27,142,25,25"
-        PressedSkin = "52,142,25,25"
+        Skin = "6,75,25,25"
+        HoverSkin = "33,75,25,25"
+        PressedSkin = "60,75,25,25"
 		   />
 	<WindowSystem.Window
 		HasCloseButton = "false"
         HasFullWindowMovableArea = "true"
         TitleBarHeight = "24"
-        ButtonSize = "20"
+        ButtonSize = "25"
         Margin = "5"
         TitleFont = "Content/Fonts/DefaultHeading"
-        Skin = "15,1,15,15"
-        TitleBarSkin = "1,1,13,25"
-        CloseButtonSkin = "1,168,20,20"
-        CloseButtonHoverSkin = "22,168,20,20"
-        CloseButtonPressedSkin = "43,168,20,20"
+        Skin = "140,42,15,15"
+        TitleBarSkin = "141,8,13,25"
+        CloseButtonSkin = "6,38,25,26"
+        CloseButtonHoverSkin = "33,38,26,25"
+        CloseButtonPressedSkin = "61,38,26,26"
 		   />
 </Skin>

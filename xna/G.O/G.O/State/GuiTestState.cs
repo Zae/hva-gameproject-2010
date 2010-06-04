@@ -20,7 +20,7 @@ namespace ION
             //
             TextBox textbox = new TextBox(ION.instance, ION.instance.gui);
             textbox.X = 100;
-            textbox.Y = 100;
+            textbox.Y = 200;
             TextButton textbutton = new TextButton(ION.instance, ION.instance.gui);
             textbutton.X = 200;
             textbutton.Y = 100;
@@ -35,6 +35,9 @@ namespace ION
             combo.AddEntry("the");
             combo.AddEntry("combo");
             combo.AddEntry("box");
+            RadioButton radio = new RadioButton(ION.instance, ION.instance.gui);
+            radio.X = 200;
+            radio.Y = 400;
             //
             textbutton.Click += new ClickHandler(textbutton_Click);
             //
@@ -42,6 +45,7 @@ namespace ION
             ComponentList.Add(textbutton);
             ComponentList.Add(check);
             ComponentList.Add(combo);
+            ComponentList.Add(radio);
         }
 
         void textbutton_Click(UIComponent sender)
