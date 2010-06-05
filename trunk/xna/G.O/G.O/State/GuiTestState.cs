@@ -22,7 +22,7 @@ namespace ION
             textbox.X = 100;
             textbox.Y = 200;
             TextButton textbutton = new TextButton(ION.instance, ION.instance.gui);
-            textbutton.X = 200;
+            textbutton.X = 100;
             textbutton.Y = 100;
             textbutton.Text = "Knopje";
             check = new CheckBox(ION.instance, ION.instance.gui);

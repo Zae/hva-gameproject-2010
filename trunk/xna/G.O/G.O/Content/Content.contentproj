@@ -522,6 +522,14 @@
       <Importer>SkinImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </Compile>
+    <Compile Include="Fonts\Pericles.spritefont">
+      <Name>Pericles</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <None Include="Fonts\Peric.ttf">
+      <Name>Peric</Name>
+    </None>
     <None Include="levelItems\WideLevelTest2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Name>WideLevelTest2</Name>
