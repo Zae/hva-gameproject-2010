@@ -27,7 +27,7 @@
 	<WindowSystem.CheckBox
 		Height = "26"
 		HMargin = "5"
-		Font = "Content/Fonts/DefaultFont"
+		Font = "Content/Fonts/Pericles"
 		Skin = "6,110,26,26"
 		HoverSkin = "33,110,26,26"
 		PressedSkin = "59,110,26,26"
@@ -43,7 +43,7 @@
         ButtonPressedSkin = "217,136,25,25"
 			/>
 	<WindowSystem.Label
-		Font = "Content/Fonts/DefaultFont"
+		Font = "Content/Fonts/Pericles"
         Color = "0,0,0,255"
 			/>
 	<WindowSystem.ListBox
@@ -51,7 +51,7 @@
         Height = "150"
         HMargin = "5"
         VMargin = "2"
-        Font = "Content/Fonts/DefaultFont"
+        Font = "Content/Fonts/Pericles"
         Skin = "6,175,25,25"
 			/>
 	<WindowSystem.MenuBar
@@ -102,17 +102,17 @@
         Height = "25"
         HMargin = "5"
         VMargin = "2"
-        Font = "Content/Fonts/DefaultFont"
+        Font = "Content/Fonts/Pericles"
         Skin = "6,175,25,25"
 		   />
 	<WindowSystem.TextButton
-		Width = "65"
-        Height = "25"
-        EdgeSize = "12"
-        Font = "Content/Fonts/DefaultFont"
-        Skin = "6,75,25,25"
-        HoverSkin = "33,75,25,25"
-        PressedSkin = "60,75,25,25"
+		Width = "205"
+        Height = "50"
+        EdgeSize = "4"
+        Font = "Content/Fonts/Pericles"
+        Skin = "7,224,9,21"
+        HoverSkin = "7,224,9,21"
+        PressedSkin = "7,224,9,21"
 		   />
 	<WindowSystem.Window
 		HasCloseButton = "false"
@@ -120,7 +120,7 @@
         TitleBarHeight = "24"
         ButtonSize = "25"
         Margin = "5"
-        TitleFont = "Content/Fonts/DefaultHeading"
+        TitleFont = "Content/Fonts/Pericles"
         Skin = "140,42,15,15"
         TitleBarSkin = "141,8,13,25"
         CloseButtonSkin = "6,38,25,26"
