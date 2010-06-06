@@ -20,6 +20,11 @@ namespace ION.Tools
         private static SoundEffectInstance selectUnit;
         private static SoundEffectInstance orderUnit;
 
+        private static int voiceCount = -1;
+        private static int voiceMaxCount = 3;
+
+        private static Coordinate coordinate = null;
+
         public static void init()
         {
             firesoundsCount = Sounds.fireSounds.Length;
@@ -39,19 +44,57 @@ namespace ION.Tools
            
         }
 
+        public static void playCoordinate()
+        {
+            if (coordinate != null)
+            {
+                if (!coordinate.update())
+                {
+                    coordinate = null;
+                }
+            }
+        }
+
+        public static void setCoordinate(Coordinate c)
+        {
+            if (coordinate == null)
+            {
+                coordinate = c;
+            }
+        }
+
+        public static int getVoiceCount()
+        {
+            voiceCount++;
+            if (voiceCount < voiceMaxCount)
+            {
+                return voiceCount;
+            }
+            else
+            {
+                voiceCount = 0;
+                return voiceCount;
+            }
+        }
+
         public static void update()
         {
            //Debug.WriteLine("SM: loa=" + levelOfAction);
-            
             if (levelOfAction > 0)
             {
-                StateTest.get().actionOnScreen = true;
                 levelOfAction--;
+            }
+
+            if (levelOfAction > 15)
+            {
+                StateTest.get().actionOnScreen = true;
             }
             else
             {
                 StateTest.get().actionOnScreen = false;
             }
+
+            playCoordinate();
         }
 
         public static void fireSound(int ticks)

@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Storage;
 using FluorineFx.Net;
 using WindowSystem;
 using InputEventSystem;
+using ION.Tools;
 
 
 namespace ION
@@ -144,8 +145,6 @@ namespace ION
         /// </summary>
         protected override void LoadContent()
         {
-            
-            
             // Create a new SpriteBatch, which can be used to drawDebug textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             primitiveBatch = new PrimitiveBatch(GraphicsDevice);
@@ -336,6 +335,28 @@ namespace ION
             for (int i = 0; i < 2; i++)
             {
                 Sounds.fireSounds[i] = Content.Load<SoundEffect>("sfxItems/laser"+i);
+            }
+
+            Sounds.alphabet = new SoundEffect[3, 26];
+            int k = 1;
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 26; j++)
+                {
+                    Sounds.alphabet[i, j] = Content.Load<SoundEffect>("voiceItems/alphabet/Ezra_" + CoordinateTool.alphabet[j] + "_" + k);
+                }
+                k++;
+            }
+            k = 1;
+            Sounds.numbers = new SoundEffect[3, 10];
+            for (int i = 0; i < 3; i++)
+            {
+                
+                for (int j = 0; j < 10; j++)
+                {
+                    Sounds.numbers[i, j] = Content.Load<SoundEffect>("voiceItems/numbers/Ezra_" + j + "_" + k);
+                }
+                k++;
             }
 
             //Set the inital state

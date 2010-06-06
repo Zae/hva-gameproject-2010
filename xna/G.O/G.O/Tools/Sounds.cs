@@ -23,5 +23,8 @@ namespace ION
 
 
         public static SoundEffect[] fireSounds;
+
+        public static SoundEffect[,] alphabet;
+        public static SoundEffect[,] numbers;
     }
 }
