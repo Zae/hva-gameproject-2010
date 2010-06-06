@@ -503,7 +503,8 @@ namespace ION
 
             if (selectedTile == null)
             {
-                Debug.WriteLine("HEEELP TILE IS NULL! getTile()");
+                //Debug.WriteLine("HEEELP TILE IS NULL! getTile()");
+                //Can't return null so we send something that is invalid
                 return new Vector2(-1, -1);
             }
 

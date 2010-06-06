@@ -1144,1247 +1144,1247 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Voice Samples\Ezra_0_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_0_1.wav">
       <Name>Ezra_0_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_0_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_0_2.wav">
       <Name>Ezra_0_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_0_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_0_3.wav">
       <Name>Ezra_0_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_1_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_1_1.wav">
       <Name>Ezra_1_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_1_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_1_2.wav">
       <Name>Ezra_1_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_1_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_1_3.wav">
       <Name>Ezra_1_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_2_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_2_1.wav">
       <Name>Ezra_2_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_2_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_2_2.wav">
       <Name>Ezra_2_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_2_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_2_3.wav">
       <Name>Ezra_2_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_3_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_3_1.wav">
       <Name>Ezra_3_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_3_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_3_2.wav">
       <Name>Ezra_3_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_3_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_3_3.wav">
       <Name>Ezra_3_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_4_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_4_1.wav">
       <Name>Ezra_4_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_4_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_4_2.wav">
       <Name>Ezra_4_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_4_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_4_3.wav">
       <Name>Ezra_4_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_5_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_5_1.wav">
       <Name>Ezra_5_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_5_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_5_2.wav">
       <Name>Ezra_5_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_5_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_5_3.wav">
       <Name>Ezra_5_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_6_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_6_1.wav">
       <Name>Ezra_6_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_6_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_6_2.wav">
       <Name>Ezra_6_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_6_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_6_3.wav">
       <Name>Ezra_6_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_7_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_7_1.wav">
       <Name>Ezra_7_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_7_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_7_2.wav">
       <Name>Ezra_7_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_7_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_7_3.wav">
       <Name>Ezra_7_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_8_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_8_1.wav">
       <Name>Ezra_8_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_8_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_8_2.wav">
       <Name>Ezra_8_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_8_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_8_3.wav">
       <Name>Ezra_8_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_9_1.wav">
+    <Compile Include="voiceItems\numbers\Ezra_9_1.wav">
       <Name>Ezra_9_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_9_2.wav">
+    <Compile Include="voiceItems\numbers\Ezra_9_2.wav">
       <Name>Ezra_9_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_9_3.wav">
+    <Compile Include="voiceItems\numbers\Ezra_9_3.wav">
       <Name>Ezra_9_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Aarrggh_1.wav">
+    <Compile Include="voiceItems\Ezra_Aarrggh_1.wav">
       <Name>Ezra_Aarrggh_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Aarrggh_2.wav">
+    <Compile Include="voiceItems\Ezra_Aarrggh_2.wav">
       <Name>Ezra_Aarrggh_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Aarrggh_3.wav">
+    <Compile Include="voiceItems\Ezra_Aarrggh_3.wav">
       <Name>Ezra_Aarrggh_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Aarrggh_4.wav">
+    <Compile Include="voiceItems\Ezra_Aarrggh_4.wav">
       <Name>Ezra_Aarrggh_4</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Aarrggh_5.wav">
+    <Compile Include="voiceItems\Ezra_Aarrggh_5.wav">
       <Name>Ezra_Aarrggh_5</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Aarrggh_6.wav">
+    <Compile Include="voiceItems\Ezra_Aarrggh_6.wav">
       <Name>Ezra_Aarrggh_6</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Affirmative_1.wav">
+    <Compile Include="voiceItems\Ezra_Affirmative_1.wav">
       <Name>Ezra_Affirmative_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Affirmative_2.wav">
+    <Compile Include="voiceItems\Ezra_Affirmative_2.wav">
       <Name>Ezra_Affirmative_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Affirmative_3.wav">
+    <Compile Include="voiceItems\Ezra_Affirmative_3.wav">
       <Name>Ezra_Affirmative_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_alpha_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_alpha_1.wav">
       <Name>Ezra_alpha_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_alpha_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_alpha_2.wav">
       <Name>Ezra_alpha_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_alpha_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_alpha_3.wav">
       <Name>Ezra_alpha_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_AtYourService_1.wav">
+    <Compile Include="voiceItems\Ezra_AtYourService_1.wav">
       <Name>Ezra_AtYourService_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_AtYourService_2.wav">
+    <Compile Include="voiceItems\Ezra_AtYourService_2.wav">
       <Name>Ezra_AtYourService_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_AtYourService_3.wav">
+    <Compile Include="voiceItems\Ezra_AtYourService_3.wav">
       <Name>Ezra_AtYourService_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_bistwo_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_bistwo_1.wav">
       <Name>Ezra_bistwo_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_bistwo_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_bistwo_2.wav">
       <Name>Ezra_bistwo_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_bistwo_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_bistwo_3.wav">
       <Name>Ezra_bistwo_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_bravo_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_bravo_1.wav">
       <Name>Ezra_bravo_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_bravo_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_bravo_2.wav">
       <Name>Ezra_bravo_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_bravo_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_bravo_3.wav">
       <Name>Ezra_bravo_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_charlie_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_charlie_1.wav">
       <Name>Ezra_charlie_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_charlie_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_charlie_2.wav">
       <Name>Ezra_charlie_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_charlie_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_charlie_3.wav">
       <Name>Ezra_charlie_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ComingRightOver_1.wav">
+    <Compile Include="voiceItems\Ezra_ComingRightOver_1.wav">
       <Name>Ezra_ComingRightOver_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ComingRightOver_2.wav">
+    <Compile Include="voiceItems\Ezra_ComingRightOver_2.wav">
       <Name>Ezra_ComingRightOver_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ComingRightOver_3.wav">
+    <Compile Include="voiceItems\Ezra_ComingRightOver_3.wav">
       <Name>Ezra_ComingRightOver_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ConsidderItDone_1.wav">
+    <Compile Include="voiceItems\Ezra_ConsidderItDone_1.wav">
       <Name>Ezra_ConsidderItDone_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ConsidderItDone_2.wav">
+    <Compile Include="voiceItems\Ezra_ConsidderItDone_2.wav">
       <Name>Ezra_ConsidderItDone_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ConsidderItDone_3.wav">
+    <Compile Include="voiceItems\Ezra_ConsidderItDone_3.wav">
       <Name>Ezra_ConsidderItDone_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Copy_1.wav">
+    <Compile Include="voiceItems\Ezra_Copy_1.wav">
       <Name>Ezra_Copy_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Copy_2.wav">
+    <Compile Include="voiceItems\Ezra_Copy_2.wav">
       <Name>Ezra_Copy_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Copy_3.wav">
+    <Compile Include="voiceItems\Ezra_Copy_3.wav">
       <Name>Ezra_Copy_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_DefensiveMode_1.wav">
+    <Compile Include="voiceItems\Ezra_DefensiveMode_1.wav">
       <Name>Ezra_DefensiveMode_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_DefensiveMode_2.wav">
+    <Compile Include="voiceItems\Ezra_DefensiveMode_2.wav">
       <Name>Ezra_DefensiveMode_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_DefensiveMode_3.wav">
+    <Compile Include="voiceItems\Ezra_DefensiveMode_3.wav">
       <Name>Ezra_DefensiveMode_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_delta_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_delta_1.wav">
       <Name>Ezra_delta_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_delta_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_delta_2.wav">
       <Name>Ezra_delta_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_delta_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_delta_3.wav">
       <Name>Ezra_delta_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_echo_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_echo_1.wav">
       <Name>Ezra_echo_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_echo_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_echo_2.wav">
       <Name>Ezra_echo_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_echo_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_echo_3.wav">
       <Name>Ezra_echo_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_FinallySomeAction_1.wav">
+    <Compile Include="voiceItems\Ezra_FinallySomeAction_1.wav">
       <Name>Ezra_FinallySomeAction_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_FinallySomeAction_2.wav">
+    <Compile Include="voiceItems\Ezra_FinallySomeAction_2.wav">
       <Name>Ezra_FinallySomeAction_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_FinallySomeAction_3.wav">
+    <Compile Include="voiceItems\Ezra_FinallySomeAction_3.wav">
       <Name>Ezra_FinallySomeAction_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_foxtrot_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_foxtrot_1.wav">
       <Name>Ezra_foxtrot_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_foxtrot_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_foxtrot_2.wav">
       <Name>Ezra_foxtrot_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_foxtrot_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_foxtrot_3.wav">
       <Name>Ezra_foxtrot_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_GoAhead_1.wav">
+    <Compile Include="voiceItems\Ezra_GoAhead_1.wav">
       <Name>Ezra_GoAhead_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_GoAhead_2.wav">
+    <Compile Include="voiceItems\Ezra_GoAhead_2.wav">
       <Name>Ezra_GoAhead_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_GoAhead_3.wav">
+    <Compile Include="voiceItems\Ezra_GoAhead_3.wav">
       <Name>Ezra_GoAhead_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Going_1.wav">
+    <Compile Include="voiceItems\Ezra_Going_1.wav">
       <Name>Ezra_Going_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Going_2.wav">
+    <Compile Include="voiceItems\Ezra_Going_2.wav">
       <Name>Ezra_Going_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Going_3.wav">
+    <Compile Include="voiceItems\Ezra_Going_3.wav">
       <Name>Ezra_Going_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_golf_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_golf_1.wav">
       <Name>Ezra_golf_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_golf_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_golf_2.wav">
       <Name>Ezra_golf_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_golf_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_golf_3.wav">
       <Name>Ezra_golf_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_HelpMe_1.wav">
+    <Compile Include="voiceItems\Ezra_HelpMe_1.wav">
       <Name>Ezra_HelpMe_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_HelpMe_2.wav">
+    <Compile Include="voiceItems\Ezra_HelpMe_2.wav">
       <Name>Ezra_HelpMe_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_HelpMe_3.wav">
+    <Compile Include="voiceItems\Ezra_HelpMe_3.wav">
       <Name>Ezra_HelpMe_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_hotel_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_hotel_1.wav">
       <Name>Ezra_hotel_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_hotel_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_hotel_2.wav">
       <Name>Ezra_hotel_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_hotel_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_hotel_3.wav">
       <Name>Ezra_hotel_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_india_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_india_1.wav">
       <Name>Ezra_india_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_india_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_india_2.wav">
       <Name>Ezra_india_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_india_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_india_3.wav">
       <Name>Ezra_india_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_juliet_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_juliet_1.wav">
       <Name>Ezra_juliet_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_juliet_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_juliet_2.wav">
       <Name>Ezra_juliet_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_juliet_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_juliet_3.wav">
       <Name>Ezra_juliet_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_kartefour_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_kartefour_1.wav">
       <Name>Ezra_kartefour_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_kartefour_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_kartefour_2.wav">
       <Name>Ezra_kartefour_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_kartefour_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_kartefour_3.wav">
       <Name>Ezra_kartefour_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_kilo_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_kilo_1.wav">
       <Name>Ezra_kilo_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_kilo_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_kilo_2.wav">
       <Name>Ezra_kilo_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_kilo_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_kilo_3.wav">
       <Name>Ezra_kilo_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_lima_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_lima_1.wav">
       <Name>Ezra_lima_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_lima_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_lima_2.wav">
       <Name>Ezra_lima_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_lima_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_lima_3.wav">
       <Name>Ezra_lima_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_LockedAndLoaded_1.wav">
+    <Compile Include="voiceItems\Ezra_LockedAndLoaded_1.wav">
       <Name>Ezra_LockedAndLoaded_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_LockedAndLoaded_2.wav">
+    <Compile Include="voiceItems\Ezra_LockedAndLoaded_2.wav">
       <Name>Ezra_LockedAndLoaded_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_LockedAndLoaded_3.wav">
+    <Compile Include="voiceItems\Ezra_LockedAndLoaded_3.wav">
       <Name>Ezra_LockedAndLoaded_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Mayday_1.wav">
+    <Compile Include="voiceItems\Ezra_Mayday_1.wav">
       <Name>Ezra_Mayday_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Mayday_2.wav">
+    <Compile Include="voiceItems\Ezra_Mayday_2.wav">
       <Name>Ezra_Mayday_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Mayday_3.wav">
+    <Compile Include="voiceItems\Ezra_Mayday_3.wav">
       <Name>Ezra_Mayday_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_mike_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_mike_1.wav">
       <Name>Ezra_mike_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_mike_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_mike_2.wav">
       <Name>Ezra_mike_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_mike_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_mike_3.wav">
       <Name>Ezra_mike_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_MovingToSector_1.wav">
+    <Compile Include="voiceItems\Ezra_MovingToSector_1.wav">
       <Name>Ezra_MovingToSector_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_MovingToSector_2.wav">
+    <Compile Include="voiceItems\Ezra_MovingToSector_2.wav">
       <Name>Ezra_MovingToSector_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_MovingToSector_3.wav">
+    <Compile Include="voiceItems\Ezra_MovingToSector_3.wav">
       <Name>Ezra_MovingToSector_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_nadazero_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_nadazero_1.wav">
       <Name>Ezra_nadazero_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_nadazero_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_nadazero_2.wav">
       <Name>Ezra_nadazero_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_nadazero_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_nadazero_3.wav">
       <Name>Ezra_nadazero_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Negative_1.wav">
+    <Compile Include="voiceItems\Ezra_Negative_1.wav">
       <Name>Ezra_Negative_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Negative_2.wav">
+    <Compile Include="voiceItems\Ezra_Negative_2.wav">
       <Name>Ezra_Negative_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Negative_3.wav">
+    <Compile Include="voiceItems\Ezra_Negative_3.wav">
       <Name>Ezra_Negative_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_novaniner_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_novaniner_1.wav">
       <Name>Ezra_novaniner_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_novaniner_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_novaniner_2.wav">
       <Name>Ezra_novaniner_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_novaniner_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_novaniner_3.wav">
       <Name>Ezra_novaniner_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_november_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_november_1.wav">
       <Name>Ezra_november_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_november_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_november_2.wav">
       <Name>Ezra_november_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_november_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_november_3.wav">
       <Name>Ezra_november_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_octoeight_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_octoeight_1.wav">
       <Name>Ezra_octoeight_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_octoeight_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_octoeight_2.wav">
       <Name>Ezra_octoeight_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_octoeight_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_octoeight_3.wav">
       <Name>Ezra_octoeight_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Ok_1.wav">
+    <Compile Include="voiceItems\Ezra_Ok_1.wav">
       <Name>Ezra_Ok_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Ok_2.wav">
+    <Compile Include="voiceItems\Ezra_Ok_2.wav">
       <Name>Ezra_Ok_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Ok_3.wav">
+    <Compile Include="voiceItems\Ezra_Ok_3.wav">
       <Name>Ezra_Ok_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_OnGuard_1.wav">
+    <Compile Include="voiceItems\Ezra_OnGuard_1.wav">
       <Name>Ezra_OnGuard_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_OnGuard_2.wav">
+    <Compile Include="voiceItems\Ezra_OnGuard_2.wav">
       <Name>Ezra_OnGuard_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_OnGuard_3.wav">
+    <Compile Include="voiceItems\Ezra_OnGuard_3.wav">
       <Name>Ezra_OnGuard_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_oscar_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_oscar_1.wav">
       <Name>Ezra_oscar_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_oscar_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_oscar_2.wav">
       <Name>Ezra_oscar_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_oscar_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_oscar_3.wav">
       <Name>Ezra_oscar_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Out_1.wav">
+    <Compile Include="voiceItems\Ezra_Out_1.wav">
       <Name>Ezra_Out_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Out_2.wav">
+    <Compile Include="voiceItems\Ezra_Out_2.wav">
       <Name>Ezra_Out_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Out_3.wav">
+    <Compile Include="voiceItems\Ezra_Out_3.wav">
       <Name>Ezra_Out_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Over_1.wav">
+    <Compile Include="voiceItems\Ezra_Over_1.wav">
       <Name>Ezra_Over_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Over_2.wav">
+    <Compile Include="voiceItems\Ezra_Over_2.wav">
       <Name>Ezra_Over_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Over_3.wav">
+    <Compile Include="voiceItems\Ezra_Over_3.wav">
       <Name>Ezra_Over_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_pantafive_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_pantafive_1.wav">
       <Name>Ezra_pantafive_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_pantafive_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_pantafive_2.wav">
       <Name>Ezra_pantafive_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_pantafive_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_pantafive_3.wav">
       <Name>Ezra_pantafive_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_papa_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_papa_1.wav">
       <Name>Ezra_papa_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_papa_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_papa_2.wav">
       <Name>Ezra_papa_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_papa_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_papa_3.wav">
       <Name>Ezra_papa_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_quebec_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_quebec_1.wav">
       <Name>Ezra_quebec_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_quebec_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_quebec_2.wav">
       <Name>Ezra_quebec_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_quebec_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_quebec_3.wav">
       <Name>Ezra_quebec_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ReadyForService_1.wav">
+    <Compile Include="voiceItems\Ezra_ReadyForService_1.wav">
       <Name>Ezra_ReadyForService_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ReadyForService_2.wav">
+    <Compile Include="voiceItems\Ezra_ReadyForService_2.wav">
       <Name>Ezra_ReadyForService_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ReadyForService_3.wav">
+    <Compile Include="voiceItems\Ezra_ReadyForService_3.wav">
       <Name>Ezra_ReadyForService_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ReadyToFire_1.wav">
+    <Compile Include="voiceItems\Ezra_ReadyToFire_1.wav">
       <Name>Ezra_ReadyToFire_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ReadyToFire_2.wav">
+    <Compile Include="voiceItems\Ezra_ReadyToFire_2.wav">
       <Name>Ezra_ReadyToFire_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ReadyToFire_3.wav">
+    <Compile Include="voiceItems\Ezra_ReadyToFire_3.wav">
       <Name>Ezra_ReadyToFire_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ReadyToMove_1.wav">
+    <Compile Include="voiceItems\Ezra_ReadyToMove_1.wav">
       <Name>Ezra_ReadyToMove_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ReadyToMove_2.wav">
+    <Compile Include="voiceItems\Ezra_ReadyToMove_2.wav">
       <Name>Ezra_ReadyToMove_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ReadyToMove_3.wav">
+    <Compile Include="voiceItems\Ezra_ReadyToMove_3.wav">
       <Name>Ezra_ReadyToMove_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_RockAndRoll_1.wav">
+    <Compile Include="voiceItems\Ezra_RockAndRoll_1.wav">
       <Name>Ezra_RockAndRoll_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_RockAndRoll_2.wav">
+    <Compile Include="voiceItems\Ezra_RockAndRoll_2.wav">
       <Name>Ezra_RockAndRoll_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_RockAndRoll_3.wav">
+    <Compile Include="voiceItems\Ezra_RockAndRoll_3.wav">
       <Name>Ezra_RockAndRoll_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Roger_1.wav">
+    <Compile Include="voiceItems\Ezra_Roger_1.wav">
       <Name>Ezra_Roger_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Roger_2.wav">
+    <Compile Include="voiceItems\Ezra_Roger_2.wav">
       <Name>Ezra_Roger_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Roger_3.wav">
+    <Compile Include="voiceItems\Ezra_Roger_3.wav">
       <Name>Ezra_Roger_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_romeo_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_romeo_1.wav">
       <Name>Ezra_romeo_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_romeo_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_romeo_2.wav">
       <Name>Ezra_romeo_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_romeo_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_romeo_3.wav">
       <Name>Ezra_romeo_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_setteseven_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_setteseven_1.wav">
       <Name>Ezra_setteseven_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_setteseven_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_setteseven_2.wav">
       <Name>Ezra_setteseven_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_setteseven_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_setteseven_3.wav">
       <Name>Ezra_setteseven_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_sierra_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_sierra_1.wav">
       <Name>Ezra_sierra_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_sierra_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_sierra_2.wav">
       <Name>Ezra_sierra_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_sierra_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_sierra_3.wav">
       <Name>Ezra_sierra_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_1.wav">
+    <Compile Include="voiceItems\Ezra_Sir_1.wav">
       <Name>Ezra_Sir_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_10.wav">
+    <Compile Include="voiceItems\Ezra_Sir_10.wav">
       <Name>Ezra_Sir_10</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_11.wav">
+    <Compile Include="voiceItems\Ezra_Sir_11.wav">
       <Name>Ezra_Sir_11</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_12.wav">
+    <Compile Include="voiceItems\Ezra_Sir_12.wav">
       <Name>Ezra_Sir_12</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_2.wav">
+    <Compile Include="voiceItems\Ezra_Sir_2.wav">
       <Name>Ezra_Sir_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_3.wav">
+    <Compile Include="voiceItems\Ezra_Sir_3.wav">
       <Name>Ezra_Sir_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_4.wav">
+    <Compile Include="voiceItems\Ezra_Sir_4.wav">
       <Name>Ezra_Sir_4</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_5.wav">
+    <Compile Include="voiceItems\Ezra_Sir_5.wav">
       <Name>Ezra_Sir_5</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_6.wav">
+    <Compile Include="voiceItems\Ezra_Sir_6.wav">
       <Name>Ezra_Sir_6</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_7.wav">
+    <Compile Include="voiceItems\Ezra_Sir_7.wav">
       <Name>Ezra_Sir_7</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_8.wav">
+    <Compile Include="voiceItems\Ezra_Sir_8.wav">
       <Name>Ezra_Sir_8</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Sir_9.wav">
+    <Compile Include="voiceItems\Ezra_Sir_9.wav">
       <Name>Ezra_Sir_9</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_soxisix_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_soxisix_1.wav">
       <Name>Ezra_soxisix_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_soxisix_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_soxisix_2.wav">
       <Name>Ezra_soxisix_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_soxisix_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_soxisix_3.wav">
       <Name>Ezra_soxisix_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Standy_1.wav">
+    <Compile Include="voiceItems\Ezra_Standy_1.wav">
       <Name>Ezra_Standy_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Standy_2.wav">
+    <Compile Include="voiceItems\Ezra_Standy_2.wav">
       <Name>Ezra_Standy_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Standy_3.wav">
+    <Compile Include="voiceItems\Ezra_Standy_3.wav">
       <Name>Ezra_Standy_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_tango_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_tango_1.wav">
       <Name>Ezra_tango_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_tango_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_tango_2.wav">
       <Name>Ezra_tango_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_tango_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_tango_3.wav">
       <Name>Ezra_tango_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_terrathree_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_terrathree_1.wav">
       <Name>Ezra_terrathree_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_terrathree_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_terrathree_2.wav">
       <Name>Ezra_terrathree_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_terrathree_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_terrathree_3.wav">
       <Name>Ezra_terrathree_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ThatHurt_1.wav">
+    <Compile Include="voiceItems\Ezra_ThatHurt_1.wav">
       <Name>Ezra_ThatHurt_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ThatHurt_2.wav">
+    <Compile Include="voiceItems\Ezra_ThatHurt_2.wav">
       <Name>Ezra_ThatHurt_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_ThatHurt_3.wav">
+    <Compile Include="voiceItems\Ezra_ThatHurt_3.wav">
       <Name>Ezra_ThatHurt_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_unaone_1.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_unaone_1.wav">
       <Name>Ezra_unaone_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_unaone_2.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_unaone_2.wav">
       <Name>Ezra_unaone_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_unaone_3.wav">
+    <Compile Include="voiceItems\numbers_alt\Ezra_unaone_3.wav">
       <Name>Ezra_unaone_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_UnderAttack_1.wav">
+    <Compile Include="voiceItems\Ezra_UnderAttack_1.wav">
       <Name>Ezra_UnderAttack_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_UnderAttack_2.wav">
+    <Compile Include="voiceItems\Ezra_UnderAttack_2.wav">
       <Name>Ezra_UnderAttack_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_UnderAttack_3.wav">
+    <Compile Include="voiceItems\Ezra_UnderAttack_3.wav">
       <Name>Ezra_UnderAttack_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Understood_1.wav">
+    <Compile Include="voiceItems\Ezra_Understood_1.wav">
       <Name>Ezra_Understood_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Understood_2.wav">
+    <Compile Include="voiceItems\Ezra_Understood_2.wav">
       <Name>Ezra_Understood_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_Understood_3.wav">
+    <Compile Include="voiceItems\Ezra_Understood_3.wav">
       <Name>Ezra_Understood_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_uniform_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_uniform_1.wav">
       <Name>Ezra_uniform_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_uniform_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_uniform_2.wav">
       <Name>Ezra_uniform_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_uniform_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_uniform_3.wav">
       <Name>Ezra_uniform_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_UnitReady_1.wav">
+    <Compile Include="voiceItems\Ezra_UnitReady_1.wav">
       <Name>Ezra_UnitReady_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_UnitReady_2.wav">
+    <Compile Include="voiceItems\Ezra_UnitReady_2.wav">
       <Name>Ezra_UnitReady_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_UnitReady_3.wav">
+    <Compile Include="voiceItems\Ezra_UnitReady_3.wav">
       <Name>Ezra_UnitReady_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_UnitsUnderAttack_1.wav">
+    <Compile Include="voiceItems\Ezra_UnitsUnderAttack_1.wav">
       <Name>Ezra_UnitsUnderAttack_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_UnitsUnderAttack_2.wav">
+    <Compile Include="voiceItems\Ezra_UnitsUnderAttack_2.wav">
       <Name>Ezra_UnitsUnderAttack_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_UnitsUnderAttack_3.wav">
+    <Compile Include="voiceItems\Ezra_UnitsUnderAttack_3.wav">
       <Name>Ezra_UnitsUnderAttack_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_victor_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_victor_1.wav">
       <Name>Ezra_victor_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_victor_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_victor_2.wav">
       <Name>Ezra_victor_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_victor_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_victor_3.wav">
       <Name>Ezra_victor_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_WhatDoYouWant_1.wav">
+    <Compile Include="voiceItems\Ezra_WhatDoYouWant_1.wav">
       <Name>Ezra_WhatDoYouWant_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_WhatDoYouWant_2.wav">
+    <Compile Include="voiceItems\Ezra_WhatDoYouWant_2.wav">
       <Name>Ezra_WhatDoYouWant_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_WhatDoYouWant_3.wav">
+    <Compile Include="voiceItems\Ezra_WhatDoYouWant_3.wav">
       <Name>Ezra_WhatDoYouWant_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_whiskey_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_whiskey_1.wav">
       <Name>Ezra_whiskey_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_whiskey_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_whiskey_2.wav">
       <Name>Ezra_whiskey_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_whiskey_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_whiskey_3.wav">
       <Name>Ezra_whiskey_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_xray_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_xray_1.wav">
       <Name>Ezra_xray_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_xray_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_xray_2.wav">
       <Name>Ezra_xray_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_xray_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_xray_3.wav">
       <Name>Ezra_xray_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_yankee_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_yankee_1.wav">
       <Name>Ezra_yankee_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_yankee_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_yankee_2.wav">
       <Name>Ezra_yankee_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_yankee_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_yankee_3.wav">
       <Name>Ezra_yankee_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_yes_1.wav">
+    <Compile Include="voiceItems\Ezra_yes_1.wav">
       <Name>Ezra_yes_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_yes_2.wav">
+    <Compile Include="voiceItems\Ezra_yes_2.wav">
       <Name>Ezra_yes_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_yes_3.wav">
+    <Compile Include="voiceItems\Ezra_yes_3.wav">
       <Name>Ezra_yes_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_zulu_1.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_zulu_1.wav">
       <Name>Ezra_zulu_1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_zulu_2.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_zulu_2.wav">
       <Name>Ezra_zulu_2</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Voice Samples\Ezra_zulu_3.wav">
+    <Compile Include="voiceItems\alphabet\Ezra_zulu_3.wav">
       <Name>Ezra_zulu_3</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>

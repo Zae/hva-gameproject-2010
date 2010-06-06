@@ -271,7 +271,8 @@ namespace ION.MultiPlayer
             Unit u = Grid.get().getUnit(owner, unitId);
             if (u == null)
             {
-                Debug.WriteLine("TRIED TO FIND UNIT FOR COMMAND BUT UNIT WAS NOT PRESENT (ANYMORE)");
+                //This is no problem, we just catch it here
+                //Debug.WriteLine("TRIED TO FIND UNIT FOR COMMAND BUT UNIT WAS NOT PRESENT (ANYMORE)");
             }
             else if(Grid.map[xTarget,yTarget] is ResourceTile == false) 
             {
@@ -291,7 +292,8 @@ namespace ION.MultiPlayer
 
                 if (u.owner == Grid.playerNumber)
                 {
-                    SoundManager.orderUnitSound();
+                    //SoundManager.orderUnitSound();
+                    SoundManager.setCoordinate(CoordinateTool.coordinateSound(path.Last<ResourceTile>().indexX, path.Last<ResourceTile>().indexY));
                 }
               
             }
