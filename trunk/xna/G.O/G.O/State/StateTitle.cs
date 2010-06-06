@@ -6,27 +6,17 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
+using WindowSystem;
 
 namespace ION
 {
     public class StateTitle : State
     {
-        public enum SELECTION
-        {
-            NEWGAME = 1,
-            MULTIPLAYER,
-            OPTIONS,
-            QUIT
-
-        }
-        //Initialy the first option is selected
-        public SELECTION selection = SELECTION.NEWGAME;
-
-
-        private Rectangle newGameButton;
-        private Rectangle mpButton;
-        private Rectangle quitButton;
-        private Rectangle optionsButton;
+        private List<UIComponent> ComponentList; 
+        private TextButton newGameButton;
+        private TextButton mpButton;
+        private TextButton quitButton;
+        private TextButton optionsButton;
         private Rectangle background_overlay;
         private Rectangle Logo;
         private Rectangle background_starfield;
@@ -38,14 +28,56 @@ namespace ION
 
         public StateTitle()
         {
-            newGameButton = new Rectangle(125, 125 , Images.buttonNewGame.Width, Images.buttonNewGame.Height);
-            mpButton = new Rectangle(125, 200, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
-            optionsButton = new Rectangle(125, 275, Images.buttonOptions.Width, Images.buttonOptions.Height);
-            quitButton = new Rectangle(125, 350, Images.buttonNewGame.Width, Images.buttonNewGame.Height);
+            ComponentList = new List<UIComponent>();
+
+            newGameButton = new TextButton(ION.instance, ION.instance.gui);
+            newGameButton.Text = "New Game";
+            newGameButton.X = 125; newGameButton.Y = 125;
+            newGameButton.Click += new ClickHandler(newGameButton_Click);
+            mpButton = new TextButton(ION.instance, ION.instance.gui);
+            mpButton.Text = "Multiplayer";
+            mpButton.X = 125; mpButton.Y = 200;
+            mpButton.Click += new ClickHandler(mpButton_Click);
+            optionsButton = new TextButton(ION.instance, ION.instance.gui);
+            optionsButton.Text = "Options";
+            optionsButton.X = 125; optionsButton.Y = 275;
+            optionsButton.Click += new ClickHandler(optionsButton_Click);
+            quitButton = new TextButton(ION.instance, ION.instance.gui);
+            quitButton.Text = "Quit";
+            quitButton.X = 125; quitButton.Y = 350;
+            quitButton.Click += new ClickHandler(quitButton_Click);
+            //
+            ComponentList.Add(newGameButton);
+            ComponentList.Add(mpButton);
+            ComponentList.Add(optionsButton);
+            ComponentList.Add(quitButton);
+            //
             background_overlay = new Rectangle(ION.width-Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
             Logo = new Rectangle(ION.width / 100 * 10, ION.height - ION.height / 100 * 7 - Images.Logo.Height, Images.Logo.Width, Images.Logo.Height);
             background_starfield = new Rectangle(0, 0, Images.background_starfield.Width, Images.background_starfield.Height);
         }
+
+        #region Button Handlers
+        void quitButton_Click(UIComponent sender)
+        {
+            ION.get().Exit();
+        }
+
+        void optionsButton_Click(UIComponent sender)
+        {
+            throw new NotImplementedException();
+        }
+
+        void mpButton_Click(UIComponent sender)
+        {
+            ION.get().setState(new StateMP());
+        }
+
+        void newGameButton_Click(UIComponent sender)
+        {
+            ION.get().setState(new StateTest(1, 0, "MediumLevelTest.xml", false));
+        }
+        #endregion
 
         public override void draw()
         {
@@ -66,138 +98,13 @@ namespace ION
             ION.spriteBatch.Draw(Images.background_overlay, background_overlay, Color.White);
             ION.spriteBatch.Draw(Images.Logo, Logo, Color.White);
 
-            if (selection == SELECTION.NEWGAME)
-            {
-                //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonNewGameF, newGameButton, Color.White);
-            }
-            else
-            {
-                //Draw normally
-                ION.spriteBatch.Draw(Images.buttonNewGame, newGameButton, Color.White);
-            }
-            if (selection == SELECTION.MULTIPLAYER)
-            {
-                //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonMPF, mpButton, Color.White);
-            }
-            else
-            {
-                //Draw normally
-                ION.spriteBatch.Draw(Images.buttonMP, mpButton, Color.White);
-            }
-            if (selection == SELECTION.OPTIONS)
-            {
-                //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonOptionsF, optionsButton, Color.White);
-            }
-            else
-            {
-                //Draw normally
-                ION.spriteBatch.Draw(Images.buttonOptions, optionsButton, Color.White);
-            }
-
-            if (selection == SELECTION.QUIT)
-            {
-                //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonQuitF, quitButton, Color.White);
-            }
-            else
-            {
-                //Draw normally
-                ION.spriteBatch.Draw(Images.buttonQuit, quitButton, Color.White);
-            }
-
-
-
             ION.spriteBatch.End();
         }
 
         public override void update(int ellapsed)
         {
-
-           
-            MouseState mouseState = Mouse.GetState();
-            if (mouseState.LeftButton == ButtonState.Pressed)
-            {
-                mousePressed = true;
-            }
-
-            if (mouseIn(mouseState.X, mouseState.Y, newGameButton))
-            {
-                selection= SELECTION.NEWGAME;
-                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-                {
-                    makeSelection();
-                    mousePressed = false;
-                }
-
-            }
-            if (mouseIn(mouseState.X, mouseState.Y, mpButton))
-            {
-                selection = SELECTION.MULTIPLAYER;
-                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-                {
-                    makeSelection();
-                    mousePressed = false;
-                }
-
-            }
-            if (mouseIn(mouseState.X, mouseState.Y, optionsButton))
-            {
-                selection = SELECTION.OPTIONS;
-                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-                {
-                    makeSelection();
-                    mousePressed = false;
-                }
-
-            }
-            if (mouseIn(mouseState.X, mouseState.Y, quitButton))
-            {
-                selection = SELECTION.QUIT;
-                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-                {
-                    makeSelection();
-                    mousePressed = false;
-                }
-
-            }
             //Keyboard handling
             KeyboardState keyState = Keyboard.GetState();
-
-
-            if (keyState.IsKeyDown(Keys.Up) && !upPressed)
-            {
-                selectionUp();
-                upPressed = true;
-            }
-            else if (keyState.IsKeyUp(Keys.Up) && upPressed)
-            {
-                upPressed = false;
-            }
-
-
-            if (keyState.IsKeyDown(Keys.Down) && !downPressed)
-            {
-                selectionDown();
-                downPressed = true;
-            }
-            else if (keyState.IsKeyUp(Keys.Down) && downPressed)
-            {
-                downPressed = false;
-            }
-
-            if (keyState.IsKeyDown(Keys.Enter))
-            {
-                enterPressed = true;
-            }
-
-            if (keyState.IsKeyUp(Keys.Enter) && enterPressed == true)
-            {
-                enterPressed = false;
-                makeSelection();
-            }
 
             if(keyState.IsKeyDown(Keys.N)){
                 ION.get().setState(new StateNetworkTest());
@@ -212,69 +119,24 @@ namespace ION
             }
         }
 
-        
-
-        private void makeSelection()
-        {
-            if (selection == SELECTION.NEWGAME)
-            {
-                ION.get().setState(new StateTest(1,0,"MediumLevelTest.xml",false));
-            }
-            else if (selection == SELECTION.QUIT)
-            {
-                ION.get().Exit();
-            }
-            else if (selection == SELECTION.OPTIONS)
-            {
-                ION.get().Exit();
-            }
-            else if (selection == SELECTION.MULTIPLAYER)
-            {
-                Console.WriteLine("sel: " + (int)selection);
-                ION.get().setState(new StateMP());
-            }
-        }
-
-
-        //checks if the mouse coordinates are in the rectangle
-       
-     
-        private void selectionUp()
-        {
-
-            selection--;
-            if (selection < SELECTION.NEWGAME)
-            {
-                Console.WriteLine("if sel: " + (int)selection);
-                selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
-            }
-            Console.WriteLine("sel: " + (int)selection);
-        }
-
-        private void selectionDown()
-        {
-            selection++;
-            if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
-            {
-                Console.WriteLine("if sel: " + (int)selection);
-                selection = SELECTION.NEWGAME;
-            }
-            Console.WriteLine("sel: " + (int)selection);
-
-
-        }
-
-       
         public override void focusGained()
         {
-            ION.get().IsMouseVisible = false;
+            foreach (UIComponent uicomponent in ComponentList)
+            {
+                ION.instance.gui.Add(uicomponent);
+            }
+            //
             MediaPlayer.Play(Sounds.titleSong);
             MediaPlayer.IsRepeating = true;
         }
 
         public override void focusLost()
         {
-            ION.get().IsMouseVisible = false;
+            foreach (UIComponent uicomponent in ComponentList)
+            {
+                ION.instance.gui.Remove(uicomponent);
+            }
+            //
             MediaPlayer.Stop();
         }
     }
