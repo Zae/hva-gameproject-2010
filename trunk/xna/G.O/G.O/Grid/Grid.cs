@@ -458,6 +458,13 @@ namespace ION
                 mountainTiles.Add(newTile);
                 return newTile;
             }
+            else if (c == 'C')
+            {
+                MountainTile newTile = new MountainTile(x, y, 20);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
             else if (c == 'V')
             {
                 VoidTile newTile = new VoidTile(x, y);
@@ -785,7 +792,7 @@ namespace ION
                     bool newRowStarted = false;
                     for (int i = 0; i < length; i++)
                     {
-                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M' || rawLevel[i] == 'V')
+                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M' || rawLevel[i] == 'C' || rawLevel[i] == 'V')
                         {
                             if (!newRowStarted)
                             {
