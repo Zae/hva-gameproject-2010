@@ -2430,6 +2430,1376 @@
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers\Sander_0_1.wav">
+      <Name>Sander_0_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_0_2.wav">
+      <Name>Sander_0_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_0_3.wav">
+      <Name>Sander_0_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_1_1.wav">
+      <Name>Sander_1_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_1_2.wav">
+      <Name>Sander_1_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_1_3.wav">
+      <Name>Sander_1_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_2_1.wav">
+      <Name>Sander_2_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_2_2.wav">
+      <Name>Sander_2_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_2_3.wav">
+      <Name>Sander_2_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_3_1.wav">
+      <Name>Sander_3_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_3_2.wav">
+      <Name>Sander_3_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_3_3.wav">
+      <Name>Sander_3_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_4_1.wav">
+      <Name>Sander_4_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_4_2.wav">
+      <Name>Sander_4_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_4_3.wav">
+      <Name>Sander_4_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_5_1.wav">
+      <Name>Sander_5_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_5_2.wav">
+      <Name>Sander_5_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_5_3.wav">
+      <Name>Sander_5_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_6_1.wav">
+      <Name>Sander_6_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_6_2.wav">
+      <Name>Sander_6_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_6_3.wav">
+      <Name>Sander_6_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_7_1.wav">
+      <Name>Sander_7_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_7_2.wav">
+      <Name>Sander_7_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_7_3.wav">
+      <Name>Sander_7_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_8_1.wav">
+      <Name>Sander_8_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_8_2.wav">
+      <Name>Sander_8_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_8_3.wav">
+      <Name>Sander_8_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_9_1.wav">
+      <Name>Sander_9_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_9_2.wav">
+      <Name>Sander_9_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers\Sander_9_3.wav">
+      <Name>Sander_9_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_Aarrggh_1.wav">
+      <Name>Sander_Aarrggh_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Aarrggh_2.wav">
+      <Name>Sander_Aarrggh_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Aarrggh_3.wav">
+      <Name>Sander_Aarrggh_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Affirmative_1.wav">
+      <Name>Sander_Affirmative_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Affirmative_2.wav">
+      <Name>Sander_Affirmative_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Affirmative_3.wav">
+      <Name>Sander_Affirmative_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Alpha_1.wav">
+      <Name>Sander_Alpha_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Alpha_2.wav">
+      <Name>Sander_Alpha_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Alpha_3.wav">
+      <Name>Sander_Alpha_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_AtYourService_1.wav">
+      <Name>Sander_AtYourService_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_AtYourService_2.wav">
+      <Name>Sander_AtYourService_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_AtYourService_3.wav">
+      <Name>Sander_AtYourService_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_bisstwo_1.wav">
+      <Name>Sander_bisstwo_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_bisstwo_2.wav">
+      <Name>Sander_bisstwo_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_bisstwo_3.wav">
+      <Name>Sander_bisstwo_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Bravo_1.wav">
+      <Name>Sander_Bravo_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Bravo_2.wav">
+      <Name>Sander_Bravo_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Bravo_3.wav">
+      <Name>Sander_Bravo_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Bravo_4.wav">
+      <Name>Sander_Bravo_4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Bravo_5.wav">
+      <Name>Sander_Bravo_5</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Bravo_6.wav">
+      <Name>Sander_Bravo_6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Charlie_1.wav">
+      <Name>Sander_Charlie_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Charlie_2.wav">
+      <Name>Sander_Charlie_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Charlie_3.wav">
+      <Name>Sander_Charlie_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_ComingRightOver_1.wav">
+      <Name>Sander_ComingRightOver_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ComingRightOver_2.wav">
+      <Name>Sander_ComingRightOver_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ComingRightOver_3.wav">
+      <Name>Sander_ComingRightOver_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ConsidderItDone_1.wav">
+      <Name>Sander_ConsidderItDone_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ConsidderItDone_2.wav">
+      <Name>Sander_ConsidderItDone_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ConsidderItDone_3.wav">
+      <Name>Sander_ConsidderItDone_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Copy_1.wav">
+      <Name>Sander_Copy_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Copy_2.wav">
+      <Name>Sander_Copy_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Copy_3.wav">
+      <Name>Sander_Copy_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_DefensiveModeOn_1.wav">
+      <Name>Sander_DefensiveModeOn_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_DefensiveModeOn_2.wav">
+      <Name>Sander_DefensiveModeOn_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_DefensiveModeOn_3.wav">
+      <Name>Sander_DefensiveModeOn_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Delta_1.wav">
+      <Name>Sander_Delta_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Delta_2.wav">
+      <Name>Sander_Delta_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Delta_3.wav">
+      <Name>Sander_Delta_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Echo_1.wav">
+      <Name>Sander_Echo_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Echo_2.wav">
+      <Name>Sander_Echo_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Echo_3.wav">
+      <Name>Sander_Echo_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_FinallySomeAction_1.wav">
+      <Name>Sander_FinallySomeAction_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_FinallySomeAction_2.wav">
+      <Name>Sander_FinallySomeAction_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_FinallySomeAction_3.wav">
+      <Name>Sander_FinallySomeAction_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Foxtrot_1.wav">
+      <Name>Sander_Foxtrot_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Foxtrot_2.wav">
+      <Name>Sander_Foxtrot_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Foxtrot_3.wav">
+      <Name>Sander_Foxtrot_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_GoAhead_1.wav">
+      <Name>Sander_GoAhead_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_GoAhead_2.wav">
+      <Name>Sander_GoAhead_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_GoAhead_3.wav">
+      <Name>Sander_GoAhead_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_GoAhead_4.wav">
+      <Name>Sander_GoAhead_4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_GoAhead_5.wav">
+      <Name>Sander_GoAhead_5</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_GoAhead_6.wav">
+      <Name>Sander_GoAhead_6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Going_1.wav">
+      <Name>Sander_Going_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Going_2.wav">
+      <Name>Sander_Going_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Going_3.wav">
+      <Name>Sander_Going_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Golf_1.wav">
+      <Name>Sander_Golf_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Golf_2.wav">
+      <Name>Sander_Golf_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Golf_3.wav">
+      <Name>Sander_Golf_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_HelpMe_1.wav">
+      <Name>Sander_HelpMe_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_HelpMe_2.wav">
+      <Name>Sander_HelpMe_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_HelpMe_3.wav">
+      <Name>Sander_HelpMe_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Hotel_1.wav">
+      <Name>Sander_Hotel_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Hotel_2.wav">
+      <Name>Sander_Hotel_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Hotel_3.wav">
+      <Name>Sander_Hotel_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_India_1.wav">
+      <Name>Sander_India_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_India_2.wav">
+      <Name>Sander_India_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_India_3.wav">
+      <Name>Sander_India_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Juliet_1.wav">
+      <Name>Sander_Juliet_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Juliet_2.wav">
+      <Name>Sander_Juliet_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Juliet_3.wav">
+      <Name>Sander_Juliet_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_kartefour_1.wav">
+      <Name>Sander_kartefour_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_kartefour_2.wav">
+      <Name>Sander_kartefour_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_kartefour_3.wav">
+      <Name>Sander_kartefour_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Kilo_1.wav">
+      <Name>Sander_Kilo_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Kilo_2.wav">
+      <Name>Sander_Kilo_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Kilo_3.wav">
+      <Name>Sander_Kilo_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_LetsRockAndRoll_1.wav">
+      <Name>Sander_LetsRockAndRoll_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_LetsRockAndRoll_2.wav">
+      <Name>Sander_LetsRockAndRoll_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_LetsRockAndRoll_3.wav">
+      <Name>Sander_LetsRockAndRoll_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Lima_1.wav">
+      <Name>Sander_Lima_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Lima_2.wav">
+      <Name>Sander_Lima_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Lima_3.wav">
+      <Name>Sander_Lima_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_LockedAndLoaded_1.wav">
+      <Name>Sander_LockedAndLoaded_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_LockedAndLoaded_2.wav">
+      <Name>Sander_LockedAndLoaded_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_LockedAndLoaded_3.wav">
+      <Name>Sander_LockedAndLoaded_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Mayday_1.wav">
+      <Name>Sander_Mayday_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Mayday_2.wav">
+      <Name>Sander_Mayday_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Mayday_3.wav">
+      <Name>Sander_Mayday_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Mike_1.wav">
+      <Name>Sander_Mike_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Mike_2.wav">
+      <Name>Sander_Mike_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Mike_3.wav">
+      <Name>Sander_Mike_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_MovingToSector_1.wav">
+      <Name>Sander_MovingToSector_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_MovingToSector_2.wav">
+      <Name>Sander_MovingToSector_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_MovingToSector_3.wav">
+      <Name>Sander_MovingToSector_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_nadazero_1.wav">
+      <Name>Sander_nadazero_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_nadazero_2.wav">
+      <Name>Sander_nadazero_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_nadazero_3.wav">
+      <Name>Sander_nadazero_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_Negative_1.wav">
+      <Name>Sander_Negative_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Negative_2.wav">
+      <Name>Sander_Negative_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Negative_3.wav">
+      <Name>Sander_Negative_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_NewUnitReady_1.wav">
+      <Name>Sander_NewUnitReady_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_NewUnitReady_2.wav">
+      <Name>Sander_NewUnitReady_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_NewUnitReady_3.wav">
+      <Name>Sander_NewUnitReady_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_novaniner_1.wav">
+      <Name>Sander_novaniner_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_novaniner_2.wav">
+      <Name>Sander_novaniner_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_novaniner_3.wav">
+      <Name>Sander_novaniner_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_November_1.wav">
+      <Name>Sander_November_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_November_2.wav">
+      <Name>Sander_November_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_November_3.wav">
+      <Name>Sander_November_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_octoeight_1.wav">
+      <Name>Sander_octoeight_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_octoeight_2.wav">
+      <Name>Sander_octoeight_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_octoeight_3.wav">
+      <Name>Sander_octoeight_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_Ok_1.wav">
+      <Name>Sander_Ok_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Ok_2.wav">
+      <Name>Sander_Ok_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Ok_3.wav">
+      <Name>Sander_Ok_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Ok_4.wav">
+      <Name>Sander_Ok_4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Ok_5.wav">
+      <Name>Sander_Ok_5</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Ok_6.wav">
+      <Name>Sander_Ok_6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_OnGuard_1.wav">
+      <Name>Sander_OnGuard_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_OnGuard_2.wav">
+      <Name>Sander_OnGuard_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_OnGuard_3.wav">
+      <Name>Sander_OnGuard_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Oscar_1.wav">
+      <Name>Sander_Oscar_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Oscar_2.wav">
+      <Name>Sander_Oscar_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Oscar_3.wav">
+      <Name>Sander_Oscar_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_Out_1.wav">
+      <Name>Sander_Out_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Out_2.wav">
+      <Name>Sander_Out_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Out_3.wav">
+      <Name>Sander_Out_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Over_1.wav">
+      <Name>Sander_Over_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Over_2.wav">
+      <Name>Sander_Over_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Over_3.wav">
+      <Name>Sander_Over_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_pantafive_1.wav">
+      <Name>Sander_pantafive_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_pantafive_2.wav">
+      <Name>Sander_pantafive_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_pantafive_3.wav">
+      <Name>Sander_pantafive_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Papa_1.wav">
+      <Name>Sander_Papa_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Papa_2.wav">
+      <Name>Sander_Papa_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Papa_3.wav">
+      <Name>Sander_Papa_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Quebec_1.wav">
+      <Name>Sander_Quebec_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Quebec_2.wav">
+      <Name>Sander_Quebec_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Quebec_3.wav">
+      <Name>Sander_Quebec_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_ReadyForService_1.wav">
+      <Name>Sander_ReadyForService_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ReadyForService_2.wav">
+      <Name>Sander_ReadyForService_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ReadyToFire_1.wav">
+      <Name>Sander_ReadyToFire_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ReadyToFire_2.wav">
+      <Name>Sander_ReadyToFire_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ReadyToFire_3.wav">
+      <Name>Sander_ReadyToFire_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ReadyToMove_1.wav">
+      <Name>Sander_ReadyToMove_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ReadyToMove_2.wav">
+      <Name>Sander_ReadyToMove_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ReadyToMove_3.wav">
+      <Name>Sander_ReadyToMove_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Roger_1.wav">
+      <Name>Sander_Roger_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Roger_2.wav">
+      <Name>Sander_Roger_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Roger_3.wav">
+      <Name>Sander_Roger_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Romeo_1.wav">
+      <Name>Sander_Romeo_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Romeo_2.wav">
+      <Name>Sander_Romeo_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Romeo_3.wav">
+      <Name>Sander_Romeo_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_setteseven_1.wav">
+      <Name>Sander_setteseven_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_setteseven_2.wav">
+      <Name>Sander_setteseven_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_setteseven_3.wav">
+      <Name>Sander_setteseven_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Sierra_1.wav">
+      <Name>Sander_Sierra_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Sierra_2.wav">
+      <Name>Sander_Sierra_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Sierra_3.wav">
+      <Name>Sander_Sierra_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_Sir_1.wav">
+      <Name>Sander_Sir_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_10.wav">
+      <Name>Sander_Sir_10</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_11.wav">
+      <Name>Sander_Sir_11</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_12.wav">
+      <Name>Sander_Sir_12</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_2.wav">
+      <Name>Sander_Sir_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_3.wav">
+      <Name>Sander_Sir_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_4.wav">
+      <Name>Sander_Sir_4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_5.wav">
+      <Name>Sander_Sir_5</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_6.wav">
+      <Name>Sander_Sir_6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_7.wav">
+      <Name>Sander_Sir_7</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_8.wav">
+      <Name>Sander_Sir_8</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Sir_9.wav">
+      <Name>Sander_Sir_9</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_soxisix_1.wav">
+      <Name>Sander_soxisix_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_soxisix_2.wav">
+      <Name>Sander_soxisix_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_soxisix_3.wav">
+      <Name>Sander_soxisix_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_Standby_1.wav">
+      <Name>Sander_Standby_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Standby_2.wav">
+      <Name>Sander_Standby_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Standby_3.wav">
+      <Name>Sander_Standby_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Tango_1.wav">
+      <Name>Sander_Tango_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Tango_2.wav">
+      <Name>Sander_Tango_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Tango_3.wav">
+      <Name>Sander_Tango_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_terrathree_1.wav">
+      <Name>Sander_terrathree_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_terrathree_2.wav">
+      <Name>Sander_terrathree_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_terrathree_3.wav">
+      <Name>Sander_terrathree_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_ThatHurt_1.wav">
+      <Name>Sander_ThatHurt_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ThatHurt_2.wav">
+      <Name>Sander_ThatHurt_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_ThatHurt_3.wav">
+      <Name>Sander_ThatHurt_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\numbers_alt\Sander_unaone_1.wav">
+      <Name>Sander_unaone_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_unaone_2.wav">
+      <Name>Sander_unaone_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\numbers_alt\Sander_unaone_3.wav">
+      <Name>Sander_unaone_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_Understood_1.wav">
+      <Name>Sander_Understood_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Understood_2.wav">
+      <Name>Sander_Understood_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Understood_3.wav">
+      <Name>Sander_Understood_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Uniform_1.wav">
+      <Name>Sander_Uniform_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Uniform_2.wav">
+      <Name>Sander_Uniform_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Uniform_3.wav">
+      <Name>Sander_Uniform_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_UnitsUnderAttack_1.wav">
+      <Name>Sander_UnitsUnderAttack_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_UnitsUnderAttack_2.wav">
+      <Name>Sander_UnitsUnderAttack_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_UnitsUnderAttack_3.wav">
+      <Name>Sander_UnitsUnderAttack_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Victor_1.wav">
+      <Name>Sander_Victor_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Victor_2.wav">
+      <Name>Sander_Victor_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Victor_3.wav">
+      <Name>Sander_Victor_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_WereUnderAttack_1.wav">
+      <Name>Sander_WereUnderAttack_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_WereUnderAttack_2.wav">
+      <Name>Sander_WereUnderAttack_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_WereUnderAttack_3.wav">
+      <Name>Sander_WereUnderAttack_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_WhatDoYouWant_1.wav">
+      <Name>Sander_WhatDoYouWant_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_WhatDoYouWant_2.wav">
+      <Name>Sander_WhatDoYouWant_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_WhatDoYouWant_3.wav">
+      <Name>Sander_WhatDoYouWant_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Whiskey_1.wav">
+      <Name>Sander_Whiskey_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Whiskey_2.wav">
+      <Name>Sander_Whiskey_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Whiskey_3.wav">
+      <Name>Sander_Whiskey_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Xray_1.wav">
+      <Name>Sander_Xray_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Xray_2.wav">
+      <Name>Sander_Xray_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Xray_3.wav">
+      <Name>Sander_Xray_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Yankee_1.wav">
+      <Name>Sander_Yankee_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Yankee_2.wav">
+      <Name>Sander_Yankee_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Yankee_3.wav">
+      <Name>Sander_Yankee_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\Sander_Yes_1.wav">
+      <Name>Sander_Yes_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Yes_2.wav">
+      <Name>Sander_Yes_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\Sander_Yes_3.wav">
+      <Name>Sander_Yes_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="voiceItems\alphabet\Sander_Zulu_1.wav">
+      <Name>Sander_Zulu_1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Zulu_2.wav">
+      <Name>Sander_Zulu_2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="voiceItems\alphabet\Sander_Zulu_3.wav">
+      <Name>Sander_Zulu_3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
