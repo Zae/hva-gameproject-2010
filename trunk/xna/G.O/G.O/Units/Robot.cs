@@ -39,7 +39,7 @@ namespace ION
             pos = newPos;
             targetPos = newTarget;
 
-            damage = 2;
+            damage = 4;
 
             BaseTile playerBase = Grid.getPlayerBase(owner);
             inTileX = playerBase.getTileX();
@@ -299,6 +299,7 @@ namespace ION
                 if (FiringCounter > 9)
                 {
                     FiringCounter = 0;
+                    firing = false;
                 }
 
                 if (FiringFrame < 2)

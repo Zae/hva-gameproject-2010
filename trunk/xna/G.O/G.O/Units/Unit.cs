@@ -88,6 +88,7 @@ namespace ION
 
                 Die();
 
+         
                 //the end
                 return returnValue;
             }
@@ -112,24 +113,24 @@ namespace ION
                 }
                 
             }
-            if (scan > 4)
+            if (scan > Grid.TPS)
             {
                 
                 List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
                 if (enemies.Count == 0) firing = false;
-                int distance = 4;
+                int distance = 12;
                 foreach (Unit u in enemies)
                 {
                     if ((u.inTileX - inTileX > -distance && u.inTileX - inTileX < distance) && (u.inTileY - inTileY > -distance && u.inTileY - inTileY < distance))
                     {
                         firing = true;
-                        SoundManager.fireSound(Grid.TPS * 2);
+                        SoundManager.fireSound();
                         //fire on this unit.
                         u.hit(Damage.getDamage(damage,damage+damage),u.damageType);
                         face(u.focalPoint);
                         break;
                     }
-                    firing = false;
+                    //firing = false;
                 }
                 scan = 0;
             }
@@ -673,6 +674,9 @@ namespace ION
             
             //Remove it from gameplay
             Grid.get().removeUnit(this);
+
+            SoundManager.explosionSound();
+
 
             //Start the dying sequence
             dying = true;

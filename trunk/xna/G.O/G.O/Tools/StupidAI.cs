@@ -34,7 +34,7 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 3)
+                if (aiUnits.Count < 4)
                 {
                     serial++;
                     CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), serial,ai, newId++));
@@ -63,7 +63,7 @@ namespace ION.Tools
                     //do things
                     List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
 
-                    if (playerUnits.Count < 25)
+                    if (playerUnits.Count < 4)
                     {
                         serial++;
                         CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick()
