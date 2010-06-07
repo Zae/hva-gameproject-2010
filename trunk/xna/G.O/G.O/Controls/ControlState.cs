@@ -79,16 +79,34 @@ namespace ION.Controls
         {
         }
 
-        public void showContext(Vector2 screenPos)
+        public virtual void showContext(int x,int y)
         {
             //lights up what is under the mouse
+            List<IDepthEnabled> depthItems = Grid.depthItems;
+           
+            int count = depthItems.Count;
+            for (int i = depthItems.Count - 1; i >= 0; i--)
+            {
+                if (depthItems[i].hitTest(x,y))
+                {
+                    depthItems[i].displayDetails();
+                    break;
+                }
+            }
 
+            //if (result is Unit)
+            //{
+            //    ((Unit)result).selected = true;
+            //    selectedUnits = true;
+            //}
+            //else if (result is BaseTile)
+            //{
+            //    // TODO //((BaseTile)result).sekected = true;
+            //    selectedBase = true;
+            //}
         }
 
-        public void showContext(Rectangle screenRect)
-        {
-            //light up what is in a rectangle on screen
-        }
+
 
     }
 }

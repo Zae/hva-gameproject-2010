@@ -101,14 +101,7 @@ namespace ION.Controls
             }
             else
             {
-                if (boxSelection)
-                {
-                    base.showContext(r);
-                }
-                else
-                {
-                    base.showContext(mousePos);
-                }
+                base.showContext(mouseState.X, mouseState.Y);
             }
 
             base.handleInput(mouseState, keyboardState);

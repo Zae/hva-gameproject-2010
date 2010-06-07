@@ -21,6 +21,9 @@ namespace ION
         private int FiringFrame = 0;
         private int FiringCounter = 0;
 
+        public int deathFrame = 0;
+        public int deathCounter = 0;
+
         //under-fire animation helper variables
         private int UnderFireFrame = 0;
         private int UnderFireCounter = 0;
@@ -78,13 +81,18 @@ namespace ION
             focalPoint.X = selectionRectangle.Center.X;
             focalPoint.Y = selectionRectangle.Center.Y;
 
-
             drawingRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x));
             drawingRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2));
             drawingRectangle.Width = (int)(baseHalfWidth * 2);
             drawingRectangle.Height = (int)(baseHalfHeight * 4);
 
             //ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
+
+            if (dying)
+            {
+                drawDeathAnimation();
+                return;
+            }
 
             if (selected)
             {
@@ -127,7 +135,6 @@ namespace ION
                     healthBarColor = Color.Red;
                 }
 
-                ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
                 if (health < maxHealth)
                 {
                     ION.spriteBatch.Draw(Images.unitHealth[2], drawingRectangle, healthBarColor);
@@ -141,7 +148,53 @@ namespace ION
 
                 ION.spriteBatch.Draw(Images.unitHealth[0], drawingRectangle, Color.White);
             }
+            if (selected)
+            {
+
+                ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
+            }
+
       
+        }
+
+        private void drawDeathAnimation()
+        {
+            //animation test code
+            deathCounter++;
+
+            if (deathCounter > 0)
+            {
+                deathFrame = 0;
+            }
+            if (deathCounter > 10)
+            {
+                deathFrame = 1;
+            }
+            if (deathCounter > 15)
+            {
+                deathFrame = 2;
+            }
+            if (deathCounter > 20)
+            {
+                Grid.get().removeDepthEnabledItem(this);
+                return;
+            }
+
+            int a = 255 - (int)(255 * ((float)deathCounter / (float)20));
+
+            Color c = new Color();
+            c.R = (byte)a;
+            c.G = (byte)a;
+            c.B = (byte)a;
+            c.A = (byte)a;
+
+            ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), drawingRectangle, c);
+
+            drawingRectangle.Y -= drawingRectangle.Height;
+            drawingRectangle.Height *= 2;
+
+            ION.spriteBatch.Draw(Images.explosion_overlay[deathFrame], drawingRectangle, Color.White);
+
         }
 
         private void drawUnderFireAnimation(float x, float y)
@@ -201,7 +254,7 @@ namespace ION
                 {
                     FiringFrame = 2;
                 }
-                if (FiringCounter > 9)
+                if (FiringCounter > (Grid.TPS))
                 {
                     FiringCounter = 0;
                     firing = false;

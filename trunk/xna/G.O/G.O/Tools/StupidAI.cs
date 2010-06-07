@@ -65,7 +65,7 @@ namespace ION.Tools
 
                     if (playerUnits.Count < 4)
                     {
-                        serial++;
+                        //serial++;
                         CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick()
                                                                     , CommandDispatcher.getSerial()
                                                                     , Grid.playerNumber
@@ -79,7 +79,7 @@ namespace ION.Tools
                             int x = (int)(Grid.width * r.NextDouble());
                             int y = (int)(Grid.height * r.NextDouble());
 
-                            serial++;
+                            //serial++;
                             CommandDispatcher.issueCommand(new NewMoveCommand(CommandDispatcher.getSupposedGameTick()
                                                                                 , CommandDispatcher.getSerial()
                                                                                 , u.owner

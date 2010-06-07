@@ -80,6 +80,8 @@ namespace ION
             bool returnValue = false;
             returnValue = UpdateTile(newInTile, allUnits, grid, translationX, translationY);
 
+            showDetails = false;
+
             if (health < 0)
             {
                 //put this unit in some sort of death animation list somewhere
@@ -113,12 +115,12 @@ namespace ION
                 }
                 
             }
-            if (scan > Grid.TPS)
+            if (scan > Grid.TPS/2)
             {
                 
                 List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
                 if (enemies.Count == 0) firing = false;
-                int distance = 12;
+                int distance = 5;
                 foreach (Unit u in enemies)
                 {
                     if ((u.inTileX - inTileX > -distance && u.inTileX - inTileX < distance) && (u.inTileY - inTileY > -distance && u.inTileY - inTileY < distance))
@@ -551,6 +553,12 @@ namespace ION
 
         public abstract void move();
 
+        public virtual void setFiring()
+        {
+            firing = true;
+        }
+
+
         public static void zoomIn()
         {
             if (scale <= 25)
@@ -687,6 +695,11 @@ namespace ION
             //do stopping things like dumping waypoints etc. 
             EmptyWayPoints();
 
+        }
+
+        public void displayDetails()
+        {
+            showDetails = true;
         }
     }
 }
