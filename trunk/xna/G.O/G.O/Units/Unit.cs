@@ -29,7 +29,8 @@ namespace ION
         public int id;
         public int health;
         public int damage;
-        public int damageType; 
+        public int damageType;
+
 
         protected Vector2 pos, targetPos, virtualPos;
 
@@ -41,6 +42,7 @@ namespace ION
 
         public bool firing = false;
         public bool underFire = false;
+        public bool dying = false;
 
         protected float movementSpeed;
 
@@ -398,11 +400,6 @@ namespace ION
             {
                 return false;
             }
-
-            //Debug.WriteLine("new tilexy: " + inTileX + "," + inTileY);
-            //Vector2 tilePos = map.GetTile(pos.X, pos.Y, translationX, translationX);
-            //inTileX = tilePos.X;
-            //inTileY = tilePos.Y;
         }
 
 
@@ -609,6 +606,7 @@ namespace ION
         public void drawDepthEnabled(float translationX, float translationY)
         {
             draw(translationX, translationY);
+
         }
 
         public bool hitTest(int x, int y)
@@ -672,8 +670,12 @@ namespace ION
         public void Die()
         {
             Grid.map[inTileX, inTileY].accessable = true;
-            //remove it from the grid
+            
+            //Remove it from gameplay
             Grid.get().removeUnit(this);
+
+            //Start the dying sequence
+            dying = true;
         }
 
         public virtual void stop()

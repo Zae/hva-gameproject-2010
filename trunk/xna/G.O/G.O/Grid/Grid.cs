@@ -47,7 +47,9 @@ namespace ION
 
         private StupidAI stupidAI;
 
-        public List<Unit> removals = new List<Unit>();
+        public List<Unit> unitRemovals = new List<Unit>();
+        public List<IDepthEnabled> depthItemsRemovals = new List<IDepthEnabled>();
+
 
         private int viewDirection = 1;
         private const int SOUTH_WEST = 1;
@@ -224,10 +226,16 @@ namespace ION
                 }
             }
 
-            foreach (Unit u in removals)
+            foreach (Unit u in unitRemovals)
             {
                 allUnits.Remove(u);
-                depthItems.Remove((IDepthEnabled)u);
+      
+            }
+
+            foreach (IDepthEnabled ide in depthItemsRemovals)
+            {
+               
+                depthItems.Remove(ide);
             }
 
             /** Disabled for performance, works perfectly tho! **/
@@ -584,9 +592,9 @@ namespace ION
             }
         }
 
-        public static void removeDepthEnabledItem(IDepthEnabled newItem)
+        public void removeDepthEnabledItem(IDepthEnabled ide)
         {
-            depthItems.Remove(newItem);
+            depthItemsRemovals.Add(ide);
         }
 
         public static void updateDepthEnabledItem(IDepthEnabled newItem)
@@ -941,7 +949,7 @@ namespace ION
 
         public void removeUnit(Unit u)
         {
-            removals.Add(u);
+            unitRemovals.Add(u);
         }
 
         public void ChangeMountainTile()
