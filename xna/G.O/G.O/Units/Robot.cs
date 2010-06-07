@@ -148,10 +148,10 @@ namespace ION
             }
 
 
-            if (selected)
-            {
-                ION.spriteBatch.Draw(Images.selectionBoxBack, drawingRectangle, Color.White);
-            }
+            //if (selected)
+            //{
+            //    ION.spriteBatch.Draw(Images.selectionBoxBack, drawingRectangle, Color.White);
+            //}
 
             ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), drawingRectangle, Color.White);
             drawFiringAnimation();
@@ -185,7 +185,7 @@ namespace ION
                     healthBarColor = Color.Red;
                 }
                 
-                ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
+                
                 if (health < maxHealth)
                 {
                     ION.spriteBatch.Draw(Images.unitHealth[2], drawingRectangle, healthBarColor);
@@ -200,8 +200,10 @@ namespace ION
                 ION.spriteBatch.Draw(Images.unitHealth[0], drawingRectangle, Color.White);
             }
 
-
-
+            if (selected)
+            {
+                ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
+            }
    
         }
 
@@ -233,7 +235,7 @@ namespace ION
                     return;
                 }
 
-                ION.spriteBatch.Draw(Images.bulletImpact[UnderFireFrame], new Rectangle(selectionRectangle.X + UnderFireOffsetX, selectionRectangle.Y + UnderFireOffsetY, (int)(baseHalfWidth * 0.5), (int)(baseHalfHeight)), Color.White);
+                ION.spriteBatch.Draw(Images.bulletImpact[UnderFireFrame], new Rectangle(selectionRectangle.X + UnderFireOffsetX - (int)(baseHalfWidth * 0.5), selectionRectangle.Y + UnderFireOffsetY - (int)(baseHalfHeight * 1.0), (int)(baseHalfWidth * 0.75), (int)(baseHalfHeight * 1.5)), Color.White);
             }
         }
 
@@ -277,6 +279,12 @@ namespace ION
             
         }
 
+        public override void setFiring()
+        {
+            base.setFiring();
+            FiringCounter = 0;
+        }
+
         private bool drawFiringAnimation()
         {
             if (firing)
@@ -296,7 +304,7 @@ namespace ION
                 {
                     FiringFrame = 2;
                 }
-                if (FiringCounter > 9)
+                if (FiringCounter > (Grid.TPS))
                 {
                     FiringCounter = 0;
                     firing = false;

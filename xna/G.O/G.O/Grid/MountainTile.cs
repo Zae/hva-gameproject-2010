@@ -91,5 +91,10 @@ namespace ION
             return Players.NEUTRAL;
         }
 
+        public void displayDetails()
+        {
+            //showDetails = true;
+        }
+
     }
 }

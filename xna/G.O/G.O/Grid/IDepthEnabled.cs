@@ -24,7 +24,8 @@ namespace ION
         /// <param name="translationX">bla</param>
         /// <param name="translationY">bla</param>
         void drawDepthEnabled(float translationX, float translationY);
-       
+
+        void displayDetails();
 
     }
 }

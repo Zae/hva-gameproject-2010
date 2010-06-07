@@ -21,7 +21,7 @@ namespace ION
         private Rectangle selectionBoxRectangle = new Rectangle();
 
         public bool selected = false;
-        public bool showInfo = false;
+        public bool showDetails = false;
 
         public BaseTile(int indexX, int indexY, int owner)
         {
@@ -83,7 +83,7 @@ namespace ION
                 ION.spriteBatch.Draw(Images.selectionBoxFront, selectionBoxRectangle, Color.White);
             }
 
-            if (selected || showInfo)
+            if (selected || showDetails)
             {
                 //draw health
             }
@@ -91,7 +91,7 @@ namespace ION
 
         public override void update()
         {
-            
+            showDetails = false;
         }
         
         //Inherited from IDepthEnabled
@@ -132,6 +132,11 @@ namespace ION
         public int getOwner()
         {
             return owner;
+        }
+
+        public void displayDetails()
+        {
+            showDetails = true;
         }
     }
 }

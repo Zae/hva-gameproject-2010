@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Input;
 using ION.UI;
 using ION.MultiPlayer;
+using ION.Tools;
 
 namespace ION.Controls
 {
@@ -24,21 +25,12 @@ namespace ION.Controls
 
         public override void handleInput(MouseState mouseState, KeyboardState keyState)
         {
-            GUIManager.mousePointerState = Images.MOUSE_MOVE;
+            //GUIManager.mousePointerState = Images.MOUSE_MOVE;
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 
                 if (!leftMouseDown)
-                {
-                    leftMouseDown = true;
-                }
-
-            }
-            else
-            {
-                //This means we have released the left mouse button
-                if (leftMouseDown)
                 {
                     StateTest.get().gui.applyState(GUIManager.NONE_SELECTED);
                     StateTest.get().controls = new NeutralState();
@@ -46,8 +38,17 @@ namespace ION.Controls
                     leftMouseDown = false;
                     return;
                 }
-                leftMouseDown = false;
+
             }
+            //else
+            //{
+            //    //This means we have released the left mouse button
+            //    if (leftMouseDown)
+            //    {
+                    
+            //    }
+            //    leftMouseDown = false;
+            //}
 
             if (keyState.IsKeyDown(Keys.LeftShift))
             {
@@ -78,6 +79,23 @@ namespace ION.Controls
                 {
                     rightMouseDown = false;
                 }
+            }
+
+            if (moveOrder)
+            {
+                SoundManager.selectUnitSound();
+                StateTest.get().gui.applyState(GUIManager.UNITS_SELECTED);
+                StateTest.get().controls = new UnitSelectionState();
+            }
+            else if (attackOrder)
+            {
+                //TODO //SoundManager.selectBaseSound();
+                StateTest.get().gui.applyState(GUIManager.BASE_SELECTED);
+                StateTest.get().controls = new BaseSelectionState();
+            }
+            else
+            {
+                showContext(mouseState.X, mouseState.Y);
             }
 
             base.handleInput(mouseState, keyState);
@@ -133,6 +151,46 @@ namespace ION.Controls
             {
                 u.selected = false;
             }
+        }
+
+        public override void showContext(int x, int y)
+        {
+            //lights up what is under the mouse
+            List<IDepthEnabled> depthItems = Grid.depthItems;
+
+            int count = depthItems.Count;
+            for (int i = depthItems.Count - 1; i >= 0; i--)
+            {
+                if (depthItems[i].hitTest(x, y))
+                {
+                    if (depthItems[i].getOwner() != Grid.playerNumber)
+                    {
+                        GUIManager.mousePointerState = Images.MOUSE_ATTACK;
+                        
+                    }
+                    else
+                    {
+                        GUIManager.mousePointerState = Images.MOUSE_POINTER;
+                       
+                    }
+
+                    depthItems[i].displayDetails();
+                    return;
+                }
+            }
+
+            GUIManager.mousePointerState = Images.MOUSE_MOVE;
+
+            //if (result is Unit)
+            //{
+            //    ((Unit)result).selected = true;
+            //    selectedUnits = true;
+            //}
+            //else if (result is BaseTile)
+            //{
+            //    // TODO //((BaseTile)result).sekected = true;
+            //    selectedBase = true;
+            //}
         }
     }
 }
