@@ -341,7 +341,13 @@ namespace ION
             //Load the various laser sounds
             for (int i = 0; i < 2; i++)
             {
-                Sounds.fireSounds[i] = Content.Load<SoundEffect>("sfxItems/laser"+i);
+                Sounds.fireSounds[i] = Content.Load<SoundEffect>("sfxItems/gun"+i);
+            }
+            Sounds.explosionSounds = new SoundEffect[3];
+            //Load the various laser sounds
+            for (int i = 0; i < 3; i++)
+            {
+                Sounds.explosionSounds[i] = Content.Load<SoundEffect>("sfxItems/explosion" + i);
             }
 
             Sounds.alphabet = new SoundEffect[3, 26];

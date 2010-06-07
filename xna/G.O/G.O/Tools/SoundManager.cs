@@ -10,12 +10,18 @@ namespace ION.Tools
     class SoundManager
     {
 
-        private static SoundEffectInstance[] firesounds;
+        private static SoundEffectInstance[,] firesounds;
         private static int firesoundsCount;
-
         private static int firesoundsPointer = 0;
 
+        private static SoundEffectInstance[] explosionsounds;
+        private static int explosionsoundsCount;
+        private static int explosionsoundsPointer = 0;
+
+
         private static int levelOfAction = 0;
+
+        public static int blabla = 2;
 
         private static SoundEffectInstance selectUnit;
         private static SoundEffectInstance orderUnit;
@@ -28,13 +34,29 @@ namespace ION.Tools
         public static void init()
         {
             firesoundsCount = Sounds.fireSounds.Length;
-            firesounds = new SoundEffectInstance[firesoundsCount];
-            for (int i = 0; i < firesoundsCount; i++)
+            firesounds = new SoundEffectInstance[blabla,firesoundsCount];
+            for (int j = 0; j < blabla; j++)
             {
-                firesounds[i] = Sounds.fireSounds[i].CreateInstance();
-                firesounds[i].IsLooped = false;
-                firesounds[i].Volume = 0.2f;
+
+                for (int i = 0; i < firesoundsCount; i++)
+                {
+                    firesounds[j,i] = Sounds.fireSounds[i].CreateInstance();
+                    firesounds[j,i].IsLooped = false;
+                    firesounds[j,i].Volume = 0.4f;
+                }
+
             }
+
+            explosionsoundsCount = Sounds.explosionSounds.Length;
+            explosionsounds = new SoundEffectInstance[explosionsoundsCount];
+            for (int i = 0; i < explosionsoundsCount; i++)
+            {
+                explosionsounds[i] = Sounds.explosionSounds[i].CreateInstance();
+                explosionsounds[i].IsLooped = false;
+                //explosionsounds[i].Volume = 0.2f;
+            }
+
+
 
             selectUnit = Sounds.selectUnit.CreateInstance();
             selectUnit.IsLooped = false;
@@ -97,9 +119,9 @@ namespace ION.Tools
             playCoordinate();
         }
 
-        public static void fireSound(int ticks)
+        public static void fireSound()
         {
-            levelOfAction+=3;
+            levelOfAction+=10;
 
             firesoundsPointer++;
             if (firesoundsPointer == firesoundsCount)
@@ -107,9 +129,28 @@ namespace ION.Tools
                 firesoundsPointer = 0;
             }
 
+            for (int i = 0; i < blabla; i++)
+            {
+                if (firesounds[i,firesoundsPointer].State == SoundState.Stopped)
+                {
+                    firesounds[i,firesoundsPointer].Play();
+                    return;
+                }
+            }
 
-            firesounds[firesoundsPointer].Play();
-           
+        }
+
+        public static void explosionSound()
+        {
+            explosionsoundsPointer++;
+            if (explosionsoundsPointer == explosionsoundsCount)
+            {
+                explosionsoundsPointer = 0;
+            }
+
+
+            explosionsounds[explosionsoundsPointer].Play();
+
         }
 
         public static void selectUnitSound()
@@ -122,10 +163,10 @@ namespace ION.Tools
 
         public static void orderUnitSound()
         {
-            if (orderUnit.State != SoundState.Playing)
-            {
-                orderUnit.Play();
-            }
+            //if (orderUnit.State != SoundState.Playing)
+            //{
+            //    orderUnit.Play();
+            //}
         }
 
 

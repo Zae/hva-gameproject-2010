@@ -77,7 +77,7 @@ namespace ION.MultiPlayer
         //Command coming in over the network should be deserialized and then sent to this method
         public static void sinkCommand(Command command)
         {
-            if (command.supposedGameTick < Grid.get().TCP)
+            if (command.supposedGameTick <= Grid.get().TCP)
             {
                 //this is a insolvable situation, go resync 
                 Debug.WriteLine("ERROR IN COMMANDDISPATCHER.SINKCOMMAND (COMMAND RECEIVED TOO LATE): TCP=" + Grid.get().TCP + " SUPPOSED:" + commandsQueue[0].supposedGameTick);

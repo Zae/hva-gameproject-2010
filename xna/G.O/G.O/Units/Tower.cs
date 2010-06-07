@@ -31,7 +31,7 @@ namespace ION
 
         public Tower(Vector2 newPos, int owner, int id) : base(owner,id)
         {
-            damage = 3;
+            damage = 8;
             health = 250;
 
             pos = newPos;
@@ -204,6 +204,7 @@ namespace ION
                 if (FiringCounter > 9)
                 {
                     FiringCounter = 0;
+                    firing = false;
                 }
 
                 if (FiringFrame < 2)
