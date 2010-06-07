@@ -293,7 +293,11 @@ namespace ION.MultiPlayer
                 if (u.owner == Grid.playerNumber)
                 {
                     //SoundManager.orderUnitSound();
-                    SoundManager.setCoordinate(CoordinateTool.coordinateSound(path.Last<ResourceTile>().indexX, path.Last<ResourceTile>().indexY));
+                    if (path.Count != 0)
+                    {
+                        SoundManager.setCoordinate(CoordinateTool.coordinateSound(path.Last<ResourceTile>().indexX, path.Last<ResourceTile>().indexY));
+
+                    }
                 }
               
             }

@@ -290,6 +290,13 @@ namespace ION
                 Images.bulletImpact[i] = Content.Load<Texture2D>("miscItems/bulletImpact/impact"+i);
             }
 
+            //Load bullet impact images
+            Images.explosion_overlay = new Texture2D[3];
+            for (int i = 0; i < 3; i++)
+            {
+                Images.explosion_overlay[i] = Content.Load<Texture2D>("miscItems/explosion/explosion" + i);
+            }
+
 
             // Towers
             Images.turret = new Texture2D[players, directions.Length];

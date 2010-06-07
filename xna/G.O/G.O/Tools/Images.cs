@@ -52,6 +52,8 @@ namespace ION
         public static Texture2D[,] unit_shooting_overlay;
         public static Texture2D[,] tower_shooting_overlay;
 
+        public static Texture2D[] explosion_overlay;
+
         public static Texture2D[] bulletImpact;
 
         //guiItems

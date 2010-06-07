@@ -27,6 +27,11 @@ namespace ION
         public int UnderFireOffsetX = 0;
         public int UnderFireOffsetY = 0;
 
+
+
+        public int deathFrame = 0;
+        public int deathCounter = 0;
+
         public Robot(Vector2 newPos, Vector2 newTarget, int owner, int id) : base(owner,id)
         {
             health = maxHealth;
@@ -40,7 +45,7 @@ namespace ION
             inTileX = playerBase.getTileX();
             inTileY = playerBase.getTileY();
 
-            movementSpeed = 2f;
+            movementSpeed = 3f;
         }
 
         //move units towards their target
@@ -136,6 +141,12 @@ namespace ION
             drawingRectangle.Height = (int)(baseHalfHeight * 4);
 
             //ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
+            if (dying)
+            {     
+                drawDeathAnimation();
+                return;
+            }
+
 
             if (selected)
             {
@@ -143,8 +154,9 @@ namespace ION
             }
 
             ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), drawingRectangle, Color.White);
-            drawFiringAnimation(x, y);
-            drawUnderFireAnimation(x, y);
+            drawFiringAnimation();
+            drawUnderFireAnimation();
+            
 
             if (selected || showDetails)
             {
@@ -187,10 +199,13 @@ namespace ION
 
                 ION.spriteBatch.Draw(Images.unitHealth[0], drawingRectangle, Color.White);
             }
+
+
+
    
         }
 
-        private void drawUnderFireAnimation(float x, float y)
+        private void drawUnderFireAnimation()
         {
             if (underFire)
             {
@@ -222,7 +237,47 @@ namespace ION
             }
         }
 
-        private bool drawFiringAnimation(float x, float y)
+        private void drawDeathAnimation()
+        {           
+                //animation test code
+                deathCounter++;
+
+                if (deathCounter > 0)
+                {
+                    deathFrame = 0;
+                }
+                if (deathCounter > 10)
+                {
+                    deathFrame = 1;
+                }
+                if (deathCounter > 15)
+                {
+                    deathFrame = 2;
+                }
+                if (deathCounter > 20)
+                {
+                    Grid.get().removeDepthEnabledItem(this);
+                    return;
+                }
+            
+                int a = 255 - (int)(255*((float)deathCounter/(float)20));
+               
+                Color c = new Color();
+                c.R = (byte)a;
+                c.G = (byte)a;
+                c.B = (byte)a;
+                c.A = (byte)a;
+
+                ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), drawingRectangle, c);
+
+                drawingRectangle.Y -= drawingRectangle.Height;
+                drawingRectangle.Height *= 2;
+
+                ION.spriteBatch.Draw(Images.explosion_overlay[deathFrame], drawingRectangle, Color.White);
+            
+        }
+
+        private bool drawFiringAnimation()
         {
             if (firing)
             {
@@ -248,17 +303,11 @@ namespace ION
 
                 if (FiringFrame < 2)
                 {
-                    //do not remove
-                    //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing, selected), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
-
-                    ION.spriteBatch.Draw(Images.unit_shooting_overlay[(int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    ION.spriteBatch.Draw(Images.unit_shooting_overlay[(int)facing, FiringFrame], drawingRectangle, Color.White);
                 }
                 else if (FiringFrame >= 2)
                 {
-                    //do not remove
-                    //ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
-
-                    //ION.spriteBatch.Draw(Images.unit_selected_shooting[owner - 1, (int)facing, FiringFrame], new Rectangle((int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)), (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 4)), Color.White);
+                    //show nothing
                 }
                 return true;
             }
