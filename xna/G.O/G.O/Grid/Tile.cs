@@ -107,10 +107,13 @@ namespace ION
             return false;
         }
 
-        public Vector2 GetPos(float translationX, float translationY)
-        {
-            return new Vector2((ION.halfWidth + (visualX * baseHalfWidth) * (15.0f / scale) - (baseHalfWidth * (15.0f / scale))), ((visualY * baseHalfHeight) * (15.0f / scale) - (baseHalfWidth + baseHalfHeight) * (15.0f / scale)));
-        }
+        //public Vector2 GetPos(float translationX, float translationY)
+        //{
+        //    Vector2 v = new Vector2();
+        //    v.X = drawingRectangle.X;
+        //    v.Y = drawingRectangle.Y;
+        //    return v;
+        //}
 
 
         public bool FreeTile(Tile currentTile, List<Unit> allUnits)

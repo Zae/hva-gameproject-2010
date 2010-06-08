@@ -11,9 +11,26 @@ namespace ION.UI
 
         public override void run()
         {
-                CommandDispatcher.issueCommand(new NewTowerUnitCommand(CommandDispatcher.getSupposedGameTick()
-                                                                    , CommandDispatcher.getSerial()
-                                                                    , Grid.playerNumber));
+
+            List<Unit> playerUnits = Grid.get().getSelection();
+
+            foreach (Unit u in playerUnits)
+            {
+
+                if (u is Robot && Grid.get().resources >= Tower.cost)
+                {
+
+                    Grid.get().resources -= Tower.cost;
+                    
+                    CommandDispatcher.issueCommand(new NewTowerUnitCommand(CommandDispatcher.getSupposedGameTick()
+                                                      , CommandDispatcher.getSerial()
+                                                      , Grid.playerNumber
+                                                      , Grid.getNewId()
+                                                      , u.id));
+                }
+   
+            }
+           
         }
     }
 }

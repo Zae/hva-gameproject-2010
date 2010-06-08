@@ -187,22 +187,22 @@ namespace ION
                 }
 
                 //updates the unit
-                //units[i].Update(translationX, translationY);
+                units[i].Update(translationX, translationY);
 
                 //tells the unit what tile it is currently on
-                Vector2 temp = GetTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
-                if (temp != null)
-                {
-                    if (units[i].Update(temp, allUnits, map, translationX, translationY))
-                    {
-                        //units[i].FindPath(map, allUnits);//here
-                    }
+                //Vector2 temp = GetTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
+                //if (temp != null)
+                //{
+                //    if (units[i].Update(temp, allUnits, map, translationX, translationY))
+                //    {
+                //        //units[i].FindPath(map, allUnits);//here
+                //    }
         
-                }
-                else
-                {
-                    Debug.WriteLine("UPDATE TILE WAS NULL!");
-                }
+                //}
+                //else
+                //{
+                //    Debug.WriteLine("UPDATE TILE WAS NULL!");
+                //}
             }
 
             //Reset the influence variables
@@ -535,25 +535,27 @@ namespace ION
         {
             BaseTile playerBase = getPlayerBase(owner);
             Robot newUnit = new Robot(GetTileScreenPos(new Vector2((float)playerBase.getTileX(), (float)playerBase.getTileY()), StateTest.get().translationX, StateTest.get().translationY),
-                GetTileScreenPos(new Vector2((float)playerBase.getTileX() - 1, (float)playerBase.getTileY() + 1), StateTest.get().translationX, StateTest.get().translationY), owner, id);
+                owner, id);
             allUnits.Add(newUnit);
             addDepthEnabledItem(newUnit);
         }
 
-        public void createTowerUnit(int owner)
+        public void createTowerUnit(int owner, int towerId, int robotId)
         {
-            for (int i = 0; i < allUnits.Count(); i++)
+            //find the Robot that turns into a Tower
+            Unit u = Grid.get().getUnit(owner, robotId);
+
+            //if the Robot is found
+            if (u != null && u is Robot)
             {
-                if (allUnits[i].owner == owner && allUnits[i].selected && resources >= Tower.cost)
-                {
-                    resources -= Tower.cost;
-                    allUnits.Add(new Tower(GetTileScreenPos(new Vector2((float)allUnits[i].inTileX, (float)allUnits[i].inTileY), StateTest.get().translationX, StateTest.get().translationY), owner, allUnits[i].id));
-                    allUnits[i].Die();
-                    
-                }
+                //BaseTile playerBase = getPlayerBase(owner);
+                Tower newUnit = new Tower(GetTileScreenPos(new Vector2((float)u.getTileX(), (float)u.getTileY()), StateTest.get().translationX, StateTest.get().translationY),
+                    owner, towerId);
+                allUnits.Add(newUnit);
+                addDepthEnabledItem(newUnit);
             }
-            
-            
+
+          
         }
 
         public static void addDepthEnabledItem(IDepthEnabled newItem)

@@ -27,16 +27,12 @@ namespace ION
 
         public ThemeManager(string theme,string ground, int tileCountX, int tileCountY)
         {
-            //countX = (int)tileCountX / (int) tilesPerTexture;
-            //countY = (int)tileCountY / (int) tilesPerTexture;
-
             countX = tileCountX;
             countY = tileCountY;
 
             xDiff = tileCountX - tileCountY;
 
-            
-
+           
             width = (tileCountX+tileCountY-1) * ((float)Tile.baseHalfWidth);
             height = (tileCountX + tileCountY - 1) * ((float)Tile.baseHalfHeight);
             

@@ -73,7 +73,7 @@ namespace ION.MultiPlayer
             BinaryReader br = new BinaryReader(inData);
             COMMANDTYPES ct = (COMMANDTYPES)br.ReadInt32();
 #if DEBUG
-            int sgt,serial,owner,unitID,targetx,targety,seed,targetOwner,targetID;
+            int sgt,serial,owner,unitID,targetx,targety,seed,targetOwner,targetID,towerID;
 #endif
 
             switch (ct)
@@ -117,11 +117,12 @@ namespace ION.MultiPlayer
                     sgt = br.ReadInt32();
                     serial = br.ReadInt32();
                     owner = br.ReadInt32();
+                    towerID = br.ReadInt32();
                     unitID = br.ReadInt32();
-                    Console.WriteLine("command received of type:" + ct + ", spt=" + sgt + ", serial=" + serial + ", owner=" + owner + ", unitID=" + unitID);
-                    return new NewTowerUnitCommand(sgt, serial, owner);
+                    Console.WriteLine("command received of type:" + ct + ", spt=" + sgt + ", serial=" + serial + ", owner=" + owner + ", towerID=" + towerID + ", unitID=" + unitID);
+                    return new NewTowerUnitCommand(sgt, serial, owner, towerID, unitID);
 #else
-                    return new NewTowerUnitCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
+                    return new NewTowerUnitCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(),br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
 #endif
                 case COMMANDTYPES.ADD_MOVE_UNIT:
 #if DEBUG
@@ -485,22 +486,24 @@ namespace ION.MultiPlayer
     /// </summary>
     public class NewTowerUnitCommand : Command
     {
-        int unitId;
+        int towerId;
+        int robotId;
         /// <summary>
         /// Constructor for the NewTowerUnitCommand command.
         /// </summary>
         /// <param name="supposedGameTick">The tick in which the game shoudl start so all games start ath the same time.</param>
         /// <param name="serial">The command serial.</param>
         /// <param name="unitOwner">The owner of the unit (playerNumber)</param>
-        public NewTowerUnitCommand(int supposedGameTick, int serial, int owner)
+        public NewTowerUnitCommand(int supposedGameTick, int serial, int owner, int towerId, int robotId)
             : base(COMMANDTYPES.NEW_TOWER, supposedGameTick, owner, serial)
         {
-            //this.unitId = unitId;
+            this.towerId = towerId;
+            this.robotId = robotId;
         }
         //emmet Shouldn't this also include the ID of the unit that is converted into a tower?
         public override void performCommand()
         {
-            Grid.get().createTowerUnit(owner);
+            Grid.get().createTowerUnit(owner,towerId,robotId);
         }
         #region Serializable Members
         /// <summary>
@@ -515,7 +518,8 @@ namespace ION.MultiPlayer
             bw.Write((Int32)_commandType);
             bw.Write((Int32)serial);
             bw.Write((Int32)owner);
-            bw.Write((Int32)unitId);
+            bw.Write((Int32)towerId);
+            bw.Write((Int32)robotId);
 
             return ms;
         }
