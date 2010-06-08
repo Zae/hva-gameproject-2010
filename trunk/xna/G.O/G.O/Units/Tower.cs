@@ -67,7 +67,6 @@ namespace ION
 
                 tmp = 0;
             }
-     
         }
 
         public override void draw(float x, float y)
