@@ -70,7 +70,7 @@ namespace ION
         // a list to hold the blue army
         public List<Unit> allUnits = new List<Unit>();
 
-        public float resources = Robot.cost * 42;
+        public float resources = Robot.cost * 5;
         public static int playerNumber = -1;
         private static int playerUnitId = -1;
 
@@ -192,7 +192,7 @@ namespace ION
                 if (rt.owner == playerNumber)
                 {
                     //TODO find a good place for this
-                    float f = (rt.charge / 1000);
+                    float f = (rt.charge / 500);
 
                     resources += f;
                     totalCollected += f;
