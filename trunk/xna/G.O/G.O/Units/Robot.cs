@@ -49,9 +49,35 @@ namespace ION
         //move units towards their target
         public override void move()
         {
-            if (!moving)
+            
+            //check if the target position is accesable
+            if (!moving && !targetPosition.accessable)
             {
+                //todo
+
+                if (destination.Count == 0)
+                {
+                    targetPosition = null;
+                }
+                //else
+                //{
+                //    EmptyWayPoints();
+                //}
+
+
+            }
+            
+            else if (!moving)
+            {
+                
+                //find out if the next move 
+
+
+                position.accessable = true;
+
                 moving = true;
+
+                targetPosition.accessable = false;
 
                 movement.X = targetPosition.drawingRectangle.X - position.drawingRectangle.X;
                 movement.Y = targetPosition.drawingRectangle.Y - position.drawingRectangle.Y;

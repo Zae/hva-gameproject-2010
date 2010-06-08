@@ -23,7 +23,10 @@ namespace ION.Tools
 
         public static int blabla = 2;
 
-        private static SoundEffectInstance selectUnit;
+        private static SoundEffectInstance[] selectUnit;
+        private static int selectUnitCount;
+        private static int selectUnitPointer = 0;
+
         private static SoundEffectInstance orderUnit;
 
         private static int voiceCount = -1;
@@ -56,10 +59,17 @@ namespace ION.Tools
                 //explosionsounds[i].Volume = 0.2f;
             }
 
+            selectUnitCount = Sounds.selectUnitSounds.Length;
+            selectUnit = new SoundEffectInstance[selectUnitCount];
+            for (int i = 0; i < selectUnitCount; i++)
+            {
+                selectUnit[i] = Sounds.selectUnitSounds[i].CreateInstance();
+                selectUnit[i].IsLooped = false;
+                //explosionsounds[i].Volume = 0.2f;
+            }
 
-
-            selectUnit = Sounds.selectUnit.CreateInstance();
-            selectUnit.IsLooped = false;
+            //selectUnit = Sounds.selectUnit.CreateInstance();
+            //selectUnit.IsLooped = false;
             
             orderUnit = Sounds.orderUnit.CreateInstance();
             orderUnit.IsLooped = false;
@@ -153,21 +163,34 @@ namespace ION.Tools
 
         }
 
+
         public static void selectUnitSound()
         {
-            if (selectUnit.State != SoundState.Playing)
+            selectUnitPointer++;
+            if (selectUnitPointer == selectUnitCount)
             {
-                selectUnit.Play();
+                selectUnitPointer = 0;
             }
+
+
+            selectUnit[selectUnitPointer].Play();
         }
 
-        public static void orderUnitSound()
-        {
-            //if (orderUnit.State != SoundState.Playing)
-            //{
-            //    orderUnit.Play();
-            //}
-        }
+        //public static void selectUnitSound()
+        //{
+        //    if (selectUnit.State != SoundState.Playing)
+        //    {
+        //        selectUnit.Play();
+        //    }
+        //}
+
+        //public static void orderUnitSound()
+        //{
+        //    //if (orderUnit.State != SoundState.Playing)
+        //    //{
+        //    //    orderUnit.Play();
+        //    //}
+        //}
 
 
     }

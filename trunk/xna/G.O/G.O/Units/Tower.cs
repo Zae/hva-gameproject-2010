@@ -43,6 +43,7 @@ namespace ION
             inTileX = position.indexX;
             inTileY = position.indexY;
 
+            position.accessable = false;
       
             init();
         }
