@@ -553,9 +553,8 @@ namespace ION
             //if the Robot is found
             if (u != null && u is Robot)
             {
-                //BaseTile playerBase = getPlayerBase(owner);
+ 
                 Tower newUnit = new Tower(Grid.map[u.inTileX,u.inTileY], owner, towerId);
-                u.Die();
                 u.Die();
                 allUnits.Add(newUnit);
                 addDepthEnabledItem(newUnit);

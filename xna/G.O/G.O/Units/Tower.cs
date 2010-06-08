@@ -87,7 +87,7 @@ namespace ION
             focalPoint.Y = selectionRectangle.Center.Y;
 
 
-            ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
+            //ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
 
             if (dying)
             {
@@ -189,7 +189,7 @@ namespace ION
             c.B = (byte)a;
             c.A = (byte)a;
 
-            ION.spriteBatch.Draw(Images.getUnitImage(owner, (int)facing), drawingRectangle, c);
+            ION.spriteBatch.Draw(Images.getTurretImage(owner, (int)facing), drawingRectangle, c);
 
             drawingRectangle.Y -= drawingRectangle.Height;
             drawingRectangle.Height *= 2;

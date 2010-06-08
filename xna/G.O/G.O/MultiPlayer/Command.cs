@@ -226,9 +226,9 @@ namespace ION.MultiPlayer
             BinaryWriter bw = new BinaryWriter(ms);
 
             bw.Write((Int32)_commandType);
-            bw.Write(seed);
-            bw.Write(supposedGameTick);
-            bw.Write(serial);
+            bw.Write((Int32)seed);
+            bw.Write((Int32)supposedGameTick);
+            bw.Write((Int32)serial);
 
             return ms;
         }

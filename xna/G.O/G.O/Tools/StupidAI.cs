@@ -42,6 +42,8 @@ namespace ION.Tools
 
                 foreach (Unit u in aiUnits)
                 {
+
+                    
                     if (u.destination.Count == 0 && !u.moving)
                     {
                         int x = (int)(Grid.width * r.NextDouble());
@@ -63,9 +65,9 @@ namespace ION.Tools
                     //do things
                     List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
 
-                    if (playerUnits.Count < 16)
+                    if (playerUnits.Count < 4)
                     {
-                        //serial++;
+ 
                         CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick()
                                                                     , CommandDispatcher.getSerial()
                                                                     , Grid.playerNumber
@@ -79,7 +81,6 @@ namespace ION.Tools
                             int x = (int)(Grid.width * r.NextDouble());
                             int y = (int)(Grid.height * r.NextDouble());
 
-                            //serial++;
                             CommandDispatcher.issueCommand(new NewMoveCommand(CommandDispatcher.getSupposedGameTick()
                                                                                 , CommandDispatcher.getSerial()
                                                                                 , u.owner
