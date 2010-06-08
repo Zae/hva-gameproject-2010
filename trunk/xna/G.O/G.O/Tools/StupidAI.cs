@@ -19,7 +19,7 @@ namespace ION.Tools
 
         public Random r = new Random(123);
 
-        public bool managePlayer = true;
+        public bool managePlayer = false;
 
         public StupidAI(int ai)
         {
@@ -34,7 +34,7 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 15)
+                if (aiUnits.Count < 4)
                 {
                     serial++;
                     CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), serial,ai, newId++));
