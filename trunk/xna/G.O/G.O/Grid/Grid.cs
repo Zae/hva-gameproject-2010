@@ -556,6 +556,7 @@ namespace ION
                 //BaseTile playerBase = getPlayerBase(owner);
                 Tower newUnit = new Tower(Grid.map[u.inTileX,u.inTileY],
                     owner, towerId);
+                u.Die();
                 allUnits.Add(newUnit);
                 addDepthEnabledItem(newUnit);
             }

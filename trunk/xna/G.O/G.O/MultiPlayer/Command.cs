@@ -122,7 +122,7 @@ namespace ION.MultiPlayer
                     Console.WriteLine("command received of type:" + ct + ", spt=" + sgt + ", serial=" + serial + ", owner=" + owner + ", towerID=" + towerID + ", unitID=" + unitID);
                     return new NewTowerUnitCommand(sgt, serial, owner, towerID, unitID);
 #else
-                    return new NewTowerUnitCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(),br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
+                    return new NewTowerUnitCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(),br.ReadInt32(), br.ReadInt32());
 #endif
                 case COMMANDTYPES.ADD_MOVE_UNIT:
 #if DEBUG
@@ -516,6 +516,7 @@ namespace ION.MultiPlayer
             BinaryWriter bw = new BinaryWriter(ms);
 
             bw.Write((Int32)_commandType);
+            bw.Write((Int32)supposedGameTick);
             bw.Write((Int32)serial);
             bw.Write((Int32)owner);
             bw.Write((Int32)towerId);
