@@ -398,7 +398,7 @@ namespace ION.MultiPlayer
                 //If this unit belonges to the player, make a sound
                 if (u.owner == Grid.playerNumber)
                 {
-                    SoundManager.orderUnitSound();
+                    //SoundManager.orderUnitSound();
                 }
 
             }

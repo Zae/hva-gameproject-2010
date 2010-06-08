@@ -332,7 +332,15 @@ namespace ION
             Sounds.logoSound = Content.Load<SoundEffect>("sfxItems/LogoSound");
             Sounds.actionSound1 = Content.Load<SoundEffect>("sfxItems/ActionSound1");
 
-            Sounds.selectUnit = Content.Load<SoundEffect>("sfxItems/selectunit");
+           // Sounds.selectUnit = Content.Load<SoundEffect>("sfxItems/selectunit");
+
+            Sounds.selectUnitSounds = new SoundEffect[5];
+            Sounds.selectUnitSounds[0] = Content.Load<SoundEffect>("voiceItems/Ezra_GoAhead_1");
+            Sounds.selectUnitSounds[1] = Content.Load<SoundEffect>("voiceItems/Ezra_Sir_1");
+            Sounds.selectUnitSounds[2] = Content.Load<SoundEffect>("voiceItems/Ezra_Standy_1");
+            Sounds.selectUnitSounds[3] = Content.Load<SoundEffect>("voiceItems/Ezra_GoAhead_2");
+            Sounds.selectUnitSounds[4] = Content.Load<SoundEffect>("voiceItems/Ezra_WhatDoYouWant_1");
+
 
             Sounds.orderUnit = Content.Load<SoundEffect>("sfxItems/orderunit");
 

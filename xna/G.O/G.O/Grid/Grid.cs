@@ -511,9 +511,9 @@ namespace ION
             //if the Robot is found
             if (u != null && u is Robot)
             {
- 
-                Tower newUnit = new Tower(Grid.map[u.inTileX,u.inTileY], owner, towerId);
                 u.Die();
+                Tower newUnit = new Tower(Grid.map[u.inTileX,u.inTileY], owner, towerId);
+      
                 allUnits.Add(newUnit);
                 addDepthEnabledItem(newUnit);
             }      

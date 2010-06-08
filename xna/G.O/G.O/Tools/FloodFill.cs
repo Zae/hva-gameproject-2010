@@ -152,6 +152,152 @@ namespace ION.Tools
                         return null;
                     }
 
+
+
+                    if (rt.floofFillFlag == false)
+                    {
+                        rt.floofFillFlag = true;
+
+                        return rt;
+                    }
+                }
+            }
+            return null;
+        }
+
+
+        private static List<ResourceTile> getAccesableValidNeighbours(ResourceTile rt)
+        {
+            List<ResourceTile> result = new List<ResourceTile>();
+
+            int x = rt.indexX;
+            int y = rt.indexY;
+
+            ResourceTile temp;
+
+            //while (!foundTarget)
+            //{
+
+            //Horizontal/Vertical
+            temp = getValidNeighbour(x, y - 1);
+            if (temp != null) result.Add(temp);
+
+            temp = getValidNeighbour(x - 1, y);
+            if (temp != null) result.Add(temp);
+
+            temp = getValidNeighbour(x + 1, y);
+            if (temp != null) result.Add(temp);
+
+            temp = getValidNeighbour(x, y + 1);
+            if (temp != null) result.Add(temp);
+
+
+            //Diagonal
+            temp = getValidNeighbour(x - 1, y - 1);
+            if (temp != null) result.Add(temp);
+
+            temp = getValidNeighbour(x + 1, y - 1);
+            if (temp != null) result.Add(temp);
+
+            temp = getValidNeighbour(x - 1, y + 1);
+            if (temp != null) result.Add(temp);
+
+            temp = getValidNeighbour(x + 1, y + 1);
+            if (temp != null) result.Add(temp);
+            //}
+            return result;
+        }
+
+        public static List<ResourceTile> getAccesablePath(ResourceTile begin, ResourceTile end)
+        {
+            foundTarget = false;
+
+            target = end;
+
+            //To hold the final path
+            List<ResourceTile> path = new List<ResourceTile>();
+
+            //Every step away from the beginning is stored in a new List
+            List<List<ResourceTile>> steps = new List<List<ResourceTile>>();
+
+            List<ResourceTile> firstStep = new List<ResourceTile>();
+            firstStep.Add(begin);
+            steps.Add(firstStep);
+
+            bool findingTarget = true;
+            //As long as the target has not been encountered
+            while (findingTarget)
+            {
+                List<ResourceTile> nextStep = new List<ResourceTile>();
+
+                foreach (ResourceTile rt in steps[steps.Count - 1])
+                {
+                    nextStep.AddRange(getAccesableValidNeighbours(rt));
+                }
+
+                //Tells us if the target can't be reached
+                if (!foundTarget && nextStep.Count == 0)
+                {
+                    return path;
+                }
+
+                if (foundTarget)
+                {
+                    findingTarget = false;
+                }
+                else
+                {
+                    steps.Add(nextStep);
+                }
+            }
+
+            path.Add(end);
+
+            //The situation is now that the target tile is not in steps.
+            //Only the layer before the target tile is in steps.
+            for (int i = steps.Count - 1; i > 0; i--)
+            {
+                foreach (ResourceTile rt in steps[i])
+                {
+                    if (isNeighbour(rt, path[path.Count - 1]))
+                    {
+                        path.Add(rt);
+                        break;
+                    }
+                }
+            }
+
+            //This could be more elegant
+            foreach (ResourceTile rt in Grid.resourceTiles)
+            {
+                rt.floofFillFlag = false;
+            }
+
+            path.Reverse();
+
+            return path;
+        }
+
+        private static ResourceTile getAccesableValidNeighbour(int x, int y)
+        {
+            if (Grid.get().isValid(x, y))
+            {
+                Tile t = Grid.map[x, y];
+                if (t is ResourceTile && t.accessable)
+                {
+                    ResourceTile rt = (ResourceTile)t;
+
+                    if (rt.indexX == target.indexX && rt.indexY == target.indexY)
+                    {
+                        foundTarget = true;
+                        return null;
+                    }
+
+                    if (!rt.accessable)
+                    {
+                        return null;
+                    }
+
                     if (rt.floofFillFlag == false)
                     {
                         rt.floofFillFlag = true;

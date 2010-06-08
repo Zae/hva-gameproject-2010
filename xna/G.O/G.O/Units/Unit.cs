@@ -85,8 +85,6 @@ namespace ION
 
             if (health < 0)
             {
-                //open the unit's tile for traffic
-                Grid.map[inTileX, inTileY].accessable = true;
 
                 //start dying
                 Die();
@@ -345,8 +343,9 @@ namespace ION
 
         public void Die()
         {
+            //open the unit's tile for traffic
             Grid.map[inTileX, inTileY].accessable = true;
-            
+
             //Remove it from gameplay
             Grid.get().removeUnit(this);
 

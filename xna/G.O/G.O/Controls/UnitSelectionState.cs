@@ -40,15 +40,6 @@ namespace ION.Controls
                 }
 
             }
-            //else
-            //{
-            //    //This means we have released the left mouse button
-            //    if (leftMouseDown)
-            //    {
-                    
-            //    }
-            //    leftMouseDown = false;
-            //}
 
             if (keyState.IsKeyDown(Keys.LeftShift))
             {
