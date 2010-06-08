@@ -69,7 +69,7 @@ namespace ION
                 ION.instance.gui.Add(uicomponent);
             }
             //
-            ION.get().IsMouseVisible = false;
+            //ION.get().IsMouseVisible = false;
             MediaPlayer.Play(Sounds.titleSong);
             MediaPlayer.IsRepeating = true;
         }
@@ -81,7 +81,7 @@ namespace ION
                 ION.instance.gui.Remove(uicomponent);
             }
             //
-            ION.get().IsMouseVisible = false;
+            //ION.get().IsMouseVisible = false;
             MediaPlayer.Stop();
         }
     }

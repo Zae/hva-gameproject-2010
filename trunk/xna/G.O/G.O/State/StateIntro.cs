@@ -223,14 +223,14 @@ namespace ION
 
         public override void focusGained()
         {
-            ION.get().IsMouseVisible = true;
+            //ION.get().IsMouseVisible = true;
             //MediaPlayer.Play(Sounds.titleSong);
             //MediaPlayer.IsRepeating = true;
         }
 
         public override void focusLost()
         {
-            ION.get().IsMouseVisible = false;
+            //ION.get().IsMouseVisible = false;
             //MediaPlayer.Stop();
         }
 

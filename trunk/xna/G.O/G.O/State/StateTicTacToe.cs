@@ -253,12 +253,12 @@ namespace ION
 
         public override void focusLost()
         {
-            ION.get().IsMouseVisible = false;
+            //ION.get().IsMouseVisible = false;
         }
 
         public override void focusGained()
         {
-            ION.get().IsMouseVisible = true;
+            //ION.get().IsMouseVisible = true;
         }
     }
 }

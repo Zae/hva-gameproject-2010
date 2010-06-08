@@ -118,7 +118,7 @@ namespace ION
             if (waitState)
             {
                 wait();
-                ION.get().IsMouseVisible = false;
+                //ION.get().IsMouseVisible = false;
             }            
         }
 
@@ -156,7 +156,7 @@ namespace ION
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 waitState = false;
-                ION.get().IsMouseVisible = true;
+                //ION.get().IsMouseVisible = true;
              
             }
 
@@ -204,7 +204,7 @@ namespace ION
                 ION.instance.gui.Add(uic);
             }
             //
-            ION.get().IsMouseVisible = true;
+            //ION.get().IsMouseVisible = true;
             //MediaPlayer.Play(Sounds.titleSong);
             //MediaPlayer.IsRepeating = true;
         }
@@ -217,7 +217,7 @@ namespace ION
                 ION.instance.gui.Remove(uic);
             }
             //
-            ION.get().IsMouseVisible = false;
+            //ION.get().IsMouseVisible = false;
             //MediaPlayer.Stop();
         }
 
