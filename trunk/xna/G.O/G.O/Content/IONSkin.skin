@@ -103,16 +103,16 @@
         HMargin = "5"
         VMargin = "2"
         Font = "Content/Fonts/Pericles"
-        Skin = "6,175,25,25"
+        Skin = "35,203,25,25"
 		   />
 	<WindowSystem.TextButton
 		Width = "205"
         Height = "50"
         EdgeSize = "4"
         Font = "Content/Fonts/Pericles"
-        Skin = "7,224,9,21"
-        HoverSkin = "7,224,9,21"
-        PressedSkin = "7,224,9,21"
+        Skin = "95,218,12,25"
+        HoverSkin = "112,218,12,25"
+        PressedSkin = "129,218,12,25"
 		   />
 	<WindowSystem.Window
 		HasCloseButton = "false"
