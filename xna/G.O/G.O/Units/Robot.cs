@@ -56,6 +56,9 @@ namespace ION
                 movement.X = targetPosition.drawingRectangle.X - position.drawingRectangle.X;
                 movement.Y = targetPosition.drawingRectangle.Y - position.drawingRectangle.Y;
 
+                //movement.X = movement.X / 31;
+                //movement.Y = movement.Y / 31;
+
                 //movement.Normalize();
                 movement.X /= tileToTileTicks;
                 movement.Y /= tileToTileTicks;
@@ -117,8 +120,8 @@ namespace ION
                 //selectionRectangle.X += (int)(ticksIntoMovement * movement.X) + (int)(Grid.get().intermediate * movement.X);
                 //selectionRectangle.Y += (int)(ticksIntoMovement * movement.Y) + (int)(Grid.get().intermediate * movement.Y);
 
-                drawingRectangle.X += (int)(ticksIntoMovement * movement.X) + (int)(Grid.get().intermediate * movement.X);
-                drawingRectangle.Y += (int)(ticksIntoMovement * movement.Y) + (int)(Grid.get().intermediate * movement.Y);
+                drawingRectangle.X += (int)(((float)ticksIntoMovement * movement.X) + (Grid.get().intermediate * movement.X));
+                drawingRectangle.Y += (int)(((float)ticksIntoMovement * movement.Y) + (Grid.get().intermediate * movement.Y));
                 //drawingRectangle.X += (int)(ticksIntoMovement * movement.X);
                 //drawingRectangle.Y += (int)(ticksIntoMovement * movement.Y);
             }
