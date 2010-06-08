@@ -375,7 +375,10 @@ namespace ION
             //Set the inital state
             state = new StateTitle();
             //state = new StateIntro();
+
             //state = new StateTest();
+
+            ION.get().IsMouseVisible = false;
 
             //Manualy initialize the first state
             state.focusGained();

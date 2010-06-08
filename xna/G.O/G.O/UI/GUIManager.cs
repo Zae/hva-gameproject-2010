@@ -50,7 +50,7 @@ namespace ION.UI
             generalInfo.add(new Label(15, 40, "Hold H for Help"));
             addComponent(generalInfo);
 
-            ION.get().IsMouseVisible = false;
+            //ION.get().IsMouseVisible = false;
             mousePointer.Width = Images.mousePointers[0].Width;
             mousePointer.Height = Images.mousePointers[0].Height;
 

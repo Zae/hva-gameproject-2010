@@ -57,7 +57,7 @@ namespace ION
         private const int NORTH_EAST = 3;
         private const int SOUTH_EAST = 4;
 
-        private bool drawHitTest = false;
+        //private bool drawHitTest = false;
         private float virtualX = 0;
         private float virtualY = 0;
 
@@ -79,7 +79,6 @@ namespace ION
 
         public static int[] playerInfluences;
 
-
         //Timing controls
         public DateTime startTime = DateTime.Now;
         public DateTime currentTime;
@@ -93,27 +92,16 @@ namespace ION
         public float TTP = 0; //Ticks To Process
         public float intermediate = 0.0f; //Our progress between ticks, for drawing purposes only
 
-        //public void startGame()
-        //{
-        //    startTime = DateTime.Now;
-        //    currentTime = DateTime.Now;
-        //    TCP = 0;
-        //    TTP = 0;
-        //    intermediate = 0.0f;
-        //}
-
         public void update(int ellapsed, List<Unit> units, float translationX, float translationY)
         {
             currentTime = DateTime.Now;
-            ION.get().IsMouseVisible = false;
+           // ION.get().IsMouseVisible = false;
             passedTime = currentTime - startTime;
            // Debug.WriteLine("passed time:" + passedTime.Milliseconds);
 
             TTP = ((float)passedTime.TotalMilliseconds / TPT) - TCP;
 
             //Debug.WriteLine("ttp:" + TTP);
-
-
             if (TTP > 1)
             {
                 //do the next tick
@@ -188,21 +176,6 @@ namespace ION
 
                 //updates the unit
                 units[i].Update(translationX, translationY);
-
-                //tells the unit what tile it is currently on
-                //Vector2 temp = GetTile(units[i].GetVirtualPos().X, units[i].GetVirtualPos().Y, translationX, translationY);
-                //if (temp != null)
-                //{
-                //    if (units[i].Update(temp, allUnits, map, translationX, translationY))
-                //    {
-                //        //units[i].FindPath(map, allUnits);//here
-                //    }
-        
-                //}
-                //else
-                //{
-                //    Debug.WriteLine("UPDATE TILE WAS NULL!");
-                //}
             }
 
             //Reset the influence variables
@@ -237,17 +210,7 @@ namespace ION
                
                 depthItems.Remove(ide);
             }
-
-            /** Disabled for performance, works perfectly tho! **/
-            //if (GridRSO != null && GridRSO.Connected)
-            //{
-            //   byte[] rs = Serializer.Serialize(map, Grid.width, Grid.height);
-            //  GridRSO.SetAttribute("Grid", rs);
-            // }
         }
-
-    
-        
 
         public static BaseTile getPlayerBase(int owner)
         {
@@ -523,18 +486,13 @@ namespace ION
 
             if (selectedTile == null)
             {
-                //Debug.WriteLine("HEEELP TILE IS NULL! getTile()");
+                Debug.WriteLine("HEEELP TILE IS NULL! getTile()");
                 //Can't return null so we send something that is invalid
                 return new Vector2(-1, -1);
             }
 
             return new Vector2(selectedTile.indexX, selectedTile.indexY);
         }
-
-        //public Vector2 GetTileScreenPos(Vector2 tileCords, float translationX, float translationY)
-        //{
-        //    return new Vector2(map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).X, map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).Y);
-        //}
 
         public void createUnit(int owner, int id)
         {
@@ -558,9 +516,7 @@ namespace ION
                 u.Die();
                 allUnits.Add(newUnit);
                 addDepthEnabledItem(newUnit);
-            }
-
-          
+            }      
         }
 
         public static void addDepthEnabledItem(IDepthEnabled newItem)
@@ -972,26 +928,6 @@ namespace ION
             {
                 mountainTiles[i].update();
             }
-
-            // old code
-            //// if this unit is in between the 2 mouse positions
-            //if (
-            //    ((playerArmy[i].GetVirtualPos().X > x && playerArmy[i].GetVirtualPos().X < oldMousePos.X)
-            //    || (playerArmy[i].GetVirtualPos().X < x && playerArmy[i].GetVirtualPos().X > oldMousePos.X))
-            //    && ((playerArmy[i].GetVirtualPos().Y > y && playerArmy[i].GetVirtualPos().Y < oldMousePos.Y)
-            //    || (playerArmy[i].GetVirtualPos().Y < y && playerArmy[i].GetVirtualPos().Y > oldMousePos.Y))
-            //    )
-            //{
-            //    // set unit to selected
-            //    playerArmy[i].selected = true;
-            //    selectedUnits = true;
-
-            //    SoundManager.selectUnitSound();
-            //}
-            //else
-            //{
-            //    playerArmy[i].selected = false;
-            //}
         }
     }
 }
