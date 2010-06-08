@@ -112,7 +112,7 @@ namespace ION.Controls
             {
                 for (int i = 0; i < playerUnits.Count(); i++)
                 {
-                    if (playerUnits[i] != null && playerUnits[i].selected)
+                    if (playerUnits[i] != null && playerUnits[i].selected && playerUnits[i] is Robot)
                     {
                         CommandDispatcher.issueCommand(new NewMoveCommand(CommandDispatcher.getSupposedGameTick()
                                                                             ,CommandDispatcher.getSerial()
@@ -133,7 +133,7 @@ namespace ION.Controls
             {
                 for (int i = 0; i < playerUnits.Count(); i++)
                 {
-                    if (playerUnits[i] != null && playerUnits[i].selected)
+                    if (playerUnits[i] != null && playerUnits[i].selected && playerUnits[i] is Robot)
                     {
                             CommandDispatcher.issueCommand(new AddMoveCommand(CommandDispatcher.getSupposedGameTick()
 	                                                                            , CommandDispatcher.getSerial()
