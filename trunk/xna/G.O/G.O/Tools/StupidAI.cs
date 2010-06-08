@@ -19,7 +19,7 @@ namespace ION.Tools
 
         public Random r = new Random(123);
 
-        public bool managePlayer = false;
+        public bool managePlayer = true;
 
         public StupidAI(int ai)
         {
@@ -34,7 +34,7 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 4)
+                if (aiUnits.Count < 15)
                 {
                     serial++;
                     CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), serial,ai, newId++));
@@ -42,7 +42,7 @@ namespace ION.Tools
 
                 foreach (Unit u in aiUnits)
                 {
-                    if (u.destination.Count == 0)
+                    if (u.destination.Count == 0 && !u.moving)
                     {
                         int x = (int)(Grid.width * r.NextDouble());
                         int y = (int)(Grid.height * r.NextDouble());
@@ -63,7 +63,7 @@ namespace ION.Tools
                     //do things
                     List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
 
-                    if (playerUnits.Count < 4)
+                    if (playerUnits.Count < 16)
                     {
                         //serial++;
                         CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick()
@@ -74,7 +74,7 @@ namespace ION.Tools
 
                     foreach (Unit u in playerUnits)
                     {
-                        if (u.destination.Count == 0)
+                        if (u.destination.Count == 0 && !u.moving)
                         {
                             int x = (int)(Grid.width * r.NextDouble());
                             int y = (int)(Grid.height * r.NextDouble());

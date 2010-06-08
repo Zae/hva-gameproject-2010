@@ -32,12 +32,12 @@ namespace ION
 
         public Vector2 movement;
 
-        public Robot(Vector2 newPos, int owner, int id) : base(owner,id)
+        public Robot(Tile newPos, int owner, int id) : base(owner,id)
         {
             health = maxHealth;
             
-            pos = newPos;
-            targetPos = new Vector2(pos.X,pos.Y);
+            position = newPos;
+            targetPosition = null;
 
             damage = 4;
 
@@ -53,7 +53,9 @@ namespace ION
             {
                 moving = true;
 
-                movement = targetPos - pos;
+                movement.X = targetPosition.drawingRectangle.X - position.drawingRectangle.X;
+                movement.Y = targetPosition.drawingRectangle.Y - position.drawingRectangle.Y;
+
                 //movement.Normalize();
                 movement.X /= tileToTileTicks;
                 movement.Y /= tileToTileTicks;
@@ -68,15 +70,18 @@ namespace ION
         public override void Update(float translationX, float translationY)
         {
             //Debug.WriteLine("ROBOT UPDATE!");
-            base.Update(translationX, translationY);
-
+        
             
             if (moving)
             {
-                if (ticksIntoMovement > tileToTileTicks)
+                if (ticksIntoMovement == tileToTileTicks)
                 {
-                    pos = targetPos;
+                    position = targetPosition;
+                    inTileX = position.indexX;
+                    inTileY = position.indexY;
+                    Grid.updateDepthEnabledItem(this);
                     ticksIntoMovement = 0;
+                    targetPosition = null;
                     moving = false;
                 }
 
@@ -84,43 +89,51 @@ namespace ION
 
             }
 
-          
+            base.Update(translationX, translationY);
+
             
            
         }
 
         public override void draw(float x, float y)
-        {       
-            
-            
-            selectionRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) + (Tile.baseHalfWidth * 0.63));
-            selectionRectangle.Y =   (int)(((pos.Y) * (scale/ 15.0f)) + (y) + (baseHalfHeight * 2)+(baseHalfHeight*0.55));
-            selectionRectangle.Width = (int)(baseHalfWidth * 0.75);
-            selectionRectangle.Height = (int)(baseHalfHeight * 3);
+        {
 
-            drawingRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x));
-            drawingRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2));
-            drawingRectangle.Width = (int)(baseHalfWidth * 2);
-            drawingRectangle.Height = (int)(baseHalfHeight * 4);
+
+ 
+            drawingRectangle.X = position.drawingRectangle.X;
+            drawingRectangle.Y = position.drawingRectangle.Y - position.drawingRectangle.Height;
+            drawingRectangle.Width = position.drawingRectangle.Width;
+            drawingRectangle.Height = position.drawingRectangle.Height*2;
+
+
 
             if (moving)
             {
-                Debug.WriteLine("ticksIntoMovement: "+ticksIntoMovement);
-                Debug.WriteLine("movement.X: " + movement.X);
-                Debug.WriteLine("mult: " + (ticksIntoMovement*movement.X));
-                
-                
-                selectionRectangle.X += (int)(ticksIntoMovement * movement.X) + (int)(Grid.get().intermediate * movement.X);
-                selectionRectangle.Y += (int)(ticksIntoMovement * movement.Y) + (int)(Grid.get().intermediate * movement.Y);
+                //Debug.WriteLine("ticksIntoMovement: "+ticksIntoMovement);
+                //Debug.WriteLine("movement.X: " + movement.X);
+                //Debug.WriteLine("mult: " + (ticksIntoMovement*movement.X));
+
+
+                //selectionRectangle.X += (int)(ticksIntoMovement * movement.X) + (int)(Grid.get().intermediate * movement.X);
+                //selectionRectangle.Y += (int)(ticksIntoMovement * movement.Y) + (int)(Grid.get().intermediate * movement.Y);
 
                 drawingRectangle.X += (int)(ticksIntoMovement * movement.X) + (int)(Grid.get().intermediate * movement.X);
                 drawingRectangle.Y += (int)(ticksIntoMovement * movement.Y) + (int)(Grid.get().intermediate * movement.Y);
+                //drawingRectangle.X += (int)(ticksIntoMovement * movement.X);
+                //drawingRectangle.Y += (int)(ticksIntoMovement * movement.Y);
             }
+
+            selectionRectangle.X = drawingRectangle.X + (int)(Tile.baseHalfWidth * 0.63);
+            selectionRectangle.Y = drawingRectangle.Y + (int)(baseHalfHeight * 0.55);
+            selectionRectangle.Width = (int)(baseHalfWidth * 0.75);
+            selectionRectangle.Height = (int)(baseHalfHeight * 3);
+
 
             focalPoint.X = selectionRectangle.Center.X;
             focalPoint.Y = selectionRectangle.Center.Y;
 
             //ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
+
             if (dying)
             {     
                 drawDeathAnimation();
@@ -141,9 +154,9 @@ namespace ION
             if (selected || showDetails)
             {
                 //Draw health and energy stuff
-                healtRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) 
+                healtRectangle.X = (int)(drawingRectangle.X 
                     + (Tile.baseHalfWidth * 0.56));
-                healtRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2) 
+                healtRectangle.Y = (int)(drawingRectangle.Y
                     + (baseHalfHeight * 0.1));
                 healtRectangle.Width = (int)(baseHalfWidth * 0.9);
                 healtRectangle.Height = (int)(baseHalfHeight * 0.38);

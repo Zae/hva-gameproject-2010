@@ -32,19 +32,18 @@ namespace ION
 
         public int tmp = 0;
 
-        public Tower(Vector2 newPos, int owner, int id) : base(owner,id)
+        public Tower(Tile newPos, int owner, int id) : base(owner,id)
         {
             damage = 8;
             health = 250;
 
-            pos = newPos;
+            position = newPos;
+            targetPosition = null;
 
-            BaseTile playerBase = Grid.getPlayerBase(owner);
-            inTileX = playerBase.getTileX();
-            inTileY = playerBase.getTileY();
+            inTileX = position.indexX;
+            inTileY = position.indexY;
 
-            movementSpeed = 0f;
-
+      
             init();
         }
 
@@ -72,20 +71,23 @@ namespace ION
         public override void draw(float x, float y)
         {
             //TODO is selectionRectangle different from Robot's? Does it matter?
-            selectionRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x) + (Tile.baseHalfWidth * 0.63));
-            selectionRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2) + (baseHalfHeight * 0.55));
+
+
+            drawingRectangle.X = position.drawingRectangle.X;
+            drawingRectangle.Y = position.drawingRectangle.Y - position.drawingRectangle.Height;
+            drawingRectangle.Width = position.drawingRectangle.Width;
+            drawingRectangle.Height = position.drawingRectangle.Height * 2;
+
+            selectionRectangle.X = (int)(drawingRectangle.X + (Tile.baseHalfWidth * 0.63));
+            selectionRectangle.Y = (int)(drawingRectangle.Y + (baseHalfHeight * 0.55));
             selectionRectangle.Width = (int)(baseHalfWidth * 0.75);
             selectionRectangle.Height = (int)(baseHalfHeight * 3);
 
             focalPoint.X = selectionRectangle.Center.X;
             focalPoint.Y = selectionRectangle.Center.Y;
 
-            drawingRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x));
-            drawingRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2));
-            drawingRectangle.Width = (int)(baseHalfWidth * 2);
-            drawingRectangle.Height = (int)(baseHalfHeight * 4);
 
-            //ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
+            ION.spriteBatch.Draw(Images.white1px, selectionRectangle, Color.Gray);
 
             if (dying)
             {
@@ -110,9 +112,9 @@ namespace ION
             if (selected || showDetails)
             {
                 //Draw health and energy stuff
-                healtRectangle.X = (int)(((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (x)
+                healtRectangle.X = (int)(drawingRectangle.X
                     + (Tile.baseHalfWidth * 0.56));
-                healtRectangle.Y = (int)(((pos.Y) * (scale / 15.0f)) + (y) + (baseHalfHeight * 2)
+                healtRectangle.Y = (int)(drawingRectangle.Y
                     + (baseHalfHeight * 0.1));
                 healtRectangle.Width = (int)(baseHalfWidth * 0.9);
                 healtRectangle.Height = (int)(baseHalfHeight * 0.38);

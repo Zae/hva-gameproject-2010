@@ -70,10 +70,10 @@ namespace ION.Tools
         {
             if (coordinate != null)
             {
-                if (!coordinate.update())
-                {
-                    coordinate = null;
-                }
+                //if (!coordinate.update())
+                //{
+                //    coordinate = null;
+                //}
             }
         }
 

@@ -33,9 +33,12 @@ namespace ION
 
         public bool moving = false;
         public int ticksIntoMovement = 0;
-        public int tileToTileTicks = 15; 
+        public int tileToTileTicks = Grid.TPS; 
 
-        protected Vector2 pos, targetPos;//, virtualPos;
+        //protected Vector2 pos, targetPos;//, virtualPos;
+
+        protected Tile position;
+        protected Tile targetPosition;
 
         //the index of the tile the unit is on
         public int inTileX = 0;
@@ -46,8 +49,6 @@ namespace ION
         public bool firing = false;
         public bool underFire = false;
         public bool dying = false;
-
-        protected float movementSpeed;
 
         protected static float scale = 15; //TODO this should be externalized
 
@@ -73,10 +74,7 @@ namespace ION
 
         public virtual void Update(float translationX, float translationY)
         {
-            if (moving)
-            {
-                ticksIntoMovement++;
-            }
+
 
             //Debug.WriteLine("UNIT UPDATE");
             
@@ -97,7 +95,7 @@ namespace ION
                 //return returnValue;
             }
             
-            if (pos != targetPos)
+            if (targetPosition != null)
             {
                 move();
             }
@@ -107,9 +105,9 @@ namespace ION
                 if (!moving && destination.Count() != 0)
                 {
                     
-                    Tile temp = destination.Dequeue();
+                    targetPosition = destination.Dequeue();
 
-                    targetPos = temp.GetPos(translationX, translationY);            
+                    //targetPos = temp.GetPos(translationX, translationY);            
                 }
                 
             }
@@ -135,6 +133,11 @@ namespace ION
                 scan = 0;
             }
             scan++;
+
+            if (moving)
+            {
+                ticksIntoMovement++;
+            }
             // Code for waypoints
 
             //will move this to the above if statement when the unit know its tile
@@ -171,8 +174,7 @@ namespace ION
                 angle += 360;
             }     
 
-            if (tempAngle.Length() > movementSpeed)//move toward target at speed
-            {
+    
                 if (angle < 0)
                     angle += 360;
                 //if (angle > 360)
@@ -211,7 +213,7 @@ namespace ION
                 {
                     facing = direction.southWest;
                 }
-            }
+     
         }
 
         public void hit(int damageTaken, int damageType)
@@ -256,10 +258,10 @@ namespace ION
             return baseHalfWidthConstant;
         }
 
-        public void SetTarget(Vector2 newTarget)
-        {
-            targetPos = newTarget;
-        }
+        //public void SetTarget(Vector2 newTarget)
+        //{
+        //    targetPos = newTarget;
+        //}
 
         public Vector2 GetTile()
         {
@@ -334,10 +336,10 @@ namespace ION
                 }
 
                 //TODO 
-                if (pos != targetPos)// - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)
-                {// * (scale / 15.0f)) + (translationY) + (scale * 0.5f))
-                    //ION.spriteBatch.Draw(Images.unitWayPoint, asArray[i].drawingRectangle, Microsoft.Xna.Framework.Graphics.Color.White);
-                }
+                //if (pos != targetPos)// - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)
+                //{// * (scale / 15.0f)) + (translationY) + (scale * 0.5f))
+                //    //ION.spriteBatch.Draw(Images.unitWayPoint, asArray[i].drawingRectangle, Microsoft.Xna.Framework.Graphics.Color.White);
+                //}
             }
         }
 
