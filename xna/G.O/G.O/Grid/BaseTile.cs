@@ -15,7 +15,7 @@ namespace ION
         private Rectangle selectionRectangle0 = new Rectangle();
         private Rectangle selectionRectangle1 = new Rectangle();
 
-        private Rectangle drawingRectangle = new Rectangle();
+        private Rectangle drawingRectangleBig = new Rectangle();
 
         //TODO this is not how it should be, but with this we can reuse the selection box for units.
         private Rectangle selectionBoxRectangle = new Rectangle();
@@ -64,19 +64,24 @@ namespace ION
             selectionRectangle1.Width = (int)(baseHalfWidth * 2);
             selectionRectangle1.Height = (int)(baseHalfWidth * 2);
 
-            drawingRectangle.X = (int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth * 2));
-            drawingRectangle.Y = (int)((visualY * baseHalfHeight) + translationY - (baseHalfHeight * 9));
-            drawingRectangle.Width = (int)(baseHalfWidth * 4);
-            drawingRectangle.Height = (int)(baseHalfWidth * 4);
+            drawingRectangleBig.X = (int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth * 2));
+            drawingRectangleBig.Y = (int)((visualY * baseHalfHeight) + translationY - (baseHalfHeight * 9));
+            drawingRectangleBig.Width = (int)(baseHalfWidth * 4);
+            drawingRectangleBig.Height = (int)(baseHalfWidth * 4);
+
+            drawingRectangle.X = (int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth));
+            drawingRectangle.Y = (int)((visualY * baseHalfHeight) + translationY);
+            drawingRectangle.Width = (int)(baseHalfWidth * 2);
+            drawingRectangle.Height = (int)(baseHalfHeight * 2);
+
 
   
             //DEBUG shows you the selection boxes
             //ION.spriteBatch.Draw(Images.white1px, selectionRectangle0, Color.Green);
             //ION.spriteBatch.Draw(Images.white1px, selectionRectangle1, Color.Purple);
             
-            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
-            ION.spriteBatch.Draw(Images.borderImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);        
-            ION.spriteBatch.Draw(baseImage, drawingRectangle, Color.White);
+            
+            ION.spriteBatch.Draw(baseImage, drawingRectangleBig, Color.White);
 
             if (selected)
             {
@@ -92,6 +97,12 @@ namespace ION
         public override void update()
         {
             showDetails = false;
+        }
+
+        public void drawResourceTile(float translationX, float translationY)
+        {
+            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
+            ION.spriteBatch.Draw(Images.borderImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
         }
         
         //Inherited from IDepthEnabled

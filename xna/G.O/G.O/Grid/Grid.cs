@@ -416,6 +416,11 @@ namespace ION
                     //rt.drawDebug(translationX, translationY);
             }
 
+            foreach (BaseTile bt in playerBases)
+            {
+                bt.drawResourceTile(translationX, translationY);
+            }
+
             for (int i = 0; i < allUnits.Count; i++)
             {
                 allUnits[i].DrawWayPoints(translationX, translationY);
@@ -526,15 +531,15 @@ namespace ION
             return new Vector2(selectedTile.indexX, selectedTile.indexY);
         }
 
-        public Vector2 GetTileScreenPos(Vector2 tileCords, float translationX, float translationY)
-        {
-            return new Vector2(map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).X, map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).Y);
-        }
+        //public Vector2 GetTileScreenPos(Vector2 tileCords, float translationX, float translationY)
+        //{
+        //    return new Vector2(map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).X, map[(int)tileCords.X, (int)tileCords.Y].GetPos(translationX, translationY).Y);
+        //}
 
         public void createUnit(int owner, int id)
         {
             BaseTile playerBase = getPlayerBase(owner);
-            Robot newUnit = new Robot(GetTileScreenPos(new Vector2((float)playerBase.getTileX(), (float)playerBase.getTileY()), StateTest.get().translationX, StateTest.get().translationY),
+            Robot newUnit = new Robot(playerBase,
                 owner, id);
             allUnits.Add(newUnit);
             addDepthEnabledItem(newUnit);
@@ -549,7 +554,7 @@ namespace ION
             if (u != null && u is Robot)
             {
                 //BaseTile playerBase = getPlayerBase(owner);
-                Tower newUnit = new Tower(GetTileScreenPos(new Vector2((float)u.getTileX(), (float)u.getTileY()), StateTest.get().translationX, StateTest.get().translationY),
+                Tower newUnit = new Tower(Grid.map[u.inTileX,u.inTileY],
                     owner, towerId);
                 allUnits.Add(newUnit);
                 addDepthEnabledItem(newUnit);
