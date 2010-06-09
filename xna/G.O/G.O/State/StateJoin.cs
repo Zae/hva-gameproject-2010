@@ -11,25 +11,20 @@ using System.Net;
 using System.IO;
 using FluorineFx.Net;
 using FluorineFx.Messaging.Api.Service;
+using WindowSystem;
 
 namespace ION
 {
     class StateJoin : State
     {
-        public enum SELECTION
-        {
-            JOIN = 1,
-            BACK,
-            REFRESH
-        }
-        public SELECTION selection = SELECTION.BACK;
-       // private Host[] hosts;
         private int selectedHost=0;
         private static StateJoin instance;
 
-        private Rectangle backButton;
-        private Rectangle joinButton;
-        private Rectangle refreshButton;
+        private List<UIComponent> ComponentList;
+
+        private TextButton backButton;
+        private TextButton joinButton;
+        private TextButton refreshButton;
 
         private Rectangle hostsTable;
         private Rectangle TableColumnRoomname;
@@ -40,14 +35,11 @@ namespace ION
         private Rectangle Logo;
         private Rectangle background_starfield;
 
-
         private bool mousePressed = false;
         public bool upPressed = false;
         public bool downPressed = false;
         public bool enterPressed = false;
         public bool wait = false;
-
-
 
         private Color fadeColor = Color.Orange;
 
@@ -58,15 +50,20 @@ namespace ION
         //temp
         String[] tempHosts;
 
-
-
-
         public StateJoin()
         {
             instance = this;
 
-            joinButton = new Rectangle(125, 125, Images.buttonJoin.Width, Images.buttonJoin.Height);
-            backButton = new Rectangle(125, 200, Images.buttonBack.Width, Images.buttonBack.Height);
+            ComponentList = new List<UIComponent>();
+
+            joinButton = new TextButton(ION.instance, ION.instance.gui);
+            joinButton.X = 125; joinButton.Y = 125;
+            joinButton.Text = "Join";
+            joinButton.Click += new ClickHandler(joinButton_Click);
+            backButton = new TextButton(ION.instance, ION.instance.gui);
+            backButton.X = 125; backButton.Y = 200;
+            backButton.Text = "Back";
+            backButton.Click += new ClickHandler(backButton_Click);
             //
             background_overlay = new Rectangle(ION.width - Images.background_overlay.Width, 0, Images.background_overlay.Width, Images.background_overlay.Height);
             Logo = new Rectangle(ION.width / 100 * 10, ION.height - ION.height / 100 * 7 - Images.Logo.Height, Images.Logo.Width, Images.Logo.Height);
@@ -77,10 +74,17 @@ namespace ION
             TableColumnPlayers = new Rectangle(hostsTable.X+Images.TableColumnRoomname.Width, hostsTable.Y, Images.TableColumnPlayers.Width, Images.TableColumnPlayers.Height);
             TableColumnLevel = new Rectangle(hostsTable.X + Images.TableColumnRoomname.Width+Images.TableColumnPlayers.Width, hostsTable.Y, Images.TableColumnLevel.Width, Images.TableColumnLevel.Height);
             //
-            refreshButton = new Rectangle(hostsTable.Right - Images.buttonRefresh.Width, hostsTable.Bottom + 25, Images.buttonRefresh.Width, Images.buttonRefresh.Height);
-            //
             rows = new List<Rectangle>();
-
+            //
+            refreshButton = new TextButton(ION.instance, ION.instance.gui);
+            refreshButton.X = hostsTable.Right-refreshButton.Width; refreshButton.Y = hostsTable.Bottom + 25;
+            refreshButton.Text = "Refresh";
+            refreshButton.Click += new ClickHandler(refreshButton_Click);
+            //
+            ComponentList.Add(joinButton);
+            ComponentList.Add(backButton);
+            ComponentList.Add(refreshButton);
+            //
             int nrows=6;
             int headerheight = 61;
             int rowheight = ((hostsTable.Height - headerheight) / nrows);
@@ -90,22 +94,30 @@ namespace ION
             }
 
             selected = rows[0];
-           // for (int i = 0; i < 4; i++)
-           // {
-
-             //   ION.get().serverConnection.JoinRoom("room " + i);
-
-            //}
             ION.get().serverConnection.getHosts();
+        }
 
+        void refreshButton_Click(UIComponent sender)
+        {
+            ION.get().serverConnection.getHosts();
+        }
+
+        void backButton_Click(UIComponent sender)
+        {
+            ION.get().setState(new StateMP());
+        }
+
+        void joinButton_Click(UIComponent sender)
+        {
+            if (selectedHost < tempHosts.Length)
+                ION.get().serverConnection.JoinRoom(tempHosts[selectedHost]);
+            else Console.WriteLine("no host found");
         }
 
         public static StateJoin get()
         {
             return instance;
         }
-        
-
 
         public override void draw()
         {
@@ -146,39 +158,6 @@ namespace ION
             //
             ION.spriteBatch.Draw(Images.white1px, selected, fadeColor);
 
-            if (selection == SELECTION.BACK)
-            {
-                //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonBackF, backButton, Color.White);
-            }
-            else
-            {
-                //Draw normally
-                ION.spriteBatch.Draw(Images.buttonBack, backButton, Color.White);
-            }
-            if (selection == SELECTION.JOIN)
-            {
-                //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonJoinF, joinButton, Color.White);
-            }
-            else
-            {
-                //Draw normally
-                ION.spriteBatch.Draw(Images.buttonJoin, joinButton, Color.White);
-            }
-
-
-            if (selection == SELECTION.REFRESH)
-            {
-                //Draw highlighted
-                ION.spriteBatch.Draw(Images.buttonRefreshF, refreshButton, Color.White);
-            }
-            else
-            {
-                //Draw normally
-                ION.spriteBatch.Draw(Images.buttonRefresh, refreshButton, Color.White);
-            }
-
             if (tempHosts != null)
             {
 
@@ -190,46 +169,11 @@ namespace ION
 
         public override void update(int ellapsed)
         {
-            
-
             //mouse handling
-            MouseState mouseState = Mouse.GetState();
+            Microsoft.Xna.Framework.Input.MouseState mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 mousePressed = true;
-            }
-           
-
-            if (mouseIn(mouseState.X, mouseState.Y, refreshButton))
-            {
-                selection = SELECTION.REFRESH;
-                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-                {
-                    Console.WriteLine("refresh pressed");
-                    makeSelection();
-                    mousePressed = false;
-                }
-
-            }
-            if (mouseIn(mouseState.X, mouseState.Y, joinButton))
-            {
-                selection = SELECTION.JOIN;
-                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-                {
-                    makeSelection();
-                    mousePressed = false;
-                }
-
-            }
-            if (mouseIn(mouseState.X, mouseState.Y, backButton))
-            {
-                selection = SELECTION.BACK;
-                if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-                {
-                    makeSelection();
-                    mousePressed = false;
-                }
-
             }
 
             //row selection
@@ -244,106 +188,9 @@ namespace ION
                    
                 }
             }
-            
-                
-          
 
             ION.spriteBatch.End();
-
-
-
-            //Keyboard handling
-            KeyboardState keyState = Keyboard.GetState();
-
-
-            if (keyState.IsKeyDown(Keys.Up) && !upPressed)
-            {
-                selectionUp();
-                upPressed = true;
-            }
-            else if (keyState.IsKeyUp(Keys.Up) && upPressed)
-            {
-                upPressed = false;
-            }
-
-
-            if (keyState.IsKeyDown(Keys.Down) && !downPressed)
-            {
-                selectionDown();
-                downPressed = true;
-            }
-            else if (keyState.IsKeyUp(Keys.Down) && downPressed)
-            {
-                downPressed = false;
-            }
-
-            if (keyState.IsKeyDown(Keys.Enter))
-            {
-                enterPressed = true;
-            }
-
-            if (keyState.IsKeyUp(Keys.Enter) && enterPressed == true)
-            {
-                enterPressed = false;
-                makeSelection();
-            }
-
-            if (mouseState.LeftButton == ButtonState.Released && mousePressed == true)
-            {
-                mousePressed = false;
-            }
-
-
         }
-
-
-       
-
-        private void makeSelection()
-        {
-            if (selection == SELECTION.REFRESH)
-            {
-                Console.WriteLine("servercon.gethosts()");
-                ION.get().serverConnection.getHosts();
-            }
-            else if (selection == SELECTION.BACK)
-            {
-                StateMP st = new StateMP();
-
-                ION.get().setState(st);
-            }
-
-            else if (selection == SELECTION.JOIN)
-            {
-                if (selectedHost < tempHosts.Length)
-                    ION.get().serverConnection.JoinRoom(tempHosts[selectedHost]);
-                else Console.WriteLine("no host found");
-            }
-        }
-
-        private void selectionUp()
-        {
-
-            selection--;
-            if (selection < SELECTION.JOIN)
-            {
-                Console.WriteLine("if sel: " + (int)selection);
-                selection = (SELECTION)Enum.GetNames(typeof(SELECTION)).Length;
-            }
-            Console.WriteLine("sel: " + (int)selection);
-        }
-
-        private void selectionDown()
-        {
-            selection++;
-            if ((int)selection > Enum.GetNames(typeof(SELECTION)).Length)
-            {
-                Console.WriteLine("if sel: " + (int)selection);
-                selection = SELECTION.JOIN;
-            }
-            Console.WriteLine("sel: " + (int)selection);
-        }
-
 
         //fills the table with server information
         private bool fillTable()
@@ -384,7 +231,11 @@ namespace ION
 
         public override void focusGained()
         {
-            //ION.get().IsMouseVisible = true;
+            foreach (UIComponent uicomponent in ComponentList)
+            {
+                ION.instance.gui.Add(uicomponent);
+            }
+            //
             MediaPlayer.Play(Sounds.titleSong);
             MediaPlayer.IsRepeating = true;
         }
@@ -392,7 +243,11 @@ namespace ION
 
         public override void focusLost()
         {
-            //ION.get().IsMouseVisible = false;
+            foreach (UIComponent uicomponent in ComponentList)
+            {
+                ION.instance.gui.Remove(uicomponent);
+            }
+            //
             MediaPlayer.Stop();
         }
 
