@@ -38,6 +38,10 @@ namespace ION
             RadioButton radio = new RadioButton(ION.instance, ION.instance.gui);
             radio.X = 200;
             radio.Y = 400;
+            TextBox box = new TextBox(ION.instance, ION.instance.gui);
+            box.X = 200; box.Y = 500;
+            box.Text = "Can you see me?";
+            box.IsEditable = false;
             //
             textbutton.Click += new ClickHandler(textbutton_Click);
             //
@@ -46,6 +50,7 @@ namespace ION
             ComponentList.Add(check);
             ComponentList.Add(combo);
             ComponentList.Add(radio);
+            ComponentList.Add(box);
         }
 
         void textbutton_Click(UIComponent sender)
