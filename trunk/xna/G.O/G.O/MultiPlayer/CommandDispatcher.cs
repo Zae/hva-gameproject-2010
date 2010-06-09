@@ -35,7 +35,7 @@ namespace ION.MultiPlayer
 
         public static bool executeCommand(int gameTick)
         {
-            //Debug.WriteLine("CommandsQueue size = "+commandsQueue.Count);
+            //Debug.WriteLine("CommandsQueue size = " + commandsQueue.Count);
             
             if (commandsQueue.Count == 0)
             {
@@ -64,10 +64,7 @@ namespace ION.MultiPlayer
         {
             //Debug.WriteLine("ISSUED COMMAND:" + command._commandType);
 
-
-            
             //push the command on the network
-            //if (Protocol.instance != null) Protocol.instance.declareAction(command.toCommandParts());
             if (Protocol.instance != null) Protocol.instance.declareAction(command);
             
             //send them back directly to put in your own queue
@@ -86,18 +83,20 @@ namespace ION.MultiPlayer
             {
                 int queueLength = commandsQueue.Count;
 
+                //When the list is empty we don't need to think about where to put it
                 if (queueLength == 0)
                 {
                     commandsQueue.Add(command);
                     return;
                 }
 
+                //We start at the back of the list
                 for (int i = queueLength - 1; i > -1; i--)
                 {
                     if (commandsQueue[i].supposedGameTick < command.supposedGameTick)
                     {
                         commandsQueue.Insert(i + 1, command);
-                        break;
+                        return;
                     }
                     else if (commandsQueue[i].supposedGameTick == command.supposedGameTick)
                     {
@@ -106,17 +105,18 @@ namespace ION.MultiPlayer
                             if (commandsQueue[i].serial < command.serial)
                             {
                                 commandsQueue.Insert(i + 1, command);
-                                break;
+                                return;
                             }
                         }
                         else if (commandsQueue[i].owner < command.owner)
                         {
                             commandsQueue.Insert(i + 1, command);
-                            break;
+                            return;
                         }
                     }
                 }
-                
+                    //else if(commandsQueue[i].supposedGameTick > command.supposedGameTick)
+                Debug.WriteLine("DIDNT ADD COMMAND WTF?");
             }
 
         }

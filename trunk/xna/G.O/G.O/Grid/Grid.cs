@@ -70,7 +70,7 @@ namespace ION
         // a list to hold the blue army
         public List<Unit> allUnits = new List<Unit>();
 
-        public float resources = Robot.cost * 5;
+        public float resources = Robot.cost * 256;
         public static int playerNumber = -1;
         private static int playerUnitId = -1;
 
@@ -114,7 +114,7 @@ namespace ION
                 return;
             }
 
-            TCP++;
+        
 
             //Temp AI
             if (!StateTest.get().online)
@@ -210,6 +210,8 @@ namespace ION
                
                 depthItems.Remove(ide);
             }
+
+            TCP++;
         }
 
         public static BaseTile getPlayerBase(int owner)

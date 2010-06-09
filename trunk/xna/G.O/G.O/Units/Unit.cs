@@ -40,6 +40,8 @@ namespace ION
         protected Tile position;
         protected Tile targetPosition;
 
+        protected IDepthEnabled attackTarget;
+
         //the index of the tile the unit is on
         public int inTileX = 0;
         public int inTileY = 0;
@@ -230,6 +232,11 @@ namespace ION
             firing = true;
         }
 
+        public void setAttackTarget(IDepthEnabled attackTarget)
+        {
+            this.attackTarget = attackTarget;
+        }
+
         public static void zoomIn()
         {
             if (scale <= 25)
@@ -280,7 +287,6 @@ namespace ION
         public void drawDepthEnabled(float translationX, float translationY)
         {
             draw(translationX, translationY);
-
         }
 
         public bool hitTest(int x, int y)
@@ -307,7 +313,7 @@ namespace ION
         }
 
         // Queue Stuff
-        // this is for waypoints (shift-click)
+        // this is for waypoints
         public void AddDestination(Tile newDest)
         {
             destination.Enqueue(newDest);
@@ -316,7 +322,6 @@ namespace ION
         public void EmptyWayPoints()
         {
             destination = new Queue<Tile>();
-            //failed = new List<Tile>();
         }
         // Queue Stuff
 
@@ -333,11 +338,12 @@ namespace ION
                     ION.spriteBatch.Draw(Images.unitWayPoint, asArray[i].drawingRectangle, Microsoft.Xna.Framework.Graphics.Color.White);
                 }
 
-                //TODO 
-                //if (pos != targetPos)// - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX)
-                //{// * (scale / 15.0f)) + (translationY) + (scale * 0.5f))
-                //    //ION.spriteBatch.Draw(Images.unitWayPoint, asArray[i].drawingRectangle, Microsoft.Xna.Framework.Graphics.Color.White);
-                //}
+
+                if (moving && position != targetPosition)
+                {
+                    ION.spriteBatch.Draw(Images.unitWayPoint, targetPosition.drawingRectangle, Microsoft.Xna.Framework.Graphics.Color.White);
+                }
+
             }
         }
 

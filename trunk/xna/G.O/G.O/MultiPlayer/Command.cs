@@ -26,7 +26,8 @@ namespace ION.MultiPlayer
             NEW_TOWER,
             ADD_MOVE_UNIT,
             ATTACK_UNIT,
-            STOP_UNIT
+            STOP_UNIT,
+            ATTACK_BASE
         }
 
         public int supposedGameTick = -1;
@@ -149,6 +150,18 @@ namespace ION.MultiPlayer
                     return new AttackUnitCommand(sgt, serial, owner, unitID, targetOwner, targetID);
 #else
                      return new AttackUnitCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
+#endif
+                case COMMANDTYPES.ATTACK_BASE:
+#if DEBUG
+                    sgt = br.ReadInt32();
+                    serial = br.ReadInt32();
+                    owner = br.ReadInt32();
+                    unitID = br.ReadInt32();
+                    targetOwner = br.ReadInt32();
+                    Console.WriteLine("attackUnit-- command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetOwner=" + targetOwner);
+                    return new AttackBaseCommand(sgt, serial, owner, unitID, targetOwner);
+#else
+                     return new AttackBaseCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
 #endif
                 default:
                     return new Command();
@@ -282,6 +295,11 @@ namespace ION.MultiPlayer
             else
             {
                 u.EmptyWayPoints();
+
+                //find out the starting point
+                //if(!u.moving 
+
+                
 
                 List<ResourceTile> path = FloodFill.getPath((ResourceTile)Grid.map[u.inTileX, u.inTileY], (ResourceTile)Grid.map[xTarget, yTarget]);
 
@@ -561,47 +579,14 @@ namespace ION.MultiPlayer
         /// </summary>
         public override void performCommand()
         {
-            ////Debug.WriteLine("commanding unit id=" + unitId + " owner=" + unitOwner);
-            //Unit u = Grid.get().getUnit(owner, unitId);
-            //if (u == null)
-            //{
-            //    Debug.WriteLine("TRIED TO FIND UNIT FOR COMMAND BUT UNIT WAS NOT PRESENT (ANYMORE)");
-            //}
-            //else if (Grid.map[xTarget, yTarget] is ResourceTile == false)
-            //{
-            //    //@TODO Deny this for now
-            //}
-            //else
-            //{
-            //    //get the last waypoint of this unit
-            //    ResourceTile last;
-            //    if (u.destination.Count > 0)
-            //    {
-            //        last = (ResourceTile)u.destination.Last<Tile>();
-            //    }
-            //    else
-            //    {
-            //        last = (ResourceTile)Grid.map[u.inTileX, u.inTileY];
-            //    }
+            Unit attacker = Grid.get().getUnit(owner, unitId);
+            Unit target = Grid.get().getUnit(targetOwner, targetID);
 
-
-            //    //u.AddDestination(Grid.map[xTarget,yTarget]);
-
-            //    List<ResourceTile> path = FloodFill.getPath(last, (ResourceTile)Grid.map[xTarget, yTarget]);
-
-            //    foreach (ResourceTile rt in path)
-            //    {
-            //        u.AddDestination(rt);
-            //    }
-
-            //    //If this unit belonges to the player, make a sound
-            //    if (u.owner == Grid.playerNumber)
-            //    {
-            //        SoundManager.orderUnitSound();
-            //    }
-
-            //}
-
+            if (attacker != null && target != null)
+            {
+                attacker.setAttackTarget(target);
+            }
+            
         }
 
         #region Serializable Members
@@ -680,6 +665,71 @@ namespace ION.MultiPlayer
             bw.Write((Int32)serial);
             bw.Write((Int32)owner);
             bw.Write((Int32)unitId);
+
+            return ms;
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// AttackBaseCommand version of Command.
+    /// 
+    /// This command is sent when a unit is moved.
+    /// </summary>
+    public class AttackBaseCommand : Command
+    {
+        public int targetOwner;
+
+        public int unitId;
+
+        /// <summary>
+        /// Constructor for the AttackBaseCommand command.
+        /// </summary>
+        /// <param name="supposedGameTick">The tick on which the game should start so al games start at the same time.</param>
+        /// <param name="serial">The command serial.</param>
+        /// <param name="owner">The owner of the unit. (PlayerNumber)</param>
+        /// <param name="unitId">The id of the unit (index of the list)</param>
+        /// <param name="xTarget">The x index of the grid.</param>
+        /// <param name="yTarget">The y index of the grid.</param>
+        public AttackBaseCommand(int supposedGameTick, int serial, int owner, int unitId, int targetOwner)
+            : base(COMMANDTYPES.ATTACK_UNIT, supposedGameTick, owner, serial)
+        {
+            this.targetOwner = targetOwner;
+            
+
+            this.unitId = unitId;
+        }
+        /// <summary>
+        /// CommandDispatcher calls this function to perform the command. It overrides the performCommand of the base
+        /// class so this class can define it's own functionality.
+        /// </summary>
+        public override void performCommand()
+        {
+            Unit u = Grid.get().getUnit(owner, unitId);
+
+            if (u != null)
+            {
+                u.setAttackTarget(Grid.getPlayerBase(targetOwner));
+            }
+        }
+
+        #region Serializable Members
+        /// <summary>
+        /// Serialize serializes the important data of the command so it can be deserialized.
+        /// </summary>
+        /// <returns>MemoryStream with the data of the command.</returns>
+        public override MemoryStream Serialize()
+        {
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms);
+
+            bw.Write((Int32)_commandType);
+            bw.Write((Int32)supposedGameTick);
+            bw.Write((Int32)serial);
+            bw.Write((Int32)owner);
+            bw.Write((Int32)unitId);
+            bw.Write((Int32)targetOwner);
 
             return ms;
         }

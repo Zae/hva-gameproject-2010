@@ -82,6 +82,9 @@ namespace ION
                 movement.X = targetPosition.drawingRectangle.X - position.drawingRectangle.X;
                 movement.Y = targetPosition.drawingRectangle.Y - position.drawingRectangle.Y;
 
+                inTileX = targetPosition.indexX;
+                inTileY = targetPosition.indexY;
+
                 //movement.X = movement.X / 31;
                 //movement.Y = movement.Y / 31;
 
@@ -106,8 +109,7 @@ namespace ION
                 if (ticksIntoMovement == tileToTileTicks)
                 {
                     position = targetPosition;
-                    inTileX = position.indexX;
-                    inTileY = position.indexY;
+         
                     Grid.updateDepthEnabledItem(this);
                     ticksIntoMovement = 0;
                     targetPosition = null;
