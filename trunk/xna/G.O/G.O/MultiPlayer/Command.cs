@@ -693,7 +693,7 @@ namespace ION.MultiPlayer
         /// <param name="xTarget">The x index of the grid.</param>
         /// <param name="yTarget">The y index of the grid.</param>
         public AttackBaseCommand(int supposedGameTick, int serial, int owner, int unitId, int targetOwner)
-            : base(COMMANDTYPES.ATTACK_UNIT, supposedGameTick, owner, serial)
+            : base(COMMANDTYPES.ATTACK_BASE, supposedGameTick, owner, serial)
         {
             this.targetOwner = targetOwner;
             
