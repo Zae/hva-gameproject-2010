@@ -38,16 +38,6 @@ namespace ION
 
         public Protocol()
         {
-            ////initializing Timer
-            //clock = new Timer();
-            ////in ms
-            //clock.Interval = 10;
-            //clock.Start();
-            
-            //clock.Elapsed+= new ElapsedEventHandler(Timer_Tick);
-
-            //commands = new ArrayList();
-            //sentCommands = new ArrayList();
             if (instance == null) 
             {
                 instance = this;
@@ -69,28 +59,6 @@ namespace ION
 
         void CommandSO_Sync(object sender, SyncEventArgs e)
         {
-            //System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
-            //Object[] commandObjects = (Object[])CommandSO.GetAttribute("Command");
-            
-            //gets the object bytes
-            //Byte[] commandBytes  = Serializer.DeserializeObjectArray(commandObjects);
-                       
-            //String[] commandParts = new String[10];
-
-            //if (commandBytes != null)
-            //{    
-            //    //covert to string (original state of the command)
-            //    String command = enc.GetString(commandBytes);
-            //    Console.WriteLine("command received = " + command);
-
-            //    //split the command into parts between the "|"
-            //    //commandParts = splitCommand(command);
-
-            //    //parseCommand(command);
-            //    //performAction(commandParts);
-            //    CommandDispatcher.sinkCommand(command);
-            //}
-            //else Console.WriteLine("empty command received :( " );
             Object[] objectArray = (Object[])CommandSO.GetAttribute("Command");
             if (objectArray != null)
             {
@@ -103,7 +71,6 @@ namespace ION
         {
             switch (command._commandType)
             {
-                //Can't call CommandDispatcher.sinkCommand because StartCommand has no timing.
                 case Command.COMMANDTYPES.START_GAME:
                     command.performCommand();
                     break;
@@ -112,68 +79,68 @@ namespace ION
                     break;
             }
         }
-        public void parseCommand(String command)
-        {
-            String[] commandParts = splitCommand(command);
+        //public void parseCommand(String command)
+        //{
+        //    String[] commandParts = splitCommand(command);
 
-            int x, y;
-            int tick;
-            int serial;
-            int unitOwner;
-            int unitID;
+        //    int x, y;
+        //    int tick;
+        //    int serial;
+        //    int unitOwner;
+        //    int unitID;
 
-            switch (commandParts[0])
-            {
-                case "START":
-                    Console.WriteLine("start Game message received");
-                    int seed = Int32.Parse(commandParts[1]);
-                    if (ION.instance.serverConnection.isHost)
-                        ION.instance.setState(new StateTest(1, seed, "MediumLevelTest.xml",true));
-                    else
-                        ION.instance.setState(new StateTest(2, seed, "MediumLevelTest.xml",true));
+        //    switch (commandParts[0])
+        //    {
+        //        case "START":
+        //            Console.WriteLine("start Game message received");
+        //            int seed = Int32.Parse(commandParts[1]);
+        //            if (ION.instance.serverConnection.isHost)
+        //                ION.instance.setState(new StateTest(1, seed, "MediumLevelTest.xml",true));
+        //            else
+        //                ION.instance.setState(new StateTest(2, seed, "MediumLevelTest.xml",true));
 
-                    gameStarted = true;
-                    break;
+        //            gameStarted = true;
+        //            break;
 
-                case "MOVE_UNIT":
-                    tick = Int32.Parse(commandParts[2]);
-                    unitOwner = Int32.Parse(commandParts[3]);
-                    unitID = Int32.Parse(commandParts[4]);
-                    x = Int32.Parse(commandParts[5]);
-                    y = Int32.Parse(commandParts[6]);
-                    serial = Int32.Parse(commandParts[7]);
+        //        case "MOVE_UNIT":
+        //            tick = Int32.Parse(commandParts[2]);
+        //            unitOwner = Int32.Parse(commandParts[3]);
+        //            unitID = Int32.Parse(commandParts[4]);
+        //            x = Int32.Parse(commandParts[5]);
+        //            y = Int32.Parse(commandParts[6]);
+        //            serial = Int32.Parse(commandParts[7]);
                     
-                    CommandDispatcher.sinkCommand(new NewMoveCommand(tick,serial,unitOwner,unitID,x,y));
-                    break;
+        //            CommandDispatcher.sinkCommand(new NewMoveCommand(tick,serial,unitOwner,unitID,x,y));
+        //            break;
 
-                case "CREATE_UNIT":
-                    tick = Int32.Parse(commandParts[2]);
-                    unitOwner = Int32.Parse(commandParts[3]);
-                    unitID = Int32.Parse(commandParts[4]);
-                    serial = Int32.Parse(commandParts[5]);
+        //        case "CREATE_UNIT":
+        //            tick = Int32.Parse(commandParts[2]);
+        //            unitOwner = Int32.Parse(commandParts[3]);
+        //            unitID = Int32.Parse(commandParts[4]);
+        //            serial = Int32.Parse(commandParts[5]);
                     
-                    CommandDispatcher.sinkCommand(new NewUnitCommand(tick,serial,unitOwner,unitID));
-                    break;
+        //            CommandDispatcher.sinkCommand(new NewUnitCommand(tick,serial,unitOwner,unitID));
+        //            break;
 
-                case"ADD_MOVE_UNIT":
+        //        case"ADD_MOVE_UNIT":
 
-                    tick = Int32.Parse(commandParts[2]);
-                    unitOwner = Int32.Parse(commandParts[3]);
-                    unitID = Int32.Parse(commandParts[4]);
-                    x = Int32.Parse(commandParts[5]);
-                    y = Int32.Parse(commandParts[6]);
-                    serial = Int32.Parse(commandParts[7]);
+        //            tick = Int32.Parse(commandParts[2]);
+        //            unitOwner = Int32.Parse(commandParts[3]);
+        //            unitID = Int32.Parse(commandParts[4]);
+        //            x = Int32.Parse(commandParts[5]);
+        //            y = Int32.Parse(commandParts[6]);
+        //            serial = Int32.Parse(commandParts[7]);
 
-                    CommandDispatcher.sinkCommand(new AddMoveCommand(tick, serial, unitOwner, unitID, x, y));
-                    break;
+        //            CommandDispatcher.sinkCommand(new AddMoveCommand(tick, serial, unitOwner, unitID, x, y));
+        //            break;
 
 
-                default:
-                    Console.WriteLine("ERROR: TRIED TO PARSE UNKNOWN COMMAND (Protocol.cs)");
-                    break;
-            }
+        //        default:
+        //            Console.WriteLine("ERROR: TRIED TO PARSE UNKNOWN COMMAND (Protocol.cs)");
+        //            break;
+        //    }
 
-        }
+        //}
            
         void CommandSO_OnDisconnect(object sender, EventArgs e)
         {

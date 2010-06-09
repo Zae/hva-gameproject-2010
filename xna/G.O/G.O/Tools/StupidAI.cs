@@ -17,6 +17,8 @@ namespace ION.Tools
 
         public int serial = 0;
 
+        public int maxUnits = 12;
+
         public Random r = new Random(123);
 
         public bool managePlayer = false;
@@ -34,9 +36,10 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 4)
+                if (aiUnits.Count < 6 && maxUnits > 0)
                 {
                     serial++;
+                    //maxUnits--;
                     CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), serial,ai, newId++));
                 }
 
@@ -65,7 +68,7 @@ namespace ION.Tools
                     //do things
                     List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
 
-                    if (playerUnits.Count < 4)
+                    if (playerUnits.Count < 3)
                     {
  
                         CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick()
