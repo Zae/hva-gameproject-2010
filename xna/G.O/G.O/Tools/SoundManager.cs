@@ -21,7 +21,7 @@ namespace ION.Tools
 
         private static int levelOfAction = 0;
 
-        public static int blabla = 2;
+        public static int blabla = 4;
 
         private static SoundEffectInstance[] selectUnit;
         private static int selectUnitCount;
@@ -133,11 +133,21 @@ namespace ION.Tools
         {
             levelOfAction+=10;
 
-            firesoundsPointer++;
-            if (firesoundsPointer == firesoundsCount)
+            Double d = Tool.unsafeRandom.NextDouble();
+
+            if (d > 0.5)
             {
                 firesoundsPointer = 0;
             }
+            else
+            {
+                firesoundsPointer = 1;
+            }
+
+            //if (firesoundsPointer == firesoundsCount)
+            //{
+            //    firesoundsPointer = 0;
+            //}
 
             for (int i = 0; i < blabla; i++)
             {
@@ -175,23 +185,6 @@ namespace ION.Tools
 
             selectUnit[selectUnitPointer].Play();
         }
-
-        //public static void selectUnitSound()
-        //{
-        //    if (selectUnit.State != SoundState.Playing)
-        //    {
-        //        selectUnit.Play();
-        //    }
-        //}
-
-        //public static void orderUnitSound()
-        //{
-        //    //if (orderUnit.State != SoundState.Playing)
-        //    //{
-        //    //    orderUnit.Play();
-        //    //}
-        //}
-
 
     }
 }
