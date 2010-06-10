@@ -593,41 +593,10 @@ namespace ION.MultiPlayer
         /// </summary>
         public override void performCommand()
         {
-<<<<<<< .mine
+
 
             Unit attacker = Grid.get().getUnit(owner, unitId);
             Unit target = Grid.get().getUnit(targetOwner, targetID);
-            attacker.attackTarget = target;
-
-
-
-
-            ////Debug.WriteLine("commanding unit id=" + unitId + " owner=" + unitOwner);
-            //Unit u = Grid.get().getUnit(owner, unitId);
-            //if (u == null)
-            //{
-            //    Debug.WriteLine("TRIED TO FIND UNIT FOR COMMAND BUT UNIT WAS NOT PRESENT (ANYMORE)");
-            //}
-            //else if (Grid.map[xTarget, yTarget] is ResourceTile == false)
-            //{
-            //    //@TODO Deny this for now
-            //}
-            //else
-            //{
-            //    //get the last waypoint of this unit
-            //    ResourceTile last;
-            //    if (u.destination.Count > 0)
-            //    {
-            //        last = (ResourceTile)u.destination.Last<Tile>();
-            //    }
-            //    else
-            //    {
-            //        last = (ResourceTile)Grid.map[u.inTileX, u.inTileY];
-            //    }
-=======
-            Unit attacker = Grid.get().getUnit(owner, unitId);
-            Unit target = Grid.get().getUnit(targetOwner, targetID);
->>>>>>> .r297
 
             if (attacker != null && target != null)
             {
