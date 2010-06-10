@@ -362,6 +362,8 @@ namespace ION
 
             Sounds.orderUnit = Content.Load<SoundEffect>("sfxItems/orderunit");
 
+            Sounds.turretSound = Content.Load<SoundEffect>("sfxItems/turret0");
+
 
             Sounds.fireSounds = new SoundEffect[2];
             //Load the various laser sounds

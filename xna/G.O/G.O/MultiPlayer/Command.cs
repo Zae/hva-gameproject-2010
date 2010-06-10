@@ -794,10 +794,12 @@ namespace ION.MultiPlayer
             if (owner == Grid.playerNumber)
             {
                 //do winning things
+                StateTest.get().endGame(true);
             }
             else
             {
                 //you lose sucker
+                StateTest.get().endGame(false);
             }
         }
 

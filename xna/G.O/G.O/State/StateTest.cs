@@ -12,6 +12,7 @@ using ION.GridStrategies;
 using ION.UI;
 using ION.Controls;
 using ION.Tools;
+using ION.MultiPlayer;
 
 namespace ION
 {
@@ -25,7 +26,8 @@ namespace ION
         public const int ANNIHILATION = 0;
         public const int RESOURCE_RACE = 1;
         public static int victoryCondition = 0;
-        //public int victoryCheck 
+        public int victoryCheckCounter = 0;
+        public int vicotryCheckMax = 100;
 
         public float scrollValue;
 
@@ -331,9 +333,6 @@ namespace ION
                      actionOnScreenSound.Stop();
                 }
             }
-
-            //actionOnScreenSound.Volume = 0.0f;
-            //MediaPlayer.Volume = 0.0f;
         }
 
         public override void focusGained()
@@ -355,8 +354,7 @@ namespace ION
             actionOnScreenSound.Stop();
             SoundManager.levelOfAction = 0;
 
-            ION.get().gui.Visible = true;
-            
+            ION.get().gui.Visible = true;         
         }
 
         public void importSettings()
@@ -365,22 +363,51 @@ namespace ION
             si.run();
         }
 
+        public void endGame(bool won)
+        {
+            //show winning picture etc.
+            //back to menu
+        }
+
         public void checkVictoryCondition() 
         {
             if(victoryCondition == ANNIHILATION) 
             {
-                //check if your base is destroyed
-                //you lose
+                //check if your base is destroyed              
+                if (Grid.getPlayerBase(Grid.playerNumber).dead)
+                {
+                    //you lose
+                    endGame(false);
+                }
+
+                int alive = 0;
 
                 //check if all other bases are destroyed
-                //you win
+                for (int i = 0; i < Grid.playerBases.Count(); i++)
+                {
+                    if (!Grid.playerBases[i].dead)
+                    {
+                        alive++;
+                    }
+                }
+
+                //you are the only one still alive
+                if (alive == 1)
+                {
+                    //you win
+                    endGame(true);
+                }
             }
             else if(victoryCondition == RESOURCE_RACE) 
             {
-                //check if you have reached the required amount
-                //you win
-
-                //send victory command
+                //check if you have reached the score limit
+                if (Grid.resources > Grid.get().toCollect)
+                {
+                    //inform the other players of your victory
+                    CommandDispatcher.issueCommand(new WinGameCommand(CommandDispatcher.getSupposedGameTick()
+                                                         , CommandDispatcher.getSerial()
+                                                         , Grid.playerNumber));
+                }        
             }
         }
     }
