@@ -988,7 +988,7 @@ namespace ION
             Byte[] result = new Byte[input.Length];
             for (int i = 0; i < input.Length; i++)
             {
-                result[i] = Byte.Parse(input[i].ToString());
+                result[i] = Convert.ToByte(input[i]);
             }
             return result;
         }
