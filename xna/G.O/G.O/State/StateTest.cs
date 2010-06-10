@@ -22,6 +22,11 @@ namespace ION
         public GUIManager gui;
         public ControlState controls;
 
+        public const int ANNIHILATION = 0;
+        public const int RESOURCE_RACE = 1;
+        public static int victoryCondition = 0;
+        //public int victoryCheck 
+
         public float scrollValue;
 
         private static StateTest instance;
@@ -113,6 +118,8 @@ namespace ION
         public override void update(int ellapsed)
         {
             grid.update(ellapsed, grid.allUnits, translationX, translationY);
+
+            checkVictoryCondition();
 
             //get keyboard input
             KeyboardState keyState = Keyboard.GetState();
@@ -356,6 +363,25 @@ namespace ION
         {
             SettingsImporter si = new SettingsImporter();
             si.run();
+        }
+
+        public void checkVictoryCondition() 
+        {
+            if(victoryCondition == ANNIHILATION) 
+            {
+                //check if your base is destroyed
+                //you lose
+
+                //check if all other bases are destroyed
+                //you win
+            }
+            else if(victoryCondition == RESOURCE_RACE) 
+            {
+                //check if you have reached the required amount
+                //you win
+
+                //send victory command
+            }
         }
     }
 }

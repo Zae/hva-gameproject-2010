@@ -32,6 +32,8 @@ namespace ION
         public float mouseWorldX = 0;
         public float mouseWorldY = 0;
 
+        public static float resourceRate = 1.0f;
+
         //public int gameTick = 0;
         //public int lastTick = 0;
 
@@ -86,12 +88,18 @@ namespace ION
 
         public TimeSpan passedTime;
 
-        public const int TPS = 30; // Ticks per Second
-        public const int TPT = 1000 / TPS; //Timesclice Per Tick (in milliseconds)
+        public static int TPS = 30; // Ticks per Second
+        public static int TPT = 1000 / TPS; //Timesclice Per Tick (in milliseconds)
         public int TCP = 0; //Ticks Currently Processed
 
         public float TTP = 0; //Ticks To Process
         public float intermediate = 0.0f; //Our progress between ticks, for drawing purposes only
+
+        public static void setTPS(int newTPS) 
+        {
+            TPS = newTPS;
+            TPT = 1000 / TPS;
+        }
 
         public void update(int ellapsed, List<Unit> units, float translationX, float translationY)
         {
@@ -193,7 +201,7 @@ namespace ION
                 if (rt.owner == playerNumber)
                 {
                     //TODO find a good place for this
-                    float f = (rt.charge / 500);
+                    float f = (rt.charge * resourceRate);
 
                     resources += f;
                     totalCollected += f;

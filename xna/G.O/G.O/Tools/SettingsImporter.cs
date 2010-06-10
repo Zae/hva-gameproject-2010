@@ -64,13 +64,7 @@ namespace ION.Tools
                 //If it is a Settings Node we can continue
                 if (XmlRdr.NodeType == XmlNodeType.Element && XmlRdr.Name == "Settings")
                 {
-                    //  RobotHealth="32"
-                    //  RobotCost="32"
-                    //  RobotMoveSpeed="0.5"
-                    //  RobotFireRange="4"
-                    //  RobotFireRate="-1"
-                    //  RobotMinDamage="2"
-                    //  RobotMaxDamage="4"
+
                     int RobotHealth = int.Parse(XmlRdr.GetAttribute("RobotHealth"));
                     int RobotCost = int.Parse(XmlRdr.GetAttribute("RobotCost"));
                     float RobotMoveSpeed = float.Parse(XmlRdr.GetAttribute("RobotMoveSpeed"), System.Globalization.NumberStyles.Any);
@@ -86,14 +80,6 @@ namespace ION.Tools
                     Robot.minDamage = RobotMinDamage;
                     Robot.maxDamage = RobotMaxDamage;
 
-
-
-                    //  TurretHealth="32"
-                    //  TurretCost="32"
-                    //  TurretFireRange="5"
-                    //  TurretFireRate="-1"
-                    //  TurretMinDamage="6"
-                    //  TurretMaxDamage="9"
                     int TurretHealth = int.Parse(XmlRdr.GetAttribute("TurretHealth"));
                     int TurretCost = int.Parse(XmlRdr.GetAttribute("TurretCost"));
                     int TurretFireRange = int.Parse(XmlRdr.GetAttribute("TurretFireRange"));
@@ -124,12 +110,15 @@ namespace ION.Tools
                     int VictoryCondition = int.Parse(XmlRdr.GetAttribute("VictoryCondition"));
                     float AmountToCollect = float.Parse(XmlRdr.GetAttribute("AmountToCollect"));
 
+                    int TicksPerSecond = int.Parse(XmlRdr.GetAttribute("TicksPerSecond"));
+
+
                     BaseTile.maxHealth = BaseHealth;
                     Grid.resources = StartingMoney;
+                    Grid.resourceRate = ResourceRate;
+                    Grid.setTPS(TicksPerSecond);
 
-
-                    Debug.WriteLine("robothp:" + RobotHealth);
-                    
+     
                     
                 }
                 else

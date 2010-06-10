@@ -20,6 +20,9 @@
   ResourceRate="1,0"
   SpikeBonus="1,0"
   
+  TicksPerSecond="30"
+  
+
   VictoryCondition="0"
   
   AmountToCollect="3000,0"

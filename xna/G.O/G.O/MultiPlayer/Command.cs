@@ -27,7 +27,8 @@ namespace ION.MultiPlayer
             ADD_MOVE_UNIT,
             ATTACK_UNIT,
             STOP_UNIT,
-            ATTACK_BASE
+            ATTACK_BASE,
+            WIN_GAME
         }
 
         public int supposedGameTick = -1;
@@ -146,7 +147,7 @@ namespace ION.MultiPlayer
                     unitID = br.ReadInt32();
                     targetOwner = br.ReadInt32();
                     targetID = br.ReadInt32();
-                    Console.WriteLine("attackUnit-- command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetOwner=" + targetOwner + ", targetID=" + targetID);
+                    Console.WriteLine("command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetOwner=" + targetOwner + ", targetID=" + targetID);
                     return new AttackUnitCommand(sgt, serial, owner, unitID, targetOwner, targetID);
 #else
                      return new AttackUnitCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
@@ -158,10 +159,20 @@ namespace ION.MultiPlayer
                     owner = br.ReadInt32();
                     unitID = br.ReadInt32();
                     targetOwner = br.ReadInt32();
-                    Console.WriteLine("attackUnit-- command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetOwner=" + targetOwner);
+                    Console.WriteLine("command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner + ", unitID=" + unitID + ", targetOwner=" + targetOwner);
                     return new AttackBaseCommand(sgt, serial, owner, unitID, targetOwner);
 #else
                      return new AttackBaseCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
+#endif
+                case COMMANDTYPES.WIN_GAME:
+#if DEBUG
+                    sgt = br.ReadInt32();
+                    serial = br.ReadInt32();
+                    owner = br.ReadInt32();
+                    Console.WriteLine("command received of type:" + ct + ", spt=" + sgt + ", owner=" + owner);
+                    return new WinGameCommand(sgt, serial, owner);
+#else
+                     return new WinGameCommand(br.ReadInt32(), br.ReadInt32(), br.ReadInt32());
 #endif
                 default:
                     return new Command();
@@ -600,6 +611,8 @@ namespace ION.MultiPlayer
 
             if (attacker != null && target != null)
             {
+                attacker.EmptyWayPoints();
+
                 attacker.setAttackTarget(target);
             }
             
@@ -726,6 +739,8 @@ namespace ION.MultiPlayer
 
             if (u != null)
             {
+                u.EmptyWayPoints();
+
                 u.setAttackTarget(Grid.getPlayerBase(targetOwner));
             }
         }
@@ -746,6 +761,64 @@ namespace ION.MultiPlayer
             bw.Write((Int32)owner);
             bw.Write((Int32)unitId);
             bw.Write((Int32)targetOwner);
+
+            return ms;
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// AttackBaseCommand version of Command.
+    /// 
+    /// This command is sent when a unit is moved.
+    /// </summary>
+    public class WinGameCommand : Command
+    {
+
+        /// <summary>
+        /// Constructor for the AttackBaseCommand command.
+        /// </summary>
+        /// <param name="supposedGameTick">The tick on which the game should start so al games start at the same time.</param>
+        /// <param name="serial">The command serial.</param>
+        /// <param name="owner">The owner of the unit. (PlayerNumber)</param>
+        /// <param name="unitId">The id of the unit (index of the list)</param>
+        /// <param name="xTarget">The x index of the grid.</param>
+        /// <param name="yTarget">The y index of the grid.</param>
+        public WinGameCommand(int supposedGameTick, int serial, int owner)
+            : base(COMMANDTYPES.WIN_GAME, supposedGameTick, owner, serial)
+        {
+        }
+        /// <summary>
+        /// CommandDispatcher calls this function to perform the command. It overrides the performCommand of the base
+        /// class so this class can define it's own functionality.
+        /// </summary>
+        public override void performCommand()
+        {
+            if (owner == Grid.playerNumber)
+            {
+                //do winning things
+            }
+            else
+            {
+                //you lose sucker
+            }
+        }
+
+        #region Serializable Members
+        /// <summary>
+        /// Serialize serializes the important data of the command so it can be deserialized.
+        /// </summary>
+        /// <returns>MemoryStream with the data of the command.</returns>
+        public override MemoryStream Serialize()
+        {
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms);
+
+            bw.Write((Int32)_commandType);
+            bw.Write((Int32)supposedGameTick);
+            bw.Write((Int32)serial);
+            bw.Write((Int32)owner);
 
             return ms;
         }
