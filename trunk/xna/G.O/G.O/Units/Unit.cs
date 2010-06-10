@@ -5,20 +5,23 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 using ION.Tools;
+using ION.MultiPlayer;
 
 namespace ION
 {
     public abstract class Unit : IDepthEnabled
     {
+
         private Colors hitmapColor = new Colors();
 
         //The player that owns this unit
         public int owner;
-
+        
         //Rectangle used to draw the unit's graphic in
         public Rectangle drawingRectangle = new Rectangle();
 
-
+        public IDepthEnabled firingTarget;
+        public IDepthEnabled attackTarget;
         public Rectangle selectionRectangle = new Rectangle();
         public Vector2 focalPoint = new Vector2();
 
@@ -75,7 +78,100 @@ namespace ION
 
         public virtual void Update(float translationX, float translationY)
         {
+            //checks if the targetPosition is already set to te the targetUnit position
+            if (attackTarget != null)
+            {
+                if (targetPosition.indexX != attackTarget.getTileX() && targetPosition.indexY != attackTarget.getTileY())
+                {
+                    CommandDispatcher.issueCommand(new NewMoveCommand(Grid.get().TCP, CommandDispatcher.getSerial(), this.owner, this.id, attackTarget.getTileX(), attackTarget.getTileY()));
+                }
 
+<<<<<<< .mine
+                if (firingTarget == attackTarget)
+                {
+                    CommandDispatcher.issueCommand(new StopUnitCommand(Grid.get().TCP, CommandDispatcher.getSerial(), this.owner, this.id));
+                }
+                
+                
+
+            }
+
+           
+
+            //if (this.
+
+
+
+            //Debug.WriteLine("UNIT UPDATE");
+            
+            //bool returnValue = false;
+            //returnValue = UpdateTile(newInTile, allUnits, grid, translationX, translationY);
+
+            showDetails = false;
+
+            if (health < 0)
+            {
+
+                //start dying
+                Die();
+
+                //last time this method returns
+                //return returnValue;
+            }
+            
+            if (targetPosition != null)
+            {
+                move();
+            }
+            else
+            {
+                // Code for waypoints
+                if (!moving && destination.Count() != 0)
+                {
+                    
+                    targetPosition = destination.Dequeue();
+
+                    //targetPos = temp.GetPos(translationX, translationY);            
+                }
+                
+            }
+            if (scan > Grid.TPS/2)
+            {
+                
+                List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
+                if (enemies.Count == 0) firing = false;
+                int distance = 5;
+                foreach (Unit u in enemies)
+                {
+                    if ((u.inTileX - inTileX > -distance && u.inTileX - inTileX < distance) && (u.inTileY - inTileY > -distance && u.inTileY - inTileY < distance))
+                    {
+                        firingTarget=u;
+                        firing = true;
+                        SoundManager.fireSound();
+                        //fire on this unit.
+                        u.hit(Damage.getDamage(damage,damage+damage),u.damageType);
+                        face(u.focalPoint);
+                        break;
+                    }
+                    //firing = false;
+                }
+                scan = 0;
+            }
+            scan++;
+
+            if (moving)
+            {
+                ticksIntoMovement++;
+            }
+            // Code for waypoints
+
+            //will move this to the above if statement when the unit know its tile
+            //virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
+            //virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
+
+            //return returnValue;
+=======
+>>>>>>> .r297
         }
 
         protected void face(Vector2 facePos)
@@ -89,6 +185,7 @@ namespace ION
             //        ////TODO @emmet
             //        ////1.	Units only move in 8 directions
             //        //// this code gets the angle of the vector in radians (note: this angle is either left or right of "X = 0")
+            
             Vector2 tempAngle = facePos - focalPoint;
             double length = Math.Sqrt((tempAngle.X * tempAngle.X) + (tempAngle.Y * tempAngle.Y));
             float angle = (float)(Math.Acos(tempAngle.Y / length));

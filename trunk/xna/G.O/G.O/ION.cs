@@ -78,7 +78,9 @@ namespace ION
             graphics.ToggleFullScreen();
             graphics.ToggleFullScreen(); //Toggle again to disable fullscreen
 
-            //Now we can get this info without errors
+            //Now we can get this info without errors this.owner, this.id
+
+            
             width = graphics.GraphicsDevice.DisplayMode.Width;
             halfWidth = width / 2;
             height = graphics.GraphicsDevice.DisplayMode.Height;

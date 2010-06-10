@@ -150,16 +150,7 @@ namespace ION
         {
             Console.WriteLine("Command SO connected");
             //time to sync <todo>
-            if (ION.instance.serverConnection.isHost == false)
-            {
-                //DateTime zero = new DateTime(1985, 8, 6);
-                //DateTime now = DateTime.Now;
-                //TimeSpan passedTime = now - zero;
-                //int secondsSince = (int)passedTime.TotalSeconds;
-                //if (secondsSince < 0) secondsSince *= -1;
-                //startGame(2, (int)passedTime.TotalSeconds);
-                //startGame(0);
-            }
+           
         }
 
         void CommandSO_NetStatus(object sender, NetStatusEventArgs e)
@@ -169,26 +160,7 @@ namespace ION
      
         private String[] splitCommand(String command)
         {
-            //string[] commandParts = new String[10];
-            //string commandPart = "";
-            //int partNumber = 0;
-            //for (int i = 0; i < command.Length; i++)
-            //{
-            //    commandPart += command[i];
-
-
-            //    //Console.WriteLine("comPart=" + commandPart);
-            //    if (command[i] == '|')
-            //    {
-            //        //part without last char "|"
-            //        commandParts[partNumber] = commandPart.Substring(0, commandPart.Length - 1);
-            //        //Console.WriteLine("part = "+commandParts[partNumber]);
-            //        commandPart = "";
-            //        partNumber++;
-            //    }
-            //}
-            
-            //return commandParts;
+        
             return command.Split(StringSplitToken, StringSplitOptions.RemoveEmptyEntries);
         }
 
@@ -200,22 +172,24 @@ namespace ION
             CommandSO.SetAttribute("Command", Serializer.Serialize(command));
             CommandSO.EndUpdate();
         }
-        public void declareAction(String command)
-        {
+
+        //public void declareAction(String command)
+        //{
            
-            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+        //    System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
 
-            byte[] commandBytes = encoding.GetBytes(command);
-            CommandSO.BeginUpdate();
-            CommandSO.SetAttribute("Command",commandBytes);
-            CommandSO.EndUpdate();
+        //    byte[] commandBytes = encoding.GetBytes(command);
+        //    CommandSO.BeginUpdate();
+        //    CommandSO.SetAttribute("Command",commandBytes);
+        //    CommandSO.EndUpdate();
             
-            Console.WriteLine("command:" + command + " has been sent!!" + commandBytes.Length );
+        //    Console.WriteLine("command:" + command + " has been sent!!" + commandBytes.Length );
 
-            //parseCommand(command);
-            //if(command[command.Length-1]!= 'E') sentCommands.Add(command+"E");
-            //commands.Add(splitCommand(command));
-        }
+        //    //parseCommand(command);
+        //    //if(command[command.Length-1]!= 'E') sentCommands.Add(command+"E");
+        //    //commands.Add(splitCommand(command));
+        //}
+
         public void startGame(int seed)
         {         
             //declareAction("START|"+seed+"|");
