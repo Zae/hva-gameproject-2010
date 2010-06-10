@@ -19,7 +19,7 @@ namespace ION.Tools
         private static int explosionsoundsPointer = 0;
 
 
-        private static int levelOfAction = 0;
+        public static int levelOfAction = 0;
 
         public static int blabla = 4;
 
