@@ -611,8 +611,6 @@ namespace ION.MultiPlayer
 
             if (attacker != null && target != null)
             {
-                attacker.EmptyWayPoints();
-
                 attacker.setAttackTarget(target);
             }
             
@@ -739,8 +737,6 @@ namespace ION.MultiPlayer
 
             if (u != null)
             {
-                u.EmptyWayPoints();
-
                 u.setAttackTarget(Grid.getPlayerBase(targetOwner));
             }
         }
