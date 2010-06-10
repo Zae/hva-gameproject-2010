@@ -151,6 +151,7 @@
     <Compile Include="Tools\SoundManager.cs" />
     <Compile Include="Tools\StupidAI.cs" />
     <Compile Include="Tools\ThemeManager.cs" />
+    <Compile Include="UI\ButtonHandlers\TowerHandler.cs" />
     <Compile Include="UI\Implementations\Button.cs" />
     <Compile Include="UI\Implementations\InfluenceDisplayer.cs" />
     <Compile Include="UI\Implementations\Label.cs" />
