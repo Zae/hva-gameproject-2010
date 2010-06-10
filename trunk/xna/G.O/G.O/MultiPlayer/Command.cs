@@ -234,9 +234,9 @@ namespace ION.MultiPlayer
         public override void performCommand()
         {
             if (ION.instance.serverConnection.isHost)
-                ION.instance.setState(new StateTest(1, seed, "MediumLevelTest.xml", true));
+                ION.instance.setState(new StateTest(1, seed, "WideLevelTest2.xml", true));
             else
-                ION.instance.setState(new StateTest(2, seed, "MediumLevelTest.xml", true));
+                ION.instance.setState(new StateTest(2, seed, "WideLevelTest2.xml", true));
         }
 
         #region Serializable Members

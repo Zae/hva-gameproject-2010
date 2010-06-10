@@ -37,7 +37,7 @@ namespace ION
         private int playqueue = 1;
 
         public int level = 0;
-        public string[] levels = { "MediumLevelTest.xml", "PathLevelTest.xml", "LargeLevelTest.xml", "WideLevelTest.xml", "WideLevelTest2.xml" };
+        public string[] levels = { "WideLevelTest2.xml", "MediumLevelTest.xml", "PathLevelTest.xml", "LargeLevelTest.xml", "WideLevelTest.xml" };
 
         public GridStrategy[] strategies = { new ThunderStrategy(0) };
         public int strategy = 0;
