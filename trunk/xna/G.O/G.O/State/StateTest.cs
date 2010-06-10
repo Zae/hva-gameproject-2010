@@ -142,6 +142,7 @@ namespace ION
                 }
             }
 
+            //These settings can only be changed in single player mode
             if (!online)
             {
                 if (keyState.IsKeyDown(Keys.Escape))
@@ -250,15 +251,6 @@ namespace ION
                 translationY = 0;
             }
     
-            ////DEBUG MUSIC
-            //if (keyState.IsKeyDown(Keys.Space))
-            //{
-            //    actionOnScreen = true;
-            //}
-            //else
-            //{
-            //    actionOnScreen = false;
-            //}
             handleActionSound(ellapsed);
 
             //HELP FILE
@@ -276,21 +268,14 @@ namespace ION
                 importSettings();
             }
 
-            //if (keyState.IsKeyDown(Keys.Tab))
-            //{
-            //    grid.ChangeMountainTile();
-            //}
         }
-
-
 
         //Used to fade in and fade out the action sound
         private void handleActionSound(int ellapsed)
         {
 
             if (actionOnScreen)
-            {
-                
+            {                
                 if(actionOnScreenSound.State == SoundState.Stopped) {
                     actionOnScreenSound.Volume = 0.0f;
                     actionOnScreenSound.Play();
@@ -359,6 +344,9 @@ namespace ION
         {
             MediaPlayer.Pause();
             musicPaused = true;
+
+            actionOnScreenSound.Stop();
+            SoundManager.levelOfAction = 0;
 
             ION.get().gui.Visible = true;
             
