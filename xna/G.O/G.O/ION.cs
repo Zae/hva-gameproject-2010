@@ -14,6 +14,7 @@ using FluorineFx.Net;
 using WindowSystem;
 using InputEventSystem;
 using ION.Tools;
+using System.Globalization;
 
 
 namespace ION
@@ -70,9 +71,12 @@ namespace ION
             //Set the singleton instance for static reference
             instance = this;
 
-            //Setup the graphics configuration to match the client
-            
+            CultureInfo newCulture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+            newCulture.NumberFormat.NumberDecimalSeparator = ",";
+            newCulture.NumberFormat.NumberGroupSeparator = ".";
+            System.Threading.Thread.CurrentThread.CurrentCulture = newCulture;
 
+            //Setup the graphics configuration to match the client
             graphics = new GraphicsDeviceManager(this);
             graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(preparingDeviceSettings);
             graphics.ToggleFullScreen();
