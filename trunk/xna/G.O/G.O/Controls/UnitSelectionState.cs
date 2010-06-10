@@ -12,7 +12,7 @@ namespace ION.Controls
     class UnitSelectionState : ControlState
     {
 
-        private bool shiftPressed = false;
+        
         private bool rightMouseDown = false;
         private bool leftMouseDown = false;
 
