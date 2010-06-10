@@ -17,7 +17,7 @@ namespace ION.MultiPlayer
 
         private static List<Command> commandsQueue = new List<Command>();
 
-        public static int latency = 250; //Latency to attach to commands to be safe all clients can execute the command in time
+        public static int latency = 400; //Latency to attach to commands to be safe all clients can execute the command in time
         private static int serial = 0;
 
         //Returns a good Tick to let the command process
