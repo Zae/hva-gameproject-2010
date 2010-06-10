@@ -75,7 +75,7 @@ namespace ION
 
         void newGameButton_Click(UIComponent sender)
         {
-            ION.get().setState(new StateTest(1, 0, "MediumLevelTest.xml", false));
+            ION.get().setState(new StateTest(1, 0, "WideLevelTest2.xml", false));
         }
         #endregion
 
