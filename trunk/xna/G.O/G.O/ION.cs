@@ -175,6 +175,7 @@ namespace ION
             Images.attackButtonNormal = Content.Load<Texture2D>("guiItems/attackButtonNormal");
             Images.stopButtonNormal = Content.Load<Texture2D>("guiItems/stopButtonNormal");
             Images.defensiveButtonNormal = Content.Load<Texture2D>("guiItems/defensiveButtonNormal");
+            Images.towerButtonNormal = Content.Load<Texture2D>("guiItems/tower");
             Images.emptyButton = Content.Load<Texture2D>("guiItems/emptyButton");
             Images.buttonOverlay = Content.Load<Texture2D>("guiItems/buttonOverlay");
             Images.newUnitButtonNormal = Content.Load<Texture2D>("guiItems/newUnitButtonNormal");

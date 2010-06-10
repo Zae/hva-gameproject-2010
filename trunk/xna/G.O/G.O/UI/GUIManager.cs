@@ -145,7 +145,7 @@ namespace ION.UI
             else if(guiState == UNITS_SELECTED) 
             {
                 state = guiState;
-                
+
                 commandsBar.clear();
                 commandsBar.add(new Button(12, 5, Images.moveButtonNormal, new MoveHandler()));
                 commandsBar.add(new Button(18 + Images.emptyButton.Width, 5, Images.stopButtonNormal, new StopHandler()));
@@ -153,7 +153,7 @@ namespace ION.UI
 
                 commandsBar.add(new Button(12, 10 + Images.emptyButton.Height, Images.attackButtonNormal, new AttackHandler()));
                 commandsBar.add(new Button(18 + Images.emptyButton.Width, 10 + Images.emptyButton.Height, Images.defensiveButtonNormal, new DefensiveHandler()));
-                commandsBar.add(new GUIComponent(23 + (Images.emptyButton.Width * 2), 10 + Images.emptyButton.Height, Images.emptyButton));
+                commandsBar.add(new Button(23 + (Images.emptyButton.Width * 2), 10, Images.towerButtonNormal, new TowerHandler()));
             }
         }
 

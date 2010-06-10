@@ -63,6 +63,7 @@ namespace ION
         public static Texture2D attackButtonNormal;
         public static Texture2D stopButtonNormal;
         public static Texture2D defensiveButtonNormal;
+        public static Texture2D towerButtonNormal;
         public static Texture2D newUnitButtonNormal;
         public static Texture2D statusBar;
         public static Texture2D selectionBar;
