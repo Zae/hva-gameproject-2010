@@ -2,13 +2,14 @@
   RobotHealth="32"
   RobotCost="32"
   RobotMoveSpeed="0,5" 
-
+  RobotFireRange="5"
   RobotFireRate="-1"
   RobotMinDamage="2"
   RobotMaxDamage="4"
   
   TurretHealth="32"
   TurretCost="32"
+  TurretFireRange="7"
   TurretFireRate="-1"
   TurretMinDamage="6"
   TurretMaxDamage="9"

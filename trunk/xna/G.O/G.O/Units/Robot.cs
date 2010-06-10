@@ -11,11 +11,22 @@ namespace ION
 {
     public class Robot : Unit
     {
-        public const int cost = 250;
+        public static int cost = 250;
 
-        public const int maxHealth = 100; 
+        public static int maxHealth = 100;
+
+        public static int firingRange = 5;
 
         public Rectangle healtRectangle = new Rectangle();
+
+        public int ticksIntoMovement = 0;
+        public static int tileToTileTicks = Grid.TPS / 3;
+
+        public static int damageType = 1;
+
+
+        public static int minDamage = 2;
+        public static int maxDamage = 4;
 
         //fire animation helper variables
         private int FiringFrame = 0;
@@ -38,8 +49,6 @@ namespace ION
             
             position = newPos;
             targetPosition = null;
-
-            damage = 4;
 
             BaseTile playerBase = Grid.getPlayerBase(owner);
             inTileX = playerBase.getTileX();
@@ -120,7 +129,62 @@ namespace ION
 
             }
 
-            base.Update(translationX, translationY);
+
+            showDetails = false;
+
+            if (health < 0)
+            {
+
+                //start dying
+                Die();
+
+                //last time this method returns
+                //return returnValue;
+            }
+
+            if (targetPosition != null)
+            {
+                move();
+            }
+            else
+            {
+                // Code for waypoints
+                if (!moving && destination.Count() != 0)
+                {
+
+                    targetPosition = destination.Dequeue();
+
+                    //targetPos = temp.GetPos(translationX, translationY);            
+                }
+
+            }
+            if (scan > Grid.TPS / 2)
+            {
+
+                List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
+                if (enemies.Count == 0) firing = false;
+                
+                foreach (Unit u in enemies)
+                {
+                    if ((u.inTileX - inTileX > -firingRange && u.inTileX - inTileX < firingRange) && (u.inTileY - inTileY > -firingRange && u.inTileY - inTileY < firingRange))
+                    {
+                        firing = true;
+                        SoundManager.fireSound();
+                        //fire on this unit.
+                        u.hit(Damage.getDamage(minDamage, maxDamage), damageType);
+                        face(u.focalPoint);
+                        break;
+                    }
+                    //firing = false;
+                }
+                scan = 0;
+            }
+            scan++;
+
+            if (moving)
+            {
+                ticksIntoMovement++;
+            }
 
             
            

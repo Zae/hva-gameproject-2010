@@ -22,18 +22,17 @@ namespace ION
         public Rectangle selectionRectangle = new Rectangle();
         public Vector2 focalPoint = new Vector2();
 
+
+
         public enum direction { south = 0, southEast = 1, east = 2, northEast = 3, north = 4, northWest = 5, west = 6, southWest = 7 };
         public direction facing = direction.north;
 
         //don't initialize these, subclasses of unit must specify these in the constructor (or base())
         public int id;
         public int health;
-        public int damage;
-        public int damageType;
-
+        //public int damage;
+  
         public bool moving = false;
-        public int ticksIntoMovement = 0;
-        public int tileToTileTicks = Grid.TPS/3; 
 
         //protected Vector2 pos, targetPos;//, virtualPos;
 
@@ -77,77 +76,9 @@ namespace ION
         public virtual void Update(float translationX, float translationY)
         {
 
-
-            //Debug.WriteLine("UNIT UPDATE");
-            
-            //bool returnValue = false;
-            //returnValue = UpdateTile(newInTile, allUnits, grid, translationX, translationY);
-
-            showDetails = false;
-
-            if (health < 0)
-            {
-
-                //start dying
-                Die();
-
-                //last time this method returns
-                //return returnValue;
-            }
-            
-            if (targetPosition != null)
-            {
-                move();
-            }
-            else
-            {
-                // Code for waypoints
-                if (!moving && destination.Count() != 0)
-                {
-                    
-                    targetPosition = destination.Dequeue();
-
-                    //targetPos = temp.GetPos(translationX, translationY);            
-                }
-                
-            }
-            if (scan > Grid.TPS/2)
-            {
-                
-                List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
-                if (enemies.Count == 0) firing = false;
-                int distance = 5;
-                foreach (Unit u in enemies)
-                {
-                    if ((u.inTileX - inTileX > -distance && u.inTileX - inTileX < distance) && (u.inTileY - inTileY > -distance && u.inTileY - inTileY < distance))
-                    {
-                        firing = true;
-                        SoundManager.fireSound();
-                        //fire on this unit.
-                        u.hit(Damage.getDamage(damage,damage+damage),u.damageType);
-                        face(u.focalPoint);
-                        break;
-                    }
-                    //firing = false;
-                }
-                scan = 0;
-            }
-            scan++;
-
-            if (moving)
-            {
-                ticksIntoMovement++;
-            }
-            // Code for waypoints
-
-            //will move this to the above if statement when the unit know its tile
-            //virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
-            //virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
-
-            //return returnValue;
         }
 
-        private void face(Vector2 facePos)
+        protected void face(Vector2 facePos)
         {
             //get the center of the selectionbox of the unit.
             //compare it with the center of this unit's selection box

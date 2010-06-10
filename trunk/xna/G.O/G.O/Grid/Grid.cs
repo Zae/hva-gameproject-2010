@@ -70,7 +70,8 @@ namespace ION
         // a list to hold the blue army
         public List<Unit> allUnits = new List<Unit>();
 
-        public float resources = Robot.cost * 256;
+
+        public static float resources = Robot.cost * 4;
         public static int playerNumber = -1;
         private static int playerUnitId = -1;
 

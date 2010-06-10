@@ -66,28 +66,46 @@ namespace ION.Tools
                 {
                     //  RobotHealth="32"
                     //  RobotCost="32"
-                    //  RobotMoveSpeed="0.5" 
+                    //  RobotMoveSpeed="0.5"
+                    //  RobotFireRange="4"
                     //  RobotFireRate="-1"
                     //  RobotMinDamage="2"
                     //  RobotMaxDamage="4"
                     int RobotHealth = int.Parse(XmlRdr.GetAttribute("RobotHealth"));
                     int RobotCost = int.Parse(XmlRdr.GetAttribute("RobotCost"));
                     float RobotMoveSpeed = float.Parse(XmlRdr.GetAttribute("RobotMoveSpeed"), System.Globalization.NumberStyles.Any);
+                    int RobotFireRange = int.Parse(XmlRdr.GetAttribute("RobotFireRange"));
                     int RobotFireRate = int.Parse(XmlRdr.GetAttribute("RobotFireRate"));
                     int RobotMinDamage = int.Parse(XmlRdr.GetAttribute("RobotMinDamage"));
                     int RobotMaxDamage = int.Parse(XmlRdr.GetAttribute("RobotMaxDamage"));
 
+                    Robot.maxHealth = RobotHealth;
+                    Robot.cost = RobotCost;
+                    Robot.firingRange = RobotFireRange;
+                    Robot.tileToTileTicks = (int)(Grid.TPS * RobotMoveSpeed);
+                    Robot.minDamage = RobotMinDamage;
+                    Robot.maxDamage = RobotMaxDamage;
+
+
 
                     //  TurretHealth="32"
                     //  TurretCost="32"
+                    //  TurretFireRange="5"
                     //  TurretFireRate="-1"
                     //  TurretMinDamage="6"
                     //  TurretMaxDamage="9"
                     int TurretHealth = int.Parse(XmlRdr.GetAttribute("TurretHealth"));
                     int TurretCost = int.Parse(XmlRdr.GetAttribute("TurretCost"));
+                    int TurretFireRange = int.Parse(XmlRdr.GetAttribute("TurretFireRange"));
                     int TurretFireRate = int.Parse(XmlRdr.GetAttribute("TurretFireRate"));
                     int TurretMinDamage = int.Parse(XmlRdr.GetAttribute("TurretMinDamage"));
                     int TurretMaxDamage = int.Parse(XmlRdr.GetAttribute("TurretMaxDamage"));
+
+                    Tower.maxHealth = TurretHealth;
+                    Tower.cost = TurretCost;
+                    Tower.firingRange = TurretFireRange;
+                    Tower.minDamage = TurretMinDamage;
+                    Tower.maxDamage = TurretMaxDamage;
 
                     //  BaseHealth="500"
 
@@ -105,6 +123,9 @@ namespace ION.Tools
                     float SpikeBonus = float.Parse(XmlRdr.GetAttribute("SpikeBonus"));
                     int VictoryCondition = int.Parse(XmlRdr.GetAttribute("VictoryCondition"));
                     float AmountToCollect = float.Parse(XmlRdr.GetAttribute("AmountToCollect"));
+
+                    BaseTile.maxHealth = BaseHealth;
+                    Grid.resources = StartingMoney;
 
 
                     Debug.WriteLine("robothp:" + RobotHealth);
