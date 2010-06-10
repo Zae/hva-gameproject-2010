@@ -424,14 +424,84 @@ namespace ION
             }
             else if (c == 'M')
             {
-                MountainTile newTile = new MountainTile(x, y, 10);
+                MountainTile newTile = new MountainTile(x, y, 20);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
             }
             else if (c == 'C')
             {
-                MountainTile newTile = new MountainTile(x, y, 20);
+                MountainTile newTile = new MountainTile(x, y, 21);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '0')
+            {
+                MountainTile newTile = new MountainTile(x, y, 0);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '1')
+            {
+                MountainTile newTile = new MountainTile(x, y, 1);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '2')
+            {
+                MountainTile newTile = new MountainTile(x, y, 2);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '3')
+            {
+                MountainTile newTile = new MountainTile(x, y, 3);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '4')
+            {
+                MountainTile newTile = new MountainTile(x, y, 4);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '5')
+            {
+                MountainTile newTile = new MountainTile(x, y, 5);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '6')
+            {
+                MountainTile newTile = new MountainTile(x, y, 6);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '7')
+            {
+                MountainTile newTile = new MountainTile(x, y, 7);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '8')
+            {
+                MountainTile newTile = new MountainTile(x, y, 8);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '9')
+            {
+                MountainTile newTile = new MountainTile(x, y, 9);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
