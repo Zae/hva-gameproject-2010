@@ -33,12 +33,12 @@ namespace ION
 
         public bool moving = false;
         public int ticksIntoMovement = 0;
-        public int tileToTileTicks = Grid.TPS; 
+        public int tileToTileTicks = Grid.TPS/3; 
 
         //protected Vector2 pos, targetPos;//, virtualPos;
 
-        protected Tile position;
-        protected Tile targetPosition;
+        public Tile position;
+        public Tile targetPosition;
 
         protected IDepthEnabled attackTarget;
 

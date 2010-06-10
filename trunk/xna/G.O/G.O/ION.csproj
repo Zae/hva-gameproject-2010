@@ -133,6 +133,7 @@
     <Content Include="GameThumbnail.png" />
     <Compile Include="Controls\AddUnitSelectionState.cs" />
     <Compile Include="Controls\BaseSelectionState.cs" />
+    <Compile Include="Grid\CanyonTile.cs" />
     <Compile Include="Grid\VoidTile.cs" />
     <Compile Include="MultiPlayer\Protocol.cs" />
     <Compile Include="MultiPlayer\CheckSumManager.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="State\StateTest.cs" />
     <Compile Include="State\StateTicTacToe.cs" />
     <Compile Include="State\TicTacToeTestStuff\CheckedState.cs" />
+    <Compile Include="Tools\SettingsImporter.cs" />
     <Compile Include="Tools\CoordinateTool.cs" />
     <Compile Include="Tools\Damage.cs" />
     <Compile Include="Tools\FloodFill.cs" />

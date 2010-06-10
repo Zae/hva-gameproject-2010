@@ -80,7 +80,7 @@ namespace ION
             actionOnScreenSound = Sounds.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
 
-         
+            importSettings();
            
         }
 
@@ -270,6 +270,12 @@ namespace ION
             {
                 showHelpFile = false;
             }
+
+            if (keyState.IsKeyDown(Keys.F5))
+            {
+                importSettings();
+            }
+
             //if (keyState.IsKeyDown(Keys.Tab))
             //{
             //    grid.ChangeMountainTile();
@@ -356,6 +362,12 @@ namespace ION
 
             ION.get().gui.Visible = true;
             
+        }
+
+        public void importSettings()
+        {
+            SettingsImporter si = new SettingsImporter();
+            si.run();
         }
     }
 }

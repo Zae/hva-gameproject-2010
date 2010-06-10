@@ -296,12 +296,25 @@ namespace ION.MultiPlayer
             {
                 u.EmptyWayPoints();
 
+                int fromX; int fromY;
                 //find out the starting point
-                //if(!u.moving 
 
-                
+                if (u.targetPosition == null)
+                {
+                    fromX = u.position.indexX; fromY = u.position.indexY;
+                }
+                else if (!u.moving && u.targetPosition != null)
+                {
+                    fromX = u.position.indexX; fromY = u.position.indexY;
+                }
+                else
+                {
+                    fromX = u.targetPosition.indexX; fromY = u.targetPosition.indexY;
+                }
 
-                List<ResourceTile> path = FloodFill.getPath((ResourceTile)Grid.map[u.inTileX, u.inTileY], (ResourceTile)Grid.map[xTarget, yTarget]);
+
+
+                List<ResourceTile> path = FloodFill.getPath((ResourceTile)Grid.map[fromX,fromY], (ResourceTile)Grid.map[xTarget, yTarget]);
 
                 foreach (ResourceTile rt in path)
                 {
