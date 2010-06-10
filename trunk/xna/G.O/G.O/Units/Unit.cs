@@ -42,8 +42,7 @@ namespace ION
         public Tile position;
         public Tile targetPosition;
 
-        protected IDepthEnabled attackTarget;
-
+ 
         //the index of the tile the unit is on
         public int inTileX = 0;
         public int inTileY = 0;
@@ -86,7 +85,7 @@ namespace ION
                     CommandDispatcher.issueCommand(new NewMoveCommand(Grid.get().TCP, CommandDispatcher.getSerial(), this.owner, this.id, attackTarget.getTileX(), attackTarget.getTileY()));
                 }
 
-<<<<<<< .mine
+
                 if (firingTarget == attackTarget)
                 {
                     CommandDispatcher.issueCommand(new StopUnitCommand(Grid.get().TCP, CommandDispatcher.getSerial(), this.owner, this.id));
@@ -96,82 +95,6 @@ namespace ION
 
             }
 
-           
-
-            //if (this.
-
-
-
-            //Debug.WriteLine("UNIT UPDATE");
-            
-            //bool returnValue = false;
-            //returnValue = UpdateTile(newInTile, allUnits, grid, translationX, translationY);
-
-            showDetails = false;
-
-            if (health < 0)
-            {
-
-                //start dying
-                Die();
-
-                //last time this method returns
-                //return returnValue;
-            }
-            
-            if (targetPosition != null)
-            {
-                move();
-            }
-            else
-            {
-                // Code for waypoints
-                if (!moving && destination.Count() != 0)
-                {
-                    
-                    targetPosition = destination.Dequeue();
-
-                    //targetPos = temp.GetPos(translationX, translationY);            
-                }
-                
-            }
-            if (scan > Grid.TPS/2)
-            {
-                
-                List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
-                if (enemies.Count == 0) firing = false;
-                int distance = 5;
-                foreach (Unit u in enemies)
-                {
-                    if ((u.inTileX - inTileX > -distance && u.inTileX - inTileX < distance) && (u.inTileY - inTileY > -distance && u.inTileY - inTileY < distance))
-                    {
-                        firingTarget=u;
-                        firing = true;
-                        SoundManager.fireSound();
-                        //fire on this unit.
-                        u.hit(Damage.getDamage(damage,damage+damage),u.damageType);
-                        face(u.focalPoint);
-                        break;
-                    }
-                    //firing = false;
-                }
-                scan = 0;
-            }
-            scan++;
-
-            if (moving)
-            {
-                ticksIntoMovement++;
-            }
-            // Code for waypoints
-
-            //will move this to the above if statement when the unit know its tile
-            //virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
-            //virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
-
-            //return returnValue;
-=======
->>>>>>> .r297
         }
 
         protected void face(Vector2 facePos)
