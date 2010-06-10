@@ -14,6 +14,10 @@ namespace ION.Tools
         private static int firesoundsCount;
         private static int firesoundsPointer = 0;
 
+        private static SoundEffectInstance[] turretsounds;
+        private static int turretsoundsCount;
+        private static int turretsoundsPointer = 0;
+
         private static SoundEffectInstance[] explosionsounds;
         private static int explosionsoundsCount;
         private static int explosionsoundsPointer = 0;
@@ -48,6 +52,15 @@ namespace ION.Tools
                     firesounds[j,i].Volume = 0.4f;
                 }
 
+            }
+
+            turretsoundsCount = 3;
+            turretsounds = new SoundEffectInstance[turretsoundsCount];
+            for (int i = 0; i < turretsoundsCount; i++)
+            {
+                turretsounds[i] = Sounds.turretSound.CreateInstance();
+                turretsounds[i].IsLooped = false;
+                //explosionsounds[i].Volume = 0.2f;
             }
 
             explosionsoundsCount = Sounds.explosionSounds.Length;
@@ -127,6 +140,20 @@ namespace ION.Tools
             }
 
             playCoordinate();
+        }
+
+        public static void turretSound()
+        {
+            levelOfAction += 10;
+
+            for (int i = 0; i < turretsoundsCount; i++)
+            {
+                if (turretsounds[i].State == SoundState.Stopped)
+                {
+                    turretsounds[i].Play();
+                    return;
+                }
+            }
         }
 
         public static void fireSound()

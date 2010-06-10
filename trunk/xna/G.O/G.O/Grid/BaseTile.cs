@@ -25,6 +25,9 @@ namespace ION
 
         public int health;
         public static int maxHealth = 500;
+        public bool dying = false;
+        public bool dead = false;
+
         public Rectangle healtRectangle = new Rectangle();
 
 

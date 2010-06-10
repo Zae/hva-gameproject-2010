@@ -277,18 +277,18 @@ namespace ION
                 }
 
             }
-            if (scan > Grid.TPS / 2)
+            if (scan > Grid.TPS)
             {
 
                 List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
                 if (enemies.Count == 0) firing = false;
-                int distance = 5;
+                
                 foreach (Unit u in enemies)
                 {
                     if ((u.inTileX - inTileX > -firingRange && u.inTileX - inTileX < firingRange) && (u.inTileY - inTileY > -firingRange && u.inTileY - inTileY < firingRange))
                     {
                         firing = true;
-                        SoundManager.fireSound();
+                        SoundManager.turretSound();
                         //fire on this unit.
                         u.hit(Damage.getDamage(minDamage,maxDamage), damageType);
                         face(u.focalPoint);
@@ -341,7 +341,7 @@ namespace ION
                 {
                     FiringFrame = 2;
                 }
-                if (FiringCounter > (Grid.TPS))
+                if (FiringCounter > 9)
                 {
                     FiringCounter = 0;
                     firing = false;
