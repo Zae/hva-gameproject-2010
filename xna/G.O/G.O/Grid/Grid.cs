@@ -444,42 +444,42 @@ namespace ION
                 mountainTiles.Add(newTile);
                 return newTile;
             }
-            else if (c == '0')
+            else if (c == '5')
             {
                 MountainTile newTile = new MountainTile(x, y, 0);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
             }
-            else if (c == '1')
+            else if (c == '8')
             {
                 MountainTile newTile = new MountainTile(x, y, 1);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
             }
-            else if (c == '2')
+            else if (c == '9')
             {
                 MountainTile newTile = new MountainTile(x, y, 2);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
             }
-            else if (c == '3')
+            else if (c == '+')
             {
                 MountainTile newTile = new MountainTile(x, y, 3);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
             }
-            else if (c == '4')
+            else if (c == '7')
             {
                 MountainTile newTile = new MountainTile(x, y, 4);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
             }
-            else if (c == '5')
+            else if (c == '/')
             {
                 MountainTile newTile = new MountainTile(x, y, 5);
                 addDepthEnabledItem(newTile);
@@ -493,23 +493,44 @@ namespace ION
                 mountainTiles.Add(newTile);
                 return newTile;
             }
-            else if (c == '7')
+            else if (c == '4')
             {
                 MountainTile newTile = new MountainTile(x, y, 7);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
             }
-            else if (c == '8')
+            else if (c == '2')
             {
                 MountainTile newTile = new MountainTile(x, y, 8);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
             }
-            else if (c == '9')
+            else if (c == '3')
             {
                 MountainTile newTile = new MountainTile(x, y, 9);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '-')
+            {
+                MountainTile newTile = new MountainTile(x, y, 10);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '1')
+            {
+                MountainTile newTile = new MountainTile(x, y, 11);
+                addDepthEnabledItem(newTile);
+                mountainTiles.Add(newTile);
+                return newTile;
+            }
+            else if (c == '*')
+            {
+                MountainTile newTile = new MountainTile(x, y, 12);
                 addDepthEnabledItem(newTile);
                 mountainTiles.Add(newTile);
                 return newTile;
@@ -836,7 +857,7 @@ namespace ION
                     bool newRowStarted = false;
                     for (int i = 0; i < length; i++)
                     {
-                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M' || rawLevel[i] == 'C' || rawLevel[i] == 'V')
+                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M' || rawLevel[i] == 'C' || rawLevel[i] == 'V' || rawLevel[i] == '1' || rawLevel[i] == '2' || rawLevel[i] == '3' || rawLevel[i] == '4' || rawLevel[i] == '5' || rawLevel[i] == '6' || rawLevel[i] == '7' || rawLevel[i] == '8' || rawLevel[i] == '9' || rawLevel[i] == '/' || rawLevel[i] == '*' || rawLevel[i] == '+' || rawLevel[i] == '-')
                         {
                             if (!newRowStarted)
                             {

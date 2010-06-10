@@ -24,6 +24,7 @@ namespace ION
         public static Texture2D iceFloorImage;
         public static Texture2D glassFloorImage;
         public static Texture2D crystalFloorImage;
+        public static Texture2D[] canyonFloorImage;
         public static Texture2D baseImage;
         public static Texture2D borderImage;
         public static Texture2D resourceImage;

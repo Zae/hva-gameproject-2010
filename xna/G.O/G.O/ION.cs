@@ -227,6 +227,21 @@ namespace ION
             Images.glassFloorImage = Content.Load<Texture2D>("tileItems/glass_tile_floor");
             Images.crystalFloorImage = Content.Load<Texture2D>("tileItems/crystal_tile_floor");           
             Images.resourceImage = Content.Load<Texture2D>("tileItems/resource_tile");
+
+            Images.canyonFloorImage = new Texture2D[13];
+            Images.canyonFloorImage[0] = Content.Load<Texture2D>("tileItems/canyons/0_land_cave_leeg");
+            Images.canyonFloorImage[1] = Content.Load<Texture2D>("tileItems/canyons/1_land_cave_noord");
+            Images.canyonFloorImage[2] = Content.Load<Texture2D>("tileItems/canyons/2_land_cave_noordoost");
+            Images.canyonFloorImage[3] = Content.Load<Texture2D>("tileItems/canyons/3_land_cave_noordoost_klein");
+            Images.canyonFloorImage[4] = Content.Load<Texture2D>("tileItems/canyons/4_land_cave_noordwest");
+            Images.canyonFloorImage[5] = Content.Load<Texture2D>("tileItems/canyons/5_land_cave_noordwest_klein");
+            Images.canyonFloorImage[6] = Content.Load<Texture2D>("tileItems/canyons/6_land_cave_oost");
+            Images.canyonFloorImage[7] = Content.Load<Texture2D>("tileItems/canyons/7_land_cave_west");
+            Images.canyonFloorImage[8] = Content.Load<Texture2D>("tileItems/canyons/8_land_cave_zuid");
+            Images.canyonFloorImage[9] = Content.Load<Texture2D>("tileItems/canyons/9_land_cave_zuidoost");
+            Images.canyonFloorImage[10] = Content.Load<Texture2D>("tileItems/canyons/A_land_cave_zuidoost_klein");
+            Images.canyonFloorImage[11] = Content.Load<Texture2D>("tileItems/canyons/B_land_cave_zuidwest");
+            Images.canyonFloorImage[12] = Content.Load<Texture2D>("tileItems/canyons/C_land_cave_zuidwest_klein");  
             
             //Load Base images           
             Images.baseImage = Content.Load<Texture2D>("tileItems/base_tile");
