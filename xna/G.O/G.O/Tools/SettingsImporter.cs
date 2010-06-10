@@ -112,7 +112,6 @@ namespace ION.Tools
 
                     int TicksPerSecond = int.Parse(XmlRdr.GetAttribute("TicksPerSecond"));
 
-
                     BaseTile.maxHealth = BaseHealth;
                     Grid.resources = StartingMoney;
                     Grid.resourceRate = ResourceRate;
