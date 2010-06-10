@@ -75,27 +75,7 @@ namespace ION
             destination = new Queue<Tile>();
         }
 
-        public virtual void Update(float translationX, float translationY)
-        {
-            //checks if the targetPosition is already set to te the targetUnit position
-            if (attackTarget != null)
-            {
-                if (targetPosition.indexX != attackTarget.getTileX() && targetPosition.indexY != attackTarget.getTileY())
-                {
-                    CommandDispatcher.issueCommand(new NewMoveCommand(Grid.get().TCP, CommandDispatcher.getSerial(), this.owner, this.id, attackTarget.getTileX(), attackTarget.getTileY()));
-                }
-
-
-                if (firingTarget == attackTarget)
-                {
-                    CommandDispatcher.issueCommand(new StopUnitCommand(Grid.get().TCP, CommandDispatcher.getSerial(), this.owner, this.id));
-                }
-                
-                
-
-            }
-
-        }
+        public abstract void Update(float translationX, float translationY);
 
         protected void face(Vector2 facePos)
         {
