@@ -23,11 +23,18 @@ namespace ION
         public bool selected = false;
         public bool showDetails = false;
 
+        public int health;
+        public int maxHealth = 500;
+        public Rectangle healtRectangle = new Rectangle();
+
+
         public BaseTile(int indexX, int indexY, int owner)
         {
             accessable = true;
 
             baseImage = Players.getBaseImage(owner);
+
+            health = maxHealth;
             
             this.indexX = indexX;
             this.indexY = indexY;
@@ -90,7 +97,47 @@ namespace ION
 
             if (selected || showDetails)
             {
-                //draw health
+                //Draw health and energy stuff
+                healtRectangle.X = (int)(drawingRectangleBig.X
+                    + (Tile.baseHalfWidth * 1.12));
+                healtRectangle.Y = (int)(drawingRectangleBig.Y
+                    + (baseHalfHeight * 0.2));
+                healtRectangle.Width = (int)(baseHalfWidth * 1.8);
+                healtRectangle.Height = (int)(baseHalfHeight * 1.0);
+
+                healtRectangle.Width = (int)(healtRectangle.Width * ((float)health / (float)maxHealth));
+
+                //Get a good color for the healthbar
+                Color healthBarColor;
+                if (health > (maxHealth / 1.5))
+                {
+                    healthBarColor = Color.Green;
+                }
+                else if (health > (maxHealth / 3))
+                {
+                    healthBarColor = Color.Orange;
+                }
+                else
+                {
+                    healthBarColor = Color.Red;
+                }
+
+
+                if (health < maxHealth)
+                {
+                    ION.spriteBatch.Draw(Images.unitHealth[2], drawingRectangleBig, healthBarColor);
+                }
+                else
+                {
+                    ION.spriteBatch.Draw(Images.unitHealth[1], drawingRectangleBig, healthBarColor);
+                }
+
+                ION.spriteBatch.Draw(Images.white1px, healtRectangle, healthBarColor);
+
+                ION.spriteBatch.Draw(Images.unitHealth[0], drawingRectangleBig, Color.White);
+
+                //Reset the flag
+                showDetails = false;
             }
         }
 

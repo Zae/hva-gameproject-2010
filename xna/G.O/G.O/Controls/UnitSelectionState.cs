@@ -17,7 +17,9 @@ namespace ION.Controls
         private bool leftMouseDown = false;
 
         private bool moveOrder = false;
-        private bool attackOrder = false;
+        private bool attackUnitOrder = false;
+        private bool attackBaseOrder = false;
+
 
         public override void draw()
         {
@@ -74,15 +76,15 @@ namespace ION.Controls
 
             if (moveOrder)
             {
-                SoundManager.selectUnitSound();
-                StateTest.get().gui.applyState(GUIManager.UNITS_SELECTED);
-                StateTest.get().controls = new UnitSelectionState();
+   
             }
-            else if (attackOrder)
+            else if (attackUnitOrder)
             {
-                //TODO //SoundManager.selectBaseSound();
-                StateTest.get().gui.applyState(GUIManager.BASE_SELECTED);
-                StateTest.get().controls = new BaseSelectionState();
+
+            }
+            else if (attackBaseOrder)
+            {
+
             }
             else
             {
@@ -171,17 +173,6 @@ namespace ION.Controls
             }
 
             GUIManager.mousePointerState = Images.MOUSE_MOVE;
-
-            //if (result is Unit)
-            //{
-            //    ((Unit)result).selected = true;
-            //    selectedUnits = true;
-            //}
-            //else if (result is BaseTile)
-            //{
-            //    // TODO //((BaseTile)result).sekected = true;
-            //    selectedBase = true;
-            //}
         }
     }
 }

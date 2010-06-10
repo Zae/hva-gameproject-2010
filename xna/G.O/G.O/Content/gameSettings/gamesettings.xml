@@ -1,0 +1,34 @@
+﻿<Settings
+  RobotHealth="32"
+  RobotCost="32"
+  RobotMoveSpeed="0,5" 
+
+  RobotFireRate="-1"
+  RobotMinDamage="2"
+  RobotMaxDamage="4"
+  
+  TurretHealth="32"
+  TurretCost="32"
+  TurretFireRate="-1"
+  TurretMinDamage="6"
+  TurretMaxDamage="9"
+  
+  BaseHealth="500"
+
+  StartingMoney="500,0"
+  ResourceRate="1,0"
+  SpikeBonus="1,0"
+  
+  VictoryCondition="0"
+  
+  AmountToCollect="3000,0"
+>
+</Settings>
+<!-- Important info:
+MoveSpeed is the time in seconds it takes to move from one tile to the next (always use a float (e.g. 0.2 1.3)
+
+Possible Victory Conditions 
+0 = Anihilation
+1 = Resource Collection
+-->
+

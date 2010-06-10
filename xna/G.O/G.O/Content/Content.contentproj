@@ -3800,6 +3800,81 @@
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="gameSettings\gamesettings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>gamesettings</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tileItems\canyons\0_land_cave_leeg.png">
+      <Name>0_land_cave_leeg</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\1_land_cave_noord.png">
+      <Name>1_land_cave_noord</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\2_land_cave_noordoost.png">
+      <Name>2_land_cave_noordoost</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\3_land_cave_noordoost_klein.png">
+      <Name>3_land_cave_noordoost_klein</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\4_land_cave_noordwest.png">
+      <Name>4_land_cave_noordwest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\5_land_cave_noordwest_klein.png">
+      <Name>5_land_cave_noordwest_klein</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\6_land_cave_oost.png">
+      <Name>6_land_cave_oost</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\7_land_cave_west.png">
+      <Name>7_land_cave_west</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\8_land_cave_zuid.png">
+      <Name>8_land_cave_zuid</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\9_land_cave_zuidoost.png">
+      <Name>9_land_cave_zuidoost</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\A_land_cave_zuidoost_klein.png">
+      <Name>A_land_cave_zuidoost_klein</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\B_land_cave_zuidwest.png">
+      <Name>B_land_cave_zuidwest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="tileItems\canyons\C_land_cave_zuidwest_klein.png">
+      <Name>C_land_cave_zuidwest_klein</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

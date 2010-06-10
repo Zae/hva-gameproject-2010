@@ -135,7 +135,7 @@ namespace ION.Tools
 
             Double d = Tool.unsafeRandom.NextDouble();
 
-            if (d > 0.5)
+            if (d > 0.3)
             {
                 firesoundsPointer = 0;
             }
