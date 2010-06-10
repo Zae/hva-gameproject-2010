@@ -17,10 +17,10 @@ namespace ION.UI
             foreach (Unit u in playerUnits)
             {
 
-                if (u is Robot && Grid.get().resources >= Tower.cost)
+                if (u is Robot && Grid.resources >= Tower.cost)
                 {
 
-                    Grid.get().resources -= Tower.cost;
+                    Grid.resources -= Tower.cost;
                     
                     CommandDispatcher.issueCommand(new NewTowerUnitCommand(CommandDispatcher.getSupposedGameTick()
                                                       , CommandDispatcher.getSerial()

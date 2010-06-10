@@ -18,9 +18,9 @@ namespace ION.UI
             //    grid.allUnits.Add(new Robot(grid.GetTileScreenPos(new Vector2(12, 12), translationX, translationY), grid.GetTileScreenPos(new Vector2(11, 13), translationX, translationY)));
             //}
 
-            if(Grid.get().resources >= Robot.cost) 
+            if(Grid.resources >= Robot.cost) 
             {
-                Grid.get().resources -= Robot.cost;
+                Grid.resources -= Robot.cost;
 
                 //if (Protocol.instance != null)
                 //    Protocol.instance.createUnit(Grid.playerNumber, Grid.getNewId());

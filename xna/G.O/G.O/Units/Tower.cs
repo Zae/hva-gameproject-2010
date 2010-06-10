@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using ION.Tools;
 
 namespace ION
 {
@@ -11,7 +12,15 @@ namespace ION
     {
         public static int cost = 500;
 
-        public const int maxHealth = 250;
+        public static int maxHealth = 250;
+
+        public static int firingRange = 5;
+
+        public static int minDamage = 2;
+        public static int maxDamage = 4;
+
+        public static int damageType = 1;
+
 
         public Rectangle healtRectangle = new Rectangle();
 
@@ -34,8 +43,8 @@ namespace ION
 
         public Tower(Tile newPos, int owner, int id) : base(owner,id)
         {
-            damage = 8;
-            health = 250;
+
+            health = maxHealth;
 
             position = newPos;
             targetPosition = null;
@@ -229,6 +238,82 @@ namespace ION
 
                 ION.spriteBatch.Draw(Images.bulletImpact[UnderFireFrame], new Rectangle(selectionRectangle.X + UnderFireOffsetX, selectionRectangle.Y + UnderFireOffsetY, (int)(baseHalfWidth * 0.5), (int)(baseHalfHeight)), Color.White);
             }
+        }
+
+        public override void Update(float translationX, float translationY)
+        {
+
+
+            //Debug.WriteLine("UNIT UPDATE");
+
+            //bool returnValue = false;
+            //returnValue = UpdateTile(newInTile, allUnits, grid, translationX, translationY);
+
+            showDetails = false;
+
+            if (health < 0)
+            {
+
+                //start dying
+                Die();
+
+                //last time this method returns
+                //return returnValue;
+            }
+
+            if (targetPosition != null)
+            {
+                move();
+            }
+            else
+            {
+                // Code for waypoints
+                if (!moving && destination.Count() != 0)
+                {
+
+                    targetPosition = destination.Dequeue();
+
+                    //targetPos = temp.GetPos(translationX, translationY);            
+                }
+
+            }
+            if (scan > Grid.TPS / 2)
+            {
+
+                List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
+                if (enemies.Count == 0) firing = false;
+                int distance = 5;
+                foreach (Unit u in enemies)
+                {
+                    if ((u.inTileX - inTileX > -firingRange && u.inTileX - inTileX < firingRange) && (u.inTileY - inTileY > -firingRange && u.inTileY - inTileY < firingRange))
+                    {
+                        firing = true;
+                        SoundManager.fireSound();
+                        //fire on this unit.
+                        u.hit(Damage.getDamage(minDamage,maxDamage), damageType);
+                        face(u.focalPoint);
+                        break;
+                    }
+                    //firing = false;
+                }
+                scan = 0;
+            }
+            scan++;
+
+            //if (moving)
+            //{
+            //    ticksIntoMovement++;
+            //}
+            // Code for waypoints
+
+            //will move this to the above if statement when the unit know its tile
+            //virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
+            //virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
+
+            //return returnValue;
+ 
+
+
         }
 
         private bool drawFiringAnimation(float x, float y)

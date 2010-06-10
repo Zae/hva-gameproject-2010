@@ -24,7 +24,7 @@ namespace ION
         public bool showDetails = false;
 
         public int health;
-        public int maxHealth = 500;
+        public static int maxHealth = 500;
         public Rectangle healtRectangle = new Rectangle();
 
 
