@@ -31,7 +31,11 @@ namespace ION.Tools
         private static int selectUnitCount;
         private static int selectUnitPointer = 0;
 
-        private static SoundEffectInstance orderUnit;
+        private static SoundEffectInstance[] orderUnit;
+        private static int orderUnitCount;
+        private static int orderUnitPointer = 0;
+
+        //private static SoundEffectInstance orderUnit;
         private static SoundEffectInstance baseExplosionSound;
         private static SoundEffectInstance winGame;
         private static SoundEffectInstance loseGame;
@@ -85,6 +89,15 @@ namespace ION.Tools
                 //explosionsounds[i].Volume = 0.2f;
             }
 
+            orderUnitCount = Sounds.attackOrderSounds.Length;
+            orderUnit = new SoundEffectInstance[orderUnitCount];
+            for (int i = 0; i < orderUnitCount; i++)
+            {
+                orderUnit[i] = Sounds.attackOrderSounds[i].CreateInstance();
+                orderUnit[i].IsLooped = false;
+                //explosionsounds[i].Volume = 0.2f;
+            }
+
             //selectUnit = Sounds.selectUnit.CreateInstance();
             //selectUnit.IsLooped = false;
 
@@ -95,8 +108,8 @@ namespace ION.Tools
             loseGame = Sounds.loseSound.CreateInstance();
             loseGame.IsLooped = false;
             
-            orderUnit = Sounds.orderUnit.CreateInstance();
-            orderUnit.IsLooped = false;
+            //orderUnit = Sounds.orderUnit.CreateInstance();
+            //orderUnit.IsLooped = false;
            
         }
 
@@ -222,6 +235,18 @@ namespace ION.Tools
 
 
             selectUnit[selectUnitPointer].Play();
+        }
+
+        public static void orderUnitSound()
+        {
+            orderUnitPointer++;
+            if (orderUnitPointer == orderUnitCount)
+            {
+                orderUnitPointer = 0;
+            }
+
+
+            orderUnit[orderUnitPointer].Play();
         }
 
         public static void baseExplosion()

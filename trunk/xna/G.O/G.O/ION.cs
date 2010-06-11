@@ -368,6 +368,13 @@ namespace ION
             Sounds.selectUnitSounds[3] = Content.Load<SoundEffect>("voiceItems/Ezra_GoAhead_2");
             Sounds.selectUnitSounds[4] = Content.Load<SoundEffect>("voiceItems/Ezra_WhatDoYouWant_1");
 
+            Sounds.attackOrderSounds = new SoundEffect[5];
+            Sounds.attackOrderSounds[0] = Content.Load<SoundEffect>("voiceItems/Ezra_ConsidderItDone_1");
+            Sounds.attackOrderSounds[1] = Content.Load<SoundEffect>("voiceItems/Ezra_Copy_1");
+            Sounds.attackOrderSounds[2] = Content.Load<SoundEffect>("voiceItems/Ezra_Affirmative_1");
+            Sounds.attackOrderSounds[3] = Content.Load<SoundEffect>("voiceItems/Ezra_Copy_2");
+            Sounds.attackOrderSounds[4] = Content.Load<SoundEffect>("voiceItems/Ezra_Roger_1");
+
 
             Sounds.orderUnit = Content.Load<SoundEffect>("sfxItems/orderunit");
 

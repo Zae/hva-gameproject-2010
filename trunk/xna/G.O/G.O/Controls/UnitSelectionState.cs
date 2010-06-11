@@ -145,8 +145,8 @@ namespace ION.Controls
        
                     else if (targetUnit != null)
                     {
-                        Debug.WriteLine("ATTACKING UNTI!");
-                        
+                        //Debug.WriteLine("ATTACKING UNTI!");
+                        SoundManager.orderUnitSound();
                         CommandDispatcher.issueCommand(new AttackUnitCommand(CommandDispatcher.getSupposedGameTick()
                                                                            , CommandDispatcher.getSerial()
                                                                            , playerUnits[i].owner
@@ -156,8 +156,8 @@ namespace ION.Controls
                     }
                     else if (targetBase != null)
                     {
-                        Debug.WriteLine("ATTACKING BASE!");
-                        
+                        //Debug.WriteLine("ATTACKING BASE!");
+                        SoundManager.orderUnitSound();
                         CommandDispatcher.issueCommand(new AttackBaseCommand(CommandDispatcher.getSupposedGameTick()
                                                                            , CommandDispatcher.getSerial()
                                                                            , playerUnits[i].owner

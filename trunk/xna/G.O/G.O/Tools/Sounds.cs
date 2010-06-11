@@ -19,6 +19,8 @@ namespace ION
         public static SoundEffect actionSound1;
 
         public static SoundEffect[] selectUnitSounds;
+        public static SoundEffect[] attackOrderSounds;
+
         public static SoundEffect orderUnit;
 
 
