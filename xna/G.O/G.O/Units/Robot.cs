@@ -152,9 +152,36 @@ namespace ION
                 else
                 {
                     EmptyWayPoints();
-                    CommandDispatcher.issueCommand(new AddMoveCommand(CommandDispatcher.getSupposedGameTick(), CommandDispatcher.getSerial(), this.owner, this.id, attackTarget.getTileX(), attackTarget.getTileY()));
-                }
+                    if (attackTarget is BaseTile)
+                    {
+                        CommandDispatcher.issueCommand(new AddMoveCommand(CommandDispatcher.getSupposedGameTick(), CommandDispatcher.getSerial(), this.owner, this.id, attackTarget.getTileX(), attackTarget.getTileY()));
+                    }
+                    else if (attackTarget is Unit)
+                    {
+                        List<ResourceTile> neighbours = Grid.get().getNeighbourhood(attackTarget.getTileX(), attackTarget.getTileY());
+                        ResourceTile validTargetTile = null;
 
+                        foreach (ResourceTile rt in neighbours)
+                        {
+                            if (rt.accessable)
+                            {
+                                validTargetTile = rt;
+                            }
+                        }
+
+                        if (validTargetTile != null)
+                        {
+                            CommandDispatcher.issueCommand(new AddMoveCommand(CommandDispatcher.getSupposedGameTick(), CommandDispatcher.getSerial(), this.owner, this.id, validTargetTile.indexX, validTargetTile.indexY));
+                        }
+                        else
+                        {
+                            attackTarget = null;
+                        }
+
+
+
+                    }
+                }
             //    int targetX = attackTarget.getTileX();
             //    int targetY = attackTarget.getTileY();
                 
