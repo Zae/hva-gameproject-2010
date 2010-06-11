@@ -153,6 +153,7 @@
     <Compile Include="Tools\ThemeManager.cs" />
     <Compile Include="UI\ButtonHandlers\TowerHandler.cs" />
     <Compile Include="UI\Implementations\Button.cs" />
+    <Compile Include="UI\Implementations\CashFlowDisplay.cs" />
     <Compile Include="UI\Implementations\InfluenceDisplayer.cs" />
     <Compile Include="UI\Implementations\Label.cs" />
     <Compile Include="UI\Implementations\LevelInfo.cs" />

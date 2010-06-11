@@ -10,17 +10,12 @@ namespace ION.UI
     {
         public override void run()
         {
-
-
-
             List<Unit> playerUnits = Grid.get().getSelection();
 
             foreach (Unit u in playerUnits)
             {
-
                 if (u is Robot && Grid.resources >= Tower.cost)
                 {
-
                     Grid.resources -= Tower.cost;
 
                     CommandDispatcher.issueCommand(new NewTowerUnitCommand(CommandDispatcher.getSupposedGameTick()
@@ -28,12 +23,10 @@ namespace ION.UI
                                                       , Grid.playerNumber
                                                       , Grid.getNewId()
                                                       , u.id));
+
+                    GUIManager.statusBar.add(new CashFlowDisplay(70, 30, Tower.cost));
                 }
-
             }
-           
-           
-
         }
     }
 }
