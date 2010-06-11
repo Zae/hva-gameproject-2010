@@ -673,6 +673,7 @@ namespace ION.MultiPlayer
             Unit u = Grid.get().getUnit(owner, unitId);
             if (u != null)
             {
+                u.attackTarget = null;
                 u.stop();
             }           
         }

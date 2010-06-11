@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 using ION.Tools;
+using ION.MultiPlayer;
 
 namespace ION
 {
@@ -62,7 +63,7 @@ namespace ION
         {
             
             //check if the target position is accesable
-            if (!moving && !targetPosition.accessable)
+            if (!moving && !targetPosition.accessable && attackTarget== null)
             {
                 //todo
 
@@ -70,14 +71,14 @@ namespace ION
                 {
                     targetPosition = null;
                 }
-                //else
-                //{
-                //    EmptyWayPoints();
-                //}
+                else
+                {
+                    EmptyWayPoints();
+                }
 
 
             }
-            
+
             else if (!moving)
             {
                 
@@ -107,7 +108,42 @@ namespace ION
         public override void Update(float translationX, float translationY)
         {
             //Debug.WriteLine("ROBOT UPDATE!");
-        
+            //checks if the targetPosition is already set to te the targetUnit position
+            if (attackTarget != null)
+            {
+
+                Tile lastTile;
+
+                if(destination.Count != 0) {
+                    lastTile = destination.Last();
+                }
+                else if(moving) {
+                    lastTile = targetPosition;
+                }
+                else {
+                    lastTile=position;
+                }
+
+                int targetX = attackTarget.getTileX();
+                int targetY = attackTarget.getTileY();
+                
+                if (lastTile.indexX != targetY || lastTile.indexY != targetY)
+                {
+                    Console.WriteLine("moveing to targetUnit");
+                    //base.EmptyWayPoints();
+                    CommandDispatcher.issueCommand(new NewMoveCommand(CommandDispatcher.getSupposedGameTick(), CommandDispatcher.getSerial(), this.owner, this.id, attackTarget.getTileX(), attackTarget.getTileY()));
+                    
+                }
+
+
+                if (firingTarget == attackTarget)
+                {
+                    CommandDispatcher.issueCommand(new StopUnitCommand(CommandDispatcher.getSupposedGameTick(), CommandDispatcher.getSerial(), this.owner, this.id));
+                }
+
+
+
+            }
             
             if (moving)
             {
