@@ -417,8 +417,8 @@ namespace ION
 
 
             //Set the inital state
-            state = new StateTitle();
-            //state = new StateIntro();
+            //state = new StateTitle();
+            state = new StateIntro();
 
             //state = new StateTest();
 

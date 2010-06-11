@@ -107,6 +107,14 @@ namespace ION
             return false;
         }
 
+        public void calcSize()
+        {
+            drawingRectangle.X = (int)(ION.halfWidth + (visualX * baseHalfWidth) + StateTest.get().translationX - (baseHalfWidth));
+            drawingRectangle.Y = (int)((visualY * baseHalfHeight) + StateTest.get().translationY);
+            drawingRectangle.Width = (int)(baseHalfWidth * 2);
+            drawingRectangle.Height = (int)(baseHalfHeight * 2);
+        }
+
         //public Vector2 GetPos(float translationX, float translationY)
         //{
         //    Vector2 v = new Vector2();

@@ -22,8 +22,17 @@ namespace ION.UI
 
         public override void draw()
         {
-            ION.spriteBatch.DrawString(Fonts.small, "Collect "+Grid.toCollect+" ION, "+(int)Grid.get().totalCollected+" so far", position, Color.Gray);
-            //ION.spriteBatch.DrawString(Fonts.small, "Level: " + StateTest.get().levels[StateTest.get().level], position, Color.Gray);
+            //ION.spriteBatch.DrawString(Fonts.small, "Collect "+Grid.toCollect+" ION, "+(int)Grid.get().totalCollected+" so far", position, Color.Gray);
+            ////ION.spriteBatch.DrawString(Fonts.small, "Level: " + StateTest.get().levels[StateTest.get().level], position, Color.Gray);
+
+            if (StateTest.victoryCondition == StateTest.ANNIHILATION)
+            {
+                ION.spriteBatch.DrawString(Fonts.font, "Destroy all enemy bases!", position, Color.Gray);
+            }
+            else if (StateTest.victoryCondition == StateTest.RESOURCE_RACE)
+            {
+                ION.spriteBatch.DrawString(Fonts.font, "Reach "+(int)Grid.toCollect+" ION!", position, Color.Gray);
+            }
         }
 
         public override void offset(int screenX, int screenY)
