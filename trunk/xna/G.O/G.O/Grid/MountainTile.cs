@@ -111,5 +111,15 @@ namespace ION
             //showDetails = true;
         }
 
+        public void hit(int damage, int damageType)
+        {
+        }
+
+        public Vector2 getFocalPoint()
+        {
+            //return focalPoint;
+            return new Vector2(-1,-1);
+        }
+
     }
 }
