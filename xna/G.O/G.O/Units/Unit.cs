@@ -176,6 +176,8 @@ namespace ION
 
                 baseHalfWidth = baseHalfWidthConstant * scale;
                 baseHalfHeight = baseHalfHeightConstant * scale;
+
+                calcMovement();
             }
         }
 
@@ -186,6 +188,26 @@ namespace ION
                 scale -= 1;
                 baseHalfWidth = baseHalfWidthConstant * scale;
                 baseHalfHeight = baseHalfHeightConstant * scale;
+
+                calcMovement();
+            }
+        }
+
+        private static void calcMovement() 
+        {
+
+            foreach (Unit u in Grid.get().allUnits)
+            {
+                if (u is Robot && u.moving)
+                {
+                    Robot r = (Robot)u;
+                    
+                    r.movement.X = r.targetPosition.drawingRectangle.X - r.position.drawingRectangle.X;
+                    r.movement.Y = r.targetPosition.drawingRectangle.Y - r.position.drawingRectangle.Y;
+
+                    r.movement.X /= Robot.tileToTileTicks;
+                    r.movement.Y /= Robot.tileToTileTicks;
+                }
             }
         }
 

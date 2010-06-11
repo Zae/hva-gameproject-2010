@@ -62,11 +62,19 @@ namespace ION
 
         public bool showHelpFile = false;
 
+        private Texture2D gameEndNotice;
+
         public Rectangle screenRectangle = new Rectangle(0, 0, ION.width, ION.height);
 
         public List<Unit> selection = new List<Unit>();
 
         public bool online = false;
+
+        public bool slowMo = false;
+        public int slowMoCount = 0;
+        public int slowMoMax = 10;
+
+        public bool gameEnded = false;
 
         //This is for use with multiplayer
         public StateTest(int player, int seed, string level, bool online)
@@ -74,6 +82,9 @@ namespace ION
             instance = this;
 
             this.online = online;
+
+
+            importSettings();
 
             scrollValue = Mouse.GetState().ScrollWheelValue;
 
@@ -87,7 +98,6 @@ namespace ION
             actionOnScreenSound = Sounds.actionSound1.CreateInstance();
             actionOnScreenSound.IsLooped = true;
 
-            importSettings();
            
         }
 
@@ -115,10 +125,27 @@ namespace ION
                 ION.spriteBatch.Draw(Images.helpFile, new Rectangle(ION.halfWidth-(Images.helpFile.Width/2),ION.halfHeight-(Images.helpFile.Height/2), Images.helpFile.Width,Images.helpFile.Height), Color.White);
                 ION.spriteBatch.End();
             }
+
+            if (gameEnded)
+            {
+                //display the ending image
+                ION.spriteBatch.Begin();
+                ION.spriteBatch.Draw(gameEndNotice, new Rectangle(ION.halfWidth - (gameEndNotice.Width / 2), ION.halfHeight - (gameEndNotice.Height / 2), gameEndNotice.Width, gameEndNotice.Height), Color.White);
+                ION.spriteBatch.End();
+            }
         }
 
         public override void update(int ellapsed)
         {
+            if (gameEnded)
+            {
+
+                //listen for key to go back to menu
+
+                return;
+            }
+            
+            
             grid.update(ellapsed, grid.allUnits, translationX, translationY);
 
             checkVictoryCondition();
@@ -365,8 +392,22 @@ namespace ION
 
         public void endGame(bool won)
         {
+            gameEnded = true;
+
+            MediaPlayer.Stop();
+            actionOnScreenSound.Stop();
+
+            SoundManager.playEndGameSound(won);
+ 
             //show winning picture etc.
-            //back to menu
+            if (won)
+            {
+                gameEndNotice = Images.wonGameNotice;
+            }
+            else
+            {
+                gameEndNotice = Images.lostGameNotice;
+            }
         }
 
         public void checkVictoryCondition() 
@@ -378,6 +419,7 @@ namespace ION
                 {
                     //you lose
                     endGame(false);
+                    return;
                 }
 
                 int alive = 0;
@@ -401,7 +443,7 @@ namespace ION
             else if(victoryCondition == RESOURCE_RACE) 
             {
                 //check if you have reached the score limit
-                if (Grid.resources > Grid.get().toCollect)
+                if (Grid.resources > Grid.toCollect)
                 {
                     //inform the other players of your victory
                     CommandDispatcher.issueCommand(new WinGameCommand(CommandDispatcher.getSupposedGameTick()

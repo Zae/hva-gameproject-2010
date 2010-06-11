@@ -15,6 +15,9 @@ namespace ION
         public static int maxHealth = 250;
 
         public static int firingRange = 5;
+        public static float fireRate = 1.0f;
+
+
 
         public static int minDamage = 2;
         public static int maxDamage = 4;
@@ -242,13 +245,6 @@ namespace ION
 
         public override void Update(float translationX, float translationY)
         {
-
-
-            //Debug.WriteLine("UNIT UPDATE");
-
-            //bool returnValue = false;
-            //returnValue = UpdateTile(newInTile, allUnits, grid, translationX, translationY);
-
             showDetails = false;
 
             if (health < 0)
@@ -261,23 +257,7 @@ namespace ION
                 //return returnValue;
             }
 
-            if (targetPosition != null)
-            {
-                move();
-            }
-            else
-            {
-                // Code for waypoints
-                if (!moving && destination.Count() != 0)
-                {
-
-                    targetPosition = destination.Dequeue();
-
-                    //targetPos = temp.GetPos(translationX, translationY);            
-                }
-
-            }
-            if (scan > Grid.TPS)
+            if (scan > Grid.TPS * fireRate)
             {
 
                 List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
@@ -289,31 +269,15 @@ namespace ION
                     {
                         firing = true;
                         SoundManager.turretSound();
-                        //fire on this unit.
                         u.hit(Damage.getDamage(minDamage,maxDamage), damageType);
                         face(u.focalPoint);
                         break;
                     }
-                    //firing = false;
                 }
+
                 scan = 0;
             }
             scan++;
-
-            //if (moving)
-            //{
-            //    ticksIntoMovement++;
-            //}
-            // Code for waypoints
-
-            //will move this to the above if statement when the unit know its tile
-            //virtualPos.X = ((pos.X - ION.halfWidth) * (scale / 15.0f)) + ION.halfWidth + (translationX) + (baseHalfWidth * 1.1f);
-            //virtualPos.Y = ((pos.Y) * (scale / 15.0f)) + (translationY) + (baseHalfWidth * 1.6f);
-
-            //return returnValue;
- 
-
-
         }
 
         private bool drawFiringAnimation(float x, float y)

@@ -69,7 +69,7 @@ namespace ION.Tools
                     int RobotCost = int.Parse(XmlRdr.GetAttribute("RobotCost"));
                     float RobotMoveSpeed = float.Parse(XmlRdr.GetAttribute("RobotMoveSpeed"), System.Globalization.NumberStyles.Any);
                     int RobotFireRange = int.Parse(XmlRdr.GetAttribute("RobotFireRange"));
-                    int RobotFireRate = int.Parse(XmlRdr.GetAttribute("RobotFireRate"));
+                    float RobotFireRate = float.Parse(XmlRdr.GetAttribute("RobotFireRate"));
                     int RobotMinDamage = int.Parse(XmlRdr.GetAttribute("RobotMinDamage"));
                     int RobotMaxDamage = int.Parse(XmlRdr.GetAttribute("RobotMaxDamage"));
 
@@ -77,19 +77,21 @@ namespace ION.Tools
                     Robot.cost = RobotCost;
                     Robot.firingRange = RobotFireRange;
                     Robot.tileToTileTicks = (int)(Grid.TPS * RobotMoveSpeed);
+                    Robot.fireRate = RobotFireRate;
                     Robot.minDamage = RobotMinDamage;
                     Robot.maxDamage = RobotMaxDamage;
 
                     int TurretHealth = int.Parse(XmlRdr.GetAttribute("TurretHealth"));
                     int TurretCost = int.Parse(XmlRdr.GetAttribute("TurretCost"));
                     int TurretFireRange = int.Parse(XmlRdr.GetAttribute("TurretFireRange"));
-                    int TurretFireRate = int.Parse(XmlRdr.GetAttribute("TurretFireRate"));
+                    float TurretFireRate = float.Parse(XmlRdr.GetAttribute("TurretFireRate"));
                     int TurretMinDamage = int.Parse(XmlRdr.GetAttribute("TurretMinDamage"));
                     int TurretMaxDamage = int.Parse(XmlRdr.GetAttribute("TurretMaxDamage"));
 
                     Tower.maxHealth = TurretHealth;
                     Tower.cost = TurretCost;
                     Tower.firingRange = TurretFireRange;
+                    Tower.fireRate = TurretFireRate;
                     Tower.minDamage = TurretMinDamage;
                     Tower.maxDamage = TurretMaxDamage;
 
@@ -116,9 +118,9 @@ namespace ION.Tools
                     Grid.resources = StartingMoney;
                     Grid.resourceRate = ResourceRate;
                     Grid.setTPS(TicksPerSecond);
+                    Grid.toCollect = AmountToCollect;
+                    StateTest.victoryCondition = VictoryCondition;
 
-     
-                    
                 }
                 else
                 {

@@ -78,7 +78,7 @@ namespace ION
         private static int playerUnitId = -1;
 
         public float totalCollected = 0;
-        public float toCollect = 2500;
+        public static float toCollect = 2500;
 
         public static int[] playerInfluences;
 

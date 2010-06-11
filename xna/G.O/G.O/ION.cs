@@ -173,6 +173,11 @@ namespace ION
             Images.selectionBoxBack = Content.Load<Texture2D>("miscItems/boxback");
             Images.selectionBoxFront = Content.Load<Texture2D>("miscItems/boxfront");
 
+            Images.wonGameNotice = Content.Load<Texture2D>("miscItems/you-win");
+            Images.lostGameNotice = Content.Load<Texture2D>("miscItems/you-lose");
+
+
+
             //GUI Items
             Images.commandsBar = Content.Load<Texture2D>("guiItems/commandsBar");
             Images.moveButtonNormal = Content.Load<Texture2D>("guiItems/moveButtonNormal");
@@ -403,6 +408,13 @@ namespace ION
                 }
                 k++;
             }
+
+            Sounds.baseExplosionSound = Content.Load<SoundEffect>("sfxItems/baseExplosion");
+
+
+            Sounds.winSound = Content.Load<SoundEffect>("sfxItems/win");
+            Sounds.loseSound = Content.Load<SoundEffect>("sfxItems/lose");
+
 
             //Set the inital state
             state = new StateTitle();

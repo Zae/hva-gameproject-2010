@@ -25,9 +25,12 @@ namespace ION
         public static SoundEffect[] fireSounds;
         public static SoundEffect turretSound;
         public static SoundEffect[] explosionSounds;
-
+        public static SoundEffect baseExplosionSound;
 
         public static SoundEffect[,] alphabet;
         public static SoundEffect[,] numbers;
+
+        public static SoundEffect winSound;
+        public static SoundEffect loseSound;
     }
 }

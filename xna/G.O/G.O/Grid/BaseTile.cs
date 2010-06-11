@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
+using ION.Tools;
 
 namespace ION
 {
@@ -17,16 +18,31 @@ namespace ION
 
         private Rectangle drawingRectangleBig = new Rectangle();
 
+        public Vector2 focalPoint = new Vector2();
+
+
         //TODO this is not how it should be, but with this we can reuse the selection box for units.
         private Rectangle selectionBoxRectangle = new Rectangle();
 
         public bool selected = false;
         public bool showDetails = false;
 
+        private bool underFire = false;
+
         public int health;
         public static int maxHealth = 500;
         public bool dying = false;
         public bool dead = false;
+
+        //under-fire animation helper variables
+        private int UnderFireFrame = 0;
+        private int UnderFireCounter = 0;
+        public int UnderFireOffsetX = 0;
+        public int UnderFireOffsetY = 0;
+
+        public int deathFrame = 0;
+        public int deathCounter = 0;
+
 
         public Rectangle healtRectangle = new Rectangle();
 
@@ -49,6 +65,17 @@ namespace ION
 
         public override void draw(float translationX, float translationY)
         {
+            if (!dying && health < 0)
+            {
+
+                //start dying
+                Die();
+
+                //last time this method returns
+                //return returnValue;
+            }
+            
+            
             if (selected)
             {
                 selectionBoxRectangle.X = (int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth * 3));
@@ -85,11 +112,20 @@ namespace ION
             drawingRectangle.Height = (int)(baseHalfHeight * 2);
 
 
+            focalPoint.X = drawingRectangle.Center.X;
+            focalPoint.Y = drawingRectangle.Center.Y;
   
             //DEBUG shows you the selection boxes
             //ION.spriteBatch.Draw(Images.white1px, selectionRectangle0, Color.Green);
             //ION.spriteBatch.Draw(Images.white1px, selectionRectangle1, Color.Purple);
-            
+
+
+            if (dying)
+            {
+                drawDeathAnimation();
+                return;
+            }
+
             
             ION.spriteBatch.Draw(baseImage, drawingRectangleBig, Color.White);
 
@@ -142,11 +178,57 @@ namespace ION
                 //Reset the flag
                 showDetails = false;
             }
+
+            if (underFire)
+            {
+                drawUnderFireAnimation();
+            }
         }
 
-        public override void update()
+        private void drawDeathAnimation()
         {
-            showDetails = false;
+            //animation test code
+            deathCounter++;
+
+            if (deathCounter > 0)
+            {
+                deathFrame = 0;
+            }
+            if (deathCounter > 25)
+            {
+                deathFrame = 1;
+            }
+            if (deathCounter > 45)
+            {
+                deathFrame = 2;
+            }
+            if (deathCounter > 75)
+            {
+                Grid.get().removeDepthEnabledItem(this);
+                dead = true;
+                return;
+            }
+
+            int a = 255 - (int)(255 * ((float)deathCounter / (float)75));
+
+            Color c = new Color();
+            c.R = (byte)a;
+            c.G = (byte)a;
+            c.B = (byte)a;
+            c.A = (byte)a;
+
+            ION.spriteBatch.Draw(baseImage, drawingRectangleBig, c);
+
+            drawingRectangle.Y -= drawingRectangle.Height;
+            drawingRectangle.Height *= 2;
+
+            drawingRectangleBig.X -= drawingRectangleBig.Width/2;
+            drawingRectangleBig.Y -= drawingRectangleBig.Height;
+            drawingRectangleBig.Width *= 2;
+            drawingRectangleBig.Height *= 2;
+
+            ION.spriteBatch.Draw(Images.explosion_overlay[deathFrame], drawingRectangleBig, Color.White);
+
         }
 
         public void drawResourceTile(float translationX, float translationY)
@@ -198,6 +280,63 @@ namespace ION
         public void displayDetails()
         {
             showDetails = true;
+        }
+
+        public void Die()
+        {
+            //open the unit's tile for traffic
+            //Grid.map[inTileX, inTileY].accessable = true;
+
+            //Remove it from gameplay
+            //Grid.get().removeUnit(this);
+
+            SoundManager.baseExplosion();
+
+
+            //Start the dying sequence
+            dying = true;
+            
+        }
+
+        public void hit(int damageTaken, int damageType)
+        {
+
+            health -= damageTaken;
+
+            //this will trigger or keep alive the animation
+            underFire = true;
+        }
+
+        private void drawUnderFireAnimation()
+        {
+            if (underFire)
+            {
+                if (UnderFireCounter == 0)
+                {
+                    UnderFireOffsetX = (int)(Tool.unsafeRandom.NextDouble() * selectionRectangle1.Width);
+                    UnderFireOffsetY = (int)(Tool.unsafeRandom.NextDouble() * selectionRectangle1.Height);
+                }
+
+                //animation test code
+                UnderFireCounter++;
+
+                if (UnderFireCounter > 0)
+                {
+                    UnderFireFrame = 0;
+                }
+                if (UnderFireCounter > 5)
+                {
+                    UnderFireFrame = 1;
+                }
+                if (UnderFireCounter > 10)
+                {
+                    UnderFireCounter = 0;
+                    underFire = false;
+                    return;
+                }
+
+                ION.spriteBatch.Draw(Images.bulletImpact[UnderFireFrame], new Rectangle(selectionRectangle1.X + UnderFireOffsetX - (int)(baseHalfWidth * 0.5), selectionRectangle1.Y + UnderFireOffsetY - (int)(baseHalfHeight * 1.0), (int)(baseHalfWidth * 0.75), (int)(baseHalfHeight * 1.5)), Color.White);
+            }
         }
     }
 }
