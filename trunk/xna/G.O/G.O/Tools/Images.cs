@@ -35,6 +35,9 @@ namespace ION
 
         public static Texture2D tileHitmapImage;
 
+        public static Texture2D wonGameNotice;
+        public static Texture2D lostGameNotice;
+
         public static Texture2D unitWayPoint;
 
         public static Texture2D blueBaseImage;

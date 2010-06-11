@@ -36,10 +36,10 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 6 && maxUnits > 0)
+                if (aiUnits.Count < 3 && maxUnits > 0)
                 {
                     serial++;
-                    //maxUnits--;
+                    maxUnits--;
                     CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), serial,ai, newId++));
                 }
 

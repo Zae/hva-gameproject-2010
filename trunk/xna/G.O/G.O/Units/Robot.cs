@@ -17,6 +17,8 @@ namespace ION
 
         public static int firingRange = 5;
 
+        public static float fireRate = 1.0f;
+
         public Rectangle healtRectangle = new Rectangle();
 
         public int ticksIntoMovement = 0;
@@ -88,21 +90,15 @@ namespace ION
 
                 targetPosition.accessable = false;
 
-                movement.X = targetPosition.drawingRectangle.X - position.drawingRectangle.X;
-                movement.Y = targetPosition.drawingRectangle.Y - position.drawingRectangle.Y;
-
                 inTileX = targetPosition.indexX;
                 inTileY = targetPosition.indexY;
 
-                //movement.X = movement.X / 31;
-                //movement.Y = movement.Y / 31;
 
-                //movement.Normalize();
+                movement.X = targetPosition.drawingRectangle.X - position.drawingRectangle.X;
+                movement.Y = targetPosition.drawingRectangle.Y - position.drawingRectangle.Y;
+  
                 movement.X /= tileToTileTicks;
                 movement.Y /= tileToTileTicks;
-                //Debug.WriteLine("START MOVE with speed: " + movement);
-
-
             }
     
                             
@@ -158,9 +154,9 @@ namespace ION
                 }
 
             }
-            if (scan > Grid.TPS / 2)
+            if (scan > Grid.TPS * fireRate)
             {
-
+ 
                 List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
                 if (enemies.Count == 0) firing = false;
                 
@@ -178,6 +174,31 @@ namespace ION
                     //firing = false;
                 }
                 scan = 0;
+
+                //HACK
+                //attack base if no enemy units around
+                int otherPlayer = 1;
+              
+                if (owner == 1)
+                {
+                    otherPlayer = 2;
+                }
+                BaseTile enemyBase = Grid.getPlayerBase(otherPlayer);
+
+                if (enemyBase != null && !enemyBase.dying)
+                {
+                    if ((enemyBase.getTileX() - inTileX > -firingRange && enemyBase.getTileX() - inTileX < firingRange) && (enemyBase.getTileY() - inTileY > -firingRange && enemyBase.getTileY() - inTileY < firingRange))
+                    {
+                        firing = true;
+                        SoundManager.fireSound();
+                        //fire on this unit.
+                        enemyBase.hit(Damage.getDamage(minDamage, maxDamage), damageType);
+                        face(enemyBase.focalPoint);
+                      
+                    }
+                }
+
+
             }
             scan++;
 
@@ -336,11 +357,11 @@ namespace ION
                 {
                     deathFrame = 0;
                 }
-                if (deathCounter > 10)
+                if (deathCounter > 8)
                 {
                     deathFrame = 1;
                 }
-                if (deathCounter > 15)
+                if (deathCounter > 16)
                 {
                     deathFrame = 2;
                 }
@@ -392,7 +413,7 @@ namespace ION
                 {
                     FiringFrame = 2;
                 }
-                if (FiringCounter > (Grid.TPS))
+                if (FiringCounter > 9)
                 {
                     FiringCounter = 0;
                     firing = false;

@@ -22,7 +22,7 @@ namespace ION.UI
 
         public override void draw()
         {
-            ION.spriteBatch.DrawString(Fonts.small, "Collect "+Grid.get().toCollect+" ION, "+(int)Grid.get().totalCollected+" so far", position, Color.Gray);
+            ION.spriteBatch.DrawString(Fonts.small, "Collect "+Grid.toCollect+" ION, "+(int)Grid.get().totalCollected+" so far", position, Color.Gray);
             //ION.spriteBatch.DrawString(Fonts.small, "Level: " + StateTest.get().levels[StateTest.get().level], position, Color.Gray);
         }
 

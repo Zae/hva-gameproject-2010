@@ -32,6 +32,10 @@ namespace ION.Tools
         private static int selectUnitPointer = 0;
 
         private static SoundEffectInstance orderUnit;
+        private static SoundEffectInstance baseExplosionSound;
+        private static SoundEffectInstance winGame;
+        private static SoundEffectInstance loseGame;
+
 
         private static int voiceCount = -1;
         private static int voiceMaxCount = 3;
@@ -83,6 +87,13 @@ namespace ION.Tools
 
             //selectUnit = Sounds.selectUnit.CreateInstance();
             //selectUnit.IsLooped = false;
+
+            baseExplosionSound = Sounds.baseExplosionSound.CreateInstance();
+            baseExplosionSound.IsLooped = false;
+            winGame = Sounds.winSound.CreateInstance();
+            winGame.IsLooped = false;
+            loseGame = Sounds.loseSound.CreateInstance();
+            loseGame.IsLooped = false;
             
             orderUnit = Sounds.orderUnit.CreateInstance();
             orderUnit.IsLooped = false;
@@ -211,6 +222,32 @@ namespace ION.Tools
 
 
             selectUnit[selectUnitPointer].Play();
+        }
+
+        public static void baseExplosion()
+        {
+            //SoundEffectInstance sei = Sounds.baseExplosionSound.CreateInstance();
+            //sei.IsLooped = false;
+            //sei.Play();
+            baseExplosionSound.Play();
+        }
+
+        public static void playEndGameSound(bool won)
+        {
+            if (won)
+            {
+                //SoundEffectInstance sei = Sounds.winSound.CreateInstance();
+                //sei.IsLooped = false;
+                //sei.Play();
+                winGame.Play();
+            }
+            else
+            {
+                //SoundEffectInstance sei = Sounds.loseSound.CreateInstance();
+                //sei.IsLooped = false;
+                //sei.Play();
+                loseGame.Play();
+            }
         }
 
     }

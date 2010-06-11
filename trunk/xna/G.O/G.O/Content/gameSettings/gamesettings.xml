@@ -1,16 +1,16 @@
 ﻿<Settings
   RobotHealth="64"
   RobotCost="175"
-  RobotMoveSpeed="1,2"
+  RobotMoveSpeed="0,8"
   RobotFireRange="5"
-  RobotFireRate="-1"
+  RobotFireRate="1,0"
   RobotMinDamage="4"
   RobotMaxDamage="7"
   
   TurretHealth="128"
   TurretCost="300"
   TurretFireRange="7"
-  TurretFireRate="-1"
+  TurretFireRate="1,5"
   TurretMinDamage="6"
   TurretMaxDamage="12"
   
@@ -22,7 +22,7 @@
   
   TicksPerSecond="30"
   
-  VictoryCondition="0"
+  VictoryCondition="1"
   
   AmountToCollect="3000,0"
 >
