@@ -71,7 +71,7 @@ namespace ION
             EmptyWayPoints();
 
             tmp++;
-            if (tmp > 15)
+            if (tmp > 45)
             {
                 facing++;
                 if ((int)facing > 7)
@@ -257,16 +257,22 @@ namespace ION
                 //return returnValue;
             }
 
+            bool enemyClose = false;
+
             if (scan > Grid.TPS * fireRate)
             {
 
                 List<Unit> enemies = Grid.get().getPlayerEnemies(owner);
                 if (enemies.Count == 0) firing = false;
                 
+                
+
                 foreach (Unit u in enemies)
                 {
                     if ((u.inTileX - inTileX > -firingRange && u.inTileX - inTileX < firingRange) && (u.inTileY - inTileY > -firingRange && u.inTileY - inTileY < firingRange))
                     {
+                        enemyClose = true;
+
                         firing = true;
                         SoundManager.turretSound();
                         u.hit(Damage.getDamage(minDamage,maxDamage), damageType);
@@ -291,6 +297,8 @@ namespace ION
                 {
                     if ((enemyBase.getTileX() - inTileX > -firingRange && enemyBase.getTileX() - inTileX < firingRange) && (enemyBase.getTileY() - inTileY > -firingRange && enemyBase.getTileY() - inTileY < firingRange))
                     {
+                        enemyClose = true;
+
                         firing = true;
                         SoundManager.fireSound();
                         //fire on this unit.
@@ -303,6 +311,15 @@ namespace ION
 
             }
             scan++;
+
+            if (!enemyClose)
+            {
+                move();
+            }
+            else
+            {
+                tmp = 0;
+            }
         }
 
         private bool drawFiringAnimation(float x, float y)
