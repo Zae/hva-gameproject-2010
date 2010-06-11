@@ -14,7 +14,7 @@
   TurretMinDamage="6"
   TurretMaxDamage="12"
   
-  BaseHealth="500"
+  BaseHealth="300"
 
   StartingMoney="500,0"
   ResourceRate="0,002"
@@ -22,7 +22,7 @@
   
   TicksPerSecond="30"
   
-  VictoryCondition="1"
+  VictoryCondition="0"
   
   AmountToCollect="1500,0"
 >

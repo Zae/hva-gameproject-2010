@@ -298,6 +298,12 @@ namespace ION
             
         }
 
+        public Vector2 getFocalPoint()
+        {
+            return focalPoint;
+        }
+
+
         public void hit(int damageTaken, int damageType)
         {
 

@@ -18,6 +18,8 @@ namespace ION.UI
         public const int UNITS_SELECTED = 2;
         public static int state = 0;
 
+        public static GUIComposite statusBar;
+
         public Rectangle mousePointer = new Rectangle();
         public static int mousePointerState = 0;
         public int mousePointerOffsetX = (int)Images.mousePointers[0].Width/2;
@@ -35,7 +37,7 @@ namespace ION.UI
             commandsBar = new GUIComposite(ION.width - Images.commandsBar.Width - 20,ION.height - Images.commandsBar.Height - 20, Images.commandsBar);
             addComponent(commandsBar);
 
-            GUIComposite statusBar = new GUIComposite(ION.width - Images.statusBar.Width - 20,20, Images.statusBar);
+            statusBar = new GUIComposite(ION.width - Images.statusBar.Width - 20, 20, Images.statusBar);
             statusBar.add(new ResourceCounter(67, 32));
             statusBar.add(new InfluenceDisplayer(168, 32, Images.statusBarTemp));
             addComponent(statusBar);

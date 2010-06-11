@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ION.UI
 {
-    class GUIComposite : GUIComponent
+    public class GUIComposite : GUIComponent
     {
 
         private List<GUIComponent> children;

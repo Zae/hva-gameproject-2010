@@ -74,6 +74,7 @@ namespace ION
             this.owner = owner;
             this.id = id;
             destination = new Queue<Tile>();
+
         }
 
         public abstract void Update(float translationX, float translationY);
@@ -327,6 +328,11 @@ namespace ION
         public void displayDetails()
         {
             showDetails = true;
+        }
+
+        public Vector2 getFocalPoint()
+        {
+            return focalPoint;
         }
     }
 }

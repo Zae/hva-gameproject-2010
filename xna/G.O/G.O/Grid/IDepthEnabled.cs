@@ -16,6 +16,8 @@ namespace ION
         bool hitTest(int x,int y);
         bool hitTest(Rectangle r);
 
+        Vector2 getFocalPoint();
+
         int getOwner();
 
         /// <summary>
@@ -26,6 +28,8 @@ namespace ION
         void drawDepthEnabled(float translationX, float translationY);
 
         void displayDetails();
+
+        void hit(int damage, int damageType);
 
     }
 }
