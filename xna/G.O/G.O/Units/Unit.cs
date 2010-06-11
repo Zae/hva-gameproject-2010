@@ -17,6 +17,8 @@ namespace ION
 
         //The player that owns this unit
         public int owner;
+
+        public bool attackingTarget = false;
         
         //Rectangle used to draw the unit's graphic in
         public Rectangle drawingRectangle = new Rectangle();
@@ -167,6 +169,8 @@ namespace ION
 
         public void setAttackTarget(IDepthEnabled attackTarget)
         {
+            
+            
             this.attackTarget = attackTarget;
         }
 
@@ -334,5 +338,18 @@ namespace ION
         {
             return focalPoint;
         }
+
+        public bool isAlive()
+        {
+            if (health < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }

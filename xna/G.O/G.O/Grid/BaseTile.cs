@@ -344,5 +344,19 @@ namespace ION
                 ION.spriteBatch.Draw(Images.bulletImpact[UnderFireFrame], new Rectangle(selectionRectangle1.X + UnderFireOffsetX - (int)(baseHalfWidth * 0.5), selectionRectangle1.Y + UnderFireOffsetY - (int)(baseHalfHeight * 1.0), (int)(baseHalfWidth * 0.75), (int)(baseHalfHeight * 1.5)), Color.White);
             }
         }
+
+
+        public bool isAlive()
+        {
+            if (health < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }

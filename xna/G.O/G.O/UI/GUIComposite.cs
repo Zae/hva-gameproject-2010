@@ -11,6 +11,7 @@ namespace ION.UI
     {
 
         private List<GUIComponent> children;
+        private List<GUIComponent> removals;
 
         public GUIComposite(int screenX, int screenY, Texture2D imageNormal): base(screenX, screenY, imageNormal)
         {
@@ -25,7 +26,7 @@ namespace ION.UI
 
         public void remove(GUIComponent toRemove)
         {
-            children.Remove(toRemove);
+            removals.Add(toRemove);
         }
 
         public override void draw() 
@@ -34,6 +35,11 @@ namespace ION.UI
             foreach(GUIComponent guic in children) 
             {
                 guic.draw();
+            }
+
+            foreach (GUIComponent guic in removals)
+            {
+                children.Remove(guic);
             }
         }
 

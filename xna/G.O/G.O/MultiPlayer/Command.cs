@@ -306,6 +306,7 @@ namespace ION.MultiPlayer
             else
             {
                 u.EmptyWayPoints();
+                u.attackTarget = null;
 
                 int fromX; int fromY;
                 //find out the starting point
@@ -331,7 +332,6 @@ namespace ION.MultiPlayer
                 {
                     u.AddDestination(rt);
                 }
-                //u.SetTarget(Grid.map[xTarget, yTarget].GetPos(StateTest.get().translationX, StateTest.get().translationY));
 
                 if (u.owner == Grid.playerNumber)
                 {
@@ -344,7 +344,6 @@ namespace ION.MultiPlayer
                 }
               
             }
-            //u.AddDestination(Grid.map[xTarget,yTarget]);
         }
 
         #region Serializable Members
