@@ -16,6 +16,7 @@ namespace ION.UI
         public GUIComposite(int screenX, int screenY, Texture2D imageNormal): base(screenX, screenY, imageNormal)
         {
             children = new List<GUIComponent>();
+            removals = new List<GUIComponent>();
         }
 
         public void add(GUIComponent newChild)
@@ -41,6 +42,7 @@ namespace ION.UI
             {
                 children.Remove(guic);
             }
+            removals.Clear();
         }
 
         public void clear()
