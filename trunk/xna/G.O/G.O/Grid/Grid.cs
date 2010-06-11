@@ -69,7 +69,7 @@ namespace ION
 
         private RemoteSharedObject GridRSO;
 
-        // a list to hold the blue army
+        // a list to hold all units
         public List<Unit> allUnits = new List<Unit>();
 
 
@@ -541,6 +541,36 @@ namespace ION
                 //addDepthEnabledItem(newTile);
                 return newTile;
             }
+            else if (c == 'A')//places a tower for player 1
+            {
+                ResourceTile newTile = new ResourceTile(x, y);
+                resourceTiles.Add(newTile);
+                //
+                //CommandDispatcher.issueCommand(new NewTowerUnitCommand(CommandDispatcher.getSupposedGameTick()
+                //                                      , CommandDispatcher.getSerial()
+                //                                      , 1
+                //                                      , Grid.getNewId()
+                //                                      , getNewId()));
+
+                allUnits.Add(new Tower(newTile, 1, getNewId()));
+
+                return newTile;
+            }
+            else if (c == 'B')//places a tower for player 2 / AI
+            {
+                ResourceTile newTile = new ResourceTile(x, y);
+                resourceTiles.Add(newTile);
+                //
+                //CommandDispatcher.issueCommand(new NewTowerUnitCommand(CommandDispatcher.getSupposedGameTick()
+                //                                      , CommandDispatcher.getSerial()
+                //                                      , 2
+                //                                      , Grid.getNewId()
+                //                                      , getNewId()));
+                Tower t = new Tower(newTile, 2, getNewId());
+                allUnits.Add(t);
+
+                return newTile;
+            }
 
             return null;
         }
@@ -857,7 +887,7 @@ namespace ION
                     bool newRowStarted = false;
                     for (int i = 0; i < length; i++)
                     {
-                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M' || rawLevel[i] == 'C' || rawLevel[i] == 'V' || rawLevel[i] == '1' || rawLevel[i] == '2' || rawLevel[i] == '3' || rawLevel[i] == '4' || rawLevel[i] == '5' || rawLevel[i] == '6' || rawLevel[i] == '7' || rawLevel[i] == '8' || rawLevel[i] == '9' || rawLevel[i] == '/' || rawLevel[i] == '*' || rawLevel[i] == '+' || rawLevel[i] == '-')
+                        if (rawLevel[i] == 'N' || rawLevel[i] == 'M' || rawLevel[i] == 'C' || rawLevel[i] == 'V' || rawLevel[i] == '1' || rawLevel[i] == '2' || rawLevel[i] == '3' || rawLevel[i] == '4' || rawLevel[i] == '5' || rawLevel[i] == '6' || rawLevel[i] == '7' || rawLevel[i] == '8' || rawLevel[i] == '9' || rawLevel[i] == '/' || rawLevel[i] == '*' || rawLevel[i] == '+' || rawLevel[i] == '-' || rawLevel[i] == 'A' || rawLevel[i] == 'B')
                         {
                             if (!newRowStarted)
                             {
