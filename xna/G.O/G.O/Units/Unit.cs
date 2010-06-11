@@ -168,9 +168,7 @@ namespace ION
         }
 
         public void setAttackTarget(IDepthEnabled attackTarget)
-        {
-            
-            
+        { 
             this.attackTarget = attackTarget;
         }
 
