@@ -121,5 +121,10 @@ namespace ION
             return new Vector2(-1,-1);
         }
 
+        public bool isAlive()
+        {
+            return true;
+        }
+
     }
 }

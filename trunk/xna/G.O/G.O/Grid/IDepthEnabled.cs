@@ -19,6 +19,7 @@ namespace ION
         Vector2 getFocalPoint();
 
         int getOwner();
+        bool isAlive();
 
         /// <summary>
         /// blabla

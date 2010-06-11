@@ -117,8 +117,7 @@ namespace ION
   
                 movement.X /= tileToTileTicks;
                 movement.Y /= tileToTileTicks;
-            }
-    
+            }   
                             
         }
 
@@ -126,20 +125,35 @@ namespace ION
         {
             //Debug.WriteLine("ROBOT UPDATE!");
             //checks if the targetPosition is already set to te the targetUnit position
-            //if (attackTarget != null)
-            //{
+            
+            
+            
+            if (attackTarget != null && !attackingTarget)
+            {
 
-            //    Tile lastTile;
+                Tile lastTile;
 
-            //    if(destination.Count != 0) {
-            //        lastTile = destination.Last();
-            //    }
-            //    else if(moving) {
-            //        lastTile = targetPosition;
-            //    }
-            //    else {
-            //        lastTile=position;
-            //    }
+                //get the unit's position or the last tile in its path
+                if(destination.Count != 0) {
+                    lastTile = destination.Last();
+                }
+                else if(moving) {
+                    lastTile = targetPosition;
+                }
+                else {
+                    lastTile=position;
+                }
+
+                //check that position to see if it is in range of its target
+                if ((attackTarget.getTileX() - lastTile.indexX > -firingRange && attackTarget.getTileX() - lastTile.indexX < firingRange) && (attackTarget.getTileY() - lastTile.indexY > -firingRange && attackTarget.getTileY() - lastTile.indexY < firingRange))
+                {
+                    //OK!
+                }
+                else
+                {
+                    EmptyWayPoints();
+                    CommandDispatcher.issueCommand(new AddMoveCommand(CommandDispatcher.getSupposedGameTick(), CommandDispatcher.getSerial(), this.owner, this.id, attackTarget.getTileX(), attackTarget.getTileY()));
+                }
 
             //    int targetX = attackTarget.getTileX();
             //    int targetY = attackTarget.getTileY();
@@ -162,7 +176,13 @@ namespace ION
 
 
 
-            //}
+            }
+
+            if (attackTarget != null && !attackTarget.isAlive())
+            {
+                attackTarget = null;
+                attackingTarget = false;
+            }
             
             if (moving)
             {
@@ -218,14 +238,21 @@ namespace ION
 
                 if (attackTarget != null)
                 {
+                    //if in range
                     if ((attackTarget.getTileX() - inTileX > -firingRange && attackTarget.getTileX() - inTileX < firingRange) && (attackTarget.getTileY() - inTileY > -firingRange && attackTarget.getTileY() - inTileY < firingRange))
                     {
+                        attackingTarget = true;
                         firing = true;
                         SoundManager.fireSound();
                         //fire on this unit.
                         attackTarget.hit(Damage.getDamage(minDamage, maxDamage), damageType);
                         face(attackTarget.getFocalPoint());
-                        //break;
+
+                    }
+                    //if not inrange
+                    else
+                    {
+                        attackingTarget = false;
                     }
                 }
                 else
@@ -249,27 +276,27 @@ namespace ION
                     }
                     scan = 0;
 
-                    //HACK
-                    //attack base if no enemy units around
-                    int otherPlayer = 1;
+                    ////HACK
+                    ////attack base if no enemy units around
+                    //int otherPlayer = 1;
 
-                    if (owner == 1)
-                    {
-                        otherPlayer = 2;
-                    }
-                    BaseTile enemyBase = Grid.getPlayerBase(otherPlayer);
+                    //if (owner == 1)
+                    //{
+                    //    otherPlayer = 2;
+                    //}
+                    //BaseTile enemyBase = Grid.getPlayerBase(otherPlayer);
 
-                    if (enemyBase != null && !enemyBase.dying)
-                    {
-                        if ((enemyBase.getTileX() - inTileX > -firingRange && enemyBase.getTileX() - inTileX < firingRange) && (enemyBase.getTileY() - inTileY > -firingRange && enemyBase.getTileY() - inTileY < firingRange))
-                        {
-                            firing = true;
-                            SoundManager.fireSound();
-                            //fire on this unit.
-                            enemyBase.hit(Damage.getDamage(minDamage, maxDamage), damageType);
-                            face(enemyBase.focalPoint);
-                        }
-                    }
+                    //if (enemyBase != null && !enemyBase.dying)
+                    //{
+                    //    if ((enemyBase.getTileX() - inTileX > -firingRange && enemyBase.getTileX() - inTileX < firingRange) && (enemyBase.getTileY() - inTileY > -firingRange && enemyBase.getTileY() - inTileY < firingRange))
+                    //    {
+                    //        firing = true;
+                    //        SoundManager.fireSound();
+                    //        //fire on this unit.
+                    //        enemyBase.hit(Damage.getDamage(minDamage, maxDamage), damageType);
+                    //        face(enemyBase.focalPoint);
+                    //    }
+                    //}
                 }
 
             }

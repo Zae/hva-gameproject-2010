@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using ION.UI;
 using ION.MultiPlayer;
 using ION.Tools;
+using System.Diagnostics;
 
 namespace ION.Controls
 {
@@ -144,6 +145,8 @@ namespace ION.Controls
        
                     else if (targetUnit != null)
                     {
+                        Debug.WriteLine("ATTACKING UNTI!");
+                        
                         CommandDispatcher.issueCommand(new AttackUnitCommand(CommandDispatcher.getSupposedGameTick()
                                                                            , CommandDispatcher.getSerial()
                                                                            , playerUnits[i].owner
@@ -153,6 +156,8 @@ namespace ION.Controls
                     }
                     else if (targetBase != null)
                     {
+                        Debug.WriteLine("ATTACKING BASE!");
+                        
                         CommandDispatcher.issueCommand(new AttackBaseCommand(CommandDispatcher.getSupposedGameTick()
                                                                            , CommandDispatcher.getSerial()
                                                                            , playerUnits[i].owner
