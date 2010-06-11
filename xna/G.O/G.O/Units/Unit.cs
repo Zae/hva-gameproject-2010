@@ -201,7 +201,10 @@ namespace ION
                 if (u is Robot && u.moving)
                 {
                     Robot r = (Robot)u;
-                    
+
+                    r.position.calcSize();
+                    r.targetPosition.calcSize();
+
                     r.movement.X = r.targetPosition.drawingRectangle.X - r.position.drawingRectangle.X;
                     r.movement.Y = r.targetPosition.drawingRectangle.Y - r.position.drawingRectangle.Y;
 

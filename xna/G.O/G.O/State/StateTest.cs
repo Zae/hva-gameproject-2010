@@ -137,10 +137,21 @@ namespace ION
 
         public override void update(int ellapsed)
         {
+            //get keyboard input
+            KeyboardState keyState = Keyboard.GetState();
+
+            //get mouse input
+            MouseState mouseState = Mouse.GetState();
+
+            
             if (gameEnded)
             {
 
                 //listen for key to go back to menu
+                if (keyState.IsKeyDown(Keys.Space))
+                {
+                    ION.get().setState(new StateTitle());
+                }
 
                 return;
             }
@@ -150,11 +161,6 @@ namespace ION
 
             checkVictoryCondition();
 
-            //get keyboard input
-            KeyboardState keyState = Keyboard.GetState();
-
-            //get mouse input
-            MouseState mouseState = Mouse.GetState();
 
            
 

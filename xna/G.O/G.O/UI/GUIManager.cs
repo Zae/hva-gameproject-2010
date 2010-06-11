@@ -45,9 +45,9 @@ namespace ION.UI
 
             GUIComposite generalInfo = new GUIComposite(20, 20, Images.selectionBar);
             generalInfo.add(new GUIComponent(10,5, Images.textVictory));
-            generalInfo.add(new LevelInfo(15, 30));
+            generalInfo.add(new LevelInfo(15, 25));
             //generalInfo.add(new StrategyInfo(15, 25));
-            generalInfo.add(new Label(15, 40, "Hold H for Help"));
+            generalInfo.add(new Label(15, 45, "Hold H for Help"));
             addComponent(generalInfo);
 
             //ION.get().IsMouseVisible = false;

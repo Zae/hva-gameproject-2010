@@ -36,7 +36,7 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 3 && maxUnits > 0)
+                if (aiUnits.Count < 2 && maxUnits > 0)
                 {
                     serial++;
                     maxUnits--;

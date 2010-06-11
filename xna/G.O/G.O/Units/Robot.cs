@@ -138,14 +138,11 @@ namespace ION
                 //return returnValue;
             }
 
-            if (targetPosition != null)
-            {
-                move();
-            }
-            else
-            {
+     
+            //else
+            //{
                 // Code for waypoints
-                if (!moving && destination.Count() != 0)
+                if (targetPosition == null && destination.Count > 0)
                 {
 
                     targetPosition = destination.Dequeue();
@@ -153,7 +150,14 @@ namespace ION
                     //targetPos = temp.GetPos(translationX, translationY);            
                 }
 
-            }
+            //}
+
+            if (targetPosition != null)
+            {
+                move();
+            } 
+
+
             if (scan > Grid.TPS * fireRate)
             {
  

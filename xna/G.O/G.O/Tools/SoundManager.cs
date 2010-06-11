@@ -155,7 +155,7 @@ namespace ION.Tools
 
         public static void turretSound()
         {
-            levelOfAction += 10;
+            levelOfAction += 30;
 
             for (int i = 0; i < turretsoundsCount; i++)
             {
@@ -169,7 +169,7 @@ namespace ION.Tools
 
         public static void fireSound()
         {
-            levelOfAction+=10;
+            levelOfAction+=20;
 
             Double d = Tool.unsafeRandom.NextDouble();
 

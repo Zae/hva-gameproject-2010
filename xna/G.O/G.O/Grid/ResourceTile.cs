@@ -78,6 +78,8 @@ namespace ION
             //}
         }
 
+
+
         public override void update()
         {
             owner = nextOwner;
