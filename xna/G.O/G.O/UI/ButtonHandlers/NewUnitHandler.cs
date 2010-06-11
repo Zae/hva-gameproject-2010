@@ -30,9 +30,9 @@ namespace ION.UI
                                                                     ,CommandDispatcher.getSerial()
                                                                     ,Grid.playerNumber
                                                                     ,Grid.getNewId()));
-            }
 
-            
+                GUIManager.statusBar.add(new CashFlowDisplay(70, 30, Robot.cost));
+            }
         }
     }
 }
