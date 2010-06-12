@@ -545,14 +545,11 @@ namespace ION
             {
                 ResourceTile newTile = new ResourceTile(x, y);
                 resourceTiles.Add(newTile);
-                //
-                //CommandDispatcher.issueCommand(new NewTowerUnitCommand(CommandDispatcher.getSupposedGameTick()
-                //                                      , CommandDispatcher.getSerial()
-                //                                      , 1
-                //                                      , Grid.getNewId()
-                //                                      , getNewId()));
 
-                allUnits.Add(new Tower(newTile, 1, getNewId()));
+                // creates a new tower for player 1 at the map cords
+                Tower t = new Tower(newTile, 1, getNewId());
+                allUnits.Add(t);
+                addDepthEnabledItem(t);
 
                 return newTile;
             }
@@ -560,14 +557,11 @@ namespace ION
             {
                 ResourceTile newTile = new ResourceTile(x, y);
                 resourceTiles.Add(newTile);
-                //
-                //CommandDispatcher.issueCommand(new NewTowerUnitCommand(CommandDispatcher.getSupposedGameTick()
-                //                                      , CommandDispatcher.getSerial()
-                //                                      , 2
-                //                                      , Grid.getNewId()
-                //                                      , getNewId()));
+
+                // creates a new tower for player 2 at the map cords
                 Tower t = new Tower(newTile, 2, getNewId());
                 allUnits.Add(t);
+                addDepthEnabledItem(t);
 
                 return newTile;
             }
@@ -611,7 +605,7 @@ namespace ION
             return selection;
         }
 
-        // new
+        
         public Vector2 GetTile(float x, float y, float translationX, float translationY)
         {
             selectTile(x, y, translationX, translationY);
@@ -940,6 +934,8 @@ namespace ION
 
                 settleIndexZ(SOUTH_WEST);
 
+                
+
             }
             catch (Exception e)
             {
@@ -1054,12 +1050,6 @@ namespace ION
             unitRemovals.Add(u);
         }
 
-        public void ChangeMountainTile()
-        {
-            for (int i = 0; i < mountainTiles.Count(); i++)
-            {
-                mountainTiles[i].update();
-            }
-        }
+
     }
 }
