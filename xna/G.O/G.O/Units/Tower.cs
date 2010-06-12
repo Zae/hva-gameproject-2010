@@ -114,7 +114,14 @@ namespace ION
 
             if (selected)
             {
-                ION.spriteBatch.Draw(Images.selectionBoxBack, drawingRectangle, Color.White);
+                if (modelType == 0)
+                {
+                    ION.spriteBatch.Draw(Images.selectionBoxBack, drawingRectangle, Color.White);
+                }
+                else if (modelType == 1)
+                {
+                    ION.spriteBatch.Draw(Images.selectionBoxBack2, drawingRectangle, Color.White);
+                }
             }
 
             ION.spriteBatch.Draw(Images.getTurretImage(owner, (int)facing, modelType), drawingRectangle, Color.White);
@@ -123,7 +130,14 @@ namespace ION
 
             if (selected)
             {
-                ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
+                if(modelType == 0)
+                {
+                    ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
+                }
+                else if (modelType == 1)
+                {
+                    ION.spriteBatch.Draw(Images.selectionBoxFront2, drawingRectangle, Color.White);
+                }
             }
 
             if (selected || showDetails)
@@ -166,11 +180,11 @@ namespace ION
 
                 ION.spriteBatch.Draw(Images.unitHealth[0], drawingRectangle, Color.White);
             }
-            if (selected)
-            {
+            //if (selected)
+            //{
 
-                ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
-            }
+            //    ION.spriteBatch.Draw(Images.selectionBoxFront, drawingRectangle, Color.White);
+            //}
 
       
         }

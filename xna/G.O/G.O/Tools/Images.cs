@@ -32,6 +32,8 @@ namespace ION
         public static Texture2D greenPixel;
         public static Texture2D selectionBoxBack;
         public static Texture2D selectionBoxFront;
+        public static Texture2D selectionBoxBack2;
+        public static Texture2D selectionBoxFront2;
 
         public static Texture2D tileHitmapImage;
 

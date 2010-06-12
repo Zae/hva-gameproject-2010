@@ -17,7 +17,7 @@ namespace ION.Tools
 
         public int serial = 0;
 
-        public int maxUnits = 12;
+        public int maxUnits = 32;
 
         public Random r = new Random(123);
 

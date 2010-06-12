@@ -172,6 +172,8 @@ namespace ION
 
             Images.selectionBoxBack = Content.Load<Texture2D>("miscItems/boxback");
             Images.selectionBoxFront = Content.Load<Texture2D>("miscItems/boxfront");
+            Images.selectionBoxBack2 = Content.Load<Texture2D>("miscItems/boxback2");
+            Images.selectionBoxFront2 = Content.Load<Texture2D>("miscItems/boxfront2");
 
             Images.wonGameNotice = Content.Load<Texture2D>("miscItems/you-win");
             Images.lostGameNotice = Content.Load<Texture2D>("miscItems/you-lose");
