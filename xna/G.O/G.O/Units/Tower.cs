@@ -44,7 +44,9 @@ namespace ION
 
         public int tmp = 0;
 
-        public Tower(Tile newPos, int owner, int id) : base(owner,id)
+        private int modelType = 0;
+
+        public Tower(Tile newPos, int specifyModleType, int owner, int id) : base(owner,id)
         {
 
             health = maxHealth;
@@ -56,6 +58,8 @@ namespace ION
             inTileY = position.indexY;
 
             position.accessable = false;
+
+            modelType = specifyModleType;
       
             init();
         }
@@ -113,7 +117,7 @@ namespace ION
                 ION.spriteBatch.Draw(Images.selectionBoxBack, drawingRectangle, Color.White);
             }
 
-            ION.spriteBatch.Draw(Images.getTurretImage(owner, (int)facing), drawingRectangle, Color.White);
+            ION.spriteBatch.Draw(Images.getTurretImage(owner, (int)facing, modelType), drawingRectangle, Color.White);
             drawFiringAnimation(x, y);
             drawUnderFireAnimation(x, y);
 
@@ -202,7 +206,7 @@ namespace ION
             c.B = (byte)a;
             c.A = (byte)a;
 
-            ION.spriteBatch.Draw(Images.getTurretImage(owner, (int)facing), drawingRectangle, c);
+            ION.spriteBatch.Draw(Images.getTurretImage(owner, (int)facing, modelType), drawingRectangle, c);
 
             drawingRectangle.Y -= drawingRectangle.Height;
             drawingRectangle.Height *= 2;

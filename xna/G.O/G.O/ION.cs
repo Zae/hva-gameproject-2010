@@ -287,6 +287,7 @@ namespace ION
 
             int players = 2;
             string[] directions = new string[] { "s", "se", "e", "ne", "n", "nw", "w", "sw" };
+            int modelType = 2;
 
             // Units
             Images.unit = new Texture2D[players, directions.Length];
@@ -326,13 +327,16 @@ namespace ION
 
 
             // Towers
-            Images.turret = new Texture2D[players, directions.Length];
+            Images.turret = new Texture2D[players, directions.Length, modelType];
 
             for (int i = 0; i < players; i++)
             {
                 for (int j = 0; j < directions.Length; j++)
                 {
-                    Images.turret[i, j] = Content.Load<Texture2D>("turretItems/player" + (i + 1).ToString() + "turret_" + directions[j]);
+                    for (int z = 0; z < modelType; z++)
+                    {
+                        Images.turret[i, j, z] = Content.Load<Texture2D>("turretItems/player" + (i + 1).ToString() + "turret_" + directions[j] + "_" + (z + 1).ToString() );
+                    }
                 }
             }
 

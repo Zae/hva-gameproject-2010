@@ -547,7 +547,7 @@ namespace ION
                 resourceTiles.Add(newTile);
 
                 // creates a new tower for player 1 at the map cords
-                Tower t = new Tower(newTile, 1, getNewId());
+                Tower t = new Tower(newTile, 1, 1, getNewId());
                 allUnits.Add(t);
                 addDepthEnabledItem(t);
 
@@ -559,7 +559,7 @@ namespace ION
                 resourceTiles.Add(newTile);
 
                 // creates a new tower for player 2 at the map cords
-                Tower t = new Tower(newTile, 2, getNewId());
+                Tower t = new Tower(newTile, 1, 2, getNewId());
                 allUnits.Add(t);
                 addDepthEnabledItem(t);
 
@@ -638,7 +638,7 @@ namespace ION
             if (u != null && u is Robot)
             {
                 u.Die();
-                Tower newUnit = new Tower(Grid.map[u.inTileX,u.inTileY], owner, towerId);
+                Tower newUnit = new Tower(Grid.map[u.inTileX,u.inTileY], 0, owner, towerId);
       
                 allUnits.Add(newUnit);
                 addDepthEnabledItem(newUnit);
