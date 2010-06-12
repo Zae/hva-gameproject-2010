@@ -36,7 +36,16 @@ namespace ION.Tools
                 //do things
                 List<Unit> aiUnits = Grid.get().getPlayerUnits(ai);
 
-                if (aiUnits.Count < 5 && maxUnits > 0)
+                int towers = 0;
+                foreach (Unit u in aiUnits)
+                {
+                    if (u is Tower)
+                    {
+                        towers++;
+                    }
+                }
+
+                if (aiUnits.Count < 2 + towers && maxUnits > 0)
                 {
                     serial++;
                     maxUnits--;
@@ -45,7 +54,7 @@ namespace ION.Tools
 
                 foreach (Unit u in aiUnits)
                 {
-                    
+
                     
                     if (u is Robot && u.destination.Count == 0 && !u.moving)
                     {
@@ -68,7 +77,7 @@ namespace ION.Tools
                     //do things
                     List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
 
-                    if (playerUnits.Count < 3)
+                    if (playerUnits.Count < 3 + towers)
                     {
  
                         CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick()
@@ -79,7 +88,7 @@ namespace ION.Tools
 
                     foreach (Unit u in playerUnits)
                     {
-                        if (u.destination.Count == 0 && !u.moving)
+                        if (u is Robot && u.destination.Count == 0 && !u.moving)
                         {
                             int x = (int)(Grid.width * r.NextDouble());
                             int y = (int)(Grid.height * r.NextDouble());
