@@ -780,43 +780,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="turretItems\player2turret_e.png">
-      <Name>player2turret_e</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player2turret_n.png">
-      <Name>player2turret_n</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player2turret_nw.png">
-      <Name>player2turret_nw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player2turret_s.png">
-      <Name>player2turret_s</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player2turret_se.png">
-      <Name>player2turret_se</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player2turret_sw.png">
-      <Name>player2turret_sw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player2turret_w.png">
-      <Name>player2turret_w</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="unitItems\player1unit_e.png">
       <Name>player1unit_e</Name>
       <Importer>TextureImporter</Importer>
@@ -976,55 +939,6 @@
     </Compile>
     <Compile Include="unitItems\shooting\overlay_unit_firing_w1.png">
       <Name>overlay_unit_firing_w1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="turretItems\player1turret_e.png">
-      <Name>player1turret_e</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player1turret_n.png">
-      <Name>player1turret_n</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player1turret_ne.png">
-      <Name>player1turret_ne</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player1turret_nw.png">
-      <Name>player1turret_nw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player1turret_s.png">
-      <Name>player1turret_s</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player1turret_se.png">
-      <Name>player1turret_se</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player1turret_sw.png">
-      <Name>player1turret_sw</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="turretItems\player1turret_w.png">
-      <Name>player1turret_w</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="turretItems\player2turret_ne.png">
-      <Name>player2turret_ne</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -3918,6 +3832,170 @@
       <Name>lose</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="turretItems\player1turret_e_1.png">
+      <Name>player1turret_e_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_e_2.png">
+      <Name>player1turret_e_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_ne_1.png">
+      <Name>player1turret_ne_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_ne_2.png">
+      <Name>player1turret_ne_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_nw_1.png">
+      <Name>player1turret_nw_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_nw_2.png">
+      <Name>player1turret_nw_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_n_1.png">
+      <Name>player1turret_n_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_n_2.png">
+      <Name>player1turret_n_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_se_1.png">
+      <Name>player1turret_se_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_se_2.png">
+      <Name>player1turret_se_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_sw_1.png">
+      <Name>player1turret_sw_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_sw_2.png">
+      <Name>player1turret_sw_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_s_1.png">
+      <Name>player1turret_s_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_s_2.png">
+      <Name>player1turret_s_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_w_1.png">
+      <Name>player1turret_w_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player1turret_w_2.png">
+      <Name>player1turret_w_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_e_1.png">
+      <Name>player2turret_e_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_ne_1.png">
+      <Name>player2turret_ne_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_nw_1.png">
+      <Name>player2turret_nw_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_n_1.png">
+      <Name>player2turret_n_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_se_1.png">
+      <Name>player2turret_se_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_sw_1.png">
+      <Name>player2turret_sw_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_s_1.png">
+      <Name>player2turret_s_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_w_1.png">
+      <Name>player2turret_w_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="turretItems\player2turret_e_2.png">
+      <Name>player2turret_e_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_ne_2.png">
+      <Name>player2turret_ne_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_nw_2.png">
+      <Name>player2turret_nw_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_n_2.png">
+      <Name>player2turret_n_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_se_2.png">
+      <Name>player2turret_se_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_sw_2.png">
+      <Name>player2turret_sw_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_s_2.png">
+      <Name>player2turret_s_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="turretItems\player2turret_w_2.png">
+      <Name>player2turret_w_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
