@@ -13,6 +13,7 @@ namespace ION
         public static Color themeColor = Color.White;
         public Color currentColor = Color.White;
         public int imageNumber;
+        private int colourCount = 0;
 
         public MountainTile(int indexX, int indexY, int selectImage)
         {
@@ -29,7 +30,11 @@ namespace ION
             if (imageNumber > 20)
             {
                 //Set it semi-transparent
-                currentColor.A = 130;
+                currentColor = Color.White;
+                currentColor.R = 52;
+                currentColor.G = 202;
+                currentColor.B = 202;
+                currentColor.A = 150;
             }
         }
 
@@ -51,7 +56,36 @@ namespace ION
                 //ION.spriteBatch.Draw(Images.mountainFloorImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);
                 ION.spriteBatch.Draw(Images.mountainImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), currentColor);
             }
-            else if (imageNumber == 21)
+            else
+            {
+                if (colourCount < 150)
+                {
+                    currentColor.G--;
+                }
+                else if (colourCount < 300)
+                {
+                    currentColor.R++;
+                }
+                else if (colourCount < 450)
+                {
+                    currentColor.B--;
+                }
+                else if (colourCount < 600)
+                {
+                    currentColor.G++;
+                }
+                else if (colourCount < 750)
+                {
+                    currentColor.R--;
+                }
+                else if (colourCount < 900)
+                {
+                    currentColor.B++;
+                }
+                colourCount++;
+                colourCount %= 900;
+                
+            if (imageNumber == 21)
             {
                 //ION.spriteBatch.Draw(Images.iceFloorImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);
                 ION.spriteBatch.Draw(Images.iceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), currentColor);
@@ -65,6 +99,7 @@ namespace ION
             {
                 //ION.spriteBatch.Draw(Images.crystalFloorImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);
                 ION.spriteBatch.Draw(Images.crystalImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), currentColor);
+            }
             }
         }
 
