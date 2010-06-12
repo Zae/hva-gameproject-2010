@@ -85,21 +85,21 @@ namespace ION
                 colourCount++;
                 colourCount %= 900;
                 
-            if (imageNumber == 21)
-            {
-                //ION.spriteBatch.Draw(Images.iceFloorImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);
-                ION.spriteBatch.Draw(Images.iceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), currentColor);
-            }
-            else if (imageNumber == 22)
-            {
-                //ION.spriteBatch.Draw(Images.glassFloorImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);
-                ION.spriteBatch.Draw(Images.glassImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), currentColor);
-            }
-            else
-            {
-                //ION.spriteBatch.Draw(Images.crystalFloorImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);
-                ION.spriteBatch.Draw(Images.crystalImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), currentColor);
-            }
+                if (imageNumber == 21)
+                {
+                    //ION.spriteBatch.Draw(Images.iceFloorImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);
+                    ION.spriteBatch.Draw(Images.iceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), currentColor);
+                }
+                else if (imageNumber == 22)
+                {
+                    //ION.spriteBatch.Draw(Images.glassFloorImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);
+                    ION.spriteBatch.Draw(Images.glassImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), currentColor);
+                }
+                else
+                {
+                    //ION.spriteBatch.Draw(Images.crystalFloorImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), themeColor);
+                    ION.spriteBatch.Draw(Images.crystalImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY - (baseHalfWidth + baseHalfHeight)), (int)(baseHalfWidth * 2), (int)(baseHalfWidth * 2)), currentColor);
+                }
             }
         }
 
