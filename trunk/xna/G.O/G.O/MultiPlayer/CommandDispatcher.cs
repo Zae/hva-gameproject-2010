@@ -91,10 +91,10 @@ namespace ION.MultiPlayer
                 }
 
                 //We start at the back of the list
-                for (int i = queueLength - 1; i > -1; i--)//FOUND MOVEMENT ERROR
-                {// If this loop is commented then only one unit can be ordered at a time, however the movement error does not occur
-                    if (commandsQueue[i].supposedGameTick < command.supposedGameTick)
-                    {
+                for (int i = queueLength - 1; i > -1; i--)
+                {
+                    if (commandsQueue[i].supposedGameTick < command.supposedGameTick)//FOUND MOVEMENT ERROR
+                    {// If this statement is commented the movement error does not occur, however it may effect the multiplayer
                         commandsQueue.Insert(i + 1, command);
                         return;
                     }
