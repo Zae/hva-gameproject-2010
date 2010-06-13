@@ -93,12 +93,14 @@ namespace ION.MultiPlayer
                 //We start at the back of the list
                 for (int i = queueLength - 1; i > -1; i--)
                 {
-                    if (commandsQueue[i].supposedGameTick < command.supposedGameTick)//FOUND MOVEMENT ERROR
-                    {// If this statement is commented the movement error does not occur, however it may effect the multiplayer
+                    //FOUND MOVEMENT ERROR!!!
+                    // If this statement is commented the movement error does not occur, however it may effect the multiplayer
+                    /*if (commandsQueue[i].supposedGameTick < command.supposedGameTick)
+                    {
                         commandsQueue.Insert(i + 1, command);
                         return;
                     }
-                    else if (commandsQueue[i].supposedGameTick == command.supposedGameTick)
+                    else */if (commandsQueue[i].supposedGameTick == command.supposedGameTick)
                     {
                         if (commandsQueue[i].owner == command.owner)
                         {
