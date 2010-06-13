@@ -72,7 +72,7 @@ namespace ION
 
         public override void move()
         {
-            EmptyWayPoints();
+            //EmptyWayPoints();
 
             tmp++;
             if (tmp > 45)
