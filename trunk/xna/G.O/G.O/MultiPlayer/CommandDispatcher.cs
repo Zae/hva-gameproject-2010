@@ -84,15 +84,15 @@ namespace ION.MultiPlayer
                 int queueLength = commandsQueue.Count;
 
                 //When the list is empty we don't need to think about where to put it
-                if (queueLength == 0)
+                if (queueLength == 0 )
                 {
                     commandsQueue.Add(command);
                     return;
                 }
 
                 //We start at the back of the list
-                for (int i = queueLength - 1; i > -1; i--)
-                {
+                for (int i = queueLength - 1; i > -1; i--)//FOUND MOVEMENT ERROR
+                {// If this loop is commented then only one unit can be ordered at a time, however the movement error does not occur
                     if (commandsQueue[i].supposedGameTick < command.supposedGameTick)
                     {
                         commandsQueue.Insert(i + 1, command);
