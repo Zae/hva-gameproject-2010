@@ -80,7 +80,7 @@ namespace ION
             graphics = new GraphicsDeviceManager(this);
             graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(preparingDeviceSettings);
             graphics.ToggleFullScreen();
-            //graphics.ToggleFullScreen(); //Toggle again to disable fullscreen
+            graphics.ToggleFullScreen(); //Toggle again to disable fullscreen
 
             //Now we can get this info without errors this.owner, this.id
 

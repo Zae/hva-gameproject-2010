@@ -209,6 +209,7 @@ namespace ION
             {
                 attackTarget = null;
                 attackingTarget = false;
+                EmptyWayPoints();//new
             }
             
             if (moving)
