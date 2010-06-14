@@ -31,6 +31,14 @@ namespace ION.UI
             {
                 ION.spriteBatch.Draw(Images.buttonOverlay, screenRectangle, Color.White);
             }
+            if (imageNormal == Images.newUnitButtonNormal)
+            {
+                ION.spriteBatch.DrawString(Fonts.font, Robot.cost.ToString(), new Vector2(screenRectangle.X+14, screenRectangle.Y + 16), Color.Red);
+            }
+            else if (imageNormal == Images.towerButtonNormal)
+            {
+                ION.spriteBatch.DrawString(Fonts.font, Tower.cost.ToString(), new Vector2(screenRectangle.X+14, screenRectangle.Y + 16), Color.Red);
+            }
         }
 
         public override bool handleMouse(Point evalPoint, bool leftPressed)

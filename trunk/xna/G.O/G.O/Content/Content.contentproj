@@ -370,13 +370,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="guiItems\newUnitButtonNormal.png">
-      <Name>newUnitButtonNormal</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="tileItems\leveltextures\pathleveltest_32x32.png">
       <Name>pathleveltest_32x32</Name>
       <Importer>TextureImporter</Importer>
@@ -3790,13 +3783,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="guiItems\tower.png">
-      <Name>tower</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="miscItems\you-lose.png">
       <Name>you-lose</Name>
       <Importer>TextureImporter</Importer>
@@ -4006,6 +3992,18 @@
     </Compile>
     <Compile Include="miscItems\boxfront2.png">
       <Name>boxfront2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="guiItems\newUnitButtonNormal.png">
+      <Name>newUnitButtonNormal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="guiItems\tower.png">
+      <Name>tower</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -12,7 +12,7 @@ namespace ION.UI
 
         public Rectangle screenRectangle;
 
-        private Texture2D imageNormal;
+        public Texture2D imageNormal;
 
         public GUIComponent(int screenX, int screenY, Texture2D imageNormal)
         {
