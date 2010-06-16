@@ -17,6 +17,7 @@ namespace ION
         private Rectangle selectionRectangle1 = new Rectangle();
 
         private Rectangle drawingRectangleBig = new Rectangle();
+        private Rectangle drawingRectangleSmall = new Rectangle();
 
         public Vector2 focalPoint = new Vector2();
 
@@ -106,6 +107,11 @@ namespace ION
             drawingRectangleBig.Width = (int)(baseHalfWidth * 4);
             drawingRectangleBig.Height = (int)(baseHalfWidth * 4);
 
+            drawingRectangleSmall.X = (int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth * 2));
+            drawingRectangleSmall.Y = (int)((visualY * baseHalfHeight) + translationY - (baseHalfHeight * 1));//9));
+            drawingRectangleSmall.Width = (int)(baseHalfWidth * 4);
+            drawingRectangleSmall.Height = (int)(baseHalfWidth * 1.35);//4);
+
             drawingRectangle.X = (int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth));
             drawingRectangle.Y = (int)((visualY * baseHalfHeight) + translationY);
             drawingRectangle.Width = (int)(baseHalfWidth * 2);
@@ -127,6 +133,7 @@ namespace ION
             }
 
             
+            // This draws the base itself
             ION.spriteBatch.Draw(baseImage, drawingRectangleBig, Color.White);
 
             if (selected)
@@ -233,8 +240,16 @@ namespace ION
 
         public void drawResourceTile(float translationX, float translationY)
         {
-            ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
-            ION.spriteBatch.Draw(Images.borderImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
+            //ION.spriteBatch.Draw(Images.resourceImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), tileColor);
+            if (owner == 1)
+            {
+                ION.spriteBatch.Draw(Images.bluebase5, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
+            }
+            else if (owner == 2)
+            {
+                ION.spriteBatch.Draw(Images.redbase5, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
+            }
+                //ION.spriteBatch.Draw(Images.borderImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
         }
         
         //Inherited from IDepthEnabled

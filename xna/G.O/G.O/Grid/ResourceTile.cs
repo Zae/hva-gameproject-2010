@@ -66,8 +66,46 @@ namespace ION
     
             //}
 
-            ION.spriteBatch.Draw(Images.borderImage, drawingRectangle, Color.White);
-            ION.spriteBatch.Draw(Images.resourceImage, drawingRectangle, tileColor);
+            //ION.spriteBatch.Draw(Images.borderImage, drawingRectangle, Color.White);
+            //ION.spriteBatch.Draw(Images.resourceImage, drawingRectangle, tileColor);
+
+            if (indexX + 1 == Grid.playerBases[0].indexY && indexY == Grid.playerBases[0].indexX)
+            {
+                ION.spriteBatch.Draw(Images.bluebase4, drawingRectangle, Color.White);
+            }
+            else if (indexX - 1 == Grid.playerBases[0].indexY && indexY == Grid.playerBases[0].indexX)
+            {
+                ION.spriteBatch.Draw(Images.bluebase6, drawingRectangle, Color.White);
+            }
+            else if (indexX == Grid.playerBases[0].indexY && indexY + 1 == Grid.playerBases[0].indexX)
+            {
+                ION.spriteBatch.Draw(Images.bluebase8, drawingRectangle, Color.White);
+            }
+            else if (indexX == Grid.playerBases[0].indexY && indexY - 1 == Grid.playerBases[0].indexX)
+            {
+                ION.spriteBatch.Draw(Images.bluebase2, drawingRectangle, Color.White);
+            }
+            else if (indexX + 1 == Grid.playerBases[1].indexY && indexY == Grid.playerBases[1].indexX)
+            {
+                ION.spriteBatch.Draw(Images.redbase4, drawingRectangle, Color.White);
+            }
+            else if (indexX - 1 == Grid.playerBases[1].indexY && indexY == Grid.playerBases[1].indexX)
+            {
+                ION.spriteBatch.Draw(Images.redbase6, drawingRectangle, Color.White);
+            }
+            else if (indexX == Grid.playerBases[1].indexY && indexY + 1 == Grid.playerBases[1].indexX)
+            {
+                ION.spriteBatch.Draw(Images.redbase8, drawingRectangle, Color.White);
+            }
+            else if (indexX == Grid.playerBases[1].indexY && indexY - 1 == Grid.playerBases[1].indexX)
+            {
+                ION.spriteBatch.Draw(Images.redbase2, drawingRectangle, Color.White);
+            }
+            else
+            {
+                ION.spriteBatch.Draw(Images.borderImage, drawingRectangle, Color.White);
+                ION.spriteBatch.Draw(Images.resourceImage, drawingRectangle, tileColor);
+            }
             
 
 

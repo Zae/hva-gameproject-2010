@@ -157,6 +157,17 @@ namespace ION.Controls
             //    // TODO //((BaseTile)result).sekected = true;
             //    selectedBase = true;
             //}
+            /*
+            if (!selectedUnits)
+            {
+                foreach (IDepthEnabled ide in result)
+                {
+                    ((BaseTile)ide).selected = true;
+                    selectedBase = true;
+                }
+            }*/
+            
+
         }
 
         public void calcValidSelectionBox(Vector2 mousePos, Vector2 oldMousePos)
