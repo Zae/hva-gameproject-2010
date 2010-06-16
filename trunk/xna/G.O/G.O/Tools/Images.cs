@@ -35,6 +35,18 @@ namespace ION
         public static Texture2D selectionBoxBack2;
         public static Texture2D selectionBoxFront2;
 
+        public static Texture2D bluebase2;
+        public static Texture2D bluebase4;
+        public static Texture2D bluebase5;
+        public static Texture2D bluebase6;
+        public static Texture2D bluebase8;
+
+        public static Texture2D redbase2;
+        public static Texture2D redbase4;
+        public static Texture2D redbase5;
+        public static Texture2D redbase6;
+        public static Texture2D redbase8;
+
         public static Texture2D tileHitmapImage;
 
         public static Texture2D wonGameNotice;

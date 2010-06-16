@@ -384,12 +384,27 @@ namespace ION
             //draw the ground texture
             theme.drawGroundTexture();
 
+            /*
+            for (int i = 0; i < resourceTiles.Count(); i++)
+            {
+                if (resourceTiles[i] is BaseTile)
+                    resourceTiles[i].draw(translationX, translationY);
+            }
+
+            for (int i = 0; i < resourceTiles.Count(); i++)
+            {
+                if (resourceTiles[i] is BaseTile) { }
+                else
+                    resourceTiles[i].draw(translationX, translationY);
+            }
+            */
+            
             foreach (ResourceTile rt in resourceTiles)
             {
                     rt.draw(translationX, translationY);
                     //rt.drawDebug(translationX, translationY);
             }
-
+            
             foreach (BaseTile bt in playerBases)
             {
                 bt.drawResourceTile(translationX, translationY);

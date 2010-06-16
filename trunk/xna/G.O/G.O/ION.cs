@@ -240,6 +240,19 @@ namespace ION
             Images.crystalFloorImage = Content.Load<Texture2D>("tileItems/crystal_tile_floor");           
             Images.resourceImage = Content.Load<Texture2D>("tileItems/resource_tile");
 
+            Images.bluebase2 = Content.Load<Texture2D>("tileItems/blue/bluebase2");
+            Images.bluebase4 = Content.Load<Texture2D>("tileItems/blue/bluebase4");
+            Images.bluebase5 = Content.Load<Texture2D>("tileItems/blue/bluebase5");
+            Images.bluebase6 = Content.Load<Texture2D>("tileItems/blue/bluebase6");
+            Images.bluebase8 = Content.Load<Texture2D>("tileItems/blue/bluebase8");
+
+            Images.redbase2 = Content.Load<Texture2D>("tileItems/red/redbase2");
+            Images.redbase4 = Content.Load<Texture2D>("tileItems/red/redbase4");
+            Images.redbase5 = Content.Load<Texture2D>("tileItems/red/redbase5");
+            Images.redbase6 = Content.Load<Texture2D>("tileItems/red/redbase6");
+            Images.redbase8 = Content.Load<Texture2D>("tileItems/red/redbase8");
+
+
             Images.canyonFloorImage = new Texture2D[13];
             Images.canyonFloorImage[0] = Content.Load<Texture2D>("tileItems/canyons/0_land_cave_leeg");
             Images.canyonFloorImage[1] = Content.Load<Texture2D>("tileItems/canyons/1_land_cave_noord");
