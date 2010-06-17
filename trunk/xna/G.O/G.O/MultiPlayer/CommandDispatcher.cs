@@ -100,7 +100,7 @@ namespace ION.MultiPlayer
                         commandsQueue.Insert(i + 1, command);
                         return;
                     }
-                    else */if (commandsQueue[i].supposedGameTick == command.supposedGameTick)
+                    else */if (commandsQueue[i].supposedGameTick >= command.supposedGameTick)//this used to be "==" before commenting the above statement
                     {
                         if (commandsQueue[i].owner == command.owner)
                         {

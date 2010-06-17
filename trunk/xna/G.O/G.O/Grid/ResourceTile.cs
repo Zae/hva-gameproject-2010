@@ -69,42 +69,43 @@ namespace ION
             //ION.spriteBatch.Draw(Images.borderImage, drawingRectangle, Color.White);
             //ION.spriteBatch.Draw(Images.resourceImage, drawingRectangle, tileColor);
 
-            if (indexX + 1 == Grid.playerBases[0].indexY && indexY == Grid.playerBases[0].indexX)
-            {
-                ION.spriteBatch.Draw(Images.bluebase4, drawingRectangle, Color.White);
-            }
-            else if (indexX - 1 == Grid.playerBases[0].indexY && indexY == Grid.playerBases[0].indexX)
-            {
-                ION.spriteBatch.Draw(Images.bluebase6, drawingRectangle, Color.White);
-            }
-            else if (indexX == Grid.playerBases[0].indexY && indexY + 1 == Grid.playerBases[0].indexX)
-            {
-                ION.spriteBatch.Draw(Images.bluebase8, drawingRectangle, Color.White);
-            }
-            else if (indexX == Grid.playerBases[0].indexY && indexY - 1 == Grid.playerBases[0].indexX)
-            {
-                ION.spriteBatch.Draw(Images.bluebase2, drawingRectangle, Color.White);
-            }
-            else if (indexX + 1 == Grid.playerBases[1].indexY && indexY == Grid.playerBases[1].indexX)
-            {
-                ION.spriteBatch.Draw(Images.redbase4, drawingRectangle, Color.White);
-            }
-            else if (indexX - 1 == Grid.playerBases[1].indexY && indexY == Grid.playerBases[1].indexX)
-            {
-                ION.spriteBatch.Draw(Images.redbase6, drawingRectangle, Color.White);
-            }
-            else if (indexX == Grid.playerBases[1].indexY && indexY + 1 == Grid.playerBases[1].indexX)
-            {
-                ION.spriteBatch.Draw(Images.redbase8, drawingRectangle, Color.White);
-            }
-            else if (indexX == Grid.playerBases[1].indexY && indexY - 1 == Grid.playerBases[1].indexX)
-            {
-                ION.spriteBatch.Draw(Images.redbase2, drawingRectangle, Color.White);
-            }
-            else
+            
+            if (type == 0)
             {
                 ION.spriteBatch.Draw(Images.borderImage, drawingRectangle, Color.White);
                 ION.spriteBatch.Draw(Images.resourceImage, drawingRectangle, tileColor);
+            }
+            else if (type == 1)//indexX + 1 == Grid.playerBases[0].indexY && indexY == Grid.playerBases[0].indexX)
+            {
+                ION.spriteBatch.Draw(Images.bluebase4, drawingRectangle, Color.White);
+            }
+            else if (type == 2)//indexX - 1 == Grid.playerBases[0].indexY && indexY == Grid.playerBases[0].indexX)
+            {
+                ION.spriteBatch.Draw(Images.bluebase6, drawingRectangle, Color.White);
+            }
+            else if (type == 3)//indexX == Grid.playerBases[0].indexY && indexY + 1 == Grid.playerBases[0].indexX)
+            {
+                ION.spriteBatch.Draw(Images.bluebase8, drawingRectangle, Color.White);
+            }
+            else if (type == 4)//indexX == Grid.playerBases[0].indexY && indexY - 1 == Grid.playerBases[0].indexX)
+            {
+                ION.spriteBatch.Draw(Images.bluebase2, drawingRectangle, Color.White);
+            }
+            else if (type == 5)//indexX + 1 == Grid.playerBases[1].indexY && indexY == Grid.playerBases[1].indexX)
+            {
+                ION.spriteBatch.Draw(Images.redbase4, drawingRectangle, Color.White);
+            }
+            else if (type == 6)//indexX - 1 == Grid.playerBases[1].indexY && indexY == Grid.playerBases[1].indexX)
+            {
+                ION.spriteBatch.Draw(Images.redbase6, drawingRectangle, Color.White);
+            }
+            else if (type == 7)//indexX == Grid.playerBases[1].indexY && indexY + 1 == Grid.playerBases[1].indexX)
+            {
+                ION.spriteBatch.Draw(Images.redbase8, drawingRectangle, Color.White);
+            }
+            else if (type == 8)//indexX == Grid.playerBases[1].indexY && indexY - 1 == Grid.playerBases[1].indexX)
+            {
+                ION.spriteBatch.Draw(Images.redbase2, drawingRectangle, Color.White);
             }
             
 
