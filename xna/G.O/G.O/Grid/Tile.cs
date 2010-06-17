@@ -35,6 +35,8 @@ namespace ION
 
         public bool accessable;
 
+        public int type = 0;
+
         public Tile()
         {
             accessable = false;

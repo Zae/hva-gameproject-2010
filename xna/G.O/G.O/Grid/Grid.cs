@@ -940,6 +940,16 @@ namespace ION
                         resourceTiles.Remove(rt);
                     }
 
+                    // sets the tiles beside the base(s)
+                    for (int i = 0; i < playerNumber || i < 2; i++)
+                    {
+                        map[playerBases[i].indexX - 1, playerBases[i].indexY].type = 1 + (4 * i);
+                        map[playerBases[i].indexX + 1, playerBases[i].indexY].type = 2 + (4 * i);
+                        map[playerBases[i].indexX, playerBases[i].indexY - 1].type = 3 + (4 * i);
+                        map[playerBases[i].indexX, playerBases[i].indexY + 1].type = 4 + (4 * i);
+                    }
+
+
                 }
                 else
                 {
