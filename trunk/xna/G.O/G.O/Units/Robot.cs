@@ -275,7 +275,7 @@ namespace ION
                         //fire on this unit.
                         attackTarget.hit(Damage.getDamage(minDamage, maxDamage), damageType);
                         face(attackTarget.getFocalPoint());
-
+                        scan = 0;// commanding units to attack have their scan reset here
                     }
                     //if not inrange
                     else
@@ -304,27 +304,27 @@ namespace ION
                     }
                     scan = 0;
 
-                    ////HACK
-                    ////attack base if no enemy units around
-                    //int otherPlayer = 1;
+                    //HACK
+                    //attack base if no enemy units around
+                    int otherPlayer = 1;
 
-                    //if (owner == 1)
-                    //{
-                    //    otherPlayer = 2;
-                    //}
-                    //BaseTile enemyBase = Grid.getPlayerBase(otherPlayer);
+                    if (owner == 1)
+                    {
+                        otherPlayer = 2;
+                    }
+                    BaseTile enemyBase = Grid.getPlayerBase(otherPlayer);
 
-                    //if (enemyBase != null && !enemyBase.dying)
-                    //{
-                    //    if ((enemyBase.getTileX() - inTileX > -firingRange && enemyBase.getTileX() - inTileX < firingRange) && (enemyBase.getTileY() - inTileY > -firingRange && enemyBase.getTileY() - inTileY < firingRange))
-                    //    {
-                    //        firing = true;
-                    //        SoundManager.fireSound();
-                    //        //fire on this unit.
-                    //        enemyBase.hit(Damage.getDamage(minDamage, maxDamage), damageType);
-                    //        face(enemyBase.focalPoint);
-                    //    }
-                    //}
+                    if (enemyBase != null && !enemyBase.dying)
+                    {
+                        if ((enemyBase.getTileX() - inTileX > -firingRange && enemyBase.getTileX() - inTileX < firingRange) && (enemyBase.getTileY() - inTileY > -firingRange && enemyBase.getTileY() - inTileY < firingRange))
+                        {
+                            firing = true;
+                            SoundManager.fireSound();
+                            //fire on this unit.
+                            enemyBase.hit(Damage.getDamage(minDamage, maxDamage), damageType);
+                            face(enemyBase.focalPoint);
+                        }
+                    }
                 }
 
             }
