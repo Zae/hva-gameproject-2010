@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ION
 {
-    public class MountainTile : Tile, IDepthEnabled
+    public class ObstacleTile : Tile, IDepthEnabled
     {
 
         public static Color themeColor = Color.White;
@@ -15,7 +15,7 @@ namespace ION
         public int imageNumber;
         private int colourCount = 0;
 
-        public MountainTile(int indexX, int indexY, int selectImage)
+        public ObstacleTile(int indexX, int indexY, int selectImage)
         {
 
             imageNumber = selectImage;
@@ -26,7 +26,7 @@ namespace ION
 
             currentColor = themeColor;
 
-            //For everything that is not a Mountain but Crystal for instance
+            // Setting initial colour for Crystals
             if (imageNumber > 20)
             {
                 //Set it semi-transparent
@@ -102,7 +102,6 @@ namespace ION
                 }
             }
         }
-
 
         public override void update()
         {

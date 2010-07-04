@@ -41,7 +41,7 @@ namespace ION
 
         public static Tile[] perspectiveMap;
         public static List<ResourceTile> resourceTiles;
-        public static List<MountainTile> mountainTiles;
+        public static List<ObstacleTile> obstacleTiles;
         public static List<IDepthEnabled> depthItems;
         public static BaseTile[] playerBases;
 
@@ -435,8 +435,6 @@ namespace ION
             ION.spriteBatch.End();
         }
 
-      
-
         private Tile createTile(char c, int x, int y)
         {
             if (c == 'N')
@@ -447,107 +445,107 @@ namespace ION
             }
             else if (c == 'M')
             {
-                MountainTile newTile = new MountainTile(x, y, 20);
+                ObstacleTile newTile = new ObstacleTile(x, y, 20);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == 'C')
             {
-                MountainTile newTile = new MountainTile(x, y, 21);
+                ObstacleTile newTile = new ObstacleTile(x, y, 21);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '5')
             {
-                MountainTile newTile = new MountainTile(x, y, 0);
+                ObstacleTile newTile = new ObstacleTile(x, y, 0);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '8')
             {
-                MountainTile newTile = new MountainTile(x, y, 1);
+                ObstacleTile newTile = new ObstacleTile(x, y, 1);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '9')
             {
-                MountainTile newTile = new MountainTile(x, y, 2);
+                ObstacleTile newTile = new ObstacleTile(x, y, 2);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '+')
             {
-                MountainTile newTile = new MountainTile(x, y, 3);
+                ObstacleTile newTile = new ObstacleTile(x, y, 3);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '7')
             {
-                MountainTile newTile = new MountainTile(x, y, 4);
+                ObstacleTile newTile = new ObstacleTile(x, y, 4);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '/')
             {
-                MountainTile newTile = new MountainTile(x, y, 5);
+                ObstacleTile newTile = new ObstacleTile(x, y, 5);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '6')
             {
-                MountainTile newTile = new MountainTile(x, y, 6);
+                ObstacleTile newTile = new ObstacleTile(x, y, 6);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '4')
             {
-                MountainTile newTile = new MountainTile(x, y, 7);
+                ObstacleTile newTile = new ObstacleTile(x, y, 7);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '2')
             {
-                MountainTile newTile = new MountainTile(x, y, 8);
+                ObstacleTile newTile = new ObstacleTile(x, y, 8);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '3')
             {
-                MountainTile newTile = new MountainTile(x, y, 9);
+                ObstacleTile newTile = new ObstacleTile(x, y, 9);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '-')
             {
-                MountainTile newTile = new MountainTile(x, y, 10);
+                ObstacleTile newTile = new ObstacleTile(x, y, 10);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '1')
             {
-                MountainTile newTile = new MountainTile(x, y, 11);
+                ObstacleTile newTile = new ObstacleTile(x, y, 11);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == '*')
             {
-                MountainTile newTile = new MountainTile(x, y, 12);
+                ObstacleTile newTile = new ObstacleTile(x, y, 12);
                 addDepthEnabledItem(newTile);
-                mountainTiles.Add(newTile);
+                obstacleTiles.Add(newTile);
                 return newTile;
             }
             else if (c == 'V')
@@ -620,7 +618,6 @@ namespace ION
             return selection;
         }
 
-        
         public Vector2 GetTile(float x, float y, float translationX, float translationY)
         {
             selectTile(x, y, translationX, translationY);
@@ -813,7 +810,7 @@ namespace ION
             updateStrategy.reset();
 
             resourceTiles = new List<ResourceTile>();
-            mountainTiles = new List<MountainTile>();
+            obstacleTiles = new List<ObstacleTile>();
             depthItems = new List<IDepthEnabled>();
 
             if (ION.get().serverConnection != null && ION.get().serverConnection.GameConnection.Connected)

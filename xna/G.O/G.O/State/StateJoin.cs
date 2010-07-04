@@ -166,7 +166,6 @@ namespace ION
             ION.spriteBatch.End();
         }
 
-
         public override void update(int ellapsed)
         {
             //mouse handling
@@ -239,7 +238,6 @@ namespace ION
             MediaPlayer.Play(Sounds.titleSong);
             MediaPlayer.IsRepeating = true;
         }
-
 
         public override void focusLost()
         {

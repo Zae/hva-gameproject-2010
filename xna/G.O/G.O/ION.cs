@@ -314,7 +314,7 @@ namespace ION
                     Images.unit[i, j] = Content.Load<Texture2D>("unitItems/player" + (i + 1).ToString() + "unit_" + directions[j]);
                 }
             }
-
+            
             int frames = 2;
             Images.unit_shooting_overlay = new Texture2D[directions.Length,frames];
             for (int frame = 0; frame < frames; frame++)
