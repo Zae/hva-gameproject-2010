@@ -482,11 +482,11 @@ namespace ION
 
             KeyboardState keyState = Keyboard.GetState();
 
-            //Lets you quit from anywhere in the game
-            if (keyState.IsKeyDown(Keys.F1))
-            {
-                this.Exit();
-            }
+            ////Lets you quit from anywhere in the game
+            //if (keyState.IsKeyDown(Keys.F1))
+            //{
+            //    this.Exit();
+            //}
 
             //Lets you reset the game from anywhere
             if (keyState.IsKeyDown(Keys.R)&& keyState.IsKeyDown(Keys.LeftShift))
