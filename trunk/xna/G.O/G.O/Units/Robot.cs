@@ -341,9 +341,6 @@ namespace ION
 
         public override void draw(float x, float y)
         {
-
-
- 
             drawingRectangle.X = position.drawingRectangle.X;
             drawingRectangle.Y = position.drawingRectangle.Y - position.drawingRectangle.Height;
             drawingRectangle.Width = position.drawingRectangle.Width;

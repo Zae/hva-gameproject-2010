@@ -68,7 +68,6 @@ namespace ION
         {
             if (!dying && health < 0)
             {
-
                 //start dying
                 Die();
 
@@ -249,7 +248,7 @@ namespace ION
             {
                 ION.spriteBatch.Draw(Images.redbase5, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
             }
-                //ION.spriteBatch.Draw(Images.borderImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
+            //ION.spriteBatch.Draw(Images.borderImage, new Rectangle((int)(ION.halfWidth + (visualX * baseHalfWidth) + translationX - (baseHalfWidth)), (int)((visualY * baseHalfHeight) + translationY), (int)(baseHalfWidth * 2), (int)(baseHalfHeight * 2)), Color.White);
         }
         
         //Inherited from IDepthEnabled
@@ -276,7 +275,6 @@ namespace ION
             }
             return false;
         }
-
 
         public bool hitTest(Rectangle r)
         {
@@ -318,7 +316,6 @@ namespace ION
             return focalPoint;
         }
 
-
         public void hit(int damageTaken, int damageType)
         {
 
@@ -359,7 +356,6 @@ namespace ION
                 ION.spriteBatch.Draw(Images.bulletImpact[UnderFireFrame], new Rectangle(selectionRectangle1.X + UnderFireOffsetX - (int)(baseHalfWidth * 0.5), selectionRectangle1.Y + UnderFireOffsetY - (int)(baseHalfHeight * 1.0), (int)(baseHalfWidth * 0.75), (int)(baseHalfHeight * 1.5)), Color.White);
             }
         }
-
 
         public bool isAlive()
         {

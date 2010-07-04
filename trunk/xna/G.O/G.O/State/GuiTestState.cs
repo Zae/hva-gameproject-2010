@@ -57,6 +57,7 @@ namespace ION
         {
             check.IsChecked = !check.IsChecked;
         }
+
         public override void draw()
         {
             ION.get().GraphicsDevice.Clear(Color.Black);

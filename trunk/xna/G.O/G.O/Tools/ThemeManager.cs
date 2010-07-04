@@ -37,12 +37,12 @@ namespace ION
             
             if (theme == MOON_THEME)
             {
-                MountainTile.themeColor = Color.Gray;
+                ObstacleTile.themeColor = Color.Gray;
                 ION.get().loadThemedResources("/leveltextures/"+ground);           
             }
             else if (theme == DIRT_THEME)
             {
-                MountainTile.themeColor = Color.Yellow;
+                ObstacleTile.themeColor = Color.Yellow;
                 ION.get().loadThemedResources("/leveltextures/"+ground);
             }
 

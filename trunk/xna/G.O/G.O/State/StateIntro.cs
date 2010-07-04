@@ -76,11 +76,8 @@ namespace ION
 
         public override void update(int ellapsed)
         {
-
-            
-
             now += ellapsed;
-
+            
             MouseState mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed || now > playTime)
             {
@@ -216,10 +213,6 @@ namespace ION
             
 
         }
-
-        
-
-        
 
         public override void focusGained()
         {
