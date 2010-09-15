@@ -80,7 +80,7 @@ namespace ION
             graphics = new GraphicsDeviceManager(this);
             graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(preparingDeviceSettings);
             graphics.ToggleFullScreen();
-            //graphics.ToggleFullScreen(); //Toggle again to disable fullscreen
+            graphics.ToggleFullScreen(); //Toggle again to disable fullscreen
 
             //Now we can get this info without errors this.owner, this.id
 
@@ -350,7 +350,10 @@ namespace ION
                 {
                     for (int z = 0; z < modelType; z++)
                     {
-                        Images.turret[i, j, z] = Content.Load<Texture2D>("turretItems/player" + (i + 1).ToString() + "turret_" + directions[j] + "_" + (z + 1).ToString() );
+                        //Always load the same turret image
+                        Images.turret[i, j, z] = Content.Load<Texture2D>("turretItems/player" + (i + 1).ToString() + "turret_" + directions[j] + "_" + (1).ToString());
+                    
+                        // Images.turret[i, j, z] = Content.Load<Texture2D>("turretItems/player" + (i + 1).ToString() + "turret_" + directions[j] + "_" + (z + 1).ToString() );
                     }
                 }
             }
