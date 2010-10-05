@@ -1,5 +1,0 @@
-C:\Users\Qadri\Desktop\lidgren-network\Samples\SamplesCommon\bin\Debug\SamplesCommon.dll
-C:\Users\Qadri\Desktop\lidgren-network\Samples\SamplesCommon\bin\Debug\SamplesCommon.pdb
-C:\Users\Qadri\Desktop\lidgren-network\Samples\SamplesCommon\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Qadri\Desktop\lidgren-network\Samples\SamplesCommon\obj\Debug\SamplesCommon.dll
-C:\Users\Qadri\Desktop\lidgren-network\Samples\SamplesCommon\obj\Debug\SamplesCommon.pdb
