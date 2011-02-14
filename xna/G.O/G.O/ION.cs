@@ -178,8 +178,6 @@ namespace ION
             Images.wonGameNotice = Content.Load<Texture2D>("miscItems/you-win");
             Images.lostGameNotice = Content.Load<Texture2D>("miscItems/you-lose");
 
-
-
             //GUI Items
             Images.commandsBar = Content.Load<Texture2D>("guiItems/commandsBar");
             Images.moveButtonNormal = Content.Load<Texture2D>("guiItems/moveButtonNormal");

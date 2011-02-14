@@ -17,7 +17,7 @@ namespace ION.Tools
 
         public int serial = 0;
 
-        public int maxUnits = 32;
+        public int maxUnits = 1;
 
         public Random r = new Random(123);
 
@@ -30,6 +30,8 @@ namespace ION.Tools
 
         public void act()
         {
+            
+            
             counter++;
             if (counter == actOn)
             {
@@ -45,10 +47,10 @@ namespace ION.Tools
                     }
                 }
 
-                if (aiUnits.Count < 2 + towers && maxUnits > 0)
+                if (aiUnits.Count < 2 && maxUnits > 0 )
                 {
                     serial++;
-                    maxUnits--;
+                    //maxUnits--;
                     CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick(), serial,ai, newId++));
                 }
 
@@ -72,37 +74,37 @@ namespace ION.Tools
                     }
                 }
 
-                if (managePlayer)
-                {
-                    //do things
-                    List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
+                //if (managePlayer)
+                //{
+                //    //do things
+                //    List<Unit> playerUnits = Grid.get().getPlayerUnits(Grid.playerNumber);
 
-                    if (playerUnits.Count < 3 + towers)
-                    {
+                //    if (playerUnits.Count < 3 + towers)
+                //    {
  
-                        CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick()
-                                                                    , CommandDispatcher.getSerial()
-                                                                    , Grid.playerNumber
-                                                                    , Grid.getNewId()));
-                    }
+                //        CommandDispatcher.issueCommand(new NewUnitCommand(CommandDispatcher.getSupposedGameTick()
+                //                                                    , CommandDispatcher.getSerial()
+                //                                                    , Grid.playerNumber
+                //                                                    , Grid.getNewId()));
+                //    }
 
-                    foreach (Unit u in playerUnits)
-                    {
-                        if (u is Robot && u.destination.Count == 0 && !u.moving)
-                        {
-                            int x = (int)(Grid.width * r.NextDouble());
-                            int y = (int)(Grid.height * r.NextDouble());
+                //    foreach (Unit u in playerUnits)
+                //    {
+                //        if (u is Robot && u.destination.Count == 0 && !u.moving)
+                //        {
+                //            int x = (int)(Grid.width * r.NextDouble());
+                //            int y = (int)(Grid.height * r.NextDouble());
 
-                            CommandDispatcher.issueCommand(new NewMoveCommand(CommandDispatcher.getSupposedGameTick()
-                                                                                , CommandDispatcher.getSerial()
-                                                                                , u.owner
-                                                                                , u.id
-                                                                                , x
-                                                                                , y));
+                //            CommandDispatcher.issueCommand(new NewMoveCommand(CommandDispatcher.getSupposedGameTick()
+                //                                                                , CommandDispatcher.getSerial()
+                //                                                                , u.owner
+                //                                                                , u.id
+                //                                                                , x
+                //                                                                , y));
 
-                        }
-                    }
-                }
+                //        }
+                //    }
+                //}
 
                 counter = 0;
             }           
