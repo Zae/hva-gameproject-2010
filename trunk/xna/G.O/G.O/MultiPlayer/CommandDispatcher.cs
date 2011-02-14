@@ -17,7 +17,7 @@ namespace ION.MultiPlayer
 
         private static List<Command> commandsQueue = new List<Command>();
 
-        public static int latency = 250; //Latency to attach to commands to be safe all clients can execute the command in time
+        public static int latency = 300; //Latency to attach to commands to be safe all clients can execute the command in time
         private static int serial = 0;
 
         //Returns a good Tick to let the command process
@@ -35,8 +35,7 @@ namespace ION.MultiPlayer
 
         public static bool executeCommand(int gameTick)
         {
-            //Debug.WriteLine("CommandsQueue size = " + commandsQueue.Count);
-            
+       
             if (commandsQueue.Count == 0)
             {
                 return false;
@@ -46,6 +45,8 @@ namespace ION.MultiPlayer
             {
                 commandsQueue[0].performCommand();
                 commandsQueue.RemoveAt(0);
+                Debug.WriteLine("EXECUTING COMMAND ON TICK " + gameTick);
+            
                 return true;
             }
 
@@ -74,6 +75,7 @@ namespace ION.MultiPlayer
         //Command coming in over the network should be deserialized and then sent to this method
         public static void sinkCommand(Command command)
         {
+            Debug.WriteLine("SINKING COMMAND: " + command.owner + " " + command.serial);
             if (command.supposedGameTick <= Grid.get().TCP)
             {
                 //this is a insolvable situation, go resync 
@@ -86,6 +88,7 @@ namespace ION.MultiPlayer
                 //When the list is empty we don't need to think about where to put it
                 if (queueLength == 0 )
                 {
+                    Debug.WriteLine("COMMAND QUEUE EMPTY, ADDING");
                     commandsQueue.Add(command);
                     return;
                 }
@@ -93,14 +96,13 @@ namespace ION.MultiPlayer
                 //We start at the back of the list
                 for (int i = queueLength - 1; i > -1; i--)
                 {
-                    //FOUND MOVEMENT ERROR!!!
-                    // If this statement is commented the movement error does not occur, however it may effect the multiplayer
-                    /*if (commandsQueue[i].supposedGameTick < command.supposedGameTick)
+         
+                    if (commandsQueue[i].supposedGameTick < command.supposedGameTick)
                     {
                         commandsQueue.Insert(i + 1, command);
                         return;
                     }
-                    else */if (commandsQueue[i].supposedGameTick >= command.supposedGameTick)//this used to be "==" before commenting the above statement
+                    else if (commandsQueue[i].supposedGameTick == command.supposedGameTick)
                     {
                         if (commandsQueue[i].owner == command.owner)
                         {
@@ -117,8 +119,11 @@ namespace ION.MultiPlayer
                         }
                     }
                 }
-                    //else if(commandsQueue[i].supposedGameTick > command.supposedGameTick)
-                Debug.WriteLine("DIDNT ADD COMMAND WTF?");
+
+                //We need to add the command to the very front of the list appearantly
+                commandsQueue.Insert(0, command);
+                
+                Debug.WriteLine("ADDED COMMAND TO BACK OF LIST");
             }
 
         }

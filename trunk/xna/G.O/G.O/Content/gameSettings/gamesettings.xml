@@ -20,7 +20,7 @@
   ResourceRate="0,002"
   SpikeBonus="1,0"
   
-  TicksPerSecond="30"
+  TicksPerSecond="10"
   
   VictoryCondition="0"
   

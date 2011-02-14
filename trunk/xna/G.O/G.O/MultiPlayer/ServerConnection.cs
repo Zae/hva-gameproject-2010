@@ -34,7 +34,8 @@ namespace ION{
             LobbyConnection.OnConnect += new ConnectHandler(LobbyConnection_OnConnect);
             LobbyConnection.OnDisconnect += new DisconnectHandler(LobbyConnection_OnDisconnect);
 
-            LobbyConnection.Connect("rtmp://red5.dooping.nl:1935/ion", true);
+            LobbyConnection.Connect("rtmp://127.0.0.1:1935/ion", true);
+            //LobbyConnection.Connect("rtmp://red5.dooping.nl:1935/ion", true);
         }
 
         void LobbyConnection_OnDisconnect(object sender, EventArgs e)
@@ -177,7 +178,7 @@ namespace ION{
             GameConnection.NetStatus += new NetStatusHandler(GameConnection_NetStatus);
             GameConnection.OnConnect += new ConnectHandler(GameConnection_OnConnect);
             GameConnection.OnDisconnect += new DisconnectHandler(GameConnection_OnDisconnect);
-            GameConnection.Connect("rtmp://red5.dooping.nl:1935/ion/" + roomname, true);
+            GameConnection.Connect("rtmp://127.0.0.1:1935/ion/" + roomname, true);
         }
         void GameConnection_OnDisconnect(object sender, EventArgs e)
         {

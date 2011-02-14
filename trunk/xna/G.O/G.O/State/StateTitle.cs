@@ -65,7 +65,7 @@ namespace ION
 
         void optionsButton_Click(UIComponent sender)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         void mpButton_Click(UIComponent sender)
@@ -75,7 +75,7 @@ namespace ION
 
         void newGameButton_Click(UIComponent sender)
         {
-            ION.get().setState(new StateTest(1, 0, "WideLevelTest2.xml", false));
+            ION.get().setState(new StateTest(1, 0, "WideLevelTest2.xml", false));  //"WideLevelTest2.xml" "MediumLevelTest.xml"
         }
         #endregion
 

@@ -88,14 +88,14 @@ namespace ION
 
         public TimeSpan passedTime;
 
-        public static int TPS = 30; // Ticks per Second
+        public static int TPS = 16; // Ticks per Second
         public static int TPT = 1000 / TPS; //Timesclice Per Tick (in milliseconds)
         public int TCP = 0; //Ticks Currently Processed
 
         public float TTP = 0; //Ticks To Process
         public float intermediate = 0.0f; //Our progress between ticks, for drawing purposes only
 
-        public static void setTPS(int newTPS) 
+        public static void setTPS(int newTPS)
         {
             TPS = newTPS;
             TPT = 1000 / TPS;
@@ -110,11 +110,11 @@ namespace ION
 
             TTP = ((float)passedTime.TotalMilliseconds / TPT) - TCP;
 
-            //Debug.WriteLine("ttp:" + TTP);
-            if (TTP > 1)
+            Debug.WriteLine("ttp:" + TTP);
+            if (TTP >= 1)
             {
                 //do the next tick
-                intermediate = TTP - 1;
+                intermediate = TTP - (int)TTP;// 1;//TTP;// -1;
             }
             else
             {

@@ -23,7 +23,7 @@ namespace ION
         public Rectangle healtRectangle = new Rectangle();
 
         public int ticksIntoMovement = 0;
-        public static int tileToTileTicks = Grid.TPS / 3;
+        public static int tileToTileTicks = Grid.TPS / 4;//100 / Grid.TPT;//Grid.TPS / 3;
 
         public static int damageType = 1;
 
